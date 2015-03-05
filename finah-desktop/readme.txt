@@ -1,3 +1,0 @@
-Finah-desktop applicatie
-
-Java
