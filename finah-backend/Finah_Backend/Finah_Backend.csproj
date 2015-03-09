@@ -202,9 +202,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aandoening.cs" />
+    <Compile Include="Models\Pathologie.cs" />
+    <Compile Include="Models\SuperKlasseAandoeningPathologie.cs" />
+    <Compile Include="Models\Aanvraag.cs" />
+    <Compile Include="Models\SuperKlasseAanvraagAccount.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Bevraging.cs" />
+    <Compile Include="Models\EID.cs" />
+    <Compile Include="Models\Foto.cs" />
+    <Compile Include="Models\GeluidsFragment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeeftijdsCategorie.cs" />
+    <Compile Include="Models\MediaFile.cs" />
+    <Compile Include="Models\Postcode.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Vraag.cs" />
+    <Compile Include="Models\VragenLijst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
