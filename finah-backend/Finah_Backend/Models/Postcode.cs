@@ -1,14 +1,10 @@
 ﻿namespace Finah_Backend.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Postcode
     {
-        #region Private members
-        private int id;
-
-        private int postnr;
-
-        private string gemeente;
-        #endregion
+        [Key]
         #region Public members
         public int Id { get; set; }
 
