@@ -8,8 +8,8 @@ import java.util.UUID;
 public class TestLinksGenereren {
 
 	public static void main(String[] args) {
-		List<UUID> list1 = new ArrayList<UUID>();
-		List<UUID> list2 = new ArrayList<UUID>();
+		List<String> list1 = new ArrayList<String>();
+		List<String> list2 = new ArrayList<String>();
 		// //METHOD EXAMPLE
 		// String id1 = UUID.randomUUID().toString().replaceAll("-", "");
 		// String id2 = UUID.randomUUID().toString().replaceAll("-", "");
@@ -18,7 +18,7 @@ public class TestLinksGenereren {
 		// System.out.println("UUID Two: " + id2);
 		
 		for(int i=0;i<1000;i++){
-			list1.add(UUID.randomUUID());
+			list1.add(UUID.randomUUID().toString().replaceAll("-", ""));
 		}
 		for(int i=0;i<1000;i++){
 			list2.add(list1.get(i));
