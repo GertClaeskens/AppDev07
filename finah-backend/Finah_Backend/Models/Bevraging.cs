@@ -5,39 +5,31 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Bevraging
     {
         #region Public members
-        [Key]
-        public int Id;
+        public int Id { get; set; }
 
-        public DateTime Aangevraagd;
+        public DateTime Aangevraagd { get; set; }
         //onderstaande members -> berekenen uit VragenLijst
         //public int AantalIngevuldPatient;
 
         //public int AantalIngevuldMantelzorger;
 
-        [ForeignKey("Id")]
-        public LeeftijdsCategorie LeeftijdsCatPatient;
+        public LeeftijdsCategorie LeeftijdsCatPatient { get; set; }
 
-        [ForeignKey("Id")]
-        public LeeftijdsCategorie LeeftijdsCatMantelZorger;
+        public LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
 
-        public string Informatie;
+        public string Informatie { get; set; }
         //Ook eventueel enum van maken
-        public string Relatie;
+        public string Relatie { get; set; }
 
-        [ForeignKey("Id")]
-        public Account AangemaaktDoor;
+        public Account AangemaaktDoor { get; set; }
 
-        [ForeignKey("Id")]
-        public VragenLijst Vragenpatient;
+        public VragenLijst Vragenpatient { get; set; }
 
-        [ForeignKey("Id")]
-        public VragenLijst VragenMantelzorger;
+        public VragenLijst VragenMantelzorger { get; set; }
         #endregion
     }
 }

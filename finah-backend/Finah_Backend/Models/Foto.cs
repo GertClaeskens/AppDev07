@@ -9,7 +9,5 @@ namespace Finah_Backend.Models
 
     public class Foto:MediaFile
     {
-        [Key]
-        public override int Id { get; set; }
     }
 }

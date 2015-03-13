@@ -5,11 +5,9 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    using System.ComponentModel.DataAnnotations;
 
-    public class GeluidsFragment : MediaFile
+    public class GeluidsFragment
     {
-        [Key]
-        public override int Id { get; set; }
+
     }
 }

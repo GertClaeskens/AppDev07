@@ -5,7 +5,6 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    using System.ComponentModel.DataAnnotations;
 
     public abstract class MediaFile
     {
@@ -14,11 +13,10 @@ namespace Finah_Backend.Models
         /// </summary>
 
         #region Public members
-        [Key]
-        public virtual int Id { get; set; }
+        public int Id { get; set; }
         public string Omschrijving { get; set; }
 
-        public string Pad;
+        public string Pad { get; set; }
         #endregion
     }
 }

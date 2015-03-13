@@ -5,19 +5,17 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    using System.ComponentModel.DataAnnotations;
 
     public class LeeftijdsCategorie
     {
         //Hier ook eventueel een enum
 
         #region Public members
-        [Key]
-        public int Id;
+        public int Id { get; set; }
         
         //Van en Tot : hiervoor volstaat een ushort : leeftijd kan niet negatief zijn 
-        public ushort Van;
-        public ushort Tot;
+        public ushort Van { get; set; }
+        public ushort Tot { get; set; }
         #endregion
 
     }
