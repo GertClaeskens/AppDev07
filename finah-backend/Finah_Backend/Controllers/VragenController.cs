@@ -10,12 +10,15 @@ namespace Finah_Backend.Controllers
     //[Authorize]
     public class VragenController : ApiController
     {
+        private string sourceUrl = "Http://www.ExampleSite.be/Vragen/";
         // GET api/vragen/5
         [Route("Vragen/{id}")] //Geen Api/ meer nodig
         public string Get(String id) // return -> naderhand veranderen in Bevraging
         {
-            return "Ingegeven ID: " + id;
+            //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
+            //Test genereren Unique ID
+            return string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
         }
 
         // GET api/vragen/Overzicht
