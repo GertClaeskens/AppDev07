@@ -17,7 +17,7 @@ namespace Finah_Backend.Controllers
         {
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
-            //Test genereren Unique ID
+            //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
             return string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
         }
 
