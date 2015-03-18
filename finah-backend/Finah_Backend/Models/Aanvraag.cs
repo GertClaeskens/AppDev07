@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    using System.Web.Http.Results;
+    using Finah_Backend.Models.Enums;
 
     public class Aanvraag 
     {
@@ -20,7 +20,6 @@ namespace Finah_Backend.Models
         public string RijksRegisterNr { get; set; }
 
         public string Adres { get; set; }
-
         
 
         public string Telnr { get; set; }

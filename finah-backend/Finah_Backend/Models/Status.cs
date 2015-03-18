@@ -10,7 +10,7 @@ namespace Finah_Backend.Models
         public int Id { get; set; }
 
 
-        public Account BeoordeeldDoor { get; set; }
+        public virtual Account BeoordeeldDoor { get; set; }
 
         public DateTime BeoordeeldOp { get; set; }
     

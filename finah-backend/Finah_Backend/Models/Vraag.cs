@@ -9,13 +9,13 @@ namespace Finah_Backend.Models
     public class Vraag
     {
         #region Public members
-        public int Id;
+        
+        public int Id { get; set; }
+        public string VraagStelling { get; set; }
 
-        public string VraagStelling;
+        public virtual Foto Afbeelding { get; set; }
 
-        public Foto Afbeelding;
-
-        public GeluidsFragment Geluid;
+        public virtual GeluidsFragment Geluid { get; set; }
         #endregion
     }
 }

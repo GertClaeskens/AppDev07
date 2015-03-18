@@ -216,7 +216,6 @@
     <Compile Include="Models\GeluidsFragment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LeeftijdsCategorie.cs" />
-    <Compile Include="Models\MediaFile.cs" />
     <Compile Include="Models\Postcode.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Vraag.cs" />

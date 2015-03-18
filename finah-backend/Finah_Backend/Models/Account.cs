@@ -1,5 +1,7 @@
 ﻿namespace Finah_Backend.Models
 {
+    using Finah_Backend.Models.Enums;
+
     public class Account 
     {
         #region Public members
@@ -13,7 +15,7 @@
 
         public string Adres { get; set; }
 
-        public Postcode Postcd { get; set; }
+        public virtual Postcode Postcd { get; set; }
 
         public string Telnr { get; set; }
 
@@ -29,9 +31,7 @@
         public TypeAccount TypeAcc { get; set; }
         
         //Kijken of we daadwerkelijk iets moeten opslaan van EIDs of dat we via het rijksregisternr dit controleren
-        private EID eidnr;
-
-        public EID Eidnr { get; set; }
+        public virtual EID Eidnr { get; set; }
         #endregion
     }
 }

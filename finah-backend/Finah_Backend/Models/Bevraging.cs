@@ -17,19 +17,19 @@ namespace Finah_Backend.Models
 
         //public int AantalIngevuldMantelzorger;
 
-        public LeeftijdsCategorie LeeftijdsCatPatient { get; set; }
+        public virtual LeeftijdsCategorie LeeftijdsCatPatient { get; set; }
 
-        public LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
+        public virtual LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
 
         public string Informatie { get; set; }
         //Ook eventueel enum van maken
         public string Relatie { get; set; }
 
-        public Account AangemaaktDoor { get; set; }
+        public virtual Account AangemaaktDoor { get; set; }
 
-        public VragenLijst Vragenpatient { get; set; }
+        public virtual VragenLijst Vragenpatient { get; set; }
 
-        public VragenLijst VragenMantelzorger { get; set; }
+        public virtual VragenLijst VragenMantelzorger { get; set; }
         #endregion
     }
 }
