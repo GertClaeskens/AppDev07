@@ -5,7 +5,9 @@ using System.Web;
 
 namespace Finah_Backend.Models
 {
-    public class Pathologie : SuperKlasseAandoeningPathologie
+    public class Pathologie 
     {
+        public int Id { get; set; }
+        public string Omschrijving { get; set; }
     }
 }

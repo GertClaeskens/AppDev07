@@ -7,7 +7,13 @@ namespace Finah_Backend.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Foto:MediaFile
+    public class Foto
     {
+        #region Public members
+        public int Id { get; set; }
+        public string Omschrijving { get; set; }
+
+        public string Pad { get; set; }
+        #endregion
     }
 }

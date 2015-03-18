@@ -205,9 +205,7 @@
     </Compile>
     <Compile Include="Models\Aandoening.cs" />
     <Compile Include="Models\Pathologie.cs" />
-    <Compile Include="Models\SuperKlasseAandoeningPathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />
-    <Compile Include="Models\SuperKlasseAanvraagAccount.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
