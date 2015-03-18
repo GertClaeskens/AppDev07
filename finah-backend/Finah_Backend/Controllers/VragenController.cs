@@ -13,8 +13,10 @@ namespace Finah_Backend.Controllers
         private string sourceUrl = "Http://www.ExampleSite.be/Bevraging/";
         private string link = null;
         // GET api/vragen/5
-        [Route("Bevraging/{id}")] //Geen Api/ meer nodig
-        public string Get(String id) // return -> naderhand veranderen in Bevraging
+        //Geen Api/ meer nodig
+        [Route("Bevraging/{id}")]
+        // return -> naderhand veranderen in Bevraging
+        public string Get(String id) 
         {
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
@@ -23,11 +25,14 @@ namespace Finah_Backend.Controllers
 
             while (link == null)
             {
-                link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //nieuwe link genereren
-                TestLinkOnDuplicate(link); //Methode aanspreken voor testen op duplicaat
+                //nieuwe link genereren
+                link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
+                //Methode aanspreken voor testen op duplicaat
+                TestLinkOnDuplicate(link); 
             }
-            
-            return link; //Momenteel gegenereerde link tonen
+
+            //Momenteel gegenereerde link tonen
+            return link; 
         }
 
         // GET api/vragen/Overzicht
@@ -55,19 +60,25 @@ namespace Finah_Backend.Controllers
         //Test voor duplicaat link
         private void TestLinkOnDuplicate(string linkToTest)
         {
-            string fakeDBLink; //var voor genereren tijdelijke fake link om DB na te bootsen
+            //var voor genereren tijdelijke fake link om DB na te bootsen
+            string fakeDBLink; 
 
             //List = alle waardes uit DB ophalen (als DB in werking is)
             //run foreach, for now use For loop
             for (int i = 0; i < 1000; i++)
             {
-                fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //Momenteel fake link gebruiken voor controle
-                if (linkToTest.Equals(fakeDBLink)) //controleren als duplicaat
+                //Momenteel fake link gebruiken voor controle
+                fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
+                //controleren als duplicaat
+                if (linkToTest.Equals(fakeDBLink)) 
                 {
-                    link = null; //private link binne class op null zetten zodat hij terug door de while gaat.
-                    return;
+                    //private link binne class op null zetten zodat hij terug door de while gaat.
+                    link = null; 
+                    //In geval van duplicaat, verlaat loop
+                    break;
                 }
             }
+            return;
         }
     }
 }
