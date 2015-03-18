@@ -10,7 +10,7 @@ namespace Finah_Backend.DAL
 
     using Finah_Backend.Models;
 
-    public class FinahDBContext : DbContext
+    public class FinahDBContext : DbContext 
     {
         public DbSet<Aandoening> Aandoeningen { get; set; }
         public DbSet<Aanvraag> Aanvragen { get; set; }
