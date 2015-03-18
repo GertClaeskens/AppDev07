@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("Content/Stylesheet.css");
+    @Styles.Render("~/Content/Stylesheet.css")
 </head>
 <body>
     <div id="wrapper">
         <div id="page-header">
-            @RenderPage("_header.cshtml");
+            @RenderPage("_header.cshtml")
         </div> <!--Closing DIV page header-->
         <div id="inner-wrapper">
             <div id="nav-bar">
@@ -28,8 +28,6 @@
             @RenderPage("_footer.cshtml")
         </div>
     </div><!--Closing DIV wrapper-->
-
-
 
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

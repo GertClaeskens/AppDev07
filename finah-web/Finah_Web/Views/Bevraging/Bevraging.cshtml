@@ -1,17 +1,14 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿
+
 @model Finah_Web.Models.Bevraging
 
 @{
     ViewBag.Title = "Bevraging";
 }
-
-<h2>Bevraging</h2>
+<h3 id="Breadcrumb">Menu > Bevraging </h3>
+<h2 id="Content-Title">Bevraging</h2>
 
 <div>
-    <h4>Bevraging</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Aangevraagd)
@@ -36,10 +33,9 @@
         <dd>
             @Html.DisplayFor(model => model.Relatie)
         </dd>
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Overzicht")
 </p>

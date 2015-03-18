@@ -1,19 +1,18 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿
 
 @model IEnumerable<Finah_Web.Models.Bevraging>
 
 @{
     ViewBag.Title = "Bevraging - Overzicht";
 }
-
-<h2>Overzicht</h2>
+<h3 id="Breadcrumb">Menu > Bevragingen</h3>
+<h2 id="Content-Title">Overzicht</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<br/>
+<table border="1" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Aangevraagd)
@@ -24,7 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Relatie)
         </th>
-        <th></th>
+        <th>
+            Actie
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -32,16 +33,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.Aangevraagd)
         </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Informatie)
         </td>
+      
         <td>
             @Html.DisplayFor(modelItem => item.Relatie)
         </td>
+      
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <button> @Html.ActionLink("Edit", "Edit", new { id=item.Id }) </button> |
+            <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
+            <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
         </td>
     </tr>
 }

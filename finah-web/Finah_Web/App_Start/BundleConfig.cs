@@ -25,7 +25,7 @@ namespace Finah_Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Stylesheet.css"));
         }
     }
 }
