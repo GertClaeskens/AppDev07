@@ -10,14 +10,13 @@ namespace Finah_Backend.Controllers
     //[Authorize]
     public class BevragingController : ApiController
     {
-        private string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
+        private string sourceUrl = "Http://www.ExampleSite.be/Bevraging/";
         private string link = null;
-
-        //GetLink
+        // GET api/vragen/5
         //Geen Api/ meer nodig
-        [Route("Bevraging/GetLink")]
+        [Route("Bevraging/{id}")]
         // return -> naderhand veranderen in Bevraging
-        public string Get() 
+        public string Get(String id) 
         {
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
@@ -36,14 +35,7 @@ namespace Finah_Backend.Controllers
             return link; 
         }
 
-        //Geen Api/ meer nodig
-        [Route("Bevraging/{id}")]
-        // return -> naderhand veranderen in Bevraging
-        public string Get(String id)
-        {
-            return "Given ID: " + id;
-        }
-
+        // GET api/vragen/Overzicht
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
         public string GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
