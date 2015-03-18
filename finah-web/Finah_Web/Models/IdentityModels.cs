@@ -29,5 +29,7 @@ namespace Finah_Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.Bevraging> Bevragings { get; set; }
     }
 }

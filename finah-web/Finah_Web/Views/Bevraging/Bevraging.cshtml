@@ -1,0 +1,42 @@
+﻿@model Finah_Web.Models.Bevraging
+
+@{
+    ViewBag.Title = "Bevraging";
+}
+
+<h2>Bevraging</h2>
+
+<div>
+    <h4>Bevraging</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aangevraagd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aangevraagd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Informatie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Informatie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Relatie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Relatie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
