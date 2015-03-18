@@ -1,0 +1,92 @@
+﻿body {
+    
+}
+
+#page-header {
+  
+    width:960px;
+    height:100px;
+    background: -webkit-linear-gradient(#0099CC, #66CCCC); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#0099CC, #66CCCC); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#0099CC, #66CCCC); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#0099CC, #66CCCC); /* Standard syntax */            
+    border-radius: 24px; /*Standard syntax*/
+     -moz-border-radius:24px;      /*For firefox*/
+    -webkit-border-radius: 24px;/*For Safari*/
+    margin:0 auto;
+     text-align:center;
+    line-height:100px;
+}
+
+#page-header h1 {
+    color:black;
+    font-size:48px;
+    font-family:'Arial Rounded MT';
+}
+#container {
+    margin-top:20px;
+    width:960px;
+    float:left;
+    display:block;
+}
+
+#nav-bar {
+    display:block;
+    float:left;
+    width:150px;
+    height:320px; 
+    margin-left:467px;
+    text-align:center;
+    background: -webkit-linear-gradient(#0099CC, #66CCCC); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#0099CC, #66CCCC); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#0099CC, #66CCCC); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#0099CC, #66CCCC); /* Standard syntax */   
+    border-radius: 24px; /*Standard syntax*/
+     -moz-border-radius:24px;      /*For firefox*/
+    -webkit-border-radius: 24px;/*For Safari*/    
+   
+    margin-top:10px;
+
+}
+#nav-bar h2 {
+    padding-top:10px;
+    font-family:'Arial Rounded MT';
+}
+#nav-bar button {
+    width:100px;
+    height:32px;
+    margin-top:15px;
+    margin-bottom:10px;
+    border-radius: 5px; /*Standard syntax*/
+     -moz-border-radius:5px;      /*For firefox*/
+    -webkit-border-radius: 5px;/*For Safari*/  
+}
+#body-container{
+    margin-top:10px;
+    
+    margin-left:10px;
+    display:block;
+    width:810px;
+    height:320px;
+    float:left;
+}
+#body-container article {
+    padding:20px;
+}
+footer {
+    margin-left:625px;
+
+    margin-top:335px;
+    text-align:center;
+    width:800px;
+    height:30px;
+    line-height:30px;
+    border-radius: 20px; /*Standard syntax*/
+     -moz-border-radius:20px;      /*For firefox*/
+    -webkit-border-radius: 20px;/*For Safari*/  
+}
+footer p {
+    font-family:"Arial Rounded MT";
+    font-size:10pt;
+    color:black;
+}
