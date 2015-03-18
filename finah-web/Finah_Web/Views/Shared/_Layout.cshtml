@@ -7,26 +7,27 @@
     @Styles.Render("Content/Stylesheet.css");
 </head>
 <body>
-    <div id="page-header">
-        @RenderPage("_header.cshtml");
-    </div>
-    <div id="nav-bar">
-        <h2> Menu </h2>
-        <button> @Html.ActionLink("Account", "index", "Account") </button>
-        <button> @Html.ActionLink("Bevragingen", "Overzicht", "Bevraging", new { area = "" }, null)</button>
-        <button> @Html.ActionLink("Manage", "Overzicht", "Beheer", new { area = "" }) </button>
-        <button> @Html.ActionLink("Uitloggen", "Overzicht", "Uitloggen", new { area = "" }) </button>
-    </div>
-    <div id="body-container">
-        @RenderBody()
-
-    </div>
-    <div id="footer">
-        <footer>
-            <p> &copy; Copyright 2015-2016. All rights reserved</p>
-        </footer>
-    </div>
-
+    <div id="wrapper">
+        <div id="page-header">
+            @RenderPage("_header.cshtml");
+        </div> <!--Closing DIV page header-->
+        <div id="inner-wrapper">
+            <div id="nav-bar">
+               <h2> Menu </h2>
+               <button> @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</button>
+               <button> @Html.ActionLink("Account", "index", "Account") </button>
+               <button> @Html.ActionLink("Bevragingen", "Overzicht", "Bevraging", new { area = "" }, null)</button>
+               <button> @Html.ActionLink("Manage", "Overzicht", "Beheer", new { area = "" }) </button>
+               <button> @Html.ActionLink("Uitloggen", "Overzicht", "Uitloggen", new { area = "" }) </button>
+            </div><!--Closing DIV nav-bar-->
+            <div id="body-container">
+                @RenderBody()
+            </div><!--Closing DIV body containerr-->
+        </div><!--Closing DIV innerwrapper-->
+        <div id="page-footer">
+            @RenderPage("_footer.cshtml")
+        </div>
+    </div><!--Closing DIV wrapper-->
 
 
 

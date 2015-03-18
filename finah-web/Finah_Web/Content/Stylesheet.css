@@ -1,21 +1,37 @@
-﻿body {
-    
+﻿p,h1,body,h2,h3,h4,table {
+    padding:0px;
+    margin:0px;
 }
-
+body {
+    width:1080px;
+    margin:0 auto;
+}
+#wrapper {
+    width:100%;
+    height:600px;
+    display:block;
+}
+#inner-wrapper {
+    margin-top:20px;
+    display:block;
+    float:left;
+    width:100%;
+    height:400px;
+}
 #page-header {
-  
-    width:960px;
-    height:100px;
+    padding-top:0px;
+    margin-top:0px;
+    width:100%;
+    height:120px;
     background: -webkit-linear-gradient(#0099CC, #66CCCC); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#0099CC, #66CCCC); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#0099CC, #66CCCC); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#0099CC, #66CCCC); /* Standard syntax */            
     border-radius: 24px; /*Standard syntax*/
-     -moz-border-radius:24px;      /*For firefox*/
+    -moz-border-radius:24px;      /*For firefox*/
     -webkit-border-radius: 24px;/*For Safari*/
-    margin:0 auto;
-     text-align:center;
-    line-height:100px;
+    text-align:center;
+    line-height:120px;
 }
 
 #page-header h1 {
@@ -23,37 +39,31 @@
     font-size:48px;
     font-family:'Arial Rounded MT';
 }
-#container {
-    margin-top:20px;
-    width:960px;
-    float:left;
-    display:block;
-}
+
 
 #nav-bar {
     display:block;
     float:left;
-    width:150px;
-    height:320px; 
-    margin-left:467px;
+    width:19%;
+    height:100%; 
     text-align:center;
     background: -webkit-linear-gradient(#0099CC, #66CCCC); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#0099CC, #66CCCC); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#0099CC, #66CCCC); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#0099CC, #66CCCC); /* Standard syntax */   
     border-radius: 24px; /*Standard syntax*/
-     -moz-border-radius:24px;      /*For firefox*/
+    -moz-border-radius:24px;      /*For firefox*/
     -webkit-border-radius: 24px;/*For Safari*/    
    
-    margin-top:10px;
 
 }
 #nav-bar h2 {
-    padding-top:10px;
+    padding-top:25px;
+    padding-bottom:25px;
     font-family:'Arial Rounded MT';
 }
 #nav-bar button {
-    width:100px;
+    width:120px;
     height:32px;
     margin-top:15px;
     margin-bottom:10px;
@@ -62,31 +72,31 @@
     -webkit-border-radius: 5px;/*For Safari*/  
 }
 #body-container{
-    margin-top:10px;
-    
-    margin-left:10px;
+    margin-left:20px;
     display:block;
-    width:810px;
-    height:320px;
+    width:75%;
+    height:100%;
     float:left;
 }
+
 #body-container article {
     padding:20px;
+    font-family:Verdana;
 }
-footer {
-    margin-left:625px;
 
-    margin-top:335px;
+#body-container h3 {
+    font-family:Verdana;
+    font-size:12pt;
+}
+#page-footer{
     text-align:center;
-    width:800px;
+    width:100%;
     height:30px;
     line-height:30px;
-    border-radius: 20px; /*Standard syntax*/
-     -moz-border-radius:20px;      /*For firefox*/
-    -webkit-border-radius: 20px;/*For Safari*/  
 }
-footer p {
-    font-family:"Arial Rounded MT";
-    font-size:10pt;
-    color:black;
+
+#page-footer p {
+   font-size:10pt;
+   font-family:Verdana;
+    
 }
