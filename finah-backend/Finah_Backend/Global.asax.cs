@@ -9,6 +9,11 @@ using System.Web.Routing;
 
 namespace Finah_Backend
 {
+    using System.Data.Entity;
+
+    using Finah_Backend.DAL;
+    using Finah_Backend.Migrations;
+
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -18,6 +23,9 @@ namespace Finah_Backend
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Toevoegen voor automatische update van database
+            Database.SetInitializer<FinahDBContext>(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
         }
     }
 }

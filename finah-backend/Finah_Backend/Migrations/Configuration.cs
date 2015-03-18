@@ -24,7 +24,7 @@ namespace Finah_Backend.Migrations
                 new LeeftijdsCategorie{Van=26,Tot=35}
             };
 
-            leeftijdsCategorie.ForEach(s => context.LeeftijdsCategorieen.Add(s));
+            leeftijdsCategorie.ForEach(s => context.LeeftijdsCategorieen.AddOrUpdate(s));
             context.SaveChanges();
         }
     }

@@ -13,8 +13,8 @@ namespace Finah_Web.Models
         public int Id { get; set; }
 
         //Van en Tot : hiervoor volstaat een ushort : leeftijd kan niet negatief zijn 
-        public ushort Van { get; set; }
-        public ushort Tot { get; set; }
+        public int Van { get; set; }
+        public int Tot { get; set; }
         #endregion
     }
 }
