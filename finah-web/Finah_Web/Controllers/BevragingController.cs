@@ -14,7 +14,7 @@ namespace Finah_Web.Controllers
     {
         // GET: Bevraging
         [Route("Bevraging/Overzicht")]
-        public async Task<ActionResult> Index() //Overzicht
+        public async Task<ActionResult> Overzicht()
         {
             using (var client = new HttpClient())
             {
@@ -28,8 +28,8 @@ namespace Finah_Web.Controllers
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                    Bevraging bevraging = await response.Content.ReadAsAsync<Bevraging>();
-                    return View(bevraging);
+                    List<Bevraging> bevragingenLijst = await response.Content.ReadAsAsync<List<Bevraging>>();
+                    return View(bevragingenLijst);
                 }
             }
             return View();
@@ -42,7 +42,7 @@ namespace Finah_Web.Controllers
             using (var client = new HttpClient())
             {
                 //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-                client.BaseAddress = new Uri("http://localhost:13448/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

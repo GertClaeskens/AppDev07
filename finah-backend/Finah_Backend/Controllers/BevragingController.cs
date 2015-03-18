@@ -70,9 +70,29 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
-        public string GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public List<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return "Toon Hier Overzicht";
+            List<Bevraging> overzichtBevragingen = new List<Bevraging>();
+
+            Bevraging testBevraging1 = new Bevraging();
+            Bevraging testBevraging2 = new Bevraging();
+            Bevraging testBevraging3 = new Bevraging();
+            Bevraging testBevraging4 = new Bevraging();
+            Bevraging testBevraging5 = new Bevraging();
+
+            testBevraging1.Id = "1";
+            testBevraging2.Id = "2";
+            testBevraging3.Id = "3";
+            testBevraging4.Id = "4";
+            testBevraging5.Id = "5";
+
+            overzichtBevragingen.Add(testBevraging1);
+            overzichtBevragingen.Add(testBevraging2);
+            overzichtBevragingen.Add(testBevraging3);
+            overzichtBevragingen.Add(testBevraging4);
+            overzichtBevragingen.Add(testBevraging5);
+
+            return overzichtBevragingen;
         }
 
         // POST: api/Vragen
