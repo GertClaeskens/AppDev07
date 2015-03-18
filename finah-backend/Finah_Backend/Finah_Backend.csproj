@@ -204,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Aandoening.cs" />
+    <Compile Include="Models\TypeAccount.cs" />
     <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />
     <Compile Include="Models\Account.cs" />

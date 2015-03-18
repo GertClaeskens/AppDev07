@@ -21,7 +21,7 @@ namespace Finah_Backend.Models
 
         public string Adres { get; set; }
 
-        public Postcode Postcd { get; set; }
+        
 
         public string Telnr { get; set; }
 
@@ -36,9 +36,8 @@ namespace Finah_Backend.Models
         public string GeheimAntwoord { get; set; }
         public TypeAccount TypeAcc { get; set; }
         
-        private Status sts;
-
-        public Status Sts { get; set; }
+        public virtual Status Sts { get; set; }
+        public virtual Postcode Postcd { get; set; }
         #endregion
     }
 }
