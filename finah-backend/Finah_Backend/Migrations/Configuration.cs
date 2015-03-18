@@ -1,31 +1,31 @@
 namespace Finah_Backend.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Finah_Backend.DAL.FinahDBContext>
+    using Finah_Backend.DAL;
+    using Finah_Backend.Models;
+
+    public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Finah_Backend.DAL.FinahDBContext context)
+        protected override void Seed(FinahDBContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var leeftijdsCategorie = new List<LeeftijdsCategorie>
+            {
+                new LeeftijdsCategorie{Van=18,Tot=25},
+                new LeeftijdsCategorie{Van=26,Tot=35}
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            leeftijdsCategorie.ForEach(s => context.LeeftijdsCategorieen.Add(s));
+            context.SaveChanges();
         }
     }
 }
