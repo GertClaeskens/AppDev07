@@ -18,6 +18,6 @@ namespace Finah_Backend.Models
 
         public virtual Aandoening Aandoe { get; set; }
 
-        public virtual Pathologie Patholo { get; set; }
+        //public virtual Pathologie Patholo { get; set; }
     }
 }
