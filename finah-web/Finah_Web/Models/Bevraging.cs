@@ -8,7 +8,7 @@ namespace Finah_Web.Models
     public class Bevraging
     {
         #region Public members
-        public int Id { get; set; }
+        public String Id { get; set; }
 
         public DateTime Aangevraagd { get; set; }
         //onderstaande members -> berekenen uit VragenLijst
