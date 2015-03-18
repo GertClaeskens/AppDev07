@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Finah_Backend.Models
+namespace Finah_Backend.DAL
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
+    using Finah_Backend.Models;
 
     public class FinahDBContext : DbContext
     {
@@ -22,5 +25,9 @@ namespace Finah_Backend.Models
         public DbSet<Status> Statussen { get; set; }
         public DbSet<Vraag> Vragen { get; set; }
         public DbSet<VragenLijst> VragenLijsten { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

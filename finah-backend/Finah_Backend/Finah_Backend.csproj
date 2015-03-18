@@ -202,11 +202,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
+    <Compile Include="DAL\FinahDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Aandoening.cs" />
-    <Compile Include="Models\FinahDBContext.cs" />
     <Compile Include="Models\TypeAccount.cs" />
     <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />
