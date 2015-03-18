@@ -10,34 +10,31 @@ namespace Finah_Backend.Controllers
     //[Authorize]
     public class VragenController : ApiController
     {
-        private string sourceUrl = "Http://www.ExampleSite.be/Vragen/";
-        private string link;
+        private string sourceUrl = "Http://www.ExampleSite.be/Bevraging/";
+        private string link = null;
         // GET api/vragen/5
-        [Route("Vragen/{id}")] //Geen Api/ meer nodig
+        [Route("Bevraging/{id}")] //Geen Api/ meer nodig
         public string Get(String id) // return -> naderhand veranderen in Bevraging
         {
-            string testLink;
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
             //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
             link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
-            for (int i = 0; i < 1000; i++) //alle waardes ophalen uit DB en controleren op duplicate (word foreach)
+
+            while (link == null)
             {
-                testLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //testlink genereren om te controleren;
-                if (testLink.Equals(link)) //Controle op duplicate
-                {
-                    link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //nieuwe link genereren
-                    i = 0; //restart loop om nieuwe link te controleren
-                }
+                link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //nieuwe link genereren
+                TestLinkOnDuplicate(link); //Methode aanspreken voor testen op duplicaat
             }
-                return link; //Momenteel gegenereerde link tonen
+            
+            return link; //Momenteel gegenereerde link tonen
         }
 
         // GET api/vragen/Overzicht
-        [Route("Vragen/Overzicht")] //Geen Api/ meer nodig
+        [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
         public string GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return "Test";
+            return "Toon Hier Overzicht";
         }
 
         // POST: api/Vragen
@@ -53,6 +50,24 @@ namespace Finah_Backend.Controllers
         // DELETE: api/Vragen/5
         public void Delete(int id)
         {
+        }
+
+        //Test voor duplicaat link
+        private void TestLinkOnDuplicate(string linkToTest)
+        {
+            string fakeDBLink; //var voor genereren tijdelijke fake link om DB na te bootsen
+
+            //List = alle waardes uit DB ophalen (als DB in werking is)
+            //run foreach, for now use For loop
+            for (int i = 0; i < 1000; i++)
+            {
+                fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid()); //Momenteel fake link gebruiken voor controle
+                if (linkToTest.Equals(fakeDBLink)) //controleren als duplicaat
+                {
+                    link = null; //private link binne class op null zetten zodat hij terug door de while gaat.
+                    return;
+                }
+            }
         }
     }
 }
