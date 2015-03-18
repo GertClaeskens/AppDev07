@@ -20,15 +20,18 @@ namespace Finah_Backend.Controllers
         private string link = null;
         List<Bevraging> bevragingen = new List<Bevraging>();
 
+        private FinahDBContext _db;
+
         public BevragingController()
         {
-            FinahDBContext _db = new FinahDBContext();
+            _db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public BevragingController(List<Bevraging> bevragingen) 
         {
+            _db = new FinahDBContext();
             this.bevragingen = bevragingen;
         }
 
@@ -130,7 +133,8 @@ namespace Finah_Backend.Controllers
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-
+            //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+            
             //return bevragingen;
             Bevraging testBevraging1 = new Bevraging();
             Bevraging testBevraging2 = new Bevraging();
@@ -172,12 +176,12 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Vragen/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]string value)
         {
         }
 
         // DELETE: api/Vragen/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
         }
 
