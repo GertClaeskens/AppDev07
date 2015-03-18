@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Finah_Backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -39,9 +40,33 @@ namespace Finah_Backend.Controllers
         //Geen Api/ meer nodig
         [Route("Bevraging/{id}")]
         // return -> naderhand veranderen in Bevraging
-        public string Get(String id)
+        public Bevraging Get(String id)
         {
-            return "Given ID: " + id;
+            Bevraging testBevraging = new Bevraging();
+            Account testAccount = new Account();
+            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
+            VragenLijst testVragenlijst = new VragenLijst();
+
+            testCat.Id = 1;
+            testCat.Van = 0;
+            testCat.Tot = 99;
+
+            testAccount.Id = 1;
+            testAccount.Naam = "Thys";
+            testAccount.VoorNaam = "Brian";
+
+
+            testBevraging.Id = id;
+            testBevraging.Aangevraagd = DateTime.Now;
+            testBevraging.AangemaaktDoor = testAccount;
+            testBevraging.LeeftijdsCatMantelZorger = testCat;
+            testBevraging.LeeftijdsCatPatient = testCat;
+            testBevraging.Informatie = "Test bevraging";
+            testBevraging.Relatie = "Test relatie";
+            testBevraging.VragenMantelzorger = testVragenlijst;
+            testBevraging.Vragenpatient = testVragenlijst;
+
+            return testBevraging;
         }
 
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
