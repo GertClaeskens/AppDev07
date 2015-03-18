@@ -8,7 +8,7 @@ using System.Web.Http;
 namespace Finah_Backend.Controllers
 {
     //[Authorize]
-    public class VragenController : ApiController
+    public class BevragingController : ApiController
     {
         private string sourceUrl = "Http://www.ExampleSite.be/Bevraging/";
         private string link = null;
