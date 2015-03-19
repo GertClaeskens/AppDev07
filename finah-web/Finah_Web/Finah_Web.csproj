@@ -171,10 +171,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AandoeningController.cs" />
+    <Compile Include="Controllers\AanvraagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
+    <Compile Include="Controllers\FotoController.cs" />
+    <Compile Include="Controllers\GeluidsFragmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PathologieController.cs" />
+    <Compile Include="Controllers\VraagController.cs" />
+    <Compile Include="Controllers\VragenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +273,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Aandoening\" />
+    <Folder Include="Views\Aanvraag\" />
+    <Folder Include="Views\Foto\" />
+    <Folder Include="Views\GeluidsFragment\" />
+    <Folder Include="Views\LeeftijdsCategorie\" />
+    <Folder Include="Views\Pathologie\" />
+    <Folder Include="Views\Vraag\" />
+    <Folder Include="Views\VragenLijst\" />
     <Folder Include="Views\Vragen\" />
   </ItemGroup>
   <ItemGroup>
