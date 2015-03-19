@@ -9,6 +9,7 @@ namespace Finah_Backend.DAL
     using System.Data.Entity.ModelConfiguration.Conventions;
 
     using Finah_Backend.Controllers;
+    using Finah_Backend.Models;
 
     public class FinahDBContext : DbContext
     {

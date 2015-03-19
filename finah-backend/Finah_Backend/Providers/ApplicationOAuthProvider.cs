@@ -13,6 +13,8 @@ using Finah_Backend.Controllers;
 
 namespace Finah_Backend.Providers
 {
+    using Finah_Backend.Models;
+
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;

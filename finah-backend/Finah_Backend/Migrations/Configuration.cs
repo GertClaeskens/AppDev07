@@ -7,6 +7,9 @@ namespace Finah_Backend.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
+    using Finah_Backend.Models;
+
     using Excel = Microsoft.Office.Interop.Excel;
 
     public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>

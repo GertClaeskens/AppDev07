@@ -13,6 +13,8 @@ using Finah_Backend.Controllers;
 
 namespace Finah_Backend
 {
+    using Finah_Backend.Models;
+
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
