@@ -47,10 +47,10 @@ namespace Finah_Backend.Tests
         [TestMethod]
         public void GetBevraging_ShouldReturnCorrectBevraging()
         {
-            var result = controller.GetBevraging(testBevragingen[0].Id) as OkNegotiatedContentResult<Bevraging>;
+            var result = controller.Get(testBevragingen[0].Id) as OkNegotiatedContentResult<Bevraging>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testBevragingen[0].Aangevraagd, result.Content.Aangevraagd);
+            Assert.AreEqual(testBevragingen[0], result.Content);
         }
 
 
@@ -58,7 +58,7 @@ namespace Finah_Backend.Tests
         public void GetBevraging_ShouldNotFindBevraging()
         {
             // "jjjj" is onmogelijk als id, want de id is hexadecimaal
-            var result = controller.GetBevraging("jjjjj"); 
+            var result = controller.Get("jjjjj"); 
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 

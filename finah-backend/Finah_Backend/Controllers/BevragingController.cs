@@ -67,7 +67,7 @@ namespace Finah_Backend.Controllers
         //
         // Andere methode om Get te doen met return type IHttpActionResult
         //
-        public IHttpActionResult GetBevraging(String id)
+        public IHttpActionResult Get(String id)
         {
             Bevraging bevraging = new Bevraging();
             Account testAccount = new Account();

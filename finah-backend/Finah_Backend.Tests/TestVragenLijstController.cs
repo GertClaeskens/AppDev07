@@ -19,7 +19,7 @@ namespace Finah_Backend.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            testVragenLijst = this.GetTestVragenLijsten();
+            testVragenLijst = GetTestVragenLijsten();
             controller = new VragenLijstController(testVragenLijst);
         }
         [TestMethod]
@@ -33,10 +33,10 @@ namespace Finah_Backend.Tests
         [TestMethod]
         public void GetVraagLijst_ShouldReturnCorrectVragenLijst()
         {
-            var result = controller.GetVragenLijst(testVragenLijst[0].Id) as OkNegotiatedContentResult<VragenLijst>;
+            var result = controller.Get(testVragenLijst[0].Id) as OkNegotiatedContentResult<VragenLijst>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testVragenLijst[0].Aangevraagd, result.Content.Aangevraagd);
+            Assert.AreEqual(testVragenLijst[0], result.Content);
         }
 
 
@@ -44,12 +44,13 @@ namespace Finah_Backend.Tests
         public void GetVraagLijst_ShouldNotFindVragenLijst()
         {
             // Id meegeven die zeker niet in de database voorkomt
-            var result = controller.GetVragenLijst(999999999);
+            var result = controller.Get(999999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private List<VragenLijst> GetTestVragenLijsten()
+        private static List<VragenLijst> GetTestVragenLijsten()
         {
+            var vragenlijsten = new List<VragenLijst>();
             ///
             /// 
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan

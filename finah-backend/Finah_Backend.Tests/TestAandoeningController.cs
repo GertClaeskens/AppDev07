@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Finah_Backend.Tests
 {
     [TestClass]
-    class TestAandoeningController
+    class TestAandoeningController 
     {
 
         private List<Aandoening> testAandoeningen;
@@ -24,7 +24,7 @@ namespace Finah_Backend.Tests
             controller = new AandoeningController(testAandoeningen);
         }
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllAandoeningen()
+        public void GetOverzicht_ShouldReturnAllItems()
         {
             var result = controller.GetOverzicht() as List<Aandoening>;
             Assert.AreEqual(testAandoeningen.Count, result.Count);
@@ -32,25 +32,26 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetAandoeningLijst_ShouldReturnCorrectAandoening()
+        public void Get_ShouldReturnCorrectItem()
         {
-            var result = controller.GetAandoening(testAandoeningen[0].Id) as OkNegotiatedContentResult<Aandoening>;
+            var result = controller.Get(testAandoeningen[0].Id) as OkNegotiatedContentResult<Aandoening>;
             Assert.IsNotNull(result);
-            //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testAandoeningen[0].Aangevraagd, result.Content.Aangevraagd);
+            //Controleren of beide objecten uniek zijn (Comparable?)
+            Assert.AreEqual(testAandoeningen[0], result.Content);
         }
 
 
         [TestMethod]
-        public void GetVraagLijst_ShouldNotFindAandoening()
+        public void Get_ShouldNotFindItem()
         {
             // Id meegeven die zeker niet in de database voorkomt
-            var result = controller.GetAandoening(999999999);
+            var result = controller.Get(999999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         private List<Aandoening> GetTestAandoeningen()
         {
+            var aandoeningen = new List<Aandoening>();
             ///
             /// 
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan

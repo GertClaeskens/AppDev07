@@ -15,8 +15,8 @@ namespace Finah_Backend.Tests
     [TestClass]
     class TestVragenController
     {
-        private List<Bevraging> testVragen;
-        private BevragingController controller;
+        private List<Vraag> testVragen;
+        private VragenController controller;
 
         [TestInitialize]
         public void TestInitialize()
@@ -35,10 +35,10 @@ namespace Finah_Backend.Tests
         [TestMethod]
         public void GetVraag_ShouldReturnCorrectVraag()
         {
-            var result = controller.GetVraag(testVragen[0].Id) as OkNegotiatedContentResult<Vraag>;
+            var result = controller.Get(testVragen[0].Id) as OkNegotiatedContentResult<Vraag>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testVragen[0].Aangevraagd, result.Content.Aangevraagd);
+            Assert.AreEqual(testVragen[0], result.Content);
         }
 
 
@@ -46,12 +46,13 @@ namespace Finah_Backend.Tests
         public void GetVraag_ShouldNotFindvragen()
         {
             //nummer meegeven die zeker niet in de database voorkomt
-            var result = controller.GetVraag(99999999);
+            var result = controller.Get(99999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private List<Bevraging> GetTestVragen()
+        private List<Vraag> GetTestVragen()
         {
+            List<Vraag> vragen = new List<Vraag>();
             ///
             /// 
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan

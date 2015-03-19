@@ -40,7 +40,7 @@ namespace Finah_Backend.Controllers
         //}
 
         [Route("Vragen/{id}")]
-        public IHttpActionResult GetVraag(int id)
+        public IHttpActionResult Get(int id)
         {
             Vraag vraag = new Vraag();
             Foto foto = new Foto();

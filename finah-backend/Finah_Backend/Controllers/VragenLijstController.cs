@@ -41,7 +41,7 @@ namespace Finah_Backend.Controllers
         //}
 
         [Route("VragenLijst/{id}")]
-        public IHttpActionResult GetVragenLijst(int id)
+        public IHttpActionResult Get(int id)
         {
             VragenLijst vl = new VragenLijst();
             List<Vraag> vragen = new List<Vraag>();

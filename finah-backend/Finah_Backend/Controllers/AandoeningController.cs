@@ -41,7 +41,7 @@ namespace Finah_Backend.Controllers
         //}
 
         [Route("Aandoening/{id}")]
-        public IHttpActionResult GetAandoening(int id)
+        public IHttpActionResult Get(int id)
         {
             Aandoening ad = new Aandoening();
             Pathologie pt = new Pathologie();
