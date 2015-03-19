@@ -13,10 +13,13 @@ namespace Finah_Backend.DAL
 
     public class FinahDBContext : DbContext
     {
-        public FinahDBContext()
-            : base("FinahDBContext")
-        {
-        }
+        //public FinahDBContext()
+        //    : base("FinahDBContext")
+        //public FinahDBContext()
+        //    : base("DefaultConnection")
+        //{
+
+        //}
 
 
         public DbSet<Aandoening> Aandoeningen { get; set; }
