@@ -32,7 +32,7 @@ public class LoginGUI extends JFrame{
 		add(panel);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1000, 500);
+		setSize(1000, 600);
 		setVisible(true);
 	}
 
@@ -47,15 +47,15 @@ public class LoginGUI extends JFrame{
 			g2d.setPaint(new GradientPaint(0,0,new Color(2,154,204),0,75,new Color(102,204,204)));
 			g2d.fillRoundRect(0, 0, 984, 75, 30, 30);
 			
-			g2d.setPaint(new GradientPaint(392,77,new Color(2,154,204),392,277,new Color(102,204,204)));
-			g2d.fillRoundRect(375, 77, 250, 300, 75, 75);
+			g2d.setPaint(new GradientPaint(375,100,new Color(2,154,204),375,300,new Color(102,204,204)));
+			g2d.fillRoundRect(375, 100, 250, 300, 75, 75);
 			
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
-			g2d.drawRoundRect(375, 77, 250, 300, 75, 75);
+			g2d.drawRoundRect(375, 100, 250, 300, 75, 75);
 			
 			g2d.setColor(Color.black);
-			g2d.drawLine(400, 130, 600, 130);
+			g2d.drawLine(400, 155, 600, 155);
 			
 			titel = new JLabel("FINAH");
 			titel.setFont(new Font("Default", Font.BOLD, 40));
@@ -63,34 +63,34 @@ public class LoginGUI extends JFrame{
 			
 			loginLabel = new JLabel("Gebruikerslogin");
 			loginLabel.setFont(new Font("Default", Font.PLAIN, 17));
-			loginLabel.setBounds(400,100,120,20);
+			loginLabel.setBounds(400,125,120,20);
 			
 			naamLabel = new JLabel("Gebruikersnaam");
 			naamLabel.setFont(new Font("Default", Font.PLAIN, 17));
-			naamLabel.setBounds(400,150,120,20);
+			naamLabel.setBounds(400,175,120,20);
 			
 			pwLabel = new JLabel("Wachtwoord");
 			pwLabel.setFont(new Font("Default", Font.PLAIN, 17));
-			pwLabel.setBounds(400,205,120,20);
+			pwLabel.setBounds(400,230,120,20);
 			
 			naamVeld = new JTextField();
-			naamVeld.setBounds(400, 175, 200, 20);
+			naamVeld.setBounds(400, 200, 200, 20);
 			
 			pwVeld = new JPasswordField();
-			pwVeld.setBounds(400, 230, 200, 20);
+			pwVeld.setBounds(400, 255, 200, 20);
 			
 			inlogKnop = new JButton("Inloggen");
-			inlogKnop.setBounds(455, 270, 90, 20);
+			inlogKnop.setBounds(455, 295, 90, 20);
 			
 			nieuwAccountLabel = new JLabel("Nieuw account aanmaken");
 			nieuwAccountLabel.setForeground(Color.white);
 			nieuwAccountLabel.setFont(new Font("Default", Font.PLAIN, 15));
-			nieuwAccountLabel.setBounds(400, 310, 170, 20);
+			nieuwAccountLabel.setBounds(400, 335, 170, 20);
 			
 			pwVergetenLabel = new JLabel("Wachtwoord vergeten?");
 			pwVergetenLabel.setForeground(Color.white);
 			pwVergetenLabel.setFont(new Font("Default", Font.PLAIN, 15));
-			pwVergetenLabel.setBounds(400, 340, 160, 20);
+			pwVergetenLabel.setBounds(400, 365, 160, 20);
 			
 			add(titel);
 			add(loginLabel);
