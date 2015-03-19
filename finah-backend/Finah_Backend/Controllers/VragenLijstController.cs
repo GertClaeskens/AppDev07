@@ -7,10 +7,27 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
     public class VragenLijstController : ApiController
     {
+        List<VragenLijst> vragenlijsten = new List<VragenLijst>();
+
+        
+        private FinahDBContext _db;
+        public VragenLijstController()
+        {
+            _db = new FinahDBContext();
+        }
+
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //de Controller meegeven om zo unittesten voor de controller te schrijven.
+        public VragenLijstController(List<VragenLijst> vragenlijst)
+        {
+            _db = new FinahDBContext();
+            this.vragenlijsten = vragenlijst;
+        }
         // GET: api/VragenLijst
         //public IEnumerable<string> Get()
         //{

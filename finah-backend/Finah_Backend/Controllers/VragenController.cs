@@ -7,10 +7,26 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
     public class VragenController : ApiController
     {
+        List<Vraag> vragen = new List<Vraag>();
+
+        private FinahDBContext _db;
+        public VragenController()
+        {
+            _db = new FinahDBContext();
+        }
+
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //de Controller meegeven om zo unittesten voor de controller te schrijven.
+        public VragenController(List<Vraag> vragen)
+        {
+            _db = new FinahDBContext();
+            this.vragen = vragen;
+        }
         // GET: api/Vragen
         //public IEnumerable<string> Get()
         //{
@@ -36,7 +52,7 @@ namespace Finah_Backend.Controllers
 
             gf.Id = 1;
             gf.Omschrijving = "geluid vraag 1";
-            gf.Pad="geluidpad";
+            gf.Pad = "geluidpad";
 
             vraag.Id = 1;
             vraag.VraagStelling = "Lorem ipsum bladibla";
