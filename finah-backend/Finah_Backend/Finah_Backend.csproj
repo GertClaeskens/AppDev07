@@ -200,6 +200,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AandoeningController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FotoController.cs" />
+    <Compile Include="Controllers\GeluidsFragmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
@@ -219,7 +221,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aandoening.cs" />
-    <Compile Include="Models\TypeAccount.cs" />
+    <Compile Include="Models\Enums\TypeAccount.cs" />
     <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />
     <Compile Include="Models\Account.cs" />

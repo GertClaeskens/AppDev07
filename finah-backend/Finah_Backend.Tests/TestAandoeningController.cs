@@ -24,7 +24,7 @@ namespace Finah_Backend.Tests
             controller = new AandoeningController(testAandoeningen);
         }
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllItems()
+        public void GetOverzicht_ShouldReturnAllAandoeningen()
         {
             var result = controller.GetOverzicht() as List<Aandoening>;
             Assert.AreEqual(testAandoeningen.Count, result.Count);
@@ -32,7 +32,7 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void Get_ShouldReturnCorrectItem()
+        public void Get_ShouldReturnCorrectAandoening()
         {
             var result = controller.Get(testAandoeningen[0].Id) as OkNegotiatedContentResult<Aandoening>;
             Assert.IsNotNull(result);
@@ -42,7 +42,7 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void Get_ShouldNotFindItem()
+        public void Get_ShouldNotFindAandoening()
         {
             // Id meegeven die zeker niet in de database voorkomt
             var result = controller.Get(999999999);
