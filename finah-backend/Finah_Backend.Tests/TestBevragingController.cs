@@ -27,8 +27,8 @@ namespace Finah_Backend.Tests
     [TestClass]
     class TestBevragingController
     {
-        List<Bevraging> testBevragingen;
-        BevragingController controller;
+        private List<Bevraging> testBevragingen;
+        private BevragingController controller;
 
         [TestInitialize]
         public void TestInitialize()
@@ -37,7 +37,7 @@ namespace Finah_Backend.Tests
             controller = new BevragingController(testBevragingen);
         }
         [TestMethod]
-        public void GetAllProducts_ShouldReturnAllProducts()
+        public void GetOverzicht_ShouldReturnAllProducts()
         {
             var result = controller.GetOverzicht() as List<Bevraging>;
             Assert.AreEqual(testBevragingen.Count, result.Count);
@@ -45,7 +45,7 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetProduct_ShouldReturnCorrectProduct()
+        public void GetBevraging_ShouldReturnCorrectProduct()
         {
             var result = controller.Get(testBevragingen[0].Id) as OkNegotiatedContentResult<Bevraging>;
             Assert.IsNotNull(result);
@@ -55,7 +55,7 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetProduct_ShouldNotFindProduct()
+        public void GetBevraging_ShouldNotFindProduct()
         {
             // "jjjj" is onmogelijk als id, want de id is hexadecimaal
             var result = controller.Get("jjjjj"); 
