@@ -12,10 +12,10 @@ namespace Finah_Web.Controllers
 
     using Finah_Web.Models;
 
-    public class VraagController : Controller
+    public class VragenControler : Controller
     {
-        // GET: Vraag
-        [Route("Vraag/Overzicht")]
+        // GET: Vragen
+        [Route("Vragen/Overzicht")]
         public async Task<ActionResult> Overzicht()
         {
             using (var client = new HttpClient())
@@ -26,7 +26,7 @@ namespace Finah_Web.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //new code
-                string url = "Vraag/Overzicht";
+                string url = "Vragen/Overzicht";
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
                 {
@@ -38,8 +38,8 @@ namespace Finah_Web.Controllers
 
         }
 
-        // GET: Vraag/5
-        [Route("Vraag/{id}")]
+        // GET: Vragen/5
+        [Route("Vragen/{id}")]
         public async Task<ActionResult> Vraag(string id)
         {
             using (var client = new HttpClient())
@@ -50,7 +50,7 @@ namespace Finah_Web.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //new code
-                string url = "Vraag/" + id;
+                string url = "Vragen/" + id;
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
                 {
