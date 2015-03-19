@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class LoginGUI extends JFrame{
 	
@@ -23,8 +24,8 @@ public class LoginGUI extends JFrame{
 	private JTextField naamVeld;
 	private JPasswordField pwVeld;
 	private JButton inlogKnop;
-	private JLabel nieuwAccountLabel;
-	private JLabel pwVergetenLabel;
+	private JButton nieuwAccountKnop;
+	private JButton pwVergetenKnop;
 
 	public LoginGUI(){
 		panel = new LoginPanel();
@@ -82,15 +83,23 @@ public class LoginGUI extends JFrame{
 			inlogKnop = new JButton("Inloggen");
 			inlogKnop.setBounds(455, 295, 90, 20);
 			
-			nieuwAccountLabel = new JLabel("Nieuw account aanmaken");
-			nieuwAccountLabel.setForeground(Color.white);
-			nieuwAccountLabel.setFont(new Font("Default", Font.PLAIN, 15));
-			nieuwAccountLabel.setBounds(400, 335, 170, 20);
+			nieuwAccountKnop = new JButton("Nieuw account aanmaken");
+			nieuwAccountKnop.setForeground(Color.white);
+			nieuwAccountKnop.setFont(new Font("Default", Font.PLAIN, 15));
+			nieuwAccountKnop.setHorizontalAlignment(SwingConstants.LEFT);
+			nieuwAccountKnop.setBounds(385, 335, 210, 17);
+			nieuwAccountKnop.setOpaque(false);
+			nieuwAccountKnop.setContentAreaFilled(false);
+			nieuwAccountKnop.setBorderPainted(false);
 			
-			pwVergetenLabel = new JLabel("Wachtwoord vergeten?");
-			pwVergetenLabel.setForeground(Color.white);
-			pwVergetenLabel.setFont(new Font("Default", Font.PLAIN, 15));
-			pwVergetenLabel.setBounds(400, 365, 160, 20);
+			pwVergetenKnop = new JButton("Wachtwoord vergeten?");
+			pwVergetenKnop.setForeground(Color.white);
+			pwVergetenKnop.setFont(new Font("Default", Font.PLAIN, 15));
+			pwVergetenKnop.setBounds(385, 365, 190, 17);
+			pwVergetenKnop.setHorizontalAlignment(SwingConstants.LEFT);
+			pwVergetenKnop.setOpaque(false);
+			pwVergetenKnop.setContentAreaFilled(false);
+			pwVergetenKnop.setBorderPainted(false);
 			
 			add(titel);
 			add(loginLabel);
@@ -99,8 +108,8 @@ public class LoginGUI extends JFrame{
 			add(naamVeld);
 			add(pwVeld);
 			add(inlogKnop);
-			add(nieuwAccountLabel);
-			add(pwVergetenLabel);
+			add(nieuwAccountKnop);
+			add(pwVergetenKnop);
 		}
 	}
 	
