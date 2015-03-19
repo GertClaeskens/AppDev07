@@ -108,11 +108,11 @@ namespace Finah_Backend.Controllers
             //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
             
             //return bevragingen;
-            Bevraging testBevraging1 = new Bevraging();
-            Bevraging testBevraging2 = new Bevraging();
-            Bevraging testBevraging3 = new Bevraging();
-            Bevraging testBevraging4 = new Bevraging();
-            Bevraging testBevraging5 = new Bevraging();
+            var testBevraging1 = new Bevraging();
+            var testBevraging2 = new Bevraging();
+            var testBevraging3 = new Bevraging();
+            var testBevraging4 = new Bevraging();
+            var testBevraging5 = new Bevraging();
 
             testBevraging1.Id = "1";
             testBevraging2.Id = "2";
@@ -120,12 +120,14 @@ namespace Finah_Backend.Controllers
             testBevraging4.Id = "4";
             testBevraging5.Id = "5";
 
-            List<Bevraging> overzichtBevragingen = new List<Bevraging>();
-            overzichtBevragingen.Add(testBevraging1);
-            overzichtBevragingen.Add(testBevraging2);
-            overzichtBevragingen.Add(testBevraging3);
-            overzichtBevragingen.Add(testBevraging4);
-            overzichtBevragingen.Add(testBevraging5);
+            var overzichtBevragingen = new List<Bevraging>
+                                                       {
+                                                           testBevraging1,
+                                                           testBevraging2,
+                                                           testBevraging3,
+                                                           testBevraging4,
+                                                           testBevraging5
+                                                       };
 
             return overzichtBevragingen;
         }

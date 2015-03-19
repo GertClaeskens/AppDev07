@@ -32,12 +32,7 @@ namespace Finah_Backend.Controllers
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Foto foto = new Foto();
-
-            foto.Id = 1;
-            foto.Omschrijving = "foto vraag 1";
-            foto.Pad = "pad";
-
+            var foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
 
             //Bovenstaande code dient om te testen (op dit moment nutteloos)
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten

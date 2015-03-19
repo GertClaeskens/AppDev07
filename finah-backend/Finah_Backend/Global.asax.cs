@@ -25,7 +25,9 @@ namespace Finah_Backend
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //Toevoegen voor automatische update van database
-            Database.SetInitializer<FinahDBContext>(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
+
+            Database.SetInitializer(new DropCreateDatabaseAlways<FinahDBContext>());
         }
     }
 }

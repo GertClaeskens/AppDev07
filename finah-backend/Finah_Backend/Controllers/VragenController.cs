@@ -88,12 +88,7 @@ namespace Finah_Backend.Controllers
             testVraag4.Id = 4;
             testVraag5.Id = 5;
 
-            List<Vraag> overzichtVragen = new List<Vraag>();
-            overzichtVragen.Add(testVraag1);
-            overzichtVragen.Add(testVraag2);
-            overzichtVragen.Add(testVraag3);
-            overzichtVragen.Add(testVraag4);
-            overzichtVragen.Add(testVraag5);
+            List<Vraag> overzichtVragen = new List<Vraag> { testVraag1, testVraag2, testVraag3, testVraag4, testVraag5 };
 
             return overzichtVragen;
         }
