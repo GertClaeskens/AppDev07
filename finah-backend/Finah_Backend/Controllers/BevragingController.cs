@@ -101,34 +101,6 @@ namespace Finah_Backend.Controllers
             }
             return Ok(bevraging);
         }
-        //public Bevraging Get(String id)
-        //{
-        //    Bevraging testBevraging = new Bevraging();
-        //    Account testAccount = new Account();
-        //    LeeftijdsCategorie testCat = new LeeftijdsCategorie();
-        //    VragenLijst testVragenlijst = new VragenLijst();
-
-        //    testCat.Id = 1;
-        //    testCat.Van = 0;
-        //    testCat.Tot = 99;
-
-        //    testAccount.Id = 1;
-        //    testAccount.Naam = "Thys";
-        //    testAccount.VoorNaam = "Brian";
-
-
-        //    testBevraging.Id = id;
-        //    testBevraging.Aangevraagd = DateTime.Now;
-        //    testBevraging.AangemaaktDoor = testAccount;
-        //    testBevraging.LeeftijdsCatMantelZorger = testCat;
-        //    testBevraging.LeeftijdsCatPatient = testCat;
-        //    testBevraging.Informatie = "Test bevraging";
-        //    testBevraging.Relatie = "Test relatie";
-        //    testBevraging.VragenMantelzorger = testVragenlijst;
-        //    testBevraging.Vragenpatient = testVragenlijst;
-
-        //    return testBevraging;
-        //}
 
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
