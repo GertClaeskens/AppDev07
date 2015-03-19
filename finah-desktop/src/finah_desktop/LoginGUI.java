@@ -35,6 +35,7 @@ public class LoginGUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 600);
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
 	

@@ -3,7 +3,7 @@ package finah_desktop;
 import java.util.Date;
 
 public class Bevraging {
-	private long id; // 150311095101
+	private String id; // 150311095101
 	private Date datum_aangevraagd; // evt. berekend veld uit de id halen
 	private int aantal_ingevuld;
 	private String info;
@@ -25,11 +25,11 @@ public class Bevraging {
 		this.vragen = vragen;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
