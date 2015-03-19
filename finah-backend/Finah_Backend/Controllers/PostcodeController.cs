@@ -38,7 +38,8 @@ namespace Finah_Backend.Controllers
         [Route("Postcode/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Postcode> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return _db.Postcodes.ToList(); //Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+
+            return _db.Postcodes; //Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
 
         }
 
