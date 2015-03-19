@@ -12,7 +12,7 @@ namespace Finah_Web.Controllers
 
     using Finah_Web.Models;
 
-    public class VragenControler : Controller
+    public class VragenController : Controller
     {
         // GET: Vragen
         [Route("Vragen/Overzicht")]
