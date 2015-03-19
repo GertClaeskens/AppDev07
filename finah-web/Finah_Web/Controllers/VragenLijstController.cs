@@ -6,18 +6,59 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class VragenLijstController : Controller
     {
         // GET: VragenLijst
-        public ActionResult Index()
+        [Route("VragenLijst/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "VragenLijst/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<VragenLijst> vragenLijsten = await response.Content.ReadAsAsync<List<VragenLijst>>();
+                return this.View(vragenLijsten);
+            }
+
         }
 
-        // GET: VragenLijst/Details/5
-        public ActionResult Details(int id)
+        // GET: VragenLijst/5
+        [Route("VragenLijst/{id}")]
+        public async Task<ActionResult> VragenLijst(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "VragenLijst/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                VragenLijst vragenLijst = await response.Content.ReadAsAsync<VragenLijst>();
+                return this.View(vragenLijst);
+            }
         }
 
         // GET: VragenLijst/Create

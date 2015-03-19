@@ -6,18 +6,57 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class AandoeningController : Controller
     {
-        // GET: Aandoening
-        public ActionResult Index()
+        [Route("Aandoening/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                const string url = "Aandoening/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<Aandoening> aandoeningenLijst = await response.Content.ReadAsAsync<List<Aandoening>>();
+                return this.View(aandoeningenLijst);
+            }
         }
 
-        // GET: Aandoening/Details/5
-        public ActionResult Details(int id)
+        // GET: Aandoening/5
+        [Route("Aandoening/{id}")]
+        public async Task<ActionResult> Aandoening(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "Aandoening/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                Aandoening aandoening = await response.Content.ReadAsAsync<Aandoening>();
+                return this.View(aandoening);
+            }
         }
 
         // GET: Aandoening/Create

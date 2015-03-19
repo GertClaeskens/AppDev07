@@ -6,18 +6,59 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class GeluidsFragmentController : Controller
     {
         // GET: GeluidsFragment
-        public ActionResult Index()
+        [Route("GeluidsFragment/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "GeluidsFragment/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<GeluidsFragment> geluidsFragmentLijst = await response.Content.ReadAsAsync<List<GeluidsFragment>>();
+                return this.View(geluidsFragmentLijst);
+            }
+
         }
 
-        // GET: GeluidsFragment/Details/5
-        public ActionResult Details(int id)
+        // GET: GeluidsFragment/5
+        [Route("GeluidsFragment/{id}")]
+        public async Task<ActionResult> GeluidsFragment(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "GeluidsFragment/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                GeluidsFragment geluidsFragment = await response.Content.ReadAsAsync<GeluidsFragment>();
+                return this.View(geluidsFragment);
+            }
         }
 
         // GET: GeluidsFragment/Create

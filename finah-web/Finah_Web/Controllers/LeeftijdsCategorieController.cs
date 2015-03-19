@@ -6,18 +6,59 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class LeeftijdsCategorieController : Controller
     {
         // GET: LeeftijdsCategorie
-        public ActionResult Index()
+        [Route("LeeftijdsCategorie/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "LeeftijdsCategorie/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<LeeftijdsCategorie> leeftijdsCategorieenLijst = await response.Content.ReadAsAsync<List<LeeftijdsCategorie>>();
+                return this.View(leeftijdsCategorieenLijst);
+            }
+
         }
 
-        // GET: LeeftijdsCategorie/Details/5
-        public ActionResult Details(int id)
+        // GET: LeeftijdsCategorie/5
+        [Route("LeeftijdsCategorie/{id}")]
+        public async Task<ActionResult> LeeftijdsCategorie(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "LeeftijdsCategorie/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                LeeftijdsCategorie leeftijdsCategorie = await response.Content.ReadAsAsync<LeeftijdsCategorie>();
+                return this.View(leeftijdsCategorie);
+            }
         }
 
         // GET: LeeftijdsCategorie/Create

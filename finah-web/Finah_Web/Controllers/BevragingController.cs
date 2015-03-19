@@ -22,22 +22,23 @@ namespace Finah_Web.Controllers
                 client.BaseAddress = new Uri("http://localhost:1695/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            
+
                 //new code
                 string url = "Bevraging/Overzicht";
                 HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    List<Bevraging> bevragingenLijst = await response.Content.ReadAsAsync<List<Bevraging>>();
-                    return View(bevragingenLijst);
+                    return this.View();
                 }
+                List<Bevraging> bevragingenLijst = await response.Content.ReadAsAsync<List<Bevraging>>();
+                return this.View(bevragingenLijst);
             }
-            return View();
+
         }
 
         // GET: Bevraging/5
         [Route("Bevraging/{id}")]
-        public async Task<ActionResult> Bevraging(string id) 
+        public async Task<ActionResult> Bevraging(string id)
         {
             using (var client = new HttpClient())
             {
@@ -47,15 +48,15 @@ namespace Finah_Web.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //new code
-                string url = "Bevraging/" +id;
+                string url = "Bevraging/" + id;
                 HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    Bevraging bevraging = await response.Content.ReadAsAsync<Bevraging>();
-                    return View(bevraging);
+                    return this.View();
                 }
+                Bevraging bevraging = await response.Content.ReadAsAsync<Bevraging>();
+                return this.View(bevraging);
             }
-            return View();
         }
 
         // GET: Bevraging/Create
