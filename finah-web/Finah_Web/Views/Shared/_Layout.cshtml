@@ -13,12 +13,7 @@
         </div> <!--Closing DIV page header-->
         <div id="inner-wrapper">
             <div id="nav-bar">
-               <h2> Menu </h2>
-               <button> @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</button>
-               <button> @Html.ActionLink("Account", "index", "Account") </button>
-               <button> @Html.ActionLink("Bevragingen", "Overzicht", "Bevraging", new { area = "" }, null)</button>
-               <button> @Html.ActionLink("Manage", "Overzicht", "Beheer", new { area = "" }) </button>
-               <button> @Html.ActionLink("Uitloggen", "Overzicht", "Uitloggen", new { area = "" }) </button>
+                @RenderPage("_Navbar.cshtml")
             </div><!--Closing DIV nav-bar-->
             <div id="body-container">
                 @RenderBody()
