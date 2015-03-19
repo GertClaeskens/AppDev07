@@ -12,10 +12,10 @@ namespace Finah_Backend.Controllers
     public class VragenController : ApiController
     {
         // GET: api/Vragen
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET: api/Vragen/5
         //public string Get(int id)

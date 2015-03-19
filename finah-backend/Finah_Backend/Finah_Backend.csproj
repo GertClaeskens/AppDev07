@@ -203,6 +203,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
     <Compile Include="Controllers\VragenController.cs" />
+    <Compile Include="Controllers\VragenLijstController.cs" />
     <Compile Include="DAL\FinahDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

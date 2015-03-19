@@ -4,49 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
-
 using Finah_Backend.Controllers;
 using Finah_Backend.Models;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Finah_Backend.Tests
 {
     [TestClass]
-    class TestVragenController
+    class TestVragenLijstController
     {
-        private List<Bevraging> testVragen;
-        private BevragingController controller;
+        private List<VragenLijst> testVragenLijst;
+        private VragenLijstController controller;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            testVragen = this.GetTestVragen();
-            controller = new VragenController(testVragen);
+            testVragenLijst = this.GetTestVragenLijst();
+            controller = new VragenLijstController(testVragenLijst);
         }
         [TestMethod]
         public void GetOverzicht_ShouldReturnAllProducts()
         {
-            var result = controller.GetOverzicht() as List<Vraag>;
-            Assert.AreEqual(testVragen.Count, result.Count);
+            var result = controller.GetOverzicht() as List<VragenLijst>;
+            Assert.AreEqual(testVragenLijst.Count, result.Count);
         }
 
 
         [TestMethod]
-        public void GetVraag_ShouldReturnCorrectProduct()
+        public void GetVraagLijst_ShouldReturnCorrectProduct()
         {
-            var result = controller.Get(testVragen[0].Id) as OkNegotiatedContentResult<Vraag>;
+            var result = controller.Get(testVragenLijst[0].Id) as OkNegotiatedContentResult<VragenLijst>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testVragen[0].Aangevraagd, result.Content.Aangevraagd);
+            Assert.AreEqual(testVragenLijst[0].Aangevraagd, result.Content.Aangevraagd);
         }
 
 
         [TestMethod]
-        public void GetVraag_ShouldNotFindProduct()
+        public void GetVraagLijst_ShouldNotFindProduct()
         {
-            //nummer meegeven die zeker niet in de database voorkomt
-            var result = controller.Get(99999999);
+            // Id meegeven die zeker niet in de database voorkomt
+            var result = controller.Get(999999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
