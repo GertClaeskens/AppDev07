@@ -64,12 +64,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAandoeningController.cs" />
-    <Compile Include="TestBevragingController.cs" />
-    <Compile Include="TestFotoController.cs" />
-    <Compile Include="TestGeluidsFragmentController.cs" />
-    <Compile Include="TestVragenController.cs" />
-    <Compile Include="TestVragenLijstController.cs" />
+    <Compile Include="Controllers\TestAandoeningController.cs" />
+    <Compile Include="Controllers\TestBevragingController.cs" />
+    <Compile Include="Controllers\TestFotoController.cs" />
+    <Compile Include="Controllers\TestGeluidsFragmentController.cs" />
+    <Compile Include="Controllers\TestVragenController.cs" />
+    <Compile Include="Controllers\TestVragenLijstController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
