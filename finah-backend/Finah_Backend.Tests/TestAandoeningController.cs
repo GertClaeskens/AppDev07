@@ -11,44 +11,45 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Finah_Backend.Tests
 {
     [TestClass]
-    class TestVragenLijstController
+    class TestAandoeningController
     {
-        private List<VragenLijst> testVragenLijst;
-        private VragenLijstController controller;
+
+        private List<Aandoening> testAandoeningen;
+        private AandoeningController controller;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            testVragenLijst = this.GetTestVragenLijsten();
-            controller = new VragenLijstController(testVragenLijst);
+            testAandoeningen = this.GetTestAandoeningen();
+            controller = new AandoeningController(testAandoeningen);
         }
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllVragenLijsten()
+        public void GetOverzicht_ShouldReturnAllAandoeningen()
         {
-            var result = controller.GetOverzicht() as List<VragenLijst>;
-            Assert.AreEqual(testVragenLijst.Count, result.Count);
+            var result = controller.GetOverzicht() as List<Aandoening>;
+            Assert.AreEqual(testAandoeningen.Count, result.Count);
         }
 
 
         [TestMethod]
-        public void GetVraagLijst_ShouldReturnCorrectVragenLijst()
+        public void GetAandoeningLijst_ShouldReturnCorrectAandoening()
         {
-            var result = controller.GetVragenLijst(testVragenLijst[0].Id) as OkNegotiatedContentResult<VragenLijst>;
+            var result = controller.GetAandoening(testAandoeningen[0].Id) as OkNegotiatedContentResult<Aandoening>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
-            Assert.AreEqual(testVragenLijst[0].Aangevraagd, result.Content.Aangevraagd);
+            Assert.AreEqual(testAandoeningen[0].Aangevraagd, result.Content.Aangevraagd);
         }
 
 
         [TestMethod]
-        public void GetVraagLijst_ShouldNotFindVragenLijst()
+        public void GetVraagLijst_ShouldNotFindAandoening()
         {
             // Id meegeven die zeker niet in de database voorkomt
-            var result = controller.GetVragenLijst(999999999);
+            var result = controller.GetAandoening(999999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private List<VragenLijst> GetTestVragenLijsten()
+        private List<Aandoening> GetTestAandoeningen()
         {
             ///
             /// 
@@ -57,7 +58,7 @@ namespace Finah_Backend.Tests
             /// 
             /// Een lijst van 3-4 objecten volstaat
 
-            return vragenlijsten;
+            return aandoeningen;
 
         }
     }

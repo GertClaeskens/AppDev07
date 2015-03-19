@@ -25,7 +25,7 @@ namespace Finah_Backend.Tests
             controller = new VragenController(testVragen);
         }
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllProducts()
+        public void GetOverzicht_ShouldReturnAllVragen()
         {
             var result = controller.GetOverzicht() as List<Vraag>;
             Assert.AreEqual(testVragen.Count, result.Count);
@@ -33,9 +33,9 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetVraag_ShouldReturnCorrectProduct()
+        public void GetVraag_ShouldReturnCorrectVraag()
         {
-            var result = controller.Get(testVragen[0].Id) as OkNegotiatedContentResult<Vraag>;
+            var result = controller.GetVraag(testVragen[0].Id) as OkNegotiatedContentResult<Vraag>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
             Assert.AreEqual(testVragen[0].Aangevraagd, result.Content.Aangevraagd);
@@ -43,10 +43,10 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetVraag_ShouldNotFindProduct()
+        public void GetVraag_ShouldNotFindvragen()
         {
             //nummer meegeven die zeker niet in de database voorkomt
-            var result = controller.Get(99999999);
+            var result = controller.GetVraag(99999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 

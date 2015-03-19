@@ -33,11 +33,11 @@ namespace Finah_Backend.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            testBevragingen = this.GetTestBevraging();
+            testBevragingen = this.GetTestBevragingen();
             controller = new BevragingController(testBevragingen);
         }
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllProducts()
+        public void GetOverzicht_ShouldReturnAllBevragingen()
         {
             var result = controller.GetOverzicht() as List<Bevraging>;
             Assert.AreEqual(testBevragingen.Count, result.Count);
@@ -45,9 +45,9 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetBevraging_ShouldReturnCorrectProduct()
+        public void GetBevraging_ShouldReturnCorrectBevraging()
         {
-            var result = controller.Get(testBevragingen[0].Id) as OkNegotiatedContentResult<Bevraging>;
+            var result = controller.GetBevraging(testBevragingen[0].Id) as OkNegotiatedContentResult<Bevraging>;
             Assert.IsNotNull(result);
             //Testen of de aanmaakdatum van beiden gelijk is, deze waarde is quasi uniek
             Assert.AreEqual(testBevragingen[0].Aangevraagd, result.Content.Aangevraagd);
@@ -55,14 +55,14 @@ namespace Finah_Backend.Tests
 
 
         [TestMethod]
-        public void GetBevraging_ShouldNotFindProduct()
+        public void GetBevraging_ShouldNotFindBevraging()
         {
             // "jjjj" is onmogelijk als id, want de id is hexadecimaal
-            var result = controller.Get("jjjjj"); 
+            var result = controller.GetBevraging("jjjjj"); 
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private List<Bevraging> GetTestBevraging()
+        private List<Bevraging> GetTestBevragingen()
         {
             ///
             /// 
