@@ -17,16 +17,47 @@ namespace Finah_Backend.Controllers
 
         private readonly FinahDBContext _db = new FinahDBContext();
 
-        // GET: api/Postcode
-        public IEnumerable<Postcode> Get()
+        //Geen Api/ meer nodig
+        [Route("Postcode/{id}")]
+        // return -> naderhand veranderen in Bevraging
+
+        //
+        // Andere methode om Get te doen met return type IHttpActionResult
+        //
+        public IHttpActionResult Get(int id)
         {
-            return _db.Postcodes.ToList();
+            var postcode = _db.Postcodes.FirstOrDefault((b) => b.Id == id);
+            if (postcode == null)
+            {
+                return NotFound();
+            }
+            return Ok(postcode);
         }
 
-        // GET: api/Postcode/5
-        public string Get(int id)
+        [Route("Postcode/Overzicht")] //Geen Api/ meer nodig
+        public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return "value";
+            //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+
+            //return bevragingen;
+            var pt1 = new Pathologie();
+            var pt2 = new Pathologie();
+            var pt3 = new Pathologie();
+            var pt4 = new Pathologie();
+            var pt5 = new Pathologie();
+
+            pt1.Id = 1;
+            pt2.Id = 2;
+            pt3.Id = 3;
+            pt4.Id = 4;
+            pt5.Id = 5;
+
+            var overzichtPathologie = new List<Pathologie>
+                                                       {
+                                                           pt1,pt2,pt3,pt4,pt5
+                                                       };
+
+            return overzichtPathologie;
         }
 
         // POST: api/Postcode

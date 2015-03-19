@@ -12,7 +12,7 @@ namespace Finah_Backend.Migrations
 
     using Excel = Microsoft.Office.Interop.Excel;
 
-    public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Finah_Backend.DAL.FinahDBContext>
     {
         public Configuration()
         {
@@ -47,10 +47,10 @@ namespace Finah_Backend.Migrations
             for (rCnt = 2; rCnt <= range.Rows.Count; rCnt++)
             {
                 Postcode pc = new Postcode
-                                  {
-                                      Postnr = (int)(range.Cells[rCnt, 1] as Excel.Range).Value,
-                                      Gemeente = (string)(range.Cells[rCnt, 2] as Excel.Range).Value
-                                  };
+                {
+                    Postnr = (int)(range.Cells[rCnt, 1] as Excel.Range).Value,
+                    Gemeente = (string)(range.Cells[rCnt, 2] as Excel.Range).Value
+                };
                 postcodelijst.Add(pc);
             }
 
