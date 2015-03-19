@@ -6,18 +6,59 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class PathologieController : Controller
     {
         // GET: Pathologie
-        public ActionResult Index()
+        [Route("Pathologie/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "Pathologie/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<Pathologie> pathologieenLijst = await response.Content.ReadAsAsync<List<Pathologie>>();
+                return this.View(pathologieenLijst);
+            }
+
         }
 
-        // GET: Pathologie/Details/5
-        public ActionResult Details(int id)
+        // GET: Pathologie/5
+        [Route("Pathologie/{id}")]
+        public async Task<ActionResult> Pathologie(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "Pathologie/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                Pathologie pathologie = await response.Content.ReadAsAsync<Pathologie>();
+                return this.View(pathologie);
+            }
         }
 
         // GET: Pathologie/Create

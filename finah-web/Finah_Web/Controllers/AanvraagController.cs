@@ -6,18 +6,59 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
+    using Finah_Web.Models;
+
     public class AanvraagController : Controller
     {
         // GET: Aanvraag
-        public ActionResult Index()
+        [Route("Aanvraag/Overzicht")]
+        public async Task<ActionResult> Overzicht()
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "Aanvraag/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                List<Aanvraag> aanvragenLijst = await response.Content.ReadAsAsync<List<Aanvraag>>();
+                return this.View(aanvragenLijst);
+            }
+
         }
 
-        // GET: Aanvraag/Details/5
-        public ActionResult Details(int id)
+        // GET: Aanvraag/5
+        [Route("Aanvraag/{id}")]
+        public async Task<ActionResult> Aanvraag(string id)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+                client.BaseAddress = new Uri("http://localhost:1695/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //new code
+                string url = "Aanvraag/" + id;
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return this.View();
+                }
+                Aanvraag aanvraag = await response.Content.ReadAsAsync<Aanvraag>();
+                return this.View(aanvraag);
+            }
         }
 
         // GET: Aanvraag/Create
