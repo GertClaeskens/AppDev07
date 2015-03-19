@@ -9,7 +9,7 @@ using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Finah_Backend.Providers;
-using Finah_Backend.Models;
+using Finah_Backend.Controllers;
 
 namespace Finah_Backend
 {

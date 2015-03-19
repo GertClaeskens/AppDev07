@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
@@ -12,22 +8,23 @@ namespace Finah_Backend.Controllers
 
     public class VragenLijstController : ApiController
     {
-        List<VragenLijst> vragenlijsten = new List<VragenLijst>();
+        private List<VragenLijst> vragenlijsten = new List<VragenLijst>();
 
-        
         private FinahDBContext _db;
+
         public VragenLijstController()
         {
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public VragenLijstController(List<VragenLijst> vragenlijst)
         {
             _db = new FinahDBContext();
             this.vragenlijsten = vragenlijst;
         }
+
         // GET: api/VragenLijst
         //public IEnumerable<string> Get()
         //{
@@ -71,13 +68,10 @@ namespace Finah_Backend.Controllers
             ad.Id = 1;
             ad.Patologieen = patLijst;
 
-            
-
             vragen.Add(vraag);
             vl.Id = 1;
             vl.Vragen = vragen;
             vl.Aandoe = ad;
-            
 
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
@@ -92,7 +86,7 @@ namespace Finah_Backend.Controllers
         [Route("VragenLijst/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<VragenLijst> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Vragen.ToList(); 
+            //return _db.Vragen.ToList();
 
             //return vragen;
             VragenLijst vl1 = new VragenLijst();
@@ -100,8 +94,6 @@ namespace Finah_Backend.Controllers
             VragenLijst vl3 = new VragenLijst();
             VragenLijst vl4 = new VragenLijst();
             VragenLijst vl5 = new VragenLijst();
-
-
 
             vl1.Id = 1;
             vl2.Id = 2;

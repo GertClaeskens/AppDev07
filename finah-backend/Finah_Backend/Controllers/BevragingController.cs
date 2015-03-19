@@ -1,14 +1,11 @@
-﻿using Finah_Backend.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
     using Finah_Backend.DAL;
+    using Finah_Backend.Models;
 
     using Newtonsoft.Json.Linq;
 
@@ -17,8 +14,8 @@ namespace Finah_Backend.Controllers
     {
         private const string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
 
-        private string link = null;
-        List<Bevraging> bevragingen = new List<Bevraging>();
+        private string link;
+        private List<Bevraging> bevragingen = new List<Bevraging>();
 
         private FinahDBContext _db;
 
@@ -27,14 +24,13 @@ namespace Finah_Backend.Controllers
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
-        public BevragingController(List<Bevraging> bevragingen) 
+        public BevragingController(List<Bevraging> bevragingen)
         {
             _db = new FinahDBContext();
             this.bevragingen = bevragingen;
         }
-
 
         //GetLink
         //Geen Api/ meer nodig
@@ -63,7 +59,6 @@ namespace Finah_Backend.Controllers
         [Route("Bevraging/{id}")]
         // return -> naderhand veranderen in Bevraging
 
-
         //
         // Andere methode om Get te doen met return type IHttpActionResult
         //
@@ -81,7 +76,6 @@ namespace Finah_Backend.Controllers
             testAccount.Id = 1;
             testAccount.Naam = "Thys";
             testAccount.VoorNaam = "Brian";
-
 
             bevraging.Id = id;
             bevraging.Aangevraagd = DateTime.Now;
@@ -106,7 +100,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
-            
+
             //return bevragingen;
             var testBevraging1 = new Bevraging();
             var testBevraging2 = new Bevraging();
@@ -137,7 +131,7 @@ namespace Finah_Backend.Controllers
         {
             //Voorbeeld van tijdens de les
             //
-            //In de les werd in de constructor een variabele _db gedeclareerd: 
+            //In de les werd in de constructor een variabele _db gedeclareerd:
             //FinahDBContext _db = new FinahDBContext();
             //
             //Bevraging bevraging = value.ToObject<Bevraging>();
@@ -145,8 +139,6 @@ namespace Finah_Backend.Controllers
             //Savechanges() zorgt ervoor dat de Add vertaald wordt naar een INSERT-statement
             //_db.SaveChanges();
             //return value;
-
-
         }
 
         // PUT: api/Vragen/5

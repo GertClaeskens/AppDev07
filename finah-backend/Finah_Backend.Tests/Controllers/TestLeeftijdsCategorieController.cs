@@ -8,45 +8,45 @@ namespace Finah_Backend.Tests.Controllers
     using System.Web.Http.Results;
 
     [TestClass]
-    internal class TestGeluidsFragmentController
+    internal class TestLeeftijdsCategorieController
     {
-        private List<GeluidsFragment> testGeluidsFragmenten;
-        private GeluidsFragmentController controller;
+        private List<LeeftijdsCategorie> testLeeftijdsCategorieen;
+        private LeeftijdsCategorieController controller;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            testGeluidsFragmenten = GetTestGeluidsFragmenten();
-            controller = new GeluidsFragmentController(testGeluidsFragmenten);
+            testLeeftijdsCategorieen = GetTestAandoeningen();
+            controller = new LeeftijdsCategorieController(testLeeftijdsCategorieen);
         }
 
         [TestMethod]
-        public void GetOverzicht_ShouldReturnAllFoto()
+        public void GetOverzicht_ShouldReturnAllLeeftijdsCategorieen()
         {
-            var result = controller.GetOverzicht() as List<GeluidsFragment>;
-            Assert.AreEqual(testGeluidsFragmenten.Count, result.Count);
+            var result = controller.GetOverzicht() as List<LeeftijdsCategorie>;
+            Assert.AreEqual(testLeeftijdsCategorieen.Count, result.Count);
         }
 
         [TestMethod]
-        public void Get_ShouldReturnCorrectGeluidsFragment()
+        public void Get_ShouldReturnCorrectLeeftijdsCategorie()
         {
-            var result = controller.Get(testGeluidsFragmenten[0].Id) as OkNegotiatedContentResult<GeluidsFragment>;
+            var result = controller.Get(testLeeftijdsCategorieen[0].Id) as OkNegotiatedContentResult<LeeftijdsCategorie>;
             Assert.IsNotNull(result);
             //Controleren of beide objecten uniek zijn (Comparable?)
-            Assert.AreEqual(testGeluidsFragmenten[0], result.Content);
+            Assert.AreEqual(testLeeftijdsCategorieen[0], result.Content);
         }
 
         [TestMethod]
-        public void Get_ShouldNotFindGeluidsFragment()
+        public void Get_ShouldNotFindLeeftijdsCategorie()
         {
             // Id meegeven die zeker niet in de database voorkomt
             var result = controller.Get(999999999);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private static List<GeluidsFragment> GetTestGeluidsFragmenten()
+        private static List<LeeftijdsCategorie> GetTestAandoeningen()
         {
-            var geluidsFragmenten = new List<GeluidsFragment>();
+            var leeftijdsCategorieen = new List<LeeftijdsCategorie>();
             ///
             ///
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan
@@ -54,7 +54,7 @@ namespace Finah_Backend.Tests.Controllers
             ///
             /// Een lijst van 3-4 objecten volstaat
 
-            return geluidsFragmenten;
+            return leeftijdsCategorieen;
         }
     }
 }

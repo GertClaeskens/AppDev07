@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Finah_Backend.Models;
+using Finah_Backend.Controllers;
 
 namespace Finah_Backend
 {

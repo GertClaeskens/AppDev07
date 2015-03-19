@@ -4,28 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Finah_Backend.Tests
+namespace Finah_Backend.Tests.Controllers
 {
-    using System.Web.Http.Results;
+    using Finah_Backend.Controllers;
 
     using Finah_Backend.Controllers;
-    using Finah_Backend.Models;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+    using System.Web.Http.Results;
 
     /// <summary>
-    /// 
+    ///
     /// Gert Claeskens
     /// Voorbeeldcode gevonden op internet
     /// http://www.asp.net/web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api#setupproject
-    /// 
+    ///
     /// </summary>
 
-    
-
     [TestClass]
-    class TestBevragingController
+    internal class TestBevragingController
     {
         private List<Bevraging> testBevragingen;
         private BevragingController controller;
@@ -36,13 +33,13 @@ namespace Finah_Backend.Tests
             testBevragingen = this.GetTestBevragingen();
             controller = new BevragingController(testBevragingen);
         }
+
         [TestMethod]
         public void GetOverzicht_ShouldReturnAllBevragingen()
         {
             var result = controller.GetOverzicht() as List<Bevraging>;
             Assert.AreEqual(testBevragingen.Count, result.Count);
         }
-
 
         [TestMethod]
         public void GetBevraging_ShouldReturnCorrectBevraging()
@@ -53,22 +50,21 @@ namespace Finah_Backend.Tests
             Assert.AreEqual(testBevragingen[0], result.Content);
         }
 
-
         [TestMethod]
         public void GetBevraging_ShouldNotFindBevraging()
         {
             // "jjjj" is onmogelijk als id, want de id is hexadecimaal
-            var result = controller.Get("jjjjj"); 
+            var result = controller.Get("jjjjj");
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         private List<Bevraging> GetTestBevragingen()
         {
             ///
-            /// 
+            ///
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan
             /// Zo kunnen we deze 2 objecten vergelijken en zo de werking van de controller testen
-            /// 
+            ///
             /// Een lijst van 3-4 objecten volstaat
             var testBevragingen = new List<Bevraging>();
             Bevraging testBevraging = new Bevraging();
@@ -83,7 +79,6 @@ namespace Finah_Backend.Tests
             testAccount.Id = 1;
             testAccount.Naam = "Thys";
             testAccount.VoorNaam = "Brian";
-
 
             testBevraging.Id = "hgdghdghghdshdghghd";
             testBevraging.Aangevraagd = DateTime.Now;

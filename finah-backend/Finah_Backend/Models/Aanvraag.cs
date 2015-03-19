@@ -7,7 +7,7 @@ namespace Finah_Backend.Models
 {
     using Finah_Backend.Models.Enums;
 
-    public class Aanvraag 
+    public class Aanvraag
     {
         #region Public members
 
@@ -20,7 +20,6 @@ namespace Finah_Backend.Models
         public string RijksRegisterNr { get; set; }
 
         public string Adres { get; set; }
-        
 
         public string Telnr { get; set; }
 
@@ -33,10 +32,13 @@ namespace Finah_Backend.Models
         public string GeheimeVraag { get; set; }
 
         public string GeheimAntwoord { get; set; }
+
         public TypeAccount TypeAcc { get; set; }
-        
+
         public virtual Status Sts { get; set; }
+
         public virtual Postcode Postcd { get; set; }
-        #endregion
+
+        #endregion Public members
     }
 }

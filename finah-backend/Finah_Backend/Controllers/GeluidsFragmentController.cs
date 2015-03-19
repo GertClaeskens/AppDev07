@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
@@ -20,14 +16,13 @@ namespace Finah_Backend.Controllers
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public GeluidsFragmentController(List<GeluidsFragment> geluidsFragmenten)
         {
             _db = new FinahDBContext();
             this.geluidsFragmenten = geluidsFragmenten;
         }
-
 
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
@@ -43,10 +38,11 @@ namespace Finah_Backend.Controllers
             }
             return Ok(geluidsFragment);
         }
+
         [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Vragen.ToList(); 
+            //return _db.Vragen.ToList();
 
             //return vragen;
             var g1 = new GeluidsFragment();
@@ -54,7 +50,6 @@ namespace Finah_Backend.Controllers
             var g3 = new GeluidsFragment();
             var g4 = new GeluidsFragment();
             var g5 = new GeluidsFragment();
-
 
             g1.Id = 1;
             g2.Id = 2;
@@ -66,7 +61,6 @@ namespace Finah_Backend.Controllers
 
             return overzichtGeluidsFragementen;
         }
-
 
         // POST: api/GeluidsFragment
         public void Post([FromBody]string value)

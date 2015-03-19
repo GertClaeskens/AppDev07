@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
@@ -12,7 +8,6 @@ namespace Finah_Backend.Controllers
 
     public class AandoeningController : ApiController
     {
-
         private FinahDBContext _db;
         private List<Aandoening> aandoeningen = new List<Aandoening>();
 
@@ -21,13 +16,14 @@ namespace Finah_Backend.Controllers
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public AandoeningController(List<Aandoening> aandoeningen)
         {
             _db = new FinahDBContext();
             this.aandoeningen = aandoeningen;
         }
+
         //// GET: api/Aandoening
         //public IEnumerable<string> Get()
         //{
@@ -47,8 +43,6 @@ namespace Finah_Backend.Controllers
             Pathologie pt = new Pathologie();
             List<Pathologie> patLijst = new List<Pathologie>();
 
-
-
             pt.Id = 1;
             patLijst.Add(pt);
 
@@ -65,19 +59,19 @@ namespace Finah_Backend.Controllers
             }
             return Ok(ad);
         }
+
         [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Aandoening> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Vragen.ToList(); 
+            //return _db.Vragen.ToList();
 
             //return vragen;
 
             Aandoening ad1 = new Aandoening();
             Aandoening ad2 = new Aandoening();
-            Aandoening ad3 = new Aandoening(); 
-            Aandoening ad4 = new Aandoening(); 
+            Aandoening ad3 = new Aandoening();
+            Aandoening ad4 = new Aandoening();
             Aandoening ad5 = new Aandoening();
-
 
             ad1.Id = 1;
             ad2.Id = 2;
@@ -85,10 +79,11 @@ namespace Finah_Backend.Controllers
             ad4.Id = 4;
             ad5.Id = 5;
 
-            List<Aandoening> overzichtAandoeningen = new List<Aandoening> { ad1,ad2,ad3,ad4,ad5 };
+            List<Aandoening> overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
 
             return overzichtAandoeningen;
         }
+
         // POST: api/Aandoening
         public void Post([FromBody]string value)
         {

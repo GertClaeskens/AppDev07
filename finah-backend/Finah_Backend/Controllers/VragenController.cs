@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
@@ -12,21 +8,23 @@ namespace Finah_Backend.Controllers
 
     public class VragenController : ApiController
     {
-        List<Vraag> vragen = new List<Vraag>();
+        private List<Vraag> vragen = new List<Vraag>();
 
         private FinahDBContext _db;
+
         public VragenController()
         {
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public VragenController(List<Vraag> vragen)
         {
             _db = new FinahDBContext();
             this.vragen = vragen;
         }
+
         // GET: api/Vragen
         //public IEnumerable<string> Get()
         //{
@@ -59,7 +57,6 @@ namespace Finah_Backend.Controllers
             vraag.Afbeelding = foto;
             vraag.Geluid = gf;
 
-
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
@@ -69,10 +66,11 @@ namespace Finah_Backend.Controllers
             }
             return Ok(vraag);
         }
+
         [Route("Vragen/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Vragen.ToList(); 
+            //return _db.Vragen.ToList();
 
             //return vragen;
             Vraag testVraag1 = new Vraag();
@@ -80,7 +78,6 @@ namespace Finah_Backend.Controllers
             Vraag testVraag3 = new Vraag();
             Vraag testVraag4 = new Vraag();
             Vraag testVraag5 = new Vraag();
-
 
             testVraag1.Id = 1;
             testVraag2.Id = 2;

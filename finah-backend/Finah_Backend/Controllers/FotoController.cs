@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Finah_Backend.Controllers
@@ -20,14 +16,13 @@ namespace Finah_Backend.Controllers
             _db = new FinahDBContext();
         }
 
-        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan 
+        //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public FotoController(List<Foto> fotos)
         {
             _db = new FinahDBContext();
             this.fotos = fotos;
         }
-
 
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
@@ -43,10 +38,11 @@ namespace Finah_Backend.Controllers
             }
             return Ok(foto);
         }
+
         [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Foto> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Vragen.ToList(); 
+            //return _db.Vragen.ToList();
 
             //return vragen;
             Foto f1 = new Foto();
@@ -55,14 +51,13 @@ namespace Finah_Backend.Controllers
             Foto f4 = new Foto();
             Foto f5 = new Foto();
 
-
             f1.Id = 1;
             f2.Id = 2;
             f3.Id = 3;
             f4.Id = 4;
             f5.Id = 5;
 
-            List<Foto> overzichtFotos = new List<Foto> { f1,f2,f3,f4,f5 };
+            List<Foto> overzichtFotos = new List<Foto> { f1, f2, f3, f4, f5 };
 
             return overzichtFotos;
         }

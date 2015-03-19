@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Finah_Backend.Models
 {
-
     public class Bevraging
     {
         #region Public members
+
         public String Id { get; set; }
 
         public DateTime Aangevraagd { get; set; }
+
         //onderstaande members -> berekenen uit VragenLijst
         //public int AantalIngevuldPatient;
 
@@ -22,6 +20,7 @@ namespace Finah_Backend.Models
         public virtual LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
 
         public string Informatie { get; set; }
+
         //Ook eventueel enum van maken
         public string Relatie { get; set; }
 
@@ -30,6 +29,7 @@ namespace Finah_Backend.Models
         public virtual VragenLijst Vragenpatient { get; set; }
 
         public virtual VragenLijst VragenMantelzorger { get; set; }
-        #endregion
+
+        #endregion Public members
     }
 }

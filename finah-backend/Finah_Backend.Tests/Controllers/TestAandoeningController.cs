@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Results;
-using Finah_Backend.Controllers;
-using Finah_Backend.Models;
+﻿using Finah_Backend.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Web.Http.Results;
 
-namespace Finah_Backend.Tests
+namespace Finah_Backend.Tests.Controllers
 {
-    [TestClass]
-    class TestAandoeningController 
-    {
+    using Finah_Backend.Models;
 
+    [TestClass]
+    internal class TestAandoeningController
+    {
         private List<Aandoening> testAandoeningen;
         private AandoeningController controller;
 
@@ -23,13 +19,13 @@ namespace Finah_Backend.Tests
             testAandoeningen = this.GetTestAandoeningen();
             controller = new AandoeningController(testAandoeningen);
         }
+
         [TestMethod]
         public void GetOverzicht_ShouldReturnAllAandoeningen()
         {
             var result = controller.GetOverzicht() as List<Aandoening>;
             Assert.AreEqual(testAandoeningen.Count, result.Count);
         }
-
 
         [TestMethod]
         public void Get_ShouldReturnCorrectAandoening()
@@ -39,7 +35,6 @@ namespace Finah_Backend.Tests
             //Controleren of beide objecten uniek zijn (Comparable?)
             Assert.AreEqual(testAandoeningen[0], result.Content);
         }
-
 
         [TestMethod]
         public void Get_ShouldNotFindAandoening()
@@ -53,14 +48,13 @@ namespace Finah_Backend.Tests
         {
             var aandoeningen = new List<Aandoening>();
             ///
-            /// 
+            ///
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan
             /// Zo kunnen we deze 2 objecten vergelijken en zo de werking van de controller testen
-            /// 
+            ///
             /// Een lijst van 3-4 objecten volstaat
 
             return aandoeningen;
-
         }
     }
 }
