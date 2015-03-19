@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Finah_Web.Controllers
 {
-    public class VraagController : Controller
+    public class VragenController : Controller
     {
         // GET: Vraag
         public ActionResult Index()
