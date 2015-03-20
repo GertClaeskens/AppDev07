@@ -24,7 +24,7 @@ namespace Finah_Backend.Controllers
             this.geluidsFragmenten = geluidsFragmenten;
         }
 
-        [Route("Aandoening/{id}")]
+        [Route("GeluidFragment/{id}")]
         public IHttpActionResult Get(int id)
         {
             var geluidsFragment = new GeluidsFragment { Id = 1, Omschrijving = "geluidsfragment vraag 1", Pad = "pad" };
@@ -39,7 +39,7 @@ namespace Finah_Backend.Controllers
             return Ok(geluidsFragment);
         }
 
-        [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
+        [Route("GeluidsFragement/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Vragen.ToList();

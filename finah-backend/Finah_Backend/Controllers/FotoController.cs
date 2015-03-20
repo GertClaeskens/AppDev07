@@ -24,7 +24,7 @@ namespace Finah_Backend.Controllers
             this.fotos = fotos;
         }
 
-        [Route("Aandoening/{id}")]
+        [Route("Foto/{id}")]
         public IHttpActionResult Get(int id)
         {
             var foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
@@ -39,7 +39,7 @@ namespace Finah_Backend.Controllers
             return Ok(foto);
         }
 
-        [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
+        [Route("Foto/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<Foto> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Vragen.ToList();
