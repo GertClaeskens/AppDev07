@@ -91,7 +91,7 @@ namespace Finah_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GeluidsFragmentExists(id))
+                if (!GeluidsFragmentBestaat(id))
                 {
                     return NotFound();
                 }
@@ -144,7 +144,7 @@ namespace Finah_Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool GeluidsFragmentExists(int id)
+        private bool GeluidsFragmentBestaat(int id)
         {
             return db.Geluidsfragmenten.Count(e => e.Id == id) > 0;
         }

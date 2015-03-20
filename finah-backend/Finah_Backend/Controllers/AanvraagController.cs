@@ -3,33 +3,116 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
+    using Finah_Backend.DAL;
+    using Finah_Backend.Models;
+
     public class AanvraagController : ApiController
     {
-        // GET: api/Aanvraag
-        public IEnumerable<string> Get()
+        private FinahDBContext db = new FinahDBContext();
+
+        // GET: api/Aanvraags
+        public IQueryable<Aanvraag> GetOverzicht()
         {
-            return new string[] { "value1", "value2" };
+            return db.Aanvragen;
         }
 
-        // GET: api/Aanvraag/5
-        public string Get(int id)
+        // GET: api/Aanvraags/5
+        [ResponseType(typeof(Aanvraag))]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            Aanvraag aanvraag = db.Aanvragen.Find(id);
+            if (aanvraag == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(aanvraag);
         }
 
-        // POST: api/Aanvraag
-        public void Post([FromBody]string value)
+        // PUT: api/Aanvraags/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutAanvraag(int id, Aanvraag aanvraag)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != aanvraag.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(aanvraag).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AanvraagBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/Aanvraag/5
-        public void Put(int id, [FromBody]string value)
+        // POST: api/Aanvraags
+        [ResponseType(typeof(Aanvraag))]
+        public IHttpActionResult PostAanvraag(Aanvraag aanvraag)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Aanvragen.Add(aanvraag);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = aanvraag.Id }, aanvraag);
         }
 
-        // DELETE: api/Aanvraag/5
-        public void Delete(int id)
+        // DELETE: api/Aanvraags/5
+        [ResponseType(typeof(Aanvraag))]
+        public IHttpActionResult DeleteAanvraag(int id)
         {
+            Aanvraag aanvraag = db.Aanvragen.Find(id);
+            if (aanvraag == null)
+            {
+                return NotFound();
+            }
+
+            db.Aanvragen.Remove(aanvraag);
+            db.SaveChanges();
+
+            return Ok(aanvraag);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool AanvraagBestaat(int id)
+        {
+            return db.Aanvragen.Count(e => e.Id == id) > 0;
         }
     }
 }

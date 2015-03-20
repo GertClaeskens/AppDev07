@@ -153,7 +153,7 @@ namespace Finah_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BevragingExists(id))
+                if (!BevragingBestaat(id))
                 {
                     return NotFound();
                 }
@@ -183,7 +183,7 @@ namespace Finah_Backend.Controllers
             }
             catch (DbUpdateException)
             {
-                if (BevragingExists(bevraging.Id))
+                if (BevragingBestaat(bevraging.Id))
                 {
                     return Conflict();
                 }
@@ -221,7 +221,7 @@ namespace Finah_Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BevragingExists(string id)
+        private bool BevragingBestaat(string id)
         {
             return db.Bevragingen.Count(e => e.Id == id) > 0;
         }

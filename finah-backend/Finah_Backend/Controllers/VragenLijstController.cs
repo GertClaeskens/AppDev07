@@ -127,7 +127,7 @@ namespace Finah_Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VragenLijstExists(id))
+                if (!VragenLijstBestaat(id))
                 {
                     return NotFound();
                 }
@@ -180,7 +180,7 @@ namespace Finah_Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool VragenLijstExists(int id)
+        private bool VragenLijstBestaat(int id)
         {
             return db.VragenLijsten.Count(e => e.Id == id) > 0;
         }
