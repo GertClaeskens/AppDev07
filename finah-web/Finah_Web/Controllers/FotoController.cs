@@ -33,7 +33,7 @@ namespace Finah_Web.Controllers
                     return this.View();
                 }
                 List<Foto> fotoLijst = await response.Content.ReadAsAsync<List<Foto>>();
-                return this.View(FotoLijst);
+                return this.View(fotoLijst);
             }
 
         }
