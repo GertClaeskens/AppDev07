@@ -32,6 +32,7 @@ public class WachtwoordVergetenGUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 600);
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
 	private class WachtwoordVergetenPanel extends JPanel{
