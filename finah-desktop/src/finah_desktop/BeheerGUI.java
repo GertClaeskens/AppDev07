@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class BeheerGUI extends JFrame{
 	
-	private WachtwoordVergetenPanel panel;
+	private BeheerPanel panel;
 	private JButton titel;
 	private JLabel tekst;
 	private JButton vragenKnop;
@@ -23,16 +23,17 @@ public class BeheerGUI extends JFrame{
 	private JButton accountsKnop;
 
 	public BeheerGUI(){
-		panel = new WachtwoordVergetenPanel();
+		panel = new BeheerPanel();
 		panel.setLayout(null);
 		add(panel);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 600);
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
-	private class WachtwoordVergetenPanel extends JPanel{
+	private class BeheerPanel extends JPanel{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
@@ -60,7 +61,7 @@ public class BeheerGUI extends JFrame{
 			titel.setBorderPainted(false);
 			
 			vragenKnop = new JButton("Vragen");
-			vragenKnop.setBounds(260, 25, 120, 25);
+			vragenKnop.setBounds(255, 25, 120, 25);
 			
 			vragenlijstenKnop = new JButton("Vragenlijsten");
 			vragenlijstenKnop.setBounds(400, 25, 120, 25);
