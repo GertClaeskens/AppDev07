@@ -30,9 +30,9 @@ namespace Finah_Backend
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
 
             
-            Database.SetInitializer(new DropCreateDatabaseAlways<FinahDBContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<FinahDBContext>());
 
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<FinahDBContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<FinahDBContext>());
 
             
         }

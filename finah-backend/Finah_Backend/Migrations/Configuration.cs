@@ -31,55 +31,55 @@ namespace Finah_Backend.Migrations
             leeftijdsCategorie.ForEach(s => context.LeeftijdsCategorieen.AddOrUpdate(s));
             context.SaveChanges();
 
-            var postcodelijst = new List<Postcode>();
+        //    var postcodelijst = new List<Postcode>();
 
-            int rCnt;
+        //    int rCnt;
 
-            Excel.Application xlApp = new Excel.Application();
+        //    Excel.Application xlApp = new Excel.Application();
 
-            string url = @"http://www.bpost2.be/zipcodes/files/zipcodes_num_nl.xls";
-            //xlWorkBook = xlApp.Workbooks.Open(@"D:\postcodes.xls", 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(url, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
+        //    string url = @"http://www.bpost2.be/zipcodes/files/zipcodes_num_nl.xls";
+        //    //xlWorkBook = xlApp.Workbooks.Open(@"D:\postcodes.xls", 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+        //    Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(url, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+        //    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
 
-            Excel.Range range = xlWorkSheet.UsedRange;
+        //    Excel.Range range = xlWorkSheet.UsedRange;
 
-            for (rCnt = 2; rCnt <= range.Rows.Count; rCnt++)
-            {
-                Postcode pc = new Postcode
-                {
-                    Postnr = (int)(range.Cells[rCnt, 1] as Excel.Range).Value,
-                    Gemeente = (string)(range.Cells[rCnt, 2] as Excel.Range).Value
-                };
-                postcodelijst.Add(pc);
-            }
+        //    for (rCnt = 2; rCnt <= range.Rows.Count; rCnt++)
+        //    {
+        //        Postcode pc = new Postcode
+        //        {
+        //            Postnr = (int)(range.Cells[rCnt, 1] as Excel.Range).Value,
+        //            Gemeente = (string)(range.Cells[rCnt, 2] as Excel.Range).Value
+        //        };
+        //        postcodelijst.Add(pc);
+        //    }
 
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
+        //    xlWorkBook.Close(true, null, null);
+        //    xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+        //    releaseObject(xlWorkSheet);
+        //    releaseObject(xlWorkBook);
+        //    releaseObject(xlApp);
 
-            postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
-            context.SaveChanges();
-        }
+        //    postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
+        //    context.SaveChanges();
+        //}
 
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-            }
-            finally
-            {
-                GC.Collect();
-            }
+        //private void releaseObject(object obj)
+        //{
+        //    try
+        //    {
+        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+        //        obj = null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj = null;
+        //    }
+        //    finally
+        //    {
+        //        GC.Collect();
+        //    }
         }
     }
 }
