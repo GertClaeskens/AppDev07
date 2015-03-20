@@ -22,5 +22,6 @@ packages/*
 ## uncomment the next line
 #!packages/repositories.config
 
-/finah-web/packages
-/finah-backend/Finah_Backend/App_Data
+finah-web/packages
+finah-backend/Finah_Backend/App_Data/*.mdf
+finah-backend/Finah_Backend/App_Data/*.ldf
