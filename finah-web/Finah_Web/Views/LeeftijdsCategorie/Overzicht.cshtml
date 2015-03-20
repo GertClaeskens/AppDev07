@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Finah_Web.Models.LeeftijdsCategorie>
+
+@{
+    ViewBag.Title = "Leeftijdcategorie - Overzicht";
+}
+
+<h3 id="Breadcrumb">Menu > Pathologie</h3>
+<h2 id="Content-Title">Overzicht</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table border="1" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Van)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tot)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Van)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tot)
+        </td>
+        <td>
+            <button> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
+            <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
+            <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
+        </td>
+    </tr>
+}
+
+</table>

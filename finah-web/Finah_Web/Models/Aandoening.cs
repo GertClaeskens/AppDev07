@@ -7,5 +7,6 @@ namespace Finah_Web.Models
 {
     public class Aandoening : SuperKlasseAandoeningPathologie
     {
+
     }
 }

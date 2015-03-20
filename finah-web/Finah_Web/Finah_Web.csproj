@@ -272,17 +272,17 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Aandoening\Overzicht.cshtml" />
+    <Content Include="Views\VragenLijst\Overzicht.cshtml" />
+    <Content Include="Views\Vragen\Index.cshtml" />
+    <Content Include="Views\Aanvraag\Overzicht.cshtml" />
+    <Content Include="Views\Pathologie\Overzicht.cshtml" />
+    <Content Include="Views\LeeftijdsCategorie\Overzicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Aanvraag\" />
     <Folder Include="Views\Foto\" />
     <Folder Include="Views\GeluidsFragment\" />
-    <Folder Include="Views\LeeftijdsCategorie\" />
-    <Folder Include="Views\Pathologie\" />
     <Folder Include="Views\Vraag\" />
-    <Folder Include="Views\VragenLijst\" />
-    <Folder Include="Views\Vragen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

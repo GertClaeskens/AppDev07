@@ -31,5 +31,15 @@ namespace Finah_Web.Models
         }
 
         public System.Data.Entity.DbSet<Finah_Web.Models.Bevraging> Bevragings { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.VragenLijst> VragenLijsts { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.Vraag> Vraags { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.Aanvraag> Aanvraags { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.Pathologie> Pathologies { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.LeeftijdsCategorie> LeeftijdsCategories { get; set; }
     }
 }
