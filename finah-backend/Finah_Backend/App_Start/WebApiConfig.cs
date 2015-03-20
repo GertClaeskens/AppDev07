@@ -8,6 +8,8 @@ using Newtonsoft.Json.Serialization;
 
 namespace Finah_Backend
 {
+    using System.Net.Http.Headers;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -20,11 +22,18 @@ namespace Finah_Backend
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
+
+
+            //Routes zonder Api
+            config.Routes.MapHttpRoute(name: "DefaultApi", routeTemplate: "{controller}/{id}", defaults: new { id = RouteParameter.Optional });
+
+            //Json output
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
 }

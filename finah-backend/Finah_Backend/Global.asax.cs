@@ -10,9 +10,11 @@ using System.Web.Routing;
 namespace Finah_Backend
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Migrations;
+    using Finah_Backend.Models;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -25,11 +27,16 @@ namespace Finah_Backend
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //Toevoegen voor automatische update van database
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinahDBContext, Configuration>());
 
-            //Database.SetInitializer(new DropCreateDatabaseAlways<FinahDBContext>());
+            
+            Database.SetInitializer(new DropCreateDatabaseAlways<FinahDBContext>());
 
             //Database.SetInitializer(new CreateDatabaseIfNotExists<FinahDBContext>());
+
+            
         }
+
+
     }
 }
