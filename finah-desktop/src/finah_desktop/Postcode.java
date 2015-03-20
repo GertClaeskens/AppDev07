@@ -1,40 +1,42 @@
 package finah_desktop;
 
 public class Postcode {
-	private int postcode_id;
-	private int postcode;
-	private String gemeente;
+	private int Id;
+	private int Postnr;
+	private String Gemeente;
 
 	public Postcode() {
 
 	}
 
 	public Postcode(int postcode, String gemeente) {
-		this.postcode = postcode;
-		this.gemeente = gemeente;
+		this.Postnr = postcode;
+		this.Gemeente = gemeente;
 	}
 
-	public int getPostcode_id() {
-		return postcode_id;
+	public int getId() {
+		return Id;
 	}
 
-	public void setPostcode_id(int postcode_id) {
-		this.postcode_id = postcode_id;
+	public void setId(int id) {
+		Id = id;
 	}
 
-	public int getPostcode() {
-		return postcode;
+	public int getPostnr() {
+		return Postnr;
 	}
 
-	public void setPostcode(int postcode) {
-		this.postcode = postcode;
+	public void setPostnr(int postnr) {
+		Postnr = postnr;
 	}
 
 	public String getGemeente() {
-		return gemeente;
+		return Gemeente;
 	}
 
 	public void setGemeente(String gemeente) {
-		this.gemeente = gemeente;
+		Gemeente = gemeente;
 	}
+
+
 }
