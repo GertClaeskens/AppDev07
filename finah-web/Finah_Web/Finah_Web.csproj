@@ -240,7 +240,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutBeheerder.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -269,7 +269,7 @@
     <Content Include="Views\Bevraging\Overzicht.cshtml" />
     <Content Include="Views\Bevraging\Bevraging.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
-    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_NavbarBeheerder.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Aandoening\Overzicht.cshtml" />
     <Content Include="Views\VragenLijst\Overzicht.cshtml" />
@@ -279,6 +279,12 @@
     <Content Include="Views\LeeftijdsCategorie\Overzicht.cshtml" />
     <Content Include="Views\Vragen\Overzicht.cshtml" />
     <Content Include="Views\LeeftijdsCategorie\Create.cshtml" />
+    <Content Include="Views\Shared\_LayoutOnderzoeker.cshtml" />
+    <Content Include="Views\Shared\_NarbarOnderzoeker.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_NavbarBeheren.cshtml" />
+    <Content Include="Views\Shared\_LayoutBeheren.cshtml" />
+    <Content Include="Views\Beheren\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

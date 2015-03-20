@@ -1,7 +1,9 @@
 ﻿
 
 @model IEnumerable<Finah_Web.Models.Bevraging>
-
+@{
+    Layout = "~/Views/Shared/_LayoutBeheren.cshtml";
+}
 @{
     ViewBag.Title = "Bevraging - Overzicht";
 }
@@ -31,7 +33,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="DatumKolom">
             @Html.DisplayFor(modelItem => item.Aangevraagd)
         </td>
        
@@ -41,10 +43,11 @@
       
         <td>
             @Html.DisplayFor(modelItem => item.Relatie)
+            
         </td>
       
-        <td>
-            <button> @Html.ActionLink("Edit", "Edit", new { id=item.Id }) </button> |
+        <td class="ActieKolom">
+            <button> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
             <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
             <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
         </td>
