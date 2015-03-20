@@ -9,6 +9,7 @@ namespace Finah_Backend.Tests.Controllers
     using Finah_Backend.Controllers;
 
     using Finah_Backend.Controllers;
+    using Finah_Backend.Models;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Web.Http.Results;
