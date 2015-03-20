@@ -272,7 +272,6 @@
     <Content Include="Views\Shared\_NavbarBeheerder.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Aandoening\Overzicht.cshtml" />
-    <Content Include="Views\VragenLijst\Overzicht.cshtml" />
     <Content Include="Views\Pathologie\Overzicht.cshtml" />
     <Content Include="Views\LeeftijdsCategorie\Overzicht.cshtml" />
     <Content Include="Views\Vragen\Overzicht.cshtml" />
@@ -284,6 +283,7 @@
     <Content Include="Views\Shared\_LayoutBeheren.cshtml" />
     <Content Include="Views\Beheren\Index.cshtml" />
     <Content Include="Views\Aanvraag\Overzicht.cshtml" />
+    <Content Include="Views\VragenLijst\Overzicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

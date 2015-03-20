@@ -4,12 +4,13 @@
     ViewBag.Title = "Aanvraag - Overzicht";
 }
 
-<<h3 id="Breadcrumb">Menu > Aanvraag</h3>
+<h3 id="Breadcrumb">Menu > Aanvraag</h3>
 <h2 id="Content-Title">Overzicht</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<br />
 <table border="1" class="table">
     <tr>
         <th>
@@ -31,21 +32,9 @@
             @Html.DisplayNameFor(model => model.Gsm)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Passwd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GeheimeVraag)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GeheimAntwoord)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TypeAcc)
         </th>
-        <th></th>
+        <th>Actie</th>
     </tr>
 
     @foreach (var item in Model)
@@ -53,15 +42,18 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Naam)
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VoorNaam)
+                  
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RijksRegisterNr)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Adres)
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Telnr)
@@ -69,26 +61,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Gsm)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Passwd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeheimeVraag)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeheimAntwoord)
-            </td>
+      
             <td>
                 @Html.DisplayFor(modelItem => item.TypeAcc)
+                
             </td>
-            <td class="ActieKolom">
+            @*<td class="ActieKolom">
                 <button> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
                 <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
                 <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
-            </td>
+            </td>*@
         </tr>
     }
 

@@ -12,7 +12,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<br/>
+<br />
 <table border="1" class="table">
     <tr>
         @*<th>@Html.DisplayNameFor(model => model.Omschrijving)</th>*@
@@ -20,14 +20,15 @@
         <th>Actie</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td class="ActieKolom">
-            <button> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
-            <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
-            <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="ActieKolom">
+                <button> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
+                <button> @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
+                <button> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
+            </td>
+        </tr>
+    }
 
 </table>
