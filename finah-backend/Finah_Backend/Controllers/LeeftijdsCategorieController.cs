@@ -33,7 +33,7 @@ namespace Finah_Backend.Controllers
         //
         // Andere methode om Get te doen met return type IHttpActionResult
         //
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult LeeftijdsCategorie(int id)
         {
             LeeftijdsCategorie testCat = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
 
@@ -48,7 +48,7 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("LeeftijdsCategorie/Overzicht")] //Geen Api/ meer nodig
-        public IEnumerable<LeeftijdsCategorie> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<LeeftijdsCategorie> Overzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
 
