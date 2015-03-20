@@ -79,7 +79,6 @@ body {
     margin-left:40px;
     display:block;
     width:75%;
-    
     float:left;
 }
 
@@ -88,8 +87,12 @@ body {
     font-family:Verdana;
 }
 
+#body-container table {
+    width:100%;
+}
+
 #body-container table td {
-    width:200px;
+    
     text-align:center;
 }
 #body-container table button {

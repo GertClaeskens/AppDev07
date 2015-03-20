@@ -10,9 +10,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table border="1"class="table">
+<table border="1" class="table">
     <tr>
-        <th></th>
+        @*<th>@Html.DisplayNameFor(model => model.Omschrijving)</th>*@
+
+        <th>Actie</th>
     </tr>
 
 @foreach (var item in Model) {

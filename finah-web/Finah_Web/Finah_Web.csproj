@@ -277,6 +277,8 @@
     <Content Include="Views\Aanvraag\Overzicht.cshtml" />
     <Content Include="Views\Pathologie\Overzicht.cshtml" />
     <Content Include="Views\LeeftijdsCategorie\Overzicht.cshtml" />
+    <Content Include="Views\Vragen\Overzicht.cshtml" />
+    <Content Include="Views\LeeftijdsCategorie\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
