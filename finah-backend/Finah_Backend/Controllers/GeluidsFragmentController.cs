@@ -3,45 +3,37 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
     public class GeluidsFragmentController : ApiController
     {
-        private FinahDBContext _db;
+        private FinahDBContext db;
         private List<GeluidsFragment> geluidsFragmenten = new List<GeluidsFragment>();
 
         public GeluidsFragmentController()
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public GeluidsFragmentController(List<GeluidsFragment> geluidsFragmenten)
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
             this.geluidsFragmenten = geluidsFragmenten;
         }
-
-        [Route("GeluidFragment/{id}")]
-        public IHttpActionResult Get(int id)
-        {
-            var geluidsFragment = new GeluidsFragment { Id = 1, Omschrijving = "geluidsfragment vraag 1", Pad = "pad" };
-
-            //Bovenstaande code dient om te testen (op dit moment nutteloos)
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (geluidsFragment == null)
-            {
-                return NotFound();
-            }
-            return Ok(geluidsFragment);
-        }
-
         [Route("GeluidsFragment/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        //public IQueryable<GeluidsFragment> GetOverzicht()
         {
+            //return db.Geluidsfragmenten;
             //return _db.Vragen.ToList();
 
             //return vragen;
@@ -61,20 +53,100 @@ namespace Finah_Backend.Controllers
 
             return overzichtGeluidsFragementen;
         }
-
-        // POST: api/GeluidsFragment
-        public void Post([FromBody]string value)
+        [Route("GeluidFragment/{id}")]
+        public IHttpActionResult Get(int id)
         {
+            var geluidsFragment = new GeluidsFragment { Id = 1, Omschrijving = "geluidsfragment vraag 1", Pad = "pad" };
+
+            //Bovenstaande code dient om te testen (op dit moment nutteloos)
+            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+            //GeluidsFragment geluidsFragment = db.Geluidsfragmenten.Find(id);
+            if (geluidsFragment == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(geluidsFragment);
         }
 
-        // PUT: api/GeluidsFragment/5
-        public void Put(int id, [FromBody]string value)
+        // PUT: api/GeluidsFragments/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutGeluidsFragment(int id, GeluidsFragment geluidsFragment)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != geluidsFragment.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(geluidsFragment).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GeluidsFragmentBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE: api/GeluidsFragment/5
-        public void Delete(int id)
+        // POST: api/GeluidsFragments
+        [ResponseType(typeof(GeluidsFragment))]
+        public IHttpActionResult PostGeluidsFragment(GeluidsFragment geluidsFragment)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Geluidsfragmenten.Add(geluidsFragment);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = geluidsFragment.Id }, geluidsFragment);
+        }
+
+        // DELETE: api/GeluidsFragments/5
+        [ResponseType(typeof(GeluidsFragment))]
+        public IHttpActionResult DeleteGeluidsFragment(int id)
+        {
+            GeluidsFragment geluidsFragment = db.Geluidsfragmenten.Find(id);
+            if (geluidsFragment == null)
+            {
+                return NotFound();
+            }
+
+            db.Geluidsfragmenten.Remove(geluidsFragment);
+            db.SaveChanges();
+
+            return Ok(geluidsFragment);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool GeluidsFragmentBestaat(int id)
+        {
+            return db.Geluidsfragmenten.Count(e => e.Id == id) > 0;
         }
     }
 }

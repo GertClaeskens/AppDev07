@@ -4,6 +4,12 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
@@ -17,18 +23,18 @@ namespace Finah_Backend.Controllers
         private string link;
         private List<Bevraging> bevragingen = new List<Bevraging>();
 
-        private FinahDBContext _db;
+        private FinahDBContext db;
 
         public BevragingController()
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public BevragingController(List<Bevraging> bevragingen)
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
             this.bevragingen = bevragingen;
         }
 
@@ -38,6 +44,7 @@ namespace Finah_Backend.Controllers
         // return -> naderhand veranderen in Bevraging
         public string Get()
         {
+            ///Code staat hier maar ter info
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
             //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
@@ -57,11 +64,8 @@ namespace Finah_Backend.Controllers
 
         //Geen Api/ meer nodig
         [Route("Bevraging/{id}")]
-        // return -> naderhand veranderen in Bevraging
+        [ResponseType(typeof(Bevraging))]
 
-        //
-        // Andere methode om Get te doen met return type IHttpActionResult
-        //
         public IHttpActionResult Get(String id)
         {
             Bevraging bevraging = new Bevraging();
@@ -97,9 +101,10 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Bevraging/Overzicht")] //Geen Api/ meer nodig
+        //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+            //return db.Bevragingen; Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
 
             //return bevragingen;
             var testBevraging1 = new Bevraging();
@@ -126,31 +131,100 @@ namespace Finah_Backend.Controllers
             return overzichtBevragingen;
         }
 
-        // POST: api/Vragen
-        public void Post([FromBody]JObject value)
+        // PUT: api/Bevragings/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutBevraging(string id, Bevraging bevraging)
         {
-            //Voorbeeld van tijdens de les
-            //
-            //In de les werd in de constructor een variabele _db gedeclareerd:
-            //FinahDBContext _db = new FinahDBContext();
-            //
-            //Bevraging bevraging = value.ToObject<Bevraging>();
-            //_db.Courses.Add(bevraging);
-            //Savechanges() zorgt ervoor dat de Add vertaald wordt naar een INSERT-statement
-            //_db.SaveChanges();
-            //return value;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != bevraging.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(bevraging).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!BevragingBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/Vragen/5
-        public void Put(string id, [FromBody]string value)
+        // POST: api/Bevragings
+        [ResponseType(typeof(Bevraging))]
+        public IHttpActionResult PostBevraging(Bevraging bevraging)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Bevragingen.Add(bevraging);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (BevragingBestaat(bevraging.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = bevraging.Id }, bevraging);
         }
 
-        // DELETE: api/Vragen/5
-        public void Delete(string id)
+        // DELETE: api/Bevragings/5
+        [ResponseType(typeof(Bevraging))]
+        public IHttpActionResult DeleteBevraging(string id)
         {
+            Bevraging bevraging = db.Bevragingen.Find(id);
+            if (bevraging == null)
+            {
+                return NotFound();
+            }
+
+            db.Bevragingen.Remove(bevraging);
+            db.SaveChanges();
+
+            return Ok(bevraging);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool BevragingBestaat(string id)
+        {
+            return db.Bevragingen.Count(e => e.Id == id) > 0;
+        }
         //Test voor duplicaat link
         //
         //

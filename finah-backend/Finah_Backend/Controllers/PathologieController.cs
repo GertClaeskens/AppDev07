@@ -3,6 +3,12 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
@@ -11,43 +17,23 @@ namespace Finah_Backend.Controllers
         // GET: api/Pathologie
         private List<Pathologie> pathologieen = new List<Pathologie>();
 
-        private FinahDBContext _db;
+        private FinahDBContext db;
 
         public PathologieController()
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public PathologieController(List<Pathologie> pathologieen)
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
             this.pathologieen = pathologieen;
         }
 
-        //Geen Api/ meer nodig
-        [Route("Pathologie/{id}")]
-        // return -> naderhand veranderen in Bevraging
-
-        //
-        // Andere methode om Get te doen met return type IHttpActionResult
-        //
-        public IHttpActionResult Get(int id)
-        {
-            Pathologie testPat = new Pathologie { Id = 1, Omschrijving = "test" };
-
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (testPat == null)
-            {
-                return NotFound();
-            }
-            return Ok(testPat);
-        }
-
         [Route("Pathologie/Overzicht")] //Geen Api/ meer nodig
+        //public IQueryable<Pathologie> GetPathologieen GetOverzicht()
         public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
@@ -73,19 +59,103 @@ namespace Finah_Backend.Controllers
             return overzichtPathologie;
         }
 
-        // POST: api/Pathologie
-        public void Post([FromBody]string value)
+        [ResponseType(typeof(Pathologie))]
+        //Geen Api/ meer nodig
+        [Route("Pathologie/{id}")]
+        public IHttpActionResult Get(int id)
         {
+            Pathologie testPat = new Pathologie { Id = 1, Omschrijving = "test" };
+
+            //Bovenstaande code dient om te testen
+            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+            Pathologie pathologie = db.Pathologieen.Find(id);
+            if (pathologie == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(pathologie);
         }
 
-        // PUT: api/Pathologie/5
-        public void Put(int id, [FromBody]string value)
+        // PUT: api/Pathologies/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutPathologie(int id, Pathologie pathologie)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != pathologie.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(pathologie).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PathologieBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE: api/Pathologie/5
-        public void Delete(int id)
+        // POST: api/Pathologies
+        [ResponseType(typeof(Pathologie))]
+        public IHttpActionResult PostPathologie(Pathologie pathologie)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Pathologieen.Add(pathologie);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
+        }
+
+        // DELETE: api/Pathologies/5
+        [ResponseType(typeof(Pathologie))]
+        public IHttpActionResult DeletePathologie(int id)
+        {
+            Pathologie pathologie = db.Pathologieen.Find(id);
+            if (pathologie == null)
+            {
+                return NotFound();
+            }
+
+            db.Pathologieen.Remove(pathologie);
+            db.SaveChanges();
+
+            return Ok(pathologie);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool PathologieBestaat(int id)
+        {
+            return db.Pathologieen.Count(e => e.Id == id) > 0;
+        
         }
     }
 }

@@ -3,6 +3,12 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
@@ -10,37 +16,52 @@ namespace Finah_Backend.Controllers
     {
         private List<VragenLijst> vragenlijsten = new List<VragenLijst>();
 
-        private FinahDBContext _db;
+        private FinahDBContext db;
 
         public VragenLijstController()
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public VragenLijstController(List<VragenLijst> vragenlijst)
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
             this.vragenlijsten = vragenlijst;
         }
 
-        // GET: api/VragenLijst
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
-        // GET: api/VragenLijst/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
+
+        [Route("VragenLijst/Overzicht")] //Geen Api/ meer nodig
+        public IEnumerable<VragenLijst> GetOverzicht()
+        //public IQueryable<VragenLijst> GetOverzicht()
+        {
+            //return db.VragenLijsten;
+
+            //return vragen;
+            VragenLijst vl1 = new VragenLijst();
+            VragenLijst vl2 = new VragenLijst();
+            VragenLijst vl3 = new VragenLijst();
+            VragenLijst vl4 = new VragenLijst();
+            VragenLijst vl5 = new VragenLijst();
+
+            vl1.Id = 1;
+            vl2.Id = 2;
+            vl3.Id = 3;
+            vl4.Id = 4;
+            vl5.Id = 5;
+
+            List<VragenLijst> overzichtVragenLijst = new List<VragenLijst> { vl1, vl2, vl3, vl4, vl5 };
+
+            return overzichtVragenLijst;
+        }
         [Route("VragenLijst/{id}")]
+        [ResponseType(typeof(VragenLijst))]
         public IHttpActionResult Get(int id)
         {
-            VragenLijst vl = new VragenLijst();
+            VragenLijst vragenLijst = new VragenLijst();
             List<Vraag> vragen = new List<Vraag>();
             Vraag vraag = new Vraag();
             Foto foto = new Foto();
@@ -69,56 +90,99 @@ namespace Finah_Backend.Controllers
             ad.Patologieen = patLijst;
 
             vragen.Add(vraag);
-            vl.Id = 1;
-            vl.Vragen = vragen;
-            vl.Aandoe = ad;
+            vragenLijst.Id = 1;
+            vragenLijst.Vragen = vragen;
+            vragenLijst.Aandoe = ad;
 
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (vl == null)
+            //VragenLijst vragenLijst = db.VragenLijsten.Find(id);
+            if (vragenLijst == null)
             {
                 return NotFound();
             }
-            return Ok(vl);
+
+            return Ok(vragenLijst);
         }
 
-        [Route("VragenLijst/Overzicht")] //Geen Api/ meer nodig
-        public IEnumerable<VragenLijst> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        // PUT: api/VragenLijsts/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutVragenLijst(int id, VragenLijst vragenLijst)
         {
-            //return _db.Vragen.ToList();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            //return vragen;
-            VragenLijst vl1 = new VragenLijst();
-            VragenLijst vl2 = new VragenLijst();
-            VragenLijst vl3 = new VragenLijst();
-            VragenLijst vl4 = new VragenLijst();
-            VragenLijst vl5 = new VragenLijst();
+            if (id != vragenLijst.Id)
+            {
+                return BadRequest();
+            }
 
-            vl1.Id = 1;
-            vl2.Id = 2;
-            vl3.Id = 3;
-            vl4.Id = 4;
-            vl5.Id = 5;
+            db.Entry(vragenLijst).State = EntityState.Modified;
 
-            List<VragenLijst> overzichtVragenLijst = new List<VragenLijst> { vl1, vl2, vl3, vl4, vl5 };
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!VragenLijstBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return overzichtVragenLijst;
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/VragenLijst
-        public void Post([FromBody]string value)
+        // POST: api/VragenLijsts
+        [ResponseType(typeof(VragenLijst))]
+        public IHttpActionResult PostVragenLijst(VragenLijst vragenLijst)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.VragenLijsten.Add(vragenLijst);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = vragenLijst.Id }, vragenLijst);
         }
 
-        // PUT: api/VragenLijst/5
-        public void Put(int id, [FromBody]string value)
+        // DELETE: api/VragenLijsts/5
+        [ResponseType(typeof(VragenLijst))]
+        public IHttpActionResult DeleteVragenLijst(int id)
         {
+            VragenLijst vragenLijst = db.VragenLijsten.Find(id);
+            if (vragenLijst == null)
+            {
+                return NotFound();
+            }
+
+            db.VragenLijsten.Remove(vragenLijst);
+            db.SaveChanges();
+
+            return Ok(vragenLijst);
         }
 
-        // DELETE: api/VragenLijst/5
-        public void Delete(int id)
+        protected override void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool VragenLijstBestaat(int id)
+        {
+            return db.VragenLijsten.Count(e => e.Id == id) > 0;
         }
     }
 }

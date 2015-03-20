@@ -3,6 +3,12 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Http.Description;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
@@ -11,48 +17,29 @@ namespace Finah_Backend.Controllers
         // GET: api/LeeftijdsCategorie
         private List<LeeftijdsCategorie> leeftijdsCategorieen = new List<LeeftijdsCategorie>();
 
-        private FinahDBContext _db;
+        private FinahDBContext db;
 
         public LeeftijdsCategorieController()
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public LeeftijdsCategorieController(List<LeeftijdsCategorie> leeftijdsCategorieen)
         {
-            _db = new FinahDBContext();
+            db = new FinahDBContext();
             this.leeftijdsCategorieen = leeftijdsCategorieen;
         }
 
-        //Geen Api/ meer nodig
-        [Route("LeeftijdsCategorie/{id}")]
-        // return -> naderhand veranderen in Bevraging
-
-        //
-        // Andere methode om Get te doen met return type IHttpActionResult
-        //
-        public IHttpActionResult Get(int id)
-        {
-            LeeftijdsCategorie testCat = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
-
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (testCat == null)
-            {
-                return NotFound();
-            }
-            return Ok(testCat);
-        }
 
         [Route("LeeftijdsCategorie/Overzicht")] //Geen Api/ meer nodig
-        public IEnumerable<LeeftijdsCategorie> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        //public IQueryable<LeeftijdsCategorie> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<LeeftijdsCategorie> GetOverzicht()
         {
-            //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+            //return db.LeeftijdsCategorieen;
 
-            //return bevragingen;
+            
             var lc1 = new LeeftijdsCategorie();
             var lc2 = new LeeftijdsCategorie();
             var lc3 = new LeeftijdsCategorie();
@@ -72,20 +59,101 @@ namespace Finah_Backend.Controllers
 
             return overzichtLeeftijdsCategorieen;
         }
-
-        // POST: api/LeeftijdsCategorie
-        public void Post([FromBody]string value)
+        //Geen Api/ meer nodig
+        [ResponseType(typeof(LeeftijdsCategorie))]
+        [Route("LeeftijdsCategorie/{id}")]
+        public IHttpActionResult Get(int id)
         {
+            LeeftijdsCategorie leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
+
+            //Bovenstaande code dient om te testen
+            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+            //LeeftijdsCategorie leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
+            if (leeftijdsCategorie == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(leeftijdsCategorie);
+        }
+        // PUT: api/LeeftijdsCategories/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutLeeftijdsCategorie(int id, LeeftijdsCategorie leeftijdsCategorie)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != leeftijdsCategorie.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(leeftijdsCategorie).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LeeftijdsCategorieBestaat(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/LeeftijdsCategorie/5
-        public void Put(int id, [FromBody]string value)
+        // POST: api/LeeftijdsCategories
+        [ResponseType(typeof(LeeftijdsCategorie))]
+        public IHttpActionResult PostLeeftijdsCategorie(LeeftijdsCategorie leeftijdsCategorie)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.LeeftijdsCategorieen.Add(leeftijdsCategorie);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = leeftijdsCategorie.Id }, leeftijdsCategorie);
         }
 
-        // DELETE: api/LeeftijdsCategorie/5
-        public void Delete(int id)
+        // DELETE: api/LeeftijdsCategories/5
+        [ResponseType(typeof(LeeftijdsCategorie))]
+        public IHttpActionResult DeleteLeeftijdsCategorie(int id)
         {
+            LeeftijdsCategorie leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
+            if (leeftijdsCategorie == null)
+            {
+                return NotFound();
+            }
+
+            db.LeeftijdsCategorieen.Remove(leeftijdsCategorie);
+            db.SaveChanges();
+
+            return Ok(leeftijdsCategorie);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool LeeftijdsCategorieBestaat(int id)
+        {
+            return db.LeeftijdsCategorieen.Count(e => e.Id == id) > 0;
         }
     }
 }
