@@ -39,7 +39,7 @@ namespace Finah_Backend.Controllers
             return Ok(geluidsFragment);
         }
 
-        [Route("GeluidsFragement/Overzicht")] //Geen Api/ meer nodig
+        [Route("GeluidsFragment/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return _db.Vragen.ToList();
