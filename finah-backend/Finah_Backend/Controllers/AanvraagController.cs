@@ -14,15 +14,17 @@ namespace Finah_Backend.Controllers
 
     public class AanvraagController : ApiController
     {
-        private FinahDBContext db = new FinahDBContext();
+        private readonly FinahDBContext db = new FinahDBContext();
 
-        // GET: api/Aanvraags
+        // GET: api/Aanvraag
+        [Route("Aanvraag/Overzicht")]
         public IQueryable<Aanvraag> GetOverzicht()
         {
             return db.Aanvragen;
         }
 
-        // GET: api/Aanvraags/5
+        // GET: api/Aanvraag/5
+        [Route("Aanvraag/{id}")]
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult Get(int id)
         {
