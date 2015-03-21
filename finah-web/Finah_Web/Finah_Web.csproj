@@ -180,6 +180,7 @@
     <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PathologieController.cs" />
+    <Compile Include="Controllers\PostcodesController.cs" />
     <Compile Include="Controllers\VragenController.cs" />
     <Compile Include="Controllers\VragenLijstController.cs" />
     <Compile Include="Global.asax.cs">
@@ -284,6 +285,11 @@
     <Content Include="Views\Beheren\Index.cshtml" />
     <Content Include="Views\Aanvraag\Overzicht.cshtml" />
     <Content Include="Views\VragenLijst\Overzicht.cshtml" />
+    <Content Include="Views\Postcodes\Create.cshtml" />
+    <Content Include="Views\Postcodes\Delete.cshtml" />
+    <Content Include="Views\Postcodes\Details.cshtml" />
+    <Content Include="Views\Postcodes\Edit.cshtml" />
+    <Content Include="Views\Postcodes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

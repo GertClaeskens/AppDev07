@@ -30,16 +30,18 @@ namespace Finah_Web.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.Bevraging> Bevragings { get; set; }
+        public DbSet<Bevraging> Bevragingen { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.VragenLijst> VragenLijsts { get; set; }
+        public DbSet<VragenLijst> VragenLijsten { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.Vraag> Vraags { get; set; }
+        public DbSet<Vraag> Vragen { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.Aanvraag> Aanvraags { get; set; }
+        public DbSet<Aanvraag> Aanvragen { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.Pathologie> Pathologies { get; set; }
+        public DbSet<Pathologie> Pathologieen { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Web.Models.LeeftijdsCategorie> LeeftijdsCategories { get; set; }
+        public DbSet<LeeftijdsCategorie> LeeftijdsCategorieen { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Web.Models.Postcode> Postcodes { get; set; }
     }
 }
