@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -61,19 +63,22 @@ public class BeheerGUI extends JFrame{
 			titel.setBorderPainted(false);
 			
 			vragenKnop = new JButton("Vragen");
-			vragenKnop.setBounds(255, 25, 120, 25);
+			vragenKnop.setBounds(255, 25, 120, 30);
 			
 			vragenlijstenKnop = new JButton("Vragenlijsten");
-			vragenlijstenKnop.setBounds(400, 25, 120, 25);
+			vragenlijstenKnop.setBounds(400, 25, 120, 30);
 			
 			aandoeningenKnop = new JButton("Aandoeningen");
-			aandoeningenKnop.setBounds(545, 25, 120, 25);
+			aandoeningenKnop.setBounds(545, 25, 120, 30);
 			
 			pathologiënKnop = new JButton("Pathologiën");
-			pathologiënKnop.setBounds(690, 25, 120, 25);
+			pathologiënKnop.setBounds(690, 25, 120, 30);
 			
 			accountsKnop = new JButton("Accounts");
-			accountsKnop.setBounds(835, 25, 120, 25);
+			accountsKnop.setBounds(835, 25, 120, 30);
+			
+			ButtonHandler handler = new ButtonHandler();
+			titel.addActionListener(handler);
 			
 			tekst = new JLabel("<html>Welkom op de beheerderspagina!<br><br>Hier kan u alle overzichten bekijken en waar nodig "
 					+ "aanpassingen maken.<br/>Indien u terug wilt gaan klikt u gewoon op de tekst FINAH en wordt u terug <br>naar "
@@ -89,6 +94,16 @@ public class BeheerGUI extends JFrame{
 			add(accountsKnop);
 			add(tekst);
 		}
+	}
+	
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			switch(e.getActionCommand()){
+			case "FINAH":	AccountGUI newFrame = new AccountGUI();
+							BeheerGUI.this.setVisible(false);
+							break;
+			}
+		}		
 	}
 	
 	public static void main(String[] args){

@@ -116,7 +116,7 @@ public class NieuwAccountGUI extends JFrame{
 			emailVeld.setBounds(400, 405, 200, 20);
 			
 			aanmaakKnop = new JButton("Account aanmaken");
-			aanmaakKnop.setBounds(425, 450, 150, 20);
+			aanmaakKnop.setBounds(425, 445, 150, 30);
 			
 			add(titel);
 			add(nieuwAccountLabel);
