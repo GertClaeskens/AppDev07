@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -86,6 +88,9 @@ public class AccountGUI extends JFrame{
 			resultatenKnop.setBounds(690, 25, 100, 30);
 			uitloggenKnop = new JButton("Uitloggen");
 			uitloggenKnop.setBounds(815, 25, 100, 30);
+			
+			ButtonHandler handler = new ButtonHandler();
+			beheerKnop.addActionListener(handler);
 			
 			onderzoekerLabel = new JLabel("Onderzoeker");
 			onderzoekerLabel.setFont(new Font("Default", Font.PLAIN, 15));
@@ -171,6 +176,16 @@ public class AccountGUI extends JFrame{
 			add(fotoKnop);
 			add(wijzigenKnop);
 		}
+	}
+	
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			switch(e.getActionCommand()){
+			case "Beheer":	BeheerGUI newFrame = new BeheerGUI();
+							AccountGUI.this.setVisible(false);
+							break;
+			}
+		}		
 	}
 	
 	public static void main(String[] args){
