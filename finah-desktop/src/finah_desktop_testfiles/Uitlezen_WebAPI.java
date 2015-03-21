@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import finah_desktop.Postcode;
+import finah_desktop.*;
 
 public class Uitlezen_WebAPI {
 

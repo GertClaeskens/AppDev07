@@ -1,5 +1,11 @@
 package finah_desktop;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+
+
 public class Vraag {
 	private int id;
 	private String vraagstelling;
@@ -46,5 +52,14 @@ public class Vraag {
 
 	public void setGeluidsfragment(Geluid geluidsfragment) {
 		this.geluidsfragment = geluidsfragment;
+	}
+
+	public static ArrayList<String> getKolommen(){
+		ArrayList<String> kol = new ArrayList<String>();
+		kol.add("Id");
+		kol.add("Vraagstelling");
+		kol.add("Afbeelding");
+		kol.add("Geluidsfragment");
+		return kol;
 	}
 }
