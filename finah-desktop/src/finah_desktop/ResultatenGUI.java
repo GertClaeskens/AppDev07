@@ -77,6 +77,8 @@ public class ResultatenGUI extends JFrame{
 			
 			ButtonHandler handler = new ButtonHandler();
 			beheerKnop.addActionListener(handler);
+			accountKnop.addActionListener(handler);
+			bevragingKnop.addActionListener(handler);
 			
 			vragenlijstLabel = new JLabel("Vragenlijst:");
 			vragenlijstLabel.setFont(new Font("Default", Font.PLAIN, 17));
@@ -89,7 +91,7 @@ public class ResultatenGUI extends JFrame{
 			vragenlijstIDCombo = new JComboBox();
 			vragenlijstIDCombo.setBounds(430, 163, 250, 25);
 			zoek = new JButton("Zoek resultaten");
-			zoek.setBounds(550, 210, 130, 25);
+			zoek.setBounds(550, 210, 130, 30);
 			
 			add(titel);
 			add(accountKnop);
@@ -107,10 +109,17 @@ public class ResultatenGUI extends JFrame{
 	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
 			switch(e.getActionCommand()){
-			case "Beheer":	BeheerGUI newFrame = new BeheerGUI();
+			case "Beheer":	newFrame = new BeheerGUI();
 							ResultatenGUI.this.setVisible(false);
 							break;
+			case "Account":	newFrame = new AccountGUI();
+							ResultatenGUI.this.setVisible(false);
+							break;
+			case "Nieuwe bevraging":newFrame = new NieuweBevragingGUI();
+									ResultatenGUI.this.setVisible(false);
+									break;
 			}
 		}		
 	}

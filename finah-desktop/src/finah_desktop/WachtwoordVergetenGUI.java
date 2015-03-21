@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -79,6 +81,12 @@ public class WachtwoordVergetenGUI extends JFrame{
 			
 			stuurKnop = new JButton("Stuur wachtwoord");
 			stuurKnop.setBounds(430, 305, 140, 30);
+			stuurKnop.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					JFrame newFrame = new LoginGUI();
+					WachtwoordVergetenGUI.this.setVisible(false);
+				}
+			});
 			
 			add(titel);
 			add(pwVergetenLabel);
@@ -88,6 +96,12 @@ public class WachtwoordVergetenGUI extends JFrame{
 			add(emailVeld);
 			add(stuurKnop);
 		}
+	}
+	
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			
+		}		
 	}
 	
 	public static void main(String[] args){

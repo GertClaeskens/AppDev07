@@ -92,6 +92,8 @@ public class AccountGUI extends JFrame{
 			
 			ButtonHandler handler = new ButtonHandler();
 			beheerKnop.addActionListener(handler);
+			resultatenKnop.addActionListener(handler);
+			bevragingKnop.addActionListener(handler);
 			
 			onderzoekerLabel = new JLabel("Onderzoeker");
 			onderzoekerLabel.setFont(new Font("Default", Font.PLAIN, 15));
@@ -181,10 +183,17 @@ public class AccountGUI extends JFrame{
 	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
 			switch(e.getActionCommand()){
-			case "Beheer":	BeheerGUI newFrame = new BeheerGUI();
+			case "Beheer":	newFrame = new BeheerGUI();
 							AccountGUI.this.setVisible(false);
 							break;
+			case "Resultaten":	newFrame = new ResultatenGUI();
+								AccountGUI.this.setVisible(false);
+								break;
+			case "Nieuwe bevraging":newFrame = new NieuweBevragingGUI();
+									AccountGUI.this.setVisible(false);
+									break;
 			}
 		}		
 	}

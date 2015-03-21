@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -102,6 +104,11 @@ public class LoginGUI extends JFrame{
 			pwVergetenKnop.setContentAreaFilled(false);
 			pwVergetenKnop.setBorderPainted(false);
 			
+			ButtonHandler handler = new ButtonHandler();
+			inlogKnop.addActionListener(handler);
+			nieuwAccountKnop.addActionListener(handler);
+			pwVergetenKnop.addActionListener(handler);
+			
 			add(titel);
 			add(loginLabel);
 			add(naamLabel);
@@ -112,6 +119,24 @@ public class LoginGUI extends JFrame{
 			add(nieuwAccountKnop);
 			add(pwVergetenKnop);
 		}
+		
+	}
+	
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
+			switch(e.getActionCommand()){
+			case "Inloggen":	newFrame = new AccountGUI();
+								LoginGUI.this.setVisible(false);
+								break;
+			case "Nieuw account aanmaken":	newFrame = new NieuwAccountGUI();
+											LoginGUI.this.setVisible(false);
+											break;
+			case "Wachtwoord vergeten?":newFrame = new WachtwoordVergetenGUI();
+										LoginGUI.this.setVisible(false);
+										break;
+			}
+		}		
 	}
 	
 	public static void main(String[] args){

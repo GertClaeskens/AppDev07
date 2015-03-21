@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,6 +119,12 @@ public class NieuwAccountGUI extends JFrame{
 			
 			aanmaakKnop = new JButton("Account aanmaken");
 			aanmaakKnop.setBounds(425, 445, 150, 30);
+			aanmaakKnop.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					JFrame newFrame = new LoginGUI();
+					NieuwAccountGUI.this.setVisible(false);
+				}
+			});
 			
 			add(titel);
 			add(nieuwAccountLabel);
