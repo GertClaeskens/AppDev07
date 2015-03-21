@@ -7,25 +7,40 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class BeheerGUI extends JFrame{
+public class PathologieënGUI extends JFrame{
 	
-	private BeheerPanel panel;
+	private VragenPanel panel;
 	private JButton titel;
-	private JLabel tekst;
 	private JButton vragenKnop;
 	private JButton vragenlijstenKnop;
 	private JButton aandoeningenKnop;
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
+	private JButton toevoegKnop;
+	private JLabel toevoegenLabel;
+	private JLabel overzichtLabel;
+	private JTextField nieuwePathologieVeld;
+	private JComboBox nieuwePathologieCombo;
+	private List<Vraag> vragen;
 
-	public BeheerGUI(){
-		panel = new BeheerPanel();
+	public PathologieënGUI(){
+		vragen = new ArrayList<Vraag>();
+		for(int i=1; i<=10; i++){
+			vragen.add(new Vraag());
+		}
+		
+		
+		panel = new VragenPanel();		
 		panel.setLayout(null);
 		add(panel);
 		
@@ -35,7 +50,7 @@ public class BeheerGUI extends JFrame{
 		setLocationRelativeTo(null);
 	}
 
-	private class BeheerPanel extends JPanel{
+	private class VragenPanel extends JPanel{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
@@ -45,15 +60,35 @@ public class BeheerGUI extends JFrame{
 			g2d.setPaint(new GradientPaint(0,0,new Color(2,154,204),0,75,new Color(102,204,204)));
 			g2d.fillRoundRect(0, 0, 984, 75, 30, 30);
 			
-			g2d.setColor(new Color(239, 239, 239));
-			g2d.fillRoundRect(200, 100, 600, 200, 75, 75);
-			
 			g2d.setColor(Color.black);
 			g2d.drawLine(220, 0, 220, 75);
 			
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
-			g2d.drawRoundRect(200, 100, 600, 200, 75, 75);
+			
+			//Dynamische tabel
+			g2d.setPaint(Color.white);
+			g2d.fillRect(100, 210, 800, 40);
+			g2d.fillRect(100, 250, 800, 30*vragen.size());
+			
+			g2d.setPaint(Color.black);
+			g2d.drawRect(100, 210, 800, 40);
+			g2d.drawLine(100, 210, 100, 250+30*vragen.size());
+			g2d.drawLine(900, 210, 900, 250+30*vragen.size());
+			g2d.drawLine(640, 210, 640, 250+30*vragen.size());
+			g2d.drawLine(670, 210, 670, 250+30*vragen.size());
+			g2d.drawLine(700, 210, 700, 250+30*vragen.size());
+			
+			g2d.setFont(new Font("Arial", Font.BOLD, 17));
+			g2d.drawString("Pathologieën", 320, 235);
+			g2d.drawString("Aandoeningen", 745, 235);
+			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
+			int hoogte = 280;
+			for(int i=1; i<=vragen.size(); i++){
+				g2d.drawLine(100, hoogte, 900, hoogte);
+				g2d.drawString("Pathologie "+i, 120, hoogte-10);
+				hoogte+=30;
+			}
 			
 			titel = new JButton("FINAH");
 			titel.setFont(new Font("Default", Font.BOLD, 40));
@@ -77,18 +112,26 @@ public class BeheerGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
+			toevoegenLabel = new JLabel("Pathologie toevoegen");
+			toevoegenLabel.setFont(new Font("Default", Font.BOLD, 17));
+			toevoegenLabel.setBounds(100, 100, 190, 20);
+			overzichtLabel = new JLabel("Overzicht pathologieën");
+			overzichtLabel.setFont(new Font("Default", Font.BOLD, 17));
+			overzichtLabel.setBounds(100, 180, 190, 20);
+			
+			nieuwePathologieVeld = new JTextField();
+			nieuwePathologieVeld.setBounds(100, 130, 490, 25);
+			nieuwePathologieCombo = new JComboBox();
+			nieuwePathologieCombo.setBounds(600, 130, 190, 25);
+			
+			toevoegKnop = new JButton("Toevoegen");
+			toevoegKnop.setBounds(800, 130, 100, 25);
+			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
 			vragenKnop.addActionListener(handler);
 			vragenlijstenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
-			pathologieënKnop.addActionListener(handler);
-			
-			tekst = new JLabel("<html>Welkom op de beheerderspagina!<br><br>Hier kan u alle overzichten bekijken en waar nodig "
-					+ "aanpassingen maken.<br/>Indien u terug wilt gaan klikt u gewoon op de tekst FINAH en wordt u terug <br>naar "
-					+ "de home-pagina gebracht.");
-			tekst.setFont(new Font("Default", Font.PLAIN, 17));
-			tekst.setBounds(230, 100, 560, 160);
 			
 			add(titel);
 			add(vragenKnop);
@@ -96,7 +139,11 @@ public class BeheerGUI extends JFrame{
 			add(aandoeningenKnop);
 			add(pathologieënKnop);
 			add(accountsKnop);
-			add(tekst);
+			add(toevoegenLabel);
+			add(overzichtLabel);
+			add(nieuwePathologieVeld);
+			add(nieuwePathologieCombo);
+			add(toevoegKnop);
 		}
 	}
 	
@@ -105,26 +152,23 @@ public class BeheerGUI extends JFrame{
 			JFrame newFrame;
 			switch(e.getActionCommand()){
 			case "FINAH":	newFrame = new AccountGUI();
-							BeheerGUI.this.setVisible(false);
+							PathologieënGUI.this.setVisible(false);
 							break;
 			case "Vragen":	newFrame = new VragenGUI();
-							BeheerGUI.this.setVisible(false);
+							PathologieënGUI.this.setVisible(false);
 							break;
-			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
-									BeheerGUI.this.setVisible(false);
+			case "Vragenlijsten":	newFrame = new AandoeningenGUI();
+									PathologieënGUI.this.setVisible(false);
 									break;
-			case "Aandoeningen":	newFrame = new AandoeningenGUI();
-									BeheerGUI.this.setVisible(false);
-									break;
-			case "Pathologieën":	newFrame = new PathologieënGUI();
-									BeheerGUI.this.setVisible(false);
+			case "Aandoeningen":	newFrame = new PathologieënGUI();
+									PathologieënGUI.this.setVisible(false);
 									break;
 			}
-		}			
+		}	
 	}
 	
 	public static void main(String[] args){
-		BeheerGUI test = new BeheerGUI();
+		PathologieënGUI test = new PathologieënGUI();
 	}
 	
 }

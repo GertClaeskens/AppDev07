@@ -39,7 +39,7 @@ public class BeheerGUIGert extends JFrame {
 	private JButton vragenKnop;
 	private JButton vragenlijstenKnop;
 	private JButton aandoeningenKnop;
-	private JButton pathologiënKnop;
+	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 
 	public BeheerGUIGert() {
@@ -152,8 +152,8 @@ public class BeheerGUIGert extends JFrame {
 			aandoeningenKnop = new JButton("Aandoeningen");
 			aandoeningenKnop.setBounds(545, 25, 120, 25);
 
-			pathologiënKnop = new JButton("Pathologiën");
-			pathologiënKnop.setBounds(690, 25, 120, 25);
+			pathologieënKnop = new JButton("Pathologieën");
+			pathologieënKnop.setBounds(690, 25, 120, 25);
 
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 25);
@@ -162,7 +162,7 @@ public class BeheerGUIGert extends JFrame {
 			add(vragenKnop);
 			add(vragenlijstenKnop);
 			add(aandoeningenKnop);
-			add(pathologiënKnop);
+			add(pathologieënKnop);
 			add(accountsKnop);
 
 		}
