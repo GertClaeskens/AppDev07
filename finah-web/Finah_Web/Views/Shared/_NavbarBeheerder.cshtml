@@ -1,7 +1,6 @@
-﻿
-<h2> Menu </h2>
-<button> @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</button>
-<button> @Html.ActionLink("Account", "index", "Account") </button>
-<button> @Html.ActionLink("Bevragingen", "Overzicht", "Bevraging", new { area = "" }, null)</button>
-<button> @Html.ActionLink("Beheren", "Index", "Beheren", new { area = "" }) </button>
-<button> @Html.ActionLink("Uitloggen", "Overzicht", "Uitloggen", new { area = "" }) </button>
+﻿<h2> Menu </h2>
+<button onclick="location.href='@Url.Action("Index", "Home")';return false;">Home</button>
+<button onclick="location.href='@Url.Action("Index", "Account")';return false;">Mijn account</button>
+<button onclick="location.href='@Url.Action("Overzicht", "Bevraging")';return false;">Bevragingen</button>
+<button onclick="location.href='@Url.Action("Index","Beheren")';return false;">Beheerders pagina</button>
+<button onclick="location.href='@Url.Action("Overzicht","Uitloggen")';return false;">Uitloggen</button>

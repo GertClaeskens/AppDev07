@@ -1,7 +1,9 @@
 ﻿<h2> Beheren </h2>
-<button> @Html.ActionLink("Aandoeningen", "Overzicht", "Aandoening", new { area = "" }, null)</button>
-<button> @Html.ActionLink("Pathologiën", "Overzicht", "Pathologie") </button>
-<button> @Html.ActionLink("LeeftijdsCategorie", "Overzicht", "Leeftijdscategorie", new { area = "" }, null)</button>
-<button> @Html.ActionLink("Vragen", "Overzicht", "Vragen") </button>
-<button> @Html.ActionLink("Vragenlijsten", "Overzicht", "VragenLijst") </button>
-<button> @Html.ActionLink("Terug naar Home", "Index", "Home")</button>
+<button onclick="location.href='@Url.Action("Overzicht", "Aandoening")';return false;">Aandoeningen</button>
+<button onclick="location.href='@Url.Action("Overzicht", "Pathologie")';return false;">Pathologieën</button>
+<button onclick="location.href='@Url.Action("Overzicht", "LeeftijdsCategorie")';return false;">Leeftijdscategoriën</button>
+<button onclick="location.href='@Url.Action("Overzicht" ,"Vragen")';return false;">Vragen</button>
+
+<button onclick="location.href='@Url.Action("Overzicht", "Vragenlijst")';return false;">Vragenlijsten</button>
+
+<button onclick="location.href='@Url.Action("Index", "Home")';return false;">Terug naar home</button>
