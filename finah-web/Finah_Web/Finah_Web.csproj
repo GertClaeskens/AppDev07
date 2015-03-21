@@ -290,6 +290,7 @@
     <Content Include="Views\Postcodes\Details.cshtml" />
     <Content Include="Views\Postcodes\Edit.cshtml" />
     <Content Include="Views\Postcodes\Index.cshtml" />
+    <Content Include="Views\Vragen\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
