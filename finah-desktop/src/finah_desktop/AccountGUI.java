@@ -77,15 +77,15 @@ public class AccountGUI extends JFrame{
 			titel.setBounds(50, 0, 220, 75);
 			
 			accountKnop = new JButton("Account");
-			accountKnop.setBounds(280, 25, 100, 25);
+			accountKnop.setBounds(280, 25, 100, 30);
 			bevragingKnop = new JButton("Nieuwe bevraging");
-			bevragingKnop.setBounds(405, 25, 135, 25);
+			bevragingKnop.setBounds(405, 25, 135, 30);
 			beheerKnop = new JButton("Beheer");
-			beheerKnop.setBounds(565, 25, 100, 25);
+			beheerKnop.setBounds(565, 25, 100, 30);
 			resultatenKnop = new JButton("Resultaten");
-			resultatenKnop.setBounds(690, 25, 100, 25);
+			resultatenKnop.setBounds(690, 25, 100, 30);
 			uitloggenKnop = new JButton("Uitloggen");
-			uitloggenKnop.setBounds(815, 25, 100, 25);
+			uitloggenKnop.setBounds(815, 25, 100, 30);
 			
 			onderzoekerLabel = new JLabel("Onderzoeker");
 			onderzoekerLabel.setFont(new Font("Default", Font.PLAIN, 15));

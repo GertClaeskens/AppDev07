@@ -61,19 +61,19 @@ public class BeheerGUI extends JFrame{
 			titel.setBorderPainted(false);
 			
 			vragenKnop = new JButton("Vragen");
-			vragenKnop.setBounds(255, 25, 120, 25);
+			vragenKnop.setBounds(255, 25, 120, 30);
 			
 			vragenlijstenKnop = new JButton("Vragenlijsten");
-			vragenlijstenKnop.setBounds(400, 25, 120, 25);
+			vragenlijstenKnop.setBounds(400, 25, 120, 30);
 			
 			aandoeningenKnop = new JButton("Aandoeningen");
-			aandoeningenKnop.setBounds(545, 25, 120, 25);
+			aandoeningenKnop.setBounds(545, 25, 120, 30);
 			
 			pathologiënKnop = new JButton("Pathologiën");
-			pathologiënKnop.setBounds(690, 25, 120, 25);
+			pathologiënKnop.setBounds(690, 25, 120, 30);
 			
 			accountsKnop = new JButton("Accounts");
-			accountsKnop.setBounds(835, 25, 120, 25);
+			accountsKnop.setBounds(835, 25, 120, 30);
 			
 			tekst = new JLabel("<html>Welkom op de beheerderspagina!<br><br>Hier kan u alle overzichten bekijken en waar nodig "
 					+ "aanpassingen maken.<br/>Indien u terug wilt gaan klikt u gewoon op de tekst FINAH en wordt u terug <br>naar "

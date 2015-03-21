@@ -22,7 +22,7 @@ public class WachtwoordVergetenGUI extends JFrame{
 	private JLabel emailLabel;
 	private JTextField naamVeld;
 	private JTextField emailVeld;
-	private JButton inlogKnop;
+	private JButton stuurKnop;
 
 	public WachtwoordVergetenGUI(){
 		panel = new WachtwoordVergetenPanel();
@@ -77,8 +77,8 @@ public class WachtwoordVergetenGUI extends JFrame{
 			emailVeld = new JPasswordField();
 			emailVeld.setBounds(400, 255, 200, 20);
 			
-			inlogKnop = new JButton("Stuur wachtwoord");
-			inlogKnop.setBounds(430, 305, 140, 20);
+			stuurKnop = new JButton("Stuur wachtwoord");
+			stuurKnop.setBounds(430, 305, 140, 30);
 			
 			add(titel);
 			add(pwVergetenLabel);
@@ -86,7 +86,7 @@ public class WachtwoordVergetenGUI extends JFrame{
 			add(emailLabel);
 			add(naamVeld);
 			add(emailVeld);
-			add(inlogKnop);
+			add(stuurKnop);
 		}
 	}
 	
