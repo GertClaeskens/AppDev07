@@ -23,7 +23,7 @@ public class AccountGUI extends JFrame{
 	private JButton bevragingKnop;
 	private JButton beheerKnop;
 	private JButton resultatenKnop;
-	private JButton uitloggenKnop;
+	private JButton uitlogKnop;
 	private JLabel onderzoekerLabel;
 	private JLabel straatLabel;
 	private JLabel gemeenteLabel;
@@ -87,13 +87,14 @@ public class AccountGUI extends JFrame{
 			beheerKnop.setBounds(565, 25, 100, 30);
 			resultatenKnop = new JButton("Resultaten");
 			resultatenKnop.setBounds(690, 25, 100, 30);
-			uitloggenKnop = new JButton("Uitloggen");
-			uitloggenKnop.setBounds(815, 25, 100, 30);
+			uitlogKnop = new JButton("Uitloggen");
+			uitlogKnop.setBounds(815, 25, 100, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
 			beheerKnop.addActionListener(handler);
 			resultatenKnop.addActionListener(handler);
 			bevragingKnop.addActionListener(handler);
+			uitlogKnop.addActionListener(handler);
 			
 			onderzoekerLabel = new JLabel("Onderzoeker");
 			onderzoekerLabel.setFont(new Font("Default", Font.PLAIN, 15));
@@ -158,7 +159,7 @@ public class AccountGUI extends JFrame{
 			add(bevragingKnop);
 			add(beheerKnop);
 			add(resultatenKnop);
-			add(uitloggenKnop);
+			add(uitlogKnop);
 			add(onderzoekerLabel);
 			add(gebruikerLabel);
 			add(straatLabel);
@@ -191,9 +192,12 @@ public class AccountGUI extends JFrame{
 			case "Resultaten":	newFrame = new ResultatenGUI();
 								AccountGUI.this.setVisible(false);
 								break;
-			case "Nieuwe bevraging":newFrame = new NieuweBevragingGUI();
-									AccountGUI.this.setVisible(false);
-									break;
+			case "Nieuwe bevraging":	newFrame = new NieuweBevragingGUI();
+										AccountGUI.this.setVisible(false);
+										break;
+			case "Uitloggen":	newFrame = new LoginGUI();
+								AccountGUI.this.setVisible(false);
+								break;
 			}
 		}		
 	}

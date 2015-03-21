@@ -23,7 +23,7 @@ public class NieuweBevragingGUI extends JFrame{
 	private JButton bevragingKnop;
 	private JButton beheerKnop;
 	private JButton resultatenKnop;
-	private JButton uitloggenKnop;
+	private JButton uitlogKnop;
 	private JLabel hulpverlenerLabel;
 	private JLabel hulpverlenerIngevuldLabel;
 	private JLabel patiëntLabel;
@@ -83,13 +83,14 @@ public class NieuweBevragingGUI extends JFrame{
 			beheerKnop.setBounds(565, 25, 100, 30);
 			resultatenKnop = new JButton("Resultaten");
 			resultatenKnop.setBounds(690, 25, 100, 30);
-			uitloggenKnop = new JButton("Uitloggen");
-			uitloggenKnop.setBounds(815, 25, 100, 30);
+			uitlogKnop = new JButton("Uitloggen");
+			uitlogKnop.setBounds(815, 25, 100, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
 			beheerKnop.addActionListener(handler);
 			accountKnop.addActionListener(handler);
 			resultatenKnop.addActionListener(handler);
+			uitlogKnop.addActionListener(handler);
 			
 			hulpverlenerLabel = new JLabel("Hulpverlener");
 			hulpverlenerLabel.setFont(new Font("Default", Font.PLAIN, 17));
@@ -138,7 +139,7 @@ public class NieuweBevragingGUI extends JFrame{
 			add(bevragingKnop);
 			add(beheerKnop);
 			add(resultatenKnop);
-			add(uitloggenKnop);
+			add(uitlogKnop);
 			add(hulpverlenerLabel);
 			add(patiëntLabel);
 			add(vragenlijstLabel);
@@ -171,7 +172,11 @@ public class NieuweBevragingGUI extends JFrame{
 			case "Resultaten":	newFrame = new ResultatenGUI();
 								NieuweBevragingGUI.this.setVisible(false);
 								break;
+			case "Uitloggen":	newFrame = new LoginGUI();
+								NieuweBevragingGUI.this.setVisible(false);
+								break;
 			}
+			
 		}		
 	}
 	
