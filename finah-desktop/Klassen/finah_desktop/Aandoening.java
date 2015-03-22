@@ -1,5 +1,6 @@
 package finah_desktop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aandoening extends SuperklasseAandoeningPathologie {
@@ -14,11 +15,12 @@ public class Aandoening extends SuperklasseAandoeningPathologie {
 	}
 
 	public Aandoening() {
+		bijhorende_pathologie = new ArrayList<Pathologie>();
 	}
 
-	public Aandoening(String naam) {
-		super(naam);
-	}
+//	public Aandoening(String naam) {
+//		super(naam);
+//	}
 //	public Aandoening(String naam,Pathologie patholog) {
 //		super(naam);
 //	}

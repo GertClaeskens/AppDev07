@@ -1,30 +1,32 @@
 package finah_desktop;
 
 public abstract class SuperklasseAandoeningPathologie {
-	private int id;
-	private String naam;
+	private int Id;
+	private String Omschrijving;
 
 	public SuperklasseAandoeningPathologie() {
 
 	}
 
-	public SuperklasseAandoeningPathologie(String naam) {
-		this.naam = naam;
+	public SuperklasseAandoeningPathologie(String omschrijving) {
+		this.Omschrijving = omschrijving;
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.Id = id;
 	}
 
-	public String getNaam() {
-		return naam;
+
+
+	public String getOmschrijving() {
+		return Omschrijving;
 	}
 
-	public void setNaam(String naam) {
-		this.naam = naam;
+	public void setOmschrijving(String omschrijving) {
+		this.Omschrijving = omschrijving;
 	}
 }

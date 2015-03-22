@@ -3,8 +3,8 @@ package finah_desktop;
 public class LeeftijdsCategorie {
 
 	private int leeftijdsCategorieId;
-	private short van;
-	private short tot;
+	private int van;
+	private int tot;
 
 	public LeeftijdsCategorie() {
 
@@ -23,19 +23,19 @@ public class LeeftijdsCategorie {
 		this.leeftijdsCategorieId = leeftijdsCategorieId;
 	}
 
-	public short getVan() {
+	public int getVan() {
 		return van;
 	}
 
-	public void setVan(short van) {
+	public void setVan(int van) {
 		this.van = van;
 	}
 
-	public short getTot() {
+	public int getTot() {
 		return tot;
 	}
 
-	public void setTot(short tot) {
+	public void setTot(int tot) {
 		this.tot = tot;
 	}
 }
