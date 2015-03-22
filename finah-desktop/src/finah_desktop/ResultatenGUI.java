@@ -27,7 +27,7 @@ public class ResultatenGUI extends JFrame{
 	private JLabel vragenlijstIDLabel;
 	private JComboBox vragenlijstCombo;
 	private JComboBox vragenlijstIDCombo;
-	private JButton zoek;
+	private JButton zoekKnop;
 
 	public ResultatenGUI(){
 		panel = new ResultatenPanel();
@@ -74,12 +74,15 @@ public class ResultatenGUI extends JFrame{
 			resultatenKnop.setBounds(690, 25, 100, 30);
 			uitlogKnop = new JButton("Uitloggen");
 			uitlogKnop.setBounds(815, 25, 100, 30);
+			zoekKnop = new JButton("Zoek resultaten");
+			zoekKnop.setBounds(550, 210, 130, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
 			beheerKnop.addActionListener(handler);
 			accountKnop.addActionListener(handler);
 			bevragingKnop.addActionListener(handler);
 			uitlogKnop.addActionListener(handler);
+			zoekKnop.addActionListener(handler);
 			
 			vragenlijstLabel = new JLabel("Vragenlijst:");
 			vragenlijstLabel.setFont(new Font("Default", Font.PLAIN, 17));
@@ -91,8 +94,6 @@ public class ResultatenGUI extends JFrame{
 			vragenlijstCombo.setBounds(430, 128, 250, 25);
 			vragenlijstIDCombo = new JComboBox();
 			vragenlijstIDCombo.setBounds(430, 163, 250, 25);
-			zoek = new JButton("Zoek resultaten");
-			zoek.setBounds(550, 210, 130, 30);
 			
 			add(titel);
 			add(accountKnop);
@@ -104,7 +105,7 @@ public class ResultatenGUI extends JFrame{
 			add(vragenlijstIDLabel);
 			add(vragenlijstCombo);
 			add(vragenlijstIDCombo);
-			add(zoek);
+			add(zoekKnop);
 		}
 	}
 	
@@ -118,12 +119,15 @@ public class ResultatenGUI extends JFrame{
 			case "Account":	newFrame = new AccountGUI();
 							ResultatenGUI.this.setVisible(false);
 							break;
-			case "Nieuwe bevraging":	newFrame = new LoginGUI();
+			case "Nieuwe bevraging":	newFrame = new NieuweBevragingGUI();
 										ResultatenGUI.this.setVisible(false);
 										break;
 			case "Uitloggen":	newFrame = new LoginGUI();
 								ResultatenGUI.this.setVisible(false);
 								break;
+			case "Zoek resultaten":	newFrame = new OpgezochteResultatenGUI();
+									ResultatenGUI.this.setVisible(false);
+									break;
 			}
 		}		
 	}
