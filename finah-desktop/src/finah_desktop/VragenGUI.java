@@ -19,12 +19,12 @@ import javax.swing.JTextField;
 
 public class VragenGUI extends JFrame{
 	
-	private BeheerPanel panel;
+	private VragenPanel panel;
 	private JButton titel;
 	private JButton vragenKnop;
 	private JButton vragenlijstenKnop;
 	private JButton aandoeningenKnop;
-	private JButton pathologiënKnop;
+	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 	private JButton toevoegKnop;
 	private JLabel toevoegenLabel;
@@ -40,7 +40,7 @@ public class VragenGUI extends JFrame{
 		}
 		
 		
-		panel = new BeheerPanel();		
+		panel = new VragenPanel();		
 		panel.setLayout(null);
 		add(panel);
 		
@@ -50,7 +50,7 @@ public class VragenGUI extends JFrame{
 		setLocationRelativeTo(null);
 	}
 
-	private class BeheerPanel extends JPanel{
+	private class VragenPanel extends JPanel{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
@@ -106,8 +106,8 @@ public class VragenGUI extends JFrame{
 			aandoeningenKnop = new JButton("Aandoeningen");
 			aandoeningenKnop.setBounds(545, 25, 120, 30);
 			
-			pathologiënKnop = new JButton("Pathologiën");
-			pathologiënKnop.setBounds(690, 25, 120, 30);
+			pathologieënKnop = new JButton("Pathologieën");
+			pathologieënKnop.setBounds(690, 25, 120, 30);
 			
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
@@ -129,12 +129,15 @@ public class VragenGUI extends JFrame{
 			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
-			
+			vragenlijstenKnop.addActionListener(handler);
+			aandoeningenKnop.addActionListener(handler);
+			pathologieënKnop.addActionListener(handler);
+
 			add(titel);
 			add(vragenKnop);
 			add(vragenlijstenKnop);
 			add(aandoeningenKnop);
-			add(pathologiënKnop);
+			add(pathologieënKnop);
 			add(accountsKnop);
 			add(toevoegenLabel);
 			add(overzichtLabel);
@@ -146,10 +149,20 @@ public class VragenGUI extends JFrame{
 	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
 			switch(e.getActionCommand()){
-			case "FINAH":	AccountGUI newFrame = new AccountGUI();
+			case "FINAH":	newFrame = new AccountGUI();
 							VragenGUI.this.setVisible(false);
 							break;
+			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
+									VragenGUI.this.setVisible(false);
+									break;
+			case "Aandoeningen":	newFrame = new AandoeningenGUI();
+									VragenGUI.this.setVisible(false);
+									break;
+			case "Pathologieën":	newFrame = new PathologieënGUI();
+									VragenGUI.this.setVisible(false);
+									break;
 			}
 		}		
 	}

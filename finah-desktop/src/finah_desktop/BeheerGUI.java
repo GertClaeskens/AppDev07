@@ -21,7 +21,7 @@ public class BeheerGUI extends JFrame{
 	private JButton vragenKnop;
 	private JButton vragenlijstenKnop;
 	private JButton aandoeningenKnop;
-	private JButton pathologiënKnop;
+	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 
 	public BeheerGUI(){
@@ -71,14 +71,18 @@ public class BeheerGUI extends JFrame{
 			aandoeningenKnop = new JButton("Aandoeningen");
 			aandoeningenKnop.setBounds(545, 25, 120, 30);
 			
-			pathologiënKnop = new JButton("Pathologiën");
-			pathologiënKnop.setBounds(690, 25, 120, 30);
+			pathologieënKnop = new JButton("Pathologieën");
+			pathologieënKnop.setBounds(690, 25, 120, 30);
 			
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
+			vragenKnop.addActionListener(handler);
+			vragenlijstenKnop.addActionListener(handler);
+			aandoeningenKnop.addActionListener(handler);
+			pathologieënKnop.addActionListener(handler);
 			
 			tekst = new JLabel("<html>Welkom op de beheerderspagina!<br><br>Hier kan u alle overzichten bekijken en waar nodig "
 					+ "aanpassingen maken.<br/>Indien u terug wilt gaan klikt u gewoon op de tekst FINAH en wordt u terug <br>naar "
@@ -90,7 +94,7 @@ public class BeheerGUI extends JFrame{
 			add(vragenKnop);
 			add(vragenlijstenKnop);
 			add(aandoeningenKnop);
-			add(pathologiënKnop);
+			add(pathologieënKnop);
 			add(accountsKnop);
 			add(tekst);
 		}
@@ -98,12 +102,25 @@ public class BeheerGUI extends JFrame{
 	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
 			switch(e.getActionCommand()){
-			case "FINAH":	AccountGUI newFrame = new AccountGUI();
+			case "FINAH":	newFrame = new AccountGUI();
 							BeheerGUI.this.setVisible(false);
 							break;
+			case "Vragen":	newFrame = new VragenGUI();
+							BeheerGUI.this.setVisible(false);
+							break;
+			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
+									BeheerGUI.this.setVisible(false);
+									break;
+			case "Aandoeningen":	newFrame = new AandoeningenGUI();
+									BeheerGUI.this.setVisible(false);
+									break;
+			case "Pathologieën":	newFrame = new PathologieënGUI();
+									BeheerGUI.this.setVisible(false);
+									break;
 			}
-		}		
+		}			
 	}
 	
 	public static void main(String[] args){
