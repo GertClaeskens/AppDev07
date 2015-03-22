@@ -39,7 +39,9 @@ namespace Finah_Backend.Controllers
             List<Pathologie> patLijst = new List<Pathologie>();
 
             pt.Id = 1;
+            pt.Omschrijving = "Pathologie";
             patLijst.Add(pt);
+
 
             aandoening.Id = 1;
             aandoening.Omschrijving = "Omschrijving";
