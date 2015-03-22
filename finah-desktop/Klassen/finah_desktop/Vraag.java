@@ -62,4 +62,53 @@ public class Vraag {
 		kol.add("Geluidsfragment");
 		return kol;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((afbeelding == null) ? 0 : afbeelding.hashCode());
+		result = prime * result
+				+ ((geluidsfragment == null) ? 0 : geluidsfragment.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((vraagstelling == null) ? 0 : vraagstelling.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vraag other = (Vraag) obj;
+		if (afbeelding == null) {
+			if (other.afbeelding != null)
+				return false;
+		} else if (!afbeelding.equals(other.afbeelding))
+			return false;
+		if (geluidsfragment == null) {
+			if (other.geluidsfragment != null)
+				return false;
+		} else if (!geluidsfragment.equals(other.geluidsfragment))
+			return false;
+		if (id != other.id)
+			return false;
+		if (vraagstelling == null) {
+			if (other.vraagstelling != null)
+				return false;
+		} else if (!vraagstelling.equals(other.vraagstelling))
+			return false;
+		return true;
+	}
 }

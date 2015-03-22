@@ -38,4 +38,38 @@ public class LeeftijdsCategorie {
 	public void setTot(int tot) {
 		this.tot = tot;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + leeftijdsCategorieId;
+		result = prime * result + tot;
+		result = prime * result + van;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LeeftijdsCategorie other = (LeeftijdsCategorie) obj;
+		if (leeftijdsCategorieId != other.leeftijdsCategorieId)
+			return false;
+		if (tot != other.tot)
+			return false;
+		if (van != other.van)
+			return false;
+		return true;
+	}
 }

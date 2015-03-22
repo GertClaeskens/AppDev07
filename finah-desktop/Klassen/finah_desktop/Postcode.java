@@ -48,4 +48,42 @@ public class Postcode {
 		return kol;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((Gemeente == null) ? 0 : Gemeente.hashCode());
+		result = prime * result + Id;
+		result = prime * result + Postnr;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Postcode other = (Postcode) obj;
+		if (Gemeente == null) {
+			if (other.Gemeente != null)
+				return false;
+		} else if (!Gemeente.equals(other.Gemeente))
+			return false;
+		if (Id != other.Id)
+			return false;
+		if (Postnr != other.Postnr)
+			return false;
+		return true;
+	}
+
 }
