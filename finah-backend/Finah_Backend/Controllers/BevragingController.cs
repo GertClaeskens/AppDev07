@@ -22,7 +22,6 @@ namespace Finah_Backend.Controllers
 
         private string link;
         private List<Bevraging> bevragingen = new List<Bevraging>();
-
         private FinahDBContext db;
 
         public BevragingController()
@@ -104,31 +103,76 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
+            Bevraging bevraging = new Bevraging();
+            Account testAccount = new Account();
+            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
+            VragenLijst testVragenlijst = new VragenLijst();
+
+            testCat.Id = 2;
+            testCat.Van = 0;
+            testCat.Tot = 99;
+
+            testAccount.Id = 2;
+            testAccount.Naam = "Thys";
+            testAccount.VoorNaam = "Brian";
+
+            bevraging.Id = "Test Id";
+            bevraging.Aangevraagd = DateTime.Now;
+            bevraging.AangemaaktDoor = testAccount;
+            bevraging.LeeftijdsCatMantelZorger = testCat;
+            bevraging.LeeftijdsCatPatient = testCat;
+            bevraging.Informatie = "Test bevraging";
+            bevraging.Relatie = "Test relatie";
+            bevraging.VragenMantelzorger = testVragenlijst;
+            bevraging.Vragenpatient = testVragenlijst;
+            //Bovenstaande code dient om te testen
+            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
+            if (bevraging == null)
+            {
+                return bevragingen;
+            }
+            bevragingen.Add(bevraging);
             //return db.Bevragingen; Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
 
             //return bevragingen;
-            var testBevraging1 = new Bevraging();
-            var testBevraging2 = new Bevraging();
-            var testBevraging3 = new Bevraging();
-            var testBevraging4 = new Bevraging();
-            var testBevraging5 = new Bevraging();
+            return bevragingen;
+        }
 
-            testBevraging1.Id = "1";
-            testBevraging2.Id = "2";
-            testBevraging3.Id = "3";
-            testBevraging4.Id = "4";
-            testBevraging5.Id = "5";
+        // GET: Bevraging/Create
+        [Route("Bevraging/Create")] //Geen Api/ meer nodig
+        public void Create()
+        {
+            Bevraging bevraging = new Bevraging();
+            Account testAccount = new Account();
+            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
+            VragenLijst testVragenlijst = new VragenLijst();
 
-            var overzichtBevragingen = new List<Bevraging>
-                                                       {
-                                                           testBevraging1,
-                                                           testBevraging2,
-                                                           testBevraging3,
-                                                           testBevraging4,
-                                                           testBevraging5
-                                                       };
+            testCat.Id = 2;
+            testCat.Van = 0;
+            testCat.Tot = 99;
 
-            return overzichtBevragingen;
+            testAccount.Id = 2;
+            testAccount.Naam = "Thys";
+            testAccount.VoorNaam = "Brian";
+
+            bevraging.Id = "Test Id";
+            bevraging.Aangevraagd = DateTime.Now;
+            bevraging.AangemaaktDoor = testAccount;
+            bevraging.LeeftijdsCatMantelZorger = testCat;
+            bevraging.LeeftijdsCatPatient = testCat;
+            bevraging.Informatie = "Test bevraging";
+            bevraging.Relatie = "Test relatie";
+            bevraging.VragenMantelzorger = testVragenlijst;
+            bevraging.Vragenpatient = testVragenlijst;
+            //Bovenstaande code dient om te testen
+            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
+            if (bevraging == null)
+            {
+                return;
+            }
+            bevragingen.Add(bevraging);
         }
 
         // PUT: api/Bevragings/5

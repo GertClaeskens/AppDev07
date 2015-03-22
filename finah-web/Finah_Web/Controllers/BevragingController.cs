@@ -48,9 +48,15 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Bevraging/Create
-        public ActionResult Create()
+        [Route("Bevraging/Create")]
+        public async Task<ActionResult> Create()
         {
-            return View();
+            using (var client = SharedFunctions.SetupClient())
+            {
+                string url = "Bevraging/Create";
+                HttpResponseMessage response = await client.GetAsync(url);
+                return RedirectToAction("Overzicht");
+            }
         }
 
         // POST: Bevraging/Create
