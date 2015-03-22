@@ -162,7 +162,7 @@ public class AandoeningenGUI extends JFrame{
 			case "Vragen":	newFrame = new VragenGUI();
 							AandoeningenGUI.this.setVisible(false);
 							break;
-			case "Vragenlijsten":	newFrame = new AandoeningenGUI();
+			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
 									AandoeningenGUI.this.setVisible(false);
 									break;
 			case "Pathologieën":	newFrame = new PathologieënGUI();
