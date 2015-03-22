@@ -31,12 +31,12 @@ public class PathologieënGUI extends JFrame{
 	private JLabel overzichtLabel;
 	private JTextField nieuwePathologieVeld;
 	private JComboBox nieuwePathologieCombo;
-	private List<Vraag> vragen;
+	private List<Pathologie> pathologieën;
 
 	public PathologieënGUI(){
-		vragen = new ArrayList<Vraag>();
+		pathologieën = new ArrayList<Pathologie>();
 		for(int i=1; i<=10; i++){
-			vragen.add(new Vraag());
+			pathologieën.add(new Pathologie());
 		}
 		
 		
@@ -69,22 +69,21 @@ public class PathologieënGUI extends JFrame{
 			//Dynamische tabel
 			g2d.setPaint(Color.white);
 			g2d.fillRect(100, 210, 800, 40);
-			g2d.fillRect(100, 250, 800, 30*vragen.size());
+			g2d.fillRect(100, 250, 800, 30*pathologieën.size());
 			
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
-			g2d.drawLine(100, 210, 100, 250+30*vragen.size());
-			g2d.drawLine(900, 210, 900, 250+30*vragen.size());
-			g2d.drawLine(640, 210, 640, 250+30*vragen.size());
-			g2d.drawLine(670, 210, 670, 250+30*vragen.size());
-			g2d.drawLine(700, 210, 700, 250+30*vragen.size());
+			g2d.drawRect(100, 250, 800, 30*pathologieën.size());
+			g2d.drawLine(640, 210, 640, 250+30*pathologieën.size());
+			g2d.drawLine(670, 210, 670, 250+30*pathologieën.size());
+			g2d.drawLine(700, 210, 700, 250+30*pathologieën.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
 			g2d.drawString("Pathologieën", 320, 235);
 			g2d.drawString("Aandoeningen", 745, 235);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 280;
-			for(int i=1; i<=vragen.size(); i++){
+			for(int i=1; i<=pathologieën.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Pathologie "+i, 120, hoogte-10);
 				hoogte+=30;

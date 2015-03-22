@@ -73,8 +73,7 @@ public class VragenlijstenGUI extends JFrame{
 			
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
-			g2d.drawLine(100, 210, 100, 250+30*vragenlijsten.size());
-			g2d.drawLine(900, 210, 900, 250+30*vragenlijsten.size());
+			g2d.drawRect(100, 250, 800, 30*vragenlijsten.size());
 			g2d.drawLine(640, 210, 640, 250+30*vragenlijsten.size());
 			g2d.drawLine(670, 210, 670, 250+30*vragenlijsten.size());
 			g2d.drawLine(700, 210, 700, 250+30*vragenlijsten.size());
