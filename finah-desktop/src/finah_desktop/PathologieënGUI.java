@@ -157,10 +157,10 @@ public class PathologieënGUI extends JFrame{
 			case "Vragen":	newFrame = new VragenGUI();
 							PathologieënGUI.this.setVisible(false);
 							break;
-			case "Vragenlijsten":	newFrame = new AandoeningenGUI();
+			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
 									PathologieënGUI.this.setVisible(false);
 									break;
-			case "Aandoeningen":	newFrame = new PathologieënGUI();
+			case "Aandoeningen":	newFrame = new AandoeningenGUI();
 									PathologieënGUI.this.setVisible(false);
 									break;
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
