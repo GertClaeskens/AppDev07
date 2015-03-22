@@ -17,16 +17,10 @@ namespace Finah_Web.Controllers
         [Route("Aandoening/Overzicht")]
         public async Task<ActionResult> Overzicht()
         {
-            using (var client = new HttpClient())
+            using (var client = SharedFunctions.SetupClient())
             {
-                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-                client.BaseAddress = new Uri("http://localhost:1695/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //new code
-                const string url = "Aandoening/Overzicht";
-                HttpResponseMessage response = await client.GetAsync(url);
+                const string URL = "Aandoening/Overzicht";
+                HttpResponseMessage response = await client.GetAsync(URL);
                 if (!response.IsSuccessStatusCode)
                 {
                     return this.View();
@@ -40,14 +34,8 @@ namespace Finah_Web.Controllers
         [Route("Aandoening/{id}")]
         public async Task<ActionResult> Aandoening(string id)
         {
-            using (var client = new HttpClient())
+            using (var client = SharedFunctions.SetupClient())
             {
-                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-                client.BaseAddress = new Uri("http://localhost:1695/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //new code
                 string url = "Aandoening/" + id;
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)

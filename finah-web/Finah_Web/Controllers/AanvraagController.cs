@@ -18,14 +18,8 @@ namespace Finah_Web.Controllers
         [Route("Aanvraag/Overzicht")]
         public async Task<ActionResult> Overzicht()
         {
-            using (var client = new HttpClient())
+            using (var client = SharedFunctions.SetupClient())
             {
-                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-                client.BaseAddress = new Uri("http://localhost:1695/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //new code
                 string url = "Aanvraag/Overzicht";
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
@@ -42,14 +36,8 @@ namespace Finah_Web.Controllers
         [Route("Aanvraag/{id}")]
         public async Task<ActionResult> Aanvraag(string id)
         {
-            using (var client = new HttpClient())
+            using (var client = SharedFunctions.SetupClient())
             {
-                //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-                client.BaseAddress = new Uri("http://localhost:1695/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //new code
                 string url = "Aanvraag/" + id;
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
