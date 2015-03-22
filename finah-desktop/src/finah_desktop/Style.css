@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.root {
+	-fx-background-color: #bcbcbc;
+}
+
+
+
+.button {
+	-fx-font-family: "Arial";
+	-fx-font-size: 12px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #383640;
+}
+
+.button:hover {
+
+	-fx-text-fill: #ffffff;
+}
+
+.homeButton {
+	-fx-font-size: 40px;
+	-fx-font-weight: bold;
+	-fx-background-color: transparent;
+}
+.homeButton:hover {
+	-fx-font-size: 40px;
+	-fx-font-weight: bold;
+}
