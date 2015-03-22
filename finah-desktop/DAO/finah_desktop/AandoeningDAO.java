@@ -23,33 +23,27 @@ public class AandoeningDAO {
 		// Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(
-				"http://localhost:1695/Aandoening/Overzicht");
-		// HttpGet request = new
-		// HttpGet("http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht");
-		HttpResponse response = client.execute(request);
-		BufferedReader rd = new BufferedReader(new InputStreamReader(response
-				.getEntity().getContent()));
+		// url WEB :
+		// http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht");
+		BufferedReader rd = SharedDAO
+				.HaalGegevens("http://localhost:1695/Aandoening/Overzicht");
 		Type collectionType = new TypeToken<Collection<Aandoening>>() {
 		}.getType();
 		Collection<Aandoening> aandoeningen = gson.fromJson(rd, collectionType);
 
 		return aandoeningen;
 	}
-	public Aandoening GetAandoening(int id)
-			throws ClientProtocolException, IOException {
+
+	public Aandoening GetAandoening(int id) throws ClientProtocolException,
+			IOException {
 		// Exception Handling nog nakijken
-		//Nog opzoeken hoe in dit geval de pathologieen kunnen worden uitgelezen
+		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
+		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(
-				"http://localhost:1695/Aandoening/" +id);
 		// HttpGet request = new
 		// HttpGet("http://finahbackend1920.azurewebsites.net/Aandoening/" +id);
-		HttpResponse response = client.execute(request);
-		BufferedReader rd = new BufferedReader(new InputStreamReader(response
-				.getEntity().getContent()));
+		BufferedReader rd = SharedDAO
+				.HaalGegevens("http://localhost:1695/Aandoening/" + id);
 
 		Aandoening aandoening = gson.fromJson(rd, Aandoening.class);
 

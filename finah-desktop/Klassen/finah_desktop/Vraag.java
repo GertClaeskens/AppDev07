@@ -10,13 +10,13 @@ public class Vraag {
 	private int id;
 	private String vraagstelling;
 	private Foto afbeelding;
-	private Geluid geluidsfragment;
+	private GeluidsFragment geluidsfragment;
 
 	public Vraag() {
 
 	}
 
-	public Vraag(String vraagstelling, Foto afbeelding, Geluid geluidsfragment) {
+	public Vraag(String vraagstelling, Foto afbeelding, GeluidsFragment geluidsfragment) {
 		this.vraagstelling = vraagstelling;
 		this.afbeelding = afbeelding;
 		this.geluidsfragment = geluidsfragment;
@@ -46,11 +46,11 @@ public class Vraag {
 		this.afbeelding = afbeelding;
 	}
 
-	public Geluid getGeluidsfragment() {
+	public GeluidsFragment getGeluidsfragment() {
 		return geluidsfragment;
 	}
 
-	public void setGeluidsfragment(Geluid geluidsfragment) {
+	public void setGeluidsfragment(GeluidsFragment geluidsfragment) {
 		this.geluidsfragment = geluidsfragment;
 	}
 
