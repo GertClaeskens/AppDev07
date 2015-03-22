@@ -76,7 +76,7 @@ public void start(Stage stage) throws Exception {
 	buttons.add(btnResultaten);
 	buttons.add(btnUitloggen);
 		
-	tPane.setHgap(25);
+	tPane.setHgap(20);
 	for (Button b : buttons){
 		b.setMaxSize(140, 30);
 		b.setMinSize(140, 30);
