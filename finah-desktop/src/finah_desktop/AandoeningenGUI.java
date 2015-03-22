@@ -135,6 +135,7 @@ public class AandoeningenGUI extends JFrame{
 			vragenKnop.addActionListener(handler);
 			vragenlijstenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
+			accountsKnop.addActionListener(handler);
 			
 			add(titel);
 			add(vragenKnop);
@@ -167,6 +168,9 @@ public class AandoeningenGUI extends JFrame{
 			case "Pathologieën":	newFrame = new PathologieënGUI();
 									AandoeningenGUI.this.setVisible(false);
 									break;
+			case "Accounts":	newFrame = new AccountsOverzichtGUI();
+								AandoeningenGUI.this.setVisible(false);
+								break;
 			}
 		}	
 	}
