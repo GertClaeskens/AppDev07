@@ -73,13 +73,13 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			g2d.drawLine(870, 130, 870, 170+30*aandoeningen.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
-			g2d.drawString("Vragen", 335, 155);
+			g2d.drawString("Aandoeningen", 315, 155);
 			g2d.drawString("Vragenlijst", 715, 155);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 200;
 			for(int i=1; i<=aandoeningen.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Vraag "+i, 120, hoogte-10);
+				g2d.drawString("Aandoening "+i, 120, hoogte-10);
 				hoogte+=30;
 			}
 			
@@ -105,9 +105,9 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
-			aanpassenLabel = new JLabel("Vragen aanpassen");
+			aanpassenLabel = new JLabel("Aandoeningen aanpassen");
 			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
-			aanpassenLabel.setBounds(100, 100, 190, 20);
+			aanpassenLabel.setBounds(100, 100, 210, 20);
 			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);

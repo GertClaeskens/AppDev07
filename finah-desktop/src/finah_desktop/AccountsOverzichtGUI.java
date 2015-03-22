@@ -162,6 +162,8 @@ public class AccountsOverzichtGUI extends JFrame{
 			vragenlijstenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
+			toevoegKnop.addActionListener(handler);
+
 
 			add(titel);
 			add(vragenKnop);
@@ -194,6 +196,9 @@ public class AccountsOverzichtGUI extends JFrame{
 			case "Pathologieën":	newFrame = new PathologieënGUI();
 									AccountsOverzichtGUI.this.setVisible(false);
 									break;
+			case "Account toevoegen":	newFrame = new AccountToevoegenGUI();
+										AccountsOverzichtGUI.this.setVisible(false);
+										break;
 			}
 		}		
 	}

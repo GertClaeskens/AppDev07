@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class VragenAanpassenGUI extends JFrame{
+public class VragenlijstBekijkenGUI extends JFrame{
 	
 	private VragenAanpassenPanel panel;
 	private JButton titel;
@@ -29,7 +29,7 @@ public class VragenAanpassenGUI extends JFrame{
 	private JLabel aanpassenLabel;
 	private List<Vraag> vragen;
 
-	public VragenAanpassenGUI(){
+	public VragenlijstBekijkenGUI(){
 		vragen = new ArrayList<Vraag>();
 		for(int i=1; i<=10; i++){
 			vragen.add(new Vraag());
@@ -69,12 +69,12 @@ public class VragenAanpassenGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 130, 800, 40);
 			g2d.drawRect(100, 170, 800, 30*vragen.size());
-			g2d.drawLine(640, 130, 640, 170+30*vragen.size());
-			g2d.drawLine(870, 130, 870, 170+30*vragen.size());
+			//g2d.drawLine(640, 130, 640, 170+30*vragen.size());
+			//g2d.drawLine(870, 130, 870, 170+30*vragen.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
-			g2d.drawString("Aandoeningen", 315, 155);
-			g2d.drawString("Vragenlijst", 715, 155);
+			g2d.drawString("Vragen", 315, 155);
+			//g2d.drawString("Vragenlijst", 715, 155);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 200;
 			for(int i=1; i<=vragen.size(); i++){
@@ -105,7 +105,7 @@ public class VragenAanpassenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
-			aanpassenLabel = new JLabel("Aandoeningen aanpassen");
+			aanpassenLabel = new JLabel("Vragenlijst bekijken");
 			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
 			aanpassenLabel.setBounds(100, 100, 210, 20);
 			
@@ -132,26 +132,26 @@ public class VragenAanpassenGUI extends JFrame{
 			JFrame newFrame;
 			switch(e.getActionCommand()){
 			case "FINAH":	newFrame = new AccountGUI();
-							VragenAanpassenGUI.this.setVisible(false);
+							VragenlijstBekijkenGUI.this.setVisible(false);
 							break;
 			case "Vragen":	newFrame = new VragenGUI();
-							VragenAanpassenGUI.this.setVisible(false);
+							VragenlijstBekijkenGUI.this.setVisible(false);
 							break;
 			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
-									VragenAanpassenGUI.this.setVisible(false);
+									VragenlijstBekijkenGUI.this.setVisible(false);
 									break;
 			case "Aandoeningen":	newFrame = new AandoeningenGUI();
-									VragenAanpassenGUI.this.setVisible(false);
+									VragenlijstBekijkenGUI.this.setVisible(false);
 									break;
 			case "Pathologieën":	newFrame = new PathologieënGUI();
-									VragenAanpassenGUI.this.setVisible(false);
+									VragenlijstBekijkenGUI.this.setVisible(false);
 									break;
 			}
 		}		
 	}
 	
 	public static void main(String[] args){
-		VragenAanpassenGUI test = new VragenAanpassenGUI();
+		VragenlijstBekijkenGUI test = new VragenlijstBekijkenGUI();
 	}
 	
 }
