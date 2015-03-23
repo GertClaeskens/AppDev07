@@ -30,6 +30,7 @@ namespace Finah_Web.Models
             return new ApplicationDbContext();
         }
 
+        public DbSet<Aandoening> Aandoeningen { get; set; }
         public System.Data.Entity.DbSet<Finah_Web.Models.Bevraging> Bevragings { get; set; }
 
         public System.Data.Entity.DbSet<Finah_Web.Models.VragenLijst> VragenLijsts { get; set; }
