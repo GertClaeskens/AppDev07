@@ -49,31 +49,51 @@ namespace Finah_Web.Controllers
             }
         }
 
+        // GET: LeeftijdsCategorie/Details
+        //public ActionResult Details(int id) --Voor als Db
+        public ActionResult Details() //temp
+        {
+            return View();
+        }
+
         // GET: LeeftijdsCategorie/Create
-        public ActionResult Create()
+        [Route("LeeftijdsCategorie/Create")]
+        public ActionResult Create() //Gets empty page for new aandoening
         {
             return View();
         }
 
         // POST: LeeftijdsCategorie/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        //[HttpPost]
+        [Route("LeeftijdsCategorie/PCreate")] //Post new aandoening
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var client = SharedFunctions.SetupClient())
+                {
+                    var leefCat = new LeeftijdsCategorie();
 
-                return RedirectToAction("Index");
+                    leefCat.Id = 1;
+                    leefCat.Van = 0;
+                    leefCat.Tot = 99;
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("LeeftijdsCategorie/", leefCat);
+                }
+
+                return RedirectToAction("Overzicht");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Overzicht");
             }
         }
 
         // GET: LeeftijdsCategorie/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Edit(int id) //Laad bestaande aandoening om aan te passen  -- Voor als DB live is
+        public ActionResult Edit() //Temp
         {
+            //Via Id aandoening ophalen om naderhand te updaten/editen
             return View();
         }
 
@@ -94,7 +114,8 @@ namespace Finah_Web.Controllers
         }
 
         // GET: LeeftijdsCategorie/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id) -- Voor als DB live is
+        public ActionResult Delete() //Temp
         {
             return View();
         }

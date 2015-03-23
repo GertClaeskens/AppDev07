@@ -49,31 +49,59 @@ namespace Finah_Web.Controllers
             }
         }
 
+        // GET: VragenLijst/Details
+        //public ActionResult Details(int id) --Voor als Db
+        public ActionResult Details() //temp
+        {
+            return View();
+        }
+
         // GET: VragenLijst/Create
-        public ActionResult Create()
+        [Route("VragenLijst/Create")]
+        public ActionResult Create() //Gets empty page for new aandoening
         {
             return View();
         }
 
         // POST: VragenLijst/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        //[HttpPost]
+        [Route("VragenLijst/PCreate")] //Post new aandoening
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var client = SharedFunctions.SetupClient())
+                {
+                    var vragenLijst = new VragenLijst();
+                    var patho = new Pathologie();
+                    var aandoening = new Aandoening();
 
-                return RedirectToAction("Index");
+                    patho.Id = 1;
+                    patho.Omschrijving = "Omschrijving";
+
+                    aandoening.Id = 1;
+                    aandoening.Omschrijving = "Omschrijving";
+
+                    vragenLijst.Id = 1;
+                    vragenLijst.Patholo = patho;
+                    vragenLijst.Aandoe = aandoening;
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("VragenLijst/", vragenLijst);
+                }
+
+                return RedirectToAction("Overzicht");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Overzicht");
             }
         }
 
         // GET: VragenLijst/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Edit(int id) //Laad bestaande aandoening om aan te passen  -- Voor als DB live is
+        public ActionResult Edit() //Temp
         {
+            //Via Id aandoening ophalen om naderhand te updaten/editen
             return View();
         }
 
@@ -94,7 +122,8 @@ namespace Finah_Web.Controllers
         }
 
         // GET: VragenLijst/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id) -- Voor als DB live is
+        public ActionResult Delete() //Temp
         {
             return View();
         }
