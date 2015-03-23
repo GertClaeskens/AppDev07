@@ -55,11 +55,26 @@ namespace Finah_Web.Controllers
 
         // POST: Aandoening/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var client = SharedFunctions.SetupClient())
+                {
+                    var aandoening = new Aandoening();
+                    var pt = new Pathologie();
+                    var patLijst = new List<Pathologie>();
+
+                    pt.Id = 1;
+                    pt.Omschrijving = "Pathologie";
+                    patLijst.Add(pt);
+
+
+                    aandoening.Id = 1;
+                    aandoening.Omschrijving = "Omschrijving";
+                    aandoening.Patologieen = patLijst;
+                    HttpResponseMessage response = await client.PostAsJsonAsync("Aandoening/",aandoening);
+                }
 
                 return RedirectToAction("Index");
             }
