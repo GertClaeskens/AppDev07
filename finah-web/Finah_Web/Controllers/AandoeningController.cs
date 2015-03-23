@@ -47,15 +47,22 @@ namespace Finah_Web.Controllers
             }
         }
 
+        // GET: Aandoening/Details
+        //public ActionResult Details(int id) --Voor als Db
+        public ActionResult Details() //temp
+        {
+            return View();
+        }
+
         // GET: Aandoening/Create
-        [Route("Aandoening/GCreate")]
-        public ActionResult Create()
+        [Route("Aandoening/Create")]
+        public ActionResult Create() //Gets empty page for new aandoening
         {
             return View();
         }
 
         // POST: Aandoening/Create
-        [Route("Aandoening/PCreate")]
+        [Route("Aandoening/PCreate")] //Post new aandoening
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
@@ -87,14 +94,16 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Aandoening/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Edit(int id) //Laad bestaande aandoening om aan te passen  -- Voor als DB live is
+        public ActionResult Edit() //Temp
         {
+            //Via Id aandoening ophalen om naderhand te updaten/editen
             return View();
         }
 
         // POST: Aandoening/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection) //Update ingelade aandoening
         {
             try
             {
@@ -109,7 +118,8 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Aandoening/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id) -- Voor als DB live is
+        public ActionResult Delete() //Temp
         {
             return View();
         }
