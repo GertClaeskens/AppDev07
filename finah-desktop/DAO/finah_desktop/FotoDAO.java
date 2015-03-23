@@ -11,8 +11,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class FotoDao {
-	public Collection<Foto> GetFotos()
+public class FotoDAO {
+	public static Collection<Foto> GetFotos()
 			throws ClientProtocolException, IOException {
 		// Exception Handling nog nakijken
 
@@ -24,7 +24,7 @@ public class FotoDao {
 
 		return fotos;
 	}
-	public Foto GetFoto(int id)
+	public static Foto GetFoto(int id)
 			throws ClientProtocolException, IOException {
 		// Exception Handling nog nakijken
 		//Nog opzoeken hoe in dit geval de pathologieen kunnen worden uitgelezen
