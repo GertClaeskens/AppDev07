@@ -49,31 +49,50 @@ namespace Finah_Web.Controllers
             }
         }
 
+        // GET: Pathologie/Details
+        //public ActionResult Details(int id) --Voor als Db
+        public ActionResult Details() //temp
+        {
+            return View();
+        }
+
         // GET: Pathologie/Create
-        public ActionResult Create()
+        [Route("Pathologie/Create")]
+        public ActionResult Create() //Gets empty page for new aandoening
         {
             return View();
         }
 
         // POST: Pathologie/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        //[HttpPost]
+        [Route("Pathologie/PCreate")] //Post new aandoening
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var client = SharedFunctions.SetupClient())
+                {
+                    var pt = new Pathologie();
 
-                return RedirectToAction("Index");
+                    pt.Id = 1;
+                    pt.Omschrijving = "Pathologie";
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("Pathologie/", pt);
+                }
+
+                return RedirectToAction("Overzicht");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Overzicht");
             }
         }
 
         // GET: Pathologie/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Edit(int id) //Laad bestaande aandoening om aan te passen  -- Voor als DB live is
+        public ActionResult Edit() //Temp
         {
+            //Via Id aandoening ophalen om naderhand te updaten/editen
             return View();
         }
 
@@ -94,7 +113,8 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Pathologie/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id) -- Voor als DB live is
+        public ActionResult Delete() //Temp
         {
             return View();
         }
