@@ -130,7 +130,7 @@ public class AccountsOverzichtGUI extends JFrame{
 			hoogte+=70;
 			for(int i=1; i<=accounts.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Aanvraag "+i, 120, hoogte-10);
+				g2d.drawString("Gebruiker "+i, 120, hoogte-10);
 				hoogte+=30;
 			}
 			
