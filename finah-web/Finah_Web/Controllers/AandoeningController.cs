@@ -32,7 +32,7 @@ namespace Finah_Web.Controllers
 
         // GET: Aandoening/5
         [Route("Aandoening/{id}")]
-        public async Task<ActionResult> Aandoening(string id)
+        public async Task<ActionResult> Aandoening(int id)
         {
             using (var client = SharedFunctions.SetupClient())
             {
