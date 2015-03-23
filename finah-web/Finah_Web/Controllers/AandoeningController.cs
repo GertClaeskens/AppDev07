@@ -51,7 +51,7 @@ namespace Finah_Web.Controllers
         [Route("Aandoening/GCreate")]
         public ActionResult Create()
         {
-            return RedirectToAction("Overzicht");
+            return View();
         }
 
         // POST: Aandoening/Create
