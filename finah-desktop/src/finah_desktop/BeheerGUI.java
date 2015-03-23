@@ -83,6 +83,7 @@ public class BeheerGUI extends JFrame{
 			vragenlijstenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
+			accountsKnop.addActionListener(handler);
 			
 			tekst = new JLabel("<html>Welkom op de beheerderspagina!<br><br>Hier kan u alle overzichten bekijken en waar nodig "
 					+ "aanpassingen maken.<br/>Indien u terug wilt gaan klikt u gewoon op de tekst FINAH en wordt u terug <br>naar "
@@ -119,6 +120,9 @@ public class BeheerGUI extends JFrame{
 			case "Pathologieën":	newFrame = new PathologieënGUI();
 									BeheerGUI.this.setVisible(false);
 									break;
+			case "Accounts":	newFrame = new AccountsOverzichtGUI();
+								BeheerGUI.this.setVisible(false);
+								break;
 			}
 		}			
 	}
