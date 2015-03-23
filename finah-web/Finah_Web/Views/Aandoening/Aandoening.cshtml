@@ -1,0 +1,27 @@
+﻿@model Finah_Web.Models.Aandoening
+
+@{
+    ViewBag.Title = "Aandoening";
+    Layout = "~/Views/Shared/_LayoutBeheren.cshtml";
+}
+
+<h2>Aandoening</h2>
+
+<div>
+    <h4>Aandoening</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Omschrijving)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
