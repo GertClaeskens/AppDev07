@@ -48,13 +48,14 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Aandoening/Create
+        [Route("Aandoening/GCreate")]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Overzicht");
         }
 
         // POST: Aandoening/Create
-        [HttpPost]
+        [Route("Aandoening/PCreate")]
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
@@ -73,14 +74,15 @@ namespace Finah_Web.Controllers
                     aandoening.Id = 1;
                     aandoening.Omschrijving = "Omschrijving";
                     aandoening.Patologieen = patLijst;
-                    HttpResponseMessage response = await client.PostAsJsonAsync("Aandoening/",aandoening);
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("api/Aandoenings", aandoening);
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Overzicht");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Overzicht");
             }
         }
 
