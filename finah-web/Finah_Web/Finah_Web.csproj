@@ -285,7 +285,6 @@
     <Content Include="Views\Beheren\Index.cshtml" />
     <Content Include="Views\Aanvraag\Overzicht.cshtml" />
     <Content Include="Views\VragenLijst\Overzicht.cshtml" />
-    <Content Include="Views\Vragen\Create.cshtml" />
     <Content Include="Views\Aandoening\Details.cshtml" />
     <Content Include="Views\Aandoening\Create.cshtml" />
     <Content Include="Views\Aanvraag\Details.cshtml" />
