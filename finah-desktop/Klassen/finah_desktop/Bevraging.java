@@ -3,91 +3,156 @@ package finah_desktop;
 import java.util.Date;
 
 public class Bevraging {
-	private String id; // 150311095101
-	private Date datum_aangevraagd; // evt. berekend veld uit de id halen
-	private int aantal_ingevuld;
-	private String info;
-	private String Relatie;
-	private boolean patient; // true voor patient, false voor mantelzorger
-	private Account aangemaakt_door;
-	private VragenLijst vragen;
+    public String Id;
 
-	public Bevraging(Date datum_aangevraagd, int aantal_ingevuld, String info,
-			String relatie, boolean patient, Account aangemaakt_door,
-			VragenLijst vragen) {
+    public Date Aangevraagd;
+
+    public  LeeftijdsCategorie LeeftijdsCatPatient;
+
+    public  LeeftijdsCategorie LeeftijdsCatMantelZorger;
+
+    public String Informatie;
+
+    //Ook eventueel enum van maken
+    public String Relatie;
+
+    public  Account AangemaaktDoor;
+
+    public  VragenLijst Vragenpatient;
+
+    public  VragenLijst VragenMantelzorger;
+
+
+	public Bevraging() {
+	}
+
+
+
+	public Bevraging(String id, Date aangevraagd,
+			LeeftijdsCategorie leeftijdsCatPatient,
+			LeeftijdsCategorie leeftijdsCatMantelZorger, String informatie,
+			String relatie, Account aangemaaktDoor, VragenLijst vragenpatient,
+			VragenLijst vragenMantelzorger) {
 		super();
-		this.datum_aangevraagd = datum_aangevraagd;
-		this.aantal_ingevuld = aantal_ingevuld;
-		this.info = info;
+		Id = id;
+		Aangevraagd = aangevraagd;
+		LeeftijdsCatPatient = leeftijdsCatPatient;
+		LeeftijdsCatMantelZorger = leeftijdsCatMantelZorger;
+		Informatie = informatie;
 		Relatie = relatie;
-		this.patient = patient;
-		this.aangemaakt_door = aangemaakt_door;
-		this.vragen = vragen;
+		AangemaaktDoor = aangemaaktDoor;
+		Vragenpatient = vragenpatient;
+		VragenMantelzorger = vragenMantelzorger;
 	}
 
 	public String getId() {
-		return id;
+		return Id;
 	}
+
+
 
 	public void setId(String id) {
-		this.id = id;
+		Id = id;
 	}
 
-	public Date getDatum_aangevraagd() {
-		return datum_aangevraagd;
+
+
+	public Date getAangevraagd() {
+		return Aangevraagd;
 	}
 
-	public void setDatum_aangevraagd(Date datum_aangevraagd) {
-		this.datum_aangevraagd = datum_aangevraagd;
+
+
+	public void setAangevraagd(Date aangevraagd) {
+		Aangevraagd = aangevraagd;
 	}
 
-	public int getAantal_ingevuld() {
-		return aantal_ingevuld;
+
+
+	public LeeftijdsCategorie getLeeftijdsCatPatient() {
+		return LeeftijdsCatPatient;
 	}
 
-	public void setAantal_ingevuld(int aantal_ingevuld) {
-		this.aantal_ingevuld = aantal_ingevuld;
+
+
+	public void setLeeftijdsCatPatient(LeeftijdsCategorie leeftijdsCatPatient) {
+		LeeftijdsCatPatient = leeftijdsCatPatient;
 	}
 
-	public String getInfo() {
-		return info;
+
+
+	public LeeftijdsCategorie getLeeftijdsCatMantelZorger() {
+		return LeeftijdsCatMantelZorger;
 	}
 
-	public void setInfo(String info) {
-		this.info = info;
+
+
+	public void setLeeftijdsCatMantelZorger(
+			LeeftijdsCategorie leeftijdsCatMantelZorger) {
+		LeeftijdsCatMantelZorger = leeftijdsCatMantelZorger;
 	}
+
+
+
+	public String getInformatie() {
+		return Informatie;
+	}
+
+
+
+	public void setInformatie(String informatie) {
+		Informatie = informatie;
+	}
+
+
 
 	public String getRelatie() {
 		return Relatie;
 	}
 
+
+
 	public void setRelatie(String relatie) {
 		Relatie = relatie;
 	}
 
-	public boolean isPatient() {
-		return patient;
+
+
+	public Account getAangemaaktDoor() {
+		return AangemaaktDoor;
 	}
 
-	public void setPatient(boolean patient) {
-		this.patient = patient;
+
+
+	public void setAangemaaktDoor(Account aangemaaktDoor) {
+		AangemaaktDoor = aangemaaktDoor;
 	}
 
-	public Account getAangemaakt_door() {
-		return aangemaakt_door;
+
+
+	public VragenLijst getVragenpatient() {
+		return Vragenpatient;
 	}
 
-	public void setAangemaakt_door(Account aangemaakt_door) {
-		this.aangemaakt_door = aangemaakt_door;
+
+
+	public void setVragenpatient(VragenLijst vragenpatient) {
+		Vragenpatient = vragenpatient;
 	}
 
-	public VragenLijst getVragen() {
-		return vragen;
+
+
+	public VragenLijst getVragenMantelzorger() {
+		return VragenMantelzorger;
 	}
 
-	public void setVragen(VragenLijst vragen) {
-		this.vragen = vragen;
+
+
+	public void setVragenMantelzorger(VragenLijst vragenMantelzorger) {
+		VragenMantelzorger = vragenMantelzorger;
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -96,20 +161,32 @@ public class Bevraging {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Relatie == null) ? 0 : Relatie.hashCode());
 		result = prime * result
-				+ ((aangemaakt_door == null) ? 0 : aangemaakt_door.hashCode());
-		result = prime * result + aantal_ingevuld;
+				+ ((AangemaaktDoor == null) ? 0 : AangemaaktDoor.hashCode());
+		result = prime * result
+				+ ((Aangevraagd == null) ? 0 : Aangevraagd.hashCode());
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result
+				+ ((Informatie == null) ? 0 : Informatie.hashCode());
 		result = prime
 				* result
-				+ ((datum_aangevraagd == null) ? 0 : datum_aangevraagd
+				+ ((LeeftijdsCatMantelZorger == null) ? 0
+						: LeeftijdsCatMantelZorger.hashCode());
+		result = prime
+				* result
+				+ ((LeeftijdsCatPatient == null) ? 0 : LeeftijdsCatPatient
 						.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((info == null) ? 0 : info.hashCode());
-		result = prime * result + (patient ? 1231 : 1237);
-		result = prime * result + ((vragen == null) ? 0 : vragen.hashCode());
+		result = prime * result + ((Relatie == null) ? 0 : Relatie.hashCode());
+		result = prime
+				* result
+				+ ((VragenMantelzorger == null) ? 0 : VragenMantelzorger
+						.hashCode());
+		result = prime * result
+				+ ((Vragenpatient == null) ? 0 : Vragenpatient.hashCode());
 		return result;
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -123,42 +200,56 @@ public class Bevraging {
 		if (getClass() != obj.getClass())
 			return false;
 		Bevraging other = (Bevraging) obj;
+		if (AangemaaktDoor == null) {
+			if (other.AangemaaktDoor != null)
+				return false;
+		} else if (!AangemaaktDoor.equals(other.AangemaaktDoor))
+			return false;
+		if (Aangevraagd == null) {
+			if (other.Aangevraagd != null)
+				return false;
+		} else if (!Aangevraagd.equals(other.Aangevraagd))
+			return false;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		if (Informatie == null) {
+			if (other.Informatie != null)
+				return false;
+		} else if (!Informatie.equals(other.Informatie))
+			return false;
+		if (LeeftijdsCatMantelZorger == null) {
+			if (other.LeeftijdsCatMantelZorger != null)
+				return false;
+		} else if (!LeeftijdsCatMantelZorger
+				.equals(other.LeeftijdsCatMantelZorger))
+			return false;
+		if (LeeftijdsCatPatient == null) {
+			if (other.LeeftijdsCatPatient != null)
+				return false;
+		} else if (!LeeftijdsCatPatient.equals(other.LeeftijdsCatPatient))
+			return false;
 		if (Relatie == null) {
 			if (other.Relatie != null)
 				return false;
 		} else if (!Relatie.equals(other.Relatie))
 			return false;
-		if (aangemaakt_door == null) {
-			if (other.aangemaakt_door != null)
+		if (VragenMantelzorger == null) {
+			if (other.VragenMantelzorger != null)
 				return false;
-		} else if (!aangemaakt_door.equals(other.aangemaakt_door))
+		} else if (!VragenMantelzorger.equals(other.VragenMantelzorger))
 			return false;
-		if (aantal_ingevuld != other.aantal_ingevuld)
-			return false;
-		if (datum_aangevraagd == null) {
-			if (other.datum_aangevraagd != null)
+		if (Vragenpatient == null) {
+			if (other.Vragenpatient != null)
 				return false;
-		} else if (!datum_aangevraagd.equals(other.datum_aangevraagd))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (info == null) {
-			if (other.info != null)
-				return false;
-		} else if (!info.equals(other.info))
-			return false;
-		if (patient != other.patient)
-			return false;
-		if (vragen == null) {
-			if (other.vragen != null)
-				return false;
-		} else if (!vragen.equals(other.vragen))
+		} else if (!Vragenpatient.equals(other.Vragenpatient))
 			return false;
 		return true;
 	}
+
+
 	
 
 }

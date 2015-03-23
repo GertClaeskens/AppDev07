@@ -18,9 +18,13 @@ namespace Finah_Backend.Controllers
 
         // GET: api/Aanvraag
         [Route("Aanvraag/Overzicht")]
-        public IQueryable<Aanvraag> GetOverzicht()
+        //public IQueryable<Aanvraag> GetOverzicht()
+        public IEnumerable<Aanvraag> GetOverzicht()// return -> naderhand veranderen in bovenstaande
+
         {
-            return db.Aanvragen;
+            //return db.Aanvragen;
+            var aanvragen = new List<Aanvraag>{ new Aanvraag { Id = 1 }, new Aanvraag { Id = 2 },new Aanvraag { Id = 3 },new Aanvraag { Id = 4 },new Aanvraag { Id = 5 }};
+            return aanvragen;
         }
 
         // GET: api/Aanvraag/5
@@ -28,7 +32,12 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult Get(int id)
         {
-            var aanvraag = db.Aanvragen.Find(id);
+            Aanvraag aanvraag = null;
+            if (id == 1)
+            {
+                aanvraag = new Aanvraag { Id = 1 };
+            }
+            //var aanvraag = db.Aanvragen.Find(id);
             if (aanvraag == null)
             {
                 return NotFound();

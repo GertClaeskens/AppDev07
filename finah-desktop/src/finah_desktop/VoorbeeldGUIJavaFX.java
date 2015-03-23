@@ -64,10 +64,11 @@ public void start(Stage stage) throws Exception {
 	navBar.setPrefSize(800,100);
 	boven.setMinSize(1000, 100);
 	boven.setMaxSize(1000, 100);
-	boven.setPrefSize(100, 100);
+	boven.setPrefSize(1000, 100);
 	tPane.setMinSize(800, 50);
 	tPane.setMaxSize(800, 50);
 	tPane.setPrefSize(800,50);
+	
 
 	
 	buttons.add(btnAccount);
@@ -94,6 +95,7 @@ public void start(Stage stage) throws Exception {
 	
 
 	Scene scene = new Scene(root,1000,800);
+	stage.setResizable(false);
 	scene.getStylesheets().add("Style.css");
 	stage.setScene(scene);
 	

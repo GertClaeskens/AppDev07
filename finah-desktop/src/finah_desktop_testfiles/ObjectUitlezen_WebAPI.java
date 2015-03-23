@@ -34,18 +34,18 @@ public class ObjectUitlezen_WebAPI {
 //		BufferedReader rd = new BufferedReader(new InputStreamReader(response
 //				.getEntity().getContent()));
 		//Type collectionType = new TypeToken<Aandoening>() {}.getType();
-		BufferedReader rd = SharedDAO.HaalGegevens("http://localhost:1695/Aandoening/1");
+		BufferedReader rd = SharedDAO.HaalGegevens("http://localhost:1695/Aanvraag/1");
 		String line = rd.readLine();
 		System.out.println(line);
-		Aandoening p = gson.fromJson(line, Aandoening.class);
-		System.out.println(p.getId() + ": " + p.getOmschrijving());
+		Aanvraag p = gson.fromJson(line, Aanvraag.class);
+		System.out.println(p.getId());// + ": " + p.getOmschrijving());
 		
 		System.out.println(p.toString());
-		for (int i = 0; i < p.getBijhorende_pathologie().size(); i++) {
-			System.out.println(p.getId() + ": " + p.getOmschrijving() + "  ");
-					//+ p.getBijhorende_pathologie().get(i).getId() + " "
-					//+ p.getBijhorende_pathologie().get(i).getNaam());
-		}
+//		for (int i = 0; i < p.getBijhorende_pathologie().size(); i++) {
+//			System.out.println(p.getId() + ": " + p.getOmschrijving() + "  ");
+//					//+ p.getBijhorende_pathologie().get(i).getId() + " "
+//					//+ p.getBijhorende_pathologie().get(i).getNaam());
+//		}
 
 	}
 

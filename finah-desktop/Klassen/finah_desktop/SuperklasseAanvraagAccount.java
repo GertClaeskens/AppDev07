@@ -1,144 +1,185 @@
 package finah_desktop;
 
 public abstract class SuperklasseAanvraagAccount {
-	private int id;
-	private String naam;
-	private String voornaam;
-	private String rijksregisterNr;
-	private String adres;
-	private int telefoon;
-	private int gsm;
-	private String login;
-	private String password;
-	private String email;
-	private String geheimeVraag;
-	private String geheimAntwoord;
-	private TypeAccount typeAcc;
+	public int Id;
+
+	public String Naam;
+	public String VoorNaam;
+
+	public String RijksRegisterNr;
+
+	public String Adres;
+
+	public String Telnr;
+
+	public String Gsm;
+
+	public String Login;
+
+	public String Passwd;
+	public String email;
+
+	public String GeheimeVraag;
+
+	public String GeheimAntwoord;
+
+	public TypeAccount TypeAcc;
+
+
+
+	public Postcode Postcd;
 
 	public SuperklasseAanvraagAccount() {
 	}
 
-	public SuperklasseAanvraagAccount(String naam, String voornaam,
-			String rijksregisterNr, String adres, int telefoon, int gsm,
-			String login, String password, String email, String geheimeVraag,
-			String geheimAntwoord,TypeAccount typeAcc) {
-		this.naam = naam;
-		this.voornaam = voornaam;
-		this.rijksregisterNr = rijksregisterNr;
-		this.adres = adres;
-		this.telefoon = telefoon;
-		this.gsm = gsm;
-		this.login = login;
-		this.password = password;
+
+
+	public SuperklasseAanvraagAccount(int id, String naam, String voorNaam,
+			String rijksRegisterNr, String adres, String telnr, String gsm,
+			String login, String passwd, String email, String geheimeVraag,
+			String geheimAntwoord, TypeAccount typeAcc, Postcode postcd) {
+		super();
+		Id = id;
+		Naam = naam;
+		VoorNaam = voorNaam;
+		RijksRegisterNr = rijksRegisterNr;
+		Adres = adres;
+		Telnr = telnr;
+		Gsm = gsm;
+		Login = login;
+		Passwd = passwd;
 		this.email = email;
-		this.geheimeVraag = geheimeVraag;
-		this.geheimAntwoord = geheimAntwoord;
-		this.typeAcc=typeAcc;
+		GeheimeVraag = geheimeVraag;
+		GeheimAntwoord = geheimAntwoord;
+		TypeAcc = typeAcc;
+		Postcd = postcd;
 	}
 
-	public TypeAccount getTypeAcc() {
-		return typeAcc;
-	}
 
-	public void setTypeAcc(TypeAccount typeAcc) {
-		this.typeAcc = typeAcc;
-	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getNaam() {
-		return naam;
+		return Naam;
 	}
 
 	public void setNaam(String naam) {
-		this.naam = naam;
+		Naam = naam;
 	}
 
-	public String getVoornaam() {
-		return voornaam;
+	public String getVoorNaam() {
+		return VoorNaam;
 	}
 
-	public void setVoornaam(String voornaam) {
-		this.voornaam = voornaam;
+	public void setVoorNaam(String voorNaam) {
+		VoorNaam = voorNaam;
 	}
 
-	public String getRijksregisterNr() {
-		return rijksregisterNr;
+	public String getRijksRegisterNr() {
+		return RijksRegisterNr;
 	}
 
-	public void setRijksregisterNr(String rijksregisterNr) {
-		this.rijksregisterNr = rijksregisterNr;
+	public void setRijksRegisterNr(String rijksRegisterNr) {
+		RijksRegisterNr = rijksRegisterNr;
 	}
 
 	public String getAdres() {
-		return adres;
+		return Adres;
 	}
 
 	public void setAdres(String adres) {
-		this.adres = adres;
+		Adres = adres;
 	}
 
-	public int getTelefoon() {
-		return telefoon;
+	public String getTelnr() {
+		return Telnr;
 	}
 
-	public void setTelefoon(int telefoon) {
-		this.telefoon = telefoon;
+	public void setTelnr(String telnr) {
+		Telnr = telnr;
 	}
 
-	public int getGsm() {
-		return gsm;
+	public String getGsm() {
+		return Gsm;
 	}
 
-	public void setGsm(int gsm) {
-		this.gsm = gsm;
+	public void setGsm(String gsm) {
+		Gsm = gsm;
 	}
 
 	public String getLogin() {
-		return login;
+		return Login;
 	}
 
 	public void setLogin(String login) {
-		this.login = login;
+		Login = login;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswd() {
+		return Passwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswd(String passwd) {
+		Passwd = passwd;
 	}
 
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+
+
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+
 	public String getGeheimeVraag() {
-		return geheimeVraag;
+		return GeheimeVraag;
 	}
 
 	public void setGeheimeVraag(String geheimeVraag) {
-		this.geheimeVraag = geheimeVraag;
+		GeheimeVraag = geheimeVraag;
 	}
 
 	public String getGeheimAntwoord() {
-		return geheimAntwoord;
+		return GeheimAntwoord;
 	}
 
 	public void setGeheimAntwoord(String geheimAntwoord) {
-		this.geheimAntwoord = geheimAntwoord;
+		GeheimAntwoord = geheimAntwoord;
 	}
+
+	public TypeAccount getTypeAcc() {
+		return TypeAcc;
+	}
+
+	public void setTypeAcc(TypeAccount typeAcc) {
+		TypeAcc = typeAcc;
+	}
+
+	public Postcode getPostcd() {
+		return Postcd;
+	}
+
+	public void setPostcd(Postcode postcd) {
+		Postcd = postcd;
+	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -147,26 +188,28 @@ public abstract class SuperklasseAanvraagAccount {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adres == null) ? 0 : adres.hashCode());
+		result = prime * result + ((Adres == null) ? 0 : Adres.hashCode());
+		result = prime * result
+				+ ((GeheimAntwoord == null) ? 0 : GeheimAntwoord.hashCode());
+		result = prime * result
+				+ ((GeheimeVraag == null) ? 0 : GeheimeVraag.hashCode());
+		result = prime * result + ((Gsm == null) ? 0 : Gsm.hashCode());
+		result = prime * result + Id;
+		result = prime * result + ((Login == null) ? 0 : Login.hashCode());
+		result = prime * result + ((Naam == null) ? 0 : Naam.hashCode());
+		result = prime * result + ((Passwd == null) ? 0 : Passwd.hashCode());
+		result = prime * result + ((Postcd == null) ? 0 : Postcd.hashCode());
+		result = prime * result
+				+ ((RijksRegisterNr == null) ? 0 : RijksRegisterNr.hashCode());
+		result = prime * result + ((Telnr == null) ? 0 : Telnr.hashCode());
+		result = prime * result + ((TypeAcc == null) ? 0 : TypeAcc.hashCode());
+		result = prime * result
+				+ ((VoorNaam == null) ? 0 : VoorNaam.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result
-				+ ((geheimAntwoord == null) ? 0 : geheimAntwoord.hashCode());
-		result = prime * result
-				+ ((geheimeVraag == null) ? 0 : geheimeVraag.hashCode());
-		result = prime * result + gsm;
-		result = prime * result + id;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((naam == null) ? 0 : naam.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result
-				+ ((rijksregisterNr == null) ? 0 : rijksregisterNr.hashCode());
-		result = prime * result + telefoon;
-		result = prime * result + ((typeAcc == null) ? 0 : typeAcc.hashCode());
-		result = prime * result
-				+ ((voornaam == null) ? 0 : voornaam.hashCode());
 		return result;
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -180,59 +223,75 @@ public abstract class SuperklasseAanvraagAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		SuperklasseAanvraagAccount other = (SuperklasseAanvraagAccount) obj;
-		if (adres == null) {
-			if (other.adres != null)
+		if (Adres == null) {
+			if (other.Adres != null)
 				return false;
-		} else if (!adres.equals(other.adres))
+		} else if (!Adres.equals(other.Adres))
+			return false;
+		if (GeheimAntwoord == null) {
+			if (other.GeheimAntwoord != null)
+				return false;
+		} else if (!GeheimAntwoord.equals(other.GeheimAntwoord))
+			return false;
+		if (GeheimeVraag == null) {
+			if (other.GeheimeVraag != null)
+				return false;
+		} else if (!GeheimeVraag.equals(other.GeheimeVraag))
+			return false;
+		if (Gsm == null) {
+			if (other.Gsm != null)
+				return false;
+		} else if (!Gsm.equals(other.Gsm))
+			return false;
+		if (Id != other.Id)
+			return false;
+		if (Login == null) {
+			if (other.Login != null)
+				return false;
+		} else if (!Login.equals(other.Login))
+			return false;
+		if (Naam == null) {
+			if (other.Naam != null)
+				return false;
+		} else if (!Naam.equals(other.Naam))
+			return false;
+		if (Passwd == null) {
+			if (other.Passwd != null)
+				return false;
+		} else if (!Passwd.equals(other.Passwd))
+			return false;
+		if (Postcd == null) {
+			if (other.Postcd != null)
+				return false;
+		} else if (!Postcd.equals(other.Postcd))
+			return false;
+		if (RijksRegisterNr == null) {
+			if (other.RijksRegisterNr != null)
+				return false;
+		} else if (!RijksRegisterNr.equals(other.RijksRegisterNr))
+			return false;
+		if (Telnr == null) {
+			if (other.Telnr != null)
+				return false;
+		} else if (!Telnr.equals(other.Telnr))
+			return false;
+		if (TypeAcc != other.TypeAcc)
+			return false;
+		if (VoorNaam == null) {
+			if (other.VoorNaam != null)
+				return false;
+		} else if (!VoorNaam.equals(other.VoorNaam))
 			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (geheimAntwoord == null) {
-			if (other.geheimAntwoord != null)
-				return false;
-		} else if (!geheimAntwoord.equals(other.geheimAntwoord))
-			return false;
-		if (geheimeVraag == null) {
-			if (other.geheimeVraag != null)
-				return false;
-		} else if (!geheimeVraag.equals(other.geheimeVraag))
-			return false;
-		if (gsm != other.gsm)
-			return false;
-		if (id != other.id)
-			return false;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
-			return false;
-		if (naam == null) {
-			if (other.naam != null)
-				return false;
-		} else if (!naam.equals(other.naam))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (rijksregisterNr == null) {
-			if (other.rijksregisterNr != null)
-				return false;
-		} else if (!rijksregisterNr.equals(other.rijksregisterNr))
-			return false;
-		if (telefoon != other.telefoon)
-			return false;
-		if (typeAcc != other.typeAcc)
-			return false;
-		if (voornaam == null) {
-			if (other.voornaam != null)
-				return false;
-		} else if (!voornaam.equals(other.voornaam))
-			return false;
 		return true;
 	}
+
+
+
+
+
 }

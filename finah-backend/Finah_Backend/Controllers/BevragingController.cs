@@ -67,28 +67,11 @@ namespace Finah_Backend.Controllers
 
         public IHttpActionResult Get(String id)
         {
-            var bevraging = new Bevraging();
-            var testAccount = new Account();
-            var testCat = new LeeftijdsCategorie();
-            var testVragenlijst = new VragenLijst();
-
-            testCat.Id = 1;
-            testCat.Van = 0;
-            testCat.Tot = 99;
-
-            testAccount.Id = 1;
-            testAccount.Naam = "Thys";
-            testAccount.VoorNaam = "Brian";
-
-            bevraging.Id = id;
-            bevraging.Aangevraagd = DateTime.Now;
-            bevraging.AangemaaktDoor = testAccount;
-            bevraging.LeeftijdsCatMantelZorger = testCat;
-            bevraging.LeeftijdsCatPatient = testCat;
-            bevraging.Informatie = "Test bevraging";
-            bevraging.Relatie = "Test relatie";
-            bevraging.VragenMantelzorger = testVragenlijst;
-            bevraging.Vragenpatient = testVragenlijst;
+            Bevraging bevraging = null;
+            if (id.Equals("1"))
+            {
+                bevraging = new Bevraging { Id = "1"};
+            }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
@@ -103,39 +86,8 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            var bevraging = new Bevraging();
-            var testAccount = new Account();
-            var testCat = new LeeftijdsCategorie();
-            var testVragenlijst = new VragenLijst();
-
-            testCat.Id = 2;
-            testCat.Van = 0;
-            testCat.Tot = 99;
-
-            testAccount.Id = 2;
-            testAccount.Naam = "Thys";
-            testAccount.VoorNaam = "Brian";
-
-            bevraging.Id = "Test Id";
-            bevraging.Aangevraagd = DateTime.Now;
-            bevraging.AangemaaktDoor = testAccount;
-            bevraging.LeeftijdsCatMantelZorger = testCat;
-            bevraging.LeeftijdsCatPatient = testCat;
-            bevraging.Informatie = "Test bevraging";
-            bevraging.Relatie = "Test relatie";
-            bevraging.VragenMantelzorger = testVragenlijst;
-            bevraging.Vragenpatient = testVragenlijst;
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (bevraging == null)
-            {
-                return bevragingen;
-            }
-            bevragingen.Add(bevraging);
-            //return db.Bevragingen; Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
-
-            //return bevragingen;
+            var bevragingen = new List<Bevraging> { new Bevraging { Id = "1" }, new Bevraging { Id = "2" }, new Bevraging { Id = "2" }, new Bevraging { Id = "4" }, new Bevraging { Id = "5" } };
+            
             return bevragingen;
         }
 

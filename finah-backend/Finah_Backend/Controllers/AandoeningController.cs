@@ -34,19 +34,22 @@ namespace Finah_Backend.Controllers
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var aandoening = new Aandoening();
-            var pt = new Pathologie();
-            var patLijst = new List<Pathologie>();
+            Aandoening aandoening = null;
+            if (id == 1)
+            {
+                aandoening = new Aandoening();
+                var pt = new Pathologie();
+                var patLijst = new List<Pathologie>();
 
-            pt.Id = 1;
-            pt.Omschrijving = "Pathologie";
-            patLijst.Add(pt);
+                pt.Id = 1;
+                pt.Omschrijving = "Pathologie";
+                patLijst.Add(pt);
 
 
-            aandoening.Id = 1;
-            aandoening.Omschrijving = "Omschrijving";
-            aandoening.Patologieen = patLijst;
-
+                aandoening.Id = 1;
+                aandoening.Omschrijving = "Omschrijving";
+                aandoening.Patologieen = patLijst;
+            }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //Aandoening aandoening = db.Aandoeningen.Find(id);
@@ -65,6 +68,7 @@ namespace Finah_Backend.Controllers
             //return db.Aandoeningen;
 
             //return vragen;
+            //aandoeningen = db.Aandoeningen.ToList();
 
             var ad1 = new Aandoening();
             var ad2 = new Aandoening();
@@ -72,13 +76,14 @@ namespace Finah_Backend.Controllers
             var ad4 = new Aandoening();
             var ad5 = new Aandoening();
 
+           
             ad1.Id = 1;
             ad2.Id = 2;
             ad3.Id = 3;
             ad4.Id = 4;
             ad5.Id = 5;
-
             var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
+
 
             return overzichtAandoeningen;
         }

@@ -14,11 +14,11 @@ public class Account extends SuperklasseAanvraagAccount {
 	public Account() {
 	}
 
-	public Account(String naam, String voornaam, String rijksregisterNr,
-			String adres, int telefoon, int gsm, String login, String password,
-			String email, String geheimeVraag, String geheimAntwoord,TypeAccount typeAcc) {
-		super(naam, voornaam, rijksregisterNr, adres, telefoon, gsm, login,
-				password, email, geheimeVraag, geheimAntwoord,typeAcc);
+	public Account(int id,String naam, String voornaam, String rijksregisterNr,
+			String adres, String telefoon, String gsm, String login, String password,
+			String email, String geheimeVraag, String geheimAntwoord,TypeAccount typeAcc,Postcode postcd) {
+		super(id,naam, voornaam, rijksregisterNr, adres, telefoon, gsm, login,
+				password, email, geheimeVraag, geheimAntwoord,typeAcc,postcd);
 
 	}
 
