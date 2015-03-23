@@ -63,11 +63,11 @@ public class AccountToevoegenGUI extends JFrame{
 			g2d.fillRoundRect(0, 0, 984, 75, 30, 30);
 			
 			g2d.setColor(new Color(239, 239, 239));
-			g2d.fillRoundRect(375, 100, 250, 440, 75, 75);
+			g2d.fillRoundRect(375, 100, 250, 400, 75, 75);
 			
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
-			g2d.drawRoundRect(375, 100, 250, 440, 75, 75);
+			g2d.drawRoundRect(375, 100, 250, 400, 75, 75);
 			
 			g2d.setColor(Color.black);
 			g2d.drawLine(400, 145, 600, 145);
