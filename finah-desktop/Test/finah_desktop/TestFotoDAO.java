@@ -37,7 +37,7 @@ public class TestFotoDAO {
 	@Test
 	public void Get_ShouldNotFindFoto() {
 		// Id meegeven die zeker niet in de database voorkomt
-		Foto result = FotoDAO.GetFoto("999999999");
+		Foto result = FotoDAO.GetFoto(999999999);
 		Assert.assertNull(result);
 	}
 

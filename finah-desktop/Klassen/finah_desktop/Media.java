@@ -1,41 +1,43 @@
 package finah_desktop;
 
 public abstract class Media {
-	private int id;
-	private String omschrijving;
-	private String pad;
+	private int Id;
+	private String Omschrijving;
+	private String Pad;
 
 	public Media() {
 
 	}
 
-	public Media(String omschrijving, String pad) {
-		this.omschrijving = omschrijving;
-		this.pad = pad;
+	public Media(int id, String omschrijving, String pad) {
+		super();
+		Id = id;
+		Omschrijving = omschrijving;
+		Pad = pad;
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getOmschrijving() {
-		return omschrijving;
+		return Omschrijving;
 	}
 
 	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
+		Omschrijving = omschrijving;
 	}
 
 	public String getPad() {
-		return pad;
+		return Pad;
 	}
 
 	public void setPad(String pad) {
-		this.pad = pad;
+		Pad = pad;
 	}
 
 	/* (non-Javadoc)
@@ -45,10 +47,10 @@ public abstract class Media {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + Id;
 		result = prime * result
-				+ ((omschrijving == null) ? 0 : omschrijving.hashCode());
-		result = prime * result + ((pad == null) ? 0 : pad.hashCode());
+				+ ((Omschrijving == null) ? 0 : Omschrijving.hashCode());
+		result = prime * result + ((Pad == null) ? 0 : Pad.hashCode());
 		return result;
 	}
 
@@ -64,18 +66,20 @@ public abstract class Media {
 		if (getClass() != obj.getClass())
 			return false;
 		Media other = (Media) obj;
-		if (id != other.id)
+		if (Id != other.Id)
 			return false;
-		if (omschrijving == null) {
-			if (other.omschrijving != null)
+		if (Omschrijving == null) {
+			if (other.Omschrijving != null)
 				return false;
-		} else if (!omschrijving.equals(other.omschrijving))
+		} else if (!Omschrijving.equals(other.Omschrijving))
 			return false;
-		if (pad == null) {
-			if (other.pad != null)
+		if (Pad == null) {
+			if (other.Pad != null)
 				return false;
-		} else if (!pad.equals(other.pad))
+		} else if (!Pad.equals(other.Pad))
 			return false;
 		return true;
 	}
+
+	
 }

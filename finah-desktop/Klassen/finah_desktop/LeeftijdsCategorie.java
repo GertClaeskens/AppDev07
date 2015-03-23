@@ -2,7 +2,7 @@ package finah_desktop;
 
 public class LeeftijdsCategorie {
 
-	private int leeftijdsCategorieId;
+	private int Id;
 	private int van;
 	private int tot;
 
@@ -10,17 +10,17 @@ public class LeeftijdsCategorie {
 
 	}
 
-	public LeeftijdsCategorie(short van, short tot) {
+	public LeeftijdsCategorie(int van, int tot) {
 		this.van = van;
 		this.tot = tot;
 	}
 
-	public int getLeeftijdsCategorieId() {
-		return leeftijdsCategorieId;
+	public int getId() {
+		return Id;
 	}
 
-	public void setLeeftijdsCategorieId(int leeftijdsCategorieId) {
-		this.leeftijdsCategorieId = leeftijdsCategorieId;
+	public void setId(int Id) {
+		this.Id = Id;
 	}
 
 	public int getVan() {
@@ -46,7 +46,7 @@ public class LeeftijdsCategorie {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + leeftijdsCategorieId;
+		result = prime * result + Id;
 		result = prime * result + tot;
 		result = prime * result + van;
 		return result;
@@ -64,7 +64,7 @@ public class LeeftijdsCategorie {
 		if (getClass() != obj.getClass())
 			return false;
 		LeeftijdsCategorie other = (LeeftijdsCategorie) obj;
-		if (leeftijdsCategorieId != other.leeftijdsCategorieId)
+		if (Id != other.Id)
 			return false;
 		if (tot != other.tot)
 			return false;

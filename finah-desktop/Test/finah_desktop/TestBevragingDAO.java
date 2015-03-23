@@ -19,7 +19,7 @@ public class TestBevragingDAO {
 	}
 
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetOverzicht_ShouldReturnAllBevragingen() {
 		testBevragingen = BevragingDAO.GetBevragingen();
 		controleBevragingen = TestBevragingDAO.GetTestBevragingen();
 
