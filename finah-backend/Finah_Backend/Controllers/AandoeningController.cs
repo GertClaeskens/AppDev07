@@ -65,6 +65,7 @@ namespace Finah_Backend.Controllers
             //return db.Aandoeningen;
 
             //return vragen;
+            aandoeningen = db.Aandoeningen.ToList();
 
             var ad1 = new Aandoening();
             var ad2 = new Aandoening();
@@ -78,9 +79,13 @@ namespace Finah_Backend.Controllers
             ad4.Id = 4;
             ad5.Id = 5;
 
-            var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
+            aandoeningen.Add(ad1);
+            aandoeningen.Add(ad2);
+            aandoeningen.Add(ad3);
+            aandoeningen.Add(ad4);
+            aandoeningen.Add(ad5);
 
-            return overzichtAandoeningen;
+            return aandoeningen;
         }
 
         // PUT: api/Aandoenings/5

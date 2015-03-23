@@ -75,7 +75,7 @@ namespace Finah_Web.Controllers
                     aandoening.Omschrijving = "Omschrijving";
                     aandoening.Patologieen = patLijst;
 
-                    HttpResponseMessage response = await client.PostAsJsonAsync("api/Aandoenings", aandoening);
+                    HttpResponseMessage response = await client.PostAsJsonAsync("Aandoening/", aandoening);
                 }
 
                 return RedirectToAction("Overzicht");
