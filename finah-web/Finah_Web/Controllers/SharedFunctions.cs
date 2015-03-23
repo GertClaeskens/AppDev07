@@ -15,8 +15,8 @@ namespace Finah_Web.Controllers
         {
             var client = new HttpClient();
 
-            client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
-            //client.BaseAddress = new Uri("http://localhost:1695/");
+            //client.BaseAddress = new Uri("http://finahbackend1920.azurewebsites.net/");
+            client.BaseAddress = new Uri("http://localhost:1695/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             return client;
