@@ -56,6 +56,8 @@ public class AccountsOverzichtGUI extends JFrame{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
+			ButtonHandler handler = new ButtonHandler();
+			
 			Graphics2D g2d = (Graphics2D) g;
 			setBackground(new Color(188,188,188));
 			
@@ -131,6 +133,10 @@ public class AccountsOverzichtGUI extends JFrame{
 			for(int i=1; i<=accounts.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Gebruiker "+i, 120, hoogte-10);
+				JButton wijzigLabel = new JButton("Aanpassen");
+				wijzigLabel.setBounds(701,hoogte-29,199,29);
+				wijzigLabel.addActionListener(handler);
+				add(wijzigLabel);
 				hoogte+=30;
 			}
 			
@@ -156,7 +162,6 @@ public class AccountsOverzichtGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
-			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
 			vragenKnop.addActionListener(handler);
 			vragenlijstenKnop.addActionListener(handler);
@@ -196,10 +201,13 @@ public class AccountsOverzichtGUI extends JFrame{
 			case "Pathologieën":	newFrame = new PathologieënGUI();
 									AccountsOverzichtGUI.this.setVisible(false);
 									break;
+			case "Accounts":	newFrame = new AccountsOverzichtGUI();
+								AccountsOverzichtGUI.this.setVisible(false);
+								break;
 			case "Account toevoegen":	newFrame = new AccountToevoegenGUI();
 										AccountsOverzichtGUI.this.setVisible(false);
 										break;
-			case "Accounts":	newFrame = new AccountsOverzichtGUI();
+			case "Aanpassen":	newFrame = new AccountAanpassenGUI();
 								AccountsOverzichtGUI.this.setVisible(false);
 								break;
 			}

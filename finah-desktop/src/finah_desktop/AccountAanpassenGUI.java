@@ -99,6 +99,7 @@ public class AccountAanpassenGUI extends JFrame{
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
+			aanpassenKnop.addActionListener(handler);
 			
 			aanpassenLabel = new JLabel("Account aanpassen");
 			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
@@ -169,6 +170,9 @@ public class AccountAanpassenGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								AccountAanpassenGUI.this.setVisible(false);
 								break;
+			case "Aanpassingen opslaan":	newFrame = new AccountsOverzichtGUI();
+											AccountAanpassenGUI.this.setVisible(false);
+											break;
 			}
 		}		
 	}
