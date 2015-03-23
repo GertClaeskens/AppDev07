@@ -5,13 +5,12 @@
     Layout = "~/Views/Shared/_LayoutBeheren.cshtml";
 }
 
-<h2>LeeftijdsCategorie</h2>
+<h3 id="Breadcrumb">Menu > LeeftijdsCategorie > Details</h3>
+<h2 id="Content-Title">Details</h2>
 
-<div>
-    <h4>LeeftijdsCategorie</h4>
-    <hr />
+<div class="detailsDiv">
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="detail-label">
             @Html.DisplayNameFor(model => model.Van)
         </dt>
 
@@ -19,7 +18,7 @@
             @Html.DisplayFor(model => model.Van)
         </dd>
 
-        <dt>
+        <dt class="detail-label>
             @Html.DisplayNameFor(model => model.Tot)
         </dt>
 
@@ -29,7 +28,6 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="Back">
+    @Html.ActionLink("Terug naar overzicht", "Overzicht")
+</div>
