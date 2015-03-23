@@ -66,7 +66,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Aandoening> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             //return db.Aandoeningen;
-
+            //
             //return vragen;
             //aandoeningen = db.Aandoeningen.ToList();
 
