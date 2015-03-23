@@ -9,18 +9,18 @@
 <body>
     <div id="wrapper">
         <div id="page-header">
-            @RenderPage("_header.cshtml")
+            @RenderPage("~/Views/Shared/_header.cshtml")
         </div> <!--Closing DIV page header-->
         <div id="inner-wrapper">
             <div id="nav-bar2">
-                @RenderPage("_NavbarBeheren.cshtml")
+                @RenderPage("~/Views/Shared/_NavbarBeheren.cshtml")
             </div><!--Closing DIV nav-bar-->
             <div id="body-container">
                 @RenderBody()
             </div><!--Closing DIV body containerr-->
         </div><!--Closing DIV innerwrapper-->
         <div id="page-footer">
-            @RenderPage("_footer.cshtml")
+            @RenderPage("~/Views/Shared/_footer.cshtml")
         </div>
     </div><!--Closing DIV wrapper-->
     @*@Scripts.Render("~/bundles/jquery")
