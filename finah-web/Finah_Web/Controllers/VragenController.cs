@@ -58,17 +58,22 @@ namespace Finah_Web.Controllers
 
         // POST: Vraag/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var client = SharedFunctions.SetupClient())
+                {
+                    var vraag = new Vraag { Id = 1, VraagStelling = "Test vraag1" };
 
-                return RedirectToAction("Index");
+                    HttpResponseMessage response = await client.PostAsJsonAsync("Vragen/", vraag);
+                }
+
+                return RedirectToAction("Overzicht");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Overzicht");
             }
         }
 
