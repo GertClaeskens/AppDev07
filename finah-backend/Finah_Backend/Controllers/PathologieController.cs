@@ -64,11 +64,11 @@ namespace Finah_Backend.Controllers
         [Route("Pathologie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Pathologie testPat = new Pathologie { Id = 1, Omschrijving = "test" };
+            var testPat = new Pathologie { Id = 1, Omschrijving = "test" };
 
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            Pathologie pathologie = db.Pathologieen.Find(id);
+            var pathologie = db.Pathologieen.Find(id);
             if (pathologie == null)
             {
                 return NotFound();
@@ -131,7 +131,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Pathologie))]
         public IHttpActionResult DeletePathologie(int id)
         {
-            Pathologie pathologie = db.Pathologieen.Find(id);
+            var pathologie = db.Pathologieen.Find(id);
             if (pathologie == null)
             {
                 return NotFound();

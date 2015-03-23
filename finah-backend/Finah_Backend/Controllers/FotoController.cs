@@ -55,11 +55,11 @@ namespace Finah_Backend.Controllers
 
 
             //return vragen;
-            Foto f1 = new Foto();
-            Foto f2 = new Foto();
-            Foto f3 = new Foto();
-            Foto f4 = new Foto();
-            Foto f5 = new Foto();
+            var f1 = new Foto();
+            var f2 = new Foto();
+            var f3 = new Foto();
+            var f4 = new Foto();
+            var f5 = new Foto();
 
             f1.Id = 1;
             f2.Id = 2;
@@ -67,7 +67,7 @@ namespace Finah_Backend.Controllers
             f4.Id = 4;
             f5.Id = 5;
 
-            List<Foto> overzichtFotos = new List<Foto> { f1, f2, f3, f4, f5 };
+            var overzichtFotos = new List<Foto> { f1, f2, f3, f4, f5 };
 
             return overzichtFotos;
         }
@@ -128,7 +128,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Foto))]
         public IHttpActionResult DeleteFoto(int id)
         {
-            Foto foto = db.Fotos.Find(id);
+            var foto = db.Fotos.Find(id);
             if (foto == null)
             {
                 return NotFound();

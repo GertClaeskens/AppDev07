@@ -14,7 +14,7 @@ namespace Finah_Backend.Controllers
 
     public class AandoeningController : ApiController
     {
-        private FinahDBContext db;
+        private readonly FinahDBContext db;
         private List<Aandoening> aandoeningen = new List<Aandoening>();
 
         public AandoeningController()
@@ -34,9 +34,9 @@ namespace Finah_Backend.Controllers
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Aandoening aandoening = new Aandoening();
-            Pathologie pt = new Pathologie();
-            List<Pathologie> patLijst = new List<Pathologie>();
+            var aandoening = new Aandoening();
+            var pt = new Pathologie();
+            var patLijst = new List<Pathologie>();
 
             pt.Id = 1;
             pt.Omschrijving = "Pathologie";
@@ -66,11 +66,11 @@ namespace Finah_Backend.Controllers
 
             //return vragen;
 
-            Aandoening ad1 = new Aandoening();
-            Aandoening ad2 = new Aandoening();
-            Aandoening ad3 = new Aandoening();
-            Aandoening ad4 = new Aandoening();
-            Aandoening ad5 = new Aandoening();
+            var ad1 = new Aandoening();
+            var ad2 = new Aandoening();
+            var ad3 = new Aandoening();
+            var ad4 = new Aandoening();
+            var ad5 = new Aandoening();
 
             ad1.Id = 1;
             ad2.Id = 2;
@@ -78,7 +78,7 @@ namespace Finah_Backend.Controllers
             ad4.Id = 4;
             ad5.Id = 5;
 
-            List<Aandoening> overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
+            var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
 
             return overzichtAandoeningen;
         }
@@ -137,7 +137,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aandoening))]
         public IHttpActionResult DeleteAandoening(int id)
         {
-            Aandoening aandoening = db.Aandoeningen.Find(id);
+            var aandoening = db.Aandoeningen.Find(id);
             if (aandoening == null)
             {
                 return NotFound();

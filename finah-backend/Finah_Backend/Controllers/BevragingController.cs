@@ -67,10 +67,10 @@ namespace Finah_Backend.Controllers
 
         public IHttpActionResult Get(String id)
         {
-            Bevraging bevraging = new Bevraging();
-            Account testAccount = new Account();
-            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
-            VragenLijst testVragenlijst = new VragenLijst();
+            var bevraging = new Bevraging();
+            var testAccount = new Account();
+            var testCat = new LeeftijdsCategorie();
+            var testVragenlijst = new VragenLijst();
 
             testCat.Id = 1;
             testCat.Van = 0;
@@ -103,10 +103,10 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            Bevraging bevraging = new Bevraging();
-            Account testAccount = new Account();
-            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
-            VragenLijst testVragenlijst = new VragenLijst();
+            var bevraging = new Bevraging();
+            var testAccount = new Account();
+            var testCat = new LeeftijdsCategorie();
+            var testVragenlijst = new VragenLijst();
 
             testCat.Id = 2;
             testCat.Van = 0;
@@ -143,10 +143,10 @@ namespace Finah_Backend.Controllers
         [Route("Bevraging/Create")] //Geen Api/ meer nodig
         public void Create()
         {
-            Bevraging bevraging = new Bevraging();
-            Account testAccount = new Account();
-            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
-            VragenLijst testVragenlijst = new VragenLijst();
+            var bevraging = new Bevraging();
+            var testAccount = new Account();
+            var testCat = new LeeftijdsCategorie();
+            var testVragenlijst = new VragenLijst();
 
             testCat.Id = 2;
             testCat.Van = 0;
@@ -244,7 +244,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Bevraging))]
         public IHttpActionResult DeleteBevraging(string id)
         {
-            Bevraging bevraging = db.Bevragingen.Find(id);
+            var bevraging = db.Bevragingen.Find(id);
             if (bevraging == null)
             {
                 return NotFound();
@@ -282,7 +282,7 @@ namespace Finah_Backend.Controllers
 
             //List = alle waardes uit DB ophalen (als DB in werking is)
             //run foreach, for now use For loop
-            for (int i = 0; i < 1000; i++)
+            for (var i = 0; i < 1000; i++)
             {
                 //Momenteel fake link gebruiken voor controle
                 fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());

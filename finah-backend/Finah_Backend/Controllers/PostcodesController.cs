@@ -30,7 +30,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Postcode))]
         public IHttpActionResult GetPostcode(int id)
         {
-            Postcode postcode = db.Postcodes.Find(id);
+            var postcode = db.Postcodes.Find(id);
             if (postcode == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Postcode))]
         public IHttpActionResult DeletePostcode(int id)
         {
-            Postcode postcode = db.Postcodes.Find(id);
+            var postcode = db.Postcodes.Find(id);
             if (postcode == null)
             {
                 return NotFound();

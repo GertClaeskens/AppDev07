@@ -123,7 +123,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(GeluidsFragment))]
         public IHttpActionResult DeleteGeluidsFragment(int id)
         {
-            GeluidsFragment geluidsFragment = db.Geluidsfragmenten.Find(id);
+            var geluidsFragment = db.Geluidsfragmenten.Find(id);
             if (geluidsFragment == null)
             {
                 return NotFound();

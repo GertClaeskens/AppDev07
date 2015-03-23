@@ -64,7 +64,7 @@ namespace Finah_Backend.Controllers
         [Route("LeeftijdsCategorie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            LeeftijdsCategorie leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
+            var leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
 
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
@@ -130,7 +130,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(LeeftijdsCategorie))]
         public IHttpActionResult DeleteLeeftijdsCategorie(int id)
         {
-            LeeftijdsCategorie leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
+            var leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
             if (leeftijdsCategorie == null)
             {
                 return NotFound();

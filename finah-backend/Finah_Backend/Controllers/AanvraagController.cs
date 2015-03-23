@@ -28,7 +28,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult Get(int id)
         {
-            Aanvraag aanvraag = db.Aanvragen.Find(id);
+            var aanvraag = db.Aanvragen.Find(id);
             if (aanvraag == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult DeleteAanvraag(int id)
         {
-            Aanvraag aanvraag = db.Aanvragen.Find(id);
+            var aanvraag = db.Aanvragen.Find(id);
             if (aanvraag == null)
             {
                 return NotFound();

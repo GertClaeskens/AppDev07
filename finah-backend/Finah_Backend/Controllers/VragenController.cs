@@ -35,9 +35,9 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Vraag vraag = new Vraag();
-            Foto foto = new Foto();
-            GeluidsFragment gf = new GeluidsFragment();
+            var vraag = new Vraag();
+            var foto = new Foto();
+            var gf = new GeluidsFragment();
 
             foto.Id = 1;
             foto.Omschrijving = "foto vraag 1";
@@ -70,11 +70,11 @@ namespace Finah_Backend.Controllers
             //return db.Vragen;
 
             //return vragen;
-            Vraag testVraag1 = new Vraag();
-            Vraag testVraag2 = new Vraag();
-            Vraag testVraag3 = new Vraag();
-            Vraag testVraag4 = new Vraag();
-            Vraag testVraag5 = new Vraag();
+            var testVraag1 = new Vraag();
+            var testVraag2 = new Vraag();
+            var testVraag3 = new Vraag();
+            var testVraag4 = new Vraag();
+            var testVraag5 = new Vraag();
 
             testVraag1.Id = 1;
             testVraag2.Id = 2;
@@ -82,7 +82,7 @@ namespace Finah_Backend.Controllers
             testVraag4.Id = 4;
             testVraag5.Id = 5;
 
-            List<Vraag> overzichtVragen = new List<Vraag> { testVraag1, testVraag2, testVraag3, testVraag4, testVraag5 };
+            var overzichtVragen = new List<Vraag> { testVraag1, testVraag2, testVraag3, testVraag4, testVraag5 };
 
             return overzichtVragen;
         }
@@ -141,7 +141,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Vraag))]
         public IHttpActionResult DeleteCourse(int id)
         {
-            Vraag vraag = db.Vragen.Find(id);
+            var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
                 return NotFound();

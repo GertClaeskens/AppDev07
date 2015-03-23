@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Finah_Backend.Controllers;
+using Finah_Backend.Models;
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Http.Results;
 namespace Finah_Backend.Tests.Controllers
 {
-    using Finah_Backend.Controllers;
 
-    using Finah_Backend.Controllers;
-    using Finah_Backend.Models;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Web.Http.Results;
 
     /// <summary>
     ///

@@ -41,11 +41,11 @@ namespace Finah_Backend.Controllers
             //return db.VragenLijsten;
 
             //return vragen;
-            VragenLijst vl1 = new VragenLijst();
-            VragenLijst vl2 = new VragenLijst();
-            VragenLijst vl3 = new VragenLijst();
-            VragenLijst vl4 = new VragenLijst();
-            VragenLijst vl5 = new VragenLijst();
+            var vl1 = new VragenLijst();
+            var vl2 = new VragenLijst();
+            var vl3 = new VragenLijst();
+            var vl4 = new VragenLijst();
+            var vl5 = new VragenLijst();
 
             vl1.Id = 1;
             vl2.Id = 2;
@@ -53,7 +53,7 @@ namespace Finah_Backend.Controllers
             vl4.Id = 4;
             vl5.Id = 5;
 
-            List<VragenLijst> overzichtVragenLijst = new List<VragenLijst> { vl1, vl2, vl3, vl4, vl5 };
+            var overzichtVragenLijst = new List<VragenLijst> { vl1, vl2, vl3, vl4, vl5 };
 
             return overzichtVragenLijst;
         }
@@ -61,14 +61,14 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(VragenLijst))]
         public IHttpActionResult Get(int id)
         {
-            VragenLijst vragenLijst = new VragenLijst();
-            List<Vraag> vragen = new List<Vraag>();
-            Vraag vraag = new Vraag();
-            Foto foto = new Foto();
-            GeluidsFragment gf = new GeluidsFragment();
-            Aandoening ad = new Aandoening();
-            Pathologie pt = new Pathologie();
-            List<Pathologie> patLijst = new List<Pathologie>();
+            var vragenLijst = new VragenLijst();
+            var vragen = new List<Vraag>();
+            var vraag = new Vraag();
+            var foto = new Foto();
+            var gf = new GeluidsFragment();
+            var ad = new Aandoening();
+            var pt = new Pathologie();
+            var patLijst = new List<Pathologie>();
 
             foto.Id = 1;
             foto.Omschrijving = "foto vraag 1";
@@ -159,7 +159,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(VragenLijst))]
         public IHttpActionResult DeleteVragenLijst(int id)
         {
-            VragenLijst vragenLijst = db.VragenLijsten.Find(id);
+            var vragenLijst = db.VragenLijsten.Find(id);
             if (vragenLijst == null)
             {
                 return NotFound();
