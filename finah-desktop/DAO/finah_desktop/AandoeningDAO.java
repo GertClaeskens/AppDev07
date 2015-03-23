@@ -35,11 +35,9 @@ public abstract class AandoeningDAO {
 
 	public static Aandoening GetAandoening(int id) {
 		// Exception Handling nog nakijken
-		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
-		// uitgelezen
+
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		// HttpGet request = new
-		// HttpGet("http://finahbackend1920.azurewebsites.net/Aandoening/" +id);
+
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO.HaalGegevens("http://localhost:1695/Aandoening/"
