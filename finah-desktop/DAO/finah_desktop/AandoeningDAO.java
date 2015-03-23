@@ -29,7 +29,7 @@ public abstract class AandoeningDAO {
 		Type collectionType = new TypeToken<Collection<Aandoening>>() {
 		}.getType();
 		ArrayList<Aandoening> aandoeningen = gson.fromJson(rd, collectionType);
-
+		System.out.println(aandoeningen.size());
 		return aandoeningen;
 	}
 

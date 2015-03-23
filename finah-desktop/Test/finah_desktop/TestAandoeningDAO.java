@@ -21,16 +21,29 @@ public class TestAandoeningDAO {
 	@Test
 	public void GetOverzicht_ShouldReturnAllAandoeningen() {
 		testAandoeningen = AandoeningDAO.GetAandoeningen();
-		Assert.assertEquals(testAandoeningen.size(),
-				controleAandoeningen.size());
+		controleAandoeningen = TestAandoeningDAO.GetTestAandoeningen();
+
+		Assert.assertEquals(controleAandoeningen.size(),testAandoeningen.size());
 	}
 
 	@Test
 	public void Get_ShouldReturnCorrectAandoening() {
+        Aandoening aandoening = new Aandoening();
+        Pathologie pt = new Pathologie();
+        ArrayList<Pathologie> patLijst = new ArrayList<Pathologie>();
+
+        pt.setId(1);
+        pt.setOmschrijving("Pathologie");
+        patLijst.add(pt);
+
+
+        aandoening.setId(1);
+        aandoening.setOmschrijving("Omschrijving");
+        aandoening.voegPathologieLijstToe(patLijst);
 		Aandoening test = AandoeningDAO.GetAandoening(1);
 		Assert.assertNotNull(test);
 		// Controleren of beide objecten uniek zijn (Comparable?)
-		Assert.assertEquals(controleAandoeningen.get(0), test);
+		Assert.assertEquals(aandoening, test);
 	}
 
 	@Test
@@ -40,8 +53,24 @@ public class TestAandoeningDAO {
 		Assert.assertNotNull(result);
 	}
 
-	private ArrayList<Aandoening> GetTestAandoeningen() {
+	private static ArrayList<Aandoening> GetTestAandoeningen() {
 		ArrayList<Aandoening> controleAandoeningen = new ArrayList<Aandoening>();
+		 Aandoening ad1 = new Aandoening();
+         Aandoening ad2 = new Aandoening();
+         Aandoening ad3 = new Aandoening();
+         Aandoening ad4 = new Aandoening();
+         Aandoening ad5 = new Aandoening();
+
+         ad1.setId(1);
+         ad2.setId(2);
+         ad3.setId(3);
+         ad4.setId(4);
+         ad5.setId(5);
+         controleAandoeningen.add(ad1);
+         controleAandoeningen.add(ad2);
+         controleAandoeningen.add(ad3);
+         controleAandoeningen.add(ad4);
+         controleAandoeningen.add(ad5);
 		// /
 		// /
 		// / Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens

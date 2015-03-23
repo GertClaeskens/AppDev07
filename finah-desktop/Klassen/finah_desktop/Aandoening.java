@@ -9,7 +9,12 @@ public class Aandoening extends SuperklasseAandoeningPathologie {
 	public List<Pathologie> getBijhorende_pathologie() {
 		return Patologieen;
 	}
-
+	public void voegPathologieToe(Pathologie pat){
+		Patologieen.add(pat);
+	}
+	public void voegPathologieLijstToe(ArrayList<Pathologie> patlijst){
+		Patologieen = patlijst;
+	}
 	public void setBijhorende_pathologie(List<Pathologie> bijhorende_pathologie) {
 		this.Patologieen = bijhorende_pathologie;
 	}
