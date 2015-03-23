@@ -44,13 +44,15 @@ public class TestAandoeningDAO {
 		Assert.assertNotNull(test);
 		// Controleren of beide objecten uniek zijn (Comparable?)
 		Assert.assertEquals(aandoening, test);
+		
+		
 	}
 
 	@Test
 	public void Get_ShouldNotFindAandoening() {
 		// Id meegeven die zeker niet in de database voorkomt
 		Aandoening result = AandoeningDAO.GetAandoening(999999999);
-		Assert.assertNotNull(result);
+		Assert.assertNull(result);
 	}
 
 	private static ArrayList<Aandoening> GetTestAandoeningen() {
