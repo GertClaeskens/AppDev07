@@ -181,3 +181,12 @@ body {
 .col-md-10 {
     margin-top:5px
 }
+
+.detail-label {
+    text-decoration:underline;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+.detailsDiv {
+    margin-bottom:75px;
+}
