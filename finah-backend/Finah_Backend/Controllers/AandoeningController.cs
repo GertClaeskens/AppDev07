@@ -34,19 +34,22 @@ namespace Finah_Backend.Controllers
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var aandoening = new Aandoening();
-            var pt = new Pathologie();
-            var patLijst = new List<Pathologie>();
+            Aandoening aandoening = null;
+            if (id == 1)
+            {
+                aandoening = new Aandoening();
+                var pt = new Pathologie();
+                var patLijst = new List<Pathologie>();
 
-            pt.Id = 1;
-            pt.Omschrijving = "Pathologie";
-            patLijst.Add(pt);
+                pt.Id = 1;
+                pt.Omschrijving = "Pathologie";
+                patLijst.Add(pt);
 
 
-            aandoening.Id = 1;
-            aandoening.Omschrijving = "Omschrijving";
-            aandoening.Patologieen = patLijst;
-
+                aandoening.Id = 1;
+                aandoening.Omschrijving = "Omschrijving";
+                aandoening.Patologieen = patLijst;
+            }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //Aandoening aandoening = db.Aandoeningen.Find(id);
