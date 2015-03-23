@@ -31,16 +31,17 @@ namespace Finah_Web.Models
         }
 
         public DbSet<Aandoening> Aandoeningen { get; set; }
-        public System.Data.Entity.DbSet<Finah_Web.Models.Bevraging> Bevragings { get; set; }
-
-        public System.Data.Entity.DbSet<Finah_Web.Models.VragenLijst> VragenLijsts { get; set; }
-
-        public System.Data.Entity.DbSet<Finah_Web.Models.Vraag> Vraags { get; set; }
-
-        public System.Data.Entity.DbSet<Finah_Web.Models.Aanvraag> Aanvraags { get; set; }
-
-        public System.Data.Entity.DbSet<Finah_Web.Models.Pathologie> Pathologies { get; set; }
-
-        public System.Data.Entity.DbSet<Finah_Web.Models.LeeftijdsCategorie> LeeftijdsCategories { get; set; }
+        public DbSet<Aanvraag> Aanvragen { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Bevraging> Bevragingen { get; set; }
+        public DbSet<EID> EIDs { get; set; }
+        public DbSet<Foto> Fotos { get; set; }
+        public DbSet<GeluidsFragment> Geluidsfragmenten { get; set; }
+        public DbSet<LeeftijdsCategorie> LeeftijdsCategorieen { get; set; }
+        public DbSet<Pathologie> Pathologieen { get; set; }
+        public DbSet<Postcode> Postcodes { get; set; }
+        public DbSet<Status> Statussen { get; set; }
+        public DbSet<Vraag> Vragen { get; set; }
+        public DbSet<VragenLijst> VragenLijsten { get; set; }
     }
 }
