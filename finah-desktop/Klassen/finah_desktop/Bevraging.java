@@ -3,30 +3,20 @@ package finah_desktop;
 import java.util.Date;
 
 public class Bevraging {
-    public String Id;
+	public String Id;
+	public Date Aangevraagd;
+	public LeeftijdsCategorie LeeftijdsCatPatient;
+	public LeeftijdsCategorie LeeftijdsCatMantelZorger;
+	public String Informatie;
 
-    public Date Aangevraagd;
-
-    public  LeeftijdsCategorie LeeftijdsCatPatient;
-
-    public  LeeftijdsCategorie LeeftijdsCatMantelZorger;
-
-    public String Informatie;
-
-    //Ook eventueel enum van maken
-    public String Relatie;
-
-    public  Account AangemaaktDoor;
-
-    public  VragenLijst Vragenpatient;
-
-    public  VragenLijst VragenMantelzorger;
-
-
+	// Ook eventueel enum van maken
+	public String Relatie;
+	public Account AangemaaktDoor;
+	public VragenLijst Vragenpatient;
+	public VragenLijst VragenMantelzorger;
+	
 	public Bevraging() {
 	}
-
-
 
 	public Bevraging(String id, Date aangevraagd,
 			LeeftijdsCategorie leeftijdsCatPatient,
@@ -49,112 +39,78 @@ public class Bevraging {
 		return Id;
 	}
 
-
-
 	public void setId(String id) {
 		Id = id;
 	}
-
-
 
 	public Date getAangevraagd() {
 		return Aangevraagd;
 	}
 
-
-
 	public void setAangevraagd(Date aangevraagd) {
 		Aangevraagd = aangevraagd;
 	}
-
-
 
 	public LeeftijdsCategorie getLeeftijdsCatPatient() {
 		return LeeftijdsCatPatient;
 	}
 
-
-
 	public void setLeeftijdsCatPatient(LeeftijdsCategorie leeftijdsCatPatient) {
 		LeeftijdsCatPatient = leeftijdsCatPatient;
 	}
 
-
-
 	public LeeftijdsCategorie getLeeftijdsCatMantelZorger() {
 		return LeeftijdsCatMantelZorger;
 	}
-
-
 
 	public void setLeeftijdsCatMantelZorger(
 			LeeftijdsCategorie leeftijdsCatMantelZorger) {
 		LeeftijdsCatMantelZorger = leeftijdsCatMantelZorger;
 	}
 
-
-
 	public String getInformatie() {
 		return Informatie;
 	}
-
-
 
 	public void setInformatie(String informatie) {
 		Informatie = informatie;
 	}
 
-
-
 	public String getRelatie() {
 		return Relatie;
 	}
-
-
 
 	public void setRelatie(String relatie) {
 		Relatie = relatie;
 	}
 
-
-
 	public Account getAangemaaktDoor() {
 		return AangemaaktDoor;
 	}
-
-
 
 	public void setAangemaaktDoor(Account aangemaaktDoor) {
 		AangemaaktDoor = aangemaaktDoor;
 	}
 
-
-
 	public VragenLijst getVragenpatient() {
 		return Vragenpatient;
 	}
-
-
 
 	public void setVragenpatient(VragenLijst vragenpatient) {
 		Vragenpatient = vragenpatient;
 	}
 
-
-
 	public VragenLijst getVragenMantelzorger() {
 		return VragenMantelzorger;
 	}
-
-
 
 	public void setVragenMantelzorger(VragenLijst vragenMantelzorger) {
 		VragenMantelzorger = vragenMantelzorger;
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -186,9 +142,9 @@ public class Bevraging {
 		return result;
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -248,8 +204,5 @@ public class Bevraging {
 			return false;
 		return true;
 	}
-
-
-	
 
 }
