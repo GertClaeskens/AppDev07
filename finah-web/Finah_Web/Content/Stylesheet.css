@@ -95,7 +95,7 @@ body {
 }
 
 #nav-bar2 button {
-    width:120px;
+    width:140px;
     height:32px;
     margin-top:15px;
     margin-bottom:10px;
@@ -108,6 +108,7 @@ body {
     display:block;
     width:75%;
     float:left;
+ 
 }
 
 #body-container article {
@@ -132,6 +133,8 @@ body {
     width:100%;
     height:30px;
     line-height:30px;
+    margin-top:450px;
+   
 }
 
 #page-footer p {
@@ -158,4 +161,23 @@ body {
 }
 .DatumKolom {
     width:160px;
+}
+.CreateBtnDiv {
+    margin-top:25px;
+    
+}
+.Back {
+    text-align:center;
+    width:100%;
+    
+}
+.form-horizontal{
+    margin-bottom:75px;
+}
+.form-group {
+    font-family:Arial;
+    font-size:12pt;
+}
+.col-md-10 {
+    margin-top:5px
 }
