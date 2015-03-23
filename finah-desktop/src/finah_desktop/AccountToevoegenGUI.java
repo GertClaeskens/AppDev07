@@ -18,7 +18,13 @@ import javax.swing.JTextField;
 public class AccountToevoegenGUI extends JFrame{
 	
 	private NieuwAccountPanel panel;
-	private JLabel titel;
+	private JButton titel;
+	private JButton vragenKnop;
+	private JButton vragenlijstenKnop;
+	private JButton aandoeningenKnop;
+	private JButton pathologieënKnop;
+	private JButton accountsKnop;
+	private JButton aanmaakKnop;
 	private JLabel nieuwAccountLabel;
 	private JTextField nieuwAccountVeld;
 	private JLabel gebruikersNaamLabel;
@@ -33,8 +39,6 @@ public class AccountToevoegenGUI extends JFrame{
 	private JTextField achternaamVeld;
 	private JLabel emailLabel;
 	private JTextField emailVeld;
-	private JButton aanmaakKnop;
-	private JButton annuleerKnop;
 
 	public AccountToevoegenGUI(){
 		panel = new NieuwAccountPanel();
@@ -68,9 +72,39 @@ public class AccountToevoegenGUI extends JFrame{
 			g2d.setColor(Color.black);
 			g2d.drawLine(400, 145, 600, 145);
 			
-			titel = new JLabel("FINAH");
+			titel = new JButton("FINAH");
 			titel.setFont(new Font("Default", Font.BOLD, 40));
-			titel.setBounds(440, 15, 120, 40);
+			titel.setBounds(0, 0, 220, 75);
+			titel.setOpaque(false);
+			titel.setContentAreaFilled(false);
+			titel.setBorderPainted(false);
+			
+			vragenKnop = new JButton("Vragen");
+			vragenKnop.setBounds(255, 25, 120, 30);
+			
+			vragenlijstenKnop = new JButton("Vragenlijsten");
+			vragenlijstenKnop.setBounds(400, 25, 120, 30);
+			
+			aandoeningenKnop = new JButton("Aandoeningen");
+			aandoeningenKnop.setBounds(545, 25, 120, 30);
+			
+			pathologieënKnop = new JButton("Pathologieën");
+			pathologieënKnop.setBounds(690, 25, 120, 30);
+			
+			accountsKnop = new JButton("Accounts");
+			accountsKnop.setBounds(835, 25, 120, 30);
+			
+			aanmaakKnop = new JButton("Account toevoegen");
+			aanmaakKnop.setBounds(425, 445, 150, 30);
+			
+			ButtonHandler handler = new ButtonHandler();
+			titel.addActionListener(handler);
+			vragenKnop.addActionListener(handler);
+			vragenlijstenKnop.addActionListener(handler);
+			aandoeningenKnop.addActionListener(handler);
+			pathologieënKnop.addActionListener(handler);
+			accountsKnop.addActionListener(handler);
+			aanmaakKnop.addActionListener(handler);
 			
 			nieuwAccountLabel = new JLabel("Nieuw account toevoegen");
 			nieuwAccountLabel.setFont(new Font("Default", Font.PLAIN, 17));
@@ -118,15 +152,6 @@ public class AccountToevoegenGUI extends JFrame{
 			emailVeld = new JTextField();
 			emailVeld.setBounds(400, 405, 200, 20);
 			
-			aanmaakKnop = new JButton("Account toevoegen");
-			aanmaakKnop.setBounds(425, 445, 150, 30);
-			annuleerKnop = new JButton("Annuleren");
-			annuleerKnop.setBounds(425, 485, 150, 30);
-			
-			ButtonHandler handler = new ButtonHandler();
-			aanmaakKnop.addActionListener(handler);
-			annuleerKnop.addActionListener(handler);
-			
 			add(titel);
 			add(nieuwAccountLabel);
 			add(gebruikersNaamLabel);
@@ -142,7 +167,11 @@ public class AccountToevoegenGUI extends JFrame{
 			add(emailLabel);
 			add(emailVeld);
 			add(aanmaakKnop);
-			add(annuleerKnop);
+			add(vragenKnop);
+			add(vragenlijstenKnop);
+			add(aandoeningenKnop);
+			add(pathologieënKnop);
+			add(accountsKnop);
 			
 		}
 	}
@@ -150,13 +179,28 @@ public class AccountToevoegenGUI extends JFrame{
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			JFrame newFrame;
-			if(e.getActionCommand().equals("Account toevoegen")){
-				newFrame = new AccountsOverzichtGUI();
-				AccountToevoegenGUI.this.setVisible(false);
-			}
-			if(e.getActionCommand().equals("Annuleren")){
-				newFrame = new AccountsOverzichtGUI();
-				AccountToevoegenGUI.this.setVisible(false);
+			switch(e.getActionCommand()){
+			case "FINAH":	newFrame = new AccountGUI();
+							AccountToevoegenGUI.this.setVisible(false);
+							break;
+			case "Vragen":	newFrame = new VragenGUI();
+							AccountToevoegenGUI.this.setVisible(false);
+							break;
+			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
+									AccountToevoegenGUI.this.setVisible(false);
+									break;
+			case "Aandoeningen":	newFrame = new AandoeningenGUI();
+									AccountToevoegenGUI.this.setVisible(false);
+									break;
+			case "Pathologieën":	newFrame = new PathologieënGUI();
+									AccountToevoegenGUI.this.setVisible(false);
+									break;
+			case "Accounts":	newFrame = new AccountsOverzichtGUI();
+								AccountToevoegenGUI.this.setVisible(false);
+								break;
+			case "Account toevoegen":	newFrame = new AccountsOverzichtGUI();
+										AccountToevoegenGUI.this.setVisible(false);
+										break;
 			}
 		}
 	}
