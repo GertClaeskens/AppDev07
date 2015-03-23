@@ -7,5 +7,7 @@ namespace Finah_Web.Models
 {
     public class EID
     {
+        //voorlopig
+        public int Id { get; set; }
     }
 }
