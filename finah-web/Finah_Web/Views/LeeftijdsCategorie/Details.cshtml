@@ -1,0 +1,35 @@
+﻿@model Finah_Web.Models.LeeftijdsCategorie
+
+@{
+    ViewBag.Title = "LeeftijdsCategorie";
+    Layout = "~/Views/Shared/_LayoutBeheren.cshtml";
+}
+
+<h2>LeeftijdsCategorie</h2>
+
+<div>
+    <h4>LeeftijdsCategorie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Van)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Van)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tot)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

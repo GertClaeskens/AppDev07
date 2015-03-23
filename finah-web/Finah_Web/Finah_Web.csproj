@@ -288,6 +288,9 @@
     <Content Include="Views\Vragen\Create.cshtml" />
     <Content Include="Views\Aandoening\Details.cshtml" />
     <Content Include="Views\Aandoening\Create.cshtml" />
+    <Content Include="Views\Aanvraag\Aanvraag.cshtml" />
+    <Content Include="Views\Pathologie\Details.cshtml" />
+    <Content Include="Views\LeeftijdsCategorie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
