@@ -26,6 +26,7 @@ public class PathologieënAanpassenGUI extends JFrame{
 	private JButton aandoeningenKnop;
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
+	private JButton opslaanKnop;
 	private JLabel aanpassenLabel;
 	private List<Pathologie> pathologieën;
 
@@ -79,7 +80,12 @@ public class PathologieënAanpassenGUI extends JFrame{
 			int hoogte = 200;
 			for(int i=1; i<=pathologieën.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Pathologie "+i, 120, hoogte-10);
+				JTextField pathologieVeld = new JTextField("Pathologie"+i);
+				pathologieVeld.setBounds(101,hoogte-29,539,29);
+				add(pathologieVeld);
+				JComboBox vragenlijstCombo = new JComboBox();
+				vragenlijstCombo.setBounds(642,hoogte-28,227,27);
+				add(vragenlijstCombo);
 				hoogte+=30;
 			}
 			
@@ -105,6 +111,9 @@ public class PathologieënAanpassenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
+			opslaanKnop = new JButton("Wijzigingen opslaan");
+			opslaanKnop.setBounds(750, 100, 150, 25);
+			
 			aanpassenLabel = new JLabel("Pathologieën aanpassen");
 			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
 			aanpassenLabel.setBounds(100, 100, 200, 20);
@@ -123,7 +132,9 @@ public class PathologieënAanpassenGUI extends JFrame{
 			add(aandoeningenKnop);
 			add(pathologieënKnop);
 			add(accountsKnop);
+			add(opslaanKnop);
 			add(aanpassenLabel);
+			opslaanKnop.addActionListener(handler);
 			
 		}
 	}
@@ -150,6 +161,9 @@ public class PathologieënAanpassenGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								PathologieënAanpassenGUI.this.setVisible(false);
 								break;
+			case "Wijzigingen opslaan":	newFrame = new PathologieënGUI();
+										PathologieënAanpassenGUI.this.setVisible(false);
+										break;
 			}
 		}		
 	}

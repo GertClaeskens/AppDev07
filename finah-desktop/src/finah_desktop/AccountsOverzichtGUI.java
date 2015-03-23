@@ -122,7 +122,6 @@ public class AccountsOverzichtGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, hoogte, 800, 40);
 			g2d.drawRect(100, hoogte+40, 800, 30*accounts.size());
-			g2d.drawLine(640, hoogte, 640, hoogte+40+30*accounts.size());
 			g2d.drawLine(670, hoogte, 670, hoogte+40+30*accounts.size());
 			g2d.drawLine(700, hoogte, 700, hoogte+40+30*accounts.size());
 			

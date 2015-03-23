@@ -27,6 +27,7 @@ public class PathologieënGUI extends JFrame{
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 	private JButton toevoegKnop;
+	private JButton aanpasKnop;
 	private JLabel toevoegenLabel;
 	private JLabel overzichtLabel;
 	private JTextField nieuwePathologieVeld;
@@ -74,18 +75,20 @@ public class PathologieënGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
 			g2d.drawRect(100, 250, 800, 30*pathologieën.size());
-			g2d.drawLine(640, 210, 640, 250+30*pathologieën.size());
 			g2d.drawLine(670, 210, 670, 250+30*pathologieën.size());
 			g2d.drawLine(700, 210, 700, 250+30*pathologieën.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
 			g2d.drawString("Pathologieën", 320, 235);
-			g2d.drawString("Aandoeningen", 745, 235);
+			g2d.drawString("Aandoening", 755, 235);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 280;
 			for(int i=1; i<=pathologieën.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Pathologie "+i, 120, hoogte-10);
+				JComboBox aandoeningCombo = new JComboBox();
+				aandoeningCombo.setBounds(702,hoogte-28,197,27);
+				add(aandoeningCombo);
 				hoogte+=30;
 			}
 			
@@ -111,6 +114,9 @@ public class PathologieënGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
+			aanpasKnop = new JButton("Pathologieën aanpassen");
+			aanpasKnop.setBounds(720, 180, 180, 25);
+			
 			toevoegenLabel = new JLabel("Pathologie toevoegen");
 			toevoegenLabel.setFont(new Font("Default", Font.BOLD, 17));
 			toevoegenLabel.setBounds(100, 100, 190, 20);
@@ -132,6 +138,7 @@ public class PathologieënGUI extends JFrame{
 			vragenlijstenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
+			aanpasKnop.addActionListener(handler);
 			
 			add(titel);
 			add(vragenKnop);
@@ -144,6 +151,7 @@ public class PathologieënGUI extends JFrame{
 			add(nieuwePathologieVeld);
 			add(nieuwePathologieCombo);
 			add(toevoegKnop);
+			add(aanpasKnop);
 		}
 	}
 	
@@ -166,6 +174,9 @@ public class PathologieënGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								PathologieënGUI.this.setVisible(false);
 								break;
+			case "Pathologieën aanpassen":	newFrame = new PathologieënAanpassenGUI();
+											PathologieënGUI.this.setVisible(false);
+											break;
 			}
 		}	
 	}

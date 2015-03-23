@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AandoeningenAanpassenGUI extends JFrame{
 	
@@ -24,6 +26,7 @@ public class AandoeningenAanpassenGUI extends JFrame{
 	private JButton aandoeningenKnop;
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
+	private JButton opslaanKnop;
 	private JLabel aanpassenLabel;
 	private List<Aandoening> aandoeningen;
 
@@ -77,7 +80,12 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			int hoogte = 200;
 			for(int i=1; i<=aandoeningen.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Aandoening "+i, 120, hoogte-10);
+				JTextField aandoeningVeld = new JTextField("Aandoening"+i);
+				aandoeningVeld.setBounds(101,hoogte-29,539,29);
+				add(aandoeningVeld);
+				JComboBox vragenlijstCombo = new JComboBox();
+				vragenlijstCombo.setBounds(642,hoogte-28,227,27);
+				add(vragenlijstCombo);
 				hoogte+=30;
 			}
 			
@@ -103,6 +111,9 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
+			opslaanKnop = new JButton("Wijzigingen opslaan");
+			opslaanKnop.setBounds(750, 100, 150, 25);
+			
 			aanpassenLabel = new JLabel("Aandoeningen aanpassen");
 			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
 			aanpassenLabel.setBounds(100, 100, 210, 20);
@@ -114,6 +125,7 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
+			opslaanKnop.addActionListener(handler);
 			
 			add(titel);
 			add(vragenKnop);
@@ -121,6 +133,7 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			add(aandoeningenKnop);
 			add(pathologieënKnop);
 			add(accountsKnop);
+			add(opslaanKnop);
 			add(aanpassenLabel);
 			
 		}
@@ -148,6 +161,9 @@ public class AandoeningenAanpassenGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								AandoeningenAanpassenGUI.this.setVisible(false);
 								break;
+			case "Wijzigingen opslaan":	newFrame = new AandoeningenGUI();
+										AandoeningenAanpassenGUI.this.setVisible(false);
+										break;
 			}
 		}		
 	}

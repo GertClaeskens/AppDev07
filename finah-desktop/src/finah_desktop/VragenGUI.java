@@ -27,6 +27,7 @@ public class VragenGUI extends JFrame{
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 	private JButton toevoegKnop;
+	private JButton aanpasKnop;
 	private JLabel toevoegenLabel;
 	private JLabel overzichtLabel;
 	private JTextField nieuweVraagVeld;
@@ -74,7 +75,6 @@ public class VragenGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
 			g2d.drawRect(100, 250, 800, 30*vragen.size());
-			g2d.drawLine(640, 210, 640, 250+30*vragen.size());
 			g2d.drawLine(670, 210, 670, 250+30*vragen.size());
 			g2d.drawLine(700, 210, 700, 250+30*vragen.size());
 			
@@ -86,6 +86,9 @@ public class VragenGUI extends JFrame{
 			for(int i=1; i<=vragen.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Vraag "+i, 120, hoogte-10);
+				JComboBox vragenlijstCombo = new JComboBox();
+				vragenlijstCombo.setBounds(702,hoogte-28,197,27);
+				add(vragenlijstCombo);
 				hoogte+=30;
 			}
 			
@@ -126,12 +129,16 @@ public class VragenGUI extends JFrame{
 			toevoegKnop = new JButton("Toevoegen");
 			toevoegKnop.setBounds(800, 130, 100, 25);
 			
+			aanpasKnop = new JButton("Vragen aanpassen");
+			aanpasKnop.setBounds(750, 180, 150, 25);
+			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
 			vragenlijstenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
+			aanpasKnop.addActionListener(handler);
 
 			add(titel);
 			add(vragenKnop);
@@ -144,6 +151,7 @@ public class VragenGUI extends JFrame{
 			add(nieuweVraagVeld);
 			add(nieuweVraagCombo);
 			add(toevoegKnop);
+			add(aanpasKnop);
 		}
 	}
 	
@@ -166,6 +174,9 @@ public class VragenGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								VragenGUI.this.setVisible(false);
 								break;
+			case "Vragen aanpassen":	newFrame = new VragenAanpassenGUI();
+										VragenGUI.this.setVisible(false);
+										break;
 			}
 		}		
 	}

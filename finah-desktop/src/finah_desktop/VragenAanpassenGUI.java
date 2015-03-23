@@ -17,32 +17,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AandoeningenGUI extends JFrame{
+public class VragenAanpassenGUI extends JFrame{
 	
-	private AandoeningenPanel panel;
+	private VragenAanpassenPanel panel;
 	private JButton titel;
 	private JButton vragenKnop;
 	private JButton vragenlijstenKnop;
 	private JButton aandoeningenKnop;
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
-	private JButton toevoegKnop;
-	private JButton aanpasKnop;
-	private JLabel toevoegenLabel;
-	private JLabel overzichtLabel;
-	private JTextField nieuweAandoeningVeld;
-	private JComboBox nieuweAandoeningVragenlijstCombo;
-	private JComboBox nieuweAandoeningPathologieCombo;
-	private List<Aandoening> aandoeningen;
+	private JButton opslaanKnop;
+	private JLabel aanpassenLabel;
+	private List<Vraag> vragen;
 
-	public AandoeningenGUI(){
-		aandoeningen = new ArrayList<Aandoening>();
+	public VragenAanpassenGUI(){
+		vragen = new ArrayList<Vraag>();
 		for(int i=1; i<=10; i++){
-			aandoeningen.add(new Aandoening());
+			vragen.add(new Vraag());
 		}
 		
-		
-		panel = new AandoeningenPanel();		
+		panel = new VragenAanpassenPanel();		
 		panel.setLayout(null);
 		add(panel);
 		
@@ -52,7 +46,7 @@ public class AandoeningenGUI extends JFrame{
 		setLocationRelativeTo(null);
 	}
 
-	private class AandoeningenPanel extends JPanel{
+	private class VragenAanpassenPanel extends JPanel{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
@@ -68,28 +62,25 @@ public class AandoeningenGUI extends JFrame{
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
 			
-			//Dynamische tabel
+			//dynamische tabel
 			g2d.setPaint(Color.white);
-			g2d.fillRect(100, 230, 800, 40);
-			g2d.fillRect(100, 270, 800, 30*aandoeningen.size());
+			g2d.fillRect(100, 130, 800, 40);
+			g2d.fillRect(100, 170, 800, 30*vragen.size());
 			
 			g2d.setPaint(Color.black);
-			g2d.drawRect(100, 230, 800, 40);
-			g2d.drawRect(100, 270, 800, 30*aandoeningen.size());
-			g2d.drawLine(670, 230, 670, 270+30*aandoeningen.size());
-			g2d.drawLine(700, 230, 700, 270+30*aandoeningen.size());
+			g2d.drawRect(100, 130, 800, 40);
+			g2d.drawRect(100, 170, 800, 30*vragen.size());
+			g2d.drawLine(870, 130, 870, 170+30*vragen.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
-			g2d.drawString("Aandoeningen", 315, 255);
-			g2d.drawString("Vragenlijst", 760, 255);
+			g2d.drawString("Vragen", 315, 155);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
-			int hoogte = 300;
-			for(int i=1; i<=aandoeningen.size(); i++){
+			int hoogte = 200;
+			for(int i=1; i<=vragen.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Aandoening "+i, 120, hoogte-10);
-				JComboBox vragenlijstCombo = new JComboBox();
-				vragenlijstCombo.setBounds(702,hoogte-28,197,27);
-				add(vragenlijstCombo);
+				JTextField vraagVeld = new JTextField("Vraag "+i);
+				vraagVeld.setBounds(101,hoogte-29,769,29);
+				add(vraagVeld);
 				hoogte+=30;
 			}
 			
@@ -115,33 +106,21 @@ public class AandoeningenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
-			toevoegenLabel = new JLabel("Aandoening toevoegen");
-			toevoegenLabel.setFont(new Font("Default", Font.BOLD, 17));
-			toevoegenLabel.setBounds(100, 100, 190, 20);
-			overzichtLabel = new JLabel("Overzicht aandoeningen");
-			overzichtLabel.setFont(new Font("Default", Font.BOLD, 17));
-			overzichtLabel.setBounds(100, 200, 200, 20);
+			opslaanKnop = new JButton("Wijzigingen opslaan");
+			opslaanKnop.setBounds(750, 100, 150, 25);
 			
-			nieuweAandoeningVeld = new JTextField();
-			nieuweAandoeningVeld.setBounds(100, 130, 490, 25);
-			nieuweAandoeningVragenlijstCombo = new JComboBox();
-			nieuweAandoeningVragenlijstCombo.setBounds(600, 130, 190, 25);
-			nieuweAandoeningPathologieCombo = new JComboBox();
-			nieuweAandoeningPathologieCombo.setBounds(600, 160, 190, 25);
-			
-			toevoegKnop = new JButton("Toevoegen");
-			toevoegKnop.setBounds(800, 130, 100, 25);
-			
-			aanpasKnop = new JButton("Aandoeningen aanpassen");
-			aanpasKnop.setBounds(710, 200, 190, 25);
+			aanpassenLabel = new JLabel("Vragen aanpassen");
+			aanpassenLabel.setFont(new Font("Default", Font.BOLD, 17));
+			aanpassenLabel.setBounds(100, 100, 210, 20);
 			
 			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
 			vragenKnop.addActionListener(handler);
 			vragenlijstenKnop.addActionListener(handler);
+			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
-			aanpasKnop.addActionListener(handler);
+			opslaanKnop.addActionListener(handler);
 			
 			add(titel);
 			add(vragenKnop);
@@ -149,13 +128,9 @@ public class AandoeningenGUI extends JFrame{
 			add(aandoeningenKnop);
 			add(pathologieënKnop);
 			add(accountsKnop);
-			add(toevoegenLabel);
-			add(overzichtLabel);
-			add(nieuweAandoeningVeld);
-			add(nieuweAandoeningVragenlijstCombo);
-			add(nieuweAandoeningPathologieCombo);
-			add(toevoegKnop);
-			add(aanpasKnop);
+			add(opslaanKnop);
+			add(aanpassenLabel);
+			
 		}
 	}
 	
@@ -164,29 +139,32 @@ public class AandoeningenGUI extends JFrame{
 			JFrame newFrame;
 			switch(e.getActionCommand()){
 			case "FINAH":	newFrame = new AccountGUI();
-							AandoeningenGUI.this.setVisible(false);
+							VragenAanpassenGUI.this.setVisible(false);
 							break;
 			case "Vragen":	newFrame = new VragenGUI();
-							AandoeningenGUI.this.setVisible(false);
+							VragenAanpassenGUI.this.setVisible(false);
 							break;
 			case "Vragenlijsten":	newFrame = new VragenlijstenGUI();
-									AandoeningenGUI.this.setVisible(false);
+									VragenAanpassenGUI.this.setVisible(false);
+									break;
+			case "Aandoeningen":	newFrame = new AandoeningenGUI();
+									VragenAanpassenGUI.this.setVisible(false);
 									break;
 			case "Pathologieën":	newFrame = new PathologieënGUI();
-									AandoeningenGUI.this.setVisible(false);
+									VragenAanpassenGUI.this.setVisible(false);
 									break;
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
-								AandoeningenGUI.this.setVisible(false);
+								VragenAanpassenGUI.this.setVisible(false);
 								break;
-			case "Aandoeningen aanpassen":	newFrame = new AandoeningenAanpassenGUI();
-											AandoeningenGUI.this.setVisible(false);
-											break;
+			case "Wijzigingen opslaan":	newFrame = new VragenGUI();
+										VragenAanpassenGUI.this.setVisible(false);
+										break;
 			}
-		}	
+		}		
 	}
 	
 	public static void main(String[] args){
-		AandoeningenGUI test = new AandoeningenGUI();
+		VragenAanpassenGUI test = new VragenAanpassenGUI();
 	}
 	
 }

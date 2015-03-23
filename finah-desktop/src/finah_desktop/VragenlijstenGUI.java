@@ -27,6 +27,7 @@ public class VragenlijstenGUI extends JFrame{
 	private JButton pathologieënKnop;
 	private JButton accountsKnop;
 	private JButton toevoegKnop;
+	private JButton aanpasKnop;
 	private JLabel toevoegenLabel;
 	private JLabel overzichtLabel;
 	private JTextField nieuweVragenlijstVeld;
@@ -74,7 +75,6 @@ public class VragenlijstenGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
 			g2d.drawRect(100, 250, 800, 30*vragenlijsten.size());
-			g2d.drawLine(640, 210, 640, 250+30*vragenlijsten.size());
 			g2d.drawLine(670, 210, 670, 250+30*vragenlijsten.size());
 			g2d.drawLine(700, 210, 700, 250+30*vragenlijsten.size());
 			
@@ -86,6 +86,9 @@ public class VragenlijstenGUI extends JFrame{
 			for(int i=1; i<=vragenlijsten.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Vragenlijst "+i, 120, hoogte-10);
+				JComboBox aandoeningCombo = new JComboBox();
+				aandoeningCombo.setBounds(702,hoogte-28,197,27);
+				add(aandoeningCombo);
 				hoogte+=30;
 			}
 			
@@ -111,6 +114,9 @@ public class VragenlijstenGUI extends JFrame{
 			accountsKnop = new JButton("Accounts");
 			accountsKnop.setBounds(835, 25, 120, 30);
 			
+			aanpasKnop = new JButton("Vragenlijsten aanpassen");
+			aanpasKnop.setBounds(720, 180, 180, 25);
+			
 			toevoegenLabel = new JLabel("Vragenlijst toevoegen");
 			toevoegenLabel.setFont(new Font("Default", Font.BOLD, 17));
 			toevoegenLabel.setBounds(100, 100, 190, 20);
@@ -132,6 +138,7 @@ public class VragenlijstenGUI extends JFrame{
 			aandoeningenKnop.addActionListener(handler);
 			pathologieënKnop.addActionListener(handler);
 			accountsKnop.addActionListener(handler);
+			aanpasKnop.addActionListener(handler);
 			
 			add(titel);
 			add(vragenKnop);
@@ -144,6 +151,7 @@ public class VragenlijstenGUI extends JFrame{
 			add(nieuweVragenlijstVeld);
 			add(nieuweVragenlijstCombo);
 			add(toevoegKnop);
+			add(aanpasKnop);
 		}
 	}
 	
@@ -166,6 +174,9 @@ public class VragenlijstenGUI extends JFrame{
 			case "Accounts":	newFrame = new AccountsOverzichtGUI();
 								VragenlijstenGUI.this.setVisible(false);
 								break;
+			case "Vragenlijsten aanpassen":	newFrame = new VragenlijstenAanpassenGUI();
+										VragenlijstenGUI.this.setVisible(false);
+										break;
 			}
 		}		
 	}
