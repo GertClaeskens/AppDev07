@@ -18,16 +18,22 @@ public class TestAandoeningDAO {
 		// controller = new AandoeningDAO();
 	}
 
+//	@Test
+//	public void GetAandoeningen_ShouldReturnAllAandoeningen() {
+//		testAandoeningen = AandoeningDAO.GetAandoeningen();
+//		controleAandoeningen = TestAandoeningDAO.GetTestAandoeningen();
+//
+//		Assert.assertEquals(controleAandoeningen.size(),testAandoeningen.size());
+//	}
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetAandoeningen_ShouldReturnAllAandoeningen() {
 		testAandoeningen = AandoeningDAO.GetAandoeningen();
 		controleAandoeningen = TestAandoeningDAO.GetTestAandoeningen();
 
 		Assert.assertEquals(controleAandoeningen.size(),testAandoeningen.size());
 	}
-
 	@Test
-	public void Get_ShouldReturnCorrectAandoening() {
+	public void GetAandoening_ShouldReturnCorrectAandoening() {
         Aandoening aandoening = new Aandoening();
         Pathologie pt = new Pathologie();
         ArrayList<Pathologie> patLijst = new ArrayList<Pathologie>();
@@ -49,7 +55,7 @@ public class TestAandoeningDAO {
 	}
 
 	@Test
-	public void Get_ShouldNotFindAandoening() {
+	public void GetAandoening_ShouldNotFindAandoening() {
 		// Id meegeven die zeker niet in de database voorkomt
 		Aandoening result = AandoeningDAO.GetAandoening(999999999);
 		Assert.assertNull(result);
