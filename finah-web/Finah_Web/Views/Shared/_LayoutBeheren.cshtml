@@ -16,28 +16,7 @@
                 @RenderPage("~/Views/Shared/_NavbarBeheren.cshtml")
             </div><!--Closing DIV nav-bar-->
             <div id="body-container">
-                
-
-
-<h3 id="Breadcrumb">Menu &gt; Aandoening &gt; Aanmaken</h3>
-<h2 id="Content-Title">Nieuwe aandoening</h2>
-<hr>
-
-<form action="/Aandoening/Create" method="post"><input name="__RequestVerificationToken" value="GI27FZwhnAJuCwSjtdO84QVYry2gID7l0v8SI_gdaGWyvZrddAxmetMtYR8xjfVv4O38rFs_Dcjyrs9q394CzzPd8ls4d4dKvMACGfdXwmQ1" type="hidden">    
-        <ul class="form-style" style="list-style-type:none;">
-            <li> <label class="control-label" for="Omschrijving">Omschrijving</label> </li>
-            
-            <li><input class="form-control text-box single-line" id="Omschrijving" name="Omschrijving" value="" type="text"></li>
-            <span class="field-validation-valid text-danger" data-valmsg-for="Omschrijving" data-valmsg-replace="true"></span>
-            <li><input value="Create" class="createBtn" type="submit"></li>
-        </ul>  
-    </form>
-<div class="Back">
-    <a class="" href="/Aandoening/Overzicht">Terug naar overzicht</a>
-</div>
-
-
-    
+                @RenderBody()
             </div><!--Closing DIV body containerr-->
         </div><!--Closing DIV innerwrapper-->
         <div id="page-footer">
