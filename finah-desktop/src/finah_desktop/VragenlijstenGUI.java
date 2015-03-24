@@ -55,6 +55,8 @@ public class VragenlijstenGUI extends JFrame{
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
+			ButtonHandler handler = new ButtonHandler();
+			
 			Graphics2D g2d = (Graphics2D) g;
 			setBackground(new Color(188,188,188));
 			
@@ -75,6 +77,7 @@ public class VragenlijstenGUI extends JFrame{
 			g2d.setPaint(Color.black);
 			g2d.drawRect(100, 210, 800, 40);
 			g2d.drawRect(100, 250, 800, 30*vragenlijsten.size());
+			g2d.drawLine(640, 210, 640, 250+30*vragenlijsten.size());
 			g2d.drawLine(670, 210, 670, 250+30*vragenlijsten.size());
 			g2d.drawLine(700, 210, 700, 250+30*vragenlijsten.size());
 			
@@ -86,6 +89,10 @@ public class VragenlijstenGUI extends JFrame{
 			for(int i=1; i<=vragenlijsten.size(); i++){
 				g2d.drawLine(100, hoogte, 900, hoogte);
 				g2d.drawString("Vragenlijst "+i, 120, hoogte-10);
+				JButton bekijkKnop = new JButton("Bekijk");
+				bekijkKnop.setBounds(641, hoogte-29, 29, 29);
+				bekijkKnop.addActionListener(handler);
+				add(bekijkKnop);
 				JComboBox aandoeningCombo = new JComboBox();
 				aandoeningCombo.setBounds(702,hoogte-28,197,27);
 				add(aandoeningCombo);
@@ -132,7 +139,6 @@ public class VragenlijstenGUI extends JFrame{
 			toevoegKnop = new JButton("Toevoegen");
 			toevoegKnop.setBounds(800, 130, 100, 25);
 			
-			ButtonHandler handler = new ButtonHandler();
 			titel.addActionListener(handler);
 			vragenKnop.addActionListener(handler);
 			aandoeningenKnop.addActionListener(handler);
@@ -177,6 +183,9 @@ public class VragenlijstenGUI extends JFrame{
 			case "Vragenlijsten aanpassen":	newFrame = new VragenlijstenAanpassenGUI();
 										VragenlijstenGUI.this.setVisible(false);
 										break;
+			case "Bekijk":	newFrame = new VragenlijstBekijkenGUI();
+							VragenlijstenGUI.this.setVisible(false);
+							break;
 			}
 		}		
 	}

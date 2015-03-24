@@ -73,7 +73,7 @@ public class VragenlijstBekijkenGUI extends JFrame{
 			//g2d.drawLine(870, 130, 870, 170+30*vragen.size());
 			
 			g2d.setFont(new Font("Arial", Font.BOLD, 17));
-			g2d.drawString("Vragen", 315, 155);
+			g2d.drawString("Vragen", 465, 155);
 			//g2d.drawString("Vragenlijst", 715, 155);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 200;
