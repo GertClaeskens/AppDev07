@@ -46,7 +46,7 @@ namespace Finah_Backend.Tests.Controllers
 
         private List<Vraag> GetTestVragen()
         {
-            List<Vraag> vragen = new List<Vraag>();
+            var vragen = new List<Vraag>();
             ///
             ///
             /// Wanneer we daadwerkelijk gaan testen moeten we hier de gegevens invullen zoals ze in de database staan

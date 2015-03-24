@@ -23,8 +23,6 @@ public class BevragingDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 		return null;
 	}
 
@@ -44,10 +42,7 @@ public class BevragingDAO {
 		if (rd != null) {
 			Bevraging bevraging = gson.fromJson(rd, Bevraging.class);
 			return bevraging;
-
 		}
-
 		return null;
-
 	}
 }

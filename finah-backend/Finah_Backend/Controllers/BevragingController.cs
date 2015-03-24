@@ -43,7 +43,7 @@ namespace Finah_Backend.Controllers
         // return -> naderhand veranderen in Bevraging
         public string Get()
         {
-            ///Code staat hier maar ter info
+            //Code staat hier maar ter info
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
             //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
@@ -86,9 +86,9 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            var bevragingen = new List<Bevraging> { new Bevraging { Id = "1" }, new Bevraging { Id = "2" }, new Bevraging { Id = "2" }, new Bevraging { Id = "4" }, new Bevraging { Id = "5" } };
+            var bevragingenlijst = new List<Bevraging> { new Bevraging { Id = "1" }, new Bevraging { Id = "2" }, new Bevraging { Id = "2" }, new Bevraging { Id = "4" }, new Bevraging { Id = "5" } };
             
-            return bevragingen;
+            return bevragingenlijst;
         }
 
         // GET: Bevraging/Create
