@@ -35,23 +35,26 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var vraag = new Vraag();
-            var foto = new Foto();
-            var gf = new GeluidsFragment();
+            Vraag vraag = null;
+            if (id == 1)
+            {
+                vraag = new Vraag();
+                var foto = new Foto();
+                var gf = new GeluidsFragment();
 
-            foto.Id = 1;
-            foto.Omschrijving = "foto vraag 1";
-            foto.Pad = "pad";
+                foto.Id = 1;
+                foto.Omschrijving = "foto vraag 1";
+                foto.Pad = "pad";
 
-            gf.Id = 1;
-            gf.Omschrijving = "geluid vraag 1";
-            gf.Pad = "geluidpad";
+                gf.Id = 1;
+                gf.Omschrijving = "geluid vraag 1";
+                gf.Pad = "geluidpad";
 
-            vraag.Id = 1;
-            vraag.VraagStelling = "Lorem ipsum bladibla";
-            vraag.Afbeelding = foto;
-            vraag.Geluid = gf;
-
+                vraag.Id = 1;
+                vraag.VraagStelling = "Lorem ipsum bladibla";
+                vraag.Afbeelding = foto;
+                vraag.Geluid = gf;
+            }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //Vraag vraag = db.Vragen.Find(id);
