@@ -34,8 +34,12 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Foto))]
         public IHttpActionResult Get(int id)
         {
-            var foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
-
+            //Code aangepast om te kunnen testen
+            Foto foto=null;
+            if (id == 1)
+            {
+                foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
+            }
             //Bovenstaande code dient om te testen (op dit moment nutteloos)
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //Foto foto = db.Fotos.Find(id);

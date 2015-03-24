@@ -50,23 +50,35 @@ namespace Finah_Web.Controllers
             }
         }
 
+        // GET: Vraag/Details
+        //public ActionResult Details(int id) --Voor als Db
+        public ActionResult Details() //temp
+        {
+            return View();
+        }
+
         // GET: Vraag/Create
-        public ActionResult Create()
+        [Route("Vraag/Create")]
+        public ActionResult Create() //Gets empty page for new aandoening
         {
             return View();
         }
 
         // POST: Vraag/Create
-        [HttpPost]
+        //[HttpPost]
+        [Route("Vraag/PCreate")] //Post new aandoening
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
                 using (var client = SharedFunctions.SetupClient())
                 {
-                    var vraag = new Vraag { Id = 1, VraagStelling = "Test vraag1" };
+                    var vrg = new Vraag();
 
-                    HttpResponseMessage response = await client.PostAsJsonAsync("Vragen/", vraag);
+                    vrg.Id = 1;
+                    vrg.VraagStelling = "Heeft u problemen met leren ?";
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("Vraag/", vrg);
                 }
 
                 return RedirectToAction("Overzicht");
@@ -78,8 +90,10 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Vraag/Edit/5
-        public ActionResult Edit(int id)
+        //public ActionResult Edit(int id) //Laad bestaande aandoening om aan te passen  -- Voor als DB live is
+        public ActionResult Edit() //Temp
         {
+            //Via Id aandoening ophalen om naderhand te updaten/editen
             return View();
         }
 
@@ -100,7 +114,8 @@ namespace Finah_Web.Controllers
         }
 
         // GET: Vraag/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id) -- Voor als DB live is
+        public ActionResult Delete() //Temp
         {
             return View();
         }

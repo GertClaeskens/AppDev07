@@ -53,11 +53,20 @@ namespace Finah_Backend.Controllers
 
             return overzichtGeluidsFragementen;
         }
-        [Route("GeluidFragment/{id}")]
+        [Route("GeluidsFragment/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var geluidsFragment = new GeluidsFragment { Id = 1, Omschrijving = "geluidsfragment vraag 1", Pad = "pad" };
-
+            //code aangepast om te kunnen testen
+            GeluidsFragment geluidsFragment = null;
+            if (id == 1)
+            {
+                geluidsFragment = new GeluidsFragment
+                                          {
+                                              Id = 1,
+                                              Omschrijving = "geluidsfragment vraag 1",
+                                              Pad = "pad"
+                                          };
+            }
             //Bovenstaande code dient om te testen (op dit moment nutteloos)
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //GeluidsFragment geluidsFragment = db.Geluidsfragmenten.Find(id);

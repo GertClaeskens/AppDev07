@@ -14,13 +14,13 @@
     @Html.AntiForgeryToken()
     
     <form>
-       <ul class="form-style">
-           <li> @Html.LabelFor(model => model.Omschrijving , htmlAttributes: new { @class = "control-label" }) </li>
-           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-           <li>@Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })</li> @*Input veld*@
-           @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
-           <li><input type="submit" value="Create" class="createBtn" /></li>
-       </ul>  
+        <ul class="form-style" style="list-style-type:none;">
+            <li> @Html.LabelFor(model => model.Omschrijving, htmlAttributes: new { @class = "control-label" }) </li>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <li>@Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })</li>
+            @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
+            <li><input type="submit" value="Create" class="createBtn" /></li>
+        </ul>  
     </form>
 }
 <div class="Back">

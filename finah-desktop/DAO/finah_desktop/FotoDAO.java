@@ -10,36 +10,41 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class LeeftijdsCategorieDAO {
-	public static ArrayList<LeeftijdsCategorie> GetLeeftijdsCategorieen(){
+public class FotoDAO {
+	public static ArrayList<Foto> GetFotos(){
 		// Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/LeeftijdsCategorie/Overzicht");
+			rd = SharedDAO.HaalGegevens("http://localhost:1695/Foto/Overzicht");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<LeeftijdsCategorie>>() {
+		Type collectionType = new TypeToken<Collection<Foto>>() {
 		}.getType();
-		ArrayList<LeeftijdsCategorie> leeftijdscategorieen = gson.fromJson(rd, collectionType);
+		ArrayList<Foto> fotos = gson.fromJson(rd, collectionType);
 
-		return leeftijdscategorieen;
+		return fotos;
 	}
-	public static LeeftijdsCategorie GetLeeftijdsCategorie(int id){
+	public static Foto GetFoto(int id) {
 		// Exception Handling nog nakijken
 		//Nog opzoeken hoe in dit geval de pathologieen kunnen worden uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/LeeftijdsCategorie/" + id);
+			rd = SharedDAO.HaalGegevens("http://localhost:1695/Foto/" +id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		LeeftijdsCategorie leeftijdsCategorie = gson.fromJson(rd, LeeftijdsCategorie.class);
-		return leeftijdsCategorie;
+
+		if (rd != null) {
+			Foto foto = gson.fromJson(rd, Foto.class);
+
+			return foto;
+		}
+		return null;
 	}
 }

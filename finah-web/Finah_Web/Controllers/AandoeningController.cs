@@ -62,6 +62,7 @@ namespace Finah_Web.Controllers
         }
 
         // POST: Aandoening/Create
+        //[HttpPost]
         [Route("Aandoening/PCreate")] //Post new aandoening
         public async Task<ActionResult> Create(FormCollection collection)
         {

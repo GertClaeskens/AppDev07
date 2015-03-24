@@ -39,18 +39,12 @@ namespace Finah_Backend.Controllers
         {
             //return db.LeeftijdsCategorieen;
 
-            
-            var lc1 = new LeeftijdsCategorie();
-            var lc2 = new LeeftijdsCategorie();
-            var lc3 = new LeeftijdsCategorie();
-            var lc4 = new LeeftijdsCategorie();
-            var lc5 = new LeeftijdsCategorie();
 
-            lc1.Id = 1;
-            lc2.Id = 2;
-            lc3.Id = 3;
-            lc4.Id = 4;
-            lc5.Id = 5;
+            var lc1 = new LeeftijdsCategorie { Id = 1 };
+            var lc2 = new LeeftijdsCategorie { Id = 2 };
+            var lc3 = new LeeftijdsCategorie { Id = 3 };
+            var lc4 = new LeeftijdsCategorie { Id = 4 };
+            var lc5 = new LeeftijdsCategorie { Id = 5 };
 
             var overzichtLeeftijdsCategorieen = new List<LeeftijdsCategorie>
                                                        {
@@ -64,8 +58,11 @@ namespace Finah_Backend.Controllers
         [Route("LeeftijdsCategorie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            var leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
-
+            LeeftijdsCategorie leeftijdsCategorie = null;
+            if (id == 1)
+            {
+                leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
+            }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //LeeftijdsCategorie leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
