@@ -66,10 +66,10 @@ namespace Finah_Backend.Tests.Controllers
             ///
             /// Een lijst van 3-4 objecten volstaat
             var testBevragingen = new List<Bevraging>();
-            Bevraging testBevraging = new Bevraging();
-            Account testAccount = new Account();
-            LeeftijdsCategorie testCat = new LeeftijdsCategorie();
-            VragenLijst testVragenlijst = new VragenLijst();
+            var testBevraging = new Bevraging();
+            var testAccount = new Account();
+            var testCat = new LeeftijdsCategorie();
+            var testVragenlijst = new VragenLijst();
 
             testCat.Id = 1;
             testCat.Van = 0;
