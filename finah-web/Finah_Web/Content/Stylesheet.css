@@ -248,8 +248,23 @@ body {
 .form-style  input[type=time],
 .form-style  input[type=url],
 .form-style  input[type=email],
-textarea, 
-select{
+textarea
+{
+    width:50%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;  
+}
+.form-style select{
+    width:20%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -278,10 +293,8 @@ select{
     border: 1px solid #88D5E9;
 }
 .form-style.form-control{
-    width: 40%;
+    width: 49%;
 }
-
-
 
 .form-style input[type=submit], .form-style input[type=button]{
     background: #0099CC;

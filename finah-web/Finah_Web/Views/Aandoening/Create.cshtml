@@ -15,6 +15,14 @@
     
     <form>
         <ul class="form-style" style="list-style-type:none;">
+            <li> <label class="control-label" >Kies een pathologie</label> </li>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <select class="form-control">
+                <option>Pathologie 1</option>
+                <option>Pathologie 2</option>
+                <option>Pathologie 3</option>
+                <option>Pathologie 4</option>
+            </select>
             <li> @Html.LabelFor(model => model.Omschrijving, htmlAttributes: new { @class = "control-label" }) </li>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <li>@Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })</li>
