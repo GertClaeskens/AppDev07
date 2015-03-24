@@ -15,7 +15,7 @@
 <br />
 <table class="overzicht-table" border="1">
     <tr>
-        <th>
+        <th >
             @Html.DisplayNameFor(model => model.VraagStelling)
         </th>
         <th>Actie</th>
@@ -24,7 +24,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="large-column">
                 @Html.DisplayFor(modelItem => item.VraagStelling)
             </td>
             <td class="action-column">

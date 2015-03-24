@@ -16,13 +16,16 @@
 <table class="overzicht-table" border="1"   >
     <tr>
         @*<th>@Html.DisplayNameFor(model => model.Omschrijving)</th>*@
-
+        <th >Aandoening</th>
+        <th >Pathologie</th>
         <th>Actie</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td class="large-column">Dit is een voorbeeld omschrijving van de aandoening</td>
+            <td class="medium-column">Pathologie 1</td>
             <td class="action-column">
                  @Html.ActionLink("Edit", "Edit", new { id = item.Id })  |
                  @Html.ActionLink("Details", "Details", new { id = item.Id }) |
