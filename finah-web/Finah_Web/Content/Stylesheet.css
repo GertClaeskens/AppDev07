@@ -3,6 +3,7 @@
     margin:0px;
 }
 
+
 body {
     width:1080px;
     margin:0 auto;
@@ -116,16 +117,36 @@ body {
     font-family:Verdana;
 }
 
-#body-container table {
+.overzicht-table {
+    margin-top: 20px;
     width:100%;
+    border-spacing:0px;
+    border-radius: 5px; /*Standard syntax*/
+    -moz-border-radius:5px;      /*For firefox*/
+    -webkit-border-radius: 5px;/*For Safari*/ 
+}
+.overzicht-table th {
+    background-color: #0099CC;
+    margin:0px;
+    padding:5px;
 }
 
-#body-container table td {
-    
-    text-align:center;
+.overzicht-table tr:nth-child(even){
+        background:lightgray;
 }
-#body-container table button {
-    width:55px;
+.overzicht-table tr:nth-child(odd){
+        background:white;
+}
+
+.overzicht-table td {
+    margin:0px;
+    padding:5px 5px 5px 10px;
+    text-align:left;
+}
+.overzicht-table td:last-child {
+    margin:0px;
+    padding:5px;
+    text-align:center;
 }
 
 #page-footer{
@@ -158,18 +179,18 @@ body {
 
 .ActieKolom {
     width:200px;
+    
 }
 .DatumKolom {
     width:160px;
 }
 .CreateBtnDiv {
     margin-top:25px;
-    
 }
 .Back {
     text-align:center;
     width:100%;
-    
+    margin-top:50px;
 }
 .form-horizontal{
     margin-bottom:75px;
@@ -190,9 +211,7 @@ body {
 .detailsDiv {
     margin-bottom:75px;
 }
-.form-control {
-    
-}
+
 .form-style {
     margin:10px auto;
     padding:20px 12px 10px 20px;
@@ -209,8 +228,6 @@ body {
     padding:0px;
     font-weight:bold;
 }
-
- 
 
 .form-style input[type=text], 
 .form-style  input[type=date],
@@ -268,3 +285,36 @@ select{
     -webkit-box-shadow:none;
 }
 
+/*.detail-table {
+    margin-top: 20px;
+    border-spacing:0px;
+    border-radius: 5px; 
+    -moz-border-radius:5px;      
+    -webkit-border-radius: 5px; 
+}
+.detail-table th {
+    background-color: #0099CC;
+    margin:0px;
+    padding:5px;
+}
+.detail-table th:last-child {
+    border-left:2px solid white;
+}
+.detail-table tr:nth-child(even){
+        background:lightgray;
+}
+.detail-table tr:nth-child(odd){
+        background:white;
+}
+
+.detail-table td {
+    margin:0px;
+    padding:5px 5px 5px 10px;
+    text-align:left;
+}
+.detail-table td:last-child {
+    margin:0px;
+    padding:5px;
+    text-align:center;
+    border-left:2px solid white;
+}*/
