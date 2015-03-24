@@ -14,20 +14,18 @@ public class AanvraagDAO {
 	public static ArrayList<Aanvraag> GetAanvragen() {
 		// Exception Handling nog nakijken
 
-		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd = null;
+		Type collectionType = new TypeToken<Collection<Aanvraag>>() {
+		}.getType();
+
 		try {
-			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Aanvraag/Overzicht");
+			return SharedDAO.HaalGegevens(
+					"http://localhost:1695/Aanvraag/Overzicht", collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<Aanvraag>>() {
-		}.getType();
-		ArrayList<Aanvraag> aanvragen = gson.fromJson(rd, collectionType);
 
-		return aanvragen;
+		return null;
 	}
 
 	public static Aanvraag GetAanvraag(int id) {

@@ -14,19 +14,16 @@ public class FotoDAO {
 	public static ArrayList<Foto> GetFotos(){
 		// Exception Handling nog nakijken
 
-		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		Type collectionType = new TypeToken<Collection<Foto>>() {
+		}.getType();
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Foto/Overzicht");
+			return SharedDAO.HaalGegevens("http://localhost:1695/Foto/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<Foto>>() {
-		}.getType();
-		ArrayList<Foto> fotos = gson.fromJson(rd, collectionType);
-
-		return fotos;
+		
+		return null;
 	}
 	public static Foto GetFoto(int id) {
 		// Exception Handling nog nakijken
@@ -47,4 +44,5 @@ public class FotoDAO {
 		}
 		return null;
 	}
+	
 }

@@ -18,23 +18,23 @@ public class TestBevragingDAO {
 		
 	}
 
-	@Test
-	public void GetOverzicht_ShouldReturnAllBevragingen() {
-		testBevragingen = BevragingDAO.GetBevragingen();
-		controleBevragingen = TestBevragingDAO.GetTestBevragingen();
-
-		Assert.assertEquals(controleBevragingen.size(), testBevragingen.size());
-	}
-
-	@Test
-	public void Get_ShouldReturnCorrectBevraging() {
-		Bevraging bevraging = new Bevraging();
-		bevraging.setId("1");
-		Bevraging test = BevragingDAO.GetBevraging("1");
-		Assert.assertNotNull(test);
-		// Controleren of beide objecten gelijk zijn (Comparable?)
-		Assert.assertEquals(bevraging.getId(), test.getId());
-	}
+//	@Test
+//	public void GetOverzicht_ShouldReturnAllBevragingen() {
+//		testBevragingen = BevragingDAO.GetBevragingen();
+//		controleBevragingen = TestBevragingDAO.GetTestBevragingen();
+//
+//		Assert.assertEquals(controleBevragingen.size(), testBevragingen.size());
+//	}
+//
+//	@Test
+//	public void Get_ShouldReturnCorrectBevraging() {
+//		Bevraging bevraging = new Bevraging();
+//		bevraging.setId("1");
+//		Bevraging test = BevragingDAO.GetBevraging("1");
+//		Assert.assertNotNull(test);
+//		// Controleren of beide objecten gelijk zijn (Comparable?)
+//		Assert.assertEquals(bevraging.getId(), test.getId());
+//	}
 
 	@Test
 	public void Get_ShouldNotFindBevraging() {

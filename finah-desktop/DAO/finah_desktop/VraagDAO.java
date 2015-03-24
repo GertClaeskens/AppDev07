@@ -11,34 +11,30 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class VraagDAO {
-	public static ArrayList<Vraag> GetVragen(){
+	public static ArrayList<Vraag> GetVragen() {
 		// Exception Handling nog nakijken
 
-		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		Type collectionType = new TypeToken<Collection<Vraag>>() {
+		}.getType();
 		try {
-			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Vragen/Overzicht");
+			return SharedDAO.HaalGegevens(
+					"http://localhost:1695/Vragen/Overzicht", collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<Vraag>>() {
-		}.getType();
-		ArrayList<Vraag> vragen = gson.fromJson(rd, collectionType);
 
-		return vragen;
+		return null;
 	}
 
-	public static Vraag GetVraag(int id){
+	public static Vraag GetVraag(int id) {
 		// Exception Handling nog nakijken
 		// Nog opzoeken hoe in dit geval de vraagen kunnen worden
 		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		BufferedReader rd = null;
 		try {
-			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Vragen/" + id);
+			rd = SharedDAO.HaalGegevens("http://localhost:1695/Vragen/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -14,20 +14,16 @@ public class PathologieDAO {
 	public static ArrayList<Pathologie> GetPathologieen(){
 		// Exception Handling nog nakijken
 
-		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		Type collectionType = new TypeToken<Collection<Pathologie>>() {
+		}.getType();
 		try {
-			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Pathologie/Overzicht");
+			return SharedDAO
+					.HaalGegevens("http://localhost:1695/Pathologie/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<Pathologie>>() {
-		}.getType();
-		ArrayList<Pathologie> pathologieen = gson.fromJson(rd, collectionType);
-
-		return pathologieen;
+		return null;
 	}
 
 	public static Pathologie GetPathologie(int id){

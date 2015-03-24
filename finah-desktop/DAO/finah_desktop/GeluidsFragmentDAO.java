@@ -11,32 +11,29 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class GeluidsFragmentDAO {
-	public static ArrayList<GeluidsFragment> GetGeluidsFragmenten(){
+	public static ArrayList<GeluidsFragment> GetGeluidsFragmenten() {
 		// Exception Handling nog nakijken
 
-		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		Type collectionType = new TypeToken<Collection<GeluidsFragment>>() {
+		}.getType();
 		try {
-			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/GeluidsFragment/Overzicht");
+			return SharedDAO.HaalGegevens(
+					"http://localhost:1695/GeluidsFragment/Overzicht",
+					collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Type collectionType = new TypeToken<Collection<GeluidsFragment>>() {
-		}.getType();
-		ArrayList<GeluidsFragment> geluidsFragmenten = gson.fromJson(rd,
-				collectionType);
 
-		return geluidsFragmenten;
+		return null;
 	}
 
-	public static GeluidsFragment GetGeluidsFragment(int id){
+	public static GeluidsFragment GetGeluidsFragment(int id) {
 		// Exception Handling nog nakijken
 		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
 		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		BufferedReader rd=null;
+		BufferedReader rd = null;
 		try {
 			rd = SharedDAO
 					.HaalGegevens("http://localhost:1695/GeluidsFragment/" + id);
@@ -46,7 +43,8 @@ public class GeluidsFragmentDAO {
 		}
 
 		if (rd != null) {
-			GeluidsFragment geluidsFragment = gson.fromJson(rd, GeluidsFragment.class);
+			GeluidsFragment geluidsFragment = gson.fromJson(rd,
+					GeluidsFragment.class);
 
 			return geluidsFragment;
 		}

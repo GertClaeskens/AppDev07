@@ -22,8 +22,6 @@ public class SharedDAO {
 
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
-		// HttpGet request = new
-		// HttpGet("http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht");
 		HttpResponse response = client.execute(request);
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response
 				.getEntity().getContent()));
@@ -35,8 +33,6 @@ public class SharedDAO {
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
-		// HttpGet request = new
-		// HttpGet("http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht");
 		HttpResponse response = client.execute(request);
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response
 				.getEntity().getContent()));
