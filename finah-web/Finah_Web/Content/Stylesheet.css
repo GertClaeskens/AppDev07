@@ -120,6 +120,7 @@ body {
 .overzicht-table {
     margin-top: 20px;
     width:100%;
+    text-align:left;
     border-spacing:0px;
     border-radius: 5px; /*Standard syntax*/
     -moz-border-radius:5px;      /*For firefox*/
@@ -128,6 +129,7 @@ body {
 .overzicht-table th {
     background-color: #0099CC;
     margin:0px;
+    text-align:center;
     padding:5px;
 }
 
@@ -141,14 +143,26 @@ body {
 .overzicht-table td {
     margin:0px;
     padding:5px 5px 5px 10px;
-    text-align:left;
+   
 }
 .overzicht-table td:last-child {
     margin:0px;
     padding:5px;
     text-align:center;
 }
-
+.leeftijdKolom {
+    text-align:center;
+}
+.large-column {
+    width:50%;
+}
+.medium-column {
+    text-align:center;
+    width:15%
+}
+.action-column{
+    width:25%;
+}
 #page-footer{
     text-align:center;
     width:100%;
@@ -177,10 +191,7 @@ body {
     margin-bottom:25px;
 }
 
-.ActieKolom {
-    width:200px;
-    
-}
+
 .DatumKolom {
     width:160px;
 }

@@ -12,17 +12,23 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Omschrijving)
-        </th>  
+        </th>
+        <th>
+            Pathologie
+        </th>
         <th>
             Actie
         </th>
     </tr>
     <tr>
-        <td>
+        <td class="large-column">
             Dit is een voorbeeld omschrijving.
             @Html.DisplayFor(model => model.Omschrijving)
         </td>
-        <td class="ActieKolom">
+        <td class="medium-column">
+            Pathologie 1
+        </td>
+        <td class="action-column">
             @Html.ActionLink("Edit", "Edit") |
             @Html.ActionLink("Delete", "Delete")  @*Voor aals DB live is*@
         </td>
