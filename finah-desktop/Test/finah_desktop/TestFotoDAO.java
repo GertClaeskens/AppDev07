@@ -17,7 +17,7 @@ public class TestFotoDAO {
 	}
 
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetOverzicht_ShouldReturnAllFotos() {
 		testFotos = FotoDAO.GetFotos();
 		controleFotos = TestFotoDAO.GetTestFotos();
 

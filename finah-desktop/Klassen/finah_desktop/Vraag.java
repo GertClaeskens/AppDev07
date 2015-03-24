@@ -1,64 +1,54 @@
 package finah_desktop;
 
-import java.util.ArrayList;
-
-
-
 public class Vraag {
-	private int id;
-	private String vraagstelling;
-	private Foto afbeelding;
-	private GeluidsFragment geluidsfragment;
+	private int Id;
+	private String Vraagstelling;
+	private Foto Afbeelding;
+	private GeluidsFragment Geluid;
 
 	public Vraag() {
 
 	}
 
-	public Vraag(String vraagstelling, Foto afbeelding, GeluidsFragment geluidsfragment) {
-		this.vraagstelling = vraagstelling;
-		this.afbeelding = afbeelding;
-		this.geluidsfragment = geluidsfragment;
+	public Vraag(int id, String vraagstelling, Foto afbeelding,
+			GeluidsFragment geluid) {
+		super();
+		Id = id;
+		Vraagstelling = vraagstelling;
+		Afbeelding = afbeelding;
+		Geluid = geluid;
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getVraagstelling() {
-		return vraagstelling;
+		return Vraagstelling;
 	}
 
 	public void setVraagstelling(String vraagstelling) {
-		this.vraagstelling = vraagstelling;
+		Vraagstelling = vraagstelling;
 	}
 
 	public Foto getAfbeelding() {
-		return afbeelding;
+		return Afbeelding;
 	}
 
 	public void setAfbeelding(Foto afbeelding) {
-		this.afbeelding = afbeelding;
+		Afbeelding = afbeelding;
 	}
 
-	public GeluidsFragment getGeluidsfragment() {
-		return geluidsfragment;
+	public GeluidsFragment getGeluid() {
+		return Geluid;
 	}
 
-	public void setGeluidsfragment(GeluidsFragment geluidsfragment) {
-		this.geluidsfragment = geluidsfragment;
-	}
-
-	public static ArrayList<String> getKolommen(){
-		ArrayList<String> kol = new ArrayList<String>();
-		kol.add("Id");
-		kol.add("Vraagstelling");
-		kol.add("Afbeelding");
-		kol.add("Geluidsfragment");
-		return kol;
+	public void setGeluid(GeluidsFragment geluid) {
+		Geluid = geluid;
 	}
 
 	/* (non-Javadoc)
@@ -69,12 +59,11 @@ public class Vraag {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((afbeelding == null) ? 0 : afbeelding.hashCode());
+				+ ((Afbeelding == null) ? 0 : Afbeelding.hashCode());
+		result = prime * result + ((Geluid == null) ? 0 : Geluid.hashCode());
+		result = prime * result + Id;
 		result = prime * result
-				+ ((geluidsfragment == null) ? 0 : geluidsfragment.hashCode());
-		result = prime * result + id;
-		result = prime * result
-				+ ((vraagstelling == null) ? 0 : vraagstelling.hashCode());
+				+ ((Vraagstelling == null) ? 0 : Vraagstelling.hashCode());
 		return result;
 	}
 
@@ -90,22 +79,22 @@ public class Vraag {
 		if (getClass() != obj.getClass())
 			return false;
 		Vraag other = (Vraag) obj;
-		if (afbeelding == null) {
-			if (other.afbeelding != null)
+		if (Afbeelding == null) {
+			if (other.Afbeelding != null)
 				return false;
-		} else if (!afbeelding.equals(other.afbeelding))
+		} else if (!Afbeelding.equals(other.Afbeelding))
 			return false;
-		if (geluidsfragment == null) {
-			if (other.geluidsfragment != null)
+		if (Geluid == null) {
+			if (other.Geluid != null)
 				return false;
-		} else if (!geluidsfragment.equals(other.geluidsfragment))
+		} else if (!Geluid.equals(other.Geluid))
 			return false;
-		if (id != other.id)
+		if (Id != other.Id)
 			return false;
-		if (vraagstelling == null) {
-			if (other.vraagstelling != null)
+		if (Vraagstelling == null) {
+			if (other.Vraagstelling != null)
 				return false;
-		} else if (!vraagstelling.equals(other.vraagstelling))
+		} else if (!Vraagstelling.equals(other.Vraagstelling))
 			return false;
 		return true;
 	}

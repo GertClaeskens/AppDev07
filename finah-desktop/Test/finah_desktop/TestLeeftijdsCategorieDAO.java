@@ -17,7 +17,7 @@ public class TestLeeftijdsCategorieDAO {
 	}
 
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetOverzicht_ShouldReturnAllLeeftijdsCategorieen() {
 		testLeeftijdsCategorieen = LeeftijdsCategorieDAO.GetLeeftijdsCategorieen();
 		controleLeeftijdsCategorieen = TestLeeftijdsCategorieDAO.GetTestLeeftijdsCategorieen();
 

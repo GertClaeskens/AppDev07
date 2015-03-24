@@ -19,7 +19,7 @@ public class TestAanvraagDAO {
 	}
 
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetOverzicht_ShouldReturnAllAanvragen() {
 		testAanvragen = AanvraagDAO.GetAanvragen();
 		controleAanvragen = TestAanvraagDAO.GetTestAanvragen();
 

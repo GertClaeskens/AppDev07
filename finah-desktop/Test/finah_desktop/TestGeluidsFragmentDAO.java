@@ -15,7 +15,7 @@ public class TestGeluidsFragmentDAO {
 	}
 
 	@Test
-	public void GetOverzicht_ShouldReturnAllAandoeningen() {
+	public void GetOverzicht_ShouldReturnAllGeluidsFragmenten() {
 		testGeluidsFragmenten = GeluidsFragmentDAO.GetGeluidsFragmenten();
 		controleGeluidsFragmenten = TestGeluidsFragmentDAO.GetTestGeluidsFragmenten();
 
