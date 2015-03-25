@@ -70,18 +70,100 @@ namespace Finah_Backend.Controllers
             //return vragen;
             //aandoeningen = db.Aandoeningen.ToList();
 
-            var ad1 = new Aandoening();
-            var ad2 = new Aandoening();
-            var ad3 = new Aandoening();
-            var ad4 = new Aandoening();
-            var ad5 = new Aandoening();
+            var ad1 = new Aandoening
+            {
+                Id = 1,
+                Omschrijving = "Aandoening 1",
 
-           
-            ad1.Id = 1;
-            ad2.Id = 2;
-            ad3.Id = 3;
-            ad4.Id = 4;
-            ad5.Id = 5;
+                Patologieen =
+                    new List<Pathologie>
+                                                    {
+                                                        new Pathologie
+                                                            {
+                                                                Id = 1,
+                                                                Omschrijving =
+                                                                    "Omschrijving"
+                                                            }
+                                                    }
+            };
+            var ad2 = new Aandoening
+                                        {
+                                            Id = 2,
+                                            Omschrijving = "Aandoening 2",
+
+                                            Patologieen =
+                                                new List<Pathologie>
+                                                    {
+                                                        new Pathologie
+                                                            {
+                                                                Id = 2,
+                                                                Omschrijving =
+                                                                    "Omschrijving"
+                                                            },
+                                                        new Pathologie
+                                                            {
+                                                                Id = 3,
+                                                                Omschrijving =
+                                                                    "Omschrijving"
+                                                            }
+                                                    }
+                                        };
+            var ad3 = new Aandoening
+            {
+                Id = 3,
+                Omschrijving = "Aandoening 3",
+                Patologieen =
+                    new List<Pathologie>
+                                                        {
+                                                            new Pathologie
+                                                                {
+                                                                    Id = 2,
+                                                                    Omschrijving =
+                                                                        "OmschrijvingP2"
+                                                                }
+                                                        }
+            };
+            var ad4 = new Aandoening
+            {
+                Id = 4,
+                Omschrijving = "Aandoening 4",
+
+                Patologieen =
+                    new List<Pathologie>
+                                                    {
+                                                        new Pathologie
+                                                            {
+                                                                Id = 1,
+                                                                Omschrijving =
+                                                                    "OmschrijvingP1"
+                                                            }
+                                                    }
+            };
+            var ad5 = new Aandoening
+            {
+                Id = 5,
+                Omschrijving = "Aandoening 5",
+                Patologieen =
+                    new List<Pathologie>
+                                                    {
+                                                        new Pathologie
+                                                            {
+                                                                Id = 1,
+                                                                Omschrijving =
+                                                                    "OmschrijvingP1"
+                                                            },new Pathologie
+                                                            {
+                                                                Id = 2,
+                                                                Omschrijving =
+                                                                    "OmschrijvingP2"
+                                                            },new Pathologie
+                                                            {
+                                                                Id = 3,
+                                                                Omschrijving =
+                                                                    "OmschrijvingP3"
+                                                            }
+                                                    }
+            };
             var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
 
 
