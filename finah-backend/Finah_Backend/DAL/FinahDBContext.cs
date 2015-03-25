@@ -38,8 +38,12 @@ namespace Finah_Backend.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); 
-            
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
         }
+
+        public System.Data.Entity.DbSet<Finah_Backend.Models.Antwoord> Antwoords { get; set; }
+
+        public System.Data.Entity.DbSet<Finah_Backend.Models.AntwoordenLijst> AntwoordenLijsts { get; set; }
     }
 }

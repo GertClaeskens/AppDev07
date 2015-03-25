@@ -201,6 +201,8 @@
     <Compile Include="Controllers\AandoeningController.cs" />
     <Compile Include="Controllers\AanvraagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\AntwoordenLijstController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
     <Compile Include="Controllers\GeluidsFragmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
