@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public abstract class AntwoordenLijstDAO {
-	public static AntwoordenLijst GetAntwoordenLijst(int id) {
+	public static AntwoordenLijst GetAntwoordenLijst(String id) {
 		// Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();

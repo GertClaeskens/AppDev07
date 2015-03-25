@@ -17,6 +17,7 @@ namespace Finah_Backend.Controllers
     {
         private FinahDBContext db = new FinahDBContext();
 
+        [Route("AntwoordenLijst/Overzicht")]
         // GET: api/AntwoordenLijst
         //public IQueryable<AntwoordenLijst> GetOverzicht()
         public IEnumerable<AntwoordenLijst> GetOverzicht()
@@ -33,14 +34,15 @@ namespace Finah_Backend.Controllers
         }
 
         // GET: api/AntwoordenLijst/5
+        [Route("AntwoordenLijst/{id}")]
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
             //AntwoordenLijst antwoordenLijst = db.AntwoordenLijsts.Find(id);
             AntwoordenLijst antwoordenLijst = null;
-            if (id.Equals(1))
+            if (id.Equals("1"))
             {
-                antwoordenLijst = new AntwoordenLijst { Id = "1", Antwoorden = new List<Antwoord> { new Antwoord { Id = 1, Antword = 4 } } };
+                antwoordenLijst = new AntwoordenLijst { Id = "1"};//, Antwoorden = new List<Antwoord> { new Antwoord { Id = 1, Antword = 4 } } };
             }
             if (antwoordenLijst == null)
             {
