@@ -6,6 +6,9 @@
  * Time: 15:56
  */
 
-class GeluidsFragment {
+class GeluidsFragment extends Media{
 
+    public function __construct(){
+        parent::__construct();
+    }
 }

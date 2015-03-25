@@ -6,6 +6,8 @@
  * Time: 15:56
  */
 
-class Foto {
-
+class Foto extends Media{
+    public function __construct(){
+        parent::__construct();
+    }
 }

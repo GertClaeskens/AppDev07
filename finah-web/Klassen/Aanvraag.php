@@ -6,6 +6,11 @@
  * Time: 15:56
  */
 
-class Aanvraag {
+class Aanvraag extends SuperKlasseAanvraagAccount{
+    private $Status;
 
+    public function __construct(){
+        parent::__construct();
+        $Status = new Status();
+    }
 }

@@ -17,7 +17,7 @@ public abstract class SuperklasseAanvraagAccount {
 	public String Login;
 
 	public String Passwd;
-	public String email;
+	public String Email;
 
 	public String GeheimeVraag;
 
@@ -48,7 +48,7 @@ public abstract class SuperklasseAanvraagAccount {
 		Gsm = gsm;
 		Login = login;
 		Passwd = passwd;
-		this.email = email;
+		this.Email = email;
 		GeheimeVraag = geheimeVraag;
 		GeheimAntwoord = geheimAntwoord;
 		TypeAcc = typeAcc;
@@ -133,7 +133,7 @@ public abstract class SuperklasseAanvraagAccount {
 	 * @return the email
 	 */
 	public String getEmail() {
-		return email;
+		return Email;
 	}
 
 
@@ -142,7 +142,7 @@ public abstract class SuperklasseAanvraagAccount {
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
-		this.email = email;
+		this.Email = email;
 	}
 
 
@@ -205,7 +205,7 @@ public abstract class SuperklasseAanvraagAccount {
 		result = prime * result + ((TypeAcc == null) ? 0 : TypeAcc.hashCode());
 		result = prime * result
 				+ ((VoorNaam == null) ? 0 : VoorNaam.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((Email == null) ? 0 : Email.hashCode());
 		return result;
 	}
 
@@ -282,10 +282,10 @@ public abstract class SuperklasseAanvraagAccount {
 				return false;
 		} else if (!VoorNaam.equals(other.VoorNaam))
 			return false;
-		if (email == null) {
-			if (other.email != null)
+		if (Email == null) {
+			if (other.Email != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!Email.equals(other.Email))
 			return false;
 		return true;
 	}

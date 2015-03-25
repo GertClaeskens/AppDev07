@@ -7,5 +7,11 @@
  */
 
 class Media {
+    private $Id;
+    private $Omschrijving;
+    private $Pad;
 
+    public function __construct(){
+
+    }
 }

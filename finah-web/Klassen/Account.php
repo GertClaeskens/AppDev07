@@ -6,6 +6,10 @@
  * Time: 15:57
  */
 
-class Account {
+class Account extends SuperKlasseAanvraagAccount {
+    private $EiD;
 
+    public function __construct(){
+        parent::__construct();
+    }
 }
