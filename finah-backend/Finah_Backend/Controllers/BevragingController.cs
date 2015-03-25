@@ -111,12 +111,11 @@ namespace Finah_Backend.Controllers
             bevraging.Id = "Test Id";
             bevraging.Aangevraagd = DateTime.Now;
             bevraging.AangemaaktDoor = testAccount;
-            bevraging.LeeftijdsCatMantelZorger = testCat;
-            bevraging.LeeftijdsCatPatient = testCat;
+            bevraging.LeeftijdsCat = testCat;
             bevraging.Informatie = "Test bevraging";
             bevraging.Relatie = "Test relatie";
-            bevraging.VragenMantelzorger = testVragenlijst;
-            bevraging.Vragenpatient = testVragenlijst;
+            bevraging.Vragen = testVragenlijst;
+            bevraging.IsPatient = true;
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);

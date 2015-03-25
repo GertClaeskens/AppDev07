@@ -15,9 +15,8 @@ namespace Finah_Backend.Models
 
         //public int AantalIngevuldMantelzorger;
 
-        public virtual LeeftijdsCategorie LeeftijdsCatPatient { get; set; }
+        public virtual LeeftijdsCategorie LeeftijdsCat { get; set; }
 
-        public virtual LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
 
         public string Informatie { get; set; }
 
@@ -26,9 +25,9 @@ namespace Finah_Backend.Models
 
         public virtual Account AangemaaktDoor { get; set; }
 
-        public virtual VragenLijst Vragenpatient { get; set; }
-
-        public virtual VragenLijst VragenMantelzorger { get; set; }
+        public virtual VragenLijst Vragen { get; set; }
+        public virtual AntwoordenLijst Antwoorden { get; set; }
+        public bool IsPatient { get; set; }
 
         #endregion Public members
     }

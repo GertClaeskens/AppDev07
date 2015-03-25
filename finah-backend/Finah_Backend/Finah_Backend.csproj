@@ -217,6 +217,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aandoening.cs" />
+    <Compile Include="Models\Antwoord.cs" />
+    <Compile Include="Models\AntwoordenLijst.cs" />
     <Compile Include="Models\Enums\TypeAccount.cs" />
     <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />

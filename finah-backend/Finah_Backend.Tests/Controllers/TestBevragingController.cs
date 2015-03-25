@@ -82,12 +82,11 @@ namespace Finah_Backend.Tests.Controllers
             testBevraging.Id = "hgdghdghghdshdghghd";
             testBevraging.Aangevraagd = DateTime.Now;
             testBevraging.AangemaaktDoor = testAccount;
-            testBevraging.LeeftijdsCatMantelZorger = testCat;
-            testBevraging.LeeftijdsCatPatient = testCat;
+            testBevraging.LeeftijdsCat = testCat;
             testBevraging.Informatie = "Test bevraging";
             testBevraging.Relatie = "Test relatie";
-            testBevraging.VragenMantelzorger = testVragenlijst;
-            testBevraging.Vragenpatient = testVragenlijst;
+            testBevraging.Vragen = testVragenlijst;
+            testBevraging.IsPatient = true;
             testBevragingen.Add(testBevraging);
 
             return testBevragingen;
