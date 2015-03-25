@@ -18,7 +18,8 @@ import javax.swing.JTextField;
 public class NieuweBevragingGUI extends JFrame{
 	
 	private NieuweBevragingPanel panel;
-	private JLabel titel;
+	//private JLabel titel;
+	private JButton titelKnop;
 	private JButton accountKnop;
 	private JButton bevragingKnop;
 	private JButton beheerKnop;
@@ -71,9 +72,16 @@ public class NieuweBevragingGUI extends JFrame{
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
 			g2d.drawRoundRect(200, 100, 600, 360, 75, 75);
 			
-			titel = new JLabel("FINAH");
-			titel.setFont(new Font("Default", Font.BOLD, 40));
-			titel.setBounds(50, 0, 220, 75);
+			titelKnop = new JButton("FINAH");
+			titelKnop.setFont(new Font("Default", Font.BOLD, 40));
+			titelKnop.setBounds(0, 0, 220, 75);
+			titelKnop.setOpaque(false);
+			titelKnop.setContentAreaFilled(false);
+			titelKnop.setBorderPainted(false);
+			
+			//titel = new JLabel("FINAH");
+			//titel.setFont(new Font("Default", Font.BOLD, 40));
+			//titel.setBounds(50, 0, 220, 75);
 			
 			accountKnop = new JButton("Account");
 			accountKnop.setBounds(280, 25, 100, 30);
@@ -87,6 +95,8 @@ public class NieuweBevragingGUI extends JFrame{
 			uitlogKnop.setBounds(815, 25, 100, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
+			titelKnop.addActionListener(handler);
+			bevragingKnop.addActionListener(handler);
 			beheerKnop.addActionListener(handler);
 			accountKnop.addActionListener(handler);
 			resultatenKnop.addActionListener(handler);
@@ -134,7 +144,7 @@ public class NieuweBevragingGUI extends JFrame{
 			versturen = new JButton("Vragenlijst versturen");
 			versturen.setBounds(420, 400, 165, 30);
 			
-			add(titel);
+			add(titelKnop);
 			add(accountKnop);
 			add(bevragingKnop);
 			add(beheerKnop);
@@ -163,6 +173,12 @@ public class NieuweBevragingGUI extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JFrame newFrame = new JFrame();
 			switch(e.getActionCommand()){
+			case "FINAH":	newFrame = new AccountGUI();
+							NieuweBevragingGUI.this.setVisible(false);
+							break;
+			case "Nieuwe bevraging":	newFrame = new NieuweBevragingGUI();
+										NieuweBevragingGUI.this.setVisible(false);
+										break;
 			case "Beheer":	newFrame = new BeheerGUI();
 							NieuweBevragingGUI.this.setVisible(false);
 							break;

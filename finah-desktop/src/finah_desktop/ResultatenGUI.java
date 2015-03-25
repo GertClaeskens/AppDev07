@@ -17,7 +17,8 @@ import javax.swing.JPanel;
 public class ResultatenGUI extends JFrame{
 	
 	private ResultatenPanel panel;
-	private JLabel titel;
+	//private JLabel titel;
+	private JButton titelKnop;
 	private JButton accountKnop;
 	private JButton bevragingKnop;
 	private JButton beheerKnop;
@@ -60,9 +61,16 @@ public class ResultatenGUI extends JFrame{
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
 			g2d.drawRoundRect(250, 100, 500, 170, 75, 75);
 			
-			titel = new JLabel("FINAH");
-			titel.setFont(new Font("Default", Font.BOLD, 40));
-			titel.setBounds(50, 0, 220, 75);
+			titelKnop = new JButton("FINAH");
+			titelKnop.setFont(new Font("Default", Font.BOLD, 40));
+			titelKnop.setBounds(0, 0, 220, 75);
+			titelKnop.setOpaque(false);
+			titelKnop.setContentAreaFilled(false);
+			titelKnop.setBorderPainted(false);
+			
+			//titel = new JLabel("FINAH");
+			//titel.setFont(new Font("Default", Font.BOLD, 40));
+			//titel.setBounds(50, 0, 220, 75);
 			
 			accountKnop = new JButton("Account");
 			accountKnop.setBounds(280, 25, 100, 30);
@@ -78,6 +86,8 @@ public class ResultatenGUI extends JFrame{
 			zoekKnop.setBounds(550, 210, 130, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
+			titelKnop.addActionListener(handler);
+			resultatenKnop.addActionListener(handler);
 			beheerKnop.addActionListener(handler);
 			accountKnop.addActionListener(handler);
 			bevragingKnop.addActionListener(handler);
@@ -95,7 +105,7 @@ public class ResultatenGUI extends JFrame{
 			vragenlijstIDCombo = new JComboBox();
 			vragenlijstIDCombo.setBounds(430, 163, 250, 25);
 			
-			add(titel);
+			add(titelKnop);
 			add(accountKnop);
 			add(bevragingKnop);
 			add(beheerKnop);
@@ -113,6 +123,12 @@ public class ResultatenGUI extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JFrame newFrame;
 			switch(e.getActionCommand()){
+			case "FINAH":	newFrame = new AccountGUI();
+							ResultatenGUI.this.setVisible(false);
+							break;
+			case "Resultaten":	newFrame = new ResultatenGUI();
+								ResultatenGUI.this.setVisible(false);
+								break;
 			case "Beheer":	newFrame = new BeheerGUI();
 							ResultatenGUI.this.setVisible(false);
 							break;

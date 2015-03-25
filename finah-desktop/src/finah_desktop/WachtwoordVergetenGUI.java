@@ -1,6 +1,7 @@
 package finah_desktop;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+//import finah_desktop.NieuwAccountGUI.ButtonHandler;
+
 public class WachtwoordVergetenGUI extends JFrame{
 	
 	private WachtwoordVergetenPanel panel;
@@ -25,6 +28,7 @@ public class WachtwoordVergetenGUI extends JFrame{
 	private JTextField naamVeld;
 	private JTextField emailVeld;
 	private JButton stuurKnop;
+	private JButton annuleerKnop;
 
 	public WachtwoordVergetenGUI(){
 		panel = new WachtwoordVergetenPanel();
@@ -48,11 +52,11 @@ public class WachtwoordVergetenGUI extends JFrame{
 			g2d.fillRoundRect(0, 0, 984, 75, 30, 30);
 			
 			g2d.setPaint(new GradientPaint(375,100,new Color(2,154,204),375,300,new Color(102,204,204)));
-			g2d.fillRoundRect(375, 100, 250, 270, 75, 75);
+			g2d.fillRoundRect(375, 100, 250, 310, 75, 75);
 			
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
-			g2d.drawRoundRect(375, 100, 250, 270, 75, 75);
+			g2d.drawRoundRect(375, 100, 250, 310, 75, 75);
 			
 			g2d.setColor(Color.black);
 			g2d.drawLine(400, 155, 600, 155);
@@ -81,12 +85,20 @@ public class WachtwoordVergetenGUI extends JFrame{
 			
 			stuurKnop = new JButton("Stuur wachtwoord");
 			stuurKnop.setBounds(430, 305, 140, 30);
-			stuurKnop.addActionListener(new ActionListener(){
+			
+			annuleerKnop = new JButton("Annuleren");
+			annuleerKnop.setBounds(430, 345, 140, 30);
+			
+			ButtonHandler handler = new ButtonHandler();
+			stuurKnop.addActionListener(handler);
+			annuleerKnop.addActionListener(handler);
+			
+			/*stuurKnop.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					JFrame newFrame = new LoginGUI();
 					WachtwoordVergetenGUI.this.setVisible(false);
 				}
-			});
+			});*/
 			
 			add(titel);
 			add(pwVergetenLabel);
@@ -95,13 +107,23 @@ public class WachtwoordVergetenGUI extends JFrame{
 			add(naamVeld);
 			add(emailVeld);
 			add(stuurKnop);
+			add(annuleerKnop);
 		}
 	}
 	
 	private class ButtonHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			
-		}		
+			JFrame newFrame;
+			switch(e.getActionCommand()){
+			case "Stuur wachtwoord": 	newFrame = new LoginGUI();
+										WachtwoordVergetenGUI.this.setVisible(false);
+										break;
+			case "Annuleren": 	newFrame = new LoginGUI();
+								WachtwoordVergetenGUI.this.setVisible(false);
+								break;
+											
+			}
+		}
 	}
 	
 	public static void main(String[] args){

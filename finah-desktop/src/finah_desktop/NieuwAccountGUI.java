@@ -1,6 +1,7 @@
 package finah_desktop;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -15,12 +16,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+//import finah_desktop.AccountGUI.ButtonHandler;
+
 public class NieuwAccountGUI extends JFrame{
 	
 	private NieuwAccountPanel panel;
 	private JLabel titel;
 	private JLabel nieuwAccountLabel;
-	private JTextField nieuwAccountVeld;
+	//private JTextField nieuwAccountVeld;
 	private JLabel gebruikersNaamLabel;
 	private JTextField gebruikersNaamVeld;
 	private JLabel pwLabel;
@@ -34,6 +37,7 @@ public class NieuwAccountGUI extends JFrame{
 	private JLabel emailLabel;
 	private JTextField emailVeld;
 	private JButton aanmaakKnop;
+	private JButton annuleerKnop;
 
 	public NieuwAccountGUI(){
 		panel = new NieuwAccountPanel();
@@ -58,11 +62,11 @@ public class NieuwAccountGUI extends JFrame{
 			g2d.fillRoundRect(0, 0, 984, 75, 30, 30);
 			
 			g2d.setPaint(new GradientPaint(375, 100, new Color(2,154,204), 375, 400, new Color(102,204,204)));
-			g2d.fillRoundRect(375, 100, 250, 400, 75, 75);
+			g2d.fillRoundRect(375, 100, 250, 440, 75, 75);
 			
 			g2d.setPaint(Color.gray);
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
-			g2d.drawRoundRect(375, 100, 250, 400, 75, 75);
+			g2d.drawRoundRect(375, 100, 250, 440, 75, 75);
 			
 			g2d.setColor(Color.black);
 			g2d.drawLine(400, 145, 600, 145);
@@ -119,12 +123,20 @@ public class NieuwAccountGUI extends JFrame{
 			
 			aanmaakKnop = new JButton("Account aanmaken");
 			aanmaakKnop.setBounds(425, 445, 150, 30);
-			aanmaakKnop.addActionListener(new ActionListener(){
+			
+			annuleerKnop = new JButton("Annuleren");
+			annuleerKnop.setBounds(425, 485, 150, 30);
+			
+			ButtonHandler handler = new ButtonHandler();
+			aanmaakKnop.addActionListener(handler);
+			annuleerKnop.addActionListener(handler);
+			
+			/*aanmaakKnop.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					JFrame newFrame = new LoginGUI();
 					NieuwAccountGUI.this.setVisible(false);
 				}
-			});
+			});*/
 			
 			add(titel);
 			add(nieuwAccountLabel);
@@ -141,10 +153,26 @@ public class NieuwAccountGUI extends JFrame{
 			add(emailLabel);
 			add(emailVeld);
 			add(aanmaakKnop);
+			add(annuleerKnop);
 			
 		}
 	}
 	
+	private class ButtonHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			JFrame newFrame;
+			switch(e.getActionCommand()){
+			case "Account aanmaken": 	newFrame = new LoginGUI();
+										NieuwAccountGUI.this.setVisible(false);
+										break;
+			case "Annuleren": 	newFrame = new LoginGUI();
+								NieuwAccountGUI.this.setVisible(false);
+								break;
+											
+			}
+		}
+	}
+											
 	public static void main(String[] args){
 		NieuwAccountGUI test = new NieuwAccountGUI();
 	}

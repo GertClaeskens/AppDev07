@@ -18,7 +18,8 @@ import javax.swing.JTextField;
 public class AccountGUI extends JFrame{
 	
 	private AccountPanel panel;
-	private JLabel titel;
+	//private JLabel titel;
+	private JButton titelKnop;
 	private JButton accountKnop;
 	private JButton bevragingKnop;
 	private JButton beheerKnop;
@@ -75,9 +76,16 @@ public class AccountGUI extends JFrame{
 			g2d.drawRoundRect(0, 0, 984, 75, 30, 30);
 			g2d.drawRoundRect(150, 100, 700, 300, 75, 75);
 			
-			titel = new JLabel("FINAH");
-			titel.setFont(new Font("Default", Font.BOLD, 40));
-			titel.setBounds(50, 0, 220, 75);
+			titelKnop = new JButton("FINAH");
+			titelKnop.setFont(new Font("Default", Font.BOLD, 40));
+			titelKnop.setBounds(0, 0, 220, 75);
+			titelKnop.setOpaque(false);
+			titelKnop.setContentAreaFilled(false);
+			titelKnop.setBorderPainted(false);
+			
+			//titel = new JLabel("FINAH");
+			//titel.setFont(new Font("Default", Font.BOLD, 40));
+			//titel.setBounds(50, 0, 220, 75);
 			
 			accountKnop = new JButton("Account");
 			accountKnop.setBounds(280, 25, 100, 30);
@@ -91,6 +99,8 @@ public class AccountGUI extends JFrame{
 			uitlogKnop.setBounds(815, 25, 100, 30);
 			
 			ButtonHandler handler = new ButtonHandler();
+			titelKnop.addActionListener(handler);
+			accountKnop.addActionListener(handler);
 			beheerKnop.addActionListener(handler);
 			resultatenKnop.addActionListener(handler);
 			bevragingKnop.addActionListener(handler);
@@ -154,7 +164,7 @@ public class AccountGUI extends JFrame{
 			wijzigenKnop = new JButton("Veranderingen opslaan");
 			wijzigenKnop.setBounds(415, 350, 170, 30);
 			
-			add(titel);
+			add(titelKnop);
 			add(accountKnop);
 			add(bevragingKnop);
 			add(beheerKnop);
@@ -186,6 +196,12 @@ public class AccountGUI extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JFrame newFrame;
 			switch(e.getActionCommand()){
+			case "FINAH": 	newFrame = new AccountGUI();
+								AccountGUI.this.setVisible(false);
+								break;
+			case "Account": newFrame = new AccountGUI();
+							AccountGUI.this.setVisible(false);
+							break;
 			case "Beheer":	newFrame = new BeheerGUI();
 							AccountGUI.this.setVisible(false);
 							break;
