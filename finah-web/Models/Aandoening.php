@@ -12,7 +12,7 @@
         private $Patologieen;
 
         public function __construct(){
-            $Pathologieen = [];
+            $Pathologieen = new PathologieArray();
         }
 
         public function getPatologieen()

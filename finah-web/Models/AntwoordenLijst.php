@@ -11,6 +11,6 @@ class AntwoordenLijst {
     private $antwoorden;
 
     public function __construct(){
-        $antwoorden = [];
+        $antwoorden = new AntwoordArray();
     }
 }

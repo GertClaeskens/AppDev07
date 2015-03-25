@@ -8,7 +8,7 @@
  */
 class AandoeningDAO
 {
-    public static function HaalAandoeningenOp()
+    public static function HaalAandoeningen()
     {
 
         // request list of contacts from Web API
