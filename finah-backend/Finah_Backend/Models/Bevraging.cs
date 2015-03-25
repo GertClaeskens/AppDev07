@@ -2,10 +2,13 @@
 
 namespace Finah_Backend.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Bevraging
     {
         #region Public members
 
+        [Key]
         public String Id { get; set; }
 
         public DateTime Aangevraagd { get; set; }

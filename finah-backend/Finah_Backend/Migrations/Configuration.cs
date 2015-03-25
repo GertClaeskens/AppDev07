@@ -16,7 +16,9 @@ namespace Finah_Backend.Migrations
     {
         public Configuration()
         {
+
             AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         //Code gevonden op : http://csharp.net-informations.com/excel/csharp-read-excel.htm
@@ -29,7 +31,7 @@ namespace Finah_Backend.Migrations
             };
 
             //leeftijdsCategorie.ForEach(s => context.LeeftijdsCategorieen.AddOrUpdate(s));
-            context.LeeftijdsCategorieen.AddOrUpdate(l => new{l.Van,l.Tot},leeftijdsCategorie.ToArray());
+            context.LeeftijdsCategorieen.AddOrUpdate(l => new { l.Van, l.Tot }, leeftijdsCategorie.ToArray());
             context.SaveChanges();
 
             //var postcodelijst = new List<Postcode>();
@@ -64,24 +66,24 @@ namespace Finah_Backend.Migrations
 
             //postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
             //context.Postcodes.AddOrUpdate(p => new { p.Postnr,p.Gemeente }, postcodelijst.ToArray());
-        //    context.SaveChanges();
-        //}
+            //    context.SaveChanges();
+            //}
 
-        //private void releaseObject(object obj)
-        //{
-        //    try
-        //    {
-        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-        //        obj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        obj = null;
-        //    }
-        //    finally
-        //    {
-        //        GC.Collect();
-        //    }
+            //private void releaseObject(object obj)
+            //{
+            //    try
+            //    {
+            //        System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+            //        obj = null;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        obj = null;
+            //    }
+            //    finally
+            //    {
+            //        GC.Collect();
+            //    }
         }
     }
 }

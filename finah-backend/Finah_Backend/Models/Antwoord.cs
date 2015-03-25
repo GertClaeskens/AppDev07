@@ -13,5 +13,7 @@ namespace Finah_Backend.Models
     {
         public int Id { get; set; }
         public int antwoord { get; set; }
+
+
     }
 }

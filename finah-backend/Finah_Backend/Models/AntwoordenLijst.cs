@@ -19,5 +19,8 @@ namespace Finah_Backend.Models
         {
             this.Antwoorden = new List<Antwoord>();
         }
+
+        public virtual Bevraging Bevraging { get; set; }
+    
     }
 }
