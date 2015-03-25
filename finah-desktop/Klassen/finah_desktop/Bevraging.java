@@ -5,34 +5,16 @@ import java.util.Date;
 public class Bevraging {
 	public String Id;
 	public Date Aangevraagd;
-	public LeeftijdsCategorie LeeftijdsCatPatient;
-	public LeeftijdsCategorie LeeftijdsCatMantelZorger;
+	public LeeftijdsCategorie LeeftijdsCat;
 	public String Informatie;
 
 	// Ook eventueel enum van maken
 	public String Relatie;
 	public Account AangemaaktDoor;
-	public VragenLijst Vragenpatient;
-	public VragenLijst VragenMantelzorger;
+	public VragenLijst Vragen;
+	public boolean IsPatient;
 	
 	public Bevraging() {
-	}
-
-	public Bevraging(String id, Date aangevraagd,
-			LeeftijdsCategorie leeftijdsCatPatient,
-			LeeftijdsCategorie leeftijdsCatMantelZorger, String informatie,
-			String relatie, Account aangemaaktDoor, VragenLijst vragenpatient,
-			VragenLijst vragenMantelzorger) {
-		super();
-		Id = id;
-		Aangevraagd = aangevraagd;
-		LeeftijdsCatPatient = leeftijdsCatPatient;
-		LeeftijdsCatMantelZorger = leeftijdsCatMantelZorger;
-		Informatie = informatie;
-		Relatie = relatie;
-		AangemaaktDoor = aangemaaktDoor;
-		Vragenpatient = vragenpatient;
-		VragenMantelzorger = vragenMantelzorger;
 	}
 
 	public String getId() {
@@ -51,21 +33,12 @@ public class Bevraging {
 		Aangevraagd = aangevraagd;
 	}
 
-	public LeeftijdsCategorie getLeeftijdsCatPatient() {
-		return LeeftijdsCatPatient;
+	public LeeftijdsCategorie getLeeftijdsCat() {
+		return LeeftijdsCat;
 	}
 
-	public void setLeeftijdsCatPatient(LeeftijdsCategorie leeftijdsCatPatient) {
-		LeeftijdsCatPatient = leeftijdsCatPatient;
-	}
-
-	public LeeftijdsCategorie getLeeftijdsCatMantelZorger() {
-		return LeeftijdsCatMantelZorger;
-	}
-
-	public void setLeeftijdsCatMantelZorger(
-			LeeftijdsCategorie leeftijdsCatMantelZorger) {
-		LeeftijdsCatMantelZorger = leeftijdsCatMantelZorger;
+	public void setLeeftijdsCat(LeeftijdsCategorie leeftijdsCat) {
+		LeeftijdsCat = leeftijdsCat;
 	}
 
 	public String getInformatie() {
@@ -92,27 +65,22 @@ public class Bevraging {
 		AangemaaktDoor = aangemaaktDoor;
 	}
 
-	public VragenLijst getVragenpatient() {
-		return Vragenpatient;
+	public VragenLijst getVragen() {
+		return Vragen;
 	}
 
-	public void setVragenpatient(VragenLijst vragenpatient) {
-		Vragenpatient = vragenpatient;
+	public void setVragen(VragenLijst vragen) {
+		Vragen = vragen;
 	}
 
-	public VragenLijst getVragenMantelzorger() {
-		return VragenMantelzorger;
+	public boolean isIsPatient() {
+		return IsPatient;
 	}
 
-	public void setVragenMantelzorger(VragenLijst vragenMantelzorger) {
-		VragenMantelzorger = vragenMantelzorger;
+	public void setIsPatient(boolean isPatient) {
+		IsPatient = isPatient;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -124,29 +92,14 @@ public class Bevraging {
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
 		result = prime * result
 				+ ((Informatie == null) ? 0 : Informatie.hashCode());
-		result = prime
-				* result
-				+ ((LeeftijdsCatMantelZorger == null) ? 0
-						: LeeftijdsCatMantelZorger.hashCode());
-		result = prime
-				* result
-				+ ((LeeftijdsCatPatient == null) ? 0 : LeeftijdsCatPatient
-						.hashCode());
-		result = prime * result + ((Relatie == null) ? 0 : Relatie.hashCode());
-		result = prime
-				* result
-				+ ((VragenMantelzorger == null) ? 0 : VragenMantelzorger
-						.hashCode());
+		result = prime * result + (IsPatient ? 1231 : 1237);
 		result = prime * result
-				+ ((Vragenpatient == null) ? 0 : Vragenpatient.hashCode());
+				+ ((LeeftijdsCat == null) ? 0 : LeeftijdsCat.hashCode());
+		result = prime * result + ((Relatie == null) ? 0 : Relatie.hashCode());
+		result = prime * result + ((Vragen == null) ? 0 : Vragen.hashCode());
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -176,31 +129,22 @@ public class Bevraging {
 				return false;
 		} else if (!Informatie.equals(other.Informatie))
 			return false;
-		if (LeeftijdsCatMantelZorger == null) {
-			if (other.LeeftijdsCatMantelZorger != null)
-				return false;
-		} else if (!LeeftijdsCatMantelZorger
-				.equals(other.LeeftijdsCatMantelZorger))
+		if (IsPatient != other.IsPatient)
 			return false;
-		if (LeeftijdsCatPatient == null) {
-			if (other.LeeftijdsCatPatient != null)
+		if (LeeftijdsCat == null) {
+			if (other.LeeftijdsCat != null)
 				return false;
-		} else if (!LeeftijdsCatPatient.equals(other.LeeftijdsCatPatient))
+		} else if (!LeeftijdsCat.equals(other.LeeftijdsCat))
 			return false;
 		if (Relatie == null) {
 			if (other.Relatie != null)
 				return false;
 		} else if (!Relatie.equals(other.Relatie))
 			return false;
-		if (VragenMantelzorger == null) {
-			if (other.VragenMantelzorger != null)
+		if (Vragen == null) {
+			if (other.Vragen != null)
 				return false;
-		} else if (!VragenMantelzorger.equals(other.VragenMantelzorger))
-			return false;
-		if (Vragenpatient == null) {
-			if (other.Vragenpatient != null)
-				return false;
-		} else if (!Vragenpatient.equals(other.Vragenpatient))
+		} else if (!Vragen.equals(other.Vragen))
 			return false;
 		return true;
 	}

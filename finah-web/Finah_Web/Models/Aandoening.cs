@@ -14,10 +14,6 @@ namespace Finah_Web.Models
             patologieen = new List<Pathologie>();
         }
 
-        public int Id { get; set; }
-
-        public string Omschrijving { get; set; }
-
         public virtual ICollection<Pathologie> Patologieen { get; set; }
     }
 }

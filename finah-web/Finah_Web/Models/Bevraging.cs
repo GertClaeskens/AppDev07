@@ -14,11 +14,7 @@ namespace Finah_Web.Models
         //onderstaande members -> berekenen uit VragenLijst
         //public int AantalIngevuldPatient;
 
-        //public int AantalIngevuldMantelzorger;
-
-        public LeeftijdsCategorie LeeftijdsCatPatient { get; set; }
-
-        public LeeftijdsCategorie LeeftijdsCatMantelZorger { get; set; }
+        public LeeftijdsCategorie LeeftijdsCat { get; set; }
 
         public string Informatie { get; set; }
         //Ook eventueel enum van maken
@@ -26,9 +22,9 @@ namespace Finah_Web.Models
 
         public Account AangemaaktDoor { get; set; }
 
-        public VragenLijst Vragenpatient { get; set; }
+        public VragenLijst Vragen { get; set; }
 
-        public VragenLijst VragenMantelzorger { get; set; }
+        public bool IsPatient { get; set; }
         #endregion
     }
 }

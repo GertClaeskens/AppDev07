@@ -173,6 +173,8 @@
     <Compile Include="Controllers\AandoeningController.cs" />
     <Compile Include="Controllers\AanvraagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\AntwoordenLijstController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
     <Compile Include="Controllers\GeluidsFragmentController.cs" />
@@ -190,6 +192,8 @@
     <Compile Include="Models\Aanvraag.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Antwoord.cs" />
+    <Compile Include="Models\AntwoordenLijst.cs" />
     <Compile Include="Models\Bevraging.cs" />
     <Compile Include="Models\EID.cs" />
     <Compile Include="Models\Foto.cs" />
@@ -293,6 +297,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AntwoordenLijst\" />
+    <Folder Include="Views\Antwoord\" />
     <Folder Include="Views\Foto\" />
     <Folder Include="Views\GeluidsFragment\" />
     <Folder Include="Views\Vraag\" />

@@ -13,7 +13,7 @@
 {
     @Html.AntiForgeryToken()
     
-    <form>
+    <form method="POST">
         <ul class="form-style" style="list-style-type:none;">
             <li> <label class="control-label" >Kies een pathologie</label> </li>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })

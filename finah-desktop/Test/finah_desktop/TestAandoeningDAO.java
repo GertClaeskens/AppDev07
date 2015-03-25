@@ -18,13 +18,6 @@ public class TestAandoeningDAO {
 		// controller = new AandoeningDAO();
 	}
 
-//	@Test
-//	public void GetAandoeningen_ShouldReturnAllAandoeningen() {
-//		testAandoeningen = AandoeningDAO.GetAandoeningen();
-//		controleAandoeningen = TestAandoeningDAO.GetTestAandoeningen();
-//
-//		Assert.assertEquals(controleAandoeningen.size(),testAandoeningen.size());
-//	}
 	@Test
 	public void GetAandoeningen_ShouldReturnAllAandoeningen() {
 		testAandoeningen = AandoeningDAO.GetAandoeningen();
