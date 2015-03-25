@@ -18,16 +18,32 @@ namespace Finah_Backend.Controllers
         private FinahDBContext db = new FinahDBContext();
 
         // GET: api/Antwoord
-        public IQueryable<Antwoord> GetOverzicht()
+        [Route("Antwoord/Overzicht")] //Geen Api/ meer nodig
+
+        //public IQueryable<Antwoord> GetOverzicht()
+        public IEnumerable<Antwoord> GetOverzicht()
         {
-            return db.Antwoords;
+            //return db.Antwoords;
+            var ad1 = new Antwoord { Id = 1 };
+            var ad2 = new Antwoord { Id = 2 };
+            var ad3 = new Antwoord { Id = 3 };
+            var ad4 = new Antwoord { Id = 4 };
+            var ad5 = new Antwoord { Id = 5 };
+
+            var controleAntwoorden = new List<Antwoord> { ad1, ad2, ad3, ad4, ad5 };
+            return controleAntwoorden;
         }
 
         // GET: api/Antwoord/5
         [ResponseType(typeof(Antwoord))]
-        public IHttpActionResult GetAntwoord(int id)
+        public IHttpActionResult Get(int id)
         {
-            Antwoord antwoord = db.Antwoords.Find(id);
+            Antwoord antwoord = null;
+            if (id == 1)
+            {
+                antwoord = new Antwoord { Id = 1, Antword = 4 };
+            }
+            //var antwoord = db.Antwoords.Find(id);
             if (antwoord == null)
             {
                 return NotFound();
@@ -90,7 +106,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Antwoord))]
         public IHttpActionResult DeleteAntwoord(int id)
         {
-            Antwoord antwoord = db.Antwoords.Find(id);
+            var antwoord = db.Antwoords.Find(id);
             if (antwoord == null)
             {
                 return NotFound();
