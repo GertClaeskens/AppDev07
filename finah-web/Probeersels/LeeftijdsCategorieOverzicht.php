@@ -46,8 +46,8 @@
                     $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");   
                     foreach ($leeftijdCategorieLijst as $item) {
                         echo "<tr>
-                            <td> $item->Van</td>
-                            <td> $item->Tot</td>
+                            <td class='leeftijdKolom'> $item->Van</td>
+                            <td class='leeftijdKolom'> $item->Tot</td>
                              <td class='action-column'>
                                 <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
                          </td>
