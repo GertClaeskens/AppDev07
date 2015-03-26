@@ -40,11 +40,11 @@ namespace Finah_Backend.Controllers
             //return db.LeeftijdsCategorieen;
 
 
-            var lc1 = new LeeftijdsCategorie { Id = 1 };
-            var lc2 = new LeeftijdsCategorie { Id = 2 };
-            var lc3 = new LeeftijdsCategorie { Id = 3 };
-            var lc4 = new LeeftijdsCategorie { Id = 4 };
-            var lc5 = new LeeftijdsCategorie { Id = 5 };
+            var lc1 = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 12 };
+            var lc2 = new LeeftijdsCategorie { Id = 2, Van = 13, Tot = 18 };
+            var lc3 = new LeeftijdsCategorie { Id = 3, Van = 19, Tot = 30 };
+            var lc4 = new LeeftijdsCategorie { Id = 4, Van = 31, Tot = 45 };
+            var lc5 = new LeeftijdsCategorie { Id = 5, Van = 46, Tot = 99 };
 
             var overzichtLeeftijdsCategorieen = new List<LeeftijdsCategorie>
                                                        {

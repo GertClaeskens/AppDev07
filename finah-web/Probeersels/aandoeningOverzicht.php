@@ -1,4 +1,6 @@
 <?php
+    require_once "../DAO/AandoeningDAO.php";
+    require_once "../Models/Aandoening.php";
 ?>
 <html>
 <head>
@@ -37,14 +39,15 @@
                     </th>
                     <th >Actie</th>
                 </tr>
-                <!-- <?php foreach($aandoeningLijst as $item)
-                {echo "<tr>
-                            <td> $item</td>
-                             <td class='action-column'>
-                                <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
-                         </td>
-                         </tr>";} ?>-->
-                <tr>
+
+                <?php
+//                    $aandoeningLijst =[];
+                    $aandoeningLijst = AandoeningDAO::HaalAandoeningen();
+                    foreach($aandoeningLijst as $item)  {
+                        echo "<tr> <td> $item->Omschrijving</td>   <td> $item->patologieen</td>   <td class='action-column'>
+                            <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
+                        </td></tr>";} ?>
+<!--                <tr>
                     <td class="large-column">
                         Dit is een voorbeeld omschrijving.
                     </td>
@@ -103,6 +106,8 @@
 
                     </td>
                 </tr>
+
+
             </table>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->

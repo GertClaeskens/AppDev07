@@ -7,5 +7,7 @@
  */
 
 class LeeftijdsCategorie {
-
+    private $Id;
+    private $Van;
+    private $Tot;
 }
