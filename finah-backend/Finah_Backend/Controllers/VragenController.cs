@@ -73,17 +73,12 @@ namespace Finah_Backend.Controllers
             //return db.Vragen;
 
             //return vragen;
-            var testVraag1 = new Vraag();
-            var testVraag2 = new Vraag();
-            var testVraag3 = new Vraag();
-            var testVraag4 = new Vraag();
-            var testVraag5 = new Vraag();
+            var testVraag1 = new Vraag { Id = 1, VraagStelling = "Lorem ipsum bladibla" };
+            var testVraag2 = new Vraag { Id = 2, VraagStelling = "Voorbeeld vraag" };
+            var testVraag3 = new Vraag { Id = 3, VraagStelling = "Lorem ipsum nougae bollus" };
+            var testVraag4 = new Vraag { Id = 4, VraagStelling = "Lorem ipsum jupsum nummum" };
+            var testVraag5 = new Vraag { Id = 5, VraagStelling = "Lorem ipsum blaedibladibus" };
 
-            testVraag1.Id = 1;
-            testVraag2.Id = 2;
-            testVraag3.Id = 3;
-            testVraag4.Id = 4;
-            testVraag5.Id = 5;
 
             var overzichtVragen = new List<Vraag> { testVraag1, testVraag2, testVraag3, testVraag4, testVraag5 };
 

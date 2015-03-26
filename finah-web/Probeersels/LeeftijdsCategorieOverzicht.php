@@ -43,7 +43,7 @@
                     <th>Actie</th>
                 </tr>
                 <?php
-                    $leeftijdCategorieLijst = SharedDAO::HaalOp("LeeftijdsCategorie");
+                    $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");   
                     foreach ($leeftijdCategorieLijst as $item) {
                         echo "<tr>
                             <td> $item->Van</td>
