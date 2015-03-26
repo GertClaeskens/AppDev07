@@ -1,5 +1,5 @@
 <?php
-    require_once "../DAO/SharedDAO.php";
+    require_once "../DAO/FinahDAO.php";
     require_once "../Models/LeeftijdsCategorie.php";
 ?>
 <html>

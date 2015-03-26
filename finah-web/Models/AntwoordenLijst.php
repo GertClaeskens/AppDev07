@@ -7,10 +7,11 @@
  */
 
 class AntwoordenLijst {
-    private $id;
-    private $antwoorden;
+    private $Id;
+    private $Antwoorden;
 
-    public function __construct(){
-        $antwoorden = new AntwoordArray();
+    public function __construct($id=null,$antwoorden=null){
+        $this->Id=$id;
+        $this->Antwoorden = ($antwoorden===null)? new AntwoordArray():$antwoorden;
     }
 }

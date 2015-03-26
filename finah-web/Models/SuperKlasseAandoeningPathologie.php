@@ -10,10 +10,10 @@
         private $Id;
         private $Omschrijving;
 
-        public function __construct()
+        public function __construct($id=null,$omschrijving=null)
         {
-
-
+            $this->Id=$id;
+            $this->Omschrijving=$omschrijving;
         }
 
         public function getId()

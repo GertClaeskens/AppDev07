@@ -14,15 +14,19 @@
     {
         private $patologieen;
 
-        public function __construct(){
+        public function __construct($id=null,$omschrijving=null,$patologieen=null)
+        {
+            parent::__construct($id,$omschrijving);
             $patologieen = new PathologieArray();
         }
 
-        public function kopieer(Aandoening $aand){
+        public function kopieer(Aandoening $aand)
+        {
             $this->setId($aand->getId());
             $this->setOmschrijving($aand->getOmschrijving());
             $this->setPatologieen($aand->getPatologieen());
-}
+        }
+
         public function getPatologieen()
         {
             return $this->patologieen;
@@ -34,8 +38,9 @@
             $this->patologieen = $Patologieen;
         }
 
-        public function voegPathologieAanLijstToe($value){
-            array_push($this->patologieen,$value);
+        public function voegPathologieAanLijstToe($value)
+        {
+            array_push($this->patologieen, $value);
         }
 
     }

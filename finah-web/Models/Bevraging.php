@@ -9,13 +9,20 @@
         private $AangemaaktDoor;
         private $Vragen;
         private $IsPatient;
+        private $Antwoorden;
 
-        public function __construct()
+        public function __construct($id=null,$leeftijdsCategorie=null,$informatie=null,$relatie=null,$aangemaaktDoor=null,$vragen=null,$isPatient=null,$antwoorden=null)
         {
-            $Aangevraagd = getdate(date("U"));
-            $LeeftijdsCategorie = new LeeftijdsCategorie();
-            $AangemaaktDoor = new Account();
-            $Vragen = new VragenLijst;
+            $this->Id=$id;
+            $this->Informatie= $informatie;
+            $this->Relatie=$relatie;
+            $this->IsPatient=$isPatient;
+            $this->Antwoorden = $antwoorden;
+
+            $this->Aangevraagd = getdate(date("U"));
+            $this->LeeftijdsCategorie = ($leeftijdsCategorie === null)?new LeeftijdsCategorie():$leeftijdsCategorie;
+            $this->AangemaaktDoor = ($aangemaaktDoor === null)?new Account():$aangemaaktDoor;
+            $this->Vragen = ($vragen===null)? new VraagArray():$vragen;
         }
 
         public function getId()
@@ -98,6 +105,15 @@
             $this->IsPatient = $IsPatient;
         }
 
+        public function getAntwoorden()
+        {
+            return $this->Antwoorden;
+        }
+
+        public function setAntwoorden($antwoorden)
+        {
+            $this->Antwoorden = $antwoorden;
+        }
 
 
     }

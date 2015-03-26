@@ -11,9 +11,10 @@
         private $Id;
         private $Antword;
 
-        public function __constructor__()
+        public function __constructor__($id=null,$antword=null)
         {
-
+            $this->Id=$id;
+            $this->Antword=$antword;
         }
         //alternatieve manier voor getters en setters
         public function __get($property) {
