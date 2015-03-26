@@ -16,6 +16,26 @@
 
         }
 
+        public function getId()
+        {
+            return $this->Id;
+        }
+
+        public function setId($Id)
+        {
+            $this->Id = $Id;
+        }
+
+         public function getOmschrijving()
+        {
+            return $this->Omschrijving;
+        }
+
+        public function setOmschrijving($Omschrijving)
+        {
+            $this->Omschrijving = $Omschrijving;
+        }
+
     }
 
 ?>

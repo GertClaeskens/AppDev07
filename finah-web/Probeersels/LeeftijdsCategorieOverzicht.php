@@ -1,5 +1,5 @@
 <?php
-    require_once "../DAO/LeeftijdsCategorieDAO.php";
+    require_once "../DAO/SharedDAO.php";
     require_once "../Models/LeeftijdsCategorie.php";
 ?>
 <html>
@@ -43,7 +43,7 @@
                     <th>Actie</th>
                 </tr>
                 <?php
-                    $leeftijdCategorieLijst = LeeftijdsCategorieDAO::HaalLeeftijdsCategorieen();
+                    $leeftijdCategorieLijst = SharedDAO::HaalOp("LeeftijdsCategorie");
                     foreach ($leeftijdCategorieLijst as $item) {
                         echo "<tr>
                             <td> $item->Van</td>

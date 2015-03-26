@@ -1,5 +1,5 @@
 <?php
-    require_once "../DAO/AandoeningDAO.php";
+    require_once "../DAO/SharedDAO.php";
     require_once "../Models/Aandoening.php";
 ?>
 <html>
@@ -42,7 +42,7 @@
 
                 <?php
 //                    $aandoeningLijst =[];
-                    $aandoeningLijst = AandoeningDAO::HaalAandoeningen();
+                    $aandoeningLijst = SharedDAO::HaalOp("Aandoening");
                     foreach($aandoeningLijst as $item)  {
                         echo "<tr> <td> $item->Omschrijving</td>   <td> $item->patologieen</td>   <td class='action-column'>
                             <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>

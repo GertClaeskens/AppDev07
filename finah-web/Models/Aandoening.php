@@ -1,6 +1,7 @@
 <?php
 
     require_once "SuperklasseAandoeningPathologie.php";
+    require_once "Pathologie.php";
 
     /**
      * Created by PhpStorm.
@@ -17,16 +18,21 @@
             $patologieen = new PathologieArray();
         }
 
-//        public function getPatologieen()
-//        {
-//            return $this->patologieen;
-//        }
-//
-//        public function setPatologieen($Patologieen)
-//        {
-//
-//            $this->patologieen = $Patologieen;
-//        }
+        public function kopieer(Aandoening $aand){
+            $this->setId($aand->getId());
+            $this->setOmschrijving($aand->getOmschrijving());
+            $this->setPatologieen($aand->getPatologieen());
+}
+        public function getPatologieen()
+        {
+            return $this->patologieen;
+        }
+
+        public function setPatologieen($Patologieen)
+        {
+
+            $this->patologieen = $Patologieen;
+        }
 
         public function voegPathologieAanLijstToe($value){
             array_push($this->patologieen,$value);
