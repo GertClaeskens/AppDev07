@@ -52,7 +52,7 @@
                         for ($b = 0; $b < $aantal; $b++) {
                             echo "<tr> <td> $item->Omschrijving</td>";
 
-                            echo "<td>" . $item->Patologieen[$b]->Omschrijving . "</td>";
+                            echo "<td>" . $item->Patologieen[$b]->Omschrijving. "</td>";
                             echo "<td class='action-column'>
                             <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
                         </td></tr>";

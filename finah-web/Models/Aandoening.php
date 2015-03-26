@@ -12,7 +12,7 @@
 //    http://stackoverflow.com/questions/7812198/array-of-objects-within-class-in-php
     class Aandoening extends SuperKlasseAandoeningPathologie
     {
-        public $Patologieen;
+        private $Patologieen;
 
         public function __construct($id=null,$omschrijving=null,$patologieen=null)
         {
