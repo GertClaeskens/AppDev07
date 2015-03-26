@@ -15,6 +15,8 @@ class FinahDAO {
             $url .= "Overzicht";
         }else $url .= $id;
             // request list of contacts from Web API + deserialize data from JSON
-        return json_decode(file_get_contents($url));
+        $result= json_decode(file_get_contents($url));
+        //var_dump($result);
+        return $result;
     }
 }

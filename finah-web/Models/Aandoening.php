@@ -12,12 +12,12 @@
 //    http://stackoverflow.com/questions/7812198/array-of-objects-within-class-in-php
     class Aandoening extends SuperKlasseAandoeningPathologie
     {
-        private $patologieen;
+        public $Patologieen;
 
         public function __construct($id=null,$omschrijving=null,$patologieen=null)
         {
             parent::__construct($id,$omschrijving);
-            $this->patologieen = ($patologieen === null)?new PathologieArray():$patologieen;
+            $this->Patologieen = $patologieen;//($patologieen === null)?new PathologieArray():$patologieen;
         }
 
         public function kopieer(Aandoening $aand)
@@ -29,7 +29,7 @@
 
         public function getPatologieen()
         {
-            return $this->patologieen;
+            return $this->Patologieen;
         }
 
         public function setPatologieen($Patologieen)
@@ -40,7 +40,7 @@
 
         public function voegPathologieAanLijstToe($value)
         {
-            array_push($this->patologieen, $value);
+            array_push($this->Patologieen, $value);
         }
 
     }
