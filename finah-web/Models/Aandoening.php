@@ -17,7 +17,7 @@
         public function __construct($id=null,$omschrijving=null,$patologieen=null)
         {
             parent::__construct($id,$omschrijving);
-            $patologieen = new PathologieArray();
+            $this->patologieen = ($patologieen === null)?new PathologieArray():$patologieen;
         }
 
         public function kopieer(Aandoening $aand)

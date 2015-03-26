@@ -1,5 +1,5 @@
 <?php
-    require_once "../DAO/FinahDAO.php";
+    require "../DAO/FinahDAO.php";
     require_once "../Models/Aandoening.php";
 ?>
 <html>
@@ -42,74 +42,11 @@
 
                 <?php
 //                    $aandoeningLijst =[];
-                    $aandoeningLijst = SharedDAO::HaalOp("Aandoening");
+                    $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
                     foreach($aandoeningLijst as $item)  {
-                        echo "<tr> <td> $item->Omschrijving</td>   <td> $item->patologieen</td>   <td class='action-column'>
+                        echo "<tr> <td> $item->Omschrijving</td>   <td> $item->{'patologieen'}[0]->Omschrijving</td>   <td class='action-column'>
                             <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
                         </td></tr>";} ?>
-<!--                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-
-
-            </table>
-        </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->
     <div id="page-footer">
         <p>&copy; Copyright 2015-2016. All Rights Reserved</p>

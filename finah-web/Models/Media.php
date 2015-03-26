@@ -11,7 +11,9 @@ class Media {
     private $Omschrijving;
     private $Pad;
 
-    public function __construct(){
-
+    public function __construct($id=null,$omschrijving=null,$pad=null){
+        $this->Id=$id;
+        $this->Omschrijving=$omschrijving;
+        $this->Pad=$pad;
     }
 }

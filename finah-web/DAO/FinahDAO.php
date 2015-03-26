@@ -6,7 +6,7 @@
  * Time: 12:07
  */
 
-class SharedDAO {
+class FinahDAO {
 
     public static function HaalOp($type,$id=null)
     {

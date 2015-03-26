@@ -1,5 +1,5 @@
 <?php
-
+    require_once "SuperklasseAanvraagAccount.php";
     /**
      * Created by PhpStorm.
      * User: Gert

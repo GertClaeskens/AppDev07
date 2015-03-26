@@ -7,7 +7,7 @@
  */
 
 class Foto extends Media{
-    public function __construct(){
-        parent::__construct();
+    public function __construct($id=null,$omschrijving=null,$pad=null){
+        parent::__construct($id,$omschrijving,$pad);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+    require "../DAO/FinahDAO.php";
 ?>
 <html>
 <head>
@@ -33,14 +34,16 @@
                     </th>
                     <th >Actie</th>
                 </tr>
-                <!-- <?php foreach($pathologieLijst as $item)
+                <?php
+                    $pathologieLijst = FinahDAO::HaalOp("Pathologie");
+                    foreach($pathologieLijst as $item)
                 {echo "<tr>
-                            <td> $item</td>
+                            <td> $item->Omschrijving</td>
                              <td class='action-column'>
                                 <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
                          </td>
-                         </tr>";} ?>-->
-                <tr>
+                         </tr>";} ?>
+         <!--       <tr>
                     <td class="large-column">
                         Dit is een voorbeeld omschrijving.
                     </td>
@@ -86,7 +89,7 @@
                         <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
 
                     </td>
-                </tr>
+                </tr>-->
             </table>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->
