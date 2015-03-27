@@ -218,9 +218,10 @@ namespace Finah_Backend.Controllers
             }
             var aand=new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = aandoening.Patologieen };
             db.Aandoeningen.Add(aand);
-            db.SaveChanges();
+            var nr = db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
+            return this.Ok(nr);
+            //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
         }
 
         // DELETE: api/Aandoenings/5

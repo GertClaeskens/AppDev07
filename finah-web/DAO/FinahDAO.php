@@ -29,20 +29,22 @@
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
             $url = "http://localhost:1695/" . $type . "/";
             $gegevens = json_encode($data);
-            var_dump($gegevens);
+            //var_dump($gegevens);
             //Initiate cURL.
             $ch = curl_init($url);
 
             //Tell cURL that we want to send a POST request.
             curl_setopt($ch, CURLOPT_POST, 1);
 
-//Attach our encoded JSON string to the POST fields.
+            //Attach our encoded JSON string to the POST fields.
             curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
 
-//Set the content type to application/json
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            //Set the content type to application/json
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
-//Execute the request
+            //Execute the request
             $result = curl_exec($ch);
+
+            return $result;
         }
     }

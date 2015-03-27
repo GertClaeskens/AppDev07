@@ -52,7 +52,12 @@
                     for ($a=0;$a<count($patologielijst);$a++){
                         $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie",$patologielijst[$a]));
                     };
-                    FinahDAO::SchrijfWeg("Aandoening",$aandoening);
+
+
+                    if (FinahDAO::SchrijfWeg("Aandoening",$aandoening)){
+                        //Todo eventueel een exception toevoegen hier
+                        echo "De aandoening werd succesvol opgeslagen";
+                    }
                     //$aandoening->setPatologieen($patologielijst);
                     //var_dump($aandoening);
 
