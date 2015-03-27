@@ -1,7 +1,7 @@
 <?php
-    require "../DAO/FinahDAO.php";
-    require_once "../Models/Aandoening.php";
-    require_once "../Models/Pathologie.php";
+require "../DAO/FinahDAO.php";
+require_once "../Models/Aandoening.php";
+require_once "../Models/Pathologie.php";
 ?>
 <html>
 <head>
@@ -28,7 +28,7 @@
         <div id="body-container">
             <h3 id="Breadcrumb">Menu > Aandoening</h3>
 
-            <h2 id="Content-Title">Overzicht</h2>
+            <h2 id="Content-Title">Details</h2>
 
             <p>
                 <a href="aandoeningCreate.php">Create new</a>
@@ -44,20 +44,17 @@
                     </th>
                     <th>Actie</th>
                 </tr>
-                <?php
-                    $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
-                    for ($a = 0; $a < count($aandoeningLijst); $a++) {
-                        $item = $aandoeningLijst[$a];
-                        $aantal = count($item->Patologieen);
-                        for ($b = 0; $b < $aantal; $b++) {
-                            echo "<tr> <td> $item->Omschrijving</td>";
-
-                            echo "<td>" . $item->Patologieen[$b]->Omschrijving. "</td>";
-                            echo "<td class='action-column'>
-                            <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
-                        </td></tr>";
-                        }
-                    } ?>
+                <tr>
+                    <td>
+                        Voorbeeld omschrijving
+                    </td>
+                    <td class="medium-column">
+                        Pathologie 1
+                    </td>
+                    <td class='action-column-small'>
+                        <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                    </td>
+                </tr>
 
             </table>
         </div>
