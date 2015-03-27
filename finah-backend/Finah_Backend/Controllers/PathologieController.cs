@@ -39,21 +39,14 @@ namespace Finah_Backend.Controllers
             //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
 
             //return bevragingen;
-            var pt1 = new Pathologie();
-            var pt2 = new Pathologie();
-            var pt3 = new Pathologie();
-            var pt4 = new Pathologie();
-            var pt5 = new Pathologie();
-
-            pt1.Id = 1;
-            pt2.Id = 2;
-            pt3.Id = 3;
-            pt4.Id = 4;
-            pt5.Id = 5;
 
             var overzichtPathologie = new List<Pathologie>
                                                        {
-                                                           pt1,pt2,pt3,pt4,pt5
+                                                           new Pathologie { Id = 1, Omschrijving = "Pathologie 1" }, 
+                                                           new Pathologie { Id = 2, Omschrijving = "Pathologie 2" }, 
+                                                           new Pathologie { Id = 3, Omschrijving = "Pathologie 3" }, 
+                                                           new Pathologie { Id = 4, Omschrijving = "Pathologie 4" }, 
+                                                           new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
                                                        };
 
             return overzichtPathologie;
@@ -158,7 +151,7 @@ namespace Finah_Backend.Controllers
         private bool PathologieBestaat(int id)
         {
             return db.Pathologieen.Count(e => e.Id == id) > 0;
-        
+
         }
     }
 }

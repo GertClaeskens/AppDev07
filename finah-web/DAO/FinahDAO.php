@@ -10,6 +10,7 @@ class FinahDAO {
 
     public static function HaalOp($type,$id=null)
     {
+        //Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
         $url="http://localhost:1695/".$type."/";
         if ($id == null){
             $url .= "Overzicht";
