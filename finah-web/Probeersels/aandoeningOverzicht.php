@@ -31,7 +31,7 @@
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="create.php">Create new</a>
+                <a href="aandoeningCreate.php">Create new</a>
             </p>
             <br/>
             <table border="1" class="overzicht-table">

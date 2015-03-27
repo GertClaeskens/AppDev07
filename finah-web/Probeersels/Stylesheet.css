@@ -109,7 +109,6 @@ body {
     display:block;
     width:75%;
     float:left;
-
 }
 
 #body-container article {
@@ -179,10 +178,9 @@ body {
 
 #Breadcrumb {
     padding-top:10px;
-    font-family:Verdana;
-    font-size:12pt;
+    font-family: Verdana;
+    font-size:10pt;
     margin-bottom:20px;
-    text-decoration:underline;
 }
 
 #Content-Title {
@@ -225,7 +223,7 @@ body {
 
 .form-style {
     margin:10px auto;
-    padding:20px 12px 10px 20px;
+    padding:10px 12px 10px 20px;
     font:13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .form-style li  {
@@ -299,6 +297,7 @@ textarea
 .form-style input[type=submit], .form-style input[type=button]{
     background: #0099CC;
     padding: 8px 15px 8px 15px;
+    margin-top:10px;
     border: none;
     color: #fff;
 }
