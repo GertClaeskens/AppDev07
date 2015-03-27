@@ -39,12 +39,25 @@
             <h2 id="Content-Title">Nieuwe aandoening</h2>
             <hr/>
 
+<<<<<<< HEAD
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
                     if (isset($_POST["creeer"])) {
                     var_dump($_POST);
                     $omschrijving = $_POST["omschrijving"];
                     $patologielijst = $_POST["pathologie"];
+=======
+            <form method="POST">
+                <ul class="form-style"
+                ">
+                <li><label class="control-label">Kies een pathologie</label></li>
+                <select multiple class="form-control" name="pathologie">
+                    <!--                        Pathologieen ophalen-->
+                    echo "<option value=\"null\">Kies een pathologie</option>";
+                    <?php
+                        //$patologieen = new PathologieArray();
+                        $patologieen = FinahDAO::HaalOp("Pathologie");
+>>>>>>> 5f4233232842013806449ae079266f2c6ecf96f1
 
                     $aandoening = new Aandoening();
                     $aandoening->setOmschrijving($omschrijving);
