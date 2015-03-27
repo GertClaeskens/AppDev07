@@ -6,6 +6,7 @@
      * Time: 0:28
      */
     require "../DAO/FinahDAO.php";
+    require "../Models/Aandoening.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,34 +39,54 @@
             <h2 id="Content-Title">Nieuwe aandoening</h2>
             <hr/>
 
-            <form method="POST">
-                <ul class="form-style"
-                ">
-                <li><label class="control-label">Kies een pathologie</label></li>
-                <select class="form-control" name="pathologie">
-                    <!--                        Pathologieen ophalen-->
-                    echo "<option value=\"null\">Kies een pathologie</option>";
-                    <?php
-                        //$patologieen = new PathologieArray();
-                        $patologieen = FinahDAO::HaalOp("Pathologie");
+            <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+                <?php
+                    if (isset($_POST["creeer"])) {
+                    var_dump($_POST);
+                    $omschrijving = $_POST["omschrijving"];
+                    $patologielijst = $_POST["pathologie"];
 
-                        foreach($patologieen as $item){
-                            $waarde= $item->Omschrijving;
-                            echo "<option value='$value'>" . $item->Omschrijving . "</option>\r\n";
-                        }
-                        var_dump($patologieen);
-//                        for ($a=0;$a<count($patologieen);$a++){
-//                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
-//                        }
-                    ?>
-<!--                    <option>Pathologie 1</option>
-                    <option>Pathologie 2</option>
-                    <option>Pathologie 3</option>
-                    <option>Pathologie 4</option>-->
-                </select>
-                <li><label class="control-label">Omschrijving</label></li>
-                <li><input class="form-control" type="text" name="omschrijving"/></li>
-                <li><input type="submit" value="Create" class="createBtn"/></li>
+                    $aandoening = new Aandoening();
+                    $aandoening->setOmschrijving($omschrijving);
+                    for ($a=0;$a<count($patologielijst);$a++){
+                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie",$patologielijst[$a]));
+                    };
+                    //TODO functie moet een int terug geven met de nieuwe id;
+                    FinahDAO::SchrijfWeg("Aandoening",$aandoening);
+                    //$aandoening->setPatologieen($patologielijst);
+                    //var_dump($aandoening);
+
+                }else {
+                ?>
+
+
+                <ul class="form-style">
+                    <li><label class="control-label">Omschrijving</label></li>
+                    <li><input class="form-control" type="text" name="omschrijving"/></li>
+                    <li><label class="control-label">Kies een pathologie</label></li>
+                    <select class="form-control" name="pathologie[]" multiple="multiple">
+                        <!--                        Pathologieen ophalen-->
+                        <?php
+                            //$patologieen = new PathologieArray();
+                            //TODO omzetten naar Pathologie object
+                            $patologieen = FinahDAO::HaalOp("Pathologie");
+
+                            foreach ($patologieen as $item) {
+                                $waarde = $item->Omschrijving;
+                                echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
+                            }
+                            var_dump($patologieen);
+                            //                        for ($a=0;$a<count($patologieen);$a++){
+                            //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
+                            //                        }
+                        ?>
+                        <!--                    <option>Pathologie 1</option>
+                                            <option>Pathologie 2</option>
+                                            <option>Pathologie 3</option>
+                                            <option>Pathologie 4</option>-->
+                    </select>
+
+                    <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>
                 </ul>
             </form>
             <div class="Back">
@@ -80,6 +101,7 @@
     </div>
 </div>
 <!--Closing DIV wrapper-->
-
+<?php }
+?>
 </body>
 </html>

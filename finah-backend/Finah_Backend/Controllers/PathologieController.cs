@@ -58,10 +58,17 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Get(int id)
         {
             Pathologie pathologie = null;
-            if (id == 1)
-            {
-                pathologie = new Pathologie { Id = 1, Omschrijving = "test" };
-            }
+            var overzichtPathologie = new List<Pathologie>
+                                                       {
+                                                           new Pathologie { Id = 1, Omschrijving = "Pathologie 1" }, 
+                                                           new Pathologie { Id = 2, Omschrijving = "Pathologie 2" }, 
+                                                           new Pathologie { Id = 3, Omschrijving = "Pathologie 3" }, 
+                                                           new Pathologie { Id = 4, Omschrijving = "Pathologie 4" }, 
+                                                           new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
+                                                       };
+
+
+            pathologie = overzichtPathologie[id - 1];
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             //var pathologie = db.Pathologieen.Find(id);

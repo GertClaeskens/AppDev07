@@ -2,6 +2,7 @@
 
     require_once "SuperklasseAandoeningPathologie.php";
     require_once "Pathologie.php";
+    require_once "../CustomDataTypes/PathologieArray.php";
 
     /**
      * Created by PhpStorm.
@@ -12,12 +13,12 @@
 //    http://stackoverflow.com/questions/7812198/array-of-objects-within-class-in-php
     class Aandoening extends SuperKlasseAandoeningPathologie
     {
-        private $Patologieen;
+        public $Patologieen;
 
         public function __construct($id=null,$omschrijving=null,$patologieen=null)
         {
             parent::__construct($id,$omschrijving);
-            $this->Patologieen = $patologieen;//($patologieen === null)?new PathologieArray():$patologieen;
+            $this->Patologieen = ($patologieen === null)?[]:$patologieen;
         }
 
         public function kopieer(Aandoening $aand)
@@ -35,7 +36,7 @@
         public function setPatologieen($Patologieen)
         {
 
-            $this->patologieen = $Patologieen;
+            $this->Patologieen = $Patologieen;
         }
 
         public function voegPathologieAanLijstToe($value)
