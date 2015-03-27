@@ -216,11 +216,11 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var aand=new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = aandoening.Patologieen };
+            var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = aandoening.Patologieen };
             db.Aandoeningen.Add(aand);
-            var nr = db.SaveChanges();
+            db.SaveChanges();
 
-            return this.Ok(nr);
+            return Ok(aand);
             //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
         }
 
