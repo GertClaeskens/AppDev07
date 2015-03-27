@@ -42,7 +42,7 @@
                 <ul class="form-style"
                 ">
                 <li><label class="control-label">Kies een pathologie</label></li>
-                <select class="form-control" name="pathologie">
+                <select multiple class="form-control" name="pathologie">
                     <!--                        Pathologieen ophalen-->
                     echo "<option value=\"null\">Kies een pathologie</option>";
                     <?php
