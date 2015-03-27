@@ -7,6 +7,7 @@ namespace Finah_Backend.Controllers
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Web.Http.Description;
 
     using Finah_Backend.DAL;
@@ -207,14 +208,16 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Aandoenings
         [ResponseType(typeof(Aandoening))]
-        public IHttpActionResult PostAandoening(Aandoening aandoening)
+        [Route("Aandoening/")]
+        //public IHttpActionResult PostAandoening(Aandoening aandoening)
+        public IHttpActionResult Post([FromBody] Aandoening aandoening)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Aandoeningen.Add(aandoening);
+            var aand=new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = aandoening.Patologieen };
+            db.Aandoeningen.Add(aand);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);

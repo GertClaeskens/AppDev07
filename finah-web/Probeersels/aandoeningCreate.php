@@ -42,16 +42,16 @@
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
                     if (isset($_POST["creeer"])) {
-                    var_dump($_POST);
+                    //var_dump($_POST);
                     $omschrijving = $_POST["omschrijving"];
                     $patologielijst = $_POST["pathologie"];
-
+//TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $aandoening = new Aandoening();
+                    $aandoening->Id=0;
                     $aandoening->setOmschrijving($omschrijving);
                     for ($a=0;$a<count($patologielijst);$a++){
                         $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie",$patologielijst[$a]));
                     };
-                    //TODO functie moet een int terug geven met de nieuwe id;
                     FinahDAO::SchrijfWeg("Aandoening",$aandoening);
                     //$aandoening->setPatologieen($patologielijst);
                     //var_dump($aandoening);
@@ -75,7 +75,7 @@
                                 $waarde = $item->Omschrijving;
                                 echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
                             }
-                            var_dump($patologieen);
+                            //var_dump($patologieen);
                             //                        for ($a=0;$a<count($patologieen);$a++){
                             //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
                             //                        }

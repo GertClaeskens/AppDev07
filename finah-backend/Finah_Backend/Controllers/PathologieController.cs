@@ -7,6 +7,7 @@ namespace Finah_Backend.Controllers
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Web.Http.Description;
 
     using Finah_Backend.DAL;
@@ -118,6 +119,7 @@ namespace Finah_Backend.Controllers
         // POST: api/Pathologies
         [ResponseType(typeof(Pathologie))]
         public IHttpActionResult PostPathologie(Pathologie pathologie)
+        
         {
             if (!ModelState.IsValid)
             {
