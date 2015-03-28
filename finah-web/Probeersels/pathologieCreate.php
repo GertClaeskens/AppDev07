@@ -21,7 +21,7 @@ require "../Models/Pathologie.php";
         <div id="nav-bar2">
             <h2> Beheren </h2>
             <button onclick="location.href='aandoeningOverzicht.php'">Aandoening</button>
-            <button onclick="location.href='PathologieOverzicht.php'">Pathologie</button>
+            <button onclick="location.href='pathologieOverzicht.php'">Pathologie</button>
             <button onclick="location.href='LeeftijdsCategorieOverzicht.php'">Leeftijdscategorie</button>
             <button onclick="location.href='VragenOverzicht.php'">Vragen</button>
             <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
@@ -61,7 +61,7 @@ require "../Models/Pathologie.php";
                 </ul>
             </form>
             <div class="Back">
-                <a href="PathologieOverzicht.php">Terug naar overzicht</a>
+                <a href="pathologieOverzicht.php">Terug naar overzicht</a>
             </div>
         </div>
         <!--Closing DIV body containerr-->
