@@ -1,6 +1,5 @@
 <?php
 require "../DAO/FinahDAO.php";
-require_once "../Models/Aandoening.php";
 require_once "../Models/Pathologie.php";
 ?>
 <html>
@@ -26,7 +25,7 @@ require_once "../Models/Pathologie.php";
         </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Aandoening</h3>
+            <h3 id="Breadcrumb">Menu > Pathologie > Details </h3>
 
             <h2 id="Content-Title">Details</h2>
 
@@ -36,20 +35,14 @@ require_once "../Models/Pathologie.php";
                     <th>
                         Omschrijving
                     </th>
-                    <th>
-                        Pathologie
-                    </th>
                     <th>Actie</th>
                 </tr>
                 <tr>
                     <td>
                         Voorbeeld omschrijving
                     </td>
-                    <td class="medium-column">
-                        Pathologie 1
-                    </td>
                     <td class='action-column-small'>
-                        <a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                        <a href='pathologieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
                     </td>
                 </tr>
 
