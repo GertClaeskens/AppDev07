@@ -24,7 +24,7 @@
             <h3 id="Breadcrumb">Menu > Pathologie</h3>
             <h2 id="Content-Title">Overzicht</h2>
             <p>
-                <a href="create.php">Create new</a>
+                <a href="pathologieCreate.php">Create new</a>
             </p>
             <br />
             <table border="1" class="overzicht-table">
@@ -40,56 +40,9 @@
                 {echo "<tr>
                             <td> $item->Omschrijving</td>
                              <td class='action-column'>
-                                <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
+                                <a href='pathologieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='Pathologiedetails.php'>Details</a>
                          </td>
                          </tr>";} ?>
-         <!--       <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="large-column">
-                        Dit is een voorbeeld omschrijving.
-                    </td>
-
-                    <td class="action-column">
-                        <a href="edit.php">Edit</a> | <a href="delete.php">Delete</a> | <a href="details.php">Details</a>
-
-                    </td>
-                </tr>-->
             </table>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->

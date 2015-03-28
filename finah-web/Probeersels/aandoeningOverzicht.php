@@ -54,7 +54,7 @@
 
                             echo "<td>" . $item->Patologieen[$b]->Omschrijving. "</td>";
                             echo "<td class='action-column'>
-                            <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
+                            <a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
                         </td></tr>";
                         }
                     } ?>

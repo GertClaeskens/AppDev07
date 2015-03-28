@@ -85,10 +85,7 @@
                             //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
                             //                        }
                         ?>
-                        <!--                    <option>Pathologie 1</option>
-                                            <option>Pathologie 2</option>
-                                            <option>Pathologie 3</option>
-                                            <option>Pathologie 4</option>-->
+
                     </select>
 
                     <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>

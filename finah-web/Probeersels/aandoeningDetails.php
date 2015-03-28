@@ -52,7 +52,7 @@ require_once "../Models/Pathologie.php";
                         Pathologie 1
                     </td>
                     <td class='action-column-small'>
-                        <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                        <a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
                     </td>
                 </tr>
 
