@@ -42,6 +42,8 @@ require_once "../Models/Pathologie.php";
                     </th>
                     <th>Actie</th>
                 </tr>
+                <!--                TODO PHP code om het juiste item op te halen -->
+
                 <tr>
                     <td>
                         Voorbeeld omschrijving

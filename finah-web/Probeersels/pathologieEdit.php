@@ -31,13 +31,8 @@
 
             <form method="POST">
                 <ul class="form-style"">
-<!--                <li> <label class="control-label" >Kies een pathologie</label> </li>
-                <select class="form-control">
-                    <option>Pathologie 1</option>
-                    <option selected>Pathologie 2</option>
-                    <option>Pathologie 3</option>
-                    <option>Pathologie 4</option>
-                </select>-->
+                <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
+
                 <li><label class="control-label">Omschrijving</label></li>
                 <li><input class="form-control" value="Voorbeeld omschrijving" type="text"/></li>
                 <li><input type="submit" value="Bewerken" class="createBtn" /></li>

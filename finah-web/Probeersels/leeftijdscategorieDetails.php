@@ -40,7 +40,9 @@ require_once "../Models/LeeftijdsCategorie.php";
                     </th>
                     <th>Actie</th>
                 </tr>
-               <tr>
+                <!--                TODO PHP code om het juiste item op te halen -->
+
+                <tr>
                             <td class="leeftijdKolom"> 0</td>
                             <td class="leeftijdKolom"> 10</td>
                              <td class="action-column-small">

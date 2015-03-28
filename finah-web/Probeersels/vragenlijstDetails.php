@@ -1,11 +1,11 @@
 <?php
 require "../DAO/FinahDAO.php";
-require_once "../Models/Pathologie.php";
+require_once "../Models/VragenLijst.php";
 ?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
-    <title>FINAH - Pathologie</title>
+    <title>FINAH - Vragenlijst</title>
 </head>
 <body>
 <div id="wrapper">
@@ -26,7 +26,7 @@ require_once "../Models/Pathologie.php";
         </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Pathologie > Details </h3>
+            <h3 id="Breadcrumb">Menu > Vragenlijst > Details </h3>
 
             <h2 id="Content-Title">Details</h2>
 
@@ -34,7 +34,7 @@ require_once "../Models/Pathologie.php";
             <table border="1" class="overzicht-table">
                 <tr>
                     <th>
-                        Omschrijving
+                        Vragenlijst
                     </th>
                     <th>Actie</th>
                 </tr>
@@ -42,16 +42,16 @@ require_once "../Models/Pathologie.php";
 
                 <tr>
                     <td>
-                        Voorbeeld omschrijving
+                        Voorbeeld Vragenlijst
                     </td>
                     <td class='action-column-small'>
-                        <a href='pathologieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                        <a href='vragenlijstEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
                     </td>
                 </tr>
 
             </table>
             <div class="Back">
-                <a href="pathologieOverzicht.php">Terug naar overzicht</a>
+                <a href="vragenlijstOverzicht.php">Terug naar overzicht</a>
             </div>
         </div>
         <!--Closing DIV innerwrapper-->

@@ -38,6 +38,8 @@
                 <ul class="form-style"">
                 <li> <label class="control-label" >Kies een pathologie</label> </li>
                 <select class="form-control">
+                    <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
+
                     <option>Pathologie 1</option>
                     <option selected>Pathologie 2</option>
                     <option>Pathologie 3</option>

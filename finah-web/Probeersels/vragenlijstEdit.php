@@ -1,17 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rafaël
- * Date: 27/03/2015
- * Time: 0:28
- */
+require "../DAO/FinahDAO.php";
+require_once "../Models/VragenLijst.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>FINAH - Leeftijdscategorie</title>
+    <title>FINAH - Vragenlijst</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
 </head>
 <body>
@@ -30,23 +26,22 @@
             <button onclick="location.href='index.php'">Terug naar home</button>
         </div><!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Leeftijdscategorie > Bewerken</h3>
-            <h2 id="Content-Title">Leeftijdscategorie bewerken</h2>
+            <h3 id="Breadcrumb">Menu > Vragenlijst > Bewerken</h3>
+            <h2 id="Content-Title">Vragenlijst bewerken</h2>
             <hr/>
 
             <form method="POST">
-                <ul class="form-style">
-                    <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
+                <ul class="form-style"">
+                <!--TODO selectievelden voor extra vragen te selecteren of vragen uit de lijst te halen -->
+                <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
 
-                    <li><label class="control-label">Van:</label></li>
-                    <li><input class="form-control-small" type="text" name="van"/></li>
-                    <li><label class="control-label">Tot:</label></li>
-                    <li><input class="form-control-small" type="text" name="tot"/></li>
-                    <li><input type="submit" value="Bewerken" class="createBtn" name="bewerk"/></li>
+                <li><label class="control-label">Vraagstelling</label></li>
+                <li><input class="form-control" value="Voorbeeld vraaglijst" name="vraaglijst" type="text"/></li>
+                <li><input type="submit" value="Bewerken" class="createBtn" name="bewerk" /></li>
                 </ul>
             </form>
             <div class="Back">
-                <a href="leeftijdscategorieOverzicht.php">Terug naar overzicht</a>
+                <a href="vragenlijstOverzicht.php">Terug naar overzicht</a>
             </div>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->
