@@ -27,7 +27,7 @@
             <h2> Beheren </h2>
             <button onclick="location.href='aandoeningOverzicht.php'">Aandoening</button>
             <button onclick="location.href='pathologieOverzicht.php'">Pathologie</button>
-            <button onclick="location.href='LeeftijdsCategorieOverzicht.php'">Leeftijdscategorie</button>
+            <button onclick="location.href='leeftijdscategorieOverzicht.php'">Leeftijdscategorie</button>
             <button onclick="location.href='VragenOverzicht.php'">Vragen</button>
             <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
             <button onclick="location.href='index.php'">Terug naar home</button>
