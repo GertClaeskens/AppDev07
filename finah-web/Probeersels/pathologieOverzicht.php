@@ -4,6 +4,7 @@ require "../DAO/FinahDAO.php";
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <title>FINAH - Pathologie</title>
 <body>
 <div id="wrapper">
     <div id="page-header">

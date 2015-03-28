@@ -5,6 +5,7 @@ require_once "../Models/LeeftijdsCategorie.php";
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <title>FINAH - Leeftijdscategorie</title>
 <body>
 <div id="wrapper">
     <div id="page-header">
@@ -29,7 +30,7 @@ require_once "../Models/LeeftijdsCategorie.php";
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="create.php">Create new</a>
+                <a href="leeftijdscategoriecreate.php">Create new</a>
             </p>
             <br/>
             <table border="1" class="overzicht-table">
@@ -49,7 +50,7 @@ require_once "../Models/LeeftijdsCategorie.php";
                             <td class='leeftijdKolom'> $item->Van</td>
                             <td class='leeftijdKolom'> $item->Tot</td>
                              <td class='action-column'>
-                                <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
+                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a>
                          </td>
                          </tr>";
                 } ?>

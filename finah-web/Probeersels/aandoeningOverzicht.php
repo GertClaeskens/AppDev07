@@ -6,6 +6,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <title>FINAH - Aandoening</title>
 </head>
 <body>
 <div id="wrapper">

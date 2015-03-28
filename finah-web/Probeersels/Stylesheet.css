@@ -241,16 +241,16 @@ body {
  }
 
 .form-style input[type=text],
-.form-style  input[type=date],
+.form-style input[type=date],
 .form-style input[type=datetime],
 .form-style input[type=number],
 .form-style input[type=search],
-.form-style  input[type=time],
-.form-style  input[type=url],
-.form-style  input[type=email],
+.form-style input[type=time],
+.form-style input[type=url],
+.form-style input[type=email],
 textarea
 {
-    width:50%;
+    width:25%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -262,6 +262,9 @@ textarea
     -ms-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     outline: none;
+}
+.form-style input[type=text].form-control-small{
+    width:5%;
 }
 .form-style select{
     width:20%;
@@ -291,9 +294,6 @@ textarea
     -webkit-box-shadow: 0 0 8px #88D5E9;
     box-shadow: 0 0 8px #88D5E9;
     border: 1px solid #88D5E9;
-}
-.form-style.form-control{
-    width: 49%;
 }
 
 .form-style input[type=submit], .form-style input[type=button]{

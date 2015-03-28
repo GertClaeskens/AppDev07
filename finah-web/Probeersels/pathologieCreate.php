@@ -8,7 +8,7 @@ require "../Models/Pathologie.php";
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Finah - Pathologie</title>
+    <title>FINAH - Pathologie</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
 </head>
 <body>

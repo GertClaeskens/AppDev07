@@ -6,6 +6,7 @@ require_once "../Models/Pathologie.php";
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <title>FINAH - Aandoening</title>
 </head>
 <body>
 <div id="wrapper">
@@ -54,6 +55,9 @@ require_once "../Models/Pathologie.php";
                 </tr>
 
             </table>
+            <div class="Back">
+                <a href="aandoeningOverzicht.php">Terug naar overzicht</a>
+            </div>
         </div>
         <!--Closing DIV innerwrapper-->
         <div id="page-footer">
