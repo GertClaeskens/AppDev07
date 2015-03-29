@@ -3,6 +3,7 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -216,7 +217,22 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = aandoening.Patologieen };
+
+            
+            var aand = new Aandoening
+                           {
+                               Omschrijving = aandoening.Omschrijving
+                               
+                            };
+            var patlijst = aandoening.Patologieen.Select(p => this.db.Pathologieen.Find(p.Id)).ToList();
+            aand.Patologieen = patlijst;
+            //    var patologieen =
+                           //        aandoening.Patologieen.Select(
+                           //            p => new Pathologie { Id = p.Id, Omschrijving = p.Omschrijving })
+                           //        .ToList()
+                           //};
+        //, Patologieen = aandoening.Patologieen };
+
             db.Aandoeningen.Add(aand);
             db.SaveChanges();
 

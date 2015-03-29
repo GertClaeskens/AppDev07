@@ -2,6 +2,9 @@
 
 namespace Finah_Backend.Models
 {
+    using Newtonsoft.Json;
+
+    [JsonObject(IsReference = true)]
     public class Aandoening
     {
         private ICollection<Pathologie> patologieen;

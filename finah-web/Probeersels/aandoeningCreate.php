@@ -47,14 +47,14 @@
                     $patologielijst = $_POST["pathologie"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $aandoening = new Aandoening();
-                    $aandoening->Id=0;
+                    $aandoening->Id = 0;
                     $aandoening->setOmschrijving($omschrijving);
-                    for ($a=0;$a<count($patologielijst);$a++){
-                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie",$patologielijst[$a]));
+                    for ($a = 0; $a < count($patologielijst); $a++) {
+                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $patologielijst[$a]));
                     };
+                    var_dump($aandoening);
 
-
-                    if (FinahDAO::SchrijfWeg("Aandoening",$aandoening)){
+                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
                         //Todo eventueel een exception toevoegen hier
                         echo "De aandoening werd succesvol opgeslagen";
                     }
