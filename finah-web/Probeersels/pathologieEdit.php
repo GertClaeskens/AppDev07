@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rafaël
- * Date: 27/03/2015
- * Time: 0:28
- */
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>FINAH - Aandoening</title>
+    <title>FINAH - Pathologie</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
 </head>
 <body>
@@ -30,28 +25,21 @@
             <button onclick="location.href='index.php'">Terug naar home</button>
         </div><!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Aandoening > Bewerken</h3>
-            <h2 id="Content-Title">Aandoening bewerken</h2>
+            <h3 id="Breadcrumb">Menu > Pathologie > Bewerken</h3>
+            <h2 id="Content-Title">Pathologie bewerken</h2>
             <hr/>
 
             <form method="POST">
                 <ul class="form-style"">
-                <li> <label class="control-label" >Kies een pathologie</label> </li>
-                <select class="form-control">
-                    <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
+                <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
 
-                    <option>Pathologie 1</option>
-                    <option selected>Pathologie 2</option>
-                    <option>Pathologie 3</option>
-                    <option>Pathologie 4</option>
-                </select>
                 <li><label class="control-label">Omschrijving</label></li>
                 <li><input class="form-control" value="Voorbeeld omschrijving" type="text"/></li>
                 <li><input type="submit" value="Bewerken" class="createBtn" /></li>
                 </ul>
             </form>
             <div class="Back">
-                <a href="aandoeningOverzicht.php">Terug naar overzicht</a>
+                <a href="pathologieOverzicht.php">Terug naar overzicht</a>
             </div>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->

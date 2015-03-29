@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Finah - Aandoening</title>
+    <title>FINAH - Aandoening</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
 </head>
 <body>
@@ -26,8 +26,8 @@
         <div id="nav-bar2">
             <h2> Beheren </h2>
             <button onclick="location.href='aandoeningOverzicht.php'">Aandoening</button>
-            <button onclick="location.href='PathologieOverzicht.php'">Pathologie</button>
-            <button onclick="location.href='LeeftijdsCategorieOverzicht.php'">Leeftijdscategorie</button>
+            <button onclick="location.href='pathologieOverzicht.php'">Pathologie</button>
+            <button onclick="location.href='leeftijdscategorieOverzicht.php'">Leeftijdscategorie</button>
             <button onclick="location.href='VragenOverzicht.php'">Vragen</button>
             <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
             <button onclick="location.href='index.php'">Terug naar home</button>
@@ -85,10 +85,7 @@
                             //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
                             //                        }
                         ?>
-                        <!--                    <option>Pathologie 1</option>
-                                            <option>Pathologie 2</option>
-                                            <option>Pathologie 3</option>
-                                            <option>Pathologie 4</option>-->
+
                     </select>
 
                     <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>

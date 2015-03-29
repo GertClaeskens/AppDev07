@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>FINAH - Aandoening</title>
+    <title>FINAH - Leeftijdscategorie</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
 </head>
 <body>
@@ -30,28 +30,23 @@
             <button onclick="location.href='index.php'">Terug naar home</button>
         </div><!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Aandoening > Bewerken</h3>
-            <h2 id="Content-Title">Aandoening bewerken</h2>
+            <h3 id="Breadcrumb">Menu > Leeftijdscategorie > Bewerken</h3>
+            <h2 id="Content-Title">Leeftijdscategorie bewerken</h2>
             <hr/>
 
             <form method="POST">
-                <ul class="form-style"">
-                <li> <label class="control-label" >Kies een pathologie</label> </li>
-                <select class="form-control">
+                <ul class="form-style">
                     <!--TODO PHP Code voor juiste item op te halen en aanpassingen weg te schrijven-->
 
-                    <option>Pathologie 1</option>
-                    <option selected>Pathologie 2</option>
-                    <option>Pathologie 3</option>
-                    <option>Pathologie 4</option>
-                </select>
-                <li><label class="control-label">Omschrijving</label></li>
-                <li><input class="form-control" value="Voorbeeld omschrijving" type="text"/></li>
-                <li><input type="submit" value="Bewerken" class="createBtn" /></li>
+                    <li><label class="control-label">Van:</label></li>
+                    <li><input class="form-control-small" type="text" name="van"/></li>
+                    <li><label class="control-label">Tot:</label></li>
+                    <li><input class="form-control-small" type="text" name="tot"/></li>
+                    <li><input type="submit" value="Bewerken" class="createBtn" name="bewerk"/></li>
                 </ul>
             </form>
             <div class="Back">
-                <a href="aandoeningOverzicht.php">Terug naar overzicht</a>
+                <a href="leeftijdscategorieOverzicht.php">Terug naar overzicht</a>
             </div>
         </div><!--Closing DIV body containerr-->
     </div><!--Closing DIV innerwrapper-->

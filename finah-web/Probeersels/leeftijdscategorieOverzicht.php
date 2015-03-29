@@ -1,9 +1,11 @@
 <?php
-    require "../DAO/FinahDAO.php";
+require_once "../DAO/FinahDAO.php";
+require_once "../Models/LeeftijdsCategorie.php";
 ?>
-    <html>
+<html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <title>FINAH - Leeftijdscategorie</title>
 <body>
 <div id="wrapper">
     <div id="page-header">
@@ -14,7 +16,7 @@
         <div id="nav-bar2">
             <h2> Beheren </h2>
             <button onclick="location.href='aandoeningOverzicht.php'">Aandoening</button>
-            <button onclick="location.href='PathologieOverzicht.php'">Pathologie</button>
+            <button onclick="location.href='pathologieOverzicht.php'">Pathologie</button>
             <button onclick="location.href='LeeftijdsCategorieOverzicht.php'">Leeftijdscategorie</button>
             <button onclick="location.href='VragenOverzicht.php'">Vragen</button>
             <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
@@ -23,31 +25,35 @@
         </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Vragen</h3>
+            <h3 id="Breadcrumb">Menu > Leeftijdscategorie</h3>
 
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="create.php">Create new</a>
+                <a href="leeftijdscategoriecreate.php">Create new</a>
             </p>
             <br/>
             <table border="1" class="overzicht-table">
                 <tr>
                     <th>
-                        Vraagstelling
+                        Van
+                    </th>
+                    <th>
+                        Tot
                     </th>
                     <th>Actie</th>
                 </tr>
                 <?php
-                    $vragenLijst = FinahDAO::HaalOp("Vragen");
-                    foreach ($vragenLijst as $item) {
-                        echo "<tr>
-                            <td> $item->VraagStelling</td>
+                $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
+                foreach ($leeftijdCategorieLijst as $item) {
+                    echo "<tr>
+                            <td class='leeftijdKolom'> $item->Van</td>
+                            <td class='leeftijdKolom'> $item->Tot</td>
                              <td class='action-column'>
-                                <a href='edit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='details.php'>Details</a>
+                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a>
                          </td>
                          </tr>";
-                    } ?>
+                } ?>
 
             </table>
         </div>
@@ -61,10 +67,4 @@
 <!--Closing DIV wrapper-->
 </body>
 </head>
-    </html><?php
-/**
- * Created by PhpStorm.
- * User: Rafaël
- * Date: 26/03/2015
- * Time: 11:17
- */
+</html>

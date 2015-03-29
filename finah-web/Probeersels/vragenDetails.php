@@ -1,12 +1,11 @@
 <?php
 require "../DAO/FinahDAO.php";
-require_once "../Models/Aandoening.php";
-require_once "../Models/Pathologie.php";
+require_once "../Models/Vraag.php";
 ?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
-    <title>FINAH - Aandoening</title>
+    <title>FINAH - Vragen</title>
 </head>
 <body>
 <div id="wrapper">
@@ -27,7 +26,7 @@ require_once "../Models/Pathologie.php";
         </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
-            <h3 id="Breadcrumb">Menu > Aandoening</h3>
+            <h3 id="Breadcrumb">Menu > Vragen > Details </h3>
 
             <h2 id="Content-Title">Details</h2>
 
@@ -35,30 +34,23 @@ require_once "../Models/Pathologie.php";
             <table border="1" class="overzicht-table">
                 <tr>
                     <th>
-                        Omschrijving
-                    </th>
-                    <th>
-                        Pathologie
+                        Vraagstelling
                     </th>
                     <th>Actie</th>
                 </tr>
                 <!--                TODO PHP code om het juiste item op te halen -->
-
                 <tr>
                     <td>
-                        Voorbeeld omschrijving
-                    </td>
-                    <td class="medium-column">
-                        Pathologie 1
+                        Voorbeeld Vraagstelling
                     </td>
                     <td class='action-column-small'>
-                        <a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                        <a href='vragenEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
                     </td>
                 </tr>
 
             </table>
             <div class="Back">
-                <a href="aandoeningOverzicht.php">Terug naar overzicht</a>
+                <a href="vragenOverzicht.php">Terug naar overzicht</a>
             </div>
         </div>
         <!--Closing DIV innerwrapper-->
