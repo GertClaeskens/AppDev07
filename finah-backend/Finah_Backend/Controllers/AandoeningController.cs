@@ -3,16 +3,13 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
-    using System;
+    using Finah_Backend.DAL;
+    using Finah_Backend.Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Web.Http.Description;
-
-    using Finah_Backend.DAL;
-    using Finah_Backend.Models;
 
     public class AandoeningController : ApiController
     {
@@ -46,7 +43,6 @@ namespace Finah_Backend.Controllers
                 pt.Id = 1;
                 pt.Omschrijving = "Pathologie";
                 patLijst.Add(pt);
-
 
                 aandoening.Id = 1;
                 aandoening.Omschrijving = "Omschrijving";
@@ -168,7 +164,6 @@ namespace Finah_Backend.Controllers
             };
             var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
 
-
             return overzichtAandoeningen;
         }
 
@@ -213,36 +208,26 @@ namespace Finah_Backend.Controllers
         //public IHttpActionResult PostAandoening(Aandoening aandoening)
         public IHttpActionResult Post([FromBody] Aandoening aandoening)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            //Insert code
-    //            var employee = new Employee();
-    //...
-    //db.Employees.AddObject(employee);
+            //if (!ModelState.IsValid)
+            //{
+            //    //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState));
+            //    return BadRequest(ModelState);
+            //}
 
-    //employee.Department = context.Departments.Single(d => d.Id == departmentId);
-    //context.SaveChanges();
-            //End insert
-            var aand = new Aandoening
-                           {
-                               Omschrijving = aandoening.Omschrijving
-                               
-                            };
+            var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = new List<Pathologie>() };
             foreach (var pathologie in aandoening.Patologieen)
             {
-                aand.Patologieen.Add(db.Pathologieen.Single(p =>p.Id == pathologie.Id));    
+                aand.Patologieen.Add(db.Pathologieen.Single(p => p.Id == pathologie.Id));
             }
-            
+
             //var patlijst = aandoening.Patologieen.Select(p => this.db.Pathologieen.Find(p.Id)).ToList();
             //aand.Patologieen = patlijst;
             //    var patologieen =
-                           //        aandoening.Patologieen.Select(
-                           //            p => new Pathologie { Id = p.Id, Omschrijving = p.Omschrijving })
-                           //        .ToList()
-                           //};
-        //, Patologieen = aandoening.Patologieen };
+            //        aandoening.Patologieen.Select(
+            //            p => new Pathologie { Id = p.Id, Omschrijving = p.Omschrijving })
+            //        .ToList()
+            //};
+            //, Patologieen = aandoening.Patologieen };
 
             db.Aandoeningen.Add(aand);
             db.SaveChanges();
