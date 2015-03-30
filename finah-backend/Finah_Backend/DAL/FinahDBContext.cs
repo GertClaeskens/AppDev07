@@ -35,6 +35,7 @@ namespace Finah_Backend.DAL
         public DbSet<Status> Statussen { get; set; }
         public DbSet<Vraag> Vragen { get; set; }
         public DbSet<VragenLijst> VragenLijsten { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

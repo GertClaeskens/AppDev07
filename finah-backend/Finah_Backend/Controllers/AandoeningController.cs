@@ -217,15 +217,26 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
+            //Insert code
+    //            var employee = new Employee();
+    //...
+    //db.Employees.AddObject(employee);
 
-            
+    //employee.Department = context.Departments.Single(d => d.Id == departmentId);
+    //context.SaveChanges();
+            //End insert
             var aand = new Aandoening
                            {
                                Omschrijving = aandoening.Omschrijving
                                
                             };
-            var patlijst = aandoening.Patologieen.Select(p => this.db.Pathologieen.Find(p.Id)).ToList();
-            aand.Patologieen = patlijst;
+            foreach (var pathologie in aandoening.Patologieen)
+            {
+                aand.Patologieen.Add(db.Pathologieen.Single(p =>p.Id == pathologie.Id));    
+            }
+            
+            //var patlijst = aandoening.Patologieen.Select(p => this.db.Pathologieen.Find(p.Id)).ToList();
+            //aand.Patologieen = patlijst;
             //    var patologieen =
                            //        aandoening.Patologieen.Select(
                            //            p => new Pathologie { Id = p.Id, Omschrijving = p.Omschrijving })
