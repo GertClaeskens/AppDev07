@@ -11,6 +11,7 @@ public class Aandoening extends SuperklasseAandoeningPathologie {
 	}
 	public void voegPathologieToe(Pathologie pat){
 		Patologieen.add(pat);
+		
 	}
 	public void voegPathologieLijstToe(ArrayList<Pathologie> patlijst){
 		Patologieen = patlijst;

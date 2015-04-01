@@ -30,5 +30,10 @@ class Pathologie extends SuperKlasseAandoeningPathologie{
         $this->Aandoeningen = $Aandoeningen;
     }
 
+    public function voegAandoeningAanPathologieToe($aand)
+    {
+        array_push($this->Aandoeningen, $aand);
 
+
+    }
 }

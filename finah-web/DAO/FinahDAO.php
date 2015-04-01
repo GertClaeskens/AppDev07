@@ -29,7 +29,8 @@
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
             $url = "http://localhost:1695/" . $type . "/";
             $gegevens = json_encode($data);
-            //var_dump($gegevens);
+    //print_r($gegevens);
+//            var_dump($gegevens);
             //Initiate cURL.
             $ch = curl_init($url);
 
