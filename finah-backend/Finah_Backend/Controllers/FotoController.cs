@@ -14,6 +14,7 @@ namespace Finah_Backend.Controllers
 
     public class FotoController : ApiController
     {
+        //TODO code opschonen
         private FinahDBContext db;
         private List<Foto> fotos = new List<Foto>();
 
@@ -35,14 +36,14 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Get(int id)
         {
             //Code aangepast om te kunnen testen
-            Foto foto=null;
-            if (id == 1)
-            {
-                foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
-            }
+            //Foto foto=null;
+            //if (id == 1)
+            //{
+            //    foto = new Foto { Id = 1, Omschrijving = "foto vraag 1", Pad = "pad" };
+            //}
             //Bovenstaande code dient om te testen (op dit moment nutteloos)
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //Foto foto = db.Fotos.Find(id);
+            var foto = db.Fotos.Find(id);
             if (foto == null)
             {
                 return NotFound();
@@ -55,25 +56,25 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Foto> GetOverzicht()
         public IEnumerable<Foto> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return db.Fotos;
+            return db.Fotos;
 
 
             //return vragen;
-            var f1 = new Foto();
-            var f2 = new Foto();
-            var f3 = new Foto();
-            var f4 = new Foto();
-            var f5 = new Foto();
+            //var f1 = new Foto();
+            //var f2 = new Foto();
+            //var f3 = new Foto();
+            //var f4 = new Foto();
+            //var f5 = new Foto();
 
-            f1.Id = 1;
-            f2.Id = 2;
-            f3.Id = 3;
-            f4.Id = 4;
-            f5.Id = 5;
+            //f1.Id = 1;
+            //f2.Id = 2;
+            //f3.Id = 3;
+            //f4.Id = 4;
+            //f5.Id = 5;
 
-            var overzichtFotos = new List<Foto> { f1, f2, f3, f4, f5 };
+            //var overzichtFotos = new List<Foto> { f1, f2, f3, f4, f5 };
 
-            return overzichtFotos;
+            //return overzichtFotos;
         }
 
 

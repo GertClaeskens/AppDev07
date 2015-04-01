@@ -14,6 +14,7 @@ namespace Finah_Backend.Controllers
 
     public class LeeftijdsCategorieController : ApiController
     {
+        //TODO code opschonen
         // GET: api/LeeftijdsCategorie
         private List<LeeftijdsCategorie> leeftijdsCategorieen = new List<LeeftijdsCategorie>();
 
@@ -37,35 +38,35 @@ namespace Finah_Backend.Controllers
         //public IQueryable<LeeftijdsCategorie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         public IEnumerable<LeeftijdsCategorie> GetOverzicht()
         {
-            //return db.LeeftijdsCategorieen;
+            return db.LeeftijdsCategorieen;
 
 
-            var lc1 = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 12 };
-            var lc2 = new LeeftijdsCategorie { Id = 2, Van = 13, Tot = 18 };
-            var lc3 = new LeeftijdsCategorie { Id = 3, Van = 19, Tot = 30 };
-            var lc4 = new LeeftijdsCategorie { Id = 4, Van = 31, Tot = 45 };
-            var lc5 = new LeeftijdsCategorie { Id = 5, Van = 46, Tot = 99 };
+            //var lc1 = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 12 };
+            //var lc2 = new LeeftijdsCategorie { Id = 2, Van = 13, Tot = 18 };
+            //var lc3 = new LeeftijdsCategorie { Id = 3, Van = 19, Tot = 30 };
+            //var lc4 = new LeeftijdsCategorie { Id = 4, Van = 31, Tot = 45 };
+            //var lc5 = new LeeftijdsCategorie { Id = 5, Van = 46, Tot = 99 };
 
-            var overzichtLeeftijdsCategorieen = new List<LeeftijdsCategorie>
-                                                       {
-                                                           lc1,lc2,lc3,lc4,lc5
-                                                       };
+            //var overzichtLeeftijdsCategorieen = new List<LeeftijdsCategorie>
+            //                                           {
+            //                                               lc1,lc2,lc3,lc4,lc5
+            //                                           };
 
-            return overzichtLeeftijdsCategorieen;
+            //return overzichtLeeftijdsCategorieen;
         }
         //Geen Api/ meer nodig
         [ResponseType(typeof(LeeftijdsCategorie))]
         [Route("LeeftijdsCategorie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            LeeftijdsCategorie leeftijdsCategorie = null;
-            if (id == 1)
-            {
-                leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
-            }
+            //LeeftijdsCategorie leeftijdsCategorie = null;
+            //if (id == 1)
+            //{
+            //    leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
+            //}
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //LeeftijdsCategorie leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
+            var leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
             if (leeftijdsCategorie == null)
             {
                 return NotFound();

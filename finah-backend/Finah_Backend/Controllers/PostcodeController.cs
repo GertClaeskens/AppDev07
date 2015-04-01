@@ -13,21 +13,14 @@ namespace Finah_Backend.Controllers
         /// Wordt gebruikt om de database te testen.
         ///
 
-        private List<Postcode> bevragingen = new List<Postcode>();
-
         private readonly FinahDBContext _db = new FinahDBContext();
 
         //Geen Api/ meer nodig
         [Route("Postcode/{id}")]
-        // return -> naderhand veranderen in Bevraging
-
-        //
-        // Andere methode om Get te doen met return type IHttpActionResult
-        //
         public IHttpActionResult Get(int id)
         {
             var postcode = _db.Postcodes.FirstOrDefault(b => b.Id == id);
-            
+
             if (postcode == null)
             {
                 return NotFound();
@@ -36,10 +29,10 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Postcode/Overzicht")] //Geen Api/ meer nodig
-        public IEnumerable<Postcode> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<Postcode> GetOverzicht()
         {
 
-            return _db.Postcodes; //Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+            return _db.Postcodes;
 
         }
 

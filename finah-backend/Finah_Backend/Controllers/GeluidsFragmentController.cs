@@ -14,6 +14,7 @@ namespace Finah_Backend.Controllers
 
     public class GeluidsFragmentController : ApiController
     {
+        //TODO code opschonen
         private FinahDBContext db;
         private List<GeluidsFragment> geluidsFragmenten = new List<GeluidsFragment>();
 
@@ -33,43 +34,43 @@ namespace Finah_Backend.Controllers
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
         //public IQueryable<GeluidsFragment> GetOverzicht()
         {
-            //return db.Geluidsfragmenten;
+            return db.Geluidsfragmenten;
             //return _db.Vragen.ToList();
 
             //return vragen;
-            var g1 = new GeluidsFragment();
-            var g2 = new GeluidsFragment();
-            var g3 = new GeluidsFragment();
-            var g4 = new GeluidsFragment();
-            var g5 = new GeluidsFragment();
+            //var g1 = new GeluidsFragment();
+            //var g2 = new GeluidsFragment();
+            //var g3 = new GeluidsFragment();
+            //var g4 = new GeluidsFragment();
+            //var g5 = new GeluidsFragment();
 
-            g1.Id = 1;
-            g2.Id = 2;
-            g3.Id = 3;
-            g4.Id = 4;
-            g5.Id = 5;
+            //g1.Id = 1;
+            //g2.Id = 2;
+            //g3.Id = 3;
+            //g4.Id = 4;
+            //g5.Id = 5;
 
-            var overzichtGeluidsFragementen = new List<GeluidsFragment> { g1, g2, g3, g4, g5 };
+            //var overzichtGeluidsFragementen = new List<GeluidsFragment> { g1, g2, g3, g4, g5 };
 
-            return overzichtGeluidsFragementen;
+            //return overzichtGeluidsFragementen;
         }
         [Route("GeluidsFragment/{id}")]
         public IHttpActionResult Get(int id)
         {
             //code aangepast om te kunnen testen
-            GeluidsFragment geluidsFragment = null;
-            if (id == 1)
-            {
-                geluidsFragment = new GeluidsFragment
-                                          {
-                                              Id = 1,
-                                              Omschrijving = "geluidsfragment vraag 1",
-                                              Pad = "pad"
-                                          };
-            }
+            //GeluidsFragment geluidsFragment = null;
+            //if (id == 1)
+            //{
+            //    geluidsFragment = new GeluidsFragment
+            //                              {
+            //                                  Id = 1,
+            //                                  Omschrijving = "geluidsfragment vraag 1",
+            //                                  Pad = "pad"
+            //                              };
+            //}
             //Bovenstaande code dient om te testen (op dit moment nutteloos)
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //GeluidsFragment geluidsFragment = db.Geluidsfragmenten.Find(id);
+            var geluidsFragment = db.Geluidsfragmenten.Find(id);
             if (geluidsFragment == null)
             {
                 return NotFound();

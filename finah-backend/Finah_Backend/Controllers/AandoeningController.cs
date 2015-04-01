@@ -13,6 +13,7 @@ namespace Finah_Backend.Controllers
 
     public class AandoeningController : ApiController
     {
+        //TODO code opschonen als alles bolt
         private FinahDBContext db;
         private List<Aandoening> aandoeningen = new List<Aandoening>();
 

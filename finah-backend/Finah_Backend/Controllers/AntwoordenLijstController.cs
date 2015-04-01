@@ -15,6 +15,7 @@ namespace Finah_Backend.Controllers
 {
     public class AntwoordenLijstController : ApiController
     {
+        //TODO Code opschonen als alles bolt
         private FinahDBContext db = new FinahDBContext();
 
         [Route("AntwoordenLijst/Overzicht")]
@@ -22,15 +23,15 @@ namespace Finah_Backend.Controllers
         //public IQueryable<AntwoordenLijst> GetOverzicht()
         public IEnumerable<AntwoordenLijst> GetOverzicht()
         {
-            //return db.AntwoordenLijsts;
-            var al1 = new AntwoordenLijst { Id = "1" };
-            var al2 = new AntwoordenLijst { Id = "1" };
-            var al3 = new AntwoordenLijst { Id = "1" };
-            var al4 = new AntwoordenLijst { Id = "1" };
-            var al5 = new AntwoordenLijst { Id = "1" };
+            return db.AntwoordenLijsten;
+            //var al1 = new AntwoordenLijst { Id = "1" };
+            //var al2 = new AntwoordenLijst { Id = "1" };
+            //var al3 = new AntwoordenLijst { Id = "1" };
+            //var al4 = new AntwoordenLijst { Id = "1" };
+            //var al5 = new AntwoordenLijst { Id = "1" };
 
-            var controleAntwoordenLijst = new List<AntwoordenLijst> { al1, al2, al3, al4, al5 };
-            return controleAntwoordenLijst;
+            //var controleAntwoordenLijst = new List<AntwoordenLijst> { al1, al2, al3, al4, al5 };
+            //return controleAntwoordenLijst;
         }
 
         // GET: api/AntwoordenLijst/5
@@ -38,12 +39,12 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            //AntwoordenLijst antwoordenLijst = db.AntwoordenLijsts.Find(id);
-            AntwoordenLijst antwoordenLijst = null;
-            if (id.Equals("1"))
-            {
-                antwoordenLijst = new AntwoordenLijst { Id = "1"};//, Antwoorden = new List<Antwoord> { new Antwoord { Id = 1, Antword = 4 } } };
-            }
+            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsten.Find(id);
+            //AntwoordenLijst antwoordenLijst = null;
+            //if (id.Equals("1"))
+            //{
+            //    antwoordenLijst = new AntwoordenLijst { Id = "1" };//, Antwoorden = new List<Antwoord> { new Antwoord { Id = 1, Antword = 4 } } };
+            //}
             if (antwoordenLijst == null)
             {
                 return NotFound();

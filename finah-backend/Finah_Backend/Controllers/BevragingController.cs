@@ -16,8 +16,8 @@ namespace Finah_Backend.Controllers
     public class BevragingController : ApiController
     {
         //private const string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
+        //TODO code opschonen
 
-        
         private List<Bevraging> bevragingen = new List<Bevraging>();
         private FinahDBContext db;
 
@@ -92,39 +92,39 @@ namespace Finah_Backend.Controllers
         }
 
         // GET: Bevraging/Create
-        [Route("Bevraging/Create")] //Geen Api/ meer nodig
-        public void Create()
-        {
-            var bevraging = new Bevraging();
-            var testAccount = new Account();
-            var testCat = new LeeftijdsCategorie();
-            var testVragenlijst = new VragenLijst();
+        //[Route("Bevraging/Create")] //Geen Api/ meer nodig
+        //public void Create()
+        //{
+        //    var bevraging = new Bevraging();
+        //    var testAccount = new Account();
+        //    var testCat = new LeeftijdsCategorie();
+        //    var testVragenlijst = new VragenLijst();
 
-            testCat.Id = 2;
-            testCat.Van = 0;
-            testCat.Tot = 99;
+        //    testCat.Id = 2;
+        //    testCat.Van = 0;
+        //    testCat.Tot = 99;
 
-            testAccount.Id = 2;
-            testAccount.Naam = "Thys";
-            testAccount.VoorNaam = "Brian";
+        //    testAccount.Id = 2;
+        //    testAccount.Naam = "Thys";
+        //    testAccount.VoorNaam = "Brian";
 
-            bevraging.Id = "Test Id";
-            bevraging.Aangevraagd = DateTime.Now;
-            bevraging.AangemaaktDoor = testAccount;
-            bevraging.LeeftijdsCat = testCat;
-            bevraging.Informatie = "Test bevraging";
-            bevraging.Relatie = "Test relatie";
-            bevraging.Vragen = testVragenlijst;
-            bevraging.IsPatient = true;
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
-            if (bevraging == null)
-            {
-                return;
-            }
-            bevragingen.Add(bevraging);
-        }
+        //    bevraging.Id = "Test Id";
+        //    bevraging.Aangevraagd = DateTime.Now;
+        //    bevraging.AangemaaktDoor = testAccount;
+        //    bevraging.LeeftijdsCat = testCat;
+        //    bevraging.Informatie = "Test bevraging";
+        //    bevraging.Relatie = "Test relatie";
+        //    bevraging.Vragen = testVragenlijst;
+        //    bevraging.IsPatient = true;
+        //    //Bovenstaande code dient om te testen
+        //    //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
+        //    //var bevraging = bevragingen.FirstOrDefault((b) => b.Id == id);
+        //    if (bevraging == null)
+        //    {
+        //        return;
+        //    }
+        //    bevragingen.Add(bevraging);
+        //}
 
         // PUT: api/Bevragings/5
         [ResponseType(typeof(void))]
@@ -163,7 +163,7 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Bevragings
         [ResponseType(typeof(Bevraging))]
-        public IHttpActionResult PostBevraging(Bevraging bevraging)
+        public IHttpActionResult PostBevraging([FromBody] Bevraging bevraging)
         {
             if (!ModelState.IsValid)
             {

@@ -15,6 +15,7 @@ namespace Finah_Backend.Controllers
 {
     public class AntwoordController : ApiController
     {
+        //TODO Code opschonen als alles bolt
         private FinahDBContext db = new FinahDBContext();
 
         // GET: api/Antwoord
@@ -23,27 +24,27 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Antwoord> GetOverzicht()
         public IEnumerable<Antwoord> GetOverzicht()
         {
-            //return db.Antwoords;
-            var ad1 = new Antwoord { Id = 1 };
-            var ad2 = new Antwoord { Id = 2 };
-            var ad3 = new Antwoord { Id = 3 };
-            var ad4 = new Antwoord { Id = 4 };
-            var ad5 = new Antwoord { Id = 5 };
+            return db.Antwoorden;
+            //var ad1 = new Antwoord { Id = 1 };
+            //var ad2 = new Antwoord { Id = 2 };
+            //var ad3 = new Antwoord { Id = 3 };
+            //var ad4 = new Antwoord { Id = 4 };
+            //var ad5 = new Antwoord { Id = 5 };
 
-            var controleAntwoorden = new List<Antwoord> { ad1, ad2, ad3, ad4, ad5 };
-            return controleAntwoorden;
+            //var controleAntwoorden = new List<Antwoord> { ad1, ad2, ad3, ad4, ad5 };
+            //return controleAntwoorden;
         }
 
         // GET: api/Antwoord/5
         [ResponseType(typeof(Antwoord))]
         public IHttpActionResult Get(int id)
         {
-            Antwoord antwoord = null;
-            if (id == 1)
-            {
-                antwoord = new Antwoord { Id = 1, Antword = 4 };
-            }
-            //var antwoord = db.Antwoords.Find(id);
+            //Antwoord antwoord = null;
+            //if (id == 1)
+            //{
+            //    antwoord = new Antwoord { Id = 1, Antword = 4 };
+            //}
+            var antwoord = db.Antwoorden.Find(id);
             if (antwoord == null)
             {
                 return NotFound();

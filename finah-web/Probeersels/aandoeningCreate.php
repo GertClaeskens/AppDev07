@@ -42,7 +42,7 @@
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
                     if (isset($_POST["creeer"])) {
-                    var_dump($_POST);
+                    //var_dump($_POST);
                     $omschrijving = $_POST["omschrijving"];
                     $patologielijst = $_POST["pathologie"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
