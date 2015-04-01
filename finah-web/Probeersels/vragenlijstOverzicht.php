@@ -50,7 +50,10 @@ require "../DAO/FinahDAO.php";
                             <td> ".$item["Aandoe"]["Omschrijving"] ."</td>
                             <td>". count($item["Vragen"])."</td>
                              <td class='action-column'>
-                                <a href='vragenlijstEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenlijstDetails.php'>Details</a>
+                                                             <input type='submit' value='Edit' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                <!--<a href='vragenlijstEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenlijstDetails.php'>Details</a>-->
                          </td>
                          </tr>";} ?>
 

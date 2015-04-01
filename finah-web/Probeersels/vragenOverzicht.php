@@ -46,7 +46,10 @@ require "../DAO/FinahDAO.php";
                         echo "<tr>
                                 <td>". $item["VraagStelling"] ."</td>
                                  <td class='action-column'>
-                                    <a href='vragenEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenDetails.php'>Details</a>
+                                                                 <input type='submit' value='Edit' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                    <!--<a href='vragenEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenDetails.php'>Details</a>-->
                              </td>
                              </tr>";
                     } ?>

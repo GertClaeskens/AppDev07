@@ -1,6 +1,6 @@
 <?php
-require_once "../DAO/FinahDAO.php";
-require_once "../Models/LeeftijdsCategorie.php";
+    require_once "../DAO/FinahDAO.php";
+    require_once "../Models/LeeftijdsCategorie.php";
 ?>
 <html>
 <head>
@@ -45,16 +45,19 @@ require_once "../Models/LeeftijdsCategorie.php";
                     <th>Actie</th>
                 </tr>
                 <?php
-                $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
-                foreach ($leeftijdCategorieLijst as $item) {
-                    echo "<tr>
-                            <td class='leeftijdKolom'>". $item["Van"]."</td>
-                            <td class='leeftijdKolom'>". $item["Tot"]."</td>
+                    $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
+                    foreach ($leeftijdCategorieLijst as $item) {
+                        echo "<tr>
+                            <td class='leeftijdKolom'>" . $item["Van"] . "</td>
+                            <td class='leeftijdKolom'>" . $item["Tot"] . "</td>
                              <td class='action-column'>
-                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a>
+                                <input type='submit' value='Edit' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+<!--                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a> -->
                          </td>
                          </tr>";
-                } ?>
+                    } ?>
 
             </table>
         </div>
