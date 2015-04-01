@@ -49,11 +49,11 @@
                     $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
                     for ($a = 0; $a < count($aandoeningLijst); $a++) {
                         $item = $aandoeningLijst[$a];
-                        $aantal = count($item->Patologieen);
+                        $aantal = count($item["Patologieen"]);
                         for ($b = 0; $b < $aantal; $b++) {
-                            echo "<tr> <td> $item->Omschrijving</td>";
+                            echo "<tr> <td>". $item["Omschrijving"]."</td>";
 
-                            echo "<td>" . $item->Patologieen[$b]->Omschrijving . "</td>";
+                            echo "<td>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
                             echo "<td class='action-column'>
                                 <input type='submit' value='Edit' class='createBtn' name='creeer'/>
                                 <input type='submit' value='Delete' class='createBtn' name='creeer'/>

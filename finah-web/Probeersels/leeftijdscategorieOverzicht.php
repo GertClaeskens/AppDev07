@@ -48,8 +48,8 @@ require_once "../Models/LeeftijdsCategorie.php";
                 $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
                 foreach ($leeftijdCategorieLijst as $item) {
                     echo "<tr>
-                            <td class='leeftijdKolom'> $item->Van</td>
-                            <td class='leeftijdKolom'> $item->Tot</td>
+                            <td class='leeftijdKolom'>". $item["Van"]."</td>
+                            <td class='leeftijdKolom'>". $item["Tot"]."</td>
                              <td class='action-column'>
                                 <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a>
                          </td>

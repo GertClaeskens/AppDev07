@@ -39,7 +39,7 @@ require "../DAO/FinahDAO.php";
                 $pathologieLijst = FinahDAO::HaalOp("Pathologie");
                 foreach($pathologieLijst as $item)
                 {echo "<tr>
-                            <td> $item->Omschrijving</td>
+                            <td>". $item["Omschrijving"]."</td>
                              <td class='action-column'>
                                 <a href='pathologieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='Pathologiedetails.php'>Details</a>
                          </td>

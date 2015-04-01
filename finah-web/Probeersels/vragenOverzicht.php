@@ -44,7 +44,7 @@ require "../DAO/FinahDAO.php";
                     $vragenLijst = FinahDAO::HaalOp("Vragen");
                     foreach ($vragenLijst as $item) {
                         echo "<tr>
-                                <td> $item->VraagStelling</td>
+                                <td>". $item["VraagStelling"] ."</td>
                                  <td class='action-column'>
                                     <a href='vragenEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenDetails.php'>Details</a>
                              </td>

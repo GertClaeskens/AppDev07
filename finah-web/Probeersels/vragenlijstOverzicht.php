@@ -32,7 +32,13 @@ require "../DAO/FinahDAO.php";
             <table border="1" class="overzicht-table">
                 <tr>
                     <th>
-                        Vragenlijst
+                        Id
+                    </th>
+                    <th>
+                        Aandoening
+                    </th>
+                    <th>
+                        Aantal vragen
                     </th>
                     <th >Actie</th>
                 </tr>
@@ -40,7 +46,9 @@ require "../DAO/FinahDAO.php";
                 $vragenLijst = FinahDAO::HaalOp("VragenLijst");
                 foreach($vragenLijst as $item)
                 {echo "<tr>
-                            <td> $item->$Id</td>
+                            <td>". $item["Id"]."</td>
+                            <td> ".$item["Aandoe"]["Omschrijving"] ."</td>
+                            <td>". count($item["Vragen"])."</td>
                              <td class='action-column'>
                                 <a href='vragenlijstEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenlijstDetails.php'>Details</a>
                          </td>
