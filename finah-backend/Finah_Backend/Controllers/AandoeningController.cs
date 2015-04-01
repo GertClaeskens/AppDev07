@@ -4,6 +4,7 @@ using System.Web.Http;
 namespace Finah_Backend.Controllers
 {
     using System;
+    using System.Threading.Tasks;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
@@ -14,7 +15,6 @@ namespace Finah_Backend.Controllers
     using System.Web.Http.Description;
 
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     public class AandoeningController : ApiController
     {
@@ -211,16 +211,15 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aandoening))]
         [Route("Aandoening/")]
         //public IHttpActionResult PostAandoening(Aandoening aandoening)
-        //public IHttpActionResult Post([FromBody] Aandoening aandoening)
-        public IHttpActionResult Post([FromBody] String tekst)
+        public async Task<IHttpActionResult> PostAandoening([FromBody] Aandoening aandoening)
+        //public IHttpActionResult Post([FromUri] Aandoening aandoening)
         {
             //if (!ModelState.IsValid)
             //{
             //    //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState));
             //    return BadRequest(ModelState);
             //}
-            Aandoening aandoening = JsonConvert.DeserializeObject<Aandoening>(tekst);
-            //Aandoening aandoening = JObject.Parse(tekst);
+
             var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = new List<Pathologie>() };
             foreach (var pathologie in aandoening.Patologieen)
             {
@@ -237,7 +236,7 @@ namespace Finah_Backend.Controllers
             //, Patologieen = aandoening.Patologieen };
 
             db.Aandoeningen.Add(aand);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(aand);
             //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);

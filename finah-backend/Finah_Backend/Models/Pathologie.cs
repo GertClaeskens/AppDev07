@@ -17,5 +17,14 @@
         {
             aandoeningen = new List<Aandoening>();
         }
+        public void voegAandoeningToe(Aandoening aand)
+        {
+            aandoeningen.Add(aand);
+        }
+
+        public void verwijderAandoening(Aandoening aand)
+        {
+            aandoeningen.Remove(aand);
+        }
     }
 }

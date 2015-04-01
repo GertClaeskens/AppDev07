@@ -19,5 +19,16 @@ namespace Finah_Backend.Models
         public string Omschrijving { get; set; }
 
         public virtual ICollection<Pathologie> Patologieen { get; set; }
+
+        public void voegPathologieToe(Pathologie pat)
+        {
+            patologieen.Add(pat);
+
+        }
+        public void verwijderPathologie(Pathologie pat)
+        {
+            patologieen.Remove(pat);
+
+        }
     }
 }
