@@ -118,6 +118,7 @@ body {
 
 .overzicht-table {
     margin-top: 20px;
+
     width:100%;
     text-align:left;
     border-spacing:0px;
@@ -193,7 +194,8 @@ body {
 
 
 .DatumKolom {
-    width:160px;
+    text-align:center;
+    width:12%;
 }
 .CreateBtnDiv {
     margin-top:25px;

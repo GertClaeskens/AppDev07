@@ -114,6 +114,4 @@
         {
             $this->Antwoorden = $antwoorden;
         }
-
-
     }

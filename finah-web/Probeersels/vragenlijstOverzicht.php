@@ -1,6 +1,5 @@
 <?php
 require "../DAO/FinahDAO.php";
-
 ?>
     <html>
 <head>
