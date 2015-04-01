@@ -230,7 +230,7 @@ namespace Finah_Backend.Migrations
             };
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vragenLijst);
             context.SaveChanges();
-            
+
             #endregion
             #region Relaties toevoegen
             var relaties = new List<Relatie>
@@ -290,9 +290,9 @@ namespace Finah_Backend.Migrations
             xlWorkBook.Close(true, null, null);
             xlApp.Quit();
 
-            this.releaseObject(xlWorkSheet);
-            this.releaseObject(xlWorkBook);
-            this.releaseObject(xlApp);
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
 
             postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
             context.Postcodes.AddOrUpdate(p => new { p.Postnr, p.Gemeente }, postcodelijst.ToArray());
@@ -300,7 +300,7 @@ namespace Finah_Backend.Migrations
             #endregion
         }
 
-        private void releaseObject(object obj)
+        private static void releaseObject(object obj)
         {
             try
             {
