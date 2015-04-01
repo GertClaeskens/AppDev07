@@ -35,7 +35,10 @@ namespace Finah_Backend.DAL
         public DbSet<Status> Statussen { get; set; }
         public DbSet<Vraag> Vragen { get; set; }
         public DbSet<VragenLijst> VragenLijsten { get; set; }
-        
+        public DbSet<Antwoord> Antwoorden { get; set; }
+        public DbSet<AntwoordenLijst> AntwoordenLijsten { get; set; }
+        public DbSet<Relatie> Relaties { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -43,8 +46,6 @@ namespace Finah_Backend.DAL
 
         }
 
-        public System.Data.Entity.DbSet<Finah_Backend.Models.Antwoord> Antwoords { get; set; }
 
-        public System.Data.Entity.DbSet<Finah_Backend.Models.AntwoordenLijst> AntwoordenLijsts { get; set; }
     }
 }

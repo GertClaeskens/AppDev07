@@ -210,6 +210,7 @@
     <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
     <Compile Include="Controllers\PathologieController.cs" />
     <Compile Include="Controllers\PostcodesController.cs" />
+    <Compile Include="Controllers\RelatieController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
     <Compile Include="Controllers\VragenController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Models\LeeftijdsCategorie.cs" />
     <Compile Include="Models\Postcode.cs" />
     <Compile Include="Controllers\PostcodeController.cs" />
+    <Compile Include="Models\Relatie.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\VragenLijst.cs" />

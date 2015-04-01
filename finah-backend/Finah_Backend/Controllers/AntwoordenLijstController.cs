@@ -96,7 +96,7 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.AntwoordenLijsts.Add(antwoordenLijst);
+            db.AntwoordenLijsten.Add(antwoordenLijst);
 
             try
             {
@@ -121,13 +121,13 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult DeleteAntwoordenLijst(string id)
         {
-            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsts.Find(id);
+            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsten.Find(id);
             if (antwoordenLijst == null)
             {
                 return NotFound();
             }
 
-            db.AntwoordenLijsts.Remove(antwoordenLijst);
+            db.AntwoordenLijsten.Remove(antwoordenLijst);
             db.SaveChanges();
 
             return Ok(antwoordenLijst);
@@ -144,7 +144,7 @@ namespace Finah_Backend.Controllers
 
         private bool AntwoordenLijstExists(string id)
         {
-            return db.AntwoordenLijsts.Count(e => e.Id == id) > 0;
+            return db.AntwoordenLijsten.Count(e => e.Id == id) > 0;
         }
     }
 }

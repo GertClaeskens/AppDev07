@@ -96,7 +96,7 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Antwoords.Add(antwoord);
+            db.Antwoorden.Add(antwoord);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = antwoord.Id }, antwoord);
@@ -106,13 +106,13 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Antwoord))]
         public IHttpActionResult DeleteAntwoord(int id)
         {
-            var antwoord = db.Antwoords.Find(id);
+            var antwoord = db.Antwoorden.Find(id);
             if (antwoord == null)
             {
                 return NotFound();
             }
 
-            db.Antwoords.Remove(antwoord);
+            db.Antwoorden.Remove(antwoord);
             db.SaveChanges();
 
             return Ok(antwoord);
@@ -129,7 +129,7 @@ namespace Finah_Backend.Controllers
 
         private bool AntwoordExists(int id)
         {
-            return db.Antwoords.Count(e => e.Id == id) > 0;
+            return db.Antwoorden.Count(e => e.Id == id) > 0;
         }
     }
 }
