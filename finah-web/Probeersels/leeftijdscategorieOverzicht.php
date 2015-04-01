@@ -34,7 +34,7 @@ require_once "../Models/LeeftijdsCategorie.php";
             </p>
             <br/>
             <!-- TODO zorgen dat links naar de juiste pagina's linken -->
-            <table class="overzicht-table">
+            <table border="1" class="overzicht-table">
                 <tr>
                     <th>
                         Van

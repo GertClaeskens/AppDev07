@@ -66,7 +66,7 @@ require "../Models/LeeftijdsCategorie.php";
                 <a href="leeftijdscategorieOverzicht.php">Terug naar overzicht</a>
             </div>
         </div>
-        <!--Closing DIV body containerr-->
+        <!--Closing DIV body container-->
     </div>
     <!--Closing DIV innerwrapper-->
     <div id="page-footer">
