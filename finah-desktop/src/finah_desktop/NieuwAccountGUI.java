@@ -17,6 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 //import finah_desktop.AccountGUI.ButtonHandler;
+//
+
 
 public class NieuwAccountGUI extends JFrame{
 	
@@ -52,6 +54,11 @@ public class NieuwAccountGUI extends JFrame{
 
 	
 	private class NieuwAccountPanel extends JPanel{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
