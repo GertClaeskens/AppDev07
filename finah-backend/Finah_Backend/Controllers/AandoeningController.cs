@@ -211,8 +211,8 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aandoening))]
         [Route("Aandoening/")]
         //public IHttpActionResult PostAandoening(Aandoening aandoening)
-        public async Task<IHttpActionResult> PostAandoening([FromBody] Aandoening aandoening)
-        //public IHttpActionResult Post([FromUri] Aandoening aandoening)
+        //public async Task<IHttpActionResult> PostAandoening([FromBody] Aandoening aandoening)
+        public void Post([FromBody] Aandoening aandoening)
         {
             //if (!ModelState.IsValid)
             //{
@@ -236,9 +236,9 @@ namespace Finah_Backend.Controllers
             //, Patologieen = aandoening.Patologieen };
 
             db.Aandoeningen.Add(aand);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
-            return Ok(aand);
+            //return Ok(aand);
             //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
         }
 

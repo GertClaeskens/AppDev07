@@ -40,6 +40,9 @@
             //Attach our encoded JSON string to the POST fields.
             curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
 
+            //Geen output naar het scherm
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+
             //Set the content type to application/json
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 

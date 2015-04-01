@@ -42,7 +42,7 @@
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
                     if (isset($_POST["creeer"])) {
-                    //var_dump($_POST);
+                    var_dump($_POST);
                     $omschrijving = $_POST["omschrijving"];
                     $patologielijst = $_POST["pathologie"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
@@ -53,11 +53,13 @@
                     for ($a = 0; $a < count($patologielijst); $a++) {
                         $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $patologielijst[$a]));
                     };
-                    var_dump(json_encode($aandoening));
+                    //var_dump
+
 
                     if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
                         //Todo eventueel een exception toevoegen hier
-                        echo "De aandoening werd succesvol opgeslagen";
+                        //header("Location: aandoeningOverzicht.php");
+                       echo "De aandoening werd succesvol opgeslagen";
                     }
                     //$aandoening->setPatologieen($patologielijst);
                     //var_dump($aandoening);
@@ -76,7 +78,6 @@
                             //$patologieen = new PathologieArray();
                             //TODO omzetten naar Pathologie object
                             $patologieen = FinahDAO::HaalOp("Pathologie");
-
                             foreach ($patologieen as $item) {
                                 $waarde = $item->Omschrijving;
                                 echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";

@@ -4,7 +4,7 @@
 
     using Newtonsoft.Json;
 
-    [JsonObject(IsReference = true)]
+    //[JsonObject(IsReference = true)]
     public class Pathologie
     {
         private ICollection<Aandoening> aandoeningen;
