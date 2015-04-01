@@ -1,27 +1,22 @@
 namespace Finah_Backend.Migrations
 {
-    using Finah_Backend.Controllers;
+    using System.Runtime.InteropServices;
+
     using Finah_Backend.DAL;
+    using Finah_Backend.Models;
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    using Finah_Backend.Models;
-
     using Excel = Microsoft.Office.Interop.Excel;
 
-    public sealed class Configuration : DbMigrationsConfiguration<Finah_Backend.DAL.FinahDBContext>
+    public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>
     {
         public Configuration()
         {
-
-            AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        //Code gevonden op : http://csharp.net-informations.com/excel/csharp-read-excel.htm
         protected override void Seed(FinahDBContext context)
         {
             //Relaties toevoegen
@@ -65,11 +60,11 @@ namespace Finah_Backend.Migrations
             {
                 p.Aandoeningen = new List<Aandoening> { aandoening };
             }
-            //TODO verder uitwerken
+
             context.Aandoeningen.AddOrUpdate(a => new { a.Omschrijving }, aandoening);
             context.SaveChanges();
 
-
+            //Code gevonden op : http://csharp.net-informations.com/excel/csharp-read-excel.htm
             //Postcodes Toevoegen
             var postcodelijst = new List<Postcode>();
 
@@ -77,9 +72,9 @@ namespace Finah_Backend.Migrations
 
             var xlApp = new Excel.Application();
 
-            var url = @"http://www.bpost2.be/zipcodes/files/zipcodes_num_nl.xls";
+            const string URL = @"http://www.bpost2.be/zipcodes/files/zipcodes_num_nl.xls";
             //xlWorkBook = xlApp.Workbooks.Open(@"D:\postcodes.xls", 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            var xlWorkBook = xlApp.Workbooks.Open(url, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            var xlWorkBook = xlApp.Workbooks.Open(URL, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             var xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
 
             var range = xlWorkSheet.UsedRange;
@@ -97,9 +92,9 @@ namespace Finah_Backend.Migrations
             xlWorkBook.Close(true, null, null);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            this.releaseObject(xlWorkSheet);
+            this.releaseObject(xlWorkBook);
+            this.releaseObject(xlApp);
 
             postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
             context.Postcodes.AddOrUpdate(p => new { p.Postnr, p.Gemeente }, postcodelijst.ToArray());
@@ -110,7 +105,7 @@ namespace Finah_Backend.Migrations
         {
             try
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                Marshal.ReleaseComObject(obj);
                 obj = null;
             }
             catch (Exception ex)

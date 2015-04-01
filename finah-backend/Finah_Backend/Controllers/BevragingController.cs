@@ -4,23 +4,20 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using Finah_Backend.DAL;
+    using Finah_Backend.Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
     using System.Web.Http.Description;
 
-    using Finah_Backend.DAL;
-    using Finah_Backend.Models;
-
-    using Newtonsoft.Json.Linq;
-
     //[Authorize]
     public class BevragingController : ApiController
     {
-        private const string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
+        //private const string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
 
-        private string link;
+        
         private List<Bevraging> bevragingen = new List<Bevraging>();
         private FinahDBContext db;
 
@@ -39,38 +36,41 @@ namespace Finah_Backend.Controllers
 
         //GetLink
         //Geen Api/ meer nodig
-        [Route("Bevraging/GetLink")]
+        [Route("Bevraging/UniekeIds")]
         // return -> naderhand veranderen in Bevraging
-        public string Get()
+        public IHttpActionResult GetUniekeIds()
         {
             //Code staat hier maar ter info
             //return "Ingegeven ID: " + id;
             //vragen ophalen en antwoorden linken aan persoon
             //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
-            link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
-
-            while (link == null)
+            var linken = new List<string>();
+            for (var i = 0; i < 2; i++)
             {
-                //nieuwe link genereren
-                link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
-                //Methode aanspreken voor testen op duplicaat
-                TestLinkOnDuplicate(link);
-            }
+                var link = string.Format("{0:N}", Guid.NewGuid());
+                linken.Add(link);
 
+                //while (link == null)
+                //{
+                //    //nieuwe link genereren
+                //    link = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
+                //    //Methode aanspreken voor testen op duplicaat
+                //    TestLinkOnDuplicate(link);
+                //}
+            }
             //Momenteel gegenereerde link tonen
-            return link;
+            return this.Ok(linken);
         }
 
         //Geen Api/ meer nodig
         [Route("Bevraging/{id}")]
         [ResponseType(typeof(Bevraging))]
-
         public IHttpActionResult Get(String id)
         {
             Bevraging bevraging = null;
             if (id.Equals("1"))
             {
-                bevraging = new Bevraging { Id = "1"};
+                bevraging = new Bevraging { Id = "1" };
             }
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
@@ -87,7 +87,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             var bevragingenlijst = new List<Bevraging> { new Bevraging { Id = "1" }, new Bevraging { Id = "2" }, new Bevraging { Id = "2" }, new Bevraging { Id = "4" }, new Bevraging { Id = "5" } };
-            
+
             return bevragingenlijst;
         }
 
@@ -220,33 +220,34 @@ namespace Finah_Backend.Controllers
         {
             return db.Bevragingen.Count(e => e.Id == id) > 0;
         }
+
         //Test voor duplicaat link
         //
         //
         //mailke naar Mr. Hermans sturen of we wel moeten testen op duplicate waarden of er van mogen uitgaan dat deze uniek is
         //omdat de kans op collisions onnoemelijk klein zijn
         //
-        private void TestLinkOnDuplicate(string linkToTest)
-        {
-            //var voor genereren tijdelijke fake link om DB na te bootsen
-            string fakeDBLink;
+        //private void TestLinkOnDuplicate(string linkToTest)
+        //{
+        //    //var voor genereren tijdelijke fake link om DB na te bootsen
+        //    string fakeDBLink;
 
-            //List = alle waardes uit DB ophalen (als DB in werking is)
-            //run foreach, for now use For loop
-            for (var i = 0; i < 1000; i++)
-            {
-                //Momenteel fake link gebruiken voor controle
-                fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
-                //controleren als duplicaat
-                if (linkToTest.Equals(fakeDBLink))
-                {
-                    //private link binne class op null zetten zodat hij terug door de while gaat.
-                    link = null;
-                    //In geval van duplicaat, verlaat loop
-                    break;
-                }
-            }
-            return;
-        }
+        //    //List = alle waardes uit DB ophalen (als DB in werking is)
+        //    //run foreach, for now use For loop
+        //    for (var i = 0; i < 1000; i++)
+        //    {
+        //        //Momenteel fake link gebruiken voor controle
+        //        fakeDBLink = string.Format("{0}{1:N}", sourceUrl, Guid.NewGuid());
+        //        //controleren als duplicaat
+        //        if (linkToTest.Equals(fakeDBLink))
+        //        {
+        //            //private link binne class op null zetten zodat hij terug door de while gaat.
+        //            link = null;
+        //            //In geval van duplicaat, verlaat loop
+        //            break;
+        //        }
+        //    }
+        //    return;
+        //}
     }
 }

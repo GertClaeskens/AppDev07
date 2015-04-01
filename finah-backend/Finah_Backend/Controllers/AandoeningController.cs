@@ -3,9 +3,6 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
-    using System;
-    using System.Threading.Tasks;
-
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
     using System.Data.Entity;
@@ -14,11 +11,9 @@ namespace Finah_Backend.Controllers
     using System.Net;
     using System.Web.Http.Description;
 
-    using Newtonsoft.Json;
-
     public class AandoeningController : ApiController
     {
-        private readonly FinahDBContext db;
+        private FinahDBContext db;
         private List<Aandoening> aandoeningen = new List<Aandoening>();
 
         public AandoeningController()
@@ -38,24 +33,29 @@ namespace Finah_Backend.Controllers
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Aandoening aandoening = null;
-            if (id == 1)
-            {
-                aandoening = new Aandoening();
-                var pt = new Pathologie();
-                var patLijst = new List<Pathologie>();
+            #region Hardcoded object voor testing - commented
 
-                pt.Id = 1;
-                pt.Omschrijving = "Pathologie";
-                patLijst.Add(pt);
+            //Aandoening aandoening = null;
+            //if (id == 1)
+            //{
+            //    aandoening = new Aandoening();
+            //    var pt = new Pathologie();
+            //    var patLijst = new List<Pathologie>();
 
-                aandoening.Id = 1;
-                aandoening.Omschrijving = "Omschrijving";
-                aandoening.Patologieen = patLijst;
-            }
+            //    pt.Id = 1;
+            //    pt.Omschrijving = "Pathologie";
+            //    patLijst.Add(pt);
+
+            //    aandoening.Id = 1;
+            //    aandoening.Omschrijving = "Omschrijving";
+            //    aandoening.Patologieen = patLijst;
+            //}
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //Aandoening aandoening = db.Aandoeningen.Find(id);
+
+            #endregion Hardcoded object voor testing - commented
+
+            var aandoening = db.Aandoeningen.Find(id);
             if (aandoening == null)
             {
                 return NotFound();
@@ -66,110 +66,115 @@ namespace Finah_Backend.Controllers
 
         [Route("Aandoening/Overzicht")] //Geen Api/ meer nodig
         //public IQueryable<Aandoening> GetAandoeningen()
-        public IEnumerable<Aandoening> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<Aandoening> GetOverzicht()
         {
-            //return db.Aandoeningen;
+            return db.Aandoeningen;
+
             //
             //return vragen;
             //aandoeningen = db.Aandoeningen.ToList();
 
-            var ad1 = new Aandoening
-            {
-                Id = 1,
-                Omschrijving = "Aandoening 1",
+            #region Hardcoded objecten - Commented
 
-                Patologieen =
-                    new List<Pathologie>
-                                                    {
-                                                        new Pathologie
-                                                            {
-                                                                Id = 1,
-                                                                Omschrijving =
-                                                                    "Omschrijving"
-                                                            }
-                                                    }
-            };
-            var ad2 = new Aandoening
-                                        {
-                                            Id = 2,
-                                            Omschrijving = "Aandoening 2",
+            //var ad1 = new Aandoening
+            //{
+            //    Id = 1,
+            //    Omschrijving = "Aandoening 1",
 
-                                            Patologieen =
-                                                new List<Pathologie>
-                                                    {
-                                                        new Pathologie
-                                                            {
-                                                                Id = 2,
-                                                                Omschrijving =
-                                                                    "Omschrijving"
-                                                            },
-                                                        new Pathologie
-                                                            {
-                                                                Id = 3,
-                                                                Omschrijving =
-                                                                    "Omschrijving"
-                                                            }
-                                                    }
-                                        };
-            var ad3 = new Aandoening
-            {
-                Id = 3,
-                Omschrijving = "Aandoening 3",
-                Patologieen =
-                    new List<Pathologie>
-                                                        {
-                                                            new Pathologie
-                                                                {
-                                                                    Id = 2,
-                                                                    Omschrijving =
-                                                                        "OmschrijvingP2"
-                                                                }
-                                                        }
-            };
-            var ad4 = new Aandoening
-            {
-                Id = 4,
-                Omschrijving = "Aandoening 4",
+            //    Patologieen =
+            //        new List<Pathologie>
+            //                                        {
+            //                                            new Pathologie
+            //                                                {
+            //                                                    Id = 1,
+            //                                                    Omschrijving =
+            //                                                        "Omschrijving"
+            //                                                }
+            //                                        }
+            //};
+            //var ad2 = new Aandoening
+            //                            {
+            //                                Id = 2,
+            //                                Omschrijving = "Aandoening 2",
 
-                Patologieen =
-                    new List<Pathologie>
-                                                    {
-                                                        new Pathologie
-                                                            {
-                                                                Id = 1,
-                                                                Omschrijving =
-                                                                    "OmschrijvingP1"
-                                                            }
-                                                    }
-            };
-            var ad5 = new Aandoening
-            {
-                Id = 5,
-                Omschrijving = "Aandoening 5",
-                Patologieen =
-                    new List<Pathologie>
-                                                    {
-                                                        new Pathologie
-                                                            {
-                                                                Id = 1,
-                                                                Omschrijving =
-                                                                    "OmschrijvingP1"
-                                                            },new Pathologie
-                                                            {
-                                                                Id = 2,
-                                                                Omschrijving =
-                                                                    "OmschrijvingP2"
-                                                            },new Pathologie
-                                                            {
-                                                                Id = 3,
-                                                                Omschrijving =
-                                                                    "OmschrijvingP3"
-                                                            }
-                                                    }
-            };
-            var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
+            //                                Patologieen =
+            //                                    new List<Pathologie>
+            //                                        {
+            //                                            new Pathologie
+            //                                                {
+            //                                                    Id = 2,
+            //                                                    Omschrijving =
+            //                                                        "Omschrijving"
+            //                                                },
+            //                                            new Pathologie
+            //                                                {
+            //                                                    Id = 3,
+            //                                                    Omschrijving =
+            //                                                        "Omschrijving"
+            //                                                }
+            //                                        }
+            //                            };
+            //var ad3 = new Aandoening
+            //{
+            //    Id = 3,
+            //    Omschrijving = "Aandoening 3",
+            //    Patologieen =
+            //        new List<Pathologie>
+            //                                            {
+            //                                                new Pathologie
+            //                                                    {
+            //                                                        Id = 2,
+            //                                                        Omschrijving =
+            //                                                            "OmschrijvingP2"
+            //                                                    }
+            //                                            }
+            //};
+            //var ad4 = new Aandoening
+            //{
+            //    Id = 4,
+            //    Omschrijving = "Aandoening 4",
 
-            return overzichtAandoeningen;
+            //    Patologieen =
+            //        new List<Pathologie>
+            //                                        {
+            //                                            new Pathologie
+            //                                                {
+            //                                                    Id = 1,
+            //                                                    Omschrijving =
+            //                                                        "OmschrijvingP1"
+            //                                                }
+            //                                        }
+            //};
+            //var ad5 = new Aandoening
+            //{
+            //    Id = 5,
+            //    Omschrijving = "Aandoening 5",
+            //    Patologieen =
+            //        new List<Pathologie>
+            //                                        {
+            //                                            new Pathologie
+            //                                                {
+            //                                                    Id = 1,
+            //                                                    Omschrijving =
+            //                                                        "OmschrijvingP1"
+            //                                                },new Pathologie
+            //                                                {
+            //                                                    Id = 2,
+            //                                                    Omschrijving =
+            //                                                        "OmschrijvingP2"
+            //                                                },new Pathologie
+            //                                                {
+            //                                                    Id = 3,
+            //                                                    Omschrijving =
+            //                                                        "OmschrijvingP3"
+            //                                                }
+            //                                        }
+            //};
+            //var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
+
+            //return overzichtAandoeningen;
+
+            #endregion Hardcoded objecten - Commented
         }
 
         // PUT: api/Aandoenings/5

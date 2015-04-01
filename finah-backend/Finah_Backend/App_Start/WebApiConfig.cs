@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace Finah_Backend
 {
-    using System.Net.Http.Headers;
-
-    using Microsoft.Ajax.Utilities;
-
     using Newtonsoft.Json;
+    using System.Net.Http.Headers;
 
     public static class WebApiConfig
     {
@@ -32,7 +24,6 @@ namespace Finah_Backend
             //    defaults: new { id = RouteParameter.Optional }
             //);
 
-
             //Routes zonder Api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -41,11 +32,14 @@ namespace Finah_Backend
 
             //Json output
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            //config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
-            //                                                         {
-            //                                                             ReferenceLoopHandling =
-            //                                                                 ReferenceLoopHandling
-            //                                                                 .Ignore,
+
+            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
+                                                                     {
+                                                                         ReferenceLoopHandling =
+                                                                             ReferenceLoopHandling
+                                                                             .Ignore
+                                                                     };
+            //,
             //                                                             PreserveReferencesHandling
             //                                                                 =
             //                                                                 PreserveReferencesHandling

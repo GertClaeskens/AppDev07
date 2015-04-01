@@ -3,15 +3,13 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using Finah_Backend.DAL;
+    using Finah_Backend.Models;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Web.Http.Description;
-
-    using Finah_Backend.DAL;
-    using Finah_Backend.Models;
 
     public class PathologieController : ApiController
     {
@@ -34,23 +32,27 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Pathologie/Overzicht")] //Geen Api/ meer nodig
-        //public IQueryable<Pathologie> GetPathologieen GetOverzicht()
-        public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IQueryable<Pathologie> GetOverzicht()
+        //public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            //return _db.Bevragingen.ToList(); Kijken dat de gegevens van bvb leeftijdscategorie der ook in zitten
+            return db.Pathologieen;
 
             //return bevragingen;
 
-            var overzichtPathologie = new List<Pathologie>
-                                                       {
-                                                           new Pathologie { Id = 1, Omschrijving = "Pathologie 1" }, 
-                                                           new Pathologie { Id = 2, Omschrijving = "Pathologie 2" }, 
-                                                           new Pathologie { Id = 3, Omschrijving = "Pathologie 3" }, 
-                                                           new Pathologie { Id = 4, Omschrijving = "Pathologie 4" }, 
-                                                           new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
-                                                       };
+            #region Hardcoded Objecten - commented
 
-            return overzichtPathologie;
+            //var overzichtPathologie = new List<Pathologie>
+            //                                           {
+            //                                               new Pathologie { Id = 1, Omschrijving = "Pathologie 1" },
+            //                                               new Pathologie { Id = 2, Omschrijving = "Pathologie 2" },
+            //                                               new Pathologie { Id = 3, Omschrijving = "Pathologie 3" },
+            //                                               new Pathologie { Id = 4, Omschrijving = "Pathologie 4" },
+            //                                               new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
+            //                                           };
+
+            //return overzichtPathologie;
+
+            #endregion Hardcoded Objecten - commented
         }
 
         [ResponseType(typeof(Pathologie))]
@@ -58,21 +60,25 @@ namespace Finah_Backend.Controllers
         [Route("Pathologie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            Pathologie pathologie = null;
-            var overzichtPathologie = new List<Pathologie>
-                                                       {
-                                                           new Pathologie { Id = 1, Omschrijving = "Pathologie 1" }, 
-                                                           new Pathologie { Id = 2, Omschrijving = "Pathologie 2" }, 
-                                                           new Pathologie { Id = 3, Omschrijving = "Pathologie 3" }, 
-                                                           new Pathologie { Id = 4, Omschrijving = "Pathologie 4" }, 
-                                                           new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
-                                                       };
+            #region Hardcoded Objecten - commented
 
+            //Pathologie pathologie = null;
+            //var overzichtPathologie = new List<Pathologie>
+            //                                           {
+            //                                               new Pathologie { Id = 1, Omschrijving = "Pathologie 1" },
+            //                                               new Pathologie { Id = 2, Omschrijving = "Pathologie 2" },
+            //                                               new Pathologie { Id = 3, Omschrijving = "Pathologie 3" },
+            //                                               new Pathologie { Id = 4, Omschrijving = "Pathologie 4" },
+            //                                               new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
+            //                                           };
 
-            pathologie = overzichtPathologie[id - 1];
+            //pathologie = overzichtPathologie[id - 1];
             //Bovenstaande code dient om te testen
             //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-            //var pathologie = db.Pathologieen.Find(id);
+
+            #endregion Hardcoded Objecten - commented
+
+            var pathologie = db.Pathologieen.Find(id);
             if (pathologie == null)
             {
                 return NotFound();
@@ -119,7 +125,6 @@ namespace Finah_Backend.Controllers
         // POST: api/Pathologies
         [ResponseType(typeof(Pathologie))]
         public IHttpActionResult PostPathologie(Pathologie pathologie)
-        
         {
             if (!ModelState.IsValid)
             {
@@ -160,7 +165,6 @@ namespace Finah_Backend.Controllers
         private bool PathologieBestaat(int id)
         {
             return db.Pathologieen.Count(e => e.Id == id) > 0;
-
         }
     }
 }
