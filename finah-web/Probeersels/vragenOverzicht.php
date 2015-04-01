@@ -33,7 +33,7 @@ require "../DAO/FinahDAO.php";
                     <a href="VragenCreate.php">Create new</a>
                 </p>
                 <br/>
-                <table border="1" class="overzicht-table">
+                <table class="overzicht-table">
                     <tr>
                         <th>
                             Vraagstelling

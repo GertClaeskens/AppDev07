@@ -33,7 +33,8 @@ require_once "../Models/LeeftijdsCategorie.php";
                 <a href="leeftijdscategoriecreate.php">Create new</a>
             </p>
             <br/>
-            <table border="1" class="overzicht-table">
+            <!-- TODO zorgen dat links naar de juiste pagina's linken -->
+            <table class="overzicht-table">
                 <tr>
                     <th>
                         Van

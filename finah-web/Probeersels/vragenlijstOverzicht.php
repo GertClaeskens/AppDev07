@@ -30,7 +30,7 @@ require "../DAO/FinahDAO.php";
                 <a href="vragenlijstCreate.php">Create new</a>
             </p>
             <br />
-            <table border="1" class="overzicht-table">
+            <table class="overzicht-table">
                 <tr>
                     <th>
                         Vragenlijst

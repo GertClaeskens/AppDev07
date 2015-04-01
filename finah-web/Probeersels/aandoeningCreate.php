@@ -47,7 +47,7 @@
                     $patologielijst = $_POST["pathologie"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $aandoening = new Aandoening();
-                    //$aandoening->Id = 0;
+                    $aandoening->Id = 0;
                     $aandoening->setOmschrijving($omschrijving);
 //                    $aandoening->setPatologieen($patologielijst);
                     for ($a = 0; $a < count($patologielijst); $a++) {

@@ -39,8 +39,9 @@ require "../Models/LeeftijdsCategorie.php";
                     //var_dump($_POST);
                     $van = $_POST["van"];
                     $tot = $_POST["tot"];
-//TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
+
                     $leeftijdsCat = new LeeftijdsCategorie();
+                    //ID moet op 0 gezet worden, anders een error op de backend
                     $leeftijdsCat->Id=0;
                     //Todo Validation op de input velden. Enkel positieve getallen tussen 0-120
                     $leeftijdsCat->setVan($van);
