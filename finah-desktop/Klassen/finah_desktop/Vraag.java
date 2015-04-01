@@ -2,7 +2,7 @@ package finah_desktop;
 
 public class Vraag {
 	private int Id;
-	private String Vraagstelling;
+	private String VraagStelling;
 	private Foto Afbeelding;
 	private GeluidsFragment Geluid;
 
@@ -14,7 +14,7 @@ public class Vraag {
 			GeluidsFragment geluid) {
 		super();
 		Id = id;
-		Vraagstelling = vraagstelling;
+		VraagStelling = vraagstelling;
 		Afbeelding = afbeelding;
 		Geluid = geluid;
 	}
@@ -28,11 +28,11 @@ public class Vraag {
 	}
 
 	public String getVraagstelling() {
-		return Vraagstelling;
+		return VraagStelling;
 	}
 
 	public void setVraagstelling(String vraagstelling) {
-		Vraagstelling = vraagstelling;
+		VraagStelling = vraagstelling;
 	}
 
 	public Foto getAfbeelding() {
@@ -63,7 +63,7 @@ public class Vraag {
 		result = prime * result + ((Geluid == null) ? 0 : Geluid.hashCode());
 		result = prime * result + Id;
 		result = prime * result
-				+ ((Vraagstelling == null) ? 0 : Vraagstelling.hashCode());
+				+ ((VraagStelling == null) ? 0 : VraagStelling.hashCode());
 		return result;
 	}
 
@@ -91,10 +91,10 @@ public class Vraag {
 			return false;
 		if (Id != other.Id)
 			return false;
-		if (Vraagstelling == null) {
-			if (other.Vraagstelling != null)
+		if (VraagStelling == null) {
+			if (other.VraagStelling != null)
 				return false;
-		} else if (!Vraagstelling.equals(other.Vraagstelling))
+		} else if (!VraagStelling.equals(other.VraagStelling))
 			return false;
 		return true;
 	}

@@ -14,8 +14,7 @@ public class VraagDAO {
 	public static ArrayList<Vraag> GetVragen() {
 		// Exception Handling nog nakijken
 
-		Type collectionType = new TypeToken<Collection<Vraag>>() {
-		}.getType();
+		Type collectionType = new TypeToken<Collection<Vraag>>() {}.getType();
 		try {
 			return SharedDAO.HaalGegevens(
 					"http://localhost:1695/Vragen/Overzicht", collectionType);

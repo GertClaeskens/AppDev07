@@ -36,10 +36,12 @@ public class AandoeningenGUI extends JFrame{
 	private List<Aandoening> aandoeningen;
 
 	public AandoeningenGUI(){
-		aandoeningen = new ArrayList<Aandoening>();
-		for(int i=1; i<=10; i++){
-			aandoeningen.add(new Aandoening());
-		}
+		//aandoeningen = new ArrayList<Aandoening>();
+		aandoeningen = AandoeningDAO.GetAandoeningen();
+		
+//		for(int i=1; i<=10; i++){
+//			aandoeningen.add(new Aandoening());
+//		}
 		
 		
 		panel = new AandoeningenPanel();		
@@ -84,9 +86,11 @@ public class AandoeningenGUI extends JFrame{
 			g2d.drawString("Vragenlijst", 760, 255);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 300;
-			for(int i=1; i<=aandoeningen.size(); i++){
+			for(int i=0; i<aandoeningen.size(); i++){
+				Aandoening ad = aandoeningen.get(i);
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Aandoening "+i, 120, hoogte-10);
+				g2d.drawString(ad.getOmschrijving(), 120, hoogte-10);
+				//TODO Combobox verwijderen en der de naam van de pathologieen zetten
 				JComboBox vragenlijstCombo = new JComboBox();
 				vragenlijstCombo.setBounds(702,hoogte-28,197,27);
 				add(vragenlijstCombo);

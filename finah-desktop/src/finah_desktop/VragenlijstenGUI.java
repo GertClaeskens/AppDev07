@@ -33,12 +33,14 @@ public class VragenlijstenGUI extends JFrame{
 	private JTextField nieuweVragenlijstVeld;
 	private JComboBox nieuweVragenlijstCombo;
 	private List<VragenLijst> vragenlijsten;
+	private static int bekijken;
 
 	public VragenlijstenGUI(){
-		vragenlijsten = new ArrayList<VragenLijst>();
-		for(int i=1; i<=10; i++){
-			vragenlijsten.add(new VragenLijst());
-		}
+//		vragenlijsten = new ArrayList<VragenLijst>();
+//		for(int i=1; i<=10; i++){
+//			vragenlijsten.add(new VragenLijst());
+//		}
+		vragenlijsten = VragenLijstDAO.GetVragenLijsten();
 		
 		
 		panel = new VragenlijstenPanel();		
@@ -86,9 +88,10 @@ public class VragenlijstenGUI extends JFrame{
 			g2d.drawString("Aandoening", 755, 235);
 			g2d.setFont(new Font("Arial", Font.PLAIN, 15));
 			int hoogte = 280;
-			for(int i=1; i<=vragenlijsten.size(); i++){
+			for(int i=0; i<vragenlijsten.size(); i++){
+				VragenLijst vrl = vragenlijsten.get(i);
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString("Vragenlijst "+i, 120, hoogte-10);
+				g2d.drawString(Integer.toString(vrl.getId()), 120, hoogte-10);
 				JButton bekijkKnop = new JButton("Bekijk");
 				bekijkKnop.setBounds(641, hoogte-29, 29, 29);
 				bekijkKnop.addActionListener(handler);
