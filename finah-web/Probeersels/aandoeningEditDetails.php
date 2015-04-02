@@ -32,7 +32,7 @@
             <hr/>
 
             <?php
-                    if (isset($_POST["edit"])) {
+                    if (isset($_POST["bewerk"])) {
 
                             $aandoening = FinahDAO::HaalOp("Aandoening",$_POST["Id"]);
                         var_dump($aandoening["Omschrijving"]);
