@@ -161,7 +161,7 @@ body {
     width:25%
 }
 .action-column{
-    width:25%;
+    width:35%;
 }
 .action-column-small    {
     width:15%;
@@ -172,6 +172,7 @@ body {
     height:30px;
     line-height:30px;
     margin-top:550px;
+
 }
 
 #page-footer p {
@@ -312,3 +313,16 @@ textarea
     -webkit-box-shadow:none;
 }
 
+.actieBtn{
+    background: #0099CC;
+    padding: 8px 15px 8px 15px;
+
+    border: none;
+    color: #fff;
+}
+.actieBtn:hover{
+    background: #2AAECC;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}

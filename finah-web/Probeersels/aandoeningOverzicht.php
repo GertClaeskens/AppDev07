@@ -55,9 +55,9 @@
 
                             echo "<td>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
                             echo "<td class='action-column'>
-                                <input type='submit' value='Edit' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Edit' class='actieBtn' name='bewerk'/>
+                                <input type='submit' value='Delete' class='actieBtn' name='delete'/>
+                                <input type='submit' value='Details' class='actieBtn' name='details'/>
                         </td></tr>";
                         }
                         //<a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
