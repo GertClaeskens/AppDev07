@@ -29,7 +29,7 @@ require "../DAO/FinahDAO.php";
                 <a href="vragenlijstCreate.php">Create new</a>
             </p>
             <br />
-            <table border="1" class="overzicht-table">
+            <table class="overzicht-table">
                 <tr>
                     <th>
                         Id
@@ -50,9 +50,9 @@ require "../DAO/FinahDAO.php";
                             <td> ".$item["Aandoe"]["Omschrijving"] ."</td>
                             <td>". count($item["Vragen"])."</td>
                              <td class='action-column'>
-                                                             <input type='submit' value='Edit' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Edit' class='actieBtn' name='creeer'/>
+                                <input type='submit' value='Delete' class='actieBtn' name='edit'/>
+                                <input type='submit' value='Details' class='actieBtn' name='details'/>
                                 <!--<a href='vragenlijstEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenlijstDetails.php'>Details</a>-->
                          </td>
                          </tr>";} ?>

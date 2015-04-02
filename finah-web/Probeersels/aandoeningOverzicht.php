@@ -64,8 +64,8 @@
                     } ?>
 
             </table>
-        </div>
-        <!--Closing DIV innerwrapper-->
+        </div>         <!--Closing DIV Content-->
+    </div>  <!--Closing DIV innerwrapper-->
         <div id="page-footer">
             <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
         </div>

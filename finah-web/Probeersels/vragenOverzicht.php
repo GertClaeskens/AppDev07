@@ -22,8 +22,7 @@ require "../DAO/FinahDAO.php";
                 <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
                 <button onclick="location.href='index.php'">Terug naar home</button>
 
-            </div>
-            <!--Closing DIV nav-bar-->
+            </div>  <!--Closing DIV nav-bar-->
             <div id="body-container">
                 <h3 id="Breadcrumb">Menu > Vragen</h3>
 
@@ -46,9 +45,9 @@ require "../DAO/FinahDAO.php";
                         echo "<tr>
                                 <td>". $item["VraagStelling"] ."</td>
                                  <td class='action-column'>
-                                                                 <input type='submit' value='Edit' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                 <input type='submit' value='Edit' class='actieBtn' name='edit'/>
+                                <input type='submit' value='Delete' class='actieBtn' name='delete'/>
+                                <input type='submit' value='Details' class='actieBtn' name='details'/>
                                     <!--<a href='vragenEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='vragenDetails.php'>Details</a>-->
                              </td>
                              </tr>";

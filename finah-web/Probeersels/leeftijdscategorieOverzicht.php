@@ -34,7 +34,7 @@
             </p>
             <br/>
             <!-- TODO zorgen dat links naar de juiste pagina's linken -->
-            <table border="1" class="overzicht-table">
+            <table class="overzicht-table">
                 <tr>
                     <th>
                         Van
@@ -51,9 +51,9 @@
                             <td class='leeftijdKolom'>" . $item["Van"] . "</td>
                             <td class='leeftijdKolom'>" . $item["Tot"] . "</td>
                              <td class='action-column'>
-                                <input type='submit' value='Edit' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Delete' class='createBtn' name='creeer'/>
-                                <input type='submit' value='Details' class='createBtn' name='creeer'/>
+                                <input type='submit' value='Edit' class='actieBtn' name='edit'/>
+                                <input type='submit' value='Delete' class='actieBtn' name='delete'/>
+                                <input type='submit' value='Details' class='actieBtn' name='details'/>
 <!--                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='leeftijdscategorieDetails.php'>Details</a> -->
                          </td>
                          </tr>";
