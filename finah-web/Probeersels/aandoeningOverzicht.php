@@ -35,36 +35,48 @@
                 <a href="aandoeningCreate.php">Create new</a>
             </p>
             <br/>
-            <table class="overzicht-table">
-                <tr>
-                    <th>
-                        Omschrijving
-                    </th>
-                    <th>
-                        Pathologie
-                    </th>
-                    <th>Actie</th>
-                </tr>
-                <?php
-                    $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
-                    for ($a = 0; $a < count($aandoeningLijst); $a++) {
-                        $item = $aandoeningLijst[$a];
-                        $aantal = count($item["Patologieen"]);
-                        for ($b = 0; $b < $aantal; $b++) {
-                            echo "<tr> <td>". $item["Omschrijving"]."</td>";
 
+            <form action="aandoeningEditDetails.php" method="post">
+                <table class="overzicht-table">
+                    <tr>
+                        <th>
+                            Omschrijving
+                        </th>
+                        <th>
+                            Pathologie
+                        </th>
+                        <th>Actie</th>
+                    </tr>
+                    <?php
+                        $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
+                        for ($a = 0; $a < count($aandoeningLijst); $a++) {
+                            $item = $aandoeningLijst[$a];
+                            $aantal = count($item["Patologieen"]);
+                            for ($b = 0; $b < $aantal; $b++) {
+                                echo "<tr> <td>" . $item["Omschrijving"] . "</td>";
+
+                                echo "<td>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
+                                echo "<td class='action-column'>
+                                <input type='hidden' name='Id' value=". $item["Id"] ." />
+                                <input type='submit' value='Edit' class='createBtn' name='edit'/>
+                                <!-- TODO DeleteButton alert window voor bevestiging (JavaScript?) -->
+                                <input type='submit' value='Delete' class='createBtn' name='delete'/>
+                                <input type='submit' value='Details' class='createBtn' name='details'/>
                             echo "<td>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
                             echo "<td class='action-column'>
                                 <input type='submit' value='Edit' class='actieBtn' name='bewerk'/>
                                 <input type='submit' value='Delete' class='actieBtn' name='delete'/>
                                 <input type='submit' value='Details' class='actieBtn' name='details'/>
                         </td></tr>";
-                        }
-                        //<a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
-                    } ?>
+                            }
+                            //<a href='aandoeningEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='aandoeningDetails.php'>Details</a>
+                        } ?>
 
-            </table>
-        </div>         <!--Closing DIV Content-->
+                </table>
+            </form>
+        </div>
+        <!--Closing DIV innerwrapper-->
+        <!--Closing DIV Content-->
     </div>  <!--Closing DIV innerwrapper-->
         <div id="page-footer">
             <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
