@@ -16,7 +16,7 @@ require_once "../Models/Bevraging.php";
     <!--Closing DIV page header-->
     <div id="inner-wrapper">
         <div id="nav-bar2">
-            <h2> Beheren </h2>
+            <h2> Menu </h2>
             <button onclick="location.href='index.php'">Home </button>
             <button onclick="location.href='Account.php'">Mijn account </button>
             <button onclick="location.href='BevragingOverzicht.php'">Bevragingen</button>
