@@ -23,8 +23,7 @@ require "../Models/Bevraging.php";
     </div>
     <!--Closing DIV page header-->
     <div id="inner-wrapper">
-        <div id="nav-bar2">
-            <div id="nav-bar2">
+            <div id="nav-bar">
                 <h2> Menu </h2>
                 <button onclick="location.href='index.php'">Home </button>
                 <button onclick="location.href='Account.php'">Mijn account </button>
@@ -33,7 +32,6 @@ require "../Models/Bevraging.php";
                 <button onclick="location.href='#'">Uitloggen</button>
 
             </div>
-        </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
             <h3 id="Breadcrumb">Menu > Bevraging > Aanmaken</h3>
@@ -80,36 +78,47 @@ require "../Models/Bevraging.php";
                     <li><label class="control-label">Informatie</label></li>
                     <li><input class="form-control" type="text" name="informatie"/></li>
                     <li><label class="control-label">Kies de aandoening</label></li>
-                    <select class="form-control" name="aandoening[]" multiple="multiple">
+                    <select class="form-control" name="aandoening[]">
                         <?php
-                        $aandoening = FinahDAO::HaalOp("Aandoening");
+                        $aandoening = FinahDAO::HaalOp("Aandoening",$_POST["Id"]);
                         foreach ($aandoening as $item) {
                             $waarde = $item->Omschrijving;
-                            echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
+                            echo "<option value='".$item["Id"]."'>" . $item["Omschrijving"] . "</option>\r\n";
                         }
 
                         ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
-                    <select class="form-control" name="leeftijdscategoriePat[]" multiple="multiple">
+                    <select class="form-control" name="leeftijdscategoriePat[]">
                         <?php
-                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
-                        /*   foreach ($leeftijdscategoriePat as $item) {
-                               $waarde = $item->Omschrijving;
-                               echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
-                           }*/
+                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie",$_POST["Id"]);
+                        foreach ($leeftijdscategoriePat as $item) {
+                            $waarde = $item->Omschrijving;
+                            echo "<option value='".$item["Id"]."'>" . $item["Van"] ." tot " . $item["Tot"] .  "</option>\r\n";
+                        }
+
+                        ?>
+                    </select>
+                    <li><label class="control-label">Kies de leeftijdscategorie van de mantelzorger</label></li>
+                    <select class="form-control" name="leeftijdscategoriePat[]">
+                        <?php
+                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie",$_POST["Id"]);
+                        foreach ($leeftijdscategoriePat as $item) {
+                            $waarde = $item->Omschrijving;
+                            echo "<option value='".$item["Id"]."'>" . $item["Van"] ." tot " . $item["Tot"] .  "</option>\r\n";
+                        }
 
                         ?>
                     </select>
                     <li><label class="control-label">Kies de relatie tussen Patient en mantelzorger</label></li>
 
-                    <select class="form-control" name="relatie[]" multiple="multiple">
+                    <select class="form-control" name="relatie[]" >
                         <?php
-                        $relatie = FinahDAO::HaalOp("Relatie");
-                        /*   foreach ($leeftijdscategoriePat as $item) {
-                               $waarde = $item->Omschrijving;
-                               echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
-                           }*/
+                        $relatie = FinahDAO::HaalOp("Relatie",$_POST["Id"]);
+                          foreach ($relatie as $item) {
+                               $waarde = $item->Naam;
+                              echo "<option value='".$item["Id"]."'>" . $item["Naam"] . "</option>\r\n";
+                           }
 
                         ?>
                     </select>
