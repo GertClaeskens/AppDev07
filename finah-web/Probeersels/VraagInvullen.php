@@ -8,11 +8,16 @@
 ?>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <title>FINAH - Bevraging</title>
 <body>
-<div id="pagina11">
-    <p align="center"><progress value="41" max="53"></progress></p>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        70%
+    </div>
+</div>
+<!-- <div id="pagina11">
+    <p align="center"><progress value="1" max="50"></progress></p>
     <form id="form" method="post" action="client-step11-2.php?idc=<?php echo $idPatient; ?>">
         <h2>Belangrijke levensgebeiden</h2>
         <h3>Werken of andere zinvolle dagbesteding (zoals vrijwilligerswerk, het huishouden) </h3>
@@ -42,8 +47,7 @@
             <br>
         </div>
         <a href="client-step11.php?idc=<?php echo $idPatient; ?>&action=back" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">VORIGE</a><input type="submit" id="submit" name="volgende" value="VOLGENDE" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-</div> <!-- einde pagina11 -->
-
-</form>
+    </form>
+</div> -->
 </body>
 </html>
