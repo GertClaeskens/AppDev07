@@ -1,7 +1,6 @@
-
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require_once "../PHP/Models/Bevraging.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require_once "../PHP/Models/Bevraging.php";
 ?>
 <html>
 <head>
@@ -17,10 +16,10 @@ require_once "../PHP/Models/Bevraging.php";
     <div id="inner-wrapper">
         <div id="nav-bar2">
             <h2> Menu </h2>
-            <button onclick="location.href='../index.php'">Home </button>
-            <button onclick="location.href='Account.php'">Mijn account </button>
+            <button onclick="location.href='../index.php'">Home</button>
+            <button onclick="location.href='Account.php'">Mijn account</button>
             <button onclick="location.href='Overzicht.php'">Bevragingen</button>
-            <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren </button>
+            <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren</button>
             <button onclick="location.href='#'">Uitloggen</button>
 
         </div>
@@ -34,7 +33,7 @@ require_once "../PHP/Models/Bevraging.php";
                 <a href="Create.php">Create new</a>
             </p>
             <br/>
-<!--            Todo juiste kolommen weergeven-->
+            <!--            Todo juiste kolommen weergeven-->
             <table class="overzicht-table">
                 <tr>
                     <th>
@@ -59,7 +58,8 @@ require_once "../PHP/Models/Bevraging.php";
                         Getrouwd
                     </td>
                     <td class='action-column'>
-                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
+                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a
+                            href='bevragingDetails.php'>Details</a>
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +73,8 @@ require_once "../PHP/Models/Bevraging.php";
                         Getrouwd
                     </td>
                     <td class='action-column'>
-                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
+                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a
+                            href='bevragingDetails.php'>Details</a>
                     </td>
                 </tr>
                 <tr>
@@ -87,7 +88,8 @@ require_once "../PHP/Models/Bevraging.php";
                         Getrouwd
                     </td>
                     <td class='action-column'>
-                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
+                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a
+                            href='bevragingDetails.php'>Details</a>
                     </td>
                 </tr>
                 <tr>
@@ -101,34 +103,35 @@ require_once "../PHP/Models/Bevraging.php";
                         Getrouwd
                     </td>
                     <td class='action-column'>
-                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
+                        <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a
+                            href='bevragingDetails.php'>Details</a>
                     </td>
                 </tr>
             </table>
-<!--                <?php
-/*                  //Todo php code voor de bevraging op te halen
-                $bevragingLijst = FinahDAO::HaalOp("Bevraging");
-                for ($a = 0; $a < count($bevragingLijst); $a++) {
-                    $item = $bevragingLijst[$a];
-                    $aantal = count($item->Patologieen);
-                    for ($b = 0; $b < $aantal; $b++) {
-                        echo "<tr> <td> $item->Omschrijving</td>";
+            <!--                <?php
+                /*                  //Todo php code voor de bevraging op te halen
+                                $bevragingLijst = FinahDAO::HaalOp("Bevraging");
+                                for ($a = 0; $a < count($bevragingLijst); $a++) {
+                                    $item = $bevragingLijst[$a];
+                                    $aantal = count($item->Patologieen);
+                                    for ($b = 0; $b < $aantal; $b++) {
+                                        echo "<tr> <td> $item->Omschrijving</td>";
 
-                        echo "<td>" . $item->Patologieen[$b]->Omschrijving. "</td>";
-                        echo "<td class='action-column'>
-                            <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
-                        </td></tr>";
-                    }
-                }
-                */?>
+                                        echo "<td>" . $item->Patologieen[$b]->Omschrijving. "</td>";
+                                        echo "<td class='action-column'>
+                                            <a href='bevragingEdit.php'>Edit</a> | <a href='delete.php'>Delete</a> | <a href='bevragingDetails.php'>Details</a>
+                                        </td></tr>";
+                                    }
+                                }
+                                */ ?>
 
             </table>
         </div>
         <!--Closing DIV innerwrapper-->
-        <div id="page-footer">
-            <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
+            <div id="page-footer">
+                <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
+            </div>
         </div>
-    </div>
-    <!--Closing DIV wrapper-->
+        <!--Closing DIV wrapper-->
 </body>
 </html>

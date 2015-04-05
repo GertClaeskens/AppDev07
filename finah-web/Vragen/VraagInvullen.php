@@ -1,10 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Brian
- * Date: 1/04/2015
- * Time: 10:20
- */
+    /**
+     * Created by PhpStorm.
+     * User: Brian
+     * Date: 1/04/2015
+     * Time: 10:20
+     */
 ?>
 <html>
 <head>
@@ -12,7 +12,8 @@
     <title>FINAH - Bevraging</title>
 <body>
 <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+         style="width:70%">
         70%
     </div>
 </div>

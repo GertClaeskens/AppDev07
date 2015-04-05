@@ -1,4 +1,5 @@
 <?php
+
     /**
      * Created by PhpStorm.
      * User: Gert
@@ -10,10 +11,10 @@
         public $Id;
         public $Omschrijving;
 
-        public function __construct($id=null,$omschrijving=null)
+        public function __construct($id = null, $omschrijving = null)
         {
-            $this->Id=$id;
-            $this->Omschrijving=$omschrijving;
+            $this->Id = $id;
+            $this->Omschrijving = $omschrijving;
         }
 
         public function getId()
@@ -26,7 +27,7 @@
             $this->Id = $Id;
         }
 
-         public function getOmschrijving()
+        public function getOmschrijving()
         {
             return $this->Omschrijving;
         }

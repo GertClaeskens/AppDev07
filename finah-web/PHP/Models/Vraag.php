@@ -14,12 +14,12 @@
         public $Geluid;
 
 
-        public function __construct($id=null,$Vraagstelling=null,$Afbeelding=null,$Geluid=null)
+        public function __construct($id = null, $Vraagstelling = null, $Afbeelding = null, $Geluid = null)
         {
-            $this->Id=$id;
-            $this->Vraagstelling=$Vraagstelling;
-            $this->Afbeelding=$Afbeelding;
-            $this->Geluid=$Geluid;
+            $this->Id = $id;
+            $this->Vraagstelling = $Vraagstelling;
+            $this->Afbeelding = $Afbeelding;
+            $this->Geluid = $Geluid;
         }
 
         public function getId()
@@ -37,6 +37,7 @@
         {
             $this->Vraagstelling = $Vraagstelling;
         }
+
         public function getAfbeelding()
         {
             return $this->Afbeelding;
@@ -46,6 +47,7 @@
         {
             $this->Afbeelding = $Afbeelding;
         }
+
         public function getGeluid()
         {
             return $this->Geluid;

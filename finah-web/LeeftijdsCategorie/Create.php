@@ -1,6 +1,6 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/LeeftijdsCategorie.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/LeeftijdsCategorie.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,18 +35,18 @@ require "../PHP/Models/LeeftijdsCategorie.php";
 
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
-                if (isset($_POST["creeer"])) {
+                    if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
                     $van = $_POST["van"];
                     $tot = $_POST["tot"];
 
                     $leeftijdsCat = new LeeftijdsCategorie();
                     //ID moet op 0 gezet worden, anders een error op de backend
-                    $leeftijdsCat->Id=0;
+                    $leeftijdsCat->Id = 0;
                     //Todo Validation op de input velden. Enkel positieve getallen tussen 0-120
                     $leeftijdsCat->setVan($van);
                     $leeftijdsCat->setTot($tot);
-                    if (FinahDAO::SchrijfWeg("LeeftijdsCategorie",$leeftijdsCat)){
+                    if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $leeftijdsCat)) {
                         //Todo eventueel een exception toevoegen hier
                         echo "De leeftijdscategorie werd succesvol opgeslagen";
                     }

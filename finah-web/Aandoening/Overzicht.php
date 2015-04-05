@@ -35,7 +35,7 @@
                 <button class="actieBtn" onclick="window.location='Create.php';return false;">
                     Maak een nieuwe aandoening
                 </button>
-<!--                <a href="Create.php">Create new</a>-->
+                <!--                <a href="Create.php">Create new</a>-->
             </p>
             <br/>
 
@@ -60,7 +60,7 @@
 
                                 echo "<td>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
                                 echo "<td class='action-column'>
-                                <input type='hidden' name='Id' value=". $item["Id"] ." />
+                                <input type='hidden' name='Id' value=" . $item["Id"] . " />
                                 <input type='submit' value='Edit' class='actieBtn' name='bewerk'/>
                                 <!-- TODO DeleteButton alert window voor bevestiging (JavaScript?) -->
                                 <input type='submit' value='Delete' class='actieBtn' name='delete'/>
@@ -75,11 +75,12 @@
         </div>
         <!--Closing DIV innerwrapper-->
         <!--Closing DIV Content-->
-    </div>  <!--Closing DIV innerwrapper-->
-        <div id="page-footer">
-            <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
-        </div>
     </div>
-    <!--Closing DIV wrapper-->
+    <!--Closing DIV innerwrapper-->
+    <div id="page-footer">
+        <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
+    </div>
+</div>
+<!--Closing DIV wrapper-->
 </body>
 </html>

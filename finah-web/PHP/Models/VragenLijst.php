@@ -1,4 +1,5 @@
 <?php
+
     /**
      * Created by PhpStorm.
      * User: Gert
@@ -11,11 +12,11 @@
         public $Vragen;
         public $Aandoe;
 
-        public function __construct($id=null,$Vragen=null,$Aandoe=null)
+        public function __construct($id = null, $Vragen = null, $Aandoe = null)
         {
-            $this->Id=$id;
-            $this->Vragen=$Vragen;
-            $this->Aandoe=$Aandoe;
+            $this->Id = $id;
+            $this->Vragen = $Vragen;
+            $this->Aandoe = $Aandoe;
 
         }
 
@@ -34,6 +35,7 @@
         {
             $this->Vragen = $Vragen;
         }
+
         public function getAandoe()
         {
             return $this->Aandoe;

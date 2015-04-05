@@ -1,6 +1,6 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require_once "../PHP/Models/Pathologie.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require_once "../PHP/Models/Pathologie.php";
 ?>
 <html>
 <head>

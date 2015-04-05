@@ -1,7 +1,7 @@
 <?php
 
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/VragenLijst.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/VragenLijst.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,23 +33,23 @@ require "../PHP/Models/VragenLijst.php";
 
             <h2 id="Content-Title">Nieuwe Vraaglijst</h2>
             <hr/>
-<!--TODO  Een lijst met vragen (bv: multiple combobox) waarbij de benodigde vragen geselecteerd kunnen worden, om deze toe te voegen aan een nieuwe vragenlijst. -->
-        <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
-<!--                --><?php
-/*              if (isset($_POST["creeer"])) {
-                    $omschrijving = $_POST["vraagstelling"];
+            <!--TODO  Een lijst met vragen (bv: multiple combobox) waarbij de benodigde vragen geselecteerd kunnen worden, om deze toe te voegen aan een nieuwe vragenlijst. -->
+            <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+                <!--                --><?php
+                    /*              if (isset($_POST["creeer"])) {
+                                        $omschrijving = $_POST["vraagstelling"];
 
-                    $vraag = new Vraag();
-                    $vraag->Id=0;
-                    $vraag->setVraagstelling($vraag);
+                                        $vraag = new Vraag();
+                                        $vraag->Id=0;
+                                        $vraag->setVraagstelling($vraag);
 
-                    if (FinahDAO::SchrijfWeg("Vraag",$vraag)){
-                        //Todo eventueel een exception toevoegen hier
-                        echo "De vraag werd succesvol opgeslagen";
-                    }
+                                        if (FinahDAO::SchrijfWeg("Vraag",$vraag)){
+                                            //Todo eventueel een exception toevoegen hier
+                                            echo "De vraag werd succesvol opgeslagen";
+                                        }
 
-                }else {
-                */?>
+                                    }else {
+                                    */ ?>
                 <ul class="form-style">
                     <li><label class="control-label">Vragenlijst</label></li>
                     <li><input class="form-control" type="text" name="vragenlijst"/></li>
@@ -70,6 +70,6 @@ require "../PHP/Models/VragenLijst.php";
 </div>
 <!--Closing DIV wrapper-->
 <?php //}
-//?>
+    //?>
 </body>
 </html>
