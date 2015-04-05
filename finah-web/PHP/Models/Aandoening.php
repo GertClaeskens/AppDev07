@@ -2,7 +2,7 @@
 
     require_once "SuperKlasseAandoeningPathologie.php";
     require_once "Pathologie.php";
-    require_once "../CustomDataTypes/PathologieArray.php";
+    require_once "../PHP/CustomDataTypes/PathologieArray.php";
 
     /**
      * Created by PhpStorm.

@@ -32,7 +32,10 @@
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="Create.php">Create new</a>
+                <button class="actieBtn" onclick="window.location='Create.php';return false;">
+                    Maak een nieuwe aandoening
+                </button>
+<!--                <a href="Create.php">Create new</a>-->
             </p>
             <br/>
 
