@@ -26,7 +26,9 @@ require "../PHP/DAO/FinahDAO.php";
             <h3 id="Breadcrumb">Menu > Vragenlijst</h3>
             <h2 id="Content-Title">Overzicht</h2>
             <p>
-                <a href="Create.php">Create new</a>
+                <button class="actieBtn" onclick="window.location='Create.php';return false;">
+                    Maak een nieuwe vragenlijst
+                </button>
             </p>
             <br />
             <table class="overzicht-table">

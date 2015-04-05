@@ -48,18 +48,7 @@
             <form method="POST">
                 <ul class="form-style">
                     <li><label class="control-label">Omschrijving</label></li>
-                    <?php
-                        if (isset($_POST["bewerk"])) {
-
-
-                        //var_dump($aandoening["Omschrijving"]);
-                        /*               foreach($_POST as $key => $value) {
-                                           $pos = strpos($key , "edit_");
-                                           if ($pos === 0){
-                                               // do something with $value
-                                           }
-                                       }*/
-                        ?>
+                    <?php    if (isset($_POST["bewerk"])) {  ?>
 
                         <li><input class="form-control" type="text" name="omschrijving"
                                    value=<?php echo $pathologie["Omschrijving"]; ?>/></li>
@@ -74,10 +63,6 @@
 
                                     echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                 }
-                                //var_dump($patologieen);
-                                //                        for ($a=0;$a<count($patologieen);$a++){
-                                //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
-                                //                        }
 
                                 //TODO Opslaan gegevens van Edit implementeren
                                 //TODO gegevens tonen van Geluidsfragment
@@ -90,7 +75,8 @@
                             <button class="actieBtn" onclick="window.location='Overzicht.php';return false;">
                                 Terug
                             </button>
-                            <input type="submit" value="Edit" class="actieBtn" name="edit"/></li>
+                            <input type="submit" value="Edit" class="actieBtn" name="opslaan"/></li>
+<!--                        TODO wijzigingen nog opslaan in de database-->
 
                     <?php
                     }elseif (isset($_POST["details"]))

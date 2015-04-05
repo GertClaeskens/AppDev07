@@ -30,7 +30,9 @@
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="leeftijdscategoriecreate.php">Create new</a>
+                <button class="actieBtn" onclick="window.location='Create.php';return false;">
+                    Maak een nieuwe leeftijdscategorie
+                </button>
             </p>
             <br/>
             <!-- TODO zorgen dat links naar de juiste pagina's linken -->

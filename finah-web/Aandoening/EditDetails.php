@@ -90,7 +90,7 @@
                             <button class="actieBtn" onclick="window.location='Overzicht.php';return false;">
                                 Terug
                             </button>
-                            <input type="submit" value="Edit" class="createBtn" name="creeer"/></li>
+                            <input type="submit" value="Edit" class="actieBtn" name="opslaan"/></li>
 
                     <?php
                     }elseif (isset($_POST["details"]))
