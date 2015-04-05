@@ -31,7 +31,7 @@
 
             <p>
                 <button class="actieBtn" onclick="window.location='Create.php';return false;">
-                    Maak een nieuwe vragenlijst
+                    Maak een nieuwe vragenlijst aan
                 </button>
             </p>
             <br/>

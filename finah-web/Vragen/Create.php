@@ -1,7 +1,7 @@
 <?php
 
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/Vraag.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Vraag.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,14 +36,14 @@ require "../PHP/Models/Vraag.php";
 
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
-                if (isset($_POST["creeer"])) {
+                    if (isset($_POST["creeer"])) {
                     $omschrijving = $_POST["vraagstelling"];
 
                     $vraag = new Vraag();
-                    $vraag->Id=0;
+                    $vraag->Id = 0;
                     $vraag->setVraagstelling($vraag);
 
-                    if (FinahDAO::SchrijfWeg("Vraag",$vraag)){
+                    if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
                         //Todo eventueel een exception toevoegen hier
                         echo "De vraag werd succesvol opgeslagen";
                     }

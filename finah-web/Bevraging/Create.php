@@ -1,12 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Rafaël
- * Date: 27/03/2015
- * Time: 0:28
- */
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/Bevraging.php";
+    /**
+     * Created by PhpStorm.
+     * User: Rafaël
+     * Date: 27/03/2015
+     * Time: 0:28
+     */
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Bevraging.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,15 +23,15 @@ require "../PHP/Models/Bevraging.php";
     </div>
     <!--Closing DIV page header-->
     <div id="inner-wrapper">
-            <div id="nav-bar">
-                <h2> Menu </h2>
-                <button onclick="location.href='../index.php'">Home </button>
-                <button onclick="location.href='Account.php'">Mijn account </button>
-                <button onclick="location.href='Overzicht.php'">Bevragingen</button>
-                <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren </button>
-                <button onclick="location.href='#'">Uitloggen</button>
+        <div id="nav-bar">
+            <h2> Menu </h2>
+            <button onclick="location.href='../index.php'">Home</button>
+            <button onclick="location.href='Account.php'">Mijn account</button>
+            <button onclick="location.href='Overzicht.php'">Bevragingen</button>
+            <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren</button>
+            <button onclick="location.href='#'">Uitloggen</button>
 
-            </div>
+        </div>
         <!--Closing DIV nav-bar-->
         <div id="body-container">
             <h3 id="Breadcrumb">Menu > Bevraging > Aanmaken</h3>
@@ -41,7 +41,7 @@ require "../PHP/Models/Bevraging.php";
 
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
-                if (isset($_POST["creeer"])) {
+                    if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
                     $informatie = $_POST["informatie"];
                     $aandoeninglijst = $_POST["aandoening"];
@@ -57,10 +57,7 @@ require "../PHP/Models/Bevraging.php";
                     $bevraging->setLeeftijdsCategorie($leeftijdcatLijstPat); //enkel de leeftijdscategorie van de patient
                     //$bevraging->setLeeftijdsCategorieMan($leeftijdcatLijstMan
                     //Todo Leeftijdscategorie voor de mantelzorger ook voorzien in de klasse bevraging.php ??
-                   // $bevraging->setAandoening($aandoeninglijst); //Todo aandoening aanmaken in bevraging.php
-
-
-
+                    // $bevraging->setAandoening($aandoeninglijst); //Todo aandoening aanmaken in bevraging.php
 
 
                     if (FinahDAO::SchrijfWeg("Bevraging", $bevragingg)) {
@@ -80,45 +77,45 @@ require "../PHP/Models/Bevraging.php";
                     <li><label class="control-label">Kies de aandoening</label></li>
                     <select class="form-control" name="aandoening[]">
                         <?php
-                        $aandoening = FinahDAO::HaalOp("Aandoening",$_POST["Id"]);
-                        foreach ($aandoening as $item) {
-                            $waarde = $item->Omschrijving;
-                            echo "<option value='".$item["Id"]."'>" . $item["Omschrijving"] . "</option>\r\n";
-                        }
+                            $aandoening = FinahDAO::HaalOp("Aandoening", $_POST["Id"]);
+                            foreach ($aandoening as $item) {
+                                $waarde = $item->Omschrijving;
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                            }
 
                         ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
                     <select class="form-control" name="leeftijdscategoriePat[]">
                         <?php
-                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie",$_POST["Id"]);
-                        foreach ($leeftijdscategoriePat as $item) {
-                            $waarde = $item->Omschrijving;
-                            echo "<option value='".$item["Id"]."'>" . $item["Van"] ." tot " . $item["Tot"] .  "</option>\r\n";
-                        }
+                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie", $_POST["Id"]);
+                            foreach ($leeftijdscategoriePat as $item) {
+                                $waarde = $item->Omschrijving;
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
+                            }
 
                         ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de mantelzorger</label></li>
                     <select class="form-control" name="leeftijdscategoriePat[]">
                         <?php
-                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie",$_POST["Id"]);
-                        foreach ($leeftijdscategoriePat as $item) {
-                            $waarde = $item->Omschrijving;
-                            echo "<option value='".$item["Id"]."'>" . $item["Van"] ." tot " . $item["Tot"] .  "</option>\r\n";
-                        }
+                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie", $_POST["Id"]);
+                            foreach ($leeftijdscategoriePat as $item) {
+                                $waarde = $item->Omschrijving;
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
+                            }
 
                         ?>
                     </select>
                     <li><label class="control-label">Kies de relatie tussen Patient en mantelzorger</label></li>
 
-                    <select class="form-control" name="relatie[]" >
+                    <select class="form-control" name="relatie[]">
                         <?php
-                        $relatie = FinahDAO::HaalOp("Relatie",$_POST["Id"]);
-                          foreach ($relatie as $item) {
-                               $waarde = $item->Naam;
-                              echo "<option value='".$item["Id"]."'>" . $item["Naam"] . "</option>\r\n";
-                           }
+                            $relatie = FinahDAO::HaalOp("Relatie", $_POST["Id"]);
+                            foreach ($relatie as $item) {
+                                $waarde = $item->Naam;
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
+                            }
 
                         ?>
                     </select>

@@ -11,20 +11,23 @@
         private $Id;
         private $Antword;
 
-        public function __constructor__($id=null,$antword=null)
+        public function __constructor__($id = null, $antword = null)
         {
-            $this->Id=$id;
-            $this->Antword=$antword;
+            $this->Id = $id;
+            $this->Antword = $antword;
         }
+
         //alternatieve manier voor getters en setters
-        public function __get($property) {
+        public function __get($property)
+        {
             if (property_exists($this, $property)) {
                 return $this->$property;
             }
             return null;
         }
 
-        public function __set($property, $value) {
+        public function __set($property, $value)
+        {
             if (property_exists($this, $property)) {
                 $this->$property = $value;
             }

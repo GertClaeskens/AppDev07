@@ -1,6 +1,6 @@
 <?php
-require_once "../PHP/DAO/FinahDAO.php";
-require_once "../PHP/Models/LeeftijdsCategorie.php";
+    require_once "../PHP/DAO/FinahDAO.php";
+    require_once "../PHP/Models/LeeftijdsCategorie.php";
 ?>
 <html>
 <head>
@@ -43,12 +43,12 @@ require_once "../PHP/Models/LeeftijdsCategorie.php";
                 <!--                TODO PHP code om het juiste item op te halen -->
 
                 <tr>
-                            <td class="leeftijdKolom"> 0</td>
-                            <td class="leeftijdKolom"> 10</td>
-                             <td class="action-column-small">
-                                <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
-                         </td>
-               </tr>
+                    <td class="leeftijdKolom"> 0</td>
+                    <td class="leeftijdKolom"> 10</td>
+                    <td class="action-column-small">
+                        <a href='leeftijdscategorieEdit.php'>Edit</a> | <a href='delete.php'>Delete</a>
+                    </td>
+                </tr>
             </table>
             <div class="Back">
                 <a href="../LeeftijdsCategorie/Overzicht.php">Terug naar overzicht</a>

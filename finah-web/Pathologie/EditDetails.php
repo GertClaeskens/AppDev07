@@ -48,7 +48,7 @@
             <form method="POST">
                 <ul class="form-style">
                     <li><label class="control-label">Omschrijving</label></li>
-                    <?php    if (isset($_POST["bewerk"])) {  ?>
+                    <?php if (isset($_POST["bewerk"])) { ?>
 
                         <li><input class="form-control" type="text" name="omschrijving"
                                    value=<?php echo $pathologie["Omschrijving"]; ?>/></li>
@@ -76,7 +76,7 @@
                                 Terug
                             </button>
                             <input type="submit" value="Edit" class="actieBtn" name="opslaan"/></li>
-<!--                        TODO wijzigingen nog opslaan in de database-->
+                        <!--                        TODO wijzigingen nog opslaan in de database-->
 
                     <?php
                     }elseif (isset($_POST["details"]))

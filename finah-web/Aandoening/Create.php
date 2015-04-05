@@ -59,7 +59,7 @@
                     if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
-                       echo "De aandoening werd succesvol opgeslagen";
+                        echo "De aandoening werd succesvol opgeslagen";
                     }
                     //$aandoening->setPatologieen($patologielijst);
                     //var_dump($aandoening);

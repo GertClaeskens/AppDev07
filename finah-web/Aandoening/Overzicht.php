@@ -33,7 +33,7 @@
 
             <p>
                 <button class="actieBtn" onclick="window.location='Create.php';return false;">
-                    Maak een nieuwe aandoening
+                    Maak een nieuwe aandoening aan
                 </button>
                 <!--                <a href="Create.php">Create new</a>-->
             </p>

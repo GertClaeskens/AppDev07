@@ -1,7 +1,7 @@
 <?php
 
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/Pathologie.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Pathologie.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,15 +36,15 @@ require "../PHP/Models/Pathologie.php";
 
             <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
                 <?php
-                if (isset($_POST["creeer"])) {
+                    if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
                     $omschrijving = $_POST["omschrijving"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $pathologie = new Pathologie();
-                    $pathologie->Id=0;
+                    $pathologie->Id = 0;
                     $pathologie->setOmschrijving($omschrijving);
 
-                    if (FinahDAO::SchrijfWeg("Pathologie",$pathologie)){
+                    if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
                         //Todo eventueel een exception toevoegen hier
                         echo "De pathologie werd succesvol opgeslagen";
                     }

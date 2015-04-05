@@ -1,4 +1,5 @@
 <?php
+
     class Bevraging
     {
         private $Id;
@@ -11,18 +12,18 @@
         private $IsPatient;
         private $Antwoorden;
 
-        public function __construct($id=null,$leeftijdsCategorie=null,$informatie=null,$relatie=null,$aangemaaktDoor=null,$vragen=null,$isPatient=null,$antwoorden=null)
+        public function __construct($id = null, $leeftijdsCategorie = null, $informatie = null, $relatie = null, $aangemaaktDoor = null, $vragen = null, $isPatient = null, $antwoorden = null)
         {
-            $this->Id=$id;
-            $this->Informatie= $informatie;
-            $this->Relatie=$relatie;
-            $this->IsPatient=$isPatient;
+            $this->Id = $id;
+            $this->Informatie = $informatie;
+            $this->Relatie = $relatie;
+            $this->IsPatient = $isPatient;
             $this->Antwoorden = $antwoorden;
 
             $this->Aangevraagd = getdate(date("U"));
-            $this->LeeftijdsCategorie = ($leeftijdsCategorie === null)?new LeeftijdsCategorie():$leeftijdsCategorie;
-            $this->AangemaaktDoor = ($aangemaaktDoor === null)?new Account():$aangemaaktDoor;
-            $this->Vragen = ($vragen===null)? new VraagArray():$vragen;
+            $this->LeeftijdsCategorie = ($leeftijdsCategorie === null) ? new LeeftijdsCategorie() : $leeftijdsCategorie;
+            $this->AangemaaktDoor = ($aangemaaktDoor === null) ? new Account() : $aangemaaktDoor;
+            $this->Vragen = ($vragen === null) ? new VraagArray() : $vragen;
         }
 
         public function getId()

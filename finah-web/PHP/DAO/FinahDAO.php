@@ -18,7 +18,7 @@
             } else $url .= $id;
             // request list of contacts from Web API + deserialize data from JSON
             //var_dump($url);
-            $result = json_decode(file_get_contents($url),true);
+            $result = json_decode(file_get_contents($url), true);
             //var_dump($result);
             return $result;
         }
@@ -29,7 +29,7 @@
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
             $url = "http://localhost:1695/" . $type . "/";
             $gegevens = json_encode($data);
-    //print_r($gegevens);
+            //print_r($gegevens);
 //            var_dump($gegevens);
             //Initiate cURL.
             $ch = curl_init($url);

@@ -31,7 +31,7 @@
 
             <p>
                 <button class="actieBtn" onclick="window.location='Create.php';return false;">
-                    Maak een nieuwe leeftijdscategorie
+                    Maak een nieuwe leeftijdscategorie aan
                 </button>
             </p>
             <br/>

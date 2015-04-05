@@ -30,9 +30,9 @@
 
             <p>
                 <button class="actieBtn" onclick="window.location='Create.php';return false;">
-                    Maak een nieuwe pathologie
+                    Maak een nieuwe pathologie aan
                 </button>
-<!--                <a href="Create.php">Create new</a>-->
+                <!--                <a href="Create.php">Create new</a>-->
             </p>
             <br/>
 
@@ -50,7 +50,7 @@
                             echo "<tr>
                             <td>" . $item["Omschrijving"] . "</td>
                              <td class='action-column'>
-                             <input type='hidden' name='Id' value=". $item["Id"] ." />
+                             <input type='hidden' name='Id' value=" . $item["Id"] . " />
                                 <input type='submit' value='Edit' class='actieBtn' name='bewerk'/>
                                 <input type='submit' value='Delete' class='actieBtn' name='delete'/>
                                 <input type='submit' value='Details' class='actieBtn' name='details'/>

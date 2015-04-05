@@ -15,10 +15,10 @@
     {
         public $Patologieen;
 
-        public function __construct($id=null,$omschrijving=null,$patologieen=null)
+        public function __construct($id = null, $omschrijving = null, $patologieen = null)
         {
-            parent::__construct($id,$omschrijving);
-            $this->Patologieen = ($patologieen === null)?[]:$patologieen;
+            parent::__construct($id, $omschrijving);
+            $this->Patologieen = ($patologieen === null) ? [] : $patologieen;
         }
 
         public function kopieer(Aandoening $aand)
