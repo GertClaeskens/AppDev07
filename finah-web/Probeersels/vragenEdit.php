@@ -1,6 +1,6 @@
 <?php
-require "../DAO/FinahDAO.php";
-require_once "../Models/Vraag.php";
+require "../PHP/DAO/FinahDAO.php";
+require_once "../PHP/Models/Vraag.php";
 ?>
 <!DOCTYPE html>
 <html>

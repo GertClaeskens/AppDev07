@@ -1,7 +1,7 @@
 <?php
 
-require "../DAO/FinahDAO.php";
-require "../Models/VragenLijst.php";
+require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/VragenLijst.php";
 ?>
 <!DOCTYPE html>
 <html>

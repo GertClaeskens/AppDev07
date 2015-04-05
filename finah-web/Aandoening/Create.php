@@ -5,8 +5,8 @@
      * Date: 27/03/2015
      * Time: 0:28
      */
-    require "../DAO/FinahDAO.php";
-    require "../Models/Aandoening.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Aandoening.php";
 ?>
 <!DOCTYPE html>
 <html>

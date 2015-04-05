@@ -1,6 +1,6 @@
 <?php
-require "../DAO/FinahDAO.php";
-require "../Models/LeeftijdsCategorie.php";
+require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/LeeftijdsCategorie.php";
 ?>
 <!DOCTYPE html>
 <html>

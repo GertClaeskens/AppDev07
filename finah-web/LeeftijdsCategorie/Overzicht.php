@@ -1,6 +1,6 @@
 <?php
-    require_once "../DAO/FinahDAO.php";
-    require_once "../Models/LeeftijdsCategorie.php";
+    require_once "../PHP/DAO/FinahDAO.php";
+    require_once "../PHP/Models/LeeftijdsCategorie.php";
 ?>
 <html>
 <head>

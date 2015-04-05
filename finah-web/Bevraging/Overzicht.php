@@ -1,7 +1,7 @@
 
 <?php
-require "../DAO/FinahDAO.php";
-require_once "../Models/Bevraging.php";
+require "../PHP/DAO/FinahDAO.php";
+require_once "../PHP/Models/Bevraging.php";
 ?>
 <html>
 <head>

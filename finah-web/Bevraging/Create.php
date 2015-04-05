@@ -5,8 +5,8 @@
  * Date: 27/03/2015
  * Time: 0:28
  */
-require "../DAO/FinahDAO.php";
-require "../Models/Bevraging.php";
+require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/Bevraging.php";
 ?>
 <!DOCTYPE html>
 <html>

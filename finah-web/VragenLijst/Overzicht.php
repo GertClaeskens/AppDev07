@@ -1,5 +1,5 @@
 <?php
-require "../DAO/FinahDAO.php";
+require "../PHP/DAO/FinahDAO.php";
 ?>
     <html>
 <head>
