@@ -14,7 +14,7 @@ require "../Models/Bevraging.php";
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Bevraging</title>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
 </head>
 <body>
 <div id="wrapper">
@@ -25,10 +25,10 @@ require "../Models/Bevraging.php";
     <div id="inner-wrapper">
             <div id="nav-bar">
                 <h2> Menu </h2>
-                <button onclick="location.href='index.php'">Home </button>
+                <button onclick="location.href='../index.php'">Home </button>
                 <button onclick="location.href='Account.php'">Mijn account </button>
-                <button onclick="location.href='BevragingOverzicht.php'">Bevragingen</button>
-                <button onclick="location.href='aandoeningOverzicht.php'">Beheren </button>
+                <button onclick="location.href='Overzicht.php'">Bevragingen</button>
+                <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren </button>
                 <button onclick="location.href='#'">Uitloggen</button>
 
             </div>
@@ -65,7 +65,7 @@ require "../Models/Bevraging.php";
 
                     if (FinahDAO::SchrijfWeg("Bevraging", $bevragingg)) {
                         //Todo eventueel een exception toevoegen hier
-                        //header("Location: aandoeningOverzicht.php");
+                        //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
                     }
 
@@ -127,7 +127,7 @@ require "../Models/Bevraging.php";
                 </ul>
             </form>
             <div class="Back">
-                <a href="bevragingOverzicht.php">Terug naar overzicht</a>
+                <a href="Overzicht.php">Terug naar overzicht</a>
             </div>
         </div>
         <!--Closing DIV body containerr-->

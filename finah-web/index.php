@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>FINAH - Home</title>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="Css/Stylesheet.css"/>
 </head>
 <body>
 <div id="wrapper">
@@ -21,8 +21,8 @@
             <h2> Menu </h2>
             <button onclick="location.href='index.php'">Home </button>
             <button onclick="location.href='Account.php'">Mijn account </button>
-            <button onclick="location.href='BevragingOverzicht.php'">Bevragingen</button>
-            <button onclick="location.href='aandoeningOverzicht.php'">Beheren </button>
+            <button onclick="location.href='Bevraging/Overzicht.php'">Bevragingen</button>
+            <button onclick="location.href='Aandoening/Overzicht.php'">Beheren </button>
             <button onclick="location.href='#'">Uitloggen</button>
         </div><!--Closing DIV nav-bar-->
         <div id="body-container">

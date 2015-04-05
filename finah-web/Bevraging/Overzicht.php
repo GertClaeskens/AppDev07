@@ -5,7 +5,7 @@ require_once "../Models/Bevraging.php";
 ?>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <title>FINAH - Bevraging</title>
 </head>
 <body>
@@ -17,10 +17,10 @@ require_once "../Models/Bevraging.php";
     <div id="inner-wrapper">
         <div id="nav-bar2">
             <h2> Menu </h2>
-            <button onclick="location.href='index.php'">Home </button>
+            <button onclick="location.href='../index.php'">Home </button>
             <button onclick="location.href='Account.php'">Mijn account </button>
-            <button onclick="location.href='BevragingOverzicht.php'">Bevragingen</button>
-            <button onclick="location.href='aandoeningOverzicht.php'">Beheren </button>
+            <button onclick="location.href='Overzicht.php'">Bevragingen</button>
+            <button onclick="location.href='../Aandoening/Overzicht.php'">Beheren </button>
             <button onclick="location.href='#'">Uitloggen</button>
 
         </div>
@@ -31,7 +31,7 @@ require_once "../Models/Bevraging.php";
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="bevragingCreate.php">Create new</a>
+                <a href="Create.php">Create new</a>
             </p>
             <br/>
 <!--            Todo juiste kolommen weergeven-->

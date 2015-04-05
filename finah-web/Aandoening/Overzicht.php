@@ -5,7 +5,7 @@
 ?>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <title>FINAH - Aandoening</title>
 </head>
 <body>
@@ -17,12 +17,12 @@
     <div id="inner-wrapper">
         <div id="nav-bar2">
             <h2> Beheren </h2>
-            <button onclick="location.href='aandoeningOverzicht.php'">Aandoening</button>
-            <button onclick="location.href='pathologieOverzicht.php'">Pathologie</button>
-            <button onclick="location.href='leeftijdscategorieOverzicht.php'">Leeftijdscategorie</button>
-            <button onclick="location.href='VragenOverzicht.php'">Vragen</button>
-            <button onclick="location.href='VragenlijstOverzicht.php'">Vragenlijsten</button>
-            <button onclick="location.href='index.php'">Terug naar home</button>
+            <button onclick="location.href='Overzicht.php'">Aandoening</button>
+            <button onclick="location.href='../Pathologie/Overzicht.php'">Pathologie</button>
+            <button onclick="location.href='../LeeftijdsCategorie/Overzicht.php'">Leeftijdscategorie</button>
+            <button onclick="location.href='../Vragen/Overzicht.php'">Vragen</button>
+            <button onclick="location.href='../VragenLijst/Overzicht.php'">Vragenlijsten</button>
+            <button onclick="location.href='../index.php'">Terug naar home</button>
 
         </div>
         <!--Closing DIV nav-bar-->
@@ -32,11 +32,11 @@
             <h2 id="Content-Title">Overzicht</h2>
 
             <p>
-                <a href="aandoeningCreate.php">Create new</a>
+                <a href="Create.php">Create new</a>
             </p>
             <br/>
 
-            <form action="aandoeningEditDetails.php" method="post">
+            <form action="EditDetails.php" method="post">
                 <table class="overzicht-table">
                     <tr>
                         <th>

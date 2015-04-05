@@ -1,6 +1,6 @@
 <?php
 
-    require_once "SuperklasseAandoeningPathologie.php";
+    require_once "SuperKlasseAandoeningPathologie.php";
     require_once "Pathologie.php";
     require_once "../CustomDataTypes/PathologieArray.php";
 
