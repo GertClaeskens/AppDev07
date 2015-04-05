@@ -305,7 +305,7 @@ textarea
     border: 1px solid #88D5E9;
 }
 
-.form-style input[type=submit], .form-style input[type=button]{
+.form-style input[type=submit], .form-style input[type=button], {
     background: #0099CC;
     padding: 8px 15px 8px 15px;
     margin-top:10px;
