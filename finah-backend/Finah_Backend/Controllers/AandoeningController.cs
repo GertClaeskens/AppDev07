@@ -3,6 +3,8 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Runtime.CompilerServices;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
     using System.Data.Entity;
@@ -29,7 +31,12 @@ namespace Finah_Backend.Controllers
             db = new FinahDBContext();
             this.aandoeningen = aandoeningen;
         }
-
+        [Route("Aandoening/{id}/Pathologie")] //Geen Api/ meer nodig
+        //public IQueryable<Aandoening> GetAandoeningen()
+        public IEnumerable<Pathologie> GetPathologieen(int id)
+        {
+           return db.Aandoeningen.Find(id).Patologieen;
+        }
         [ResponseType(typeof(Aandoening))]
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
