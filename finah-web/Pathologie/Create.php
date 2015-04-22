@@ -57,7 +57,7 @@
 
                     </select>
 
-                    <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>
+                    <li><input type="submit" value="Create" class="actieBtn" name="creeer"/></li>
                 </ul>
             </form>
             <div class="Back">

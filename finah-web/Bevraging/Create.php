@@ -7,6 +7,9 @@
      */
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Bevraging.php";
+    require "../PHP/Models/Onderzoek.php";
+    require "../PHP/Models/AntwoordenLijst.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +18,9 @@
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
+    <script type="text/javascript">
+
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -75,9 +81,9 @@
                     <li><label class="control-label">Informatie</label></li>
                     <li><input class="form-control" type="text" name="informatie"/></li>
                     <li><label class="control-label">Kies de aandoening</label></li>
-                    <select class="form-control" name="aandoening[]">
+                    <select class="form-control" name="aandoening">
                         <?php
-                            $aandoening = FinahDAO::HaalOp("Aandoening", $_POST["Id"]);
+                            $aandoening = FinahDAO::HaalOp("Aandoening");
                             foreach ($aandoening as $item) {
                                 $waarde = $item->Omschrijving;
                                 echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
@@ -85,10 +91,22 @@
 
                         ?>
                     </select>
-                    <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
-                    <select class="form-control" name="leeftijdscategoriePat[]">
+                    <li><label class="control-label">Kies de pathologie</label></li>
+                    <select class="form-control" name="pathologie">
+<!--                        TODO moet pas ingeladen worden als de aandoening geselecteerd is -> Javascript?-->
                         <?php
-                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie", $_POST["Id"]);
+                            $pathologie = FinahDAO::HaalOp("Pathologie");
+                            foreach ($pathologie as $item) {
+                                $waarde = $item->Omschrijving;
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                            }
+
+                        ?>
+                    </select>
+                    <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
+                    <select class="form-control" name="leeftijdscategoriePat">
+                        <?php
+                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
                             foreach ($leeftijdscategoriePat as $item) {
                                 $waarde = $item->Omschrijving;
                                 echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
@@ -97,9 +115,9 @@
                         ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de mantelzorger</label></li>
-                    <select class="form-control" name="leeftijdscategoriePat[]">
+                    <select class="form-control" name="leeftijdscategorieMan">
                         <?php
-                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie", $_POST["Id"]);
+                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
                             foreach ($leeftijdscategoriePat as $item) {
                                 $waarde = $item->Omschrijving;
                                 echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
@@ -109,9 +127,9 @@
                     </select>
                     <li><label class="control-label">Kies de relatie tussen Patient en mantelzorger</label></li>
 
-                    <select class="form-control" name="relatie[]">
+                    <select class="form-control" name="relatie">
                         <?php
-                            $relatie = FinahDAO::HaalOp("Relatie", $_POST["Id"]);
+                            $relatie = FinahDAO::HaalOp("Relatie");
                             foreach ($relatie as $item) {
                                 $waarde = $item->Naam;
                                 echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
@@ -120,7 +138,7 @@
                         ?>
                     </select>
 
-                    <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>
+                    <li><input type="submit" value="Create" class="actieBtn" name="creeer"/></li>
                 </ul>
             </form>
             <div class="Back">
