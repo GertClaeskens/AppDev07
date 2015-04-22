@@ -223,6 +223,7 @@
     <Compile Include="Models\Antwoord.cs" />
     <Compile Include="Models\AntwoordenLijst.cs" />
     <Compile Include="Models\Enums\TypeAccount.cs" />
+    <Compile Include="Models\Onderzoek.cs" />
     <Compile Include="Models\Pathologie.cs" />
     <Compile Include="Models\Aanvraag.cs" />
     <Compile Include="Models\Account.cs" />
@@ -287,7 +288,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

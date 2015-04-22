@@ -44,6 +44,7 @@
         public DbSet<AntwoordenLijst> AntwoordenLijsten { get; set; }
 
         public DbSet<Relatie> Relaties { get; set; }
+        public DbSet<Onderzoek> Onderzoeken { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

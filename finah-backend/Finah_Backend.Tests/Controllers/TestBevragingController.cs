@@ -79,14 +79,14 @@ namespace Finah_Backend.Tests.Controllers
             testAccount.Naam = "Thys";
             testAccount.VoorNaam = "Brian";
 
-            testBevraging.Id = "hgdghdghghdshdghghd";
-            testBevraging.Aangevraagd = DateTime.Now;
-            testBevraging.AangemaaktDoor = testAccount;
-            testBevraging.LeeftijdsCat = testCat;
-            testBevraging.Informatie = "Test bevraging";
-            testBevraging.Relatie = "Test relatie";
-            testBevraging.Vragen = testVragenlijst;
-            testBevraging.IsPatient = true;
+            //testBevraging.Id = "hgdghdghghdshdghghd";
+            //testBevraging.Aangevraagd = DateTime.Now;
+            //testBevraging.AangemaaktDoor = testAccount;
+            //testBevraging.LeeftijdsCat = testCat;
+            //testBevraging.Informatie = "Test bevraging";
+            //testBevraging.Relatie = "Test relatie";
+            //testBevraging.Vragen = testVragenlijst;
+            //testBevraging.IsPatient = true;
             testBevragingen.Add(testBevraging);
 
             return testBevragingen;

@@ -12,6 +12,9 @@ namespace Finah_Backend.Models
     {
         [Key, ForeignKey("Bevraging")]
         public String Id { get; set; }
+        public DateTime Datum { get; set; }
+
+        public LeeftijdsCategorie LeeftijdsCategorie { get; set; }
 
         public virtual ICollection<Antwoord> Antwoorden { get; set; }
 
@@ -21,6 +24,6 @@ namespace Finah_Backend.Models
         }
 
         public virtual Bevraging Bevraging { get; set; }
-    
+
     }
 }
