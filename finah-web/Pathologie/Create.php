@@ -34,7 +34,7 @@
             <h2 id="Content-Title">Nieuwe pathologie</h2>
             <hr/>
 
-            <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);

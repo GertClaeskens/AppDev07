@@ -34,7 +34,7 @@
             <h2 id="Content-Title">Nieuwe Vraaglijst</h2>
             <hr/>
             <!--TODO  Een lijst met vragen (bv: multiple combobox) waarbij de benodigde vragen geselecteerd kunnen worden, om deze toe te voegen aan een nieuwe vragenlijst. -->
-            <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!--                --><?php
                     /*              if (isset($_POST["creeer"])) {
                                         $omschrijving = $_POST["vraagstelling"];

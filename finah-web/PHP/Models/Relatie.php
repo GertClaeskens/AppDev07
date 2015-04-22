@@ -8,8 +8,8 @@
      */
     class Relatie
     {
-        private $Id;
-        private $Naam;
+        public $Id;
+        public $Naam;
 
         public function __construct($id = null, $naam = null)
         {
