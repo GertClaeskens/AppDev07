@@ -19,83 +19,67 @@
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <script src="../js/jquery-2.1.3.min.js"></script>
-<!--    <script type="text/javascript" src="../js/finah.js"></script>-->
-    <script>
-$(document).ready(function() {
-    $('#aandoening').change(function (e) {
-        var id = e.target.value;
-        var urls = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
-        $.ajax({
+    <script src="../js/jsonhttprequest.min.js"></script>
+    <!--    <script type="text/javascript" src="../js/finah.js"></script>-->
+    <script type="text/javascript">
+        var data = '';
 
-            url: urls,
-            success: function (data) {
-                var sHtml = '';
-                for (var idx = 0; idx < data.length; ++idx) {
-                    sHtml += '<option value="' + data[idx].Id + '">' + data[idx].Omschrijving + '</option>';
-                }
-                $('#pathologie').empty().append(sHtml);
-            }
-        });
+        function OnChange(e) {
+            //first.onchange = function (e) {
+            var patho = document.forms["myForm"]["pathologie"];
+            var val = e.target.value;
 
-    });
-});
-    </script>
- <!--   <script type="text/javascript">
-        $(document).ready(function() {
-            alert("Test");
+            if (val != 'null') {
+                empty(patho);
 
-            var first = document.forms["myForm"]["aandoening"];
-            alert(first);
-            var second = document.myForm.getElementById('pathologie');
-
-            alert(second.value);
-            //function OnChange(e){
-            first.onchange = function (e) {
-                var val = e.target.value;
-                alert(val);
-                empty(second);
                 var pat = loadData(val);
-                for (var i = 0; i < 3; i += 1) {
+                alert(pat);
+                for (var i = 0; i < pat.length; i++) {
                     //gegevens ophalen
                     //addOption("test",second);
-                    addOption(pat[i].omschrijving, pat[i].id, second);
+                    addOption(pat[i].omschrijving, pat[i].id, patho);
                 }
-            };
-
-            function empty(select) {
-                select.innerHTML = '';
-            }
-
-            function addOption(inhoud, waarde, select) {
-                var option = document.createElement('option');
-                option.value = waarde;
-//            option.innerHTML = val;
-                option.textContent = inhoud;
-                //option.innerText = inhoud;
-                select.appendChild(option);
-            }
-
-            function loadData(id) {
-                var xhr;
-                xhr = new XMLHttpRequest();
-                xhr.overrideMimeType("application/json");
-                alert(id);
-                var url = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
-
-                xhr.open("GET", url, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        data = JSON.parse(xhr.responseText);
-
-                    }
-                };
-                xhr.send(null);
-                alert(data);
-                return data;
             }
         }
-    </script>  -->
+
+
+        function empty(select) {
+            select.innerHTML = '';
+        }
+
+        function addOption(inhoud, waarde, select) {
+            var option = document.createElement('option');
+            option.value = waarde;
+//            option.innerHTML = val;
+            option.textContent = inhoud;
+            //option.innerText = inhoud;
+            select.appendChild(option);
+        }
+
+        function loadData(id) {
+
+            var xhr;
+            //xhr = new XMLHttpRequest();
+            //xhr.overrideMimeType("application/json");
+            xhr = new JSONHttpRequest();
+
+            var url = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
+
+            xhr.open("GET", url, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert(xhr.responseText);
+                    data = JSON.parse(xhr.responseText);
+                    alert(data);
+                }
+            };
+            xhr.send(null);
+            return data;
+
+        }
+
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -156,7 +140,7 @@ $(document).ready(function() {
                     <li><label class="control-label">Informatie</label></li>
                     <li><input class="form-control" type="text" name="informatie"/></li>
                     <li><label class="control-label">Kies de aandoening</label></li>
-                    <select class="form-control"  id="aandoening">
+                    <select class="form-control" id="aandoening" name="aandoening" onchange="OnChange(event)">
                         <option value="null">Maak een keuze</option>
                         <?php
                             $aandoening = FinahDAO::HaalOp("Aandoening");
@@ -169,15 +153,15 @@ $(document).ready(function() {
                     <li><label class="control-label">Kies de pathologie</label></li>
                     <select class="form-control" name="pathologie" id="pathologie">
                         <option value="null">Maak een keuze</option>
-<!--                        TODO moet pas ingeladen worden als de aandoening geselecteerd is -> Javascript?-->
-<?php
-/*                            $pathologie = FinahDAO::HaalOp("Pathologie");
-                            foreach ($pathologie as $item) {
-                                $waarde = $item->Omschrijving;
-                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                            }
+                        <!--                        TODO moet pas ingeladen worden als de aandoening geselecteerd is -> Javascript?-->
+                        <?php
+                            /*                            $pathologie = FinahDAO::HaalOp("Pathologie");
+                                                        foreach ($pathologie as $item) {
+                                                            $waarde = $item->Omschrijving;
+                                                            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                                                        }
 
-                        */?>
+                                                    */ ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
                     <select class="form-control" name="leeftijdscategoriePat">
