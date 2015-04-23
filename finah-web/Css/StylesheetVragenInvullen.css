@@ -52,7 +52,6 @@
 #ervaring, #keuze, #next{
     width:101.5%;
     margin-bottom: 10px;
-    border: solid;
 }
 
 #keuze-content{
@@ -78,18 +77,15 @@
 #vorige{
     width:50%;
     float: left;
-    border: solid;
 }
 
 #volgende{
     width:50%;
     float: right;
-    border: solid;
 }
 
 .col-md-2{
     margin-bottom: 1px;
     margin-left: 35px;
     margin-right: 25px;
-    border: solid;
 }
