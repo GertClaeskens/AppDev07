@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>-->
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/jsonhttprequest.min.js"></script>
     <!--    <script type="text/javascript" src="../js/finah.js"></script>-->
@@ -118,7 +119,7 @@
 
                 <ul class="form-style">
                     <li><label class="control-label">Informatie</label></li>
-                    <li><input class="form-control" type="text" name="informatie"/></li>
+                    <li><textarea class="form-control" rows="5" id="informatie" name="informatie"></textarea></li>
                     <li><label class="control-label">Kies de aandoening</label></li>
                     <select class="form-control" id="aandoening" name="aandoening" onchange="OnChange(event)">
                         <option value="null">Maak een keuze</option>

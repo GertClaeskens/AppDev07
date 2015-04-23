@@ -15,8 +15,10 @@ class Onderzoek {
     private $AangemaaktDoor;
     private $Bevraging_Pat;
     private $Bevraging_Man;
+    private $Aandoening;
+    private $Pathologie;
 
-    function __construct($Id = null, $Aangevraagd = null,$Informatie = null, $Relatie = null, $Vragen = null, $AangemaaktDoor = null, $Bevraging_Pat = null, $Bevraging_Man = null)
+    function __construct($Id= null, $Aangevraagd= null, $Informatie= null, $Relatie= null, $Vragen= null, $AangemaaktDoor= null, $Bevraging_Pat= null, $Bevraging_Man= null, $Aandoening= null, $Pathologie= null)
     {
         $this->Id = $Id;
         $this->Aangevraagd = ($Aangevraagd == null)? getdate(date("U")):$Aangevraagd;
@@ -26,7 +28,11 @@ class Onderzoek {
         $this->AangemaaktDoor = $AangemaaktDoor;
         $this->Bevraging_Pat = $Bevraging_Pat;
         $this->Bevraging_Man = $Bevraging_Man;
+        $this->Aandoening = $Aandoening;
+        $this->Pathologie = $Pathologie;
     }
+
+
 
 
 }
