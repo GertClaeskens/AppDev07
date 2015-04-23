@@ -24,7 +24,8 @@ namespace Finah_Backend.Models
 
         public virtual Bevraging Bevraging_Pat { get; set; }
         public virtual Bevraging Bevraging_Man { get; set; }
-
+        public virtual Aandoening Aandoening { get; set; }
+        public virtual Pathologie Pathologie { get; set; }
 
         #endregion Public members
     }
