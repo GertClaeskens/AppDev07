@@ -8,8 +8,8 @@
      */
     abstract class SuperKlasseAandoeningPathologie
     {
-        public $Id;
-        public $Omschrijving;
+        protected $Id;
+        protected $Omschrijving;
 
         public function __construct($id = null, $omschrijving = null)
         {

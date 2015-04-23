@@ -27,7 +27,15 @@
             $this->setOmschrijving($aand->getOmschrijving());
             $this->setPatologieen($aand->getPatologieen());
         }
+        public function getId()
+        {
+            parent::getId();
+        }
 
+        public function setId($Id)
+        {
+            parent::setId($Id);
+        }
         public function getPatologieen()
         {
             return $this->Patologieen;

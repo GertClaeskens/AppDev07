@@ -90,29 +90,54 @@
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
                     $informatie = $_POST["informatie"];
-                    $aandoeninglijst = $_POST["aandoening"];
-                    $leeftijdcatLijstPat = $_POST["leeftijdcategoriePat"];
-                    $leeftijdcatLijstMan = $_POST["leeftijdcategorieMan"];
+                    $aandoening = $_POST["aandoening"];
+                    $pathologie = $_POST["pathologie"];
+                    $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
+                    $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
                     $relatie = $_POST["relatie"];
 
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
-                    $bevraging = new Bevraging();
-                    $bevraging->setId(0);
-                    //$bevraging->setInformatie($informatie);
-                    //$bevraging->setRelatie($relatie);
-                    //$bevraging->setLeeftijdsCategorie($leeftijdcatLijstPat); //enkel de leeftijdscategorie van de patient
-                    //$bevraging->setLeeftijdsCategorieMan($leeftijdcatLijstMan
-                    //Todo Leeftijdscategorie voor de mantelzorger ook voorzien in de klasse bevraging.php ??
-                    // $bevraging->setAandoening($aandoeninglijst); //Todo aandoening aanmaken in bevraging.php
+                    $onderzoek = new Onderzoek();
+                    $onderzoek->setId(0);
+                    $onderzoek->setAandoening($aandoening);
+                    //TODO wanneer we met accounts werken verder uitwerken
+                    $onderzoek->setAangemaaktDoor(null);
+                    $onderzoek->setPathologie($pathologie);
+                    $bevraging_pat = new Bevraging();
+                    $bevraging_pat->setIsPatient(true);
+                    $bevraging_man = new Bevraging();
+                    $bevraging_man->setIsPatient(false);
+                    $antwoorden_pat = new AntwoordenLijst();
+                    $antwoorden_pat->setLeeftijdsCategorie($leeftijdcatPat);
+                    $antwoorden_pat->setDatum(getdate(date("U")));
+                    $antwoorden_man = new AntwoordenLijst();
+                    $antwoorden_man->setLeeftijdsCategorie($leeftijdcatMan);
+                    $antwoorden_man->setDatum(getdate(date("U")));
+                    //TODO id laten genereren op Backend
+                    $ids = FinahDAO::HaalOp("Bevraging","UniekeIds");
+                    $bevraging_pat->setAntwoorden($antwoorden_pat);
+                    $bevraging_pat->setId($ids[0]);
+                    $bevraging_man->setAntwoorden($antwoorden_man);
+                    $bevraging_man->setId($ids[1]);
+
+                    $onderzoek->setBevragingPat($bevraging_pat);
+                    $onderzoek->setBevragingMan($bevraging_man);
+                    $onderzoek->setInformatie($informatie);
+                    $onderzoek->setRelatie($relatie);
+                    //TODO vragenlijst ophalen
+                    $vrLijst = $aandoening . "/Vragenlijst";
+                    $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));
 
 
-                    if (FinahDAO::SchrijfWeg("Bevraging", $bevraging)) {
+/*                    if (FinahDAO::SchrijfWeg("Bevraging", $bevraging)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
-                    }
+                    }*/
 
-
+                    echo $bevraging_pat->getId();
+                    echo "<br />";
+                    echo $bevraging_man->getId();
                 }else {
                 ?>
 
@@ -145,7 +170,7 @@
                                                     */ ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
-                    <select class="form-control" name="leeftijdscategoriePat">
+                    <select class="form-control" name="leeftijdcategoriePat">
                         <option value="null">Maak een keuze</option>
                         <?php
                             $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
@@ -156,7 +181,7 @@
                         ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de mantelzorger</label></li>
-                    <select class="form-control" name="leeftijdscategorieMan">
+                    <select class="form-control" name="leeftijdcategorieMan">
                         <option value="null">Maak een keuze</option>
                         <?php
                             $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
