@@ -25,58 +25,38 @@
         var data = '';
 
         function OnChange(e) {
-            //first.onchange = function (e) {
             var patho = document.forms["myForm"]["pathologie"];
             var val = e.target.value;
 
             if (val != 'null') {
                 empty(patho);
+                var pat='';
+                var xhr = new JSONHttpRequest();
 
-                var pat = loadData(val);
-                alert(pat);
-                for (var i = 0; i < pat.length; i++) {
-                    //gegevens ophalen
-                    //addOption("test",second);
-                    addOption(pat[i].omschrijving, pat[i].id, patho);
-                }
+                var url = "http://localhost:1695/Aandoening/"+val+"/Pathologie";
+                xhr.open("GET", url, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        pat = JSON.parse(xhr.responseText);
+                        //alert(pat[0].Omschrijving + " " + pat.length);
+                        for (var i = 0; i < pat.length; i++) {
+                            var option = document.createElement('option');
+                            option.value = pat[i].Id;
+                            option.textContent = pat[i].Omschrijving;
+                            option.innerText = pat[i].Omschrijving;
+                            patho.appendChild(option);
+                        }
+                    }
+                };
+                xhr.send(null);
+
             }
         }
 
 
         function empty(select) {
             select.innerHTML = '';
-        }
-
-        function addOption(inhoud, waarde, select) {
-            var option = document.createElement('option');
-            option.value = waarde;
-//            option.innerHTML = val;
-            option.textContent = inhoud;
-            //option.innerText = inhoud;
-            select.appendChild(option);
-        }
-
-        function loadData(id) {
-
-            var xhr;
-            //xhr = new XMLHttpRequest();
-            //xhr.overrideMimeType("application/json");
-            xhr = new JSONHttpRequest();
-
-            var url = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
-
-            xhr.open("GET", url, true);
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert(xhr.responseText);
-                    data = JSON.parse(xhr.responseText);
-                    alert(data);
-                }
-            };
-            xhr.send(null);
-            return data;
-
         }
 
     </script>
