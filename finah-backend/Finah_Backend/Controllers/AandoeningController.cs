@@ -4,6 +4,7 @@ using System.Web.Http;
 namespace Finah_Backend.Controllers
 {
     using System.Runtime.CompilerServices;
+    using System.Web.Http.Cors;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
@@ -13,6 +14,8 @@ namespace Finah_Backend.Controllers
     using System.Net;
     using System.Web.Http.Description;
 
+    //TODO aanpassen naar azure website
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class AandoeningController : ApiController
     {
         //TODO code opschonen als alles bolt
@@ -31,11 +34,13 @@ namespace Finah_Backend.Controllers
             db = new FinahDBContext();
             this.aandoeningen = aandoeningen;
         }
+
+
         [Route("Aandoening/{id}/Pathologie")] //Geen Api/ meer nodig
         //public IQueryable<Aandoening> GetAandoeningen()
         public IEnumerable<Pathologie> GetPathologieen(int id)
         {
-           return db.Aandoeningen.Find(id).Patologieen;
+            return db.Aandoeningen.Find(id).Patologieen;
         }
         [ResponseType(typeof(Aandoening))]
         [Route("Aandoening/{id}")]

@@ -10,6 +10,8 @@ namespace Finah_Backend
     {
         public static void Register(HttpConfiguration config)
         {
+            //Om problemen met XMLHttpRequest in Javascript te voorkomen
+            config.EnableCors();
             // Web API configuration and servicesz
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
