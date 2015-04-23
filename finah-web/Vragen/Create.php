@@ -1,5 +1,4 @@
 <?php
-
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Vraag.php";
 ?>

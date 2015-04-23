@@ -1,0 +1,95 @@
+.container{
+    margin:10px;
+    height:97%;
+    width:99%;
+}
+
+.progress-bar{
+    width:70%;
+}
+
+#thema{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    font-size:17pt;
+}
+
+#vraag{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    font-size:15pt;
+}
+
+.eVraag{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    font-size:13pt;
+}
+
+.antwoordButton{
+    width:100%;
+    height:10%;
+}
+
+.prevButton{
+    margin-left: 50px;
+    width:30%;
+    height:10%;
+    float: left;
+}
+
+.nextButton{
+    margin-right: 55px;
+    width:30%;
+    height:10%;
+    float: right;
+}
+
+.btn-primary{
+    white-space: normal;
+}
+
+#ervaring, #keuze, #next{
+    width:101.5%;
+    margin-bottom: 10px;
+    border: solid;
+}
+
+#keuze-content{
+    width:100%;
+    visibility:hidden;
+}
+
+.progress{
+    margin-top: 50px;
+    margin-left:10%;
+    margin-right:10%;
+    width:80%;
+    height:22px;
+}
+
+.thumbnail{
+    margin-left: 43.75%;
+    margin-right: 43.75%;
+    height: 25%;
+    width: 12.5%;
+}
+
+#vorige{
+    width:50%;
+    float: left;
+    border: solid;
+}
+
+#volgende{
+    width:50%;
+    float: right;
+    border: solid;
+}
+
+.col-md-2{
+    margin-bottom: 1px;
+    margin-left: 35px;
+    margin-right: 25px;
+    border: solid;
+}
