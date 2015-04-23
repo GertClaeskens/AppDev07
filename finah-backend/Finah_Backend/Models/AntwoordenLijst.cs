@@ -10,8 +10,10 @@ namespace Finah_Backend.Models
 
     public class AntwoordenLijst
     {
-        [Key, ForeignKey("Bevraging")]
+        [Key, Column(Order = 0)]
+        [ForeignKey("Bevraging")]
         public String Id { get; set; }
+        //[Key, Column(Order = 1)]
         public DateTime Datum { get; set; }
 
         public LeeftijdsCategorie LeeftijdsCategorie { get; set; }

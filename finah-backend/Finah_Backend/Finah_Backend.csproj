@@ -216,6 +216,7 @@
     <Compile Include="Controllers\GeluidsFragmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
+    <Compile Include="Controllers\OnderzoekController.cs" />
     <Compile Include="Controllers\PathologieController.cs" />
     <Compile Include="Controllers\RelatieController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

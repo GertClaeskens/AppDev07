@@ -9,6 +9,7 @@ namespace Finah_Backend.Models
         #region Public members
 
         //unieke genereren id 
+        [Key]
         public String Id { get; set; }
 
         #region verborgen velden
