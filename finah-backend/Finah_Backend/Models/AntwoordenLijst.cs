@@ -10,9 +10,8 @@ namespace Finah_Backend.Models
 
     public class AntwoordenLijst
     {
-        [Key, Column(Order = 0)]
-        [ForeignKey("Bevraging")]
-        public String Id { get; set; }
+        //[Key, Column(Order = 0), ForeignKey("Bevraging")]
+        public virtual String Id { get; set; }
         //[Key, Column(Order = 1)]
         public DateTime Datum { get; set; }
 
@@ -24,6 +23,7 @@ namespace Finah_Backend.Models
         {
             this.Antwoorden = new List<Antwoord>();
         }
+
 
         public virtual Bevraging Bevraging { get; set; }
 

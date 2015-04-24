@@ -10,7 +10,7 @@ namespace Finah_Backend.Models
 
         //unieke genereren id 
         [Key]
-        public String Id { get; set; }
+        public virtual String Id { get; set; }
 
         #region verborgen velden
         //public DateTime Aangevraagd { get; set; }
@@ -31,7 +31,7 @@ namespace Finah_Backend.Models
         //public virtual Account AangemaaktDoor { get; set; }
         #endregion
 
-        public virtual AntwoordenLijst Antwoorden { get; set; }
+        //public virtual AntwoordenLijst Antwoorden { get; set; }
         //Nodig om de juiste benamingen te tonen tijdens het invullen van de vragenlijst
         public bool IsPatient { get; set; }
 

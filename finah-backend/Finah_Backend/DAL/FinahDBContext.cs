@@ -1,5 +1,7 @@
 ﻿namespace Finah_Backend.DAL
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     using Finah_Backend.Models;
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
@@ -50,6 +52,19 @@
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<AntwoordenLijst>().HasKey(e => new { e.Id, e.Datum });
+            //modelBuilder.Entity<AntwoordenLijst>().HasRequired(e => e.Id).WithRequiredPrincipal();
+            modelBuilder.Entity<AntwoordenLijst>()
+                        .Property(e => e.Id)
+                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<AntwoordenLijst>()
+            //            .HasRequired(e => e.Bevraging)
+            //            .WithRequiredDependent(r => r.Antwoorden);
+            //modelBuilder.Entity<Bevraging>()
+            //.HasRequired(e => e.Antwoorden)
+            //.WithRequiredDependent(r => r.Bevraging);
+
         }
     }
 }
