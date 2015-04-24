@@ -4,13 +4,12 @@
     {
         private $Id;
         private $IsPatient;
-        private $Antwoorden;
 
-        public function __construct($id = null, $isPatient = null, $antwoorden = null)
+        public function __construct($id = null, $isPatient = null)
         {
             $this->Id = $id;
             $this->IsPatient = $isPatient;
-            $this->Antwoorden = $antwoorden;
+
         }
 
         public function getId()
@@ -32,13 +31,4 @@
             $this->IsPatient = $IsPatient;
         }
 
-        public function getAntwoorden()
-        {
-            return $this->Antwoorden;
-        }
-
-        public function setAntwoorden($antwoorden)
-        {
-            $this->Antwoorden = $antwoorden;
-        }
     }

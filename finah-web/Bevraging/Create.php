@@ -115,11 +115,10 @@
                     $antwoorden_man->setDatum(getdate(date("U")));
                     //TODO id laten genereren op Backend
                     $ids = FinahDAO::HaalOp("Bevraging","UniekeIds");
-                    $bevraging_pat->setAntwoorden($antwoorden_pat);
                     $bevraging_pat->setId($ids[0]);
-                    $bevraging_man->setAntwoorden($antwoorden_man);
                     $bevraging_man->setId($ids[1]);
-
+                    $antwoorden_pat->setId($bevraging_pat->getId());
+                    $antwoorden_man->setId($bevraging_man->getId());
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
@@ -129,15 +128,12 @@
                     $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));
 
 
-/*                    if (FinahDAO::SchrijfWeg("Bevraging", $bevraging)) {
+                    if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
-                    }*/
+                    }
 
-                    echo $bevraging_pat->getId();
-                    echo "<br />";
-                    echo $bevraging_man->getId();
                 }else {
                 ?>
 
