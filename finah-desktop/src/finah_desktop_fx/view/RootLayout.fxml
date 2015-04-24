@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="650.0" maxWidth="1125.0" minHeight="650.0" minWidth="1125.0" prefHeight="650.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+            <Label text="Finah">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Line endX="25.0" rotate="90.0" startX="-25.0" />
+          <Button focusTraversable="false" mnemonicParsing="false" text="Account" />
+            <Button focusTraversable="false" mnemonicParsing="false" text="Nieuwe bevraging" />
+            <MenuButton mnemonicParsing="false" text="Beheer">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Vragen" />
+                  <MenuItem mnemonicParsing="false" text="Vragenlijsten" />
+                  <MenuItem mnemonicParsing="false" text="Aandoeningen" />
+                  <MenuItem mnemonicParsing="false" text="Pathologieën" />
+                <MenuItem mnemonicParsing="false" text="Accounts" />
+              </items>
+            </MenuButton>
+            <Button focusTraversable="false" mnemonicParsing="false" text="Resultaten" />
+            <Button focusTraversable="false" mnemonicParsing="false" text="Uitloggen" />
+        </buttons>
+         <BorderPane.margin>
+            <Insets right="100.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </ButtonBar>
+   </top>
+   <bottom>
+      <Label text="Finah Application - © AppDev Groep 7" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

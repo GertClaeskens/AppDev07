@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="91.0" layoutY="14.0" text="Finah Login" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="95.0" text="Gebruikersnaam" />
+      <Label layoutX="53.0" layoutY="162.0" text="Wachtwoord" />
+      <TextField layoutX="53.0" layoutY="116.0" prefHeight="31.0" prefWidth="301.0" />
+      <PasswordField layoutX="53.0" layoutY="185.0" prefHeight="31.0" prefWidth="301.0" />
+      <Line endX="150.0" layoutX="200.0" layoutY="70.0" startX="-150.0" AnchorPane.topAnchor="69.5" />
+      <Button layoutX="161.0" layoutY="243.0" mnemonicParsing="false" text="Inloggen" />
+      <Hyperlink layoutX="48.0" layoutY="297.0" text="Nieuw account aanmaken" />
+      <Hyperlink layoutX="48.0" layoutY="334.0" text="Wachtwoord vergeten?" />
+   </children>
+</AnchorPane>
