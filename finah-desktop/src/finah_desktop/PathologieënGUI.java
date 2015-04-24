@@ -35,11 +35,11 @@ public class PathologieënGUI extends JFrame{
 	private List<Pathologie> pathologieen;
 
 	public PathologieënGUI(){
-//		pathologieen = new ArrayList<Pathologie>();
-//		for(int i=1; i<=10; i++){
-//			pathologieen.add(new Pathologie());
-//		}
-		pathologieen = PathologieDAO.GetPathologieen();
+		pathologieen = new ArrayList<Pathologie>();
+		for(int i=1; i<=10; i++){
+			pathologieen.add(new Pathologie());
+		}
+		//pathologieen = PathologieDAO.GetPathologieen();
 		
 		panel = new VragenPanel();		
 		panel.setLayout(null);
@@ -86,7 +86,7 @@ public class PathologieënGUI extends JFrame{
 			for(int i=0; i<pathologieen.size(); i++){
 				Pathologie pat = pathologieen.get(i);
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString(pat.getOmschrijving(), 120, hoogte-10);
+				g2d.drawString("  ", 120, hoogte-10);//pat.getOmschrijving()
 				JComboBox aandoeningCombo = new JComboBox();
 				aandoeningCombo.setBounds(702,hoogte-28,197,27);
 				add(aandoeningCombo);

@@ -36,11 +36,11 @@ public class VragenlijstenGUI extends JFrame{
 	private static int bekijken;
 
 	public VragenlijstenGUI(){
-//		vragenlijsten = new ArrayList<VragenLijst>();
-//		for(int i=1; i<=10; i++){
-//			vragenlijsten.add(new VragenLijst());
-//		}
-		vragenlijsten = VragenLijstDAO.GetVragenLijsten();
+		vragenlijsten = new ArrayList<VragenLijst>();
+		for(int i=1; i<=10; i++){
+			vragenlijsten.add(new VragenLijst());
+		}
+		//vragenlijsten = VragenLijstDAO.GetVragenLijsten();
 		
 		
 		panel = new VragenlijstenPanel();		
