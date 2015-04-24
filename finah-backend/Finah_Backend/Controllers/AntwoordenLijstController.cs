@@ -90,7 +90,7 @@ namespace Finah_Backend.Controllers
 
         // POST: api/AntwoordenLijst
         [ResponseType(typeof(AntwoordenLijst))]
-        public IHttpActionResult PostAntwoordenLijst(AntwoordenLijst antwoordenLijst)
+        public IHttpActionResult PostAntwoordenLijst([FromBody] AntwoordenLijst antwoordenLijst)
         {
             if (!ModelState.IsValid)
             {

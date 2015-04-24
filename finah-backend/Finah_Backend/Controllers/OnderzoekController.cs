@@ -73,17 +73,17 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Onderzoek
         [ResponseType(typeof(Onderzoek))]
-        public IHttpActionResult PostOnderzoek(Onderzoek onderzoek)
+        public void PostOnderzoek([FromBody] Onderzoek onderzoek)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            
             db.Onderzoeken.Add(onderzoek);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = onderzoek.Id }, onderzoek);
+            //return CreatedAtRoute("DefaultApi", new { id = onderzoek.Id }, onderzoek);
         }
 
         // DELETE: api/Onderzoek/5
