@@ -28,6 +28,7 @@
             //TODO verder uitwerken
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
             $url = "http://localhost:1695/" . $type . "/";
+            var_dump($data);
             $gegevens = json_encode($data);
             //print_r($gegevens);
 //            var_dump($gegevens);

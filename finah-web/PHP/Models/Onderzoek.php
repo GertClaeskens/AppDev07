@@ -7,15 +7,15 @@
  */
 
 class Onderzoek {
-    private $Id;
-    private $Informatie;
-    private $Relatie;
-    private $Vragen;
-    private $AangemaaktDoor;
-    private $Bevraging_Pat;
-    private $Bevraging_Man;
-    private $Aandoening;
-    private $Pathologie;
+    public $Id;
+    public $Informatie;
+    public $Relatie;
+    public $Vragen;
+    public $AangemaaktDoor;
+    public $Bevraging_Pat;
+    public $Bevraging_Man;
+    public $Aandoening;
+    public $Pathologie;
 
     function __construct($Id= null, $Informatie= null, $Relatie= null, $Vragen= null, $AangemaaktDoor= null, $Bevraging_Pat= null, $Bevraging_Man= null, $Aandoening= null, $Pathologie= null)
     {

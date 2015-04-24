@@ -8,11 +8,11 @@
      */
     class AntwoordenLijst
     {
-        private $Id;
-        private $Datum;
-        private $LeeftijdsCategorie;
-        private $Antwoorden;
-        private $Bevraging;
+        public $Id;
+        public $Datum;
+        public $LeeftijdsCategorie;
+        public $Antwoorden;
+        public $Bevraging;
 
         function __construct($Id=null, $Antwoorden=null, $LeeftijdsCategorie=null, $Bevraging=null)
         {

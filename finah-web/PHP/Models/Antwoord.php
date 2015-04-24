@@ -8,8 +8,8 @@
      */
     class Antwoord
     {
-        private $Id;
-        private $Antword;
+        public $Id;
+        public $Antword;
 
         public function __constructor__($id = null, $antword = null)
         {

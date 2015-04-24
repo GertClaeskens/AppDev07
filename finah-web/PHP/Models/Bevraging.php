@@ -2,8 +2,8 @@
 
     class Bevraging
     {
-        private $Id;
-        private $IsPatient;
+        public $Id;
+        public $IsPatient;
 
         public function __construct($id = null, $isPatient = null)
         {

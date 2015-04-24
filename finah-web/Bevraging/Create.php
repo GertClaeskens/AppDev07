@@ -107,18 +107,20 @@
                     $bevraging_pat->setIsPatient(true);
                     $bevraging_man = new Bevraging();
                     $bevraging_man->setIsPatient(false);
-                    $antwoorden_pat = new AntwoordenLijst();
-                    $antwoorden_pat->setLeeftijdsCategorie($leeftijdcatPat);
-                    $antwoorden_pat->setDatum(getdate(date("U")));
-                    $antwoorden_man = new AntwoordenLijst();
-                    $antwoorden_man->setLeeftijdsCategorie($leeftijdcatMan);
-                    $antwoorden_man->setDatum(getdate(date("U")));
                     //TODO id laten genereren op Backend
                     $ids = FinahDAO::HaalOp("Bevraging","UniekeIds");
                     $bevraging_pat->setId($ids[0]);
                     $bevraging_man->setId($ids[1]);
+
+                    $antwoorden_pat = new AntwoordenLijst();
                     $antwoorden_pat->setId($bevraging_pat->getId());
+                    $antwoorden_pat->setLeeftijdsCategorie($leeftijdcatPat);
+                    $antwoorden_pat->setDatum(getdate(date("U")));
+                    $antwoorden_man = new AntwoordenLijst();
                     $antwoorden_man->setId($bevraging_man->getId());
+                    $antwoorden_man->setLeeftijdsCategorie($leeftijdcatMan);
+                    $antwoorden_man->setDatum(getdate(date("U")));
+
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
@@ -127,13 +129,17 @@
                     $vrLijst = $aandoening . "/Vragenlijst";
                     $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));
 
-
+                    //var_dump($onderzoek);
                     if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
                     }
-
+                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
+                        //Todo eventueel een exception toevoegen hier
+                        //header("Location: Overzicht.php");
+                        echo "De bevraging werd succesvol opgeslagen";
+                    }
                 }else {
                 ?>
 
