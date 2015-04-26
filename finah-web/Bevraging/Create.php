@@ -99,10 +99,11 @@
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $onderzoek = new Onderzoek();
                     $onderzoek->setId(0);
-                    $onderzoek->setAandoening($aandoening);
+                    //$onderzoek->setAandoening($aandoening);
+                    $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening",$aandoening));
                     //TODO wanneer we met accounts werken verder uitwerken
                     $onderzoek->setAangemaaktDoor(null);
-                    $onderzoek->setPathologie($pathologie);
+                    $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie",$pathologie));
                     $bevraging_pat = new Bevraging();
                     $bevraging_pat->setIsPatient(true);
                     $bevraging_man = new Bevraging();
@@ -124,7 +125,7 @@
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
-                    $onderzoek->setRelatie($relatie);
+                    $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie",$relatie));
                     //TODO vragenlijst ophalen
                     $vrLijst = $aandoening . "/Vragenlijst";
                     $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));
@@ -135,11 +136,11 @@
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
                     }
-                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
+/*                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
-                    }
+                    }*/
                 }else {
                 ?>
 
