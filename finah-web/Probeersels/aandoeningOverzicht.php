@@ -1,5 +1,6 @@
 <?php
-    require "../PHP/DAO/FinahDAO.php";
+require "../PHP/DAO/FinahDAO.php";
+require_once "../PHP/Models/Bevraging.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FINAH - Vragenlijst</title>
+    <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -62,7 +63,7 @@
                 <a href="../index.php"> Home </a>
             </li>
             <li>
-                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
+                <a href="#"> Bevraging</a>
             </li>
             <br/>
             <li class="sidebar-brand">
@@ -83,47 +84,50 @@
                 <a href="../Vragen/Overzicht.php"> Vragen</a>
             </li>
             <li>
-                <a href="#"> Vragenlijsten</a>
+                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
             </li>
         </ul>
     </div>
     <div  id="page-content-wrapper">
         <div class="breadcrumb">
-            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Vragenlijst </span>        </div>
+            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Bevraging </span>        </div>
         <div  class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
                     <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe vragenlijst aan
+                        Maak een nieuwe bevraging aan
                     </button>
 
                     <form action="EditDetails.php" method="post">
                         <table class="table table-bordered table-responsive table-striped">
                             <thead>
-                            <tr>
-                                <th>
-                                    Aangevraagd
-                                </th>
-                                <th>
-                                    Informatie
-                                </th>
-                                <th>
-                                    Relatie
-                                </th>
-                                <th>Actie</th>
-                            </tr>
+                                <tr>
+                                    <th>
+                                        Aangevraagd
+                                    </th>
+                                    <th>
+                                        Informatie
+                                    </th>
+                                    <th>
+                                        Relatie
+                                    </th>
+                                    <th>Actie</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                     $vragenLijst = FinahDAO::HaalOp("VragenLijst");
-                                    foreach ($vragenLijst as $item) {
-                                        echo "<tr>
-                                            <td class='col-sm-1 col-md-1 col-lg-1 text-center'>" . $item["Id"] . "</td>
-                                            <td class='col-sm-6 col-md-6 col-lg-6'> " . $item["Aandoe"]["Omschrijving"] . "</td>
-                                            <td class='col-sm-3 col-md-3 col-lg-3 text-center'>" . count($item["Vragen"]) . "</td>";
-                                        echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <input type='hidden' name='Id' value=" . $item["Id"] . " />
+                            <tr>
+                                <td class="col-sm-1 col-md-1 col-lg-1 text-center">
+                                    1/04/2015
+                                </td>
+                                <td class="col-sm-7 col-md-7 col-lg-7">
+                                    Voorbeeld informatie
+                                </td>
+                                <td class="col-sm-2 col-md-2 col-lg-2 text-center">
+                                    Getrouwd
+                                </td>
+                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+<!--                                        <input type='hidden' name='Id' value=" . $item["Id"] />-->
                                             <button type='submit' name='details' class='btn btn-primary'>
                                                 <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                             </button>
@@ -134,9 +138,10 @@
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                                   </tr>";
-                                    }
-                                 ?>
+                                   </tr>
+<!--                            ";-->
+<!--                                    }-->
+<!--                                 ?>-->
                             </tbody>
                         </table>
                     </form>

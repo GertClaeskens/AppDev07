@@ -83,7 +83,7 @@ require "../PHP/DAO/FinahDAO.php";
                 <a href="../Vragen/Overzicht.php"> Vragen</a>
             </li>
             <li>
-                <a href="#"> Vragenlijsten</a>
+                <a href="Overzicht.php"> Vragenlijsten</a>
             </li>
         </ul>
     </div>

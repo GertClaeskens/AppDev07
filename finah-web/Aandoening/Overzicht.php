@@ -72,7 +72,7 @@ require_once "../PHP/Models/Pathologie.php";
                 </h4>
             </li>
             <li>
-                <a href="#"> Aandoening </a>
+                <a href="Overzicht.php"> Aandoening </a>
             </li>
             <li>
                 <a href="../Pathologie/Overzicht.php"> Pathologie</a>

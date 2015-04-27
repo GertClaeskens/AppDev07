@@ -78,7 +78,7 @@ require_once "../PHP/Models/LeeftijdsCategorie.php";
                 <a href="../Pathologie/Overzicht.php"> Pathologie</a>
             </li>
             <li>
-                <a href="#"> Leeftijdscategorie</a>
+                <a href="Overzicht.php"> Leeftijdscategorie</a>
             </li>
             <li>
                 <a href="../Vragen/Overzicht.php"> Vragen</a>
@@ -120,7 +120,7 @@ require_once "../PHP/Models/LeeftijdsCategorie.php";
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'>" . $item["Van"] . "</td>
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'>" . $item["Tot"] . "</td>";
 
-                                echo "<td class='action-column col-sm-1' col-md-2 col-lg-2>
+                                echo "<td class='action-column col-sm-1 col-md-2 col-lg-2'>
                                     <input type='hidden' name='Id' value=" . $item["Id"] . " />
                                         <button type='submit' name='details' class='btn btn-primary'>
                                             <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
