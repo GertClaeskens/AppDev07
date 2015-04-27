@@ -11,7 +11,7 @@
 <head>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Css/StylesheetVragenInvullen.css"/>
-    <script type="text/javascript" src="VraagInvullen.js"></script>
+    <script type="text/javascript" src="../js/VraagInvullen.js"></script>
     <title>FINAH - Bevraging</title>
 </head>
 <body>
@@ -30,8 +30,8 @@ if (isset($_GET["id"])) {
     ?>
 <!--    TODO als er al vragen zijn ingevuld moet er op de button staan hervatten vragenlijst-->
     <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-<!-- dit formulier is de client versie -->
-	Korte inleiding over de enquete</br></br>
+
+    Korte inleiding over de enquete</br></br>
 
         <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
         <input type="hidden" name="volgende" value="<?php echo $aantalingevuld?>">
