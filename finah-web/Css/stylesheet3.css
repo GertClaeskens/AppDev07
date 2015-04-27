@@ -1,0 +1,218 @@
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/glyphicons-halflings-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/glyphicons-halflings-regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/glyphicons-halflings-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/glyphicons-halflings-regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+p,h1,h2,h3,article,a {
+    -webkit-font-smoothing: subpixel-antialiased;
+    /*-webkit-font-smoothing: antialiased;*/
+    -moz-osx-font-smoothing: grayscale;
+}
+#menu-toggle{
+    text-decoration:none;
+    border:0;
+    outline:none;
+    margin-left:10px;
+}
+.glyphicon-option-horizontal{
+    margin-top:13px;
+    font-size:2.0em;
+    color:#30636e;
+
+}
+.glyphicon-option-vertical{
+    margin-top:10px;
+    color:#30636e;
+    font-size:2.0em;
+}
+
+
+.caret {
+    color:gray;
+}
+.img-circle > img {
+    padding:0;
+    width:37px;
+    height:35px;
+    border-radius:50px;
+    float:left;
+}
+.navbar-fixed-top{
+    max-height:40px;
+    min-width:450px;
+}
+
+
+.glyphicon-option-vertical .glyphicon-option-horizontal {
+    color:black;
+    color:#30636e;
+}
+.glyphicon-user{
+    color:#4A89DC;
+}
+.glyphicon-log-out{
+    color:#4A89DC;
+}
+.nav-right {
+    margin-top:8px;
+}
+.nav-right > a {
+    text-decoration:none;
+    color:black;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:1em;
+    font-weight:bold;
+}
+#wrapper {
+    padding-left: 0;
+    /*border:1px solid red;*/
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #30363E; /* Standard syntax */
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding:0;
+    margin-top:50px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+    padding:0;
+
+}
+
+.sidebar-nav {
+    margin-top:0px;
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-family: 'Glyphicons Halflings';
+    font-weight:600;
+    font-size:1.2em;
+    padding-left:10px;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #4A89DC;
+    background: #22262C;
+
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    font-size: 18px;
+    line-height: 60px;
+    margin-top:30px;
+}
+
+.sidebar-nav > .sidebar-brand h4 {
+    color: #999999;
+}
+.breadcrumb {
+    color:#30363E;
+}
+.breadcrumb > .breadcrumb-font {
+    font-family: 'Glyphicons Halflings';
+    font-weight:bold;
+    font-size:1.2em;
+    color:#30363E;
+}
+.glyphicon-home{
+    color:#4a89dc;
+}
+
+@media(min-width:768px) {
+
+    .btn-toggle{
+        visibility: hidden;
+    }
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+    .nav-right {
+        right:120px;
+    }
+}
+@media(max-width:767px) {
+    .nav-right{
+        right:30px;
+    }
+    .glyphicon-option-horizontal .glyphicon-option-vertical {
+        color:#30636e;
+    }
+
+
+}
