@@ -23,7 +23,7 @@ namespace Finah_Backend.Controllers
         //public IQueryable<AntwoordenLijst> GetOverzicht()
         public IEnumerable<AntwoordenLijst> GetOverzicht()
         {
-            return db.AntwoordenLijsten;
+            return db.AntwoordenLijsten.Include(a => a.LeeftijdsCategorie);
             //var al1 = new AntwoordenLijst { Id = "1" };
             //var al2 = new AntwoordenLijst { Id = "1" };
             //var al3 = new AntwoordenLijst { Id = "1" };
@@ -39,7 +39,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsten.Find(id);
+            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();
             //AntwoordenLijst antwoordenLijst = null;
             //if (id.Equals("1"))
             //{
@@ -92,6 +92,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult PostAntwoordenLijst([FromBody] AntwoordenLijst antwoordenLijst)
         {
+            antwoordenLijst.LeeftijdsCategorie = db.LeeftijdsCategorieen.Find(antwoordenLijst.LeeftijdsCategorie.Id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

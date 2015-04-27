@@ -79,7 +79,12 @@ namespace Finah_Backend.Controllers
             //{
             //    return BadRequest(ModelState);
             //}
-            
+
+            onderzoek.Pathologie = db.Pathologieen.Find(onderzoek.Pathologie.Id);
+            onderzoek.Relatie = db.Relaties.Find(onderzoek.Relatie.Id);
+            onderzoek.Aandoening = db.Aandoeningen.Find(onderzoek.Aandoening.Id);
+            onderzoek.Vragen = db.VragenLijsten.Find(onderzoek.Vragen.Id);
+            //onderzoek.AangemaaktDoor = db.Accounts.Find(onderzoek.AangemaaktDoor.Id);
             db.Onderzoeken.Add(onderzoek);
             db.SaveChanges();
 

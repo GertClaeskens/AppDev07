@@ -99,10 +99,11 @@
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $onderzoek = new Onderzoek();
                     $onderzoek->setId(0);
-                    $onderzoek->setAandoening($aandoening);
+                    //$onderzoek->setAandoening($aandoening);
+                    $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening",$aandoening));
                     //TODO wanneer we met accounts werken verder uitwerken
                     $onderzoek->setAangemaaktDoor(null);
-                    $onderzoek->setPathologie($pathologie);
+                    $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie",$pathologie));
                     $bevraging_pat = new Bevraging();
                     $bevraging_pat->setIsPatient(true);
                     $bevraging_man = new Bevraging();
@@ -114,17 +115,20 @@
 
                     $antwoorden_pat = new AntwoordenLijst();
                     $antwoorden_pat->setId($bevraging_pat->getId());
-                    $antwoorden_pat->setLeeftijdsCategorie($leeftijdcatPat);
-                    $antwoorden_pat->setDatum(getdate(date("U")));
+                    $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatPat));
+                    $datum = new DateTime("Now");
+                    $dat = $datum->format('d/m/Y G:i:s');
+                    $dateTime = DateTime::createFromFormat('d/m/Y G:i:s',$dat);
+                    $antwoorden_pat->setDatum($dateTime);
                     $antwoorden_man = new AntwoordenLijst();
                     $antwoorden_man->setId($bevraging_man->getId());
-                    $antwoorden_man->setLeeftijdsCategorie($leeftijdcatMan);
-                    $antwoorden_man->setDatum(getdate(date("U")));
-
+                    $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatMan));
+                    $antwoorden_man->setDatum($dateTime);
+                    //new DateTime(date("d/m/Y G:i:s")))
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
-                    $onderzoek->setRelatie($relatie);
+                    $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie",$relatie));
                     //TODO vragenlijst ophalen
                     $vrLijst = $aandoening . "/Vragenlijst";
                     $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));

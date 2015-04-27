@@ -22,6 +22,7 @@ namespace Finah_Backend.Models
         public AntwoordenLijst()
         {
             this.Antwoorden = new List<Antwoord>();
+            
         }
 
 
