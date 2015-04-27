@@ -9,7 +9,7 @@
     require "../PHP/Models/Bevraging.php";
     require "../PHP/Models/Onderzoek.php";
     require "../PHP/Models/AntwoordenLijst.php";
-
+    require "../PHP/Finah.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
-<!--    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>-->
+    <!--    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>-->
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/jsonhttprequest.min.js"></script>
     <!--    <script type="text/javascript" src="../js/finah.js"></script>-->
@@ -31,10 +31,10 @@
 
             if (val != 'null') {
                 empty(patho);
-                var pat='';
+                var pat = '';
                 var xhr = new JSONHttpRequest();
 
-                var url = "http://localhost:1695/Aandoening/"+val+"/Pathologie";
+                var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                 xhr.open("GET", url, true);
 
                 xhr.onreadystatechange = function () {
@@ -100,49 +100,63 @@
                     $onderzoek = new Onderzoek();
                     $onderzoek->setId(0);
                     //$onderzoek->setAandoening($aandoening);
-                    $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening",$aandoening));
+                    $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening));
                     //TODO wanneer we met accounts werken verder uitwerken
                     $onderzoek->setAangemaaktDoor(null);
-                    $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie",$pathologie));
+                    $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie", $pathologie));
                     $bevraging_pat = new Bevraging();
                     $bevraging_pat->setIsPatient(true);
                     $bevraging_man = new Bevraging();
                     $bevraging_man->setIsPatient(false);
                     //TODO id laten genereren op Backend
-                    $ids = FinahDAO::HaalOp("Bevraging","UniekeIds");
+                    $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                     $bevraging_pat->setId($ids[0]);
                     $bevraging_man->setId($ids[1]);
 
                     $antwoorden_pat = new AntwoordenLijst();
                     $antwoorden_pat->setId($bevraging_pat->getId());
-                    $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatPat));
+                    $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
                     $datum = new DateTime("Now");
                     $dat = $datum->format('d/m/Y G:i:s');
-                    $dateTime = DateTime::createFromFormat('d/m/Y G:i:s',$dat);
+                    $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
                     $antwoorden_pat->setDatum($dateTime);
                     $antwoorden_man = new AntwoordenLijst();
                     $antwoorden_man->setId($bevraging_man->getId());
-                    $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatMan));
+                    $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
                     $antwoorden_man->setDatum($dateTime);
                     //new DateTime(date("d/m/Y G:i:s")))
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
-                    $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie",$relatie));
+                    $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie", $relatie));
                     //TODO vragenlijst ophalen
                     $vrLijst = $aandoening . "/Vragenlijst";
-                    $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening",$vrLijst));
+                    $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening", $vrLijst));
 
                     //var_dump($onderzoek);
                     if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                         //Todo eventueel een exception toevoegen hier
-                        //header("Location: Overzicht.php");
-                        echo "De bevraging werd succesvol opgeslagen";
-                    }
-                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
-                        //Todo eventueel een exception toevoegen hier
-                        //header("Location: Overzicht.php");
-                        echo "De bevraging werd succesvol opgeslagen";
+                        $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging",$antwoorden_man->getId()));
+                        $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging",$antwoorden_pat->getId()));
+                        if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
+                            //Todo eventueel een exception toevoegen hier
+                            //header("Location: Overzicht.php");
+                            echo "De bevraging werd succesvol opgeslagen";
+                            $to = "gert.claeskens@student.pxl.be";
+/*                            $headers  = 'MIME-Version: 1.0' . "\r\n";
+                            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                            $headers .= 'From: gert.claeskens@student.pxl.be' . "\r\n" .
+                                'Reply-To: gert.claeskens@student.pxl.be' . "\r\n" .
+                                'X-Mailer: PHP/' . phpversion();*/
+                            $subject = "Bevraging aangemaakt op ";
+                            $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
+                            $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
+                            $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_pat->getId() . "\">De vragenlijst voor de patient kan u hier vinden</a>\r\n";
+                            //$msg .= "<a href=\"http:\\\\www.google.be\">Achteraf kan u de ze link gebruiken om het rapport op te vragen</a>\r\n";
+                            $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
+                            $msg = wordwrap($msg, 70, "\r\n");
+                            Finah::send_simple_message($to, $subject, $msg);
+                        }
                     }
                 }else {
                 ?>
