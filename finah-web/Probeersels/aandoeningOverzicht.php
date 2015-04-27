@@ -1,6 +1,5 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require_once "../PHP/Models/Pathologie.php";
+    require "../PHP/DAO/FinahDAO.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +7,7 @@ require_once "../PHP/Models/Pathologie.php";
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FINAH - Pathologie</title>
+    <title>FINAH - Vragenlijst</title>
     <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -28,7 +27,7 @@ require_once "../PHP/Models/Pathologie.php";
         <a  class="navbar-brand header"  href="#"> Finah</a>
     </div>
     <div class="dropdown navbar-header pull-right nav-right">
-        <span class="img-circle"><img src="../Images/blank-avatar.png"/></span><!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
+        <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>  <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
         <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
             <span class="caret"></span>
         </a>
@@ -75,64 +74,69 @@ require_once "../PHP/Models/Pathologie.php";
                 <a href="../Aandoening/Overzicht.php"> Aandoening </a>
             </li>
             <li>
-                <a href="#"> Pathologie</a>
+                <a href="../Pathologie/Overzicht.php"> Pathologie</a>
             </li>
             <li>
-                <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+                <a href="../LeeftijdsCategorie/Overzich.php"> Leeftijdscategorie</a>
             </li>
             <li>
                 <a href="../Vragen/Overzicht.php"> Vragen</a>
             </li>
             <li>
-                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+                <a href="#"> Vragenlijsten</a>
             </li>
         </ul>
     </div>
     <div  id="page-content-wrapper">
         <div class="breadcrumb">
-            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Pathologie </span>        </div>
+            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Vragenlijst </span>        </div>
         <div  class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
                     <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe pathologie aan
+                        Maak een nieuwe vragenlijst aan
                     </button>
 
                     <form action="EditDetails.php" method="post">
                         <table class="table table-bordered table-responsive table-striped">
                             <thead>
                             <tr>
-                            <tr>
                                 <th>
-                                    Omschrijving
+                                    Aangevraagd
+                                </th>
+                                <th>
+                                    Informatie
+                                </th>
+                                <th>
+                                    Relatie
                                 </th>
                                 <th>Actie</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            $pathologieLijst = FinahDAO::HaalOp("Pathologie");
-                            foreach ($pathologieLijst as $item) {
-                                echo "<tr>
-                                    <td class='col-sm-10 col-md-10 col-lg-10'>" . $item["Omschrijving"] . "</td>";
-
-                                echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                    <input type='hidden' name='Id' value=" . $item["Id"] . " />
-                                        <button type='submit' name='details' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                    <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                               </tr>";
-                            }
-                            ?>
+                                <?php
+                                     $vragenLijst = FinahDAO::HaalOp("VragenLijst");
+                                    foreach ($vragenLijst as $item) {
+                                        echo "<tr>
+                                            <td class='col-sm-1 col-md-1 col-lg-1 text-center'>" . $item["Id"] . "</td>
+                                            <td class='col-sm-6 col-md-6 col-lg-6'> " . $item["Aandoe"]["Omschrijving"] . "</td>
+                                            <td class='col-sm-3 col-md-3 col-lg-3 text-center'>" . count($item["Vragen"]) . "</td>";
+                                        echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                        <input type='hidden' name='Id' value=" . $item["Id"] . " />
+                                            <button type='submit' name='details' class='btn btn-primary'>
+                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                                  <button type='submit' name='bewerk' class='btn btn-primary'>
+                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
+                                            <button type='submit'  name='delete' class='btn btn-primary'>
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                   </tr>";
+                                    }
+                                 ?>
                             </tbody>
                         </table>
                     </form>

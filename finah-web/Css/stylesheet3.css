@@ -134,7 +134,7 @@ p,h1,h2,h3,article,a {
     color: white;
     font-family: 'Glyphicons Halflings';
     font-weight:600;
-    font-size:1.2em;
+    font-size:1.1em;
     padding-left:10px;
 }
 
@@ -165,13 +165,34 @@ p,h1,h2,h3,article,a {
 .breadcrumb > .breadcrumb-font {
     font-family: 'Glyphicons Halflings';
     font-weight:bold;
-    font-size:1.2em;
+    font-size:1.1em;
     color:#30363E;
 }
 .glyphicon-home{
     color:#4a89dc;
 }
+.action-column {
+    font-size:1.8em;
+    text-align:center;
+    color:#30363E;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    width:100px;
+    white-space: nowrap;
+}
+.action-column > .glyphicon {
+    margin-right:5px;
+}
+.table th {
+    text-align:center;
+}
 
+.createbtn {
+    margin-top:20px;
+}
+.table {
+    margin-top:25px;
+}
 @media(min-width:768px) {
 
     .btn-toggle{
@@ -204,6 +225,9 @@ p,h1,h2,h3,article,a {
     }
     .nav-right {
         right:120px;
+    }
+    .action-column{
+        float:none!important;
     }
 }
 @media(max-width:767px) {
