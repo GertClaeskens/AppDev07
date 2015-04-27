@@ -115,13 +115,16 @@
 
                     $antwoorden_pat = new AntwoordenLijst();
                     $antwoorden_pat->setId($bevraging_pat->getId());
-                    $antwoorden_pat->setLeeftijdsCategorie($leeftijdcatPat);
-                    $antwoorden_pat->setDatum(getdate(date("U")));
+                    $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatPat));
+                    $datum = new DateTime("Now");
+                    $dat = $datum->format('d/m/Y G:i:s');
+                    $dateTime = DateTime::createFromFormat('d/m/Y G:i:s',$dat);
+                    $antwoorden_pat->setDatum($dateTime);
                     $antwoorden_man = new AntwoordenLijst();
                     $antwoorden_man->setId($bevraging_man->getId());
-                    $antwoorden_man->setLeeftijdsCategorie($leeftijdcatMan);
-                    $antwoorden_man->setDatum(getdate(date("U")));
-
+                    $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie",$leeftijdcatMan));
+                    $antwoorden_man->setDatum($dateTime);
+                    //new DateTime(date("d/m/Y G:i:s")))
                     $onderzoek->setBevragingPat($bevraging_pat);
                     $onderzoek->setBevragingMan($bevraging_man);
                     $onderzoek->setInformatie($informatie);
@@ -136,11 +139,11 @@
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
                     }
-/*                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
+                    if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                         //Todo eventueel een exception toevoegen hier
                         //header("Location: Overzicht.php");
                         echo "De bevraging werd succesvol opgeslagen";
-                    }*/
+                    }
                 }else {
                 ?>
 

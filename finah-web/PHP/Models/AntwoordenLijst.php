@@ -6,7 +6,7 @@
      * Date: 25/03/2015
      * Time: 22:59
      */
-    class AntwoordenLijst
+    class AntwoordenLijst implements JsonSerializable
     {
         public $Id;
         public $Datum;
@@ -17,12 +17,20 @@
         function __construct($Id=null, $Antwoorden=null, $LeeftijdsCategorie=null, $Bevraging=null)
         {
             $this->Id = $Id;
-            $this->Datum = getdate(date("U"));
+            $this->Datum = new DateTime('now');
             $this->Antwoorden = $Antwoorden;
             $this->LeeftijdsCategorie = $LeeftijdsCategorie;
             $this->Bevraging = $Bevraging;
         }
-
+        public function jsonSerialize() {
+            return [
+                'Id' => $this->getId(),
+                'Datum' => $this->Datum->format(DateTime::ISO8601),
+                'Antwoorden' => $this->getAntwoorden(),
+                'LeeftijdsCategorie' => $this->getLeeftijdsCategorie(),
+                'Bevraging' => $this->getBevraging()
+            ];
+        }
         public function getId()
         {
             return $this->Id;
