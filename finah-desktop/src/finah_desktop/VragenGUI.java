@@ -39,7 +39,7 @@ public class VragenGUI extends JFrame{
 		for(int i=1; i<=10; i++){
 			vragen.add(new Vraag());
 		}
-		vragen = VraagDAO.GetVragen();
+		//vragen = VraagDAO.GetVragen();
 		
 		panel = new VragenPanel();		
 		panel.setLayout(null);
@@ -86,7 +86,7 @@ public class VragenGUI extends JFrame{
 			for(int i=0; i<vragen.size(); i++){
 				Vraag v = vragen.get(i);
 				g2d.drawLine(100, hoogte, 900, hoogte);
-				g2d.drawString(v.getVraagstelling(), 120, hoogte-10);
+				g2d.drawString("  ", 120, hoogte-10);//v.getVraagstelling()
 				JComboBox vragenlijstCombo = new JComboBox();
 				vragenlijstCombo.setBounds(702,hoogte-28,197,27);
 				add(vragenlijstCombo);

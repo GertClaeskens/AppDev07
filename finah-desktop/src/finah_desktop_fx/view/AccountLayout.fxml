@@ -51,7 +51,7 @@
             <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Text layoutX="228.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voornaam Achternaam" />
+      <Text layoutX="242.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voornaam Achternaam" />
       <ImageView fitHeight="205.0" fitWidth="237.0" layoutX="819.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Pictures/index.jpg" />
