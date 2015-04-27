@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="174.0" layoutY="49.0" prefHeight="317.0" prefWidth="777.0">
+        <columns>
+            <TableColumn prefWidth="484.0" text="Vragen" />
+          <TableColumn minWidth="0.0" prefWidth="151.0" text="Antwoord" />
+          <TableColumn prefWidth="155.0" text="Hulpvraag?" />
+        </columns>
+      </TableView>
+      <Button layoutX="492.0" layoutY="387.0" mnemonicParsing="false" text="Andere Vragenlijst" />
+   </children>
+</AnchorPane>
