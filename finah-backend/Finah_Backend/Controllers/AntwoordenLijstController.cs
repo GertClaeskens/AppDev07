@@ -93,6 +93,8 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult PostAntwoordenLijst([FromBody] AntwoordenLijst antwoordenLijst)
         {
             antwoordenLijst.LeeftijdsCategorie = db.LeeftijdsCategorieen.Find(antwoordenLijst.LeeftijdsCategorie.Id);
+            antwoordenLijst.Bevraging = db.Bevragingen.Find(antwoordenLijst.Bevraging.Id);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
