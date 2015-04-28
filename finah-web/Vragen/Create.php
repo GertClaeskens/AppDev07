@@ -38,6 +38,12 @@
                     if (isset($_POST["creeer"])) {
                     $omschrijving = $_POST["vraagstelling"];
 
+                    if($omschrijving == ""){
+                        echo("<p>Gelieve de vraagstelling in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Vragen/Create.php'> Terug </a>");
+                        return;
+                    }
+
                     $vraag = new Vraag();
                     $vraag->Id = 0;
                     $vraag->setVraagstelling($vraag);
