@@ -17,12 +17,12 @@ namespace Finah_Backend.Models
 
         public LeeftijdsCategorie LeeftijdsCategorie { get; set; }
 
-        public virtual ICollection<Antwoord> Antwoorden { get; set; }
+        public ICollection<int> Antwoorden { get; set; }
 
         public AntwoordenLijst()
         {
-            this.Antwoorden = new List<Antwoord>();
-            
+            //this.Antwoorden = new List<int>();
+
         }
 
 
