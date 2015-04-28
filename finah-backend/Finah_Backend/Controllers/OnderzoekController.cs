@@ -27,13 +27,27 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Onderzoek))]
         public IHttpActionResult GetOnderzoek(int id)
         {
-            Onderzoek onderzoek = db.Onderzoeken.Find(id);
+            var onderzoek = db.Onderzoeken.Find(id);
             if (onderzoek == null)
             {
                 return NotFound();
             }
 
             return Ok(onderzoek);
+        }
+
+        // GET: api/Onderzoek/{id}
+        [Route("Onderzoek/{id}")]
+        [ResponseType(typeof(Aandoening))]
+        public IHttpActionResult GetAandoening(string id)
+        {
+            var aandoening = (from o in db.Onderzoeken where(o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id)) select o.Aandoening).First();
+            if (aandoening == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(aandoening);
         }
 
         // PUT: api/Onderzoek/5

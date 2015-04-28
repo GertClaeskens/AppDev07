@@ -68,8 +68,6 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Get(String id)
         {
 
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             var bevraging = db.Bevragingen.FirstOrDefault((b) => b.Id == id);
 
             if (bevraging == null)

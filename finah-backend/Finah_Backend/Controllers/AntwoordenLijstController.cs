@@ -24,14 +24,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<AntwoordenLijst> GetOverzicht()
         {
             return db.AntwoordenLijsten.Include(a => a.LeeftijdsCategorie);
-            //var al1 = new AntwoordenLijst { Id = "1" };
-            //var al2 = new AntwoordenLijst { Id = "1" };
-            //var al3 = new AntwoordenLijst { Id = "1" };
-            //var al4 = new AntwoordenLijst { Id = "1" };
-            //var al5 = new AntwoordenLijst { Id = "1" };
 
-            //var controleAntwoordenLijst = new List<AntwoordenLijst> { al1, al2, al3, al4, al5 };
-            //return controleAntwoordenLijst;
         }
 
         // GET: api/AntwoordenLijst/5
@@ -39,12 +32,8 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(AntwoordenLijst))]
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            AntwoordenLijst antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();
-            //AntwoordenLijst antwoordenLijst = null;
-            //if (id.Equals("1"))
-            //{
-            //    antwoordenLijst = new AntwoordenLijst { Id = "1" };//, Antwoorden = new List<Antwoord> { new Antwoord { Id = 1, Antword = 4 } } };
-            //}
+            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();
+
             if (antwoordenLijst == null)
             {
                 return NotFound();
