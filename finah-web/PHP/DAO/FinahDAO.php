@@ -30,8 +30,6 @@
             $url = "http://localhost:1695/" . $type . "/";
             //var_dump($data);
             $gegevens = json_encode($data);
-            //print_r($gegevens);
-//            var_dump($gegevens);
             //Initiate cURL.
             $ch = curl_init($url);
 

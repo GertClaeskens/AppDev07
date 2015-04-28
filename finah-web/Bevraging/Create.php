@@ -33,7 +33,7 @@
                 empty(patho);
                 var pat = '';
                 var xhr = new JSONHttpRequest();
-
+                //TODO link aanpassen naar Azure
                 var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                 xhr.open("GET", url, true);
 
@@ -219,15 +219,7 @@
                     <li><label class="control-label">Kies de pathologie</label></li>
                     <select class="form-control" name="pathologie" id="pathologie">
                         <option value="null">Maak een keuze</option>
-                        <!--                        TODO moet pas ingeladen worden als de aandoening geselecteerd is -> Javascript?-->
-                        <?php
-                            /*                            $pathologie = FinahDAO::HaalOp("Pathologie");
-                                                        foreach ($pathologie as $item) {
-                                                            $waarde = $item->Omschrijving;
-                                                            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                                                        }
 
-                                                    */ ?>
                     </select>
                     <li><label class="control-label">Kies de leeftijdscategorie van de patient</label></li>
                     <select class="form-control" name="leeftijdcategoriePat">

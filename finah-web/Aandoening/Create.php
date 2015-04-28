@@ -47,7 +47,7 @@
                     $patologielijst = $_POST["pathologie"];
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $aandoening = new Aandoening();
-                    $aandoening->Id = 0;
+                    $aandoening->setId(0);
                     $aandoening->setOmschrijving($omschrijving);
 //                    $aandoening->setPatologieen($patologielijst);
                     for ($a = 0; $a < count($patologielijst); $a++) {
@@ -79,8 +79,8 @@
                             //TODO omzetten naar Pathologie object
                             $patologieen = FinahDAO::HaalOp("Pathologie");
                             foreach ($patologieen as $item) {
-                                $waarde = $item->Omschrijving;
-                                echo "<option value='$item->Id'>" . $item->Omschrijving . "</option>\r\n";
+                                $waarde = $item["Omschrijving"];
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                             }
                             //var_dump($patologieen);
                             //                        for ($a=0;$a<count($patologieen);$a++){

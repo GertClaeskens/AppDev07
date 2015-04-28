@@ -6,6 +6,7 @@
      * Time: 10:20
      */
     require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Bevraging.php";
 ?>
 <html>
 <head>
@@ -19,13 +20,18 @@
 if (isset($_GET["id"])) {
 //    TODO kijken of er al vragen zijn ingevuld
     $aantalingevuld = 0;
+    $bevraging = new Bevraging();
     $bevraging=FinahDAO::HaalOp("Bevraging",$_GET["id"]);
     $antwoorden=FinahDAO::HaalOp("Antwoordenlijst",$_GET["id"]);
-    $aandoening=FinahDAO::HaalOp("Onderzoek",$_GET["id"]);
+    $aandoening = FinahDAO::HaalOp("Onderzoek", "Aandoening/" . $_GET["id"]);
+    $onderzoek = FinahDAO::HaalOp("Onderzoek", $_GET["id"]);
     if (array_search(0,$antwoorden)){
         $aantalingevuld=array_search(0,$antwoorden);
     }
     $aantalingevuld-=1;
+    $volgende = $onderzoek["Vragen"]["Vragen"][0]["Id"];
+    var_dump($onderzoek);
+    $vraag = FinahDAO::HaalOp("VragenLijst", $onderzoek["Vragen"]["Id"] . "/" . $volgende);
     //echo $bevraging["IsPatient"];
     $patient = ($bevraging["IsPatient"]==true)?true:false;
     if ($patient){
@@ -35,13 +41,16 @@ if (isset($_GET["id"])) {
     }
     $vrLijst = $aandoening["Id"] . "/Vragenlijst";
     $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);
+    array_shift($vragen);
     ?>
 <!--    TODO als er al vragen zijn ingevuld moet er op de button staan hervatten vragenlijst-->
     <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
     Korte inleiding over de enquete</br></br>
-
-        <input type="hidden" name="vragen[]" value="<?php echo $vragen?>">
+        <!--        --><?php
+            /*            $serialized =htmlspecialchars(serialize($vragen));
+                    */ ?>
+        <input type="hidden" name="onderzoek" value="<?php echo $onderzoek ?>">
         <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"]?>">
         <input type="hidden" name="volgende" value="<?php echo $aantalingevuld?>">
         <input type="hidden" name="patient" id="patient" value="<?php echo $patient?>">
@@ -54,21 +63,28 @@ if (isset($_GET["id"])) {
 </div> <!-- einde pagina1 -->
 </form>
 <?php }elseif (isset($_POST["start"])){
-    var_dump($_POST["vragen"]);
-    $vraag=array_shift($_POST["vragen"]);
-    var_dump($vraag);
-    $vragen = $_POST["vragen"];
+    //echo "TEST";
+    //$vragen = unserialize($_POST["vragen"]);
+    //var_dump($vragen);
+    //$vraag=array_shift($vragen);
+    //var_dump($_POST);
+    $onderzoek = $_POST["onderzoek"];
     $patient = $_POST["patient"];
     $aantalingevuld = $_POST["volgende"]+1;
+    //var_dump($onderzoek);
+    $volgende = $onderzoek["Vragen"]["Vragen"][0]["Id"];
+    $vraag = FinahDAO::HaalOp("VragenLijst", $onderzoek["Vragen"]["Id"] . "/" . $volgende);
+    //var_dump($vraag);
 //TODO vorige antwoord opslaan
 //TODO Zolang er vragen zijn tonen
     ?>
-<form class="bs-example bs-example-form" role="form">
+    <form class="bs-example bs-example-form" role="form" method="POST"
+          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div class="container">
         <div class="div-group row" id="vraagDiv">
             <p id="thema">Leren en toepassen van kennis.</p>
-            <?php var_dump($vraag);?>
-            <p id="vraag">Vraag <?php echo ($aantalingevuld+1) . " " . $vraag->Vraagstelling?></p>
+
+            <p id="vraag">Vraag <?php echo ($aantalingevuld + 1) . " " . $vraag["Vraagstelling"]?></p>
             <img class="thumbnail" src="../Vragen/test.PNG" alt="...">
         </div>
 
@@ -114,11 +130,13 @@ if (isset($_GET["id"])) {
                 </div>
             </div>
         </div>
-
-        <input type="hidden" name="vragen[]" value="<?php echo $vragen?>">
-        <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"]?>">
+        <?php
+            $serialized = htmlspecialchars(serialize($vragen));
+        ?>
+        <input type="hidden" name="vragen" value="<?php echo $serialized?>">
+        <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
         <input type="hidden" name="volgende" value="<?php echo $aantalingevuld?>">
-        <input type="hidden" name="patient" id="patient" value="<?php echo $patient?>">
+        <input type="hidden" name="patient" value="<?php echo $patient?>">
 
         <div class="btn-group row" role="group" id="next">
             <div id="vorige" class="col-md">

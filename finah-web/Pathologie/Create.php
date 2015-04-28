@@ -41,7 +41,7 @@
                     $omschrijving = $_POST["omschrijving"];
 //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $pathologie = new Pathologie();
-                    $pathologie->Id = 0;
+                    $pathologie->setId(0);
                     $pathologie->setOmschrijving($omschrijving);
 
                     if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
