@@ -27,7 +27,6 @@
         if (array_search("0", $antwoorden)) {
             $aantalingevuld = array_search(0, $antwoorden);
         }
-        echo "test" . $aantalingevuld;
         $aantalingevuld = 0;
         $patient = ($bevraging["IsPatient"] == true) ? true : false;
         if ($patient) {
@@ -45,7 +44,7 @@
                         */ ?>
 
             <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"] ?>">
-            <input type="hidden" name="volgende" value="<?php echo $aantalingevuld ?>">
+            <input type="hidden" name="volgendevraag" value="<?php echo $aantalingevuld ?>">
             <input type="hidden" name="patient" id="patient" value="<?php echo $patient ?>">
             <?php if ($aantalingevuld > 0) { ?>
 
@@ -57,7 +56,7 @@
         </form>
     <?php } elseif (isset($_POST["volgende"])) {
 
-        $volgende = $_POST["volgende"];
+        $volgende = $_POST["volgendevraag"];
         $vragen = FinahDAO::HaalOp("Onderzoek", $_POST["id"] . "/Vragen");
         $vraag = $vragen[0][$volgende];
         $patient = $_POST["patient"];
@@ -122,13 +121,16 @@
                     $serialized = htmlspecialchars(serialize($vragen));
                 ?>
                 <input type="hidden" name="id" value="<?php echo $_POST["id"]?>">
-                <input type="hidden" name="volgende" value="<?php echo $volgende?>">
+                <input type="hidden" name="volgendevraag" value="<?php echo $volgende?>">
                 <input type="hidden" name="patient" value="<?php echo $patient?>">
 
                 <div class="btn-group row" role="group" id="next">
+                    <?php if ($volgende>1){ ?>
                     <div id="vorige" class="col-md">
                         <button type="submit" name="vorige" class="btn btn-primary prevButton">Vorige</button>
+                        <?php }?>
                     </div>
+
                     <div id="volgende" class="col-md">
                         <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
                     </div>
