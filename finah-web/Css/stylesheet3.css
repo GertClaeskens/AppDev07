@@ -195,9 +195,7 @@ p,h1,h2,h3,article,a {
 }
 @media(min-width:768px) {
 
-    .btn-toggle{
-        visibility: hidden;
-    }
+
     #wrapper {
         padding-left: 250px;
     }

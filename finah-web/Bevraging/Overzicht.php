@@ -100,7 +100,7 @@ require_once "../PHP/Models/Bevraging.php";
                     </button>
 
                     <form action="EditDetails.php" method="post">
-                        <table class="table table-bordered table-responsive table-striped">
+                        <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>
