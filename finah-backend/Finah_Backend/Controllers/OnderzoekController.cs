@@ -25,23 +25,30 @@ namespace Finah_Backend.Controllers
 
         // GET: api/Onderzoek/5
         [ResponseType(typeof(Onderzoek))]
-        public IHttpActionResult GetOnderzoek(int id)
+        public IHttpActionResult GetOnderzoek(string id)
         {
-            var onderzoek = db.Onderzoeken.Find(id);
-            if (onderzoek == null)
+            //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
+            var aandoening =
+                (from o in db.Onderzoeken
+                 where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+                 select o);
+            if (aandoening == null)
             {
                 return NotFound();
             }
 
-            return Ok(onderzoek);
+            return Ok(aandoening);
         }
 
         // GET: api/Onderzoek/{id}
-        [Route("Onderzoek/{id}")]
+        [Route("Onderzoek/Aandoening/{id}")]
         [ResponseType(typeof(Aandoening))]
         public IHttpActionResult GetAandoening(string id)
         {
-            var aandoening = (from o in db.Onderzoeken where(o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id)) select o.Aandoening).First();
+            var aandoening =
+                (from o in db.Onderzoeken
+                 where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+                 select o.Aandoening);
             if (aandoening == null)
             {
                 return NotFound();

@@ -41,65 +41,12 @@ namespace Finah_Backend.Controllers
         {
             return db.VragenLijsten;
 
-            //return vragen;
-            //var vl1 = new VragenLijst();
-            //var vl2 = new VragenLijst();
-            //var vl3 = new VragenLijst();
-            //var vl4 = new VragenLijst();
-            //var vl5 = new VragenLijst();
-
-            //vl1.Id = 1;
-            //vl2.Id = 2;
-            //vl3.Id = 3;
-            //vl4.Id = 4;
-            //vl5.Id = 5;
-
-            //var overzichtVragenLijst = new List<VragenLijst> { vl1, vl2, vl3, vl4, vl5 };
-
-            //return overzichtVragenLijst;
         }
         [Route("VragenLijst/{id}")]
         [ResponseType(typeof(VragenLijst))]
         public IHttpActionResult Get(int id)
         {
-            //VragenLijst vragenLijst = null;
-            //if (id == 1)
-            //{
-            //    vragenLijst = new VragenLijst();
-            //    var vragen = new List<Vraag>();
-            //    var vraag = new Vraag();
-            //    var foto = new Foto();
-            //    var gf = new GeluidsFragment();
-            //    var ad = new Aandoening();
-            //    var pt = new Pathologie();
-            //    var patLijst = new List<Pathologie>();
 
-            //    foto.Id = 1;
-            //    foto.Omschrijving = "foto vraag 1";
-            //    foto.Pad = "pad";
-
-            //    gf.Id = 1;
-            //    gf.Omschrijving = "geluid vraag 1";
-            //    gf.Pad = "geluidpad";
-
-            //    vraag.Id = 1;
-            //    vraag.VraagStelling = "Lorem ipsum bladibla";
-            //    vraag.Afbeelding = foto;
-            //    vraag.Geluid = gf;
-
-            //    pt.Id = 1;
-            //    patLijst.Add(pt);
-
-            //    ad.Id = 1;
-            //    ad.Patologieen = patLijst;
-
-            //    vragen.Add(vraag);
-            //    vragenLijst.Id = 1;
-            //    vragenLijst.Vragen = vragen;
-            //    vragenLijst.Aandoe = ad;
-            //}
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             var vragenLijst = db.VragenLijsten.Find(id);
             if (vragenLijst == null)
             {
@@ -107,6 +54,21 @@ namespace Finah_Backend.Controllers
             }
 
             return Ok(vragenLijst);
+        }
+
+        [Route("VragenLijst/{id}/{vr}")]
+        [ResponseType(typeof(Vraag))]
+        public IHttpActionResult Get(int id, int vr)
+        {
+
+            var vraag = db.VragenLijsten.Find(id).Vragen.Where(c => c.Id == vr);
+
+            if (vraag == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(vraag);
         }
 
         // PUT: api/VragenLijsts/5
