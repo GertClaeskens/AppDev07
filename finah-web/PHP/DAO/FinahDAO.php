@@ -52,4 +52,7 @@
 
             return $result;
         }
+        //TODO Update method toevoegen
+
+        //TODO Delete method toevoegen
     }

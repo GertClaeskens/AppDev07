@@ -18,8 +18,14 @@
 <?php
 if (isset($_GET["id"])) {
 //    TODO kijken of er al vragen zijn ingevuld
-    $aantalingevuld = 2;
+    $aantalingevuld = 0;
     $bevraging=FinahDAO::HaalOp("Bevraging",$_GET["id"]);
+    $antwoorden=FinahDAO::HaalOp("Antwoordenlijst",$_GET["id"]);
+    $aandoening=FinahDAO::HaalOp("Onderzoek",$_GET["id"]);
+    if (array_search(0,$antwoorden)){
+        $aantalingevuld=array_search(0,$antwoorden);
+    }
+    $aantalingevuld-=1;
     //echo $bevraging["IsPatient"];
     $patient = ($bevraging["IsPatient"]==true)?true:false;
     if ($patient){
@@ -27,30 +33,43 @@ if (isset($_GET["id"])) {
     }else{
         echo "<h2>Enquete Mantelzorger</h2>";
     }
+    $vrLijst = $aandoening["Id"] . "/Vragenlijst";
+    $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);
     ?>
 <!--    TODO als er al vragen zijn ingevuld moet er op de button staan hervatten vragenlijst-->
     <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
     Korte inleiding over de enquete</br></br>
 
-        <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
+        <input type="hidden" name="vragen[]" value="<?php echo $vragen?>">
+        <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"]?>">
         <input type="hidden" name="volgende" value="<?php echo $aantalingevuld?>">
+        <input type="hidden" name="patient" id="patient" value="<?php echo $patient?>">
         <?php if ($aantalingevuld>0){?>
 
-        <input type="submit" name="volgende" value="Hervat Vragenlijst" class="btn btn-primary antwoordButton">
+        <input type="submit" name="start" value="Hervat Vragenlijst" class="btn btn-primary antwoordButton">
         <?php }else{?>
-	    <input type="submit" name="volgende" value="Start Vragenlijst" class="btn btn-primary antwoordButton">
+	    <input type="submit" name="start" value="Start Vragenlijst" class="btn btn-primary antwoordButton">
         <?php }?>
 </div> <!-- einde pagina1 -->
 </form>
-<?php }else{?>
+<?php }elseif (isset($_POST["start"])){
+    var_dump($_POST["vragen"]);
+    $vraag=array_shift($_POST["vragen"]);
+    var_dump($vraag);
+    $vragen = $_POST["vragen"];
+    $patient = $_POST["patient"];
+    $aantalingevuld = $_POST["volgende"]+1;
+//TODO vorige antwoord opslaan
+//TODO Zolang er vragen zijn tonen
+    ?>
 <form class="bs-example bs-example-form" role="form">
     <div class="container">
         <div class="div-group row" id="vraagDiv">
             <p id="thema">Leren en toepassen van kennis.</p>
-
-            <p id="vraag">Iets nieuws leren.</p>
-            <img class="thumbnail" src="../Vragen/test.png" alt="...">
+            <?php var_dump($vraag);?>
+            <p id="vraag">Vraag <?php echo ($aantalingevuld+1) . " " . $vraag->Vraagstelling?></p>
+            <img class="thumbnail" src="../Vragen/test.PNG" alt="...">
         </div>
 
         <div class="btn-group row" role="group" id="ervaring">
@@ -73,12 +92,12 @@ if (isset($_GET["id"])) {
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary antwoordButton" onclick="showDiv()">Probleem -
-                    hinderlijk voor mantelzorger
+                    hinderlijk voor <?php echo $patient?"mantelzorger":"patient"?>
                 </button>
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary antwoordButton" onclick="showDiv()">Probleem -
-                    hinderlijk voor beide
+                    hinderlijk voor beiden
                 </button>
             </div>
         </div>
@@ -96,12 +115,17 @@ if (isset($_GET["id"])) {
             </div>
         </div>
 
+        <input type="hidden" name="vragen[]" value="<?php echo $vragen?>">
+        <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"]?>">
+        <input type="hidden" name="volgende" value="<?php echo $aantalingevuld?>">
+        <input type="hidden" name="patient" id="patient" value="<?php echo $patient?>">
+
         <div class="btn-group row" role="group" id="next">
             <div id="vorige" class="col-md">
                 <button type="submit" class="btn btn-primary prevButton">Vorige</button>
             </div>
             <div id="volgende" class="col-md">
-                <button type="submit" class="btn btn-primary nextButton">Volgende</button>
+                <button type="submit" name="start" class="btn btn-primary nextButton">Volgende</button>
             </div>
         </div>
 

@@ -116,6 +116,7 @@
                     $antwoorden_pat = new AntwoordenLijst();
                     $antwoorden_pat->setId($bevraging_pat->getId());
                     $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+
                     $datum = new DateTime("Now");
                     $dat = $datum->format('d/m/Y G:i:s');
                     $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
@@ -131,8 +132,11 @@
                     $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie", $relatie));
                     //TODO vragenlijst ophalen
                     $vrLijst = $aandoening . "/Vragenlijst";
-                    $onderzoek->setVragen(FinahDAO::HaalOp("Aandoening", $vrLijst));
-
+                    $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);
+                    $onderzoek->setVragen($vragen);
+                    $leeg_vragen = array_fill(0,count($vragen["Vragen"])-1 ,0);
+                    $antwoorden_pat->setAntwoorden($leeg_vragen);
+                    $antwoorden_man->setAntwoorden($leeg_vragen);
                     //var_dump($onderzoek);
                     if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                         //Todo eventueel een exception toevoegen hier
