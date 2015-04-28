@@ -142,11 +142,11 @@ require "../PHP/Models/Vraag.php";
 </div>
 <script>
     $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-            $("#side-toggle").removeClass("glyphicon-option-vertical");
-            $("#side-toggle").addClass("glyphicon-option-horizontal");
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+                if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                    $("#side-toggle").removeClass("glyphicon-option-vertical");
+                    $("#side-toggle").addClass("glyphicon-option-horizontal");
         } else {
             $("#side-toggle").removeClass("glyphicon-option-horizontal");
             $("#side-toggle").addClass("glyphicon-option-vertical");
