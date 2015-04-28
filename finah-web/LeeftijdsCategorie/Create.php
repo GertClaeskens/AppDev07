@@ -40,6 +40,27 @@
                     $van = $_POST["van"];
                     $tot = $_POST["tot"];
 
+                    if($van == ""){
+                        echo("<p>Gelieve 'van' in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/LeeftijdsCategorie/Create.php'> Terug </a>");
+                        return;
+                    } else if (is_numeric($van) == false) {
+                        echo("<p>Gelieve in 'van' een nummer in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/LeeftijdsCategorie/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($tot == ""){
+                        echo("<p>Gelieve 'tot' in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/LeeftijdsCategorie/Create.php'> Terug </a>");
+                        return;
+                    } else if (is_numeric($tot) == false) {
+                        echo("<p>Gelieve in 'tot' een nummer in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/LeeftijdsCategorie/Create.php'> Terug </a>");
+                        return;
+                    }
+
+
                     $leeftijdsCat = new LeeftijdsCategorie();
                     //ID moet op 0 gezet worden, anders een error op de backend
                     $leeftijdsCat->Id = 0;

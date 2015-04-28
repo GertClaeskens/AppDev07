@@ -96,6 +96,42 @@
                     $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
                     $relatie = $_POST["relatie"];
 
+                    if($informatie == ""){
+                        echo("<p>Gelieve informatie in te vullen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($aandoening == "null"){
+                        echo("<p>Gelieve een aandoening te kiezen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($pathologie == "null"){
+                        echo("<p>Gelieve een pathologie te kiezen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($leeftijdcatPat == "null"){
+                        echo("<p>Gelieve een leeftijdscategorie voor de patient te kiezen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($leeftijdcatMan == "null"){
+                        echo("<p>Gelieve een leeftijdscategorie voor de mantelzorger te kiezen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
+                    if($relatie == "null"){
+                        echo("<p>Gelieve een relatie te kiezen.</p>");
+                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
+                        return;
+                    }
+
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $onderzoek = new Onderzoek();
                     $onderzoek->setId(0);
