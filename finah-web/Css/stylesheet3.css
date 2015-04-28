@@ -186,7 +186,15 @@ p,h1,h2,h3,article,a {
 .table th {
     text-align:center;
 }
-
+.form-group {
+    margin-top:25px;
+}
+.header{
+    margin-bottom:50px;
+}
+#back {
+    margin-top:75px;
+}
 .createbtn {
     margin-top:20px;
 }
