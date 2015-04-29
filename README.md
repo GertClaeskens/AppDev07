@@ -38,3 +38,10 @@ Om de Java Fx applicatie te kunnen openen, kan je deze tutorial volgen  : <a hre
 ![bevragingcreate](https://cloud.githubusercontent.com/assets/10980532/7396480/a7a9c87e-eea1-11e4-8d0b-0dc8b8dca84c.jpg)
 ![responsivedesign2](https://cloud.githubusercontent.com/assets/10980532/7396484/aac4ebd8-eea1-11e4-8d51-f62be4b4d7bb.JPG)
 ![responsivedesign](https://cloud.githubusercontent.com/assets/10980532/7396483/aac2c51a-eea1-11e4-9922-bccae1aa9a2e.JPG)
+
+  Enkele screenshots van de desktop applicatie:
+  
+  ![11207764_10203792154475586_727039564_o](https://cloud.githubusercontent.com/assets/10980532/7396977/855ba0ea-eea5-11e4-9242-cfb866a32ea0.jpg)
+![11187738_10203792147875421_144987478_o](https://cloud.githubusercontent.com/assets/10980532/7396976/855adfe8-eea5-11e4-9f79-a23f9fdb60d3.jpg)
+![11182838_10203792147835420_174652908_o](https://cloud.githubusercontent.com/assets/10980532/7396975/855ae48e-eea5-11e4-83c7-1cfd42a4f4c2.jpg)
+
