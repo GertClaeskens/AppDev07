@@ -260,7 +260,7 @@
                 relatie: { valueNotEquals: "Keuze verplicht!" }
             }
         });
-    })
+    });
 </script>
 <?php }
 ?>
