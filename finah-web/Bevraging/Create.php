@@ -13,8 +13,9 @@ require "../PHP/Finah.php";
         <title>FINAH - Bevraging</title>
         <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
-        <script src="../js/jquery-2.1.3.min.js"</script>
+        <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jsonhttprequest.js"></script>
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min   .js"></script>
@@ -23,7 +24,7 @@ require "../PHP/Finah.php";
             var data = '';
 
             function OnChange(e) {
-                var patho = document.forms["myForm"]["pathologie"];
+                var patho = document.forms["myForm"]["Pathologie"];
                 var val = e.target.value;
 
                 if (val != 'null') {
@@ -37,7 +38,7 @@ require "../PHP/Finah.php";
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             pat = JSON.parse(xhr.responseText);
-                            //alert(pat[0].Omschrijving + " " + pat.length);
+                            alert(pat[0].Id + " " + pat.length);
                             for (var i = 0; i < pat.length; i++) {
                                 var option = document.createElement('option');
                                 option.value = pat[i].Id;
@@ -143,7 +144,7 @@ require "../PHP/Finah.php";
                                         //var_dump($_POST);
                                         $informatie = $_POST["informatie"];
                                         $aandoening = $_POST["aandoening"];
-                                        $pathologie = $_POST["pathologie"];
+                                        $pathologie = $_POST["Pathologie"];
                                         $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
                                         $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
                                         $relatie = $_POST["relatie"];
@@ -239,7 +240,7 @@ require "../PHP/Finah.php";
                                   <div class="form-group">
                                             <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Pathologie"> Kies de pathologie: </label>
                                             <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                             <select class="form-control" id="Pathologie" name="pathologie">
+                                             <select class="form-control" id="Pathologie" name="Pathologie">
                                                 <option value="null">Maak een keuze</option>
                                                     <?php
                                                 //todo  code voor pathologielijst op te halen
