@@ -21,6 +21,8 @@
     <!--    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>-->
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/jsonhttprequest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js/Validate/jquery.validate.js"></script>
     <!--    <script type="text/javascript" src="../js/finah.js"></script>-->
     <script type="text/javascript">
         var data = '';
@@ -85,7 +87,7 @@
             <h2 id="Content-Title">Nieuwe bevraging</h2>
             <hr/>
 
-            <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="myForm" name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
@@ -95,42 +97,6 @@
                     $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
                     $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
                     $relatie = $_POST["relatie"];
-
-                    if($informatie == ""){
-                        echo("<p>Gelieve informatie in te vullen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
-
-                    if($aandoening == "null"){
-                        echo("<p>Gelieve een aandoening te kiezen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
-
-                    if($pathologie == "null"){
-                        echo("<p>Gelieve een pathologie te kiezen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
-
-                    if($leeftijdcatPat == "null"){
-                        echo("<p>Gelieve een leeftijdscategorie voor de patient te kiezen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
-
-                    if($leeftijdcatMan == "null"){
-                        echo("<p>Gelieve een leeftijdscategorie voor de mantelzorger te kiezen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
-
-                    if($relatie == "null"){
-                        echo("<p>Gelieve een relatie te kiezen.</p>");
-                        echo("<a href='http://localhost:63342/finah-web/Bevraging/Create.php'> Terug </a>");
-                        return;
-                    }
 
                     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
                     $onderzoek = new Onderzoek();
@@ -271,6 +237,31 @@
     </div>
 </div>
 <!--Closing DIV wrapper-->
+<script>
+    // add the rule here
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        return arg != value;
+    }, "Value must not equal arg.");
+
+    $().ready(function() {
+        $("#myForm").validate({
+            rules: {
+                aandoening: { valueNotEquals: "null" },
+                pathologie: { valueNotEquals: "null" },
+                leeftijdcategoriePat: { valueNotEquals: "null" },
+                leeftijdcategorieMan: { valueNotEquals: "null" },
+                relatie: { valueNotEquals: "null" }
+            },
+            messages: {
+                aandoening: { valueNotEquals: "  Keuze verplicht!" },
+                pathologie: { valueNotEquals: "  Keuze verplicht!" },
+                leeftijdcategoriePat: { valueNotEquals: "  Keuze verplicht!" },
+                leeftijdcategorieMan: { valueNotEquals: "  Keuze verplicht!" },
+                relatie: { valueNotEquals: "  Keuze verplicht!" }
+            }
+        });
+    })
+</script>
 <?php }
 ?>
 </body>
