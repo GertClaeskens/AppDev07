@@ -28,3 +28,12 @@ SPRINT 2
   - Brian Thys : Layout gemaakt van de enquête. 
   - Philippe Liénart: 
   - Sam Wuytens: Java gui omgezet naar java fx(basis).
+
+
+  Enkele screenshots van de website: 
+  
+![vraagoverzicht](https://cloud.githubusercontent.com/assets/10980532/7396481/a7abdb14-eea1-11e4-9675-2ea8438f45d5.JPG)
+![bevragingscreen](https://cloud.githubusercontent.com/assets/10980532/7396482/a7ac103e-eea1-11e4-92bc-935d43eeb332.JPG)
+![bevragingcreate](https://cloud.githubusercontent.com/assets/10980532/7396480/a7a9c87e-eea1-11e4-8d0b-0dc8b8dca84c.jpg)
+![responsivedesign2](https://cloud.githubusercontent.com/assets/10980532/7396484/aac4ebd8-eea1-11e4-8d51-f62be4b4d7bb.JPG)
+![responsivedesign](https://cloud.githubusercontent.com/assets/10980532/7396483/aac2c51a-eea1-11e4-9922-bccae1aa9a2e.JPG)
