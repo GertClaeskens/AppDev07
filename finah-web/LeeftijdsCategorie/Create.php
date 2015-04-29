@@ -7,8 +7,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>FINAH - Leeftijdscategorie</title>
+    <title>FINAH - Leeftijdscategorie</title>s
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js/Validate/jquery.validate.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -33,7 +35,7 @@
             <h2 id="Content-Title">Nieuwe Leeftijdscategorie</h2>
             <hr/>
 
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="lCatForm" name="lCatForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
@@ -56,9 +58,9 @@
                 ?>
                 <ul class="form-style">
                     <li><label class="control-label">Van:</label></li>
-                    <li><input class="form-control-small" type="text" name="van"/></li>
+                    <li><input class="form-control-small" type="text" id="van" name="van"/></li>
                     <li><label class="control-label">Tot:</label></li>
-                    <li><input class="form-control-small" type="text" name="tot"/></li>
+                    <li><input class="form-control-small" type="text" id="tot" name="tot"/></li>
                     <li><input type="submit" value="Create" class="createBtn" name="creeer"/></li>
                 </ul>
             </form>
@@ -74,6 +76,32 @@
     </div>
 </div>
 <!--Closing DIV wrapper-->
+<script>
+    $().ready(function() {
+        $("#lCatForm").validate({
+            rules: {
+                van: {
+                    required: true,
+                    number: true
+                },
+                tot: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                van: {
+                    required: "  Veld is verplicht!",
+                    number: "  Waarde moet numeriek zijn!"
+                },
+                tot: {
+                    required: "  Veld is verplicht!",
+                    number: "  Waarde moet numeriek zijn!"
+                }
+            }
+        });
+    })
+</script>
 <?php }
 ?>
 </body>
