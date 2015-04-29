@@ -73,7 +73,6 @@ namespace Finah_Backend.Controllers
                 (from o in db.Onderzoeken
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o.Vragen.Vragen);
-            //return this.Ok(vragen[nr-1]);
             return vragen;
         }
         // PUT: api/Onderzoek/5

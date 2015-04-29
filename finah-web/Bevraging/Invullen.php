@@ -61,6 +61,7 @@
         $vraag = $vragen[0][$volgende];
         $patient = $_POST["patient"];
         $volgende += 1;
+        $gedaan = (int)($volgende*100/count($vragen[0]));
 //TODO vorige antwoord opslaan
 //TODO Zolang er vragen zijn tonen
         ?>
@@ -78,28 +79,38 @@
                 <div class="btn-group row" role="group" id="ervaring">
                     <p class="eVraag">Hoe ervaar ik dit onderdeel?</p>
 
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary antwoordButton" onclick="hideDiv()">Verloopt naar
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" class="btn btn-primary antwoordButton" id="antw11" onclick="hideDiv(); toggleActive('antw11')">
+                            Verloopt
+                            naar
                             wens
                         </button>
                     </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary antwoordButton" onclick="hideDiv()">Probleem - niet
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" class="btn btn-primary antwoordButton" id="antw12" onclick="hideDiv(); toggleActive('antw12')">
+                            Probleem
+                            - niet
                             hinderlijk
                         </button>
                     </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary antwoordButton" onclick="showDiv()">Probleem -
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" class="btn btn-primary antwoordButton" id="antw13" onclick="showDiv(); toggleActive('antw13')">
+                            Probleem
+                            -
                             hinderlijk voor mij
                         </button>
                     </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary antwoordButton" onclick="showDiv()">Probleem -
-                            hinderlijk voor <?php echo $patient ? "mantelzorger" : "patient"?>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" class="btn btn-primary antwoordButton" id="antw14" onclick="showDiv(); toggleActive('antw14')">
+                            Probleem
+                            -
+                            hinderlijk voor <?php echo $patient ? "mantelzorger" : "patient";?>
                         </button>
                     </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary antwoordButton" onclick="showDiv()">Probleem -
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="button" class="btn btn-primary antwoordButton" id="antw15" onclick="showDiv(); toggleActive('antw15')">
+                            Probleem
+                            -
                             hinderlijk voor beiden
                         </button>
                     </div>
@@ -110,36 +121,34 @@
                         <p class="eVraag">Wilt u dat we hieraan werken?</p>
 
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton">Nee</button>
+                            <button type="button" class="btn btn-primary antwoordButton" id="antw21" onclick="toggleActiveExtra('antw21')">Nee</button>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton">Ja</button>
+                            <button type="button" class="btn btn-primary antwoordButton" id="antw22" onclick="toggleActiveExtra('antw22')">Ja</button>
                         </div>
                     </div>
                 </div>
-                <?php
-                    $serialized = htmlspecialchars(serialize($vragen));
-                ?>
+
                 <input type="hidden" name="id" value="<?php echo $_POST["id"]?>">
                 <input type="hidden" name="volgendevraag" value="<?php echo $volgende?>">
                 <input type="hidden" name="patient" value="<?php echo $patient?>">
 
                 <div class="btn-group row" role="group" id="next">
                     <?php if ($volgende>1){ ?>
-                    <div id="vorige" class="col-md">
+                    <div id="divPrev" class="col-md-2">
                         <button type="submit" name="vorige" class="btn btn-primary prevButton">Vorige</button>
                         <?php }?>
                     </div>
 
-                    <div id="volgende" class="col-md">
+                    <div id="divNext" class="col-md-2">
                         <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
                     </div>
                 </div>
 
                 <div class="row progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $gedaan;?>" style="width:<?php echo $gedaan;?>%" aria-valuemin="0"
                          aria-valuemax="100">
-                        <p id="percentage">70%</p>
+                        <p id="percentage"><?php echo $gedaan."%"?></p>
                     </div>
                 </div>
             </div>
