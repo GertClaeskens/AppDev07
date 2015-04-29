@@ -134,14 +134,17 @@
                 <input type="hidden" name="patient" value="<?php echo $patient?>">
 
                 <div class="btn-group row" role="group" id="next">
-                    <?php if ($volgende>1){ ?>
+
                     <div id="divPrev" class="col-md-2">
+                        <?php if ($volgende>1){ ?>
                         <button type="submit" name="vorige" class="btn btn-primary prevButton">Vorige</button>
                         <?php }?>
                     </div>
 
                     <div id="divNext" class="col-md-2">
+                        <?php if ($volgende>count($vragen[0])){ ?>
                         <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
+                        <?php } ?>
                     </div>
                 </div>
 

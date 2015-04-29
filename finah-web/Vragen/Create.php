@@ -86,7 +86,7 @@
                 vraagstelling: "Veld is verplicht."
             }
         });
-    })
+    });
 </script>
 <?php }
 ?>

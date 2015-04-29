@@ -84,7 +84,7 @@
                 omschrijving: "Veld is verplicht."
             }
         });
-    })
+    });
 </script>
 <?php }
 ?>

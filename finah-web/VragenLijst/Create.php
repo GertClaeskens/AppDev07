@@ -82,7 +82,7 @@
                 vragenlijst: "Veld is verplicht."
             }
         });
-    })
+    });
 </script>
 <?php //}
     //?>
