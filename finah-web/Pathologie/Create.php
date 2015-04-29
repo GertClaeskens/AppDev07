@@ -75,10 +75,10 @@
                 </h4>
             </li>
             <li>
-                <a href="../AandoeningOverzicht.php"> Aandoening </a>
+                <a href="../Aandoening/Overzicht.php"> Aandoening </a>
             </li>
             <li>
-                <a href="../Overzicht.php"> Pathologie</a>
+                <a href="Overzicht.php"> Pathologie</a>
             </li>
             <li>
                 <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
