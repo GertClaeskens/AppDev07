@@ -24,7 +24,7 @@ SPRINT 1
 SPRINT 2
 Om de Java Fx applicatie te kunnen openen, kan je deze tutorial volgen  : <a href="http://code.makery.ch/library/javafx-8-tutorial/part1/">Tutorial Java FX</a>
 
-  - Gert Claeskens : Backend code geschreven om de gegevens uit database te halen voor nieuwe gegevens aan te maken en overzichten te tonen + json loop error opgelost.
+  - Gert Claeskens : Backend code geschreven om de gegevens uit database te halen om nieuwe gegevens aan te maken en overzichten te tonen + json loop error opgelost. Seed method geschreven. Web pagina's aan database gelinkt. Controllers verder afgewerkt en modelklassen afgewerkt.
   - Rafaël Sarrechia : Nieuwe layout gemaakt voor de website en voorzien van een responsive design(bootstrap). 
   - Brian Thys : Layout gemaakt van de enquête. 
   - Philippe Liénart: 
