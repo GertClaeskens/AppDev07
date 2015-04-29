@@ -13,6 +13,8 @@ require "../PHP/Models/Aandoening.php";
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../js/Validate/jquery.validate.js"></script>
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -96,12 +98,13 @@ require "../PHP/Models/Aandoening.php";
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
     <h1 class="header">Nieuwe aandoening </h1>
-<form class="form-horizontal " role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form id="aandoeningForm" class="form-horizontal " role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 <?php
 if (isset($_POST["creeer"])) {
     //var_dump($_POST);
     $omschrijving = $_POST["omschrijving"];
     $patologielijst = $_POST["pathologie"];
+
     //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
     $aandoening = new Aandoening();
     $aandoening->setId(0);
@@ -126,13 +129,13 @@ if (isset($_POST["creeer"])) {
                     <div class="form-group top-form">
                         <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="Omschrijving"> Omschrijving: </label>
                         <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                            <textarea rows="5" type="text" class="form-control" id="Omschrijving" placeholder="Voer een omschrijving in"> </textarea>
+                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" placeholder="Voer een omschrijving in"> </textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie"> Kies een pathologie:  </label>
                         <div class="col-xs-6 col-sm-5 col-md-5 col-lg-3">
-                            <select multiple class="form-control" id="Pathologie" name="pathologie[]">
+                            <select multiple class="form-control" id="pathologie" name="pathologie[]">
                                 <!--                        Pathologieen ophalen-->
                                 <?php
     //$patologieen = new PathologieArray();
@@ -166,6 +169,16 @@ if (isset($_POST["creeer"])) {
         </div>
     </div>
     <script>
+        $().ready(function() {
+            $("#aandoeningForm").validate({
+                rules: {
+                    omschrijving: "required"
+                },
+                messages: {
+                    omschrijving: "Veld is verplicht."
+                }
+            });
+        })
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
