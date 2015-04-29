@@ -31,8 +31,8 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements JsonS
 
 	}
     public Aandoening(int id, String omschrijving) {
-        this.Id = new SimpleIntegerProperty(id);
-        this.Omschrijving = new SimpleStringProperty(omschrijving);
+        this.Id = id;
+        this.Omschrijving = omschrijving;
     }
 	public void voegPathologieLijstToe(ArrayList<Pathologie> patlijst) {
 		Patologieen = patlijst;

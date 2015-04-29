@@ -24,7 +24,7 @@
       <Button fx:id="btnToevoegen" layoutX="907.0" layoutY="75.0" mnemonicParsing="false" text="Toevoegen" />
       <TableView fx:id="tblAandoening" layoutX="97.0" layoutY="194.0" prefHeight="231.0" prefWidth="897.0">
         <columns>
-          <TableColumn fx:id="colaandoening" prefWidth="417.0" text="Aandoening" />
+          <TableColumn fx:id="colAandoening" prefWidth="417.0" text="Aandoening" />
 
           <TableColumn fx:id="colPathologie" minWidth="0.0" prefWidth="479.0" text="Pathologie" />
 

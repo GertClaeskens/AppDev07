@@ -1,6 +1,7 @@
 package finah_desktop_fx.view;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -39,10 +40,18 @@ public class AandoeningController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 	//public void initialize(){
         // Initialize the person table with the two columns.
-        ObservableList<Aandoening> tblList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
+        ArrayList<Aandoening> aandoeningen = AandoeningDAO.GetAandoeningen();
+        
+        for (int i=0;i<aandoeningen.size();i++){
+        	for (int j=0;j<aandoeningen.get(i).getBijhorende_pathologie().size();j++){
+        		aandoeningen.get(i).getBijhorende_pathologie().get(j);
+        	}
+        }
+		ObservableList<Aandoening> tblList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
+        
         tblAandoening.setItems(tblList);
-        colAandoening.setCellValueFactory(new PropertyValueFactory<Aandoening, String>("Omschrijving"));
-        colPathologie.setCellValueFactory(new PropertyValueFactory<Aandoening, String>("Omschrijving"));
+        colAandoening.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
+        colPathologie.setCellValueFactory(new PropertyValueFactory<>("Pathologie"));
 
 	}
     
