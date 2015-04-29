@@ -23,6 +23,9 @@ public class MainApp extends Application {
 
         showAccountLayout();
     }
+    public void toonAandoeningen(){
+    	
+    }
 
     /**
      * Initializes the root layout.
