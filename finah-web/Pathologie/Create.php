@@ -103,7 +103,6 @@
                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <?php
                             if (isset($_POST["creeer"])) {
-                            var_dump($_POST["omschrijving"]);
                             $omschrijving = $_POST["omschrijving"];
 
                             $pathologie = new Pathologie();
@@ -116,8 +115,6 @@
                                     $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeninglijst[$a]));
                                 };
                             }
-                            var_dump($pathologie);
-
                             if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
                                 //Todo eventueel een exception toevoegen hier
                                 //header("Location: Overzicht.php");
