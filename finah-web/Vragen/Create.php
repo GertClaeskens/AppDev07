@@ -61,7 +61,7 @@ require "../PHP/Models/Vraag.php"?>
                     <a href="../index.php"> Home </a>
                 </li>
                 <li>
-                    <a href="#"> Bevraging</a>
+                    <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                 </li>
                 <br/>
                 <li class="sidebar-brand">
@@ -121,16 +121,14 @@ require "../PHP/Models/Vraag.php"?>
                                                 <input type="text" name="vraagstelling" class="form-control" id="Vraagstelling" />
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                                <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
-                                            </div>
+                                    <div class="form-group">
+                                        <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                           <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
+                                            <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
                                         </div>
+                                    </div>
                             </form>
-                             <div class="text-center col-sm-12 col-md-12 col-lg-12" id="back">
-                                <a href="Overzicht.php">Terug naar het overzicht</a>
-                             </div>
+
                       </div>
                     </div>
             </div>

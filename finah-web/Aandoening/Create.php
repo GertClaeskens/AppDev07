@@ -66,7 +66,7 @@
                 <a href="../index.php"> Home </a>
             </li>
             <li>
-                <a href="#"> Bevraging</a>
+                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
             </li>
             <br/>
             <li class="sidebar-brand">
@@ -161,16 +161,13 @@
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                            <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
-                        </div>
-                    </div>
+                                     <div class="form-group">
+                                        <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                           <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
+                                            <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
+                                        </div>
+                                    </div>
                  </form>
-    <!--                            <a href="Overzicht.php"><span style="font-size:3.0em;" class="glyphicon glyphicon-circle-arrow-left"></span></a>-->
-                 <div class="text-center col-sm-12 col-md-12 col-lg-12" id="back">
-                     <a href="Overzicht.php">Terug naar het overzicht</a>
-                 </div>
           </div>
         </div>
     </div>

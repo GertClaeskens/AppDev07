@@ -62,7 +62,7 @@ require "../PHP/Models/LeeftijdsCategorie.php";
                 <a href="../index.php"> Home </a>
             </li>
             <li>
-                <a href="#"> Bevraging</a>
+                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
             </li>
             <br/>
             <li class="sidebar-brand">
@@ -126,15 +126,14 @@ if (isset($_POST["creeer"])) {
                                             <input type="text" name="tot" class="form-control" id="Tot" />
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                                                 <div class="form-group">
                                         <div class=" col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                           <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
                                             <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
                                         </div>
                                     </div>
                     </form>
-                     <div class="text-center col-sm-12 col-md-12 col-lg-12" id="back">
-                        <a href="Overzicht.php">Terug naar het overzicht</a>
-                     </div>
+
                   </div>
                 </div>
             </div>
