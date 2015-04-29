@@ -52,5 +52,14 @@
             array_push($this->Patologieen, $value);
         }
 
+        public function getOmschrijving()
+        {
+            parent::getOmschrijving();
+        }
+
+        public function setOmschrijving($Omschrijving)
+        {
+            parent::setOmschrijving($Omschrijving);
+        }
     }
 

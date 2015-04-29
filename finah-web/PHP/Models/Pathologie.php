@@ -38,7 +38,24 @@
         public function voegAandoeningAanPathologieToe($aand)
         {
             array_push($this->Aandoeningen, $aand);
+        }
+        public function getId()
+        {
+            parent::getId();
+        }
 
+        public function setId($Id)
+        {
+            parent::setId($Id);
+        }
 
+        public function getOmschrijving()
+        {
+            parent::getOmschrijving();
+        }
+
+        public function setOmschrijving($Omschrijving)
+        {
+            parent::setOmschrijving($Omschrijving);
         }
     }
