@@ -1,136 +1,192 @@
 <?php
-    require "../PHP/DAO/FinahDAO.php";
-    require_once "../PHP/Models/Aandoening.php";
-    require_once "../PHP/Models/Pathologie.php";
+require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/Aandoening.php";
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <title>FINAH - Aandoening</title>
-    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
-</head>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>FINAH - Aandoening</title>
+        <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+        <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../js/Validate/jquery.validate.js"></script>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header pull-left">
+
+            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
+                <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
+            </a>
+            <a class="navbar-brand header" href="#"> Finah</a>
+        </div>
+        <div class="dropdown navbar-header pull-right nav-right">
+            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
+            <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="0" href="#">
+                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
+                    </a>
+                </li>
+                <li role="presentation" class="divider">
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">
+                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 <div id="wrapper">
-    <div id="page-header">
-        <h1>FINAH</h1>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <br/>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    MENU
+                </h4>
+            </li>
+            <li>
+                <a href="../index.php"> Home </a>
+            </li>
+            <li>
+                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
+            </li>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    BEHEER
+                </h4>
+            </li>
+            <li>
+                <a href="Overzicht.php"> Aandoening </a>
+            </li>
+            <li>
+                <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+            </li>
+            <li>
+                <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+            </li>
+            <li>
+                <a href="../Vragen/Overzicht.php"> Vragen</a>
+            </li>
+            <li>
+                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+            </li>
+        </ul>
     </div>
-    <!--Closing DIV page header-->
-    <div id="inner-wrapper">
-        <div id="nav-bar2">
-            <h2> Beheren </h2>
-            <button onclick="location.href='Overzicht.php'">Aandoening</button>
-            <button onclick="location.href='../Pathologie/Overzicht.php'">Pathologie</button>
-            <button onclick="location.href='../LeeftijdsCategorie/Overzicht.php'">Leeftijdscategorie</button>
-            <button onclick="location.href='../Vragen/Overzicht.php'">Vragen</button>
-            <button onclick="location.href='../VragenLijst/Overzicht.php'">Vragenlijsten</button>
-            <button onclick="location.href='../index.php'">Terug naar home</button>
-        </div>
-        <!--Closing DIV nav-bar-->
-        <div id="body-container">
-            <?php
-                if (isset($_POST)) {
-                    $aandoening = FinahDAO::HaalOp("Aandoening", $_POST["Id"]);
-                    $naam = $aandoening["Omschrijving"];
-                    if (isset($_POST["bewerk"])) {
+    <div id="page-content-wrapper">
+    <div class="breadcrumb">
+        <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Aandoening  </span>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+<?php
+if (isset($_POST)) {
+    $aandoening = FinahDAO::HaalOp("Aandoening", $_POST["Id"]);
+    $naam = $aandoening["Omschrijving"];
 
-                        echo "<h3 id = 'Breadcrumb' > Menu > Aandoening > Bewerken</h3 >";
-                        echo "<h2 id = 'Content-Title' > Bewerken : " . $naam . "  </h2 >";
-                    } elseif (isset($_POST["details"])) {
-                        echo "<h3 id = 'Breadcrumb' > Menu > Aandoening > Details</h3 >";
-                        echo "<h2 id = 'Content-Title' > Details : " . $naam . " </h2 >";
-                    }
-                }
-
-            ?>
-            <hr/>
-            <form method="POST">
-                <ul class="form-style">
-                    <li><label class="control-label">Omschrijving</label></li>
-                    <?php
-                        if (isset($_POST["bewerk"])) {
+    if (isset($_POST["bewerk"])) {
+        echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
+    } elseif (isset($_POST["details"])) {
+        echo "<h1 class='header' >". " Details : " . $naam . " </h2 >";
+    }
+}
+?>
+<form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
+      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<?php
+if (isset($_POST["bewerk"])) {
+    //ToDo code voor wijzigingen weg te schrijven.
 
 
-                        //var_dump($aandoening["Omschrijving"]);
-                        /*               foreach($_POST as $key => $value) {
-                                           $pos = strpos($key , "edit_");
-                                           if ($pos === 0){
-                                               // do something with $value
-                                           }
-                                       }*/
-                        ?>
+    ?>
+                    <div class="form-group top-form">
+                        <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="Omschrijving"> Omschrijving: </label>
+                        <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" > <?php echo $aandoening["Omschrijving"]; ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie"> Kies een pathologie:  </label>
+                        <div class="col-xs-6 col-sm-5 col-md-5 col-lg-3">
+                            <select class="form-control" id="pathologie" name="pathologie[]">
+                                <?php
+    //TODO omzetten naar Pathologie object
+    $patologieen = FinahDAO::HaalOp("Pathologie");
+    foreach ($patologieen as $item) {
+        $waarde = $item["Omschrijving"];
 
-                        <li><input class="form-control" type="text" name="omschrijving"
-                                   value=<?php echo $aandoening["Omschrijving"]; ?>/></li>
-                        <li><label class="control-label">Kies een pathologie</label></li>
-                        <select class="form-control" name="pathologie[]" multiple="multiple">
-                            <!--                        Pathologieen ophalen-->
-                            <?php
-                                //$patologieen = new PathologieArray();
-                                //TODO omzetten naar Pathologie object
-                                $patologieen = FinahDAO::HaalOp("Pathologie");
-                                foreach ($patologieen as $item) {
+            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+    }
 
-                                    echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                                }
-                                //var_dump($patologieen);
-                                //                        for ($a=0;$a<count($patologieen);$a++){
-                                //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
-                                //                        }
-
-                                //TODO Opslaan gegevens van Edit implementeren
-                                //TODO gegevens tonen van Geluidsfragment
-                                //TODO gegevens tonen van Afbeelding
-                            ?>
-
+    ?>
                         </select>
-
-                        <li>
-                            <button class="actieBtn" onclick="window.location='Overzicht.php';return false;">
-                                Terug
-                            </button>
-                            <input type="submit" value="Edit" class="actieBtn" name="opslaan"/></li>
-
-                    <?php
-                    }elseif (isset($_POST["details"]))
-                        {
-                    ?>
-
-                    <li><?php echo $aandoening["Omschrijving"]; ?></li>
-                    <li><label class="control-label">Bijhorende Pathologieën</label></li>
-                    <?php
-                        foreach ($aandoening["Patologieen"] as $pat) {
-                            echo "<li> " . $pat["Omschrijving"] . "</li>";
-                        }
-                    ?>
-                    <li>
-                        <button class="actieBtn" onclick="window.location='Overzicht.php';return false;">
-                            Terug
-                        </button>
-                    </li>
-
-
-                </ul>
-            </form>
-        <?php
-            } elseif (isset($_POST["details"])) {
-            ?>
-            <div class="Back">
-                <a href="Overzicht.php">Terug naar overzicht</a>
-            </div>
-        <?php
-        };
-        ?>
+                        </div>
+                    </div>
+                                     <div class="form-group">
+                                        <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                           <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
+                                            <button type="submit" name="wijzigen" class="btn btn-primary"> Wijzigen </button>
+                                        </div>
+                                    </div>
+                 </form>
+                 <?php
+                 }elseif (isset($_POST["details"])){
+                 ?>
+                        <ul class="list-unstyled">
+                            <li><?php echo $aandoening["Omschrijving"]; ?></li>
+                            <li><label class="control-label">Bijhorende Pathologieën</label></li>
+                            <?php
+                            foreach ($aandoening["Patologieen"] as $pat) {
+                                echo "<li> " . $pat["Omschrijving"] . "</li>";
+                            }
+                            ?>
+                        </ul>
+          </div>
         </div>
-        <!--Closing DIV body containerr-->
     </div>
-    <!--Closing DIV innerwrapper-->
-    <div id="page-footer">
-        <p>&copy; Copyright 2015-2016. All Rights Reserved</p>
-    </div>
-</div>
-<!--Closing DIV wrapper-->
-
-</body>
-</html>
+    <script>
+        $().ready(function() {
+            $("#aandoeningForm").validate({
+                rules: {
+                    omschrijving: "required"
+                },
+                messages: {
+                    omschrijving: "Veld is verplicht."
+                }
+            });
+        })
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                $("#side-toggle").removeClass("glyphicon-option-vertical");
+                $("#side-toggle").addClass("glyphicon-option-horizontal");
+            } else {
+                $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                $("#side-toggle").addClass("glyphicon-option-vertical");
+            }
+        });
+    </script>
+    </body>
+    </html>
+<?php }
+?>
