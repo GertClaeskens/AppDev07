@@ -115,9 +115,9 @@ namespace Finah_Backend.Controllers
             var pat = new Pathologie { Omschrijving = pathologie.Omschrijving, Aandoeningen = new List<Aandoening>() };
             foreach (var aand in pathologie.Aandoeningen)
             {
-                pat.Aandoeningen.Add(db.Aandoeningen.Single(a => a.Id == aand.Id));
+                pat.Aandoeningen.Add(db.Aandoeningen.Find(aand.Id));
             }
-            db.Pathologieen.Add(pathologie);
+            db.Pathologieen.Add(pat);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
