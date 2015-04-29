@@ -60,24 +60,6 @@ namespace Finah_Backend.Controllers
         [Route("Pathologie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            #region Hardcoded Objecten - commented
-
-            //Pathologie pathologie = null;
-            //var overzichtPathologie = new List<Pathologie>
-            //                                           {
-            //                                               new Pathologie { Id = 1, Omschrijving = "Pathologie 1" },
-            //                                               new Pathologie { Id = 2, Omschrijving = "Pathologie 2" },
-            //                                               new Pathologie { Id = 3, Omschrijving = "Pathologie 3" },
-            //                                               new Pathologie { Id = 4, Omschrijving = "Pathologie 4" },
-            //                                               new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
-            //                                           };
-
-            //pathologie = overzichtPathologie[id - 1];
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
-
-            #endregion Hardcoded Objecten - commented
-
             var pathologie = db.Pathologieen.Find(id);
             if (pathologie == null)
             {
@@ -124,13 +106,17 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Pathologies
         [ResponseType(typeof(Pathologie))]
-        public IHttpActionResult PostPathologie(Pathologie pathologie)
+        public IHttpActionResult PostPathologie([FromBody] Pathologie pathologie)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            var pat = new Pathologie { Omschrijving = pathologie.Omschrijving, Aandoeningen = new List<Aandoening>() };
+            foreach (var aand in pathologie.Aandoeningen)
+            {
+                pat.Aandoeningen.Add(db.Aandoeningen.Single(a => a.Id == aand.Id));
+            }
             db.Pathologieen.Add(pathologie);
             db.SaveChanges();
 
