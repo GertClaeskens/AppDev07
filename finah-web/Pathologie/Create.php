@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Pathologie</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js/Validate/jquery.validate.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -34,7 +36,7 @@
             <h2 id="Content-Title">Nieuwe pathologie</h2>
             <hr/>
 
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="patForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
@@ -72,6 +74,18 @@
     </div>
 </div>
 <!--Closing DIV wrapper-->
+<script>
+    $().ready(function() {
+        $("#patForm").validate({
+            rules: {
+                omschrijving: "required"
+            },
+            messages: {
+                omschrijving: "Veld is verplicht."
+            }
+        });
+    })
+</script>
 <?php }
 ?>
 </body>

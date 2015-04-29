@@ -253,11 +253,11 @@
                 relatie: { valueNotEquals: "null" }
             },
             messages: {
-                aandoening: { valueNotEquals: "  Keuze verplicht!" },
-                pathologie: { valueNotEquals: "  Keuze verplicht!" },
-                leeftijdcategoriePat: { valueNotEquals: "  Keuze verplicht!" },
-                leeftijdcategorieMan: { valueNotEquals: "  Keuze verplicht!" },
-                relatie: { valueNotEquals: "  Keuze verplicht!" }
+                aandoening: { valueNotEquals: "Keuze verplicht!" },
+                pathologie: { valueNotEquals: "Keuze verplicht!" },
+                leeftijdcategoriePat: { valueNotEquals: "Keuze verplicht!" },
+                leeftijdcategorieMan: { valueNotEquals: "Keuze verplicht!" },
+                relatie: { valueNotEquals: "Keuze verplicht!" }
             }
         });
     })

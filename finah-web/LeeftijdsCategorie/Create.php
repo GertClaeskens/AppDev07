@@ -35,7 +35,7 @@
             <h2 id="Content-Title">Nieuwe Leeftijdscategorie</h2>
             <hr/>
 
-            <form id="lCatForm" name="lCatForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="lCatForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <?php
                     if (isset($_POST["creeer"])) {
                     //var_dump($_POST);
