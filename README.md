@@ -21,8 +21,9 @@ SPRINT 1
 - Finah-Web
   We zijn gestart met een MVC-applicatie, maar schakelen vanaf sprint2 over naar php.
 
-SPRINT 2
-Om de Java Fx applicatie te kunnen openen, kan je deze tutorial volgen  : <a href="http://code.makery.ch/library/javafx-8-tutorial/part1/">Tutorial Java FX</a>
+SPRINT 2 
+
+! Om de Java Fx applicatie te kunnen openen, kan je deze tutorial volgen  : <a href="http://code.makery.ch/library/javafx-8-tutorial/part1/">Tutorial Java FX</a> !
 
   - Gert Claeskens : Backend code geschreven om de gegevens uit database te halen om nieuwe gegevens aan te maken en overzichten te tonen + json loop error opgelost. Seed method geschreven. Web pagina's aan database gelinkt. Controllers verder afgewerkt en modelklassen afgewerkt.
   - Rafaël Sarrechia : Nieuwe layout gemaakt voor de website en voorzien van een responsive design(bootstrap). 
