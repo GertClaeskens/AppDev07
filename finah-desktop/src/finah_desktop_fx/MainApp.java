@@ -32,6 +32,7 @@ public class MainApp extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+            
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
@@ -50,7 +51,9 @@ public class MainApp extends Application {
         try {
             // Load account layout.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
+            //loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
+//            loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
             AnchorPane accountLayout = (AnchorPane) loader.load();
 
             // Set account layout into the center of root layout.
