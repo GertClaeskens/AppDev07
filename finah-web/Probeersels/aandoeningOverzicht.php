@@ -1,13 +1,12 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/LeeftijdsCategorie.php";
-?>
+require "../PHP/Models/Vraag.php"?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>FINAH - Leeftijdscategorie</title>
+        <title>FINAH - Vragen</title>
         <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -77,10 +76,10 @@ require "../PHP/Models/LeeftijdsCategorie.php";
                         <a href="../Pathologie/Overzicht.php"> Pathologie</a>
                     </li>
                     <li>
-                        <a href="Overzicht.php"> Leeftijdscategorie</a>
+                        <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
                     </li>
                     <li>
-                        <a href="../Vragen/Overzicht.php"> Vragen</a>
+                        <a href="Overzicht.php"> Vragen</a>
                     </li>
                     <li>
                         <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
@@ -89,45 +88,42 @@ require "../PHP/Models/LeeftijdsCategorie.php";
             </div>
             <div  id="page-content-wrapper">
             <div class="breadcrumb">
-                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Leeftijdscategorie  </span>
+                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Vragen  </span>
             </div>
             <div  class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h1 class="header">Nieuwe leeftijdscategorie </h1>
+                    <h1 class="header">Nieuwe vraag </h1>
                     <form class="form-horizontal " role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <?php
                             if (isset($_POST["creeer"])) {
-                                //var_dump($_POST);
-                                $van = $_POST["van"];
-                                $tot = $_POST["tot"];
+                                $omschrijving = $_POST["vraagstelling"];
 
-                                $leeftijdsCat = new LeeftijdsCategorie();
-                                //ID moet op 0 gezet worden, anders een error op de backend
-                                $leeftijdsCat->Id = 0;
-                                //Todo Validation op de input velden. Enkel positieve getallen tussen 0-120
-                                $leeftijdsCat->setVan($van);
-                                $leeftijdsCat->setTot($tot);
-                                if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $leeftijdsCat)) {
+                                if($omschrijving == ""){
+                                    echo("<p>Gelieve de vraagstelling in te vullen.</p>");
+                                    echo("<a href='http://localhost:63342/finah-web/Vragen/Create.php'> Terug </a>");
+                                    return;
+                                }
+
+                                $vraag = new Vraag();
+                                $vraag->Id = 0;
+                                $vraag->setVraagstelling($vraag);
+
+                                if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
                                     //Todo eventueel een exception toevoegen hier
-                                    echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                    echo "De vraag werd succesvol opgeslagen";
                                 }
                             }else {
-                        ?>
+                            ?>
                                     <div class="form-group top-form">
-                                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van"> Van: </label>
-                                        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
-                                            <input type="text" name="van" class="form-control" id="Van" />
+                                        <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
+                                        <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
+                                            <input type="text" name="van" class="form-control" id="Vraagstelling" />
                                         </div>
                                     </div>
+
                                     <div class="form-group">
-                                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot"> Tot:  </label>
-                                        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
-                                            <input type="text" name="tot" class="form-control" id="Tot" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class=" col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                        <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
                                             <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
                                         </div>
                                     </div>
