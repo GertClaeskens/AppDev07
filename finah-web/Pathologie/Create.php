@@ -134,7 +134,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="aandoening"> Kies een Aandoening:  </label>
-                            <div class="col-xs-6 col-sm-5 col-md-5 col-lg-3">
+                            <div class="col-xs-6 col-sm-7 col-md-4 col-lg-3">
                                 <select multiple class="form-control" id="aandoening" name="aandoening[]">
                                     <?php
                                         $aandoeningen = FinahDAO::HaalOp("Aandoening");
