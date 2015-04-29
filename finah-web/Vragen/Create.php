@@ -118,7 +118,7 @@ require "../PHP/Models/Vraag.php"?>
                                         <div class="form-group top-form">
                                             <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                             <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                                <input type="text" name="vraagstgelling" class="form-control" id="Vraagstelling" />
+                                                <input type="text" name="vraagstelling" class="form-control" id="Vraagstelling" />
                                             </div>
                                         </div>
 
