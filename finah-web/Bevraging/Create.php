@@ -38,7 +38,6 @@ require "../PHP/Finah.php";
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             pat = JSON.parse(xhr.responseText);
-                            alert(pat[0].Id + " " + pat.length);
                             for (var i = 0; i < pat.length; i++) {
                                 var option = document.createElement('option');
                                 option.value = pat[i].Id;
