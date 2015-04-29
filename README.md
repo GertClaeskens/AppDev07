@@ -21,10 +21,8 @@ SPRINT 1
 - Finah-Web
   We zijn gestart met een MVC-applicatie, maar schakelen vanaf sprint2 over naar php.
 
-SPRINT 2
----------
 
-    Gert Claeskens : Backend code geschreven om de gegevens uit database te halen voor nieuwe gegevens aan te maken en                          overzichten te tonen + json loop error opgelost
+    Gert Claeskens : Backend code geschreven om de gegevens uit database te halen voor nieuwe gegevens aan te maken en overzichten te tonen + json loop error opgelost
     Rafaël Sarrechia : Nieuwe layout gemaakt voor de website en voorzien van een responsive design(bootstrap). 
     Brian Thys : Layout gemaakt van de enquête. 
     Philippe Liénart: 
