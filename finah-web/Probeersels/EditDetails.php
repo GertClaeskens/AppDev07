@@ -20,8 +20,8 @@ require_once "../PHP/Models/Pathologie.php";
     <div id="inner-wrapper">
         <div id="nav-bar2">
             <h2> Beheren </h2>
-            <button onclick="location.href='Overzicht.php'">Aandoening</button>
-            <button onclick="location.href='../Pathologie/Overzicht.php'">Pathologie</button>
+            <button onclick="location.href='../Aandoening/Overzicht.php'">Aandoening</button>
+            <button onclick="location.href='Overzicht.php'">Pathologie</button>
             <button onclick="location.href='../LeeftijdsCategorie/Overzicht.php'">Leeftijdscategorie</button>
             <button onclick="location.href='../Vragen/Overzicht.php'">Vragen</button>
             <button onclick="location.href='../VragenLijst/Overzicht.php'">Vragenlijsten</button>
@@ -31,14 +31,14 @@ require_once "../PHP/Models/Pathologie.php";
         <div id="body-container">
             <?php
             if (isset($_POST)) {
-                $aandoening = FinahDAO::HaalOp("Aandoening", $_POST["Id"]);
-                $naam = $aandoening["Omschrijving"];
+                $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
+                $naam = $pathologie["Omschrijving"];
                 if (isset($_POST["bewerk"])) {
 
-                    echo "<h3 id = 'Breadcrumb' > Menu > Aandoening > Bewerken</h3 >";
+                    echo "<h3 id = 'Breadcrumb' > Menu > Pathologie > Bewerken</h3 >";
                     echo "<h2 id = 'Content-Title' > Bewerken : " . $naam . "  </h2 >";
                 } elseif (isset($_POST["details"])) {
-                    echo "<h3 id = 'Breadcrumb' > Menu > Aandoening > Details</h3 >";
+                    echo "<h3 id = 'Breadcrumb' > Menu > Pathologie > Details</h3 >";
                     echo "<h2 id = 'Content-Title' > Details : " . $naam . " </h2 >";
                 }
             }
@@ -48,36 +48,21 @@ require_once "../PHP/Models/Pathologie.php";
             <form method="POST">
                 <ul class="form-style">
                     <li><label class="control-label">Omschrijving</label></li>
-                    <?php
-                    if (isset($_POST["bewerk"])) {
-
-
-                        //var_dump($aandoening["Omschrijving"]);
-                        /*               foreach($_POST as $key => $value) {
-                                           $pos = strpos($key , "edit_");
-                                           if ($pos === 0){
-                                               // do something with $value
-                                           }
-                                       }*/
-                        ?>
+                    <?php if (isset($_POST["bewerk"])) { ?>
 
                         <li><input class="form-control" type="text" name="omschrijving"
-                                   value=<?php echo $aandoening["Omschrijving"]; ?>/></li>
-                        <li><label class="control-label">Kies een pathologie</label></li>
-                        <select class="form-control" name="pathologie[]" multiple="multiple">
+                                   value=<?php echo $pathologie["Omschrijving"]; ?>/></li>
+                        <li><label class="control-label">Ken toe aan een aandoening</label></li>
+                        <select class="form-control" name="aandoeningen[]" multiple="multiple">
                             <!--                        Pathologieen ophalen-->
                             <?php
                             //$patologieen = new PathologieArray();
                             //TODO omzetten naar Pathologie object
-                            $patologieen = FinahDAO::HaalOp("Pathologie");
-                            foreach ($patologieen as $item) {
+                            $aandoeningen = FinahDAO::HaalOp("Aandoening");
+                            foreach ($aandoeningen as $item) {
 
                                 echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                             }
-                            //var_dump($patologieen);
-                            //                        for ($a=0;$a<count($patologieen);$a++){
-                            //                            echo "<option>" . $patologieen->Omschrijving . "</option>\r\n";
-                            //                        }
 
                             //TODO Opslaan gegevens van Edit implementeren
                             //TODO gegevens tonen van Geluidsfragment
@@ -91,17 +76,18 @@ require_once "../PHP/Models/Pathologie.php";
                                 Terug
                             </button>
                             <input type="submit" value="Edit" class="actieBtn" name="opslaan"/></li>
+                        <!--                        TODO wijzigingen nog opslaan in de database-->
 
                     <?php
                     }elseif (isset($_POST["details"]))
                     {
                     ?>
 
-                    <li><?php echo $aandoening["Omschrijving"]; ?></li>
-                    <li><label class="control-label">Bijhorende Pathologieën</label></li>
+                    <li><?php echo $pathologie["Omschrijving"]; ?></li>
+                    <li><label class="control-label">Bijhorende Aandoeningen</label></li>
                     <?php
-                    foreach ($aandoening["Patologieen"] as $pat) {
-                        echo "<li> " . $pat["Omschrijving"] . "</li>";
+                    foreach ($pathologie["Aandoeningen"] as $aand) {
+                        echo "<li> " . $aand["Omschrijving"] . "</li>";
                     }
                     ?>
                     <li>
