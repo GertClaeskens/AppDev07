@@ -19,15 +19,15 @@
                </font>
             </Label>
             <Line endX="25.0" rotate="90.0" startX="-25.0" />
-          <Button focusTraversable="false" mnemonicParsing="false" text="Account" />
+          <Button fx:id="btnAccount" focusTraversable="false" mnemonicParsing="false" text="Account" />
             <Button focusTraversable="false" mnemonicParsing="false" text="Nieuwe bevraging" />
             <MenuButton mnemonicParsing="false" text="Beheer">
               <items>
-                <MenuItem mnemonicParsing="false" text="Vragen" />
-                  <MenuItem mnemonicParsing="false" text="Vragenlijsten" />
-                  <MenuItem mnemonicParsing="false" text="Aandoeningen" />
-                  <MenuItem mnemonicParsing="false" text="Pathologieën" />
-                <MenuItem mnemonicParsing="false" text="Accounts" />
+                <MenuItem mnemonicParsing="false" onAction="toonVragen" text="Vragen" />
+                  <MenuItem mnemonicParsing="false" onAction="toonVragenLijsten" text="Vragenlijsten" />
+                  <MenuItem mnemonicParsing="false" onAction="toonAandoeningen" text="Aandoeningen" />
+                  <MenuItem mnemonicParsing="false" onAction="toonPathologieen" text="Pathologieën" />
+                <MenuItem mnemonicParsing="false" onAction="toonAccounts" text="Accounts" />
               </items>
             </MenuButton>
             <Button focusTraversable="false" mnemonicParsing="false" text="Resultaten" />
