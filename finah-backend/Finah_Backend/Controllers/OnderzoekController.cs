@@ -29,7 +29,7 @@ namespace Finah_Backend.Controllers
         {
             //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
             var aandoening =
-                (from o in db.Onderzoeken
+                (from o in db.Onderzoeken.Include(o => o.Relatie)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o);
             if (aandoening == null)
@@ -56,7 +56,25 @@ namespace Finah_Backend.Controllers
 
             return Ok(aandoening);
         }
+        //[Route("Onderzoek/{id}/Vragen")]
+        //public IQueryable<VragenLijst> GetVragen(string id)
+        //{
+        //    var vragen =
+        //        (from o in db.Onderzoeken
+        //         where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+        //         select o.Vragen);
+        //    return vragen;
+        //}
 
+        [Route("Onderzoek/{id}/Vragen/")]
+        public IQueryable<ICollection<Vraag>> GetVraag(string id)
+        {
+            var vragen =
+                (from o in db.Onderzoeken
+                 where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+                 select o.Vragen.Vragen);
+            return vragen;
+        }
         // PUT: api/Onderzoek/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOnderzoek(int id, Onderzoek onderzoek)

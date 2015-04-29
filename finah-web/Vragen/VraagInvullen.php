@@ -52,7 +52,7 @@
                     <button type="button" class="btn btn-primary antwoordButton" id="antw14" onclick="showDiv(); toggleActive('antw14')">
                         Probleem
                         -
-                        hinderlijk voor mantelzorger
+                        hinderlijk voor <?php echo $patient ? "mantelzorger" : "patient";?>
                     </button>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2">

@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width"/>
     <title>FINAH - Vragenlijst</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js/Validate/jquery.validate.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -34,7 +36,7 @@
             <h2 id="Content-Title">Nieuwe Vraaglijst</h2>
             <hr/>
             <!--TODO  Een lijst met vragen (bv: multiple combobox) waarbij de benodigde vragen geselecteerd kunnen worden, om deze toe te voegen aan een nieuwe vragenlijst. -->
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="vragenlijstFrom" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!--                --><?php
 
                     /*              if (isset($_POST["creeer"])) {
@@ -70,6 +72,18 @@
     </div>
 </div>
 <!--Closing DIV wrapper-->
+<script>
+    $().ready(function() {
+        $("#vragenlijstFrom").validate({
+            rules: {
+                vragenlijst: "required"
+            },
+            messages: {
+                vragenlijst: "Veld is verplicht."
+            }
+        });
+    })
+</script>
 <?php //}
     //?>
 </body>
