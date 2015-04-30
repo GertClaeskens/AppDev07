@@ -23,9 +23,9 @@ public class AandoeningController implements Initializable{
     @FXML
     private TableView<Aandoening> tblAandoening;
     @FXML
-    private TableColumn<Aandoening, String> colAandoening;
+    private TableColumn<Aandoening, Integer> colId;
     @FXML
-    private TableColumn<Aandoening, String> colPathologie;
+    private TableColumn<Aandoening, String> colAandoening;
     @FXML
     private Button btnToevoegen;
     @FXML
@@ -50,8 +50,8 @@ public class AandoeningController implements Initializable{
 		ObservableList<Aandoening> tblList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
         
         tblAandoening.setItems(tblList);
+        colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colAandoening.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
-        colPathologie.setCellValueFactory(new PropertyValueFactory<>("Pathologie"));
 
 	}
     
