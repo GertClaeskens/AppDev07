@@ -102,7 +102,8 @@ require "../PHP/Models/Aandoening.php";
     <div class="col-sm-12 col-md-12 col-lg-12">
         <?php
         if (isset($_POST)) {
-            $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
+            $id = $_POST["bewerk"];
+            $pathologie = FinahDAO::HaalOp("Pathologie", $id);
             $naam = $pathologie["Omschrijving"];
             if (isset($_POST["bewerk"])) {
                 echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
