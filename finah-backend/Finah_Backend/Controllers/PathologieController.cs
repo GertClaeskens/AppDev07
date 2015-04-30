@@ -90,12 +90,12 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Pathologies
         [ResponseType(typeof(Pathologie))]
-        public IHttpActionResult PostPathologie([FromBody] Pathologie pathologie)
+        public void PostPathologie([FromBody] Pathologie pathologie)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             var pat = new Pathologie { Omschrijving = pathologie.Omschrijving, Aandoeningen = new List<Aandoening>() };
             foreach (var aand in pathologie.Aandoeningen)
             {
@@ -104,7 +104,7 @@ namespace Finah_Backend.Controllers
             db.Pathologieen.Add(pat);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
+            //return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
         }
 
         // DELETE: api/Pathologies/5
