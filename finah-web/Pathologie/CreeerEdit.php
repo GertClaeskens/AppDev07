@@ -1,6 +1,8 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/Pathologie.php";
 require "../PHP/Models/Aandoening.php";
+
 ?>
 
     <!DOCTYPE html>
@@ -98,36 +100,36 @@ require "../PHP/Models/Aandoening.php";
     <div class="container-fluid">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-<?php
-if (isset($_POST)) {
-    $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
-    $naam = $pathologie["Omschrijving"];
-    if (isset($_POST["bewerk"])) {
-        echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
-    } elseif (isset($_POST["details"])) {
-        echo "<h1 class='header' >". " Details : " . $naam . " </h2 >";
-    }
-}
+        <?php
+        if (isset($_POST)) {
+            $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
+            $naam = $pathologie["Omschrijving"];
+            if (isset($_POST["bewerk"])) {
+                echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
+            } elseif (isset($_POST["creeer"])) {
+                echo "<h1 class='header' >". " Nieuwe pathologie </h2 >";
+            }
+        }
 ?>
 <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
       action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-<?php
-if (isset($_POST["bewerk"])) {
-    //ToDo code voor wijzigingen weg te schrijven.
 
-
-    ?>
                     <div class="form-group top-form">
                         <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="Omschrijving"> Omschrijving: </label>
                         <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" > <?php echo $pathologie["Omschrijving"]; ?></textarea>
+                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" > <?php
+                                if (isset($_POST["bewerk"])) {
+                                  //ToDo code voor wijzigingen weg te schrijven.
+                                  echo $naam;} ?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">Ken toe aan een aandoening:  </label>
-                            <div class="col-xs-6 col-sm-7 col-md-4 col-lg-3">
+                            <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                             <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                 <?php
+
     $aandoeningen = FinahDAO::HaalOp("Aandoening");
     foreach ($aandoeningen as $item) {
 
@@ -185,5 +187,5 @@ if (isset($_POST["bewerk"])) {
     </script>
     </body>
     </html>
-<?php }
+<?php
 ?>

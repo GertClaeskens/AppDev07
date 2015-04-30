@@ -96,11 +96,12 @@ require_once "../PHP/Models/Pathologie.php";
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe pathologie aan
-                    </button>
+                    <form action="CreeerEdit.php" method="post">
 
-                    <form action="EditDetails.php" method="post">
+                        <button class="btn btn-primary createbtn " type="submit" name="creeer">
+                            Maak een nieuwe pathologie aan
+                        </button>
+
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
