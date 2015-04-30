@@ -36,23 +36,6 @@ namespace Finah_Backend.Controllers
         //public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             return db.Pathologieen;
-
-            //return bevragingen;
-
-            #region Hardcoded Objecten - commented
-
-            //var overzichtPathologie = new List<Pathologie>
-            //                                           {
-            //                                               new Pathologie { Id = 1, Omschrijving = "Pathologie 1" },
-            //                                               new Pathologie { Id = 2, Omschrijving = "Pathologie 2" },
-            //                                               new Pathologie { Id = 3, Omschrijving = "Pathologie 3" },
-            //                                               new Pathologie { Id = 4, Omschrijving = "Pathologie 4" },
-            //                                               new Pathologie { Id = 5, Omschrijving = "Pathologie 5" }
-            //                                           };
-
-            //return overzichtPathologie;
-
-            #endregion Hardcoded Objecten - commented
         }
 
         [ResponseType(typeof(Pathologie))]
@@ -70,8 +53,9 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Pathologies/5
+        [Route("Pathologie/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPathologie(int id, Pathologie pathologie)
+        public IHttpActionResult PutPathologie(int id, [FromBody] Pathologie pathologie)
         {
             if (!ModelState.IsValid)
             {
@@ -124,8 +108,9 @@ namespace Finah_Backend.Controllers
         }
 
         // DELETE: api/Pathologies/5
+        [Route("Pathologie/{id}")]
         [ResponseType(typeof(Pathologie))]
-        public IHttpActionResult DeletePathologie(int id)
+        public IHttpActionResult Delete(int id)
         {
             var pathologie = db.Pathologieen.Find(id);
             if (pathologie == null)

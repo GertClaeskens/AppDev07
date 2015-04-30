@@ -270,7 +270,7 @@ namespace Finah_Backend.Controllers
 
         // DELETE: api/Aandoenings/5
         [ResponseType(typeof(Aandoening))]
-        public IHttpActionResult DeleteAandoening(int id)
+        public IHttpActionResult Delete(int id)
         {
             var aandoening = db.Aandoeningen.Find(id);
             if (aandoening == null)
