@@ -13,12 +13,12 @@
     <script type="text/javascript" src="../js/VraagInvullen.js"></script>
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script>
-/*        $(function () {
-            $(':radio').on('change', function () {
-                $(':radio').not(this).closest('li').removeClass('selected');
-                $(this).closest('li').addClass('selected');
-            });
-        };*/
+        /*        $(function () {
+         $(':radio').on('change', function () {
+         $(':radio').not(this).closest('li').removeClass('selected');
+         $(this).closest('li').addClass('selected');
+         });
+         };*/
     </script>
     <title>FINAH - Bevraging</title>
 </head>
@@ -37,31 +37,36 @@
                 <p class="eVraag">Hoe ervaar ik dit onderdeel?</p>
                 <ul class="invullen">
                     <li class="col-lg-2 col-md-2 col-sm-2">
-                        <label for="a1" class="btn btn-primary antwoordButton" id="antw11"   onclick="hideDiv(); toggleActive('antw11')">
+                        <label for="a1" class="btn btn-primary antwoordButton" id="antw11"
+                               onclick="hideDiv(); toggleActive('antw11')">
                             <input type="radio" id="a1" name="amount"> Verloopt
                             naar
                             wens</label>
                     </li>
                     <li class="col-lg-2 col-md-2 col-sm-2">
-                        <label for="a2" class="btn btn-primary antwoordButton" id="antw12"  onclick="hideDiv(); toggleActive('antw12')">
+                        <label for="a2" class="btn btn-primary antwoordButton" id="antw12"
+                               onclick="hideDiv(); toggleActive('antw12')">
                             <input type="radio" id="a2" name="amount">Probleem
                             - niet
                             hinderlijk</label>
                     </li>
                     <li class="col-lg-2 col-md-2 col-sm-2">
-                        <label for="a3" class="btn btn-primary antwoordButton" id="antw13"  onclick="showDiv(); toggleActive('antw13')">
+                        <label for="a3" class="btn btn-primary antwoordButton" id="antw13"
+                               onclick="showDiv(); toggleActive('antw13')">
                             <input type="radio" id="a3" name="amount" checked="checked"> Probleem
                             -
                             hinderlijk voor mij</label>
                     </li>
                     <li class="col-lg-2 col-md-2 col-sm-2">
-                        <label for="a4" class="btn btn-primary antwoordButton" id="antw14"  onclick="showDiv(); toggleActive('antw14')">
+                        <label for="a4" class="btn btn-primary antwoordButton" id="antw14"
+                               onclick="showDiv(); toggleActive('antw14')">
                             <input type="radio" id="a4" name="amount"> Probleem
                             -
-                            hinderlijk voor Mantelzorger</label>
+                            hinderlijk voor  <?php /*echo $patient ? "mantelzorger" : "patient";*/ ?></label>
                     </li>
                     <li class="col-lg-2 col-md-2 col-sm-2">
-                        <label for="a5" class="btn btn-primary antwoordButton" id="antw15"  onclick="showDiv(); toggleActive('antw15')">
+                        <label for="a5" class="btn btn-primary antwoordButton" id="antw15"
+                               onclick="showDiv(); toggleActive('antw15')">
                             <input type="radio" id="a5" name="amount"> Probleem
                             -
                             hinderlijk voor beiden</label>
@@ -107,38 +112,49 @@
                 </div> -->
             </div>
 
-                <div class="row" id="keuze">
-                    <div class="btn-group" id="keuze-content">
-                        <p class="eVraag">Wilt u dat we hieraan werken?</p>
-
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton" id="antw21"
-                                    onclick="toggleActiveExtra('antw21')">Nee
-                            </button>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton" id="antw22"
-                                    onclick="toggleActiveExtra('antw22')">Ja
-                            </button>
-                        </div>
-                    </div>
+            <div class="btn-group row" id="keuze">
+                <div id="keuze-content">
+                    <p class="eVraag">Wilt u dat we hieraan werken?</p>
+                    <ul class="invullen">
+                        <li class="col-lg-2 col-md-2 col-sm-2">
+                            <label for="h1" class="btn btn-primary antwoordButton" id="hinJa"
+                                   onclick="toggleActive('hinJa')">
+                                <input type="radio" id="h1" name="hinder" value="0"> Ja</label>
+                        </li>
+                        <li class="col-lg-2 col-md-2 col-sm-2">
+                            <label for="h2" class="btn btn-primary antwoordButton" id="hinNee"
+                                   onclick="toggleActive('hinNee')">
+                                <input type="radio" id="h2" name="hinder" value="1">Nee</label>
+                        </li>
+                    </ul>
+                    <!--                        <div class="col-md-2">
+                                                <button type="button" class="btn btn-primary antwoordButton" id="antw21"
+                                                        onclick="toggleActiveExtra('antw21')">Nee
+                                                </button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-primary antwoordButton" id="antw22"
+                                                        onclick="toggleActiveExtra('antw22')">Ja
+                                                </button>
+                                            </div>-->
                 </div>
+            </div>
 
-                <div class="btn-group row" role="group" id="next">
-                    <div class="col-md-2" id="divPrev">
-                        <button type="submit" class="btn btn-primary prevButton">Vorige</button>
-                    </div>
-                    <div class="col-md-2" id="divNext">
-                        <button type="submit" class="btn btn-primary nextButton">Volgende</button>
-                    </div>
+            <div class="btn-group row" role="group" id="next">
+                <div class="col-md-2" id="divPrev">
+                    <button type="submit" class="btn btn-primary prevButton">Vorige</button>
                 </div>
+                <div class="col-md-2" id="divNext">
+                    <button type="submit" class="btn btn-primary nextButton">Volgende</button>
+                </div>
+            </div>
 
-                <div class="row progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                         aria-valuemax="100">
-                        <p id="percentage">70%</p>
-                    </div>
+            <div class="row progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                     aria-valuemax="100">
+                    <p id="percentage">70%</p>
                 </div>
+            </div>
         </form>
     </div>
 </div>
