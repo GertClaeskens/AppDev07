@@ -9,10 +9,11 @@
     class FinahDAO
     {
 
+        const URL = "http://localhost:1695/";
         public static function HaalOp($type, $id = null)
         {
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
-            $url = "http://localhost:1695/" . $type . "/";
+            $url = self::URL . $type . "/";
             if ($id == null) {
                 $url .= "Overzicht";
             } else $url .= $id;
@@ -27,7 +28,7 @@
         {
             //TODO verder uitwerken
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
-            $url = "http://localhost:1695/" . $type . "/";
+            $url = self::URL . $type . "/";
             //var_dump($data);
             $gegevens = json_encode($data);
             //Initiate cURL.
@@ -50,7 +51,42 @@
 
             return $result;
         }
-        //TODO Update method toevoegen
 
-        //TODO Delete method toevoegen
+        public static function PasAan($type, $id,$data)
+        {
+            $url = self::URL . $type . "/" .$id;
+            //$curl = curl_init($url . "/Contacts/{$recordId}");
+            $data_json = json_encode($data);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Content-Length: ' . strlen($data_json)]);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+            //Geen output naar het scherm
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response  = curl_exec($ch);
+            curl_close($ch);
+            return $response;
+        }
+
+        public static function Verwijder($type, $id,$data)
+        {
+            $url = self::URL . $type . "/" .$id;
+            echo $url;
+            //$curl = curl_init($url . "/Contacts/{$recordId}");
+            $data_json = json_encode($data);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+            //Geen output naar het scherm
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            //curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response  = curl_exec($ch);
+            curl_close($ch);
+            print_r($response);
+            return $response;
+        }
     }
