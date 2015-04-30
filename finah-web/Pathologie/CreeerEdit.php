@@ -102,15 +102,17 @@ require "../PHP/Models/Aandoening.php";
     <div class="col-sm-12 col-md-12 col-lg-12">
         <?php
         if (isset($_POST)) {
+            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
             $id = $_POST["bewerk"];
             $pathologie = FinahDAO::HaalOp("Pathologie", $id);
             $naam = $pathologie["Omschrijving"];
-            if (isset($_POST["bewerk"])) {
                 echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
-            } elseif (isset($_POST["creeer"])) {
+            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                 echo "<h1 class='header' >". " Nieuwe pathologie </h2 >";
             }
         }
+            //TODO code hierboven nakijken. Op welke pagina komen we uit na een wijziging of update ?  dezelfde bewerk pagina met de gewijzigde gegevens ??
+            //TODO De code voor een wijziging op te slaan.
 ?>
 <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
       action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -120,7 +122,6 @@ require "../PHP/Models/Aandoening.php";
                         <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
                             <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" > <?php
                                 if (isset($_POST["bewerk"])) {
-                                  //ToDo code voor wijzigingen weg te schrijven.
                                   echo $naam;} ?>
                             </textarea>
                         </div>
@@ -130,38 +131,23 @@ require "../PHP/Models/Aandoening.php";
                             <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                             <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                 <?php
+                                    $aandoeningen = FinahDAO::HaalOp("Aandoening");
+                                    foreach ($aandoeningen as $item) {
 
-    $aandoeningen = FinahDAO::HaalOp("Aandoening");
-    foreach ($aandoeningen as $item) {
-
-        echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-    }
-
-    ?>
+                                        echo "<option value='" .  $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                                    }
+                                ?>
                         </select>
                         </div>
                     </div>
                                      <div class="form-group">
                                         <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
                                            <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
-                                            <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
+                                            <button class="btn btn-primary" type="submit" name=<?php if(isset($_POST["bewerk"])){echo "'update'";} elseif (isset($_POST["creeer"])){echo "'nieuw'";}?> > Opslaan </button>
                                         </div>
                                     </div>
                  </form>
-<!--                 --><?php //
-//                 }elseif (isset($_POST["details"])){
-//                 ?>
-<!--                        <ul>-->
-<!--                            <li>--><?php //echo $aandoening["Omschrijving"]; ?><!--</li>-->
-<!--                            <li><label class="control-label">Bijhorende Pathologieën</label></li>-->
-<!--                            --><?php
-//                            foreach ($aandoening["Patologieen"] as $pat) {
-//                                echo "<li> " . $pat["Omschrijving"] . "</li>";
-//                            }
-//                            ?>
-<!--                        </ul>-->
-<!--          </div>-->
-        </div>
+
     </div>
     <script>
         $().ready(function() {
