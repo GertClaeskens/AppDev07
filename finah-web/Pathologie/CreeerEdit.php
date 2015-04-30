@@ -112,7 +112,7 @@ require "../PHP/Models/Aandoening.php";
             }
         }
             //TODO code hierboven nakijken. Op welke pagina komen we uit na een wijziging of update ?  dezelfde bewerk pagina met de gewijzigde gegevens ??
-            //TODO De code voor een wijziging op te slaan.
+            //TODO De code voor een wijziging op te slaan + code voor een nieuw pathologie record weg te schrijven
 ?>
 <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
       action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
