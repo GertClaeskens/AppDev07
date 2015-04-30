@@ -102,6 +102,7 @@ require "../PHP/Models/Aandoening.php";
     <div class="col-sm-12 col-md-12 col-lg-12">
         <?php
         if (isset($_POST)) {
+
             if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
             $id = $_POST["bewerk"];
             $pathologie = FinahDAO::HaalOp("Pathologie", $id);
@@ -110,9 +111,33 @@ require "../PHP/Models/Aandoening.php";
             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                 echo "<h1 class='header' >". " Nieuwe pathologie </h2 >";
             }
+            if (isset($_POST["nieuw"])){
+                $omschrijving = $_POST["omschrijving"];
+                $pathologie = new Pathologie();
+                //$pathologie->setId(0);
+                $pathologie->setOmschrijving($omschrijving);
+                //                    $aandoening->setPatologieen($patologielijst);
+                if (isset($_POST["aandoening"])) {
+                    $aandoeningenlijst = $_POST["aandoening"];
+                    for ($a = 0; $a < count($aandoeningenlijst); $a++) {
+                        $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
+                    };
+                }
+                //var_dump
+
+
+                if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
+                    //Todo eventueel een exception toevoegen hier
+                    //header("Location: Overzicht.php");
+                    echo "De pathologie werd succesvol opgeslagen";
+                }
+            }
+            if (isset($_POST["update"])){
+                //TODO De code voor een wijziging op te slaan
+            }
         }
             //TODO code hierboven nakijken. Op welke pagina komen we uit na een wijziging of update ?  dezelfde bewerk pagina met de gewijzigde gegevens ??
-            //TODO De code voor een wijziging op te slaan + code voor een nieuw pathologie record weg te schrijven
+
 ?>
 <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
       action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
