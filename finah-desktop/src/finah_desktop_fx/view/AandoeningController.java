@@ -41,15 +41,17 @@ public class AandoeningController implements Initializable{
 	//public void initialize(){
         // Initialize the person table with the two columns.
         ArrayList<Aandoening> aandoeningen = AandoeningDAO.GetAandoeningen();
-        
+        ArrayList<Pathologie> pathologieen = PathologieDAO.GetPathologieen();
         for (int i=0;i<aandoeningen.size();i++){
         	for (int j=0;j<aandoeningen.get(i).getBijhorende_pathologie().size();j++){
         		aandoeningen.get(i).getBijhorende_pathologie().get(j);
         	}
         }
 		ObservableList<Aandoening> tblList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
-        
+		ObservableList<Pathologie> cboList = FXCollections.observableList(PathologieDAO.GetPathologieen());
         tblAandoening.setItems(tblList);
+        cboPathologie.setItems(cboList);
+        cboPathologie.setValue(cboList.get(0));
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colAandoening.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
 
