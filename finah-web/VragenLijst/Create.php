@@ -137,12 +137,10 @@ require "../PHP/Models/Aandoening.php";
                                     <select  id="vragenAdd" size="20" multiple >
                                         <?php
                                         /*TODO De vragen in deze select box zoals de pathologie lijst (code hieronder)Eventueel enkel de vragen die van toepassing zijn bij de bovenstaand geselecteerde aandoening?? */
-                                        //                                                    //$patologieen = new PathologieArray();
-                                        //                                                    $patologieen = FinahDAO::HaalOp("Pathologie");
-                                        //                                                    foreach ($patologieen as $item) {
-                                        //                                                        $waarde = $item["Omschrijving"];
-                                        //                                                        echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                                        //                                                    }
+                                            $vragenLijst = FinahDAO::HaalOp("Vragen");
+                                            foreach ($vragenLijst as $item) {
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["Vraagstelling"] . "</option>\r\n";
+                                            }
                                         ?>
                                     </select>
                                 </div>

@@ -57,6 +57,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPathologie(int id, [FromBody] Pathologie pathologie)
         {
+            //TODO nakijken of dit nog werkt als er aandoeningen zijn aan toegevoegd
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
