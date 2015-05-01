@@ -121,14 +121,13 @@ require_once "../PHP/Models/LeeftijdsCategorie.php";
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'>" . $item["Tot"] . "</td>";
 
                                 echo "<td class='action-column col-sm-1 col-md-2 col-lg-2'>
-                                    <input type='hidden' name='Id' value=" . $item["Id"] . " />
-                                        <button type='submit' name='details' class='btn btn-primary'>
+                                      <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
                                             <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                         </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary'>
+                                              <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
                                             <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                         </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary'>
+                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
                                             <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                         </button>
                                     <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->

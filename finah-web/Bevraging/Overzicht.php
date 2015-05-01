@@ -130,16 +130,16 @@ require_once "../PHP/Models/Bevraging.php";
                                         Getrouwd
                                     </td>
                                     <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <!-- <input type='hidden' name='Id' value=" . $item["Id"] />-->
-                                        <button type='submit' name='details' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                        <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
+                                        <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                         </button>
-                                        <button type='submit' name='bewerk' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                        <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
+                                        <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                         </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary'>
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
+                                        <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                         </button>
+                                    </td>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                                 </tr>
                             <!--                            ";-->
