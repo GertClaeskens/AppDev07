@@ -120,8 +120,8 @@ require "../PHP/Models/Aandoening.php";
                                         <?php
                                         //$patologieen = new PathologieArray();
                                         //TODO omzetten naar Pathologie object
-                                        $patologieen = FinahDAO::HaalOp("Pathologie");
-                                        foreach ($patologieen as $item) {
+                                        $aandoeningen = FinahDAO::HaalOp("Aandoening");
+                                        foreach ($aandoeningen as $item) {
                                             $waarde = $item["Omschrijving"];
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                         }
@@ -139,7 +139,7 @@ require "../PHP/Models/Aandoening.php";
                                         /*TODO De vragen in deze select box zoals de pathologie lijst (code hieronder)Eventueel enkel de vragen die van toepassing zijn bij de bovenstaand geselecteerde aandoening?? */
                                             $vragenLijst = FinahDAO::HaalOp("Vragen");
                                             foreach ($vragenLijst as $item) {
-                                                echo "<option value='" . $item["Id"] . "'>" . $item["Vraagstelling"] . "</option>\r\n";
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["VraagStelling"] . "</option>\r\n";
                                             }
                                         ?>
                                     </select>
