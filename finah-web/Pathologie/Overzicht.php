@@ -2,7 +2,6 @@
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Pathologie.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,18 +89,16 @@ require_once "../PHP/Models/Pathologie.php";
     </div>
     <div  id="page-content-wrapper">
         <div class="breadcrumb">
-            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Pathologie </span>        </div>
+            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Pathologie </span>
+        </div>
         <div  class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
                     <form action="CreeerEdit.php" method="post">
-
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe pathologie aan
                         </button>
-
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -114,24 +111,23 @@ require_once "../PHP/Models/Pathologie.php";
                             </thead>
                             <tbody>
                             <?php
-                            $pathologieLijst = FinahDAO::HaalOp("Pathologie");
-                            foreach ($pathologieLijst as $item) {
-                                echo "<tr>
-                                    <td class='col-sm-10 col-md-10 col-lg-10'>" . $item["Omschrijving"] . "</td>";
-
-                                echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                    <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                               </tr>";
-                            }
+                                $pathologieLijst = FinahDAO::HaalOp("Pathologie");
+                                foreach ($pathologieLijst as $item) {
+                                    echo "<tr>
+                                        <td class='col-sm-10 col-md-10 col-lg-10'>" . $item["Omschrijving"] . "</td>";
+                                    echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
+                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                                  <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
+                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
+                                            <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                   </tr>";
+                                }
                             ?>
                             </tbody>
                         </table>

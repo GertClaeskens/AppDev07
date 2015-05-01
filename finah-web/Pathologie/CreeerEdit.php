@@ -2,9 +2,7 @@
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Pathologie.php";
     require "../PHP/Models/Aandoening.php";
-
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -144,19 +142,12 @@
                                     $pathologie = FinahDAO::HaalOp("Pathologie", $id);
                                     if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {
                                         ?>
-<!--                                        <div
-                                            class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                            <button onclick="location.href='Overzicht.php'" class="btn btn-primary">
-                                                Terug naar overzicht
-                                            </button>-->
-                                            De pathologie werd succesvol verwijderd
-<!--                                        </div> -->
-                    <?php
+<!--
+                                            TODO Modal voorzien voor delete bevestiging      -->
+                        <?php
                                     }
                                 }
                             }
-                            //TODO code hierboven nakijken. Op welke pagina komen we uit na een wijziging of update ?  dezelfde bewerk pagina met de gewijzigde gegevens ??
-
                         ?>
                         <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -164,25 +155,23 @@
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="omschrijving">
                                     Omschrijving: </label>
-
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"> <?php
-                                    if (isset($_POST["bewerk"])) {
-                                        echo $naam;
-                                    } ?>
-                            </textarea>
+                                    <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"> <?php
+                                            if (isset($_POST["bewerk"])) {
+                                                echo $naam;
+                                            } ?>
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">Ken
-                                    toe aan een aandoening: </label>
-
+                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">
+                                    Ken toe aan een aandoening:
+                                </label>
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                                     <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                         <?php
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
                                             foreach ($aandoeningen as $item) {
-
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                             }
                                         ?>
@@ -191,7 +180,8 @@
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug
+                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                        Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
                                             name=<?php if (isset($_POST["bewerk"])) {
@@ -204,7 +194,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                     <script>
                         $().ready(function () {
