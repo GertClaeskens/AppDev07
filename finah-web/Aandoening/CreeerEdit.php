@@ -118,7 +118,7 @@
                                     if (isset($_POST["pathologie"])) {
                                         $pathologielijst = $_POST["pathologie"];
                                         for ($a = 0; $a < count($pathologielijst); $a++) {
-                                            $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $patologielijst[$a]));
+                                            $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
                                         };
                                     }
                                     if (isset($_POST["nieuw"])) {
@@ -165,11 +165,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">
-                                    Ken toe aan een aandoening:
+                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
+                                    Ken toe aan een pathologie:
                                 </label>
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
-                                    <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
+                                    <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                         <?php
                                             $patologieen = FinahDAO::HaalOp("Pathologie");
                                             foreach ($patologieen as $item) {
