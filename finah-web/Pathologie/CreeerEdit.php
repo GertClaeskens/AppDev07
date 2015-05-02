@@ -200,6 +200,11 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
                     <script>
                         $().ready(function () {
                             $("#aandoeningForm").validate({
