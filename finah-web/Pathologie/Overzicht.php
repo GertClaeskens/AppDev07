@@ -99,6 +99,13 @@ require_once "../PHP/Models/Pathologie.php";
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe pathologie aan
                         </button>
+                        <?php
+                        if (isset($_POST["delete"])) {
+                            $id = $_POST["delete"];
+//                                $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+//                                if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {}
+                        }
+                        ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -111,6 +118,7 @@ require_once "../PHP/Models/Pathologie.php";
                             </thead>
                             <tbody>
                             <?php
+
                                 $pathologieLijst = FinahDAO::HaalOp("Pathologie");
                                 foreach ($pathologieLijst as $item) {
                                     echo "<tr>
@@ -123,7 +131,7 @@ require_once "../PHP/Models/Pathologie.php";
                                                 <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                             </button>
                                           <!--  <button title='Verwijderen' type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"]."> -->
-                                            <button title='Verwijderen' type='button' name='delete' class='btn btn-primary' data-toggle='modal' data-target='#deleteModal'>   <!-- TODO item id doorgeven aan modal ?? -->
+                                             <button title='Verwijderen' value=".$item["Id"]."  type='button' class='delBtn btn btn-primary' data-toggle='modal' data-target='#deleteModal'><!--  TODO item id doorgeven aan modal ?? -->
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
@@ -148,9 +156,9 @@ require_once "../PHP/Models/Pathologie.php";
                 <p>Weet u zeker dat u deze pathologie wil verwijderen?</p>
             </div>
             <div class="modal-footer">
-                <form action=Overzicht.php" method="post">
+                <form id="modalForm" action="#" method="post">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-                    <button type="submit" name="delete" value="" class="btn btn-primary">Toepassen</button>
+                    <button type="submit"  name="delete" id="deleteBtn"  class="btn btn-primary">Toepassen</button>
                 </form>
             </div>
         </div>
@@ -168,6 +176,13 @@ require_once "../PHP/Models/Pathologie.php";
             $("#side-toggle").addClass("glyphicon-option-vertical");
         }
     });
+</script>
+<script>
+    $("#deleteBtn").click(function() {
+       var eid = $(".delBtn").attr("value");
+        $("#deleteBtn").attr("value", eid);
+        $("#modalForm").submit();
+        });
 </script>
 </body>
 </html>

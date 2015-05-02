@@ -105,6 +105,7 @@
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
+                                    echo $id;
                                     $pathologie = FinahDAO::HaalOp("Pathologie", $id);
                                     $naam = $pathologie["Omschrijving"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
