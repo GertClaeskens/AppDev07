@@ -122,7 +122,8 @@ require_once "../PHP/Models/Pathologie.php";
                                                   <button title='Wijzigen' type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
                                                 <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                             </button>
-                                            <button title='Verwijderen' type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
+                                          <!--  <button title='Verwijderen' type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"]."> -->
+                                            <button title='Verwijderen' type='button' name='delete' class='btn btn-primary' data-toggle='modal' data-target='#deleteModal'>   <!-- TODO item id doorgeven aan modal ?? -->
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
@@ -133,6 +134,24 @@ require_once "../PHP/Models/Pathologie.php";
                         </table>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Pathologie verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u deze pathologie wil verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <form action=Overzicht.php" method="post">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit" name="delete" value="" class="btn btn-primary">Toepassen</button>
+                </form>
             </div>
         </div>
     </div>
