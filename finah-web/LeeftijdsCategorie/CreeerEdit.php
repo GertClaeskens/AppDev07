@@ -1,14 +1,13 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
-    require "../PHP/Models/Pathologie.php";
-    require "../PHP/Models/Aandoening.php";
+    require "../PHP/Models/LeeftijdsCategorie.php";
 ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>FINAH - Pathologie</title>
+        <title>FINAH - Leeftijdscategorie</title>
         <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -78,7 +77,7 @@
                     <a href="../Aandoening/Overzicht.php"> Aandoening </a>
                 </li>
                 <li>
-                    <a href="Overzicht.php"> Pathologie</a>
+                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
                 </li>
                 <li>
                     <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
@@ -93,57 +92,59 @@
         </div>
         <div id="page-content-wrapper">
             <div class="breadcrumb">
-                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
-                    class="breadcrumb-font"> &nbsp/ Home / Pathologie  </span>
+                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span>
+                <span
+                    class="breadcrumb-font"> &nbsp/ Home / Leeftijdscategorie
+                </span>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
-                            $naam = "";
-                            $pathologie = new Pathologie();
+
+                            $LeeftijdsCat = new LeeftijdsCategorie();
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
 
-                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                    $naam = $pathologie["Omschrijving"];
-                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                    $van = $LeeftijdsCat["Van"];
+                                    $tot = $LeeftijdsCat["Tot"];
+                                    echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
                                 } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
-                                    echo "<h1 class='header' >" . " Nieuwe pathologie " .  "</h1> ";
+                                    echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " .  "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                    $omschrijving = $_POST["omschrijving"];
-                                    $pathologie->setOmschrijving($omschrijving);
-                                    if (isset($_POST["aandoening"])) {
-                                        $aandoeningenlijst = $_POST["aandoening"];
-                                        for ($a = 0; $a < count($aandoeningenlijst); $a++) {
-                                            $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
-                                        };
-                                    }
+                                    $van = $_POST["van"];
+                                    $tot = $_POST["tot"];
+                                    $LeeftijdsCat->setVan($van);
+                                    $LeeftijdsCat->setTot($tot);
+
                                     if (isset($_POST["nieuw"])) {
-                                        if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
+                                        if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
                                             //Todo eventueel een exception toevoegen hier
-                                            echo "De pathologie werd succesvol opgeslagen";
+                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
                                         }
                                     }
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
 
-                                        $pathologie->setId($id);
-                                        if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
-                                            $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                            $naam = $pathologie["Omschrijving"];
-                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                            echo "De pathologie werd succesvol opgeslagen";
+                                        $LeeftijdsCat->setId($id);
+                                        if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
+                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                            $van = $LeeftijdsCat["Van"];
+                                            $tot = $LeeftijdsCat["Tot"];
+                                            echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
                                         }
+
                                     }
                                 }
                                 if (isset($_POST["delete"])) {
                                     $id = $_POST["delete"];
-                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                    if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {
+                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                    if (FinahDAO::Verwijder("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
                                         ?>
 <!--
                                             TODO Modal voorzien voor delete bevestiging      -->
@@ -154,30 +155,25 @@
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="omschrijving">
-                                    Omschrijving: </label>
-                                <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                    <textarea autofocus="true" rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"><?php
-                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                echo $naam;
-                                          } ?></textarea>                 <!--  Geen spatie tussen textarea tags anders begint cursor niet op eerste positie-->
+                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van"> Van: </label>
+                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                                    <input type="text" name="van" class="form-control" id="Van" value=
+                                    <?php
+                                    if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                        echo $van;
+                                    } ?>>
+
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">
-                                    Ken toe aan een aandoening:
-                                </label>
-                                <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
-                                    <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
+                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot"> Tot:  </label>
+                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                                    <input type="text" name="tot" class="form-control" id="Tot" value=
                                         <?php
-                                            $aandoeningen = FinahDAO::HaalOp("Aandoening");
-                                            foreach ($aandoeningen as $item) {
-                                                echo "<option value='" . $item["Id"]  . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                                            }
-                                        ?>
-                                    </select>
+                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                            echo $tot;
+                                        } ?> >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -210,10 +206,10 @@
                         $().ready(function () {
                             $("#aandoeningForm").validate({
                                 rules: {
-                                    omschrijving: "required"
+                                    Van: "required"
                                 },
                                 messages: {
-                                    omschrijving: "Veld is verplicht."
+                                    Tot: "Veld is verplicht."
                                 }
                             });
                         })
