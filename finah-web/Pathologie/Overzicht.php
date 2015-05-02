@@ -103,7 +103,8 @@ require_once "../PHP/Models/Pathologie.php";
                         if (isset($_POST["delete"])) {
                             $id = $_POST["delete"];
 //                                $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-//                                if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {}
+//                                if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {
+//                                     echo " De pathologie werd succesvol verwijderd "; }
                         }
                         ?>
                         <table class="table table-bordered table-striped">
