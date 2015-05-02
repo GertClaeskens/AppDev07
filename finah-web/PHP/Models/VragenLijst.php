@@ -11,10 +11,12 @@
         public $Id;
         public $Vragen;
         public $Aandoe;
+        public $Titel;
 
-        public function __construct($id = null, $Vragen = null, $Aandoe = null)
+        public function __construct($id = null, $Vragen = null, $Aandoe = null, $Titel = null)
         {
             $this->Id = $id;
+            $this->Titel = $Titel;
             $this->Vragen = $Vragen;
             $this->Aandoe = $Aandoe;
 
@@ -44,5 +46,13 @@
         public function setAandoe($Aandoe)
         {
             $this->Aandoe = $Aandoe;
+        }
+        public function setTitel($Titel)
+        {
+            $this->Titel = $Titel;
+        }
+        public function getTitel()
+        {
+            return $this->Titel;
         }
     }

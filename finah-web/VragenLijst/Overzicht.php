@@ -1,5 +1,6 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
+require "../PHP/Models/VragenLijst.php";
 ?>
 
 <!DOCTYPE html>
@@ -94,11 +95,18 @@ require "../PHP/DAO/FinahDAO.php";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe vragenlijst aan
-                    </button>
-
-                    <form action="EditDetails.php" method="post">
+                    <form action="CreeerEdit.php" method="post">
+                        <button class="btn btn-primary createbtn " type="submit" name="creeer">
+                            Maak een nieuwe vraag aan
+                        </button>
+                        <?php
+                        if (isset($_POST["delete"])) {
+                            $id = $_POST["delete"];
+                            //                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                            //                                if (FinahDAO::Verwijder("VragenLijst", $id, $vragenlijst)) {
+                            //                                     echo " De vragenlijst werd succesvol verwijderd "; }
+                        }
+                        ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -126,10 +134,10 @@ require "../PHP/DAO/FinahDAO.php";
                                         <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
                                             <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                         </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
+                                        <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
                                             <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                         </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
+                                        <button title='Verwijderen' value=".$item["Id"]."  type='button' class='delBtn btn btn-primary' data-toggle='modal' data-target='#deleteModal'><!--  TODO item id doorgeven aan modal ?? -->
                                             <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                         </button>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
@@ -140,6 +148,24 @@ require "../PHP/DAO/FinahDAO.php";
                         </table>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u deze vragenlijst wil verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <form id="modalForm" action="#" method="post">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit"  name="delete" id="deleteBtn"  class="btn btn-primary">Toepassen</button>
+                </form>
             </div>
         </div>
     </div>
@@ -155,6 +181,14 @@ require "../PHP/DAO/FinahDAO.php";
             $("#side-toggle").removeClass("glyphicon-option-horizontal");
             $("#side-toggle").addClass("glyphicon-option-vertical");
         }
+    });
+</script>
+<script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
+
+    $("#deleteBtn").click(function() {
+        var eid = $(".delBtn").attr("value");
+        $("#deleteBtn").attr("value", eid);
+        $("#modalForm").submit();
     });
 </script>
 </body>

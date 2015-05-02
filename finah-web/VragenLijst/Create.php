@@ -113,7 +113,8 @@ require "../PHP/Models/Aandoening.php";
 
                                             }else {
                                             */ ?>
-                            <div class="form-group top-form">
+
+                            <div class="form-group ">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening"> Selecteer de gepaste aandoening: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select name="aandoening" class="form-control"  id="Aandoening" >
@@ -122,7 +123,6 @@ require "../PHP/Models/Aandoening.php";
                                         //TODO omzetten naar Pathologie object
                                         $aandoeningen = FinahDAO::HaalOp("Aandoening");
                                         foreach ($aandoeningen as $item) {
-                                            $waarde = $item["Omschrijving"];
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                         }
                                         ?>
@@ -134,7 +134,7 @@ require "../PHP/Models/Aandoening.php";
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="vragenAdd"> Selecteer de vragen die je wil toevoegen aan de vragenlijst: </label>
 
                                 <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
-                                    <select  id="vragenAdd" size="20" multiple >
+                                    <select  id="vragenAdd" name="vragen[]" size="20" multiple >
                                         <?php
                                         /*TODO De vragen in deze select box zoals de pathologie lijst (code hieronder)Eventueel enkel de vragen die van toepassing zijn bij de bovenstaand geselecteerde aandoening?? */
                                             $vragenLijst = FinahDAO::HaalOp("Vragen");
