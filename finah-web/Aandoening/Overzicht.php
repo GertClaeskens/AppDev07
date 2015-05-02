@@ -97,11 +97,18 @@ require_once "../PHP/Models/Pathologie.php";
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe aandoening aan
-                    </button>
-
-                    <form action="EditDetails.php" method="post">
+                    <form action="CreeerEdit.php" method="post">
+                        <button class="btn btn-primary createbtn " type="submit" name="creeer">
+                            Maak een nieuwe aandoening aan
+                        </button>
+                        <?php
+                        if (isset($_POST["delete"])) {
+                            $id = $_POST["delete"];
+//                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+//                                if (FinahDAO::Verwijder("Aandoening", $id, $aandoening)) {
+//                                     echo " De aandoening werd succesvol verwijderd "; }
+                        }
+                        ?>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -116,32 +123,50 @@ require_once "../PHP/Models/Pathologie.php";
                             </thead>
                             <tbody>
                             <?php
-                            $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
-                            for ($a = 0; $a < count($aandoeningLijst); $a++) {
-                                $item = $aandoeningLijst[$a];
-                                $aantal = count($item["Patologieen"]);
-                                for ($b = 0; $b < $aantal; $b++) {
-                                    echo "<tr> <td class='col-sm-5 col-md-5 col-lg-5'>" . $item["Omschrijving"] . "</td>";
+                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
+                                for ($a = 0; $a < count($aandoeningLijst); $a++) {
+                                    $item = $aandoeningLijst[$a];
+                                    $aantal = count($item["Patologieen"]);
+                                    for ($b = 0; $b < $aantal; $b++) {
+                                        echo "<tr> <td class='col-sm-5 col-md-5 col-lg-5'>" . $item["Omschrijving"] . "</td>";
 
-                                    echo "<td class='col-sm-5 col-md-5 col-lg-5'>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
-                                    echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                    <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                               </tr>";
-                                }
+                                        echo "<td class='col-sm-5 col-md-5 col-lg-5'>" . $item["Patologieen"][$b]["Omschrijving"] . "</td>";
+                                        echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
+                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                                  <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
+                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
+                                          <button title='Verwijderen' value=".$item["Id"]."  type='button' class='delBtn btn btn-primary' data-toggle='modal' data-target='#deleteModal'><!--  TODO item id doorgeven aan modal ?? -->
+                                                    <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                                </button>
+                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                   </tr>";
+                                    }
                             } ?>
                             </tbody>
                         </table>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u deze aandoening wil verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <form id="modalForm" action="#" method="post">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                    <button type="submit"  name="delete" id="deleteBtn"  class="btn btn-primary">Toepassen</button>
+                </form>
             </div>
         </div>
     </div>
@@ -158,6 +183,15 @@ require_once "../PHP/Models/Pathologie.php";
             $("#side-toggle").addClass("glyphicon-option-vertical");
         }
     });
+</script>
+<script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
+
+    $("#deleteBtn").click(function() {
+        var eid = $(".delBtn").attr("value");
+        $("#deleteBtn").attr("value", eid);
+        $("#modalForm").submit();
+    });
+
 </script>
 </body>
 </html>
