@@ -178,7 +178,8 @@ require_once "../PHP/Models/Pathologie.php";
         }
     });
 </script>
-<script>
+<script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
+
     $("#deleteBtn").click(function() {
        var eid = $(".delBtn").attr("value");
         $("#deleteBtn").attr("value", eid);
