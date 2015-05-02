@@ -103,18 +103,17 @@
                             $naam = "";
                             $pathologie = new Pathologie();
                             if (isset($_POST)) {
-
-                                if (isset($_POST["bewerk"])) {// || isset($_POST["update"])) {
+                                if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
                                     $pathologie = FinahDAO::HaalOp("Pathologie", $id);
                                     $naam = $pathologie["Omschrijving"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                    echo "<h1 class='header' >" . " Nieuwe pathologie </h2 >";
+                                } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
+                                    echo "<h1 class='header' >" . " Nieuwe pathologie " .  "</h1> ";
                                 }
+//
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                     $omschrijving = $_POST["omschrijving"];
-
                                     $pathologie->setOmschrijving($omschrijving);
                                     if (isset($_POST["aandoening"])) {
                                         $aandoeningenlijst = $_POST["aandoening"];
@@ -130,9 +129,12 @@
                                     }
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
+
                                         $pathologie->setId($id);
                                         if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
-                                            //Todo eventueel een exception toevoegen hier
+                                            $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                            $naam = $pathologie["Omschrijving"];
+                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                             echo "De pathologie werd succesvol opgeslagen";
                                         }
                                     }
@@ -149,18 +151,17 @@
                                 }
                             }
                         ?>
-                        <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
+                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="omschrijving">
                                     Omschrijving: </label>
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                    <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"> <?php
-                                            if (isset($_POST["bewerk"])) {
+                                    <textarea autofocus="true" rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"><?php
+                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                                 echo $naam;
-                                            } ?>
-                                    </textarea>
+                                          } ?></textarea>                 <!--  Geen spatie tussen textarea tags anders begint cursor niet op eerste positie-->
                                 </div>
                             </div>
                             <div class="form-group">
@@ -172,7 +173,7 @@
                                         <?php
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
                                             foreach ($aandoeningen as $item) {
-                                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                                                echo "<option value='" . $item["Id"]  . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                             }
                                         ?>
                                     </select>
@@ -188,6 +189,10 @@
                                                 echo "'update'";
                                             } elseif (isset($_POST["creeer"])) {
                                                 echo "'nieuw'";
+                                            } elseif (isset($_POST["nieuw"])) {
+                                                echo "'nieuw'";
+                                            } elseif (isset($_POST["update"])){
+                                                echo "'update'";
                                             }
                                             if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
                                     </button>
