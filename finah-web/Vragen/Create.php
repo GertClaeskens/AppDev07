@@ -98,16 +98,9 @@ require "../PHP/Models/Vraag.php"?>
                                 <?php
                                     if (isset($_POST["creeer"])) {
                                         $vraagstelling = $_POST["vraagstelling"];
-
-                                        if($vraagstelling == ""){
-                                            echo("<p>Gelieve de vraagstelling in te vullen.</p>");
-                                            echo("<a href='http://localhost:63342/finah-web/Vragen/Create.php'> Terug </a>");
-                                            return;
-                                        }
-
                                         $vraag = new Vraag();
                                         $vraag->Id = 0;
-                                        $vraag->setVraagstelling($vraag);  //TODO nakijken ??  moet dit niet $vraagstelling zijn ?
+                                        $vraag->setVraagstelling($vraagstelling);  //TODO nakijken ??  moet dit niet $vraagstelling zijn ?
 
                                         if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
                                             //Todo eventueel een exception toevoegen hier

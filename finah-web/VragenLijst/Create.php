@@ -147,7 +147,7 @@ require "../PHP/Models/Aandoening.php";
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-3 col-sm-10">
-                                    <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
+                                    <button type="button"  onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
                                     <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
                                 </div>
                             </div>
@@ -156,6 +156,8 @@ require "../PHP/Models/Aandoening.php";
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
             <script>
                 $("#menu-toggle").click(function(e) {
                     e.preventDefault();
