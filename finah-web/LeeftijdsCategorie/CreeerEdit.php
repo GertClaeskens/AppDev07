@@ -111,8 +111,8 @@
                                     $van = $LeeftijdsCat["Van"];
                                     $tot = $LeeftijdsCat["Tot"];
                                     echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
-                                    echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " .  "</h1> ";
+                                } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                    echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
@@ -141,17 +141,8 @@
 
                                     }
                                 }
-                                if (isset($_POST["delete"])) {
-                                    $id = $_POST["delete"];
-                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
-                                    if (FinahDAO::Verwijder("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
-                                        ?>
-<!--
-                                            TODO Modal voorzien voor delete bevestiging      -->
-                        <?php
-                                    }
-                                }
                             }
+
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
