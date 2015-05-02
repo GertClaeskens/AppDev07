@@ -153,7 +153,7 @@ require_once "../PHP/Models/LeeftijdsCategorie.php";
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Pathologie verwijderen</h4>
+                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>
             </div>
             <div class="modal-body">
                 <p>Weet u zeker dat u deze leeftijdscategorie wil verwijderen?</p>
