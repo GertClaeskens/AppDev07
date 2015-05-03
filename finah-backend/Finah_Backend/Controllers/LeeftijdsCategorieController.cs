@@ -39,33 +39,12 @@ namespace Finah_Backend.Controllers
         public IEnumerable<LeeftijdsCategorie> GetOverzicht()
         {
             return db.LeeftijdsCategorieen;
-
-
-            //var lc1 = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 12 };
-            //var lc2 = new LeeftijdsCategorie { Id = 2, Van = 13, Tot = 18 };
-            //var lc3 = new LeeftijdsCategorie { Id = 3, Van = 19, Tot = 30 };
-            //var lc4 = new LeeftijdsCategorie { Id = 4, Van = 31, Tot = 45 };
-            //var lc5 = new LeeftijdsCategorie { Id = 5, Van = 46, Tot = 99 };
-
-            //var overzichtLeeftijdsCategorieen = new List<LeeftijdsCategorie>
-            //                                           {
-            //                                               lc1,lc2,lc3,lc4,lc5
-            //                                           };
-
-            //return overzichtLeeftijdsCategorieen;
         }
         //Geen Api/ meer nodig
         [ResponseType(typeof(LeeftijdsCategorie))]
         [Route("LeeftijdsCategorie/{id}")]
         public IHttpActionResult Get(int id)
         {
-            //LeeftijdsCategorie leeftijdsCategorie = null;
-            //if (id == 1)
-            //{
-            //    leeftijdsCategorie = new LeeftijdsCategorie { Id = 1, Van = 0, Tot = 99 };
-            //}
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             var leeftijdsCategorie = db.LeeftijdsCategorieen.Find(id);
             if (leeftijdsCategorie == null)
             {
@@ -75,8 +54,9 @@ namespace Finah_Backend.Controllers
             return Ok(leeftijdsCategorie);
         }
         // PUT: api/LeeftijdsCategories/5
+        [Route("LeeftijdsCategorie/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutLeeftijdsCategorie(int id, LeeftijdsCategorie leeftijdsCategorie)
+        public IHttpActionResult PutLeeftijdsCategorie(int id, [FromBody] LeeftijdsCategorie leeftijdsCategorie)
         {
             if (!ModelState.IsValid)
             {
@@ -125,6 +105,8 @@ namespace Finah_Backend.Controllers
         }
 
         // DELETE: api/LeeftijdsCategories/5
+        [HttpDelete]
+        [Route("LeeftijdsCategorie/{id}")]
         [ResponseType(typeof(LeeftijdsCategorie))]
         public IHttpActionResult DeleteLeeftijdsCategorie(int id)
         {
