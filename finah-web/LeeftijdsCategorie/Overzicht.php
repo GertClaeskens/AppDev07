@@ -188,7 +188,7 @@
                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                         class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie');deleteRow(this)">
+                                        onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie',this)">
                                     <!--  TODO item id doorgeven aan modal ?? -->
                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                 </button>
