@@ -73,8 +73,8 @@ public class MainApp extends Application {
         try {
             // Load account layout.
             FXMLLoader loader = new FXMLLoader();
-            //loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
-            loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
+            //loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
             //loader.setLocation(MainApp.class.getResource("view/PathologieAanpassenLayout.fxml"));
             //loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
             AnchorPane accountLayout = (AnchorPane) loader.load();
