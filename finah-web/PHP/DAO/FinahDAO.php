@@ -71,12 +71,12 @@
             return $response;
         }
 
-        public static function Verwijder($type, $id,$data)
+        public static function Verwijder($type, $id)
         {
             $url = self::URL . $type . "/" .$id;
-            echo $url;
+            echo $id;
             //$curl = curl_init($url . "/Contacts/{$recordId}");
-            $data_json = json_encode($data);
+            //$data_json = json_encode($data);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
