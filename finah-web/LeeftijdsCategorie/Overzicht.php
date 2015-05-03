@@ -11,15 +11,16 @@
     <title>FINAH - Leeftijdscategorie</title>
     <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
+    <script src="../js/finah.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
+ <!--   <script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
 
-        $('#deleteModal').on('show.bs.modal', function(e) {
+        $('#deleteModal').on('show.bs.modal', function (e) {
             alert("test");
             var $modal = $(this),
                 ed = e.relatedTarget.id;
@@ -29,7 +30,7 @@
 
         });
 
-        $(function() {
+        $(function () {
             $('button[name = "verwijderBtn"]').click(function (e) {
                 e.preventDefault();
                 alert('test');
@@ -52,9 +53,17 @@
              });
              }*/
         }
-    </script>
+    </script>-->
 </head>
 <body>
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+    <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+    </div>
+</div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header pull-left">
 
@@ -163,24 +172,30 @@
                             <?php
                                 $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
                                 foreach ($leeftijdCategorieLijst as $item) {
-                                    echo "<tr>
-                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'>" . $item["Van"] . "</td>
-                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'>" . $item["Tot"] . "</td>";
-
-                                    echo "<td class='action-column col-sm-1 col-md-2 col-lg-2'>
-                                      <button type='submit' name='details' class='btn btn-primary' value=" . $item["Id"] . ">
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                              <button type='submit' name='bewerk' class='btn btn-primary' value=" . $item["Id"] . ">
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                            <button  type='button' title='Verwijderen' id='verwijderBtn' name='verwijderBtn' value=" . $item["Id"] . "  class='delBtn btn btn-primary' data-waarde=" . $item["Id"] . " data-toggle='modal' data-target='#deleteModal'><!--  TODO item id doorgeven aan modal ?? -->
-                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                            </button>
-                                    <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                               </tr>";
-                                }
-                            ?>
+                                echo "<tr id='rij". $item["Id"] ."'>" ?>
+                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Van"] ?></td>
+                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
+                            <td class='action-column col-sm-1 col-md-2 col-lg-2'>
+                                <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                    <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                </button>
+                                <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                    <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                </button>
+                                <?php $verw = $item["Id"]; ?>
+                                <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                        name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                        class='delBtn btn btn-primary'
+                                        onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie')">
+                                    <!--  TODO item id doorgeven aan modal ?? -->
+                                    <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                </button>
+                                <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                            </td>
+                            </tr>
+                            <?php }?>
                             </tbody>
                         </table>
                     </form>
