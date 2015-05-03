@@ -17,6 +17,11 @@
  });
 
  });*/
+
+function deleteRow(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("overzicht").deleteRow(i);
+}
 function CustomAlert() {
     this.render = function (dialog) {
         var winW = window.innerWidth;
@@ -49,8 +54,7 @@ function deletePost(id, type) {
             // Do something with the result
         }
     });
-    console.log(id);
-    document.body.removeChild(document.getElementById('rij' + id));
+    //document.body.removeChild(document.getElementById('rij' + id));
 }
 function CustomConfirm() {
     this.render = function (dialog, op, id, type) {
@@ -66,7 +70,7 @@ function CustomConfirm() {
 
         document.getElementById('dialogboxhead').innerHTML = "Confirm that action";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\')">Yes</button> <button onclick="Confirm.no()">No</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\''+ type + '\')">Yes</button> <button onclick="Confirm.no()">No</button>';
     }
     this.no = function () {
         document.getElementById('dialogbox').style.display = "none";

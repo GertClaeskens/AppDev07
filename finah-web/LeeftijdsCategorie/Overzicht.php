@@ -157,7 +157,7 @@
                             Maak een nieuwe leeftijdscategorie aan
                         </button>
 
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped" id="overzicht">
                             <thead>
                             <tr>
                                 <th>
@@ -172,7 +172,7 @@
                             <?php
                                 $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
                                 foreach ($leeftijdCategorieLijst as $item) {
-                                echo "<tr id='rij". $item["Id"] ."'>" ?>
+                                echo "<tr>"?>
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Van"] ?></td>
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
                             <td class='action-column col-sm-1 col-md-2 col-lg-2'>
@@ -188,7 +188,7 @@
                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                         class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie')">
+                                        onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie');deleteRow(this)">
                                     <!--  TODO item id doorgeven aan modal ?? -->
                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                 </button>
