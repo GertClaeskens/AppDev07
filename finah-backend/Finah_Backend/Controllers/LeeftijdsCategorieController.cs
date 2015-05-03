@@ -7,11 +7,15 @@ namespace Finah_Backend.Controllers
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Web.Http.Cors;
     using System.Web.Http.Description;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
+
+    //TODO aanpassen naar azure website
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class LeeftijdsCategorieController : ApiController
     {
         //TODO code opschonen
