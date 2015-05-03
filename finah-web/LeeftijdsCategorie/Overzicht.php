@@ -204,26 +204,26 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>
-            </div>
-            <div class="modal-body">
-                <p>Weet u zeker dat u deze leeftijdscategorie (<span id='cn'></span>) wilt verwijderen?</p>
-            </div>
-            <div class="modal-footer">
-                <form id="modalForm" action="#" method="post">
-                    <div id="waarden"></div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-                    <button type="submit" name="delete" id="deleteBtn" class="btn btn-primary">Toepassen</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-md">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p>Weet u zeker dat u deze leeftijdscategorie (<span id='cn'></span>) wilt verwijderen?</p>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <form id="modalForm" action="#" method="post">-->
+<!--                    <div id="waarden"></div>-->
+<!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>-->
+<!--                    <button type="submit" name="delete" id="deleteBtn" class="btn btn-primary">Toepassen</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <script>
     $("#menu-toggle").click(function (e) {
         e.preventDefault();

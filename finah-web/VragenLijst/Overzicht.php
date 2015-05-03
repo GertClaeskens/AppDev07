@@ -11,6 +11,8 @@ require "../PHP/Models/VragenLijst.php";
     <title>FINAH - Vragenlijst</title>
     <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <script src="../js/finah.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
@@ -19,6 +21,14 @@ require "../PHP/Models/VragenLijst.php";
     <![endif]-->
 </head>
 <body>
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+    <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+    </div>
+</div>
 <nav  class="navbar navbar-default navbar-fixed-top">
     <div  class="navbar-header pull-left">
 
@@ -102,9 +112,9 @@ require "../PHP/Models/VragenLijst.php";
                         <?php
                         if (isset($_POST["delete"])) {
                             $id = $_POST["delete"];
-                            //                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
-                            //                                if (FinahDAO::Verwijder("VragenLijst", $id, $vragenlijst)) {
-                            //                                     echo " De vragenlijst werd succesvol verwijderd "; }
+                            $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                            if (FinahDAO::Verwijder("VragenLijst", $id, $vragenlijst)) {
+                                echo " De vragenlijst werd succesvol verwijderd "; }
                         }
                         ?>
                         <table class="table table-bordered table-striped">
@@ -123,27 +133,32 @@ require "../PHP/Models/VragenLijst.php";
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            $vragenLijst = FinahDAO::HaalOp("VragenLijst");
-                            foreach ($vragenLijst as $item) {
-                                echo "<tr>
-                                            <td class='col-sm-1 col-md-1 col-lg-1 text-center'>" . $item["Id"] . "</td>
-                                            <td class='col-sm-6 col-md-6 col-lg-6'> " . $item["Aandoe"]["Omschrijving"] . "</td>
-                                            <td class='col-sm-3 col-md-3 col-lg-3 text-center'>" . count($item["Vragen"]) . "</td>";
-                                echo "<td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                        <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
-                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                        <button title='Verwijderen' value=".$item["Id"]."  type='button' class='delBtn btn btn-primary' data-toggle='modal' data-target='#deleteModal'><!--  TODO item id doorgeven aan modal ?? -->
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                                   </tr>";
-                            }
-                            ?>
+                                <?php
+                                $vragenLijst = FinahDAO::HaalOp("VragenLijst");
+                                foreach ($vragenLijst as $item) {
+                                    echo "<tr>"?>
+                                       <td class='col-sm-1 col-md-1 col-lg-1 text-center'><?php echo $item["Id"]?></td>
+                                       <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Aandoe"]["Omschrijving"]?></td>
+                                       <td class='col-sm-3 col-md-3 col-lg-3 text-center'><?php echo count($item["Vragen"])?></td>
+                                       <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                    <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                    <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
+                                                <?php $verw = $item["Id"]; ?>
+                                            <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                                    name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                                    class='delBtn btn btn-primary'
+                                                    onclick="Confirm.render('Verwijder vragenlijst?','delete_lft',<?php echo $verw ?>,'VragenLijst',this)">
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                         </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </form>
@@ -152,24 +167,7 @@ require "../PHP/Models/VragenLijst.php";
         </div>
     </div>
 </div>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>
-            </div>
-            <div class="modal-body">
-                <p>Weet u zeker dat u deze vragenlijst wil verwijderen?</p>
-            </div>
-            <div class="modal-footer">
-                <form id="modalForm" action="#" method="post">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-                    <button type="submit"  name="delete" id="deleteBtn"  class="btn btn-primary">Toepassen</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -183,14 +181,7 @@ require "../PHP/Models/VragenLijst.php";
         }
     });
 </script>
-<script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
-
-    $("#deleteBtn").click(function() {
-        var eid = $(".delBtn").attr("value");
-        $("#deleteBtn").attr("value", eid);
-        $("#modalForm").submit();
-    });
-</script>
+<
 </body>
 </html>
 
