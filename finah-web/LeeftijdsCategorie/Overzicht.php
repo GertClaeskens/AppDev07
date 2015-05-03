@@ -172,6 +172,7 @@
                             <?php
                                 $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
                                 foreach ($leeftijdCategorieLijst as $item) {
+                                    $teller=0;
                                 echo "<tr>"?>
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Van"] ?></td>
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
@@ -186,7 +187,7 @@
                                 </button>
                                 <?php $verw = $item["Id"]; ?>
                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
-                                        name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                        name='verwijder<?php echo $teller;?>' value="<?php echo $item["Id"] ?>"
                                         class='delBtn btn btn-primary'
                                         onclick="Confirm.render('Verwijder LeeftijdsCategorie?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie',this)">
                                     <!--  TODO item id doorgeven aan modal ?? -->
@@ -195,7 +196,7 @@
                                 <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                             </td>
                             </tr>
-                            <?php }?>
+                            <?php $teller+=1;}?>
                             </tbody>
                         </table>
                     </form>

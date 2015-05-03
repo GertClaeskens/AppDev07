@@ -19,7 +19,10 @@
  });*/
 
 function deleteRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
+    console.log(r.name);
+    var id = r.name;
+    var i = id.replace("verwijder", "");
+    console.log(i);
     document.getElementById("overzicht").deleteRow(i);
 }
 function CustomAlert() {
@@ -36,29 +39,32 @@ function CustomAlert() {
         document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
         document.getElementById('dialogboxbody').innerHTML = dialog;
         document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
-    }
+    };
     this.ok = function () {
         document.getElementById('dialogbox').style.display = "none";
         document.getElementById('dialogoverlay').style.display = "none";
     }
 }
 var Alert = new CustomAlert();
-function deletePost(id, type,r) {
+function deletePost(id, type, r) {
     //var db_id = id.replace("post_", "");
     // Run Ajax request here to delete post from database
+
     $.ajax({
 
         url: 'http://localhost:1695/' + type + '/' + id,
         type: 'DELETE',
-        success: function (result) {
-            deleteRow(r);
+        success: function () {
+            return true;
             // Do something with the result
         }
     });
+
+    return false;
     //document.body.removeChild(document.getElementById('rij' + id));
 }
 function CustomConfirm() {
-    this.render = function (dialog, op, id, type,r) {
+    this.render = function (dialog, op, id, type, r) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
         var dialogoverlay = document.getElementById('dialogoverlay');
@@ -68,18 +74,19 @@ function CustomConfirm() {
         dialogbox.style.left = (winW / 2) - (550 * .5) + "px";
         dialogbox.style.top = "100px";
         dialogbox.style.display = "block";
-
         document.getElementById('dialogboxhead').innerHTML = "Confirm that action";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\''+ type+ '\',\''+ r + '\')">Yes</button> <button onclick="Confirm.no()">No</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\',\'' + r + '\')">Yes</button> <button onclick="Confirm.no()">No</button>';
     }
     this.no = function () {
         document.getElementById('dialogbox').style.display = "none";
         document.getElementById('dialogoverlay').style.display = "none";
     }
-    this.yes = function (op, id, type,r) {
+    this.yes = function (op, id, type, r) {
         if (op == "delete_lft") {
-            deletePost(id, type,r);
+            if(deletePost(id, type, r)){
+                deleteRow(r);
+            }
         }
         document.getElementById('dialogbox').style.display = "none";
         document.getElementById('dialogoverlay').style.display = "none";
