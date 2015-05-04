@@ -1,15 +1,16 @@
 namespace Finah_Backend.Migrations
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
     using System.Runtime.InteropServices;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity.Migrations;
-    using Excel = Microsoft.Office.Interop.Excel;
 
-    public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Finah_Backend.DAL.FinahDBContext>
     {
         public Configuration()
         {
@@ -268,12 +269,12 @@ namespace Finah_Backend.Migrations
 
             int rCnt;
 
-            var xlApp = new Excel.Application();
+            var xlApp = new Microsoft.Office.Interop.Excel.Application();
 
             const string URL = @"http://www.bpost2.be/zipcodes/files/zipcodes_num_nl.xls";
             //xlWorkBook = xlApp.Workbooks.Open(@"D:\postcodes.xls", 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            var xlWorkBook = xlApp.Workbooks.Open(URL, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            var xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
+            var xlWorkBook = xlApp.Workbooks.Open(URL, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            var xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.Item[1];
 
             var range = xlWorkSheet.UsedRange;
 
@@ -281,8 +282,8 @@ namespace Finah_Backend.Migrations
             {
                 var pc = new Postcode
                 {
-                    Postnr = (int)(range.Cells[rCnt, 1] as Excel.Range).Value,
-                    Gemeente = (string)(range.Cells[rCnt, 2] as Excel.Range).Value
+                    Postnr = (int)(range.Cells[rCnt, 1] as Microsoft.Office.Interop.Excel.Range).Value,
+                    Gemeente = (string)(range.Cells[rCnt, 2] as Microsoft.Office.Interop.Excel.Range).Value
                 };
                 postcodelijst.Add(pc);
             }

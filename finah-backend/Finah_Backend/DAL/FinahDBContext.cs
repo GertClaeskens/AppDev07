@@ -10,8 +10,13 @@
 
     public class FinahDBContext : IdentityDbContext
     {
+        //public FinahDBContext()
+        //    : base("FinahDBContext")
+        //{
+        //}
+
         public FinahDBContext()
-            : base("FinahDBContext")
+            : base("Finah_Backend.DAL.FinahDBContext.")
         {
         }
 
