@@ -6,10 +6,15 @@
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
 
-    public class FinahDBContext : DbContext
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    public class FinahDBContext : IdentityDbContext
     {
-        //public FinahDBContext()
-        //    : base("FinahDBContext")
+        public FinahDBContext()
+            : base("FinahDBContext")
+        {
+        }
+
         //public FinahDBContext()
         //    : base("DefaultConnection")
         //{
