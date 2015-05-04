@@ -9,7 +9,7 @@ require_once "../PHP/Models/Bevraging.php";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FINAH - Bevraging</title>
-    <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -95,11 +95,11 @@ require_once "../PHP/Models/Bevraging.php";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button class="btn btn-primary createbtn " onclick="window.location='Create.php';return false;">
-                        Maak een nieuwe bevraging aan
-                    </button>
-
-                    <form action="EditDetails.php" method="post">
+                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>
+                    <form action="CreeerEdit.php" method="post">
+<!--                        <button class="btn btn-primary createbtn " type="submit" name="creeer">-->
+<!--                            Maak een nieuwe bevraging aan-->
+<!--                        </button>-->
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -142,9 +142,7 @@ require_once "../PHP/Models/Bevraging.php";
                                     </td>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                                 </tr>
-                            <!--                            ";-->
-                            <!--                                    }-->
-                            <!--                                 ?>-->
+
                             </tbody>
                         </table>
                     </form>

@@ -9,7 +9,7 @@ require "../PHP/Models/VragenLijst.php";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FINAH - Vragenlijst</title>
-    <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="../js/finah.js"></script>
 

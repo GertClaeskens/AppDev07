@@ -8,7 +8,7 @@ require_once "../PHP/Models/Pathologie.php";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FINAH - Pathologie</title>
-    <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="../js/finah.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -11,7 +11,7 @@ require "../PHP/Finah.php";
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>FINAH - Bevraging</title>
-        <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+        <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
@@ -104,7 +104,7 @@ require "../PHP/Finah.php";
                     <a href="../index.php"> Home </a>
                 </li>
                 <li>
-                    <a href="Overzicht.php"> Bevraging</a>
+                    <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                 </li>
                 <br/>
                 <li class="sidebar-brand">
@@ -295,7 +295,7 @@ require "../PHP/Finah.php";
                                         <div class="form-group">
                                     <div class="form-group">
                                         <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-3 col-sm-10">
-                                           <button onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
+                                           <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary"> Terug </button>
                                             <button type="submit" name="creeer" class="btn btn-primary"> Opslaan </button>
                                         </div>
                                     </div>

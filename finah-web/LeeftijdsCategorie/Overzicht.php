@@ -9,7 +9,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>FINAH - Leeftijdscategorie</title>
-    <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
     <script src="../js/finah.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -178,7 +178,7 @@
                             <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
                             <td class='action-column col-sm-1 col-md-2 col-lg-2'>
                                 <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
-                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                        class='btn btn-primary' value='<?php echo $item["Id"] ?>'>
                                     <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                 </button>
                                 <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'

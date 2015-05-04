@@ -8,7 +8,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>FINAH - Aandoening</title>
-        <link rel="stylesheet" type="text/css" href="../Css/stylesheet3.css"/>
+        <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -161,7 +161,7 @@
                                     <textarea autofocus="true" rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"><?php
                                             if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                                 echo $naam;
-                                          } ?></textarea>                 <!--  Geen spatie tussen textarea tags anders begint cursor niet op eerste positie-->
+                                          } ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
