@@ -6,6 +6,7 @@
      * Date: 25/03/2015
      * Time: 22:59
      */
+    require "../Finah.php";
     class AntwoordenLijst implements JsonSerializable
     {
         public $Id;
@@ -26,7 +27,7 @@
             return [
                 'Id' => $this->getId(),
                 'Datum' => $this->Datum->format(DateTime::ISO8601),
-                'Antwoorden' => $this->getAntwoorden(),
+                'Antwoorden' => Finah::arrayToCsv($this->getAntwoorden()),
                 'LeeftijdsCategorie' => $this->getLeeftijdsCategorie(),
                 'Bevraging' => $this->getBevraging()
             ];

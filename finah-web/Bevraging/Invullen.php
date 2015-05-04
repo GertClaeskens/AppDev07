@@ -6,6 +6,7 @@
      * Time: 10:20
      */
     require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Finah.php";
     require "../PHP/Models/Bevraging.php";
 ?>
 <html>
@@ -23,7 +24,8 @@
         $volgende = 1;
         $bevraging = new Bevraging();
         $bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
-        $antwoorden = FinahDAO::HaalOp("Antwoordenlijst", $_GET["id"]);
+        $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $_GET["id"]);
+        $antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
         if (array_search("0", $antwoorden)) {
             $aantalingevuld = array_search(0, $antwoorden);
         }
@@ -69,7 +71,9 @@
                 $antwoord = $_POST["hinder"];
             }
             //$antwoordenlijst = new AntwoordenLijst();
-            $antwoordenlijst["Antwoorden"][$volgende] = $antwoord;
+            $antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
+            $antwoorden[$volgende] = $antwoord;
+            $antwoordenlijst["Antwoorden"] = Finah::arrayToCsv($antwoorden);
             FinahDAO::PasAan("antwoordenlijst", $id, $antwoordenlijst);
         }
         $volgende += 1;
