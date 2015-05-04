@@ -17,7 +17,11 @@ namespace Finah_Backend.Models
 
         public LeeftijdsCategorie LeeftijdsCategorie { get; set; }
 
-        public ICollection<int> Antwoorden { get; set; }
+        //Klasse Antwoord gebruikt omdat er geen array van ints kan gezet worden in db
+        // public virtual ICollection<Antwoord> Antwoorden { get; set; }
+
+        //Antwoorden opgelagen als csv_string
+        public string Antwoorden { get; set; }
 
         public AntwoordenLijst()
         {

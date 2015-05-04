@@ -28,11 +28,13 @@ namespace Finah_Backend.Controllers
         }
 
         // GET: api/AntwoordenLijst/5
+        //[Route("AntwoordenLijst/{id},{datum}")]
         [Route("AntwoordenLijst/{id}")]
         [ResponseType(typeof(AntwoordenLijst))]
-        public IHttpActionResult GetAntwoordenLijst(string id)
+        //public IHttpActionResult GetAntwoordenLijst(string id,DateTime datum)
+            public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();
+            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();//var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id && c.Datum == datum).Include(c => c.LeeftijdsCategorie).First();
 
             if (antwoordenLijst == null)
             {
@@ -43,7 +45,10 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/AntwoordenLijst/5
+        //[Route("AntwoordenLijst/{id},{datum}")]
+        [Route("AntwoordenLijst/{id}")]
         [ResponseType(typeof(void))]
+        //public IHttpActionResult PutAntwoordenLijst(string id, DateTime datum, AntwoordenLijst antwoordenLijst)
         public IHttpActionResult PutAntwoordenLijst(string id, AntwoordenLijst antwoordenLijst)
         {
             if (!ModelState.IsValid)
@@ -51,7 +56,8 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != antwoordenLijst.Id)
+            //if (id != antwoordenLijst.Id && datum != antwoordenLijst.Datum)
+                if (id != antwoordenLijst.Id)
             {
                 return BadRequest();
             }
