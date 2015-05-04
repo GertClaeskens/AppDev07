@@ -16,7 +16,7 @@
         //}
 
         public FinahDBContext()
-            : base("Finah_Backend.DAL.FinahDBContext.")
+            : base("Finah_Backend.DAL.FinahDBContext")
         {
         }
 
