@@ -19,6 +19,48 @@
             curl_close($ch);
             return $result;
         }
+        static function arrayToCsv($array,$delimiter=',') {
+
+            return implode($delimiter, $array);
+        }
+/*        static function arrayToCsv( array &$fields, $delimiter = ';', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
+            $delimiter_esc = preg_quote($delimiter, '/');
+            $enclosure_esc = preg_quote($enclosure, '/');
+
+            $output = [];
+            foreach ( $fields as $field ) {
+                if ($field === null && $nullToMysqlNull) {
+                    $output[] = 'NULL';
+                    continue;
+                }
+
+                // Enclose fields containing $delimiter, $enclosure or whitespace
+                if ( $encloseAll || preg_match( "/(?:${delimiter_esc}|${enclosure_esc}|\s)/", $field ) ) {
+                    $output[] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $field) . $enclosure;
+                }
+                else {
+                    $output[] = $field;
+                }
+            }
+
+            return implode( $delimiter, $output );
+        }*/
+
+        static function csvToArray($csv='', $delimiter=',')
+        {
+            $header = NULL;
+            $data = [];
+
+                while (($row = fgetcsv($csv, 1000, $delimiter)) !== FALSE)
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+            return $data;
+        }
+
     }
 
 ?>

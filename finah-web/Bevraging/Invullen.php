@@ -39,11 +39,10 @@
         <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
             Korte inleiding over de enquete</br></br>
-            <!--        --><?php
-                /*            $serialized =htmlspecialchars(serialize($vragen));
-                        */ ?>
 
             <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"] ?>">
+            <!--TODO datum ophalen kijken van de oudste niet volledig ingevulde antwoordenlijst wat de datum is, ofwel dit op de backend toepassen-->
+            <!--            <input type="hidden" name="datum" id="datum">-->
             <input type="hidden" name="volgendevraag" value="<?php echo $aantalingevuld ?>">
             <input type="hidden" name="patient" id="patient" value="<?php echo $patient ?>">
             <?php if ($aantalingevuld > 0) { ?>
@@ -57,11 +56,24 @@
     <?php } elseif (isset($_POST["volgende"])) {
 
         $volgende = $_POST["volgendevraag"];
-        $vragen = FinahDAO::HaalOp("Onderzoek", $_POST["id"] . "/Vragen");
+        $id = $_POST["id"];
+        $vragen = FinahDAO::HaalOp("Onderzoek", $id . "/Vragen");
         $vraag = $vragen[0][$volgende];
         $patient = $_POST["patient"];
-        $volgende += 1;
         $gedaan = (int)($volgende * 100 / count($vragen[0]));
+        if ($volgende > 0) {
+            $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $id);
+            if (isset($_POST["hulp"])) {
+                $antwoord = $_POST["hinder"] + $_POST["hulp"];
+            } else {
+                $antwoord = $_POST["hinder"];
+            }
+            //$antwoordenlijst = new AntwoordenLijst();
+            $antwoordenlijst["Antwoorden"][$volgende] = $antwoord;
+            FinahDAO::PasAan("antwoordenlijst", $id, $antwoordenlijst);
+        }
+        $volgende += 1;
+        //FinahDAO::PasAan("antwoordlijst",$_POST["id"])
 //TODO vorige antwoord opslaan
 //TODO Zolang er vragen zijn tonen
         ?>
@@ -84,35 +96,35 @@
                                    onclick="hideDiv(); toggleActive('antw11')">
                                 <input type="radio" id="a1" name="hinder" value="0"> Verloopt
                                 naar
-                                wens</label>
+                                wens</input></label>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-2">
                             <label for="a2" class="btn btn-primary antwoordButton" id="antw12"
                                    onclick="hideDiv(); toggleActive('antw12')">
                                 <input type="radio" id="a2" name="hinder" value="1">Probleem
                                 - niet
-                                hinderlijk</label>
+                                hinderlijk</input></label>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-2">
                             <label for="a3" class="btn btn-primary antwoordButton" id="antw13"
                                    onclick="showDiv(); toggleActive('antw13')">
                                 <input type="radio" id="a3" name="hinder" checked="checked" value="2"> Probleem
                                 -
-                                hinderlijk voor mij</label>
+                                hinderlijk voor mij</input></label>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-2">
                             <label for="a4" class="btn btn-primary antwoordButton" id="antw14"
                                    onclick="showDiv(); toggleActive('antw14')">
                                 <input type="radio" id="a4" name="hinder" value="3"> Probleem
                                 -
-                                hinderlijk voor  <?php /*echo $patient ? "mantelzorger" : "patient";*/ ?></label>
+                                hinderlijk voor  <?php echo $patient ? "mantelzorger" : "patient"; ?></input></label>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-2">
                             <label for="a5" class="btn btn-primary antwoordButton" id="antw15"
                                    onclick="showDiv(); toggleActive('antw15')">
                                 <input type="radio" id="a5" name="hinder" value="4"> Probleem
                                 -
-                                hinderlijk voor beiden</label>
+                                hinderlijk voor beiden</input></label>
                         </li>
                         <li class="col-lg-1 col-md-1 col-sm-1">
 
@@ -120,20 +132,22 @@
                     </ul>
                 </div>
 
-                <div class="row" id="keuze">
-                    <div class="btn-group" id="keuze-content">
+                <div class="btn-group row" id="keuze">
+                    <div id="keuze-content">
                         <p class="eVraag">Wilt u dat we hieraan werken?</p>
-
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton" id="antw21"
-                                    onclick="toggleActiveExtra('antw21')">Nee
-                            </button>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary antwoordButton" id="antw22"
-                                    onclick="toggleActiveExtra('antw22')">Ja
-                            </button>
-                        </div>
+                        <ul class="invullen">
+                            <li class="col-lg-2 col-md-2 col-sm-2">
+                                <label for="h1" class="btn btn-primary antwoordButton" data-toggle="tab" id="antw21"
+                                       onclick="toggleActiveExtra('antw21')">
+                                    <input type="radio" id="h1" name="hulp" value="3"> Ja</input></label>
+                            </li>
+                            <li class="col-lg-2 col-md-2 col-sm-2">
+                                <label for="h2" class="btn btn-primary antwoordButton" id="antw22"
+                                       onclick="toggleActiveExtra('antw22')">
+                                    <input type="radio" id="h2" name="hulp" selected=selected value="0">Nee</input>
+                                </label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -150,9 +164,9 @@
                     </div>
 
                     <div id="divNext" class="col-md-2">
-                        <?php if ($volgende > count($vragen[0])) { ?>
-                            <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
-                        <?php } ?>
+                        <!--                        --><?php //if ($volgende > count($vragen[0])) { ?>
+                        <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
+                        <!--                        --><?php //} ?>
                     </div>
                 </div>
 

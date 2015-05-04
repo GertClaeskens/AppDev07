@@ -12,12 +12,17 @@ function hideDiv(){
 }
 
 function toggleActive(sndBtn){
-    document.getElementById("antw11").className = document.getElementById("antw11").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("antw12").className = document.getElementById("antw12").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("antw13").className = document.getElementById("antw13").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("antw14").className = document.getElementById("antw14").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("antw15").className = document.getElementById("antw15").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-
+    if (sndBtn!="antw21" && sndBtn != "antw22"){
+        document.getElementById("antw11").className = document.getElementById("antw11").className.replace(/(?:^|\s)active(?!\S)/g, '');
+        document.getElementById("antw12").className = document.getElementById("antw12").className.replace(/(?:^|\s)active(?!\S)/g, '');
+        document.getElementById("antw13").className = document.getElementById("antw13").className.replace(/(?:^|\s)active(?!\S)/g, '');
+        document.getElementById("antw14").className = document.getElementById("antw14").className.replace(/(?:^|\s)active(?!\S)/g, '');
+        document.getElementById("antw15").className = document.getElementById("antw15").className.replace(/(?:^|\s)active(?!\S)/g, '');
+    }else if (sndBtn=="antw21"){
+        document.getElementById("antw22").className = document.getElementById("antw22").className.replace(/(?:^|\s)active(?!\S)/g, '');
+    }else if (sndBtn=="antw22"){
+        document.getElementById("antw21").className = document.getElementById("antw21").className.replace(/(?:^|\s)active(?!\S)/g, '');
+    }
     document.getElementById(sndBtn).className += " active";
 }
 

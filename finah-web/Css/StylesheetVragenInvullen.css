@@ -98,7 +98,10 @@
     float: right;
     margin-right: 2.8%;
 }
-input[name=amount] {
+input[name=hinder] {
+    display:none
+}
+input[name=hulp] {
     display:none
 }
 
