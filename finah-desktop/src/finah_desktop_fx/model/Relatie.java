@@ -47,6 +47,10 @@ public class Relatie {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return Naam;
+	}
 	
 	
 }

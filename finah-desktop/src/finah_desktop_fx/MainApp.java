@@ -73,16 +73,17 @@ public class MainApp extends Application {
         try {
             // Load account layout.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
+            //loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
             //loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
             //loader.setLocation(MainApp.class.getResource("view/PathologieAanpassenLayout.fxml"));
-            //loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
             AnchorPane accountLayout = (AnchorPane) loader.load();
 
             // Set account layout into the center of root layout.
             rootLayout.setCenter(accountLayout);
             // Give the controller access to the main app.
-            AandoeningController controller = loader.getController();
+            //AandoeningController controller = loader.getController();
+            NieuweBevragingController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();

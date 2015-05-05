@@ -3,16 +3,16 @@ package finah_desktop_fx.model;
 public class LeeftijdsCategorie {
 
 	private int Id;
-	private int van;
-	private int tot;
+	private int Van;
+	private int Tot;
 
 	public LeeftijdsCategorie() {
 
 	}
 
 	public LeeftijdsCategorie(int van, int tot) {
-		this.van = van;
-		this.tot = tot;
+		this.Van = van;
+		this.Tot = tot;
 	}
 
 	public int getId() {
@@ -24,19 +24,19 @@ public class LeeftijdsCategorie {
 	}
 
 	public int getVan() {
-		return van;
+		return Van;
 	}
 
 	public void setVan(int van) {
-		this.van = van;
+		this.Van = van;
 	}
 
 	public int getTot() {
-		return tot;
+		return Tot;
 	}
 
 	public void setTot(int tot) {
-		this.tot = tot;
+		this.Tot = tot;
 	}
 
 	/* (non-Javadoc)
@@ -47,8 +47,8 @@ public class LeeftijdsCategorie {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Id;
-		result = prime * result + tot;
-		result = prime * result + van;
+		result = prime * result + Tot;
+		result = prime * result + Van;
 		return result;
 	}
 
@@ -66,10 +66,17 @@ public class LeeftijdsCategorie {
 		LeeftijdsCategorie other = (LeeftijdsCategorie) obj;
 		if (Id != other.Id)
 			return false;
-		if (tot != other.tot)
+		if (Tot != other.Tot)
 			return false;
-		if (van != other.van)
+		if (Van != other.Van)
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return Van + " - " + Tot;
+	}
+
+
 }
