@@ -101,22 +101,23 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
                             $vraag = new Vraag();
+                            $vraagStelling="";
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
                                     $vraag = FinahDAO::HaalOp("Vraag",$id);
-                                    $vraagStelling = $vraag["Vraagstelling"];
+                                    $vraagStelling = $vraag["VraagStelling"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                 } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                     echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                    $vraagStelling = $_POST["vraagstelling"];
+                                    $vraagStelling = $_POST["VraagStelling"];
                                     $vraag->setVraagstelling($vraagStelling);
 
                                     if (isset($_POST["nieuw"])) {
-                                        if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
+                                        if (FinahDAO::SchrijfWeg("Vragen", $vraag)) {
                                             //Todo eventueel een exception toevoegen hier
                                             echo "De vraag werd succesvol opgeslagen";
                                         }
@@ -124,9 +125,9 @@
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
                                         $vraag->setId($id);
-                                        if (FinahDAO::PasAan("Vraag", $id, $vraag)) {
-                                            $vraag = FinahDAO::HaalOp("Vraag", $id);
-                                            $vraagStelling = $vraag["Vraagstelling"];
+                                        if (FinahDAO::PasAan("Vragen", $id, $vraag)) {
+                                            $vraag = FinahDAO::HaalOp("Vragen", $id);
+                                            $vraagStelling = $vraag["VraagStelling"];
                                             echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                             echo "De vraag werd succesvol opgeslagen";
                                         }
@@ -134,8 +135,8 @@
                                 }
                                 if (isset($_POST["delete"])) {
                                     $id = $_POST["delete"];
-                                    $vraag = FinahDAO::HaalOp("Vraag", $id);
-                                    if (FinahDAO::Verwijder("Vraag", $id, $vraag)) {
+                                    $vraag = FinahDAO::HaalOp("Vragen", $id);
+                                    if (FinahDAO::Verwijder("Vragen", $id, $vraag)) {
                                         ?>
 <!--
                                             TODO Modal voorzien voor delete bevestiging      -->
@@ -146,11 +147,11 @@
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-
+<!--TODO Foto aan een vraag kunnen toekennen evt. ook meteen aan een vragenlijst toevoegen-->
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="vraagstelling" class="form-control" id="Vraagstelling" >
+                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" >
                                         <?php
                                             if(isset($_POST["bewerk"]) || isset($_POST["update"])){
                                                 echo $vraagStelling;

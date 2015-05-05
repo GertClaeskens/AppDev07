@@ -104,19 +104,18 @@ require "../PHP/Models/Vraag.php";
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h1>Overzicht</h1>
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe vraag aan
                         </button>
-                        <?php
-                            if (isset($_POST["delete"])) {
+<!--                        --><?php
+/*                            if (isset($_POST["delete"])) {
                                 $id = $_POST["delete"];
-                                    $vraag = FinahDAO::HaalOp("Vraag", $id);
-                                    if (FinahDAO::Verwijder("Vraag", $id, $vraag)) {
-                                         echo " De vraag werd succesvol verwijderd "; }
+                                $vraag = FinahDAO::HaalOp("Vragen", $id);
+                                if (FinahDAO::Verwijder("Vragen", $id, $vraag)) {
+                                    echo " De vraag werd succesvol verwijderd "; }
                             }
-                        ?>
+                        */?>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -132,7 +131,7 @@ require "../PHP/Models/Vraag.php";
                                 $vragenLijst = FinahDAO::HaalOp("Vragen");
                                 foreach ($vragenLijst as $item) {
                                     echo "<tr>"?>
-                            <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["Vraagstelling"] ?></td>
+                            <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["VraagStelling"] ?></td>
                             <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                 <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
                                         class='btn btn-primary' value="<?php echo $item["Id"] ?>">
@@ -159,6 +158,7 @@ require "../PHP/Models/Vraag.php";
                             </tbody>
                         </table>
                     </form>
+                    <h1>Overzicht</h1>
                 </div>
             </div>
         </div>

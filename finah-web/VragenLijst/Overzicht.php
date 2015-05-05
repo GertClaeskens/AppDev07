@@ -107,7 +107,7 @@ require "../PHP/Models/VragenLijst.php";
                     <h1>Overzicht</h1>
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
-                            Maak een nieuwe vraag aan
+                            Maak een nieuwe vragenlijst aan
                         </button>
                         <?php
                         if (isset($_POST["delete"])) {

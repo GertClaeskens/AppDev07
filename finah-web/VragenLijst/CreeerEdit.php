@@ -101,30 +101,38 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
                             $vragenlijst = new VragenLijst();
+                            $id=null;
                             if (isset($_POST)) {
+                                print_r($_POST);
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
-                                    $vragenlijst = FinahDAO::HaalOp("VragenLijst",$id);
+                                    $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                     $vragenlijstTitel = $vragenlijst["Titel"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
-                                } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
-                                    echo "<h1 class='header' >" . " Nieuwe vragenlijst " .  "</h1> ";
+                                } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                    echo "<h1 class='header' >" . " Nieuwe vragenlijst " . "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                     $vragenlijstTitel = $_POST["titel"];
-                                    $vragenlijst->setTitel($vragenlijstTitel);
+                                    //$vragenlijst->setTitel($vragenlijstTitel);
+                                    $vragenlijst->setOmschrijving($vragenlijstTitel);
                                     if (isset($_POST["aandoening"])) {
-                                        $aandoeningenlijst = $_POST["aandoening"];
-                                        for ($a = 0; $a < count($aandoeningenlijst); $a++) {
-                                            $vragenlijst->voegAandoeningAanVragenLijstToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a])); //todo VragenLijst.php aanpassen voor aandoening(en) aan toe te voegen
-                                        };
+                                        $aandoening = $_POST["aandoening"];
+                                        $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
+
                                     }
                                     if (isset($_POST["vragen"])) {
-                                        $vragenArray= $_POST["vragen"];
+                                        $vragenArray = $_POST["vragen"];
                                         for ($a = 0; $a < count($vragenArray); $a++) {
-                                            $vragenljst->voegVragenAanVragenLijstToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a])); //todo VragenLijst.php aanpassen voor vragen aan toe te voegen
+                                            $vragenlijst->setVragen(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
                                         };
+                                    }
+                                    if (isset($_POST["nieuw"])){
+                                        print_r($vragenlijst);
+                                        //$id = $_POST["Id"];
+                                        FinahDAO::SchrijfWeg("Vragenlijst",$vragenlijst);
+                                        echo "De vragenlijst werd succesvol opgeslagen";
                                     }
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
@@ -142,9 +150,9 @@
                                     $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                     if (FinahDAO::Verwijder("VragenLijst", $id, $vragenlijst)) {
                                         ?>
-<!--
-                                            TODO Modal voorzien voor delete bevestiging      -->
-                        <?php
+                                        <!--
+                                                                                    TODO Modal voorzien voor delete bevestiging      -->
+                                    <?php
                                     }
                                 }
                             }
@@ -152,20 +160,25 @@
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Titel"> Vragenlijst titel: </label>
+                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Titel">
+                                    Vragenlijst titel: </label>
+
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                    <input type="text" placeholder="Voer een titel in " name="titel" class="form-control" id="Titel" value=
+                                    <input type="text" placeholder="Voer een titel in " name="titel"
+                                           class="form-control" id="Titel" value=
                                         <?php
-                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                            echo $vragenlijstTitel;
-                                        } ?>>
+                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                                echo $vragenlijstTitel;
+                                            } ?>>
 
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening"> Selecteer de gepaste aandoening: </label>
+                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening">
+                                    Selecteer de gepaste aandoening: </label>
+
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                    <select name="aandoening" class="form-control"  id="Aandoening" >
+                                    <select name="aandoening" class="form-control" id="Aandoening">
                                         <?php
 
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
@@ -178,9 +191,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="vragenAdd"> Selecteer de vragen die je wil toevoegen aan de vragenlijst: </label>
+                                <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="vragenAdd">
+                                    Selecteer de vragen die je wil toevoegen aan de vragenlijst: </label>
+
                                 <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
-                                    <select  id="vragenAdd" name="vragen[]" size="20" multiple >
+                                    <select id="vragenAdd" name="vragen[]" size="20" multiple>
                                         <?php
                                             /*TODO De vragen in deze select box zoals de pathologie lijst (code hieronder)Eventueel enkel de vragen die van toepassing zijn bij de bovenstaand geselecteerde aandoening?? */
                                             $vragenLijst = FinahDAO::HaalOp("Vragen");
@@ -193,20 +208,23 @@
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-3 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                    <button type="button" onclick="location.href='Overzicht.php'"
+                                            class="btn btn-primary">
                                         Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
-                                            name=<?php if (isset($_POST["bewerk"])) {
+                                            name=<?php if (isset($_POST["bewerk"]) || isset($_POST["update"]) ) {
                                                 echo "'update'";
-                                            } elseif (isset($_POST["creeer"])) {
+                                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["nieuw"])) {
+                                            } /*elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])){
+                                            } elseif (isset($_POST["update"])) {
                                                 echo "'update'";
-                                            }
-                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                            }*/
+                                                if (!(isset($_POST["creeer"])) && !(isset($_POST["nieuw"]))){
+                                            ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
                                     </button>
                                 </div>
                             </div>
@@ -216,29 +234,29 @@
             </div>
         </div>
     </div>
-      <script>
-          $().ready(function () {
-              $("#aandoeningForm").validate({
-                  rules: {
-                      vraagstelling: "required"
-                  },
-                  messages: {
-                      vraagstelling: "Veld is verplicht."
-                  }
-              });
-          })
-          $("#menu-toggle").click(function (e) {
-              e.preventDefault();
-              $("#wrapper").toggleClass("toggled");
-              if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                  $("#side-toggle").removeClass("glyphicon-option-vertical");
-                  $("#side-toggle").addClass("glyphicon-option-horizontal");
-              } else {
-                  $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                  $("#side-toggle").addClass("glyphicon-option-vertical");
-              }
-          });
-      </script>
+    <script>
+        $().ready(function () {
+            $("#aandoeningForm").validate({
+                rules: {
+                    vraagstelling: "required"
+                },
+                messages: {
+                    vraagstelling: "Veld is verplicht."
+                }
+            });
+        })
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                $("#side-toggle").removeClass("glyphicon-option-vertical");
+                $("#side-toggle").addClass("glyphicon-option-horizontal");
+            } else {
+                $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                $("#side-toggle").addClass("glyphicon-option-vertical");
+            }
+        });
+    </script>
     </body>
     </html>
 <?php

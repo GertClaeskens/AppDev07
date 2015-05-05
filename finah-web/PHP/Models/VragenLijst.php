@@ -11,12 +11,14 @@
         public $Id;
         public $Vragen;
         public $Aandoe;
-        public $Titel;
+        //public $Titel;
+        public $Omschrijving;
 
-        public function __construct($id = null, $Vragen = null, $Aandoe = null, $Titel = null)
+        public function __construct($id = null, $Vragen = null, $Aandoe = null, $Omschrijving=null)//$Titel = null)
         {
             $this->Id = $id;
-            $this->Titel = $Titel;
+            //$this->Titel = $Titel;
+            $this->Omschrijving = $Omschrijving;
             $this->Vragen = $Vragen;
             $this->Aandoe = $Aandoe;
 
@@ -47,12 +49,22 @@
         {
             $this->Aandoe = $Aandoe;
         }
-        public function setTitel($Titel)
+
+        public function getOmschrijving()
+        {
+            return $this->Omschrijving;
+        }
+
+        public function setOmschrijving($Omschrijving)
+        {
+            $this->Omschrijving = $Omschrijving;
+        }
+/*        public function setTitel($Titel)
         {
             $this->Titel = $Titel;
         }
         public function getTitel()
         {
             return $this->Titel;
-        }
+        }*/
     }

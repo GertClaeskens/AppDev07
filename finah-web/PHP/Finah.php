@@ -1,7 +1,31 @@
 <?php
+    //require("class.phpmailer.php");
 
     class Finah
     {
+        //Onderstaande code is om mail te versturen met Gmail GoogleAPI
+/*        static function send_mail()
+        {
+            $mailer = new PHPMailer();
+            $mailer->IsSMTP();
+            $mailer->Host = 'ssl://smtp.gmail.com:465';
+            $mailer->SMTPAuth = TRUE;
+            $mailer->Username = 'fake[ @ ] googlemail.com';  // Change this to your gmail adress
+            $mailer->Password = 'fakepassword';  // Change this to your gmail password
+            $mailer->From = 'fake[ @ ] googlemail.com';  // This HAVE TO be your gmail adress
+            $mailer->FromName = 'fake'; // This is the from name in the email, you can put anything you like here
+            $mailer->Body = 'This is the main body of the email';
+            $mailer->Subject = 'This is the subject of the email';
+            $mailer->AddAddress('fake2[ @ ] gmail.com');  // This is where you put the email adress of the person you want to mail
+            if (!$mailer->Send()) {
+                echo "Message was not sent<br/ >";
+                echo "Mailer Error: " . $mailer->ErrorInfo;
+            } else {
+                echo "Message has been sent";
+            }
+
+        }*/
+
         static function send_simple_message($to, $subject, $msg)
         {
             $ch = curl_init();
@@ -19,45 +43,48 @@
             curl_close($ch);
             return $result;
         }
-        static function arrayToCsv($array,$delimiter=',') {
+
+        static function arrayToCsv($array, $delimiter = ',')
+        {
 
             return implode($delimiter, $array);
         }
-/*        static function arrayToCsv( array &$fields, $delimiter = ';', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
-            $delimiter_esc = preg_quote($delimiter, '/');
-            $enclosure_esc = preg_quote($enclosure, '/');
 
-            $output = [];
-            foreach ( $fields as $field ) {
-                if ($field === null && $nullToMysqlNull) {
-                    $output[] = 'NULL';
-                    continue;
-                }
+        /*        static function arrayToCsv( array &$fields, $delimiter = ';', $enclosure = '"', $encloseAll = false, $nullToMysqlNull = false ) {
+                    $delimiter_esc = preg_quote($delimiter, '/');
+                    $enclosure_esc = preg_quote($enclosure, '/');
 
-                // Enclose fields containing $delimiter, $enclosure or whitespace
-                if ( $encloseAll || preg_match( "/(?:${delimiter_esc}|${enclosure_esc}|\s)/", $field ) ) {
-                    $output[] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $field) . $enclosure;
-                }
-                else {
-                    $output[] = $field;
-                }
-            }
+                    $output = [];
+                    foreach ( $fields as $field ) {
+                        if ($field === null && $nullToMysqlNull) {
+                            $output[] = 'NULL';
+                            continue;
+                        }
 
-            return implode( $delimiter, $output );
-        }*/
+                        // Enclose fields containing $delimiter, $enclosure or whitespace
+                        if ( $encloseAll || preg_match( "/(?:${delimiter_esc}|${enclosure_esc}|\s)/", $field ) ) {
+                            $output[] = $enclosure . str_replace($enclosure, $enclosure . $enclosure, $field) . $enclosure;
+                        }
+                        else {
+                            $output[] = $field;
+                        }
+                    }
 
-        static function csvToArray($csv='', $delimiter=',')
+                    return implode( $delimiter, $output );
+                }*/
+
+        static function csvToArray($csv = '', $delimiter = ',')
         {
             $header = NULL;
             $data = [];
 
-                while (($row = fgetcsv($csv, 1000, $delimiter)) !== FALSE)
-                {
-                    if(!$header)
-                        $header = $row;
-                    else
-                        $data[] = array_combine($header, $row);
+            while (($row = fgetcsv($csv, 1000, $delimiter)) !== FALSE) {
+                if (!$header) {
+                    $header = $row;
+                } else {
+                    $data[] = array_combine($header, $row);
                 }
+            }
             return $data;
         }
 

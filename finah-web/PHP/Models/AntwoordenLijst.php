@@ -6,7 +6,9 @@
      * Date: 25/03/2015
      * Time: 22:59
      */
-    require "../Finah.php";
+
+    //include "../Finah.php";
+
     class AntwoordenLijst implements JsonSerializable
     {
         public $Id;
