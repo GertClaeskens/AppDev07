@@ -137,29 +137,30 @@ require_once "../PHP/Models/Pathologie.php";
                                     $item = $aandoeningLijst[$a];
                                     $aantal = count($item["Patologieen"]);
                                     for ($b = 0; $b < $aantal; $b++) {
-                                        echo "<tr>" ?>
-                                        <tr> <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Omschrijving"] ?> </td>
-                                       <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Patologieen"][$b]["Omschrijving"] ?></td>
-                                       <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                         <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
-                                                class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                                 <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                         </button>
-                                        <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
-                                                class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
+                                        ?>
+                                        <tr>
+                                            <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Omschrijving"] ?> </td>
+                                           <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Patologieen"][$b]["Omschrijving"] ?></td>
+                                           <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                                 <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                         <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                                 </button>
+                                                <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                        <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                                </button>
 
-                                        <?php $verw = $item["Id"]; ?>
-                                        <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
-                                                name='verwijderBtn' value="<?php echo $item["Id"] ?>"
-                                                class='delBtn btn btn-primary'
-                                                onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
-                                            <!--  TODO item id doorgeven aan modal ?? -->
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
+                                                <?php $verw = $item["Id"]; ?>
+                                                <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                                        name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                                        class='delBtn btn btn-primary'
+                                                        onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
+                                                    <!--  TODO item id doorgeven aan modal ?? -->
+                                                    <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                                </button>
                                         <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                                   </tr>
+                                        </tr>
                                     <?php }}?>
                             </tbody>
                         </table>

@@ -1,6 +1,7 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Bevraging.php";
+require_once "../PHP/Models/Onderzoek.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ require_once "../PHP/Models/Bevraging.php";
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <script src="../js/finah.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
@@ -19,6 +21,14 @@ require_once "../PHP/Models/Bevraging.php";
     <![endif]-->
 </head>
 <body>
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+    <div>
+        <div id="dialogboxhead"></div>
+        <div id="dialogboxbody"></div>
+        <div id="dialogboxfoot"></div>
+    </div>
+</div>
 <nav  class="navbar navbar-default navbar-fixed-top">
     <div  class="navbar-header pull-left">
 
@@ -95,11 +105,11 @@ require_once "../PHP/Models/Bevraging.php";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>
+<!--                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>-->
                     <form action="CreeerEdit.php" method="post">
-<!--                        <button class="btn btn-primary createbtn " type="submit" name="creeer">-->
-<!--                            Maak een nieuwe bevraging aan-->
-<!--                        </button>-->
+                        <button class="btn btn-primary createbtn " type="submit" name="creeer">
+                            Maak een nieuwe bevraging aan
+                        </button>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -116,33 +126,35 @@ require_once "../PHP/Models/Bevraging.php";
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
+                                for ($a = 0; $a < count($onderzoekLijst); $a++) {
+                                    $item = $onderzoekLijst[$a];
+                                    echo "<tr>" ?>
+                                    <tr> <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Informatie"] ?> </td>
+                                        <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Informatie"] ?></td>
+                                        <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Relatie"] ?></td>
+                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
 
-<!--                           $pathologieLijst = FinahDAO::HaalOp("bevraging");-->
-<!--                              foreach ($bevragingLijst as $item) {-->
-                                    <tr>
-                                    <td class="col-sm-1 col-md-1 col-lg-1 text-center">
-                                        1/04/2015
-                                    </td>
-                                    <td class="col-sm-7 col-md-7 col-lg-7">
-                                        Voorbeeld informatie
-                                    </td>
-                                    <td class="col-sm-2 col-md-2 col-lg-2 text-center">
-                                        Getrouwd
-                                    </td>
-                                    <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='details' class='btn btn-primary' value=".$item["Id"].">
-                                        <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                        </button>
-                                        <button type='submit' name='bewerk' class='btn btn-primary' value=".$item["Id"].">
-                                        <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                        </button>
-                                        <button type='submit'  name='delete' class='btn btn-primary' value=".$item["Id"].">
-                                        <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                    </td>
-                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                                </tr>
-
+                                            <?php $verw = $item["Id"]; ?>
+                                            <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                                    name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                                    class='delBtn btn btn-primary'
+                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
+                                                <!--  TODO item id doorgeven aan modal ?? -->
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                    </tr>
+                                <?php }?>
                             </tbody>
                         </table>
                     </form>
