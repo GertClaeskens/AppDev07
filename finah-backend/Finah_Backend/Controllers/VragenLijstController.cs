@@ -72,8 +72,9 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/VragenLijsts/5
+        [Route("VragenLijst/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVragenLijst(int id, VragenLijst vragenLijst)
+        public IHttpActionResult PutVragenLijst(int id, [FromBody] VragenLijst vragenLijst)
         {
             if (!ModelState.IsValid)
             {
@@ -108,7 +109,7 @@ namespace Finah_Backend.Controllers
 
         // POST: api/VragenLijsts
         [ResponseType(typeof(VragenLijst))]
-        public IHttpActionResult PostVragenLijst(VragenLijst vragenLijst)
+        public IHttpActionResult PostVragenLijst([FromBody] VragenLijst vragenLijst)
         {
             if (!ModelState.IsValid)
             {

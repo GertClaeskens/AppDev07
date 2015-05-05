@@ -36,28 +36,6 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
-            //Vraag vraag = null;
-            //if (id == 1)
-            //{
-            //    vraag = new Vraag();
-            //    var foto = new Foto();
-            //    var gf = new GeluidsFragment();
-
-            //    foto.Id = 1;
-            //    foto.Omschrijving = "foto vraag 1";
-            //    foto.Pad = "pad";
-
-            //    gf.Id = 1;
-            //    gf.Omschrijving = "geluid vraag 1";
-            //    gf.Pad = "geluidpad";
-
-            //    vraag.Id = 1;
-            //    vraag.VraagStelling = "Lorem ipsum bladibla";
-            //    vraag.Afbeelding = foto;
-            //    vraag.Geluid = gf;
-            //}
-            //Bovenstaande code dient om te testen
-            //Als database in orde is bovenstaande code wissen en onderstaande regel uncommenten
             var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
@@ -72,23 +50,11 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             return db.Vragen;
-
-            //return vragen;
-            //var testVraag1 = new Vraag { Id = 1, VraagStelling = "Lorem ipsum bladibla" };
-            //var testVraag2 = new Vraag { Id = 2, VraagStelling = "Voorbeeld vraag" };
-            //var testVraag3 = new Vraag { Id = 3, VraagStelling = "Lorem ipsum nougae bollus" };
-            //var testVraag4 = new Vraag { Id = 4, VraagStelling = "Lorem ipsum jupsum nummum" };
-            //var testVraag5 = new Vraag { Id = 5, VraagStelling = "Lorem ipsum blaedibladibus" };
-
-
-            //var overzichtVragen = new List<Vraag> { testVraag1, testVraag2, testVraag3, testVraag4, testVraag5 };
-
-            //return overzichtVragen;
         }
 
         // PUT: api/Vragen/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCourse(int id, Vraag vraag)
+        public IHttpActionResult PutCourse(int id, [FromBody] Vraag vraag)
         {
             if (!ModelState.IsValid)
             {
@@ -123,7 +89,7 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Courses
         [ResponseType(typeof(Vraag))]
-        public IHttpActionResult PostCourse(Vraag vraag)
+        public IHttpActionResult PostCourse([FromBody] Vraag vraag)
         {
             if (!ModelState.IsValid)
             {
