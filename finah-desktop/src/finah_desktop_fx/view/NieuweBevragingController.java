@@ -11,20 +11,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class NieuweBevragingController implements Initializable{
 @FXML
-ComboBox<Relatie> cboRelatie;
+ChoiceBox<Relatie> cboRelatie;
 @FXML
-ComboBox<Pathologie> cboPathologie;
+ChoiceBox<Pathologie> cboPathologie;
 @FXML
-ComboBox<Aandoening> cboAandoening;
+ChoiceBox<Aandoening> cboAandoening;
 @FXML
-ComboBox<LeeftijdsCategorie> cboLftdPat;
+ChoiceBox<LeeftijdsCategorie> cboLftdPat;
 @FXML
-ComboBox<LeeftijdsCategorie> cboLftdMan;
+ChoiceBox<LeeftijdsCategorie> cboLftdMan;
 private MainApp mainApp;
 
 

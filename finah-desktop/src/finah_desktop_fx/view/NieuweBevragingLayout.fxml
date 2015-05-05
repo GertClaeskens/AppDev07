@@ -29,13 +29,13 @@
             <Label text="Leeftijdscategorie patiënt" GridPane.rowIndex="4" />
             <Label text="Leeftijdscategorie mantelzorger" GridPane.rowIndex="5" />
             <TextField fx:id="txtOpmerking" prefHeight="31.0" prefWidth="318.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="cboAandoening" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cboVragenLijst" prefHeight="31.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="cboPathologie" prefHeight="31.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="cboLftdPat" prefHeight="31.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="cboLftdMan" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="cboRelatie" prefHeight="31.0" prefWidth="273.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="cboAandoening" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="cboVragenLijst" prefHeight="31.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="cboPathologie" prefHeight="31.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="cboLftdMan" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="cboRelatie" prefHeight="31.0" prefWidth="273.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label text="Relatie" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="cboLftdPat" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button fx:id="btnVersturen" layoutX="487.0" layoutY="399.0" mnemonicParsing="false" text="Bevraging versturen" />

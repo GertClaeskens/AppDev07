@@ -27,6 +27,7 @@
                   <MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" onAction="#menuItems" text="Vragenlijsten" />
                   <MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#menuItems" text="Aandoeningen" />
                   <MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#menuItems" text="Pathologieen" />
+                  <MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#menuItems" text="Relaties" />
                 <MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#menuItems" text="Accounts" />
               </items>
             </MenuButton>
