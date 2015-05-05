@@ -18,6 +18,7 @@
     width: 100%;
     z-index: 10;
 }
+
 #dialogbox{
     display: none;
     position: fixed;
@@ -26,38 +27,61 @@
     width:550px;
     z-index: 10;
 }
-#dialogbox > div{ background:#FFF; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background: #333; padding:20px; color:#FFF; }
-#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+
+#dialogbox > div{
+    background:#FFF;
+    margin:8px;
+}
+
+#dialogbox > div > #dialogboxhead{
+    background: #666;
+    font-size:19px
+    padding:10px;
+    color:#CCC;
+}
+
+#dialogbox > div > #dialogboxbody{
+    background: #333;
+    padding:20px;
+    color:#FFF;
+}
+
+#dialogbox > div > #dialogboxfoot{
+    background: #666;
+    padding:10px;
+    text-align:right;
+}
 
 p,h1,h2,h3,article,a {
     -webkit-font-smoothing: subpixel-antialiased;
     /*-webkit-font-smoothing: antialiased;*/
     -moz-osx-font-smoothing: grayscale;
 }
+
 #menu-toggle{
     text-decoration:none;
     border:0;
     outline:none;
     margin-left:10px;
 }
+
 .glyphicon-option-horizontal{
     margin-top:13px;
     font-size:2.0em;
     color:#30636e;
 
 }
+
 .glyphicon-option-vertical{
     margin-top:10px;
     color:#30636e;
     font-size:2.0em;
 }
 
-
 .caret {
     color:gray;
 }
+
 .img-circle > img {
     padding:0;
     width:37px;
@@ -65,25 +89,29 @@ p,h1,h2,h3,article,a {
     border-radius:50px;
     float:left;
 }
+
 .navbar-fixed-top{
     max-height:40px;
     min-width:450px;
 }
 
-
 .glyphicon-option-vertical .glyphicon-option-horizontal {
     color:black;
     color:#30636e;
 }
-.glyphicon-user{
-    color:#4A89DC;
+
+.glyphicon-user {
+    color: #4A89DC;
 }
+
 .glyphicon-log-out{
     color:#4A89DC;
 }
+
 .nav-right {
     margin-top:8px;
 }
+
 .nav-right > a {
     text-decoration:none;
     color:black;
@@ -91,9 +119,9 @@ p,h1,h2,h3,article,a {
     font-size:1em;
     font-weight:bold;
 }
+
 #wrapper {
     padding-left: 0;
-    /*border:1px solid red;*/
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -112,13 +140,13 @@ p,h1,h2,h3,article,a {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #30363E; /* Standard syntax */
-
+    background: #30363E;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
@@ -166,7 +194,6 @@ p,h1,h2,h3,article,a {
     text-decoration: none;
     color: #4A89DC;
     background: #22262C;
-
 }
 
 .sidebar-nav li a:active,
@@ -183,18 +210,22 @@ p,h1,h2,h3,article,a {
 .sidebar-nav > .sidebar-brand h4 {
     color: #999999;
 }
+
 .breadcrumb {
     color:#30363E;
 }
+
 .breadcrumb > .breadcrumb-font {
     font-family: 'Glyphicons Halflings';
     font-weight:bold;
     font-size:1.1em;
     color:#30363E;
 }
+
 .glyphicon-home{
     color:#4a89dc;
 }
+
 .action-column {
     font-size:1.8em;
     text-align:center;
@@ -204,29 +235,36 @@ p,h1,h2,h3,article,a {
     width:100px;
     white-space: nowrap;
 }
+
 .action-column > .glyphicon {
     margin-right:5px;
 }
+
 .table th {
     text-align:center;
 }
+
 .form-group {
-    margin-top:25px;
+    margin-top: 25px;
 }
+
 .header{
     margin-bottom:50px;
 }
+
 #back {
-    margin-top:75px;
+    margin-top: 75px;
 }
+
 .createbtn {
     margin-top:20px;
 }
+
 .table {
     margin-top:25px;
 }
-@media(min-width:768px) {
 
+@media(min-width:768px) {
 
     #wrapper {
         padding-left: 250px;
@@ -253,20 +291,22 @@ p,h1,h2,h3,article,a {
         position: relative;
         margin-right: 0;
     }
+
     .nav-right {
         right:120px;
     }
+
     .action-column{
         float:none!important;
     }
 }
 @media(max-width:767px) {
+
     .nav-right{
         right:30px;
     }
+
     .glyphicon-option-horizontal .glyphicon-option-vertical {
         color:#30636e;
     }
-
-
 }
