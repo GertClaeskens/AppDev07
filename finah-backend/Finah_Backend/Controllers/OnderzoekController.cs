@@ -21,7 +21,7 @@ namespace Finah_Backend.Controllers
         [Route("Onderzoek/Overzicht")]
         public IQueryable<Onderzoek> GetOnderzoeken()
         {
-            return db.Onderzoeken;
+            return db.Onderzoeken.Include(o => o.Relatie);
         }
 
         // GET: api/Onderzoek/5
