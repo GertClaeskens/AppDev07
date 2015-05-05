@@ -104,6 +104,8 @@ require "../PHP/Models/Vraag.php";
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h1>Overzicht</h1>
+
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe vraag aan
@@ -158,7 +160,6 @@ require "../PHP/Models/Vraag.php";
                             </tbody>
                         </table>
                     </form>
-                    <h1>Overzicht</h1>
                 </div>
             </div>
         </div>

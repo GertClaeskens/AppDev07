@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
                                     <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
                                         Terug
                                     </button>

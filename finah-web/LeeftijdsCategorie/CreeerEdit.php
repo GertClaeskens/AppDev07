@@ -132,12 +132,13 @@
 
                                         $LeeftijdsCat->setId($id);
                                         if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
-                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
-                                            $van = $LeeftijdsCat["Van"];
-                                            $tot = $LeeftijdsCat["Tot"];
-                                            echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
+
                                         }
+                                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                        $van = $LeeftijdsCat["Van"];
+                                        $tot = $LeeftijdsCat["Tot"];
+                                        echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                        echo "De leeftijdscategorie werd succesvol opgeslagen";
 
                                     }
                                 }
@@ -168,7 +169,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                <div class=" col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-10">
                                     <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
                                         Terug
                                     </button>
