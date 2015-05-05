@@ -105,7 +105,7 @@ require_once "../PHP/Models/Onderzoek.php";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-<!--                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>-->
+                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe bevraging aan
@@ -127,33 +127,34 @@ require_once "../PHP/Models/Onderzoek.php";
                             </thead>
                             <tbody>
                             <?php
-                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
-                                for ($a = 0; $a < count($onderzoekLijst); $a++) {
-                                    $item = $onderzoekLijst[$a];
-                                    echo "<tr>" ?>
-                                    <tr> <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Informatie"] ?> </td>
-                                        <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Informatie"] ?></td>
-                                        <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Relatie"] ?></td>
-                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                            <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
-                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                            </button>
-                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
-                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                            </button>
+                            $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
+                                print_r($onderzoekLijst);
+                            foreach ($onderzoekLijst as $item) {
 
-                                            <?php $verw = $item["Id"]; ?>
-                                            <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
-                                                    name='verwijderBtn' value="<?php echo $item["Id"] ?>"
-                                                    class='delBtn btn btn-primary'
-                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
-                                                <!--  TODO item id doorgeven aan modal ?? -->
-                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                            </button>
-                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                                    </tr>
+                                     ?>
+<!--                                    <tr> <td class='col-sm-5 col-md-5 col-lg-5'> --><?php //echo $item["Informatie"] ?><!-- </td>-->
+<!--                                        <td class='col-sm-5 col-md-5 col-lg-5'>--><?php //echo $item["Informatie"] ?><!--</td>-->
+<!--                                        <td class='col-sm-5 col-md-5 col-lg-5'>--><?php //echo $item["Relatie"] ?><!--</td>-->
+<!--                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>-->
+<!--                                            <button type='submit' name='details' id='--><?php //echo "Dt".$item["Id"] ?><!--'-->
+<!--                                                    class='btn btn-primary' value="--><?php //echo $item["Id"] ?><!--">-->
+<!--                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;-->
+<!--                                            </button>-->
+<!--                                            <button type='submit' name='bewerk' id='--><?php //echo "Bw". $item["Id"] ?><!--'-->
+<!--                                                    class='btn btn-primary' value="--><?php //echo $item["Id"] ?><!--">-->
+<!--                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;-->
+<!--                                            </button>-->
+<!---->
+<!--                                            --><?php //$verw = $item["Id"]; ?>
+<!--                                            <button type='button' title='Verwijderen' id='--><?php //echo "Del". $item["Id"] ?><!--'-->
+<!--                                                    name='verwijderBtn' value="--><?php //echo $item["Id"] ?><!--"-->
+<!--                                                    class='delBtn btn btn-primary'-->
+<!--                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',--><?php //echo $verw ?>//,'Bevraging',this)">
+//                                                <!--  TODO item id doorgeven aan modal ?? -->
+//                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+//                                            </button>
+//                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+//                                    </tr>
                                 <?php }?>
                             </tbody>
                         </table>
