@@ -109,8 +109,8 @@
                                     $pathologie = FinahDAO::HaalOp("Pathologie", $id);
                                     $naam = $pathologie["Omschrijving"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
-                                    echo "<h1 class='header' >" . " Nieuwe pathologie " .  "</h1> ";
+                                } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                    echo "<h1 class='header' >" . " Nieuwe pathologie " . "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
@@ -133,25 +133,17 @@
 
                                         $pathologie->setId($id);
                                         if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
-                                            $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                            $naam = $pathologie["Omschrijving"];
-                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                            echo "De pathologie werd succesvol opgeslagen";
+
                                         }
-                                    }
-                                }
-                                if (isset($_POST["delete"])) {
-                                    $id = $_POST["delete"];
-                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                    if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {
-                                        ?>
-<!--
-                                            TODO Modal voorzien voor delete bevestiging      -->
-                        <?php
+                                        $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                        $naam = $pathologie["Omschrijving"];
+                                        echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                        echo "De pathologie werd succesvol opgeslagen";
                                     }
                                 }
                             }
-                        ?>
+                                        ?>
+
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
