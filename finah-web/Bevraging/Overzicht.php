@@ -114,13 +114,20 @@ require_once "../PHP/Models/Onderzoek.php";
                             <thead>
                             <tr>
                                 <th>
-                                    Aangevraagd
+                                    Datum
                                 </th>
+                                <th>
+                                    Hulpverlener
+                                </th>
+
                                 <th>
                                     Informatie
                                 </th>
                                 <th>
                                     Relatie
+                                </th>
+                                <th>
+                                    Rapport&nbsp;?
                                 </th>
                                 <th>Actie</th>
                             </tr>
@@ -128,33 +135,39 @@ require_once "../PHP/Models/Onderzoek.php";
                             <tbody>
                             <?php
                             $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
-                                print_r($onderzoekLijst);
-                            foreach ($onderzoekLijst as $item) {
+                                foreach ($onderzoekLijst as $item) {
 
-                                     ?>
-<!--                                    <tr> <td class='col-sm-5 col-md-5 col-lg-5'> --><?php //echo $item["Informatie"] ?><!-- </td>-->
-<!--                                        <td class='col-sm-5 col-md-5 col-lg-5'>--><?php //echo $item["Informatie"] ?><!--</td>-->
-<!--                                        <td class='col-sm-5 col-md-5 col-lg-5'>--><?php //echo $item["Relatie"] ?><!--</td>-->
-<!--                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>-->
-<!--                                            <button type='submit' name='details' id='--><?php //echo "Dt".$item["Id"] ?><!--'-->
-<!--                                                    class='btn btn-primary' value="--><?php //echo $item["Id"] ?><!--">-->
-<!--                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;-->
-<!--                                            </button>-->
-<!--                                            <button type='submit' name='bewerk' id='--><?php //echo "Bw". $item["Id"] ?><!--'-->
-<!--                                                    class='btn btn-primary' value="--><?php //echo $item["Id"] ?><!--">-->
-<!--                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;-->
-<!--                                            </button>-->
-<!---->
-<!--                                            --><?php //$verw = $item["Id"]; ?>
-<!--                                            <button type='button' title='Verwijderen' id='--><?php //echo "Del". $item["Id"] ?><!--'-->
-<!--                                                    name='verwijderBtn' value="--><?php //echo $item["Id"] ?><!--"-->
-<!--                                                    class='delBtn btn btn-primary'-->
-<!--                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',--><?php //echo $verw ?>//,'Bevraging',this)">
-//                                                <!--  TODO item id doorgeven aan modal ?? -->
-//                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
-//                                            </button>
-//                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-//                                    </tr>
+                                      $antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
+
+
+                                            ?>
+                                    <tr> <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $antw["Datum"]  ?> </td>
+                                        <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo "Rafael Sarrechia" ?></td>
+
+                                        <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
+                                        <td class='col-xs-3 col-sm-2 col-md-2 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>
+                                        <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" ?></td>
+
+                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                            </button>
+                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                            </button>
+
+                                            <?php $verw = $item["Id"]; ?>
+                                            <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                                    name='verwijderBtn' value="<?php echo $item["Id"] ?>"
+                                                    class='delBtn btn btn-primary'
+                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Bevraging',this)">
+                                                <!--  TODO item id doorgeven aan modal ?? -->
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                    </tr>
                                 <?php }?>
                             </tbody>
                         </table>
