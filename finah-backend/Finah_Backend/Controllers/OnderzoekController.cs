@@ -18,6 +18,7 @@ namespace Finah_Backend.Controllers
         private FinahDBContext db = new FinahDBContext();
 
         // GET: api/Onderzoek
+        [Route("Onderzoek/Overzicht")]
         public IQueryable<Onderzoek> GetOnderzoeken()
         {
             return db.Onderzoeken;
