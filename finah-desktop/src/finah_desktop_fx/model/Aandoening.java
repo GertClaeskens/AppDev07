@@ -15,11 +15,12 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-public class Aandoening extends SuperklasseAandoeningPathologie implements JsonSerializer<Aandoening>,JsonDeserializer<Aandoening>{
+public class Aandoening extends SuperklasseAandoeningPathologie implements
+		JsonSerializer<Aandoening>, JsonDeserializer<Aandoening> {
 
-	//PropertyValueType getName()
-	//void setName(PropertyValueType value)
-	//PropertyType nameProperty()
+	// PropertyValueType getName()
+	// void setName(PropertyValueType value)
+	// PropertyType nameProperty()
 	private List<Pathologie> Patologieen;
 
 	public List<Pathologie> getBijhorende_pathologie() {
@@ -30,10 +31,12 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements JsonS
 		Patologieen.add(pat);
 
 	}
-    public Aandoening(int id, String omschrijving) {
-        this.Id = id;
-        this.Omschrijving = omschrijving;
-    }
+
+	public Aandoening(int id, String omschrijving) {
+		this.Id = id;
+		this.Omschrijving = omschrijving;
+	}
+
 	public void voegPathologieLijstToe(ArrayList<Pathologie> patlijst) {
 		Patologieen = patlijst;
 	}
@@ -48,8 +51,7 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements JsonS
 
 	@Override
 	public String toString() {
-		return this.getId() + " : " + this.getOmschrijving() + ": "
-				+ this.getBijhorende_pathologie().get(0);
+		return this.getOmschrijving();
 
 	}
 
@@ -104,26 +106,27 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements JsonS
 	@Override
 	public JsonElement serialize(Aandoening aand, Type arg1,
 			JsonSerializationContext arg2) {
-        JsonObject object = new JsonObject();
-        int id = aand.getId();
-        String omschrijving = aand.getOmschrijving();
-        object.addProperty("Id", id);        
-        object.addProperty("Omschrijving", omschrijving);
-        // we create the json object for the dog and send it back to the
-        // Gson serializer
-        return object;
+		JsonObject object = new JsonObject();
+		int id = aand.getId();
+		String omschrijving = aand.getOmschrijving();
+		object.addProperty("Id", id);
+		object.addProperty("Omschrijving", omschrijving);
+		// we create the json object for the dog and send it back to the
+		// Gson serializer
+		return object;
 	}
 
 	@Override
 	public Aandoening deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
-        int id = json.getAsJsonObject().get("id").getAsInt();
-		String omschrijving = json.getAsJsonObject().get("omschrijving").getAsString();
-        Aandoening a = new Aandoening();
-        a.setId(id);
-        a.setOmschrijving(omschrijving);
- 
-        return a;
+		int id = json.getAsJsonObject().get("id").getAsInt();
+		String omschrijving = json.getAsJsonObject().get("omschrijving")
+				.getAsString();
+		Aandoening a = new Aandoening();
+		a.setId(id);
+		a.setOmschrijving(omschrijving);
+
+		return a;
 	}
 
 	// public Aandoening(String naam) {
