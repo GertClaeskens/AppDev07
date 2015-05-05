@@ -129,6 +129,11 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements
 		return a;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Aandoening [Patologieen=" + Patologieen + "]";
+//	}
+
 	// public Aandoening(String naam) {
 	// super(naam);
 	// }
