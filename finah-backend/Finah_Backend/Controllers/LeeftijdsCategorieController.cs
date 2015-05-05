@@ -97,10 +97,10 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(LeeftijdsCategorie))]
         public IHttpActionResult PostLeeftijdsCategorie(LeeftijdsCategorie leeftijdsCategorie)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             db.LeeftijdsCategorieen.Add(leeftijdsCategorie);
             db.SaveChanges();
