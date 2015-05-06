@@ -18,7 +18,7 @@ namespace Finah_Backend.Controllers
         private FinahDBContext db = new FinahDBContext();
 
         // GET: api/Thema
-        [Route("Relatie/Overzicht")]
+        [Route("Thema/Overzicht")]
         public IQueryable<Thema> GetThemas()
         {
             return db.Themas;

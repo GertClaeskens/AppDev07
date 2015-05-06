@@ -10,3 +10,5 @@ finah-backend/Finah_Backend/App_Data/FinahDBContext_log.ldf
 *.ldf
 finah-backend/Finah_Backend/App_Data/FinahDBContext.mdf
 finah-backend/Finah_Backend/App_Data/FinahDBContext_log.ldf
+finah-backend/Finah_Backend/App_Data/FinahDBContext.mdf
+finah-backend/Finah_Backend/App_Data/FinahDBContext_log.ldf
