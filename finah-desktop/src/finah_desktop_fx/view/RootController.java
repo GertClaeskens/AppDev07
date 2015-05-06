@@ -47,6 +47,8 @@ public class RootController {
 	@FXML
 	private MenuItem MnuBeheerLftCat;
 	@FXML
+	private MenuItem MnuBeheerThemas;
+	@FXML
 	private Button btnResultaten;
 	@FXML
 	private Button btnUitloggen;
@@ -113,6 +115,10 @@ public class RootController {
 			case "LeeftijdsCategorieen":
 				loader.setLocation(MainApp.class
 						.getResource("view/LftdsCatOverzicht.fxml"));
+				break;
+			case "Thema's":
+				loader.setLocation(MainApp.class
+						.getResource("view/ThemaOverzicht.fxml"));
 				break;
 			case "Accounts":
 				loader.setLocation(MainApp.class

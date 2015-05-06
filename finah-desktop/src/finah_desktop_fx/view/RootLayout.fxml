@@ -45,6 +45,7 @@
 							<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toon" text="Pathologieen" />
 							<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toon" text="LeeftijdsCategorieen" />
 							<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toon" text="Relaties" />
+							<MenuItem fx:id="MnuBeheerThemas" mnemonicParsing="false" onAction="#toon" text="Thema's" />
 							<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
 						</items>
 					</MenuButton>

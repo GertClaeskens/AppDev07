@@ -3,6 +3,7 @@ package finah_desktop_fx.model;
 public class Vraag {
 	private int Id;
 	private String VraagStelling;
+	private Thema Thema;
 	private Foto Afbeelding;
 	private GeluidsFragment Geluid;
 
@@ -14,11 +15,12 @@ public class Vraag {
 		VraagStelling = vraagStelling;
 	}
 
-	public Vraag(int id, String vraagstelling, Foto afbeelding,
+	public Vraag(int id, String vraagstelling, Thema thema,Foto afbeelding,
 			GeluidsFragment geluid) {
 		super();
 		Id = id;
 		VraagStelling = vraagstelling;
+		Thema = thema;
 		Afbeelding = afbeelding;
 		Geluid = geluid;
 	}
@@ -55,11 +57,22 @@ public class Vraag {
 		Geluid = geluid;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	public String getVraagStelling() {
+		return VraagStelling;
+	}
+
+	public void setVraagStelling(String vraagStelling) {
+		VraagStelling = vraagStelling;
+	}
+
+	public Thema getThema() {
+		return Thema;
+	}
+
+	public void setThema(Thema thema) {
+		Thema = thema;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,16 +81,12 @@ public class Vraag {
 				+ ((Afbeelding == null) ? 0 : Afbeelding.hashCode());
 		result = prime * result + ((Geluid == null) ? 0 : Geluid.hashCode());
 		result = prime * result + Id;
+		result = prime * result + ((Thema == null) ? 0 : Thema.hashCode());
 		result = prime * result
 				+ ((VraagStelling == null) ? 0 : VraagStelling.hashCode());
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -98,6 +107,11 @@ public class Vraag {
 		} else if (!Geluid.equals(other.Geluid))
 			return false;
 		if (Id != other.Id)
+			return false;
+		if (Thema == null) {
+			if (other.Thema != null)
+				return false;
+		} else if (!Thema.equals(other.Thema))
 			return false;
 		if (VraagStelling == null) {
 			if (other.VraagStelling != null)

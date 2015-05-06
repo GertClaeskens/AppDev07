@@ -8,10 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AandoeningDAO;
@@ -29,8 +26,9 @@ public class AandoeningController implements Initializable{
     @FXML
     private Button btnToevoegen;
     @FXML
-    private ComboBox<Pathologie> cboPathologie;
-
+    private ChoiceBox<Pathologie> cboPathologie;
+    @FXML
+    private TextField txtAandoening;
 	private MainApp mainApp;
 	
 	public AandoeningController(){

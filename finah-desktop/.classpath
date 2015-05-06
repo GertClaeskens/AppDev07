@@ -37,5 +37,6 @@
 			<attribute name="javadoc_location" value="http://joda-time.sourceforge.net/apidocs/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Dagschool/Project/bootstrap-glyphicons-bdd2cbfba0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
