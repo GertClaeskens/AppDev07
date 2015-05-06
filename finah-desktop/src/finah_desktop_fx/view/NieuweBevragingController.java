@@ -16,10 +16,12 @@ import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AandoeningDAO;
 import finah_desktop_fx.dao.LeeftijdsCategorieDAO;
 import finah_desktop_fx.dao.RelatieDAO;
+import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Aandoening;
 import finah_desktop_fx.model.LeeftijdsCategorie;
 import finah_desktop_fx.model.Pathologie;
 import finah_desktop_fx.model.Relatie;
+import finah_desktop_fx.model.VragenLijst;
 
 public class NieuweBevragingController implements Initializable{
 @FXML
@@ -33,7 +35,7 @@ ChoiceBox<LeeftijdsCategorie> cboLftdPat;
 @FXML
 ChoiceBox<LeeftijdsCategorie> cboLftdMan;
 @FXML
-ChoiceBox<Pathologie> cboVragenLijst;
+ChoiceBox<VragenLijst> cboVragenLijst;
 private MainApp mainApp;
 
 
@@ -52,7 +54,7 @@ private MainApp mainApp;
 //        	}
         
 		ObservableList<Aandoening> aandoeningenLijst = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
-		//ObservableList<Pathologie> pathologieenLijst = FXCollections.observableList(PathologieDAO.GetPathologieen());
+		ObservableList<VragenLijst> vragenLijst = FXCollections.observableList(VragenLijstDAO.GetVragenLijsten());
 		ObservableList<Pathologie> pathologieenLijst = FXCollections.observableList(pathologieen);
 		ObservableList<Relatie> relatieLijst = FXCollections.observableList(RelatieDAO.GetRelaties());
 		ObservableList<LeeftijdsCategorie> leeftijdscategorieLijst = FXCollections.observableList(LeeftijdsCategorieDAO.GetLeeftijdsCategorieen());
@@ -60,6 +62,7 @@ private MainApp mainApp;
         //cboPathologie.setItems(pathologieenLijst);
         //cboPathologie.setValue(pathologieenLijst.get(0));
         cboAandoening.setItems(aandoeningenLijst);
+        cboVragenLijst.setItems(vragenLijst);
         //cboAandoening.setValue(aandoeningenLijst.get(0));
         cboLftdMan.setItems(leeftijdscategorieLijst);
         cboLftdMan.setValue(leeftijdscategorieLijst.get(0));
@@ -70,6 +73,7 @@ private MainApp mainApp;
         
         cboAandoening.setTooltip(new Tooltip("Selecteer een aandoening"));
         cboPathologie.setTooltip(new Tooltip("Selecteer een pathologie"));
+        cboVragenLijst.setTooltip(new Tooltip("Selecteer een vragenlijst"));
         cboLftdMan.setTooltip(new Tooltip("Selecteer een leeftijdscategorie"));
         cboLftdPat.setTooltip(new Tooltip("Selecteer een leeftijdscategorie"));
         cboRelatie.setTooltip(new Tooltip("Selecteer een relatie"));
@@ -78,12 +82,14 @@ private MainApp mainApp;
         	public void changed(ObservableValue ov,Number value, Number new_value){
         		pathologieen.clear();
         		//System.out.println(cboAandoening.getItems().get((int)new_value));
-            	for (int j=0;j<cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().size();j++){
-            		Pathologie pathologie = cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().get(j); 
+        		Aandoening geselecteerd = cboAandoening.getItems().get((int)new_value);
+            	for (int j=0;j<geselecteerd.getBijhorende_pathologie().size();j++){
+            		Pathologie pathologie = geselecteerd.getBijhorende_pathologie().get(j); 
             		pathologieen.add(pathologie);
             	}
             	cboPathologie.getItems().setAll(pathologieen);
                 cboPathologie.setValue(pathologieen.get(0));
+                //geselecteerd.
 
         	}
         });

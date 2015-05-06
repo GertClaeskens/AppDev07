@@ -2,6 +2,7 @@ package finah_desktop_fx;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -40,7 +41,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             
             rootLayout = (BorderPane) loader.load();
-
+            //primaryStage.initStyle(StageStyle.UNDECORATED);
             // Show the scene containing the root layout.
             scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

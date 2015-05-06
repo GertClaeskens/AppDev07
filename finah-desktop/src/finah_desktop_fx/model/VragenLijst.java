@@ -7,15 +7,19 @@ public class VragenLijst {
 	private int Id;
 	private List<Vraag> Vragen;
 	private Aandoening Aandoe;
+	private int aantalVragen;
+	private String Omschrijving;
+	
 
 	public VragenLijst() {
 	}
 
-	public VragenLijst(int id, List<Vraag> vragen, Aandoening aandoe) {
+	public VragenLijst(int id, List<Vraag> vragen, Aandoening aandoe,String omschrijving) {
 		super();
 		Id = id;
 		Vragen = vragen;
 		Aandoe = aandoe;
+		Omschrijving = omschrijving;
 	}
 
 	public int getId() {
@@ -42,22 +46,31 @@ public class VragenLijst {
 		Aandoe = aandoe;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+	public String getOmschrijving() {
+		return Omschrijving;
+	}
+
+	public void setOmschrijving(String omschrijving) {
+		Omschrijving = omschrijving;
+	}
+
+	public int getAantalVragen() {
+		return Vragen.size();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Aandoe == null) ? 0 : Aandoe.hashCode());
 		result = prime * result + Id;
+		result = prime * result
+				+ ((Omschrijving == null) ? 0 : Omschrijving.hashCode());
 		result = prime * result + ((Vragen == null) ? 0 : Vragen.hashCode());
+		result = prime * result + aantalVragen;
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,13 +87,27 @@ public class VragenLijst {
 			return false;
 		if (Id != other.Id)
 			return false;
+		if (Omschrijving == null) {
+			if (other.Omschrijving != null)
+				return false;
+		} else if (!Omschrijving.equals(other.Omschrijving))
+			return false;
 		if (Vragen == null) {
 			if (other.Vragen != null)
 				return false;
 		} else if (!Vragen.equals(other.Vragen))
 			return false;
+		if (aantalVragen != other.aantalVragen)
+			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return Omschrijving;
+	}
+
+
 
 
 	
