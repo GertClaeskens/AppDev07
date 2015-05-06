@@ -26,8 +26,12 @@
     -fx-background-color: -mid-gray;
 }
 
+.button-bar .label {
+	-fx-float : left;
+}
+
 .button-bar {
-	-fx-align: left;
+	-fx-float: left;
     -fx-base: rgb(39, 40, 40);
     -fx-font-size: 12pt;
     -fx-background-color:
@@ -63,6 +67,7 @@
 .segmented-button-bar .button.last {
     -fx-background-insets: 0, 1 1 1 0, 2 1 1 1;
     -fx-background-radius: 0 3 3 0, 0 2 2 0, 0 2 2 0;
+    
 }
  
 .segmented-button-bar .button:pressed {

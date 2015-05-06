@@ -13,7 +13,7 @@
 	<top>
 		<ButtonBar fx:id="bbTopMenu" buttonMinWidth="75.0" maxWidth="2500.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="86.0" prefWidth="1181.0" styleClass="segmented-button-bar" stylesheets="@../css/finah.css">
 			<buttons>
-				<Label nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" text="Finah">
+				<Label nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" style="float: left;" text="Finah">
 					<font>
 						<Font size="48.0" />
 					</font>

@@ -55,6 +55,7 @@ public class RootController{
 
 	private void initialize() {
 		rootLayout.getStylesheets().add("../finah_desktop_fx.css/finah_desktop_fx.css");
+
 	}
 
 	
