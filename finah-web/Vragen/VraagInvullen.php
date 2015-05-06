@@ -158,7 +158,7 @@ if (isset($_POST["volgende"])){
             <div class="row progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                      aria-valuemax="100">
-                    <p id="percentage">70%</p>
+                    <p id="percentage">30%</p>
                 </div>
             </div>
         </form>

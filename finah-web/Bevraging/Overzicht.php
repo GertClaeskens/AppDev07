@@ -105,7 +105,7 @@ require_once "../PHP/Models/Onderzoek.php";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>
+<!--                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>-->
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe bevraging aan

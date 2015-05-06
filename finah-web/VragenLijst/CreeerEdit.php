@@ -103,7 +103,7 @@
                             $vragenlijst = new VragenLijst();
                             $id=null;
                             if (isset($_POST)) {
-                                print_r($_POST);
+//                                print_r($_POST);
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
                                     $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
@@ -129,7 +129,7 @@
                                         };
                                     }
                                     if (isset($_POST["nieuw"])){
-                                        print_r($vragenlijst);
+//                                        print_r($vragenlijst);
                                         //$id = $_POST["Id"];
                                         FinahDAO::SchrijfWeg("Vragenlijst",$vragenlijst);
                                         echo "De vragenlijst werd succesvol opgeslagen";
