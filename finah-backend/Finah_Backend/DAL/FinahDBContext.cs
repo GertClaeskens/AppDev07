@@ -77,6 +77,6 @@
 
         }
 
-        public System.Data.Entity.DbSet<Finah_Backend.Models.Thema> Themas { get; set; }
+        public DbSet<Thema> Themas { get; set; }
     }
 }

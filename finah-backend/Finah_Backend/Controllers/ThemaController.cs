@@ -18,6 +18,7 @@ namespace Finah_Backend.Controllers
         private FinahDBContext db = new FinahDBContext();
 
         // GET: api/Thema
+        [Route("Relatie/Overzicht")]
         public IQueryable<Thema> GetThemas()
         {
             return db.Themas;
@@ -27,7 +28,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Thema))]
         public IHttpActionResult GetThema(int id)
         {
-            Thema thema = db.Themas.Find(id);
+            var thema = db.Themas.Find(id);
             if (thema == null)
             {
                 return NotFound();
@@ -90,7 +91,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Thema))]
         public IHttpActionResult DeleteThema(int id)
         {
-            Thema thema = db.Themas.Find(id);
+            var thema = db.Themas.Find(id);
             if (thema == null)
             {
                 return NotFound();

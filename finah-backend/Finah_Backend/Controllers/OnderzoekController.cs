@@ -135,7 +135,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Onderzoek))]
         public IHttpActionResult DeleteOnderzoek(int id)
         {
-            Onderzoek onderzoek = db.Onderzoeken.Find(id);
+            var onderzoek = db.Onderzoeken.Find(id);
             if (onderzoek == null)
             {
                 return NotFound();
