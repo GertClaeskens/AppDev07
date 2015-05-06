@@ -105,12 +105,13 @@
                         <?php
                             $vraag = new Vraag();
                             $vraagStelling="";
+                            $thema="";
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
                                     $vraag = FinahDAO::HaalOp("Vraag",$id);
                                     $vraagStelling = $vraag["VraagStelling"];
-
+                                    $thema = $vraag["Thema"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                 } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                     echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
@@ -118,8 +119,9 @@
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                     $vraagStelling = $_POST["VraagStelling"];
+                                    $thema = $_POST["Thema"];
                                     $vraag->setVraagstelling($vraagStelling);
-
+                                    $vraag->setThema($thema);
                                     if (isset($_POST["nieuw"])) {
                                         if (FinahDAO::SchrijfWeg("Vragen", $vraag)) {
                                             //Todo eventueel een exception toevoegen hier
@@ -132,6 +134,7 @@
                                         if (FinahDAO::PasAan("Vragen", $id, $vraag)) {
                                             $vraag = FinahDAO::HaalOp("Vragen", $id);
                                             $vraagStelling = $vraag["VraagStelling"];
+                                            $thema = $vraag["Thema"];
                                             echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                             echo "De vraag werd succesvol opgeslagen";
                                         }
@@ -151,6 +154,17 @@
                                                 echo $vraagStelling;
                                             }
                                         ?>
+                                </div>
+                            </div>
+                            <div class="form-group top-form">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Thema"> Thema: </label>
+                                <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
+                                    <input type="text" name="Thema" class="form-control" id="Thema" >
+                                    <?php
+                                    if(isset($_POST["bewerk"]) || isset($_POST["update"])){
+                                        echo $thema;
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="form-group">

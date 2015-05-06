@@ -128,6 +128,9 @@ require "../PHP/Models/Vraag.php";
                                 <th>
                                     Vraagstelling
                                 </th>
+                                <th>
+                                    Thema
+                                </th>
                                 <th>Actie</th>
                             </tr>
                             </thead>
@@ -137,6 +140,8 @@ require "../PHP/Models/Vraag.php";
                                 foreach ($vragenLijst as $item) {
                                     echo "<tr>"?>
                             <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["VraagStelling"] ?></td>
+                            <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["Thema"] ?></td>
+
                             <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                 <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
                                         class='btn btn-primary' value="<?php echo $item["Id"] ?>">
