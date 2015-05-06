@@ -2,10 +2,12 @@ package finah_desktop_fx.view;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -14,9 +16,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import finah_desktop_fx.MainApp;
 
-public class RootController{
+public class RootController {
 
 	private MainApp mainApp;
 	@FXML
@@ -40,7 +43,7 @@ public class RootController{
 	@FXML
 	private MenuItem MnuBeheerRelaties;
 	@FXML
-	private MenuItem MnuBeheerAccounts;	
+	private MenuItem MnuBeheerAccounts;
 	@FXML
 	private MenuItem MnuBeheerLftCat;
 	@FXML
@@ -49,21 +52,23 @@ public class RootController{
 	private Button btnUitloggen;
 	@FXML
 	private BorderPane contentArea;
+
 	public RootController() {
 
 	}
 
 	private void initialize() {
-		rootLayout.getStylesheets().add("../finah_desktop_fx.css/finah_desktop_fx.css");
+
+		rootLayout.setAlignment(bbTopMenu, Pos.CENTER_LEFT);
+		// bbTopMenu.autosize();
 
 	}
 
-	
-
 	@FXML
-	public void nieuweBevraging(ActionEvent actionEvent) {		
+	public void nieuweBevraging(ActionEvent actionEvent) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
+
 			loader.setLocation(MainApp.class
 					.getResource("view/NieuweBevragingLayout.fxml"));
 			AnchorPane accountLayout = (AnchorPane) loader.load();
@@ -74,9 +79,14 @@ public class RootController{
 	}
 
 	@FXML
-	public void toon(ActionEvent actionEvent) {		
+	public void uitLoggen(ActionEvent actionEvent) {
+		Platform.exit();
+	}
+
+	@FXML
+	public void toon(ActionEvent actionEvent) {
 		try {
-			MenuItem gekliktItem = (MenuItem)actionEvent.getSource();
+			MenuItem gekliktItem = (MenuItem) actionEvent.getSource();
 			String sender = gekliktItem.getText();
 			FXMLLoader loader = new FXMLLoader();
 			switch (sender) {
@@ -111,8 +121,9 @@ public class RootController{
 			default:
 				break;
 			}
-			//loader.setLocation(MainApp.class.getResource("view/VragenOverzicht.fxml"));
+			// loader.setLocation(MainApp.class.getResource("view/VragenOverzicht.fxml"));
 			AnchorPane accountLayout = (AnchorPane) loader.load();
+
 			rootLayout.setCenter(accountLayout);
 		} catch (IOException e) {
 			e.printStackTrace();
