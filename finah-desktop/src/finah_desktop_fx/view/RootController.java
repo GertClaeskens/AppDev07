@@ -73,68 +73,51 @@ public class RootController{
 	}
 
 	@FXML
-	public void toonAandoeningen(ActionEvent actionEvent) {		
+	public void toon(ActionEvent actionEvent) {		
 		try {
+			MenuItem gekliktItem = (MenuItem)actionEvent.getSource();
+			String sender = gekliktItem.getText();
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/AandoeningenLayout.fxml"));
+			switch (sender) {
+			case "Pathologieen":
+				loader.setLocation(MainApp.class
+						.getResource("view/PathologieOverzicht.fxml"));
+				break;
+			case "Vragen":
+				loader.setLocation(MainApp.class
+						.getResource("view/VragenOverzicht.fxml"));
+				break;
+			case "Vragenlijsten":
+				loader.setLocation(MainApp.class
+						.getResource("view/VragenlijstOverzicht.fxml"));
+				break;
+			case "Relaties":
+				loader.setLocation(MainApp.class
+						.getResource("view/RelatieOverzicht.fxml"));
+				break;
+			case "Aandoeningen":
+				loader.setLocation(MainApp.class
+						.getResource("view/AandoeningenLayout.fxml"));
+				break;
+			case "LeeftijdsCategorieen":
+				loader.setLocation(MainApp.class
+						.getResource("view/LftdsCatOverzicht.fxml"));
+				break;
+			case "Accounts":
+				loader.setLocation(MainApp.class
+						.getResource("view/AccountsLayout.fxml"));
+				break;
+			default:
+				break;
+			}
+			//loader.setLocation(MainApp.class.getResource("view/VragenOverzicht.fxml"));
 			AnchorPane accountLayout = (AnchorPane) loader.load();
 			rootLayout.setCenter(accountLayout);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	@FXML
-	public void toonPathologieen(ActionEvent actionEvent) {		
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/PathologieOverzicht.fxml"));
-			AnchorPane accountLayout = (AnchorPane) loader.load();
-			rootLayout.setCenter(accountLayout);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}	
-	@FXML
-	public void toonVragen(ActionEvent actionEvent) {		
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/VragenOverzicht.fxml"));
-			AnchorPane accountLayout = (AnchorPane) loader.load();
-			rootLayout.setCenter(accountLayout);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	@FXML
-	public void toonLeeftijdsCategorieen(ActionEvent actionEvent) {		
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/LftdsCatOverzicht.fxml"));
-			AnchorPane accountLayout = (AnchorPane) loader.load();
-			rootLayout.setCenter(accountLayout);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	@FXML
-	public void toonRelaties(ActionEvent actionEvent) {		
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/RelatieOverzicht.fxml"));
-			AnchorPane accountLayout = (AnchorPane) loader.load();
-			rootLayout.setCenter(accountLayout);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
+
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}

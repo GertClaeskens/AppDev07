@@ -80,7 +80,6 @@ private MainApp mainApp;
         		//System.out.println(cboAandoening.getItems().get((int)new_value));
             	for (int j=0;j<cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().size();j++){
             		Pathologie pathologie = cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().get(j); 
-            		System.out.println(pathologie);
             		pathologieen.add(pathologie);
             	}
             	cboPathologie.getItems().setAll(pathologieen);

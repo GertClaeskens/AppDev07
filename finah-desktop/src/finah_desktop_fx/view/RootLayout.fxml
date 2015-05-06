@@ -23,13 +23,13 @@
 				<Button fx:id="btnNieuweBevraging" focusTraversable="false" mnemonicParsing="false" onAction="#nieuweBevraging" text="Nieuwe bevraging" />
 				<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
 					<items>
-						<MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#toonVragen" text="Vragen" />
-						<MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" text="Vragenlijsten" />
-						<MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#toonAandoeningen" text="Aandoeningen" />
-						<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toonPathologieen" text="Pathologieen" />
-						<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toonLeeftijdsCategorieen" text="_LeeftijdsCategorieen" />
-						<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toonRelaties" text="Relaties" />
-						<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" text="Accounts" />
+						<MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#toon" text="Vragen" />
+						<MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" onAction="#toon" text="Vragenlijsten" />
+						<MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#toon" text="Aandoeningen" />
+						<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toon" text="Pathologieen" />
+						<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toon" text="LeeftijdsCategorieen" />
+						<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toon" text="Relaties" />
+						<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
 					</items>
 				</MenuButton>
 				<Button fx:id="btnResultaten" focusTraversable="false" mnemonicParsing="false" text="Resultaten" />

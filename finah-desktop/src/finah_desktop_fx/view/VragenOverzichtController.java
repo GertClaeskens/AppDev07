@@ -46,7 +46,6 @@ public class VragenOverzichtController implements Initializable {
 		ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
 		ObservableList<Vraag> tblList = FXCollections.observableList(VraagDAO.GetVragen());
         tblVragen.setItems(tblList);
-        System.out.println(tblList.get(0));
         cboAandoening.setItems(cboList);
         cboAandoening.setValue(cboList.get(0));
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));

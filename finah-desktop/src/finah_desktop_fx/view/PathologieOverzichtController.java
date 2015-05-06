@@ -51,11 +51,5 @@ public class PathologieOverzichtController implements Initializable {
     
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-//        ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
-//        ObservableList<Pathologie> tblList = FXCollections.observableList(PathologieDAO.GetPathologieen());
-//        tblPathologie.setItems(tblList);        
-//        cboAandoening.setItems(cboList);
-        // Add observable list data to the table
-        //personTable.setItems(mainApp.getPersonData());
     }
 }

@@ -59,10 +59,6 @@ public class AandoeningController implements Initializable{
     
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        ObservableList<Aandoening> tblList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
-        tblAandoening.setItems(tblList);
-        ObservableList<Pathologie> cboList = FXCollections.observableList(PathologieDAO.GetPathologieen());
-        cboPathologie.setItems(cboList);
         // Add observable list data to the table
         //personTable.setItems(mainApp.getPersonData());
     }
