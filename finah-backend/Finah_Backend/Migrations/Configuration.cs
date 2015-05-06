@@ -42,6 +42,7 @@ namespace Finah_Backend.Migrations
             #region Vragen + VragenLijst toevoegen
             var vragenLijst = new VragenLijst
             {
+                Omschrijving = "Uitgebreide vragenlijst Niet-aangeboren Hersenaandoening",
                 Aandoe = context.Aandoeningen.Find(1),
                 Vragen = new List<Vraag>
                              {

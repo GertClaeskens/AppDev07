@@ -4,12 +4,14 @@ namespace Finah_Backend.Models
 {
     public class VragenLijst
     {
+
         public VragenLijst()
         {
             this.Vragen = new List<Vraag>();
         }
 
         public int? Id { get; set; }
+        public string Omschrijving { get; set; }
 
         public virtual ICollection<Vraag> Vragen { get; set; }
 
