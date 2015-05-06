@@ -21,8 +21,6 @@ namespace Finah_Backend.Migrations
 
         protected override void Seed(FinahDBContext context)
         {
-
-
             #region Aandoening + Pathologie
             var aandoening = new Aandoening { Omschrijving = "Niet-aangeboren Hersenaandoening" };
 
@@ -302,45 +300,6 @@ namespace Finah_Backend.Migrations
             postcodelijst.ForEach(p => context.Postcodes.AddOrUpdate(p));
             context.Postcodes.AddOrUpdate(p => new { p.Postnr, p.Gemeente }, postcodelijst.ToArray());
             context.SaveChanges();
-            #endregion
-            #region Onderzoek toevoegen
-            Bevraging bevrPat = new Bevraging { Id = "testPatient", IsPatient = true };
-            Bevraging bevrMan = new Bevraging { Id = "testmantelzorger", IsPatient = false };
-            context.Bevragingen.AddOrUpdate(b => new { b.Id }, bevrPat);
-            context.Bevragingen.AddOrUpdate(b => new { b.Id }, bevrMan);
-            context.SaveChanges();
-            AntwoordenLijst antwPat = new AntwoordenLijst
-            {
-                Id = "testPatient",
-                Datum = DateTime.Now,
-                Bevraging = context.Bevragingen.Find("testPatient"),
-                Antwoorden =
-                    "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-            };
-            AntwoordenLijst antwMan = new AntwoordenLijst
-            {
-                Id = "testPatient",
-                Datum = DateTime.Now,
-                Bevraging = context.Bevragingen.Find("testmantelzorger"),
-                Antwoorden =
-                    "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-            };
-            context.AntwoordenLijsten.AddOrUpdate(a => new { a.Id, a.Datum }, antwPat);
-            context.AntwoordenLijsten.AddOrUpdate(a => new { a.Id, a.Datum }, antwMan);
-            context.SaveChanges();
-            Onderzoek onderzoek = new Onderzoek
-            {
-                Aandoening = context.Aandoeningen.Find(1),
-                Bevraging_Man = context.Bevragingen.Find("testPatient")
-            };
-            onderzoek.Bevraging_Man = context.Bevragingen.Find("testMantelzorger");
-            onderzoek.Informatie = "Dit is een test";
-            onderzoek.Pathologie = context.Pathologieen.Find(1);
-            onderzoek.Relatie = context.Relaties.Find(1);
-            onderzoek.Vragen = context.VragenLijsten.Find(1);
-            context.Onderzoeken.AddOrUpdate(o => new { o.Id }, onderzoek);
-            context.SaveChanges();
-
             #endregion
         }
 
