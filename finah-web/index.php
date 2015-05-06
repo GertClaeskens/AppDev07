@@ -99,7 +99,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h1>Welkom</h1>
+                            <h1 style="margin-bottom:50px;">Welkom</h1>
                             <p>
                                 Quisque sed lorem blandit, pretium odio non, volutpat erat. Nam eros tortor, hendrerit laoreet accumsan ut, commodo sed diam.
                                 Praesent non sodales quam. Vestibulum ante leo, rutrum nec malesuada eget, accumsan et justo. Duis a orci et dolor tempus

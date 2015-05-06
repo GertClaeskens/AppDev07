@@ -3,6 +3,7 @@ require "../PHP/DAO/FinahDAO.php";
 require "../PHP/Models/Bevraging.php";
 require "../PHP/Models/Onderzoek.php";
 require "../PHP/Models/AntwoordenLijst.php";
+
 require "../PHP/Finah.php";
 ?>
     <!DOCTYPE html>
@@ -141,10 +142,7 @@ require "../PHP/Finah.php";
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
-                                $bevraging_man = new Bevraging();
-                                $bevraging_man->setIsPatient(false);
-                                $bevraging_pat = new Bevraging();
-                                $bevraging_pat->setispatient(true);
+
                                 if (isset($_POST)) {
                                     if (isset($_POST["bewerk"])) {
                                         $id = $_POST["bewerk"];
@@ -160,54 +158,64 @@ require "../PHP/Finah.php";
                                         echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
                                     }
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                    $informatie = $_POST["informatie"];
-                                    $aandoening = $_POST["aandoening"];
-                                    $pathologie = $_POST["Pathologie"];
-                                    $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
-                                    $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
-                                    $relatie = $_POST["relatie"];
 
-                                    $antwoorden_pat = new AntwoordenLijst();
-                                    $antwoorden_pat->setId($bevraging_pat->getId());
-                                    $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
-
-                                    $antwoorden_pat->setDatum($dateTime);
-                                    $antwoorden_man = new AntwoordenLijst();
-                                    $antwoorden_man->setId($bevraging_man->getId());
-                                    $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
-                                    $antwoorden_man->setDatum($dateTime);
 
                                     if (isset($_POST["nieuw"])){
                                         //TODO id laten genereren op Backend
 
+                                        $informatie = $_POST["informatie"];
+                                        $aandoening = $_POST["aandoening"];
+                                        $pathologie = $_POST["Pathologie"];
+                                        $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
+                                        $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
+                                        $relatie = $_POST["relatie"];
+
+                                        //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
+                                        $onderzoek = new Onderzoek();
+                                        $onderzoek->setId(0);
+                                        //$onderzoek->setAandoening($aandoening);
+                                        $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening));
+                                        //TODO wanneer we met accounts werken verder uitwerken
+                                        $onderzoek->setAangemaaktDoor(null);
+                                        $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie", $pathologie));
+                                        $bevraging_pat = new Bevraging();
+                                        $bevraging_pat->setIsPatient(true);
+                                        $bevraging_man = new Bevraging();
+                                        $bevraging_man->setIsPatient(false);
+                                        //TODO id laten genereren op Backend
                                         $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                         $bevraging_pat->setId($ids[0]);
                                         $bevraging_man->setId($ids[1]);
-                                        $onderzoek = new Onderzoek();
-                                        $onderzoek->setId(0);
-                                        $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening));
-                                        //TODO wanneer we met accounts werken verder uitwerken
+
+                                        $antwoorden_pat = new AntwoordenLijst();
+                                        $antwoorden_pat->setId($bevraging_pat->getId());
+                                        $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+
+                                        $datum = new DateTime("Now");
+                                        $dat = $datum->format('d/m/Y G:i:s');
+                                        $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
+                                        $antwoorden_pat->setDatum($dateTime);
+                                        $antwoorden_man = new AntwoordenLijst();
+                                        $antwoorden_man->setId($bevraging_man->getId());
+                                        $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
+                                        $antwoorden_man->setDatum($dateTime);
+                                        //new DateTime(date("d/m/Y G:i:s")))
                                         $onderzoek->setBevragingPat($bevraging_pat);
                                         $onderzoek->setBevragingMan($bevraging_man);
                                         $onderzoek->setInformatie($informatie);
                                         $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie", $relatie));
-                                        $onderzoek->setAangemaaktDoor(null);
-                                        $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie", $pathologie));
                                         //TODO vragenlijst ophalen
                                         $vrLijst = $aandoening . "/Vragenlijst";
                                         $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);
                                         $onderzoek->setVragen($vragen);
-                                        $leeg_vragen = array_fill(0, count($vragen["Vragen"]) - 1, 0);
+                                        $leeg_vragen = array_fill(0,count($vragen["Vragen"])-1 ,0);
                                         $antwoorden_pat->setAntwoorden($leeg_vragen);
                                         $antwoorden_man->setAntwoorden($leeg_vragen);
-                                        //new DateTime(date("d/m/Y G:i:s")))
-                                        $datum = new DateTime("Now");
-                                        $dat = $datum->format('d/m/Y G:i:s');
-                                        $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
+                                        //var_dump($onderzoek);
                                         if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                             //Todo eventueel een exception toevoegen hier
-                                            $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getId()));
-                                            $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getId()));
+                                            $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging",$antwoorden_man->getId()));
+                                            $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging",$antwoorden_pat->getId()));
                                             if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                                                 //Todo eventueel een exception toevoegen hier
                                                 //header("Location: Overzicht.php");
@@ -232,7 +240,7 @@ require "../PHP/Finah.php";
                                 }
 
                         }?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                        <form id="myForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                             <div class="form-group top-form">
