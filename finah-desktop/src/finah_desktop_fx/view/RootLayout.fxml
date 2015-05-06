@@ -9,40 +9,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="650.0" maxWidth="1125.0" minHeight="650.0" minWidth="1125.0" prefHeight="650.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
-   <top>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <buttons>
-            <Label text="Finah">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <Line endX="25.0" rotate="90.0" startX="-25.0" />
-          <Button fx:id="btnAccount" focusTraversable="false" mnemonicParsing="false" text="Account" />
-            <Button fx:id="btnNieuweBevraging" focusTraversable="false" mnemonicParsing="false" onAction="#nieuweBevraging" text="Nieuwe bevraging" />
-            <MenuButton fx:id="MnuBeheer" mnemonicParsing="false" text="Beheer">
-              <items>
-                <MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#menuItems" text="Vragen" />
-                  <MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" onAction="#menuItems" text="Vragenlijsten" />
-                  <MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#menuItems" text="Aandoeningen" />
-                  <MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#menuItems" text="Pathologieen" />
-                  <MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#menuItems" text="Relaties" />
-                <MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#menuItems" text="Accounts" />
-              </items>
-            </MenuButton>
-            <Button fx:id="btnResultaten" focusTraversable="false" mnemonicParsing="false" text="Resultaten" />
-            <Button fx:id="btnResultaten" focusTraversable="false" mnemonicParsing="false" text="Uitloggen" />
-        </buttons>
-         <BorderPane.margin>
-            <Insets right="100.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets top="5.0" />
-         </padding>
-      </ButtonBar>
-   </top>
-   <bottom>
-      <Label text="Finah Application - © AppDev Groep 7" BorderPane.alignment="CENTER" />
-   </bottom>
+<BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="2500.0" minHeight="650.0" minWidth="1125.0" prefHeight="650.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
+	<top>
+		<ButtonBar fx:id="bbTopMenu" maxWidth="2500.0" minWidth="-Infinity" prefHeight="86.0" prefWidth="1124.0" styleClass="segmented-button-bar" stylesheets="@../css/finah.css">
+			<buttons>
+				<Label nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" text="Finah">
+					<font>
+						<Font size="48.0" />
+					</font>
+				</Label>
+				<Line endX="25.0" rotate="90.0" startX="-25.0" />
+				<Button fx:id="btnAccount" focusTraversable="false" mnemonicParsing="false" text="Account" />
+				<Button fx:id="btnNieuweBevraging" focusTraversable="false" mnemonicParsing="false" onAction="#nieuweBevraging" text="Nieuwe bevraging" />
+				<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
+					<items>
+						<MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#toonVragen" text="Vragen" />
+						<MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" text="Vragenlijsten" />
+						<MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#toonAandoeningen" text="Aandoeningen" />
+						<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toonPathologieen" text="Pathologieen" />
+						<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toonLeeftijdsCategorieen" text="_LeeftijdsCategorieen" />
+						<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toonRelaties" text="Relaties" />
+						<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" text="Accounts" />
+					</items>
+				</MenuButton>
+				<Button fx:id="btnResultaten" focusTraversable="false" mnemonicParsing="false" text="Resultaten" />
+				<Button fx:id="btnUitloggen" focusTraversable="false" mnemonicParsing="false" text="Uitloggen" />
+			</buttons>
+			<BorderPane.margin>
+				<Insets right="20.0" />
+			</BorderPane.margin>
+			<padding>
+				<Insets top="5.0" />
+			</padding>
+		</ButtonBar>
+	</top>
+	<center>
+		<BorderPane fx:id="contentArea" />
+	</center>
+	<bottom>
+		<Label text="Finah Application - © AppDev Groep 7" BorderPane.alignment="CENTER" />
+	</bottom>
 </BorderPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.LftdsCatOverzichtController">
+	<children>
+		<Label layoutX="105.0" layoutY="44.0" text="Leeftijdscategorie toevoegen">
+			<font>
+				<Font name="System Bold" size="16.0" />
+			</font>
+		</Label>
+		<Label layoutX="105.0" layoutY="169.0" text="Overzicht leeftijdscategorieen">
+			<font>
+				<Font name="System Bold" size="16.0" />
+			</font>
+		</Label>
+		<TextField fx:id="txtVan" layoutX="205.0" layoutY="72.0" prefHeight="31.0" prefWidth="119.0" />
+		<Button fx:id="btnToevoegen" layoutX="907.0" layoutY="75.0" mnemonicParsing="false" text="Toevoegen" />
+		<TableView fx:id="tblLftdsCat" layoutX="105.0" layoutY="194.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="231.0" prefWidth="750.0">
+			<columns>
+				<TableColumn fx:id="colId" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Id" />
+				<TableColumn fx:id="colVan" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Van" />
+				<TableColumn fx:id="colTot" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Tot" />
+			</columns>
+		</TableView>
+		<TextField fx:id="txtTot" layoutX="518.0" layoutY="72.0" prefHeight="31.0" prefWidth="119.0" />
+		<Label layoutX="105.0" layoutY="75.0" text="Van">
+			<font>
+				<Font name="System Bold" size="16.0" />
+			</font>
+		</Label>
+		<Label layoutX="429.0" layoutY="75.0" text="Tot">
+			<font>
+				<Font name="System Bold" size="16.0" />
+			</font>
+		</Label>
+	</children>
+</AnchorPane>

@@ -47,8 +47,8 @@ private MainApp mainApp;
         ArrayList<Aandoening> aandoeningen = AandoeningDAO.GetAandoeningen();
         ArrayList<Pathologie> pathologieen = new ArrayList<>();
 
-//        	for (int j=0;j<aandoeningen.get(cboAandoening.getSelectionModel().getSelectedIndex()).getBijhorende_pathologie().size();j++){
-//        		pathologieen.add(aandoeningen.get(cboAandoening.getSelectionModel().getSelectedIndex()).getBijhorende_pathologie().get(j));
+//        	for (int j=0;j<aandoeningen.get(0).getBijhorende_pathologie().size();j++){
+//        		pathologieen.add(aandoeningen.get(0).getBijhorende_pathologie().get(j));
 //        	}
         
 		ObservableList<Aandoening> aandoeningenLijst = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
@@ -60,7 +60,7 @@ private MainApp mainApp;
         //cboPathologie.setItems(pathologieenLijst);
         //cboPathologie.setValue(pathologieenLijst.get(0));
         cboAandoening.setItems(aandoeningenLijst);
-        cboAandoening.setValue(aandoeningenLijst.get(0));
+        //cboAandoening.setValue(aandoeningenLijst.get(0));
         cboLftdMan.setItems(leeftijdscategorieLijst);
         cboLftdMan.setValue(leeftijdscategorieLijst.get(0));
         cboLftdPat.setItems(leeftijdscategorieLijst);
@@ -77,7 +77,7 @@ private MainApp mainApp;
         cboAandoening.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>(){
         	public void changed(ObservableValue ov,Number value, Number new_value){
         		pathologieen.clear();
-        		System.out.println(cboAandoening.getItems().get((int)new_value));
+        		//System.out.println(cboAandoening.getItems().get((int)new_value));
             	for (int j=0;j<cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().size();j++){
             		Pathologie pathologie = cboAandoening.getItems().get((int)new_value).getBijhorende_pathologie().get(j); 
             		System.out.println(pathologie);
@@ -88,7 +88,6 @@ private MainApp mainApp;
 
         	}
         });
-		
 	}
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;

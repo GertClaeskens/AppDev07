@@ -17,6 +17,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private Scene scene;
 
     @Override
     public void start(Stage primaryStage) {
@@ -41,7 +42,7 @@ public class MainApp extends Application {
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
+            scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
@@ -53,13 +54,14 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
+            //loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
             AnchorPane aandoeningView = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(aandoeningView);
 
             // Give the controller access to the main app.
-            //RootController controller = loader.getController();
-            //controller.setMainApp(this);
+            RootController controller = loader.getController();
+            controller.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,16 +76,16 @@ public class MainApp extends Application {
             // Load account layout.
             FXMLLoader loader = new FXMLLoader();
             //loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
-            //loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
             //loader.setLocation(MainApp.class.getResource("view/PathologieAanpassenLayout.fxml"));
-            loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
+            //loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
             AnchorPane accountLayout = (AnchorPane) loader.load();
 
             // Set account layout into the center of root layout.
             rootLayout.setCenter(accountLayout);
             // Give the controller access to the main app.
-            //AandoeningController controller = loader.getController();
-            NieuweBevragingController controller = loader.getController();
+            AandoeningController controller = loader.getController();
+            //NieuweBevragingController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,5 +112,20 @@ public class MainApp extends Application {
 
 	public void setRootLayout(BorderPane rootLayout) {
 		this.rootLayout = rootLayout;
+	}
+
+
+	public Scene getScene() {
+		return scene;
+	}
+
+
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
+
+
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
 	}
 }

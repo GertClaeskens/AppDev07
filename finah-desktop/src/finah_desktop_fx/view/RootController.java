@@ -6,107 +6,137 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import finah_desktop_fx.MainApp;
 
-public class RootController {
+public class RootController{
 
 	private MainApp mainApp;
+	@FXML
 	private BorderPane rootLayout;
 	@FXML
-	MenuItem MnuBeheerAandoeningen;
+	private ButtonBar bbTopMenu;
 	@FXML
-	Button btnNieuweBevraging;
+	private Button btnAccount;
 	@FXML
-	Menu mnuBeheerMenu;
+	private Button btnNieuweBevraging;
+	@FXML
+	private MenuButton MnuBeheer;
+	@FXML
+	private MenuItem MnuBeheerVragen;
+	@FXML
+	private MenuItem MnuBeheerVragenLijsten;
+	@FXML
+	private MenuItem MnuBeheerAandoeningen;
+	@FXML
+	private MenuItem MnuBeheerPathologieen;
+	@FXML
+	private MenuItem MnuBeheerRelaties;
+	@FXML
+	private MenuItem MnuBeheerAccounts;	
+	@FXML
+	private MenuItem MnuBeheerLftCat;
+	@FXML
+	private Button btnResultaten;
+	@FXML
+	private Button btnUitloggen;
+	@FXML
+	private BorderPane contentArea;
+	public RootController() {
+
+	}
+
+	private void initialize() {
+		rootLayout.getStylesheets().add("../finah_desktop_fx.css/finah_desktop_fx.css");
+	}
+
 	
-	public RootController(){
-		
+
+	@FXML
+	public void nieuweBevraging(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/NieuweBevragingLayout.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void toonAandoeningen(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/AandoeningenLayout.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void toonPathologieen(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/PathologieOverzicht.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+	@FXML
+	public void toonVragen(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/VragenOverzicht.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void toonLeeftijdsCategorieen(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/LftdsCatOverzicht.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void toonRelaties(ActionEvent actionEvent) {		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class
+					.getResource("view/RelatieOverzicht.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	private void initialize(){
-		EventHandler<ActionEvent> action = menuItems();
-//		for (MenuItem m : mnuBeheerMenu.getItems()){
-//			m.setOnAction(action);
-//		}
-		MnuBeheerAandoeningen.setOnAction(action);
-//		btnNieuweBevraging.setOnAction(this::nieuweBevraging);
-		rootLayout = mainApp.getRootLayout();
+	
+	
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
 	}
-    
-	@FXML
-    private EventHandler<ActionEvent> menuItems() {
-        return new EventHandler<ActionEvent>() {
 
-            public void handle(ActionEvent event) {
-                MenuItem mItem = (MenuItem) event.getSource();
-                String side = mItem.getText();
-                FXMLLoader loader = new FXMLLoader();
-                if ("Aandoeningen".equalsIgnoreCase(side)) {
-                    try {
-                        // Load account layout.
-                        
-                        loader.setLocation(MainApp.class.getResource("view/AandoeningenLayout.fxml"));
-                        AnchorPane accountLayout = (AnchorPane) loader.load();
-
-                        // Set account layout into the center of root layout.
-                        rootLayout.setCenter(accountLayout);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if ("Vragen".equalsIgnoreCase(side)) {
-                    System.out.println("right");
-                } else if ("VragenLijsten".equalsIgnoreCase(side)) {
-                    System.out.println("top");
-                } else if ("Pathologieen".equalsIgnoreCase(side)) {
-                    try {
-                        loader.setLocation(MainApp.class.getResource("view/PathologieLayout.fxml"));
-                        AnchorPane accountLayout = (AnchorPane) loader.load();
-
-                        // Set account layout into the center of root layout.
-                        rootLayout.setCenter(accountLayout);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }else if ("Accounts".equalsIgnoreCase(side)) {
-                    try {
-                        // Load account layout.
-                        loader.setLocation(MainApp.class.getResource("view/AccountLayout.fxml"));
-                        AnchorPane accountLayout = (AnchorPane) loader.load();
-
-                        // Set account layout into the center of root layout.
-                        rootLayout.setCenter(accountLayout);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-    }
-    
-	@FXML
-    public void nieuweBevraging(ActionEvent actionEvent){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/NieuweBevragingLayout.fxml"));
-            AnchorPane accountLayout = (AnchorPane) loader.load();
-
-            // Set account layout into the center of root layout.
-            rootLayout.setCenter(accountLayout);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-
-        // Add observable list data to the table
-        //personTable.setItems(mainApp.getPersonData());
-    }
-    
 }
