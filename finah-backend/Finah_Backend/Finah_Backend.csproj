@@ -219,6 +219,7 @@
     <Compile Include="Controllers\OnderzoekController.cs" />
     <Compile Include="Controllers\PathologieController.cs" />
     <Compile Include="Controllers\RelatieController.cs" />
+    <Compile Include="Controllers\ThemaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\BevragingController.cs" />
     <Compile Include="Controllers\VragenController.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Controllers\PostcodeController.cs" />
     <Compile Include="Models\Relatie.cs" />
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Thema.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\VragenLijst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace Finah_Backend.Models
             this.Vragen = new List<Vraag>();
         }
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Omschrijving { get; set; }
 
         public virtual ICollection<Vraag> Vragen { get; set; }
