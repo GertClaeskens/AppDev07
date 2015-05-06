@@ -27,6 +27,7 @@
 }
 
 .button-bar {
+	-fx-align: left;
     -fx-base: rgb(39, 40, 40);
     -fx-font-size: 12pt;
     -fx-background-color:
