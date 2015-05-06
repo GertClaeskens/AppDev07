@@ -10,6 +10,7 @@ import finah_desktop_fx.view.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -41,9 +42,14 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             
             rootLayout = (BorderPane) loader.load();
+            primaryStage.initStyle(StageStyle.TRANSPARENT);
             //primaryStage.initStyle(StageStyle.UNDECORATED);
             // Show the scene containing the root layout.
             scene = new Scene(rootLayout);
+            primaryStage.setMinWidth(750);
+            primaryStage.setMinHeight(500);
+            this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
+            //scene.getStylesheets().add("finah_desktop_fx.css/finah.css");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

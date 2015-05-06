@@ -10,6 +10,10 @@ public class Vraag {
 
 	}
 
+	public Vraag(String vraagStelling) {
+		VraagStelling = vraagStelling;
+	}
+
 	public Vraag(int id, String vraagstelling, Foto afbeelding,
 			GeluidsFragment geluid) {
 		super();
@@ -51,7 +55,9 @@ public class Vraag {
 		Geluid = geluid;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -67,7 +73,9 @@ public class Vraag {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -105,8 +113,8 @@ public class Vraag {
 				+ ", Afbeelding=" + Afbeelding + ", Geluid=" + Geluid + "]";
 	}
 
-//	@Override
-//	public String toString() {
-//		return VraagStelling;
-//	}
+	// @Override
+	// public String toString() {
+	// return VraagStelling;
+	// }
 }
