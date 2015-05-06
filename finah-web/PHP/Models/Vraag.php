@@ -12,21 +12,22 @@
         public $Vraagstelling;
         public $Afbeelding;
         public $Geluid;
+        public $Thema;
 
 
-        public function __construct($id = null, $Vraagstelling = null, $Afbeelding = null, $Geluid = null)
+        public function __construct($id = null, $Vraagstelling = null, $Afbeelding = null, $Geluid = null, $Thema = null)
         {
             $this->Id = $id;
             $this->Vraagstelling = $Vraagstelling;
             $this->Afbeelding = $Afbeelding;
             $this->Geluid = $Geluid;
+            $this->Thema = $Thema;
         }
 
         public function getId()
         {
             return $this->Id;
         }
-
 
         public function getVraagstelling()
         {
@@ -56,5 +57,15 @@
         public function setGeluid($Geluid)
         {
             $this->Geluid = $Geluid;
+        }
+
+        public function getThema()
+        {
+            return $this->Thema;
+        }
+
+        public function setThema($Thema)
+        {
+            $this->Thema = $Thema;
         }
     }

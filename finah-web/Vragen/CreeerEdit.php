@@ -89,6 +89,9 @@
                 <li>
                     <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
                 </li>
+                <li>
+                    <a href="../Thema/Overzicht.php"> Thema's</a>
+                </li>
             </ul>
         </div>
         <div id="page-content-wrapper">
@@ -107,6 +110,7 @@
                                     $id = $_POST["bewerk"];
                                     $vraag = FinahDAO::HaalOp("Vraag",$id);
                                     $vraagStelling = $vraag["VraagStelling"];
+
                                     echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                 } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                     echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
@@ -131,16 +135,6 @@
                                             echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
                                             echo "De vraag werd succesvol opgeslagen";
                                         }
-                                    }
-                                }
-                                if (isset($_POST["delete"])) {
-                                    $id = $_POST["delete"];
-                                    $vraag = FinahDAO::HaalOp("Vragen", $id);
-                                    if (FinahDAO::Verwijder("Vragen", $id, $vraag)) {
-                                        ?>
-<!--
-                                            TODO Modal voorzien voor delete bevestiging      -->
-                        <?php
                                     }
                                 }
                             }
@@ -184,30 +178,29 @@
             </div>
         </div>
     </div>
-
-                    <script>
-                        $().ready(function () {
-                            $("#aandoeningForm").validate({
-                                rules: {
-                                    vraagstelling: "required"
-                                },
-                                messages: {
-                                    vraagstelling: "Veld is verplicht."
-                                }
-                            });
-                        })
-                        $("#menu-toggle").click(function (e) {
-                            e.preventDefault();
-                            $("#wrapper").toggleClass("toggled");
-                            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                                $("#side-toggle").removeClass("glyphicon-option-vertical");
-                                $("#side-toggle").addClass("glyphicon-option-horizontal");
-                            } else {
-                                $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                                $("#side-toggle").addClass("glyphicon-option-vertical");
-                            }
-                        });
-                    </script>
+        <script>
+            $().ready(function () {
+                $("#aandoeningForm").validate({
+                    rules: {
+                        vraagstelling: "required"
+                    },
+                    messages: {
+                        vraagstelling: "Veld is verplicht."
+                    }
+                });
+            })
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+                if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                    $("#side-toggle").removeClass("glyphicon-option-vertical");
+                    $("#side-toggle").addClass("glyphicon-option-horizontal");
+                } else {
+                    $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                    $("#side-toggle").addClass("glyphicon-option-vertical");
+                }
+            });
+        </script>
     </body>
     </html>
 <?php

@@ -89,6 +89,9 @@
                     <li>
                         <a href="VragenLijst/Overzicht.php"> Vragenlijsten</a>
                     </li>
+                    <li>
+                        <a href="../Thema/Overzicht.php"> Thema's</a>
+                    </li>
                 </ul>
             </div>
             <div  id="page-content-wrapper">

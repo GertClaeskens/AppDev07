@@ -131,6 +131,9 @@ require "../PHP/Finah.php";
                 <li>
                     <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
                 </li>
+                <li>
+                    <a href="../Thema/Overzicht.php"> Thema's</a>
+                </li>
             </ul>
         </div>
         <div id="page-content-wrapper">
@@ -142,6 +145,7 @@ require "../PHP/Finah.php";
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
+                        $onderzoek = new Onderzoek();
 
                                 if (isset($_POST)) {
                                     if (isset($_POST["bewerk"])) {
@@ -159,21 +163,15 @@ require "../PHP/Finah.php";
                                     }
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
 
-
+                                    $informatie = $_POST["informatie"];
+                                    $aandoening = $_POST["aandoening"];
+                                    $pathologie = $_POST["Pathologie"];
+                                    $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
+                                    $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
+                                    $relatie = $_POST["relatie"];
                                     if (isset($_POST["nieuw"])){
                                         //TODO id laten genereren op Backend
-
-                                        $informatie = $_POST["informatie"];
-                                        $aandoening = $_POST["aandoening"];
-                                        $pathologie = $_POST["Pathologie"];
-                                        $leeftijdcatPat = $_POST["leeftijdcategoriePat"];
-                                        $leeftijdcatMan = $_POST["leeftijdcategorieMan"];
-                                        $relatie = $_POST["relatie"];
-
-                                        //TODO misschien alle objecten van Pathologie ophalen en dan uit die lijst selecteren
-                                        $onderzoek = new Onderzoek();
                                         $onderzoek->setId(0);
-                                        //$onderzoek->setAandoening($aandoening);
                                         $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening));
                                         //TODO wanneer we met accounts werken verder uitwerken
                                         $onderzoek->setAangemaaktDoor(null);
@@ -182,15 +180,12 @@ require "../PHP/Finah.php";
                                         $bevraging_pat->setIsPatient(true);
                                         $bevraging_man = new Bevraging();
                                         $bevraging_man->setIsPatient(false);
-                                        //TODO id laten genereren op Backend
                                         $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                         $bevraging_pat->setId($ids[0]);
                                         $bevraging_man->setId($ids[1]);
-
                                         $antwoorden_pat = new AntwoordenLijst();
                                         $antwoorden_pat->setId($bevraging_pat->getId());
                                         $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
-
                                         $datum = new DateTime("Now");
                                         $dat = $datum->format('d/m/Y G:i:s');
                                         $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
@@ -199,7 +194,6 @@ require "../PHP/Finah.php";
                                         $antwoorden_man->setId($bevraging_man->getId());
                                         $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
                                         $antwoorden_man->setDatum($dateTime);
-                                        //new DateTime(date("d/m/Y G:i:s")))
                                         $onderzoek->setBevragingPat($bevraging_pat);
                                         $onderzoek->setBevragingMan($bevraging_man);
                                         $onderzoek->setInformatie($informatie);
@@ -211,7 +205,6 @@ require "../PHP/Finah.php";
                                         $leeg_vragen = array_fill(0,count($vragen["Vragen"])-1 ,0);
                                         $antwoorden_pat->setAntwoorden($leeg_vragen);
                                         $antwoorden_man->setAntwoorden($leeg_vragen);
-                                        //var_dump($onderzoek);
                                         if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                             //Todo eventueel een exception toevoegen hier
                                             $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging",$antwoorden_man->getId()));
@@ -238,11 +231,9 @@ require "../PHP/Finah.php";
                                         }
                                     }
                                 }
-
                         }?>
                         <form id="myForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Informatie"> Informatie: </label>
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
@@ -270,9 +261,6 @@ require "../PHP/Finah.php";
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="Pathologie" name="Pathologie">
                                         <option value="null">Maak een keuze</option>
-                                        <?php
-                                        //todo  code voor pathologielijst op te halen
-                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -296,11 +284,10 @@ require "../PHP/Finah.php";
                                     <select class="form-control" id="LeeftijdcategorieMan" name="leeftijdcategorieMan">
                                         <option value="null">Maak een keuze</option>
                                         <?php
-                                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
-                                        foreach ($leeftijdscategoriePat as $item) {
-                                            echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
-                                        }
-
+                                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                            foreach ($leeftijdscategoriePat as $item) {
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
+                                            }
                                         ?>
                                     </select>
                                 </div>
@@ -311,11 +298,10 @@ require "../PHP/Finah.php";
                                     <select class="form-control" id="Relatie" name="relatie">
                                         <option value="null">Maak een keuze</option>
                                         <?php
-                                        $relatie = FinahDAO::HaalOp("Relatie");
-                                        foreach ($relatie as $item) {
-                                            echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
-                                        }
-
+                                            $relatie = FinahDAO::HaalOp("Relatie");
+                                            foreach ($relatie as $item) {
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
+                                            }
                                         ?>
                                     </select>
                                 </div>

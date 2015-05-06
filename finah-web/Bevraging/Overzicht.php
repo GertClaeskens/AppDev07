@@ -96,16 +96,19 @@ require_once "../PHP/Models/Onderzoek.php";
             <li>
                 <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
             </li>
+            <li>
+                <a href="../Thema/Overzicht.php"> Thema's</a>
+            </li>
         </ul>
     </div>
     <div  id="page-content-wrapper">
         <div class="breadcrumb">
-            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Bevraging </span>        </div>
+            <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Bevraging </span>
+        </div>
         <div  class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-<!--                    <button onclick="window.location.href='Create.php';return false;"> Maak een nieuwe bevraging aan</button>-->
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe bevraging aan
@@ -134,18 +137,15 @@ require_once "../PHP/Models/Onderzoek.php";
                             </thead>
                             <tbody>
                             <?php
-                            $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
+                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
                                 foreach ($onderzoekLijst as $item) {
-
                                       $antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
-
-
                                             ?>
                                     <tr> <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $antw["Datum"]  ?> </td>
                                         <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo "Rafael Sarrechia" ?></td>
 
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
-                                        <td class='col-xs-3 col-sm-2 col-md-2 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>
+                                        <td class='col-xs-3 col-sm-4 col-md-3 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>
                                         <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" ?></td>
 
                                         <td class='action-column col-sm-2 col-md-2 col-lg-2'>
@@ -157,16 +157,13 @@ require_once "../PHP/Models/Onderzoek.php";
                                                     class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                 <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                             </button>
-
                                             <?php $verw = $item["Id"]; ?>
                                             <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                     name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                     class='delBtn btn btn-primary'
-                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Bevraging',this)">
-                                                <!--  TODO item id doorgeven aan modal ?? -->
+                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Onderzoek',this)">
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
-                                            <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                                     </tr>
                                 <?php }?>
                             </tbody>

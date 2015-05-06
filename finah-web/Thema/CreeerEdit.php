@@ -1,13 +1,15 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
-    require "../PHP/Models/LeeftijdsCategorie.php";
+    require "../PHP/Models/Vraag.php";
+    require "../PHP/Models/Thema.php";
+
 ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>FINAH - Leeftijdscategorie</title>
+        <title>FINAH - Thema</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -95,84 +97,63 @@
         </div>
         <div id="page-content-wrapper">
             <div class="breadcrumb">
-                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span>
-                <span
-                    class="breadcrumb-font"> &nbsp/ Home / Leeftijdscategorie
-                </span>
+                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
+                    class="breadcrumb-font"> &nbsp/ Home / Vragen  </span>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
-
-                            $LeeftijdsCat = new LeeftijdsCategorie();
+                            $thema = new Thema();
+                            $naam="";
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"])) {
                                     $id = $_POST["bewerk"];
-
-                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
-                                    $van = $LeeftijdsCat["Van"];
-                                    $tot = $LeeftijdsCat["Tot"];
-                                    echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                    $thema = FinahDAO::HaalOp("Thema", $id);
+                                    $naam = $thema["Naam"];
+                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                 } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                    echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
+                                    echo "<h1 class='header' >" . " Nieuwe vraag " . "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                    $van = $_POST["van"];
-                                    $tot = $_POST["tot"];
-                                    $LeeftijdsCat->setVan($van);
-                                    $LeeftijdsCat->setTot($tot);
+                                    $naam = $_POST["Naam"];
+                                    $thema->setNaam($naam);
 
                                     if (isset($_POST["nieuw"])) {
-                                        if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
+                                        if (FinahDAO::SchrijfWeg("Thema", $thema)) {
                                             //Todo eventueel een exception toevoegen hier
-                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                            echo "De vraag werd succesvol opgeslagen";
                                         }
                                     }
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
-
-                                        $LeeftijdsCat->setId($id);
-                                        if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
-
+                                        $thema->setId($id);
+                                        if (FinahDAO::PasAan("Thema", $id, $thema)) {
+                                            $thema = FinahDAO::HaalOp("Thema", $id);
+                                            $naam = $thema["Naam"];
+                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                            echo "De vraag werd succesvol opgeslagen";
                                         }
-                                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
-                                        $van = $LeeftijdsCat["Van"];
-                                        $tot = $LeeftijdsCat["Tot"];
-                                        echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                        echo "De leeftijdscategorie werd succesvol opgeslagen";
-
                                     }
                                 }
                             }
-
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van"> Van: </label>
-                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
-                                    <input type="text" name="van" class="form-control" id="Van" value=
-                                    <?php
-                                    if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                        echo $van;
-                                    } ?>>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot"> Tot:  </label>
-                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
-                                    <input type="text" name="tot" class="form-control" id="Tot" value=
+                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Naam"> Thema naam: </label>
+                                <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
+                                    <input type="text" name="Naam" class="form-control" id="Naam" >
                                         <?php
-                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                            echo $tot;
-                                        } ?> >
+                                            if(isset($_POST["bewerk"]) || isset($_POST["update"])){
+                                                echo $naam;
+                                            }
+                                        ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class=" col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
                                     <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
                                         Terug
                                     </button>
@@ -201,10 +182,10 @@
                         $().ready(function () {
                             $("#aandoeningForm").validate({
                                 rules: {
-                                    Van: "required"
+                                    Naam: "required"
                                 },
                                 messages: {
-                                    Tot: "Veld is verplicht."
+                                    Naam: "Veld is verplicht."
                                 }
                             });
                         })

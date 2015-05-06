@@ -3,7 +3,6 @@ require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Aandoening.php";
 require_once "../PHP/Models/Pathologie.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,6 +94,9 @@ require_once "../PHP/Models/Pathologie.php";
             <li>
                 <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
             </li>
+            <li>
+                <a href="../Thema/Overzicht.php"> Thema's</a>
+            </li>
         </ul>
     </div>
     <div  id="page-content-wrapper">
@@ -110,14 +112,7 @@ require_once "../PHP/Models/Pathologie.php";
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe aandoening aan
                         </button>
-                        <?php
-                        if (isset($_POST["delete"])) {
-                            $id = $_POST["delete"];
-                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                if (FinahDAO::Verwijder("Aandoening", $id, $aandoening)) {
-                                     echo " De aandoening werd succesvol verwijderd "; }
-                        }
-                        ?>
+
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -156,10 +151,8 @@ require_once "../PHP/Models/Pathologie.php";
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                         class='delBtn btn btn-primary'
                                                         onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
-                                                    <!--  TODO item id doorgeven aan modal ?? -->
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
-                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                                         </tr>
                                     <?php }}?>
                             </tbody>
