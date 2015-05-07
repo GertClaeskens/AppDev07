@@ -1,25 +1,30 @@
 package finah_desktop_fx.view;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import finah_desktop_fx.MainApp;
 
-public class RootController {
+public class RootController implements Initializable {
 
 	private MainApp mainApp;
 	@FXML
@@ -50,6 +55,9 @@ public class RootController {
 	private MenuItem MnuBeheerThemas;
 	@FXML
 	private Button btnResultaten;
+
+	@FXML
+	private ImageView ivAvatar;
 	@FXML
 	private Button btnUitloggen;
 	@FXML
@@ -59,9 +67,27 @@ public class RootController {
 
 	}
 
-	private void initialize() {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// private void initialize() {
 
 		rootLayout.setAlignment(bbTopMenu, Pos.CENTER_LEFT);
+		Rectangle clip = new Rectangle(ivAvatar.getFitWidth(),
+				ivAvatar.getFitHeight());
+		clip.setArcWidth(ivAvatar.getFitWidth());
+		clip.setArcHeight(ivAvatar.getFitHeight());
+		ivAvatar.setClip(clip);
+
+		// snapshot the rounded image.
+		SnapshotParameters parameters = new SnapshotParameters();
+		parameters.setFill(Color.TRANSPARENT);
+		WritableImage image = ivAvatar.snapshot(parameters, null);
+
+		// remove the rounding clip so that our effect can show through.
+		ivAvatar.setClip(null);
+
+		// store the rounded image in the imageView.
+		ivAvatar.setImage(image);
 		// bbTopMenu.autosize();
 
 	}
@@ -124,6 +150,7 @@ public class RootController {
 				loader.setLocation(MainApp.class
 						.getResource("view/AccountsLayout.fxml"));
 				break;
+
 			default:
 				break;
 			}

@@ -42,7 +42,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             
             rootLayout = (BorderPane) loader.load();
-            primaryStage.initStyle(StageStyle.TRANSPARENT);
+            //primaryStage.initStyle(StageStyle.TRANSPARENT);
             //primaryStage.initStyle(StageStyle.UNDECORATED);
             // Show the scene containing the root layout.
             scene = new Scene(rootLayout);

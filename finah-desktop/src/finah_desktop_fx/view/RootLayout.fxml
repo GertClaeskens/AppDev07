@@ -3,12 +3,15 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
 
 <BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="1.7976931348623157E308" minHeight="650.0" minWidth="500" prefHeight="650.0" prefWidth="1178.0" stylesheets="@../css/finah.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
 	<top>
@@ -22,19 +25,20 @@
 							<Font size="48.0" />
 						</font>
 					</Label>
-               <Separator maxHeight="50.0" minHeight="50.0" orientation="VERTICAL" prefHeight="50.0">
-                  <HBox.margin>
-                     <Insets left="10.0" right="20.0" />
-                  </HBox.margin>
-                  <effect>
-                     <Lighting bumpInput="$null">
-                        <light>
-                           <Light.Distant />
-                        </light>
-                     </Lighting>
-                  </effect></Separator>
-<!-- 					<Line endX="25.0" rotate="90.0" startX="-25.0" /> -->
-<!-- 					</HBox><HBox alignment="CENTER"> -->
+					<Separator maxHeight="50.0" minHeight="50.0" orientation="VERTICAL" prefHeight="50.0">
+						<HBox.margin>
+							<Insets left="10.0" right="20.0" />
+						</HBox.margin>
+						<effect>
+							<Lighting bumpInput="$null">
+								<light>
+									<Light.Distant />
+								</light>
+							</Lighting>
+						</effect>
+					</Separator>
+					<!-- <Line endX="25.0" rotate="90.0" startX="-25.0" /> -->
+					<!-- </HBox><HBox alignment="CENTER"> -->
 					<Button fx:id="btnAccount" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Account" />
 					<Button fx:id="btnNieuweBevraging" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#nieuweBevraging" text="Bevraging" />
 					<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" minWidth="125.0" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
@@ -50,11 +54,28 @@
 						</items>
 					</MenuButton>
 					<Button fx:id="btnResultaten" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
-					</HBox><HBox alignment="CENTER_RIGHT" prefHeight="70.0">
-					<Button fx:id="btnUitloggen" focusTraversable="false" onAction="#uitLoggen"  mnemonicParsing="false" text="Uitloggen" />
-               <padding>
-                  <Insets right="25.0" />
-               </padding>
+				</HBox>
+				<HBox alignment="CENTER_RIGHT" prefHeight="70.0">
+					<MenuButton fx:id="mnuAccount" alignment="CENTER" contentDisplay="LEFT" graphicTextGap="10.0" layoutX="92.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" text="Gert Claeskens">
+						<graphic>
+							<ImageView fx:id="ivAvatar" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
+								<image>
+									<Image url="@../../../resources/images/blank-avatar.png" />
+								</image>
+							</ImageView>
+						</graphic>
+						<items>
+							<MenuItem mnemonicParsing="false" text="Mijn Account" />
+							<MenuItem mnemonicParsing="false" onAction="#uitLoggen" text="Uitloggen" />
+						</items>
+						<styleClass>
+							<String fx:value="toolbar-button" />
+							<String fx:value="img-circle" />
+						</styleClass>
+					</MenuButton>
+					<padding>
+						<Insets right="25.0" />
+					</padding>
 				</HBox>
 			</buttons>
 			<!-- <BorderPane.margin> -->
