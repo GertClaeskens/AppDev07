@@ -10,7 +10,7 @@
 	-fx-background-radius: 0.0;
 	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
 	-fx-border-radius: 4.0px;
-	-fx-font-weight: 700.0;
+	-fx-font-weight: 700;
 	-fx-line-height: 1.25;
 	-fx-min-width: 100.0px;
 	-fx-min-height: 40.0px;
@@ -38,7 +38,7 @@
 
 .button, .menu-button {
 	-fx-border-radius: 4.0px;
-	-fx-font-weight: 700.0;
+	-fx-font-weight: 700;
 	-fx-line-height: 1.25;
 	-fx-background-color: #337ab7;
 	-fx-text-fill: white;
@@ -156,7 +156,7 @@
 	-fx-background-radius: 0.0;
 	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
 	-fx-border-radius: 4.0px;
-	-fx-font-weight: 700.0;
+	-fx-font-weight: 700;
 	-fx-line-height: 1.25;
 	-fx-min-width: 100.0px;
 	-fx-min-height: 40.0px;
@@ -190,7 +190,7 @@
 
 .button, .menu-button {
 	-fx-border-radius: 4.0px;
-	-fx-font-weight: 700.0;
+	-fx-font-weight: 700;
 	-fx-line-height: 1.25;
 	-fx-background-color: #337ab7;
 	-fx-text-fill: white;
