@@ -39,7 +39,7 @@
 					</Separator>
 					<!-- <Line endX="25.0" rotate="90.0" startX="-25.0" /> -->
 					<!-- </HBox><HBox alignment="CENTER"> -->
-					<Button fx:id="btnAccount" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Account" />
+					<Button fx:id="btnAccount" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Account" onAction="#toonAccount"/>
 					<Button fx:id="btnNieuweBevraging" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#nieuweBevraging" text="Bevraging" />
 					<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" minWidth="125.0" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
 						<items>
