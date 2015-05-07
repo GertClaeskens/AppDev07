@@ -1,29 +1,55 @@
 #bbTopmenu {
-	-fx-width: 100%;
+	-fx-width: 100.0%;
+}
+
+.choice-box {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
+	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
+	-fx-border-radius: 4.0px;
+	-fx-font-weight: 700.0;
+	-fx-line-height: 1.25;
+	-fx-min-width: 100.0px;
+	-fx-min-height: 40.0px;
 }
 
 .choice-box .label {
 	-fx-text-fill: white;
 }
 
+.choice-box .context-menu {
+	-fx-background-color: rgb(87.0, 89.0, 92.0);
+}
+
+.choice-box .menu-item {
+	-fx-background-color: rgb(216.0, 222.0, 227.0);
+}
+
+.choice-box .menu-item .label {
+	-fx-text-fill: rgb(87.0, 89.0, 92.0);
+}
+
 #choice-box-popup-menu {
-	-fx-background-color: rgb(87, 89, 92);
-	-fx-background-radius: 6, 5, 4;
+	-fx-background-radius: 6.0, 5.0, 4.0;
 }
 
 .button, .menu-button {
-	-fx-border-radius: 4px;
-	-fx-font-weight: 700;
+	-fx-border-radius: 4.0px;
+	-fx-font-weight: 700.0;
 	-fx-line-height: 1.25;
 	-fx-background-color: #337ab7;
 	-fx-text-fill: white;
-	-fx-min-width: 100px;
-	-fx-min-height: 40px;
+	-fx-min-width: 100.0px;
+	-fx-min-height: 40.0px;
 }
 
-.button:active, .button:focus, .button:hover ,.menu-button:active, .menu-button:focus, .menu-button:hover {
+.button:active, .button:focus, .button:hover, .menu-button:active,
+	.menu-button:focus, .menu-button:hover {
 	-fx-text-fill: white;
-	-fx-background-color: rgb(74, 75, 78);
+	-fx-background-color: rgb(74.0, 75.0, 78.0);
 	-fx-border-color: white;
 }
 
@@ -34,25 +60,24 @@
 /* 	-fx-background-color: rgb(74, 75, 78); */
 /* 	-fx-border-color: white; */
 /* } */
-
 .hbox .button:active, .hbox  .button:focus, .hbox  .button:hover, .hboxr .menu-button:active,
 	.hbox  .menu-button:focus, .hbox  .menu-button:hover {
 	-fx-text-fill: red;
-	-fx-background-color: rgb(74, 75, 78);
+	-fx-background-color: rgb(74.0, 75.0, 78.0);
 	-fx-border-color: white;
 }
 
-.table-view .button{
-	-fx-min-width : 45px;
-	-fx-min-height : 25px;
+.table-view .button {
+	-fx-min-width: 45.0px;
+	-fx-min-height: 25.0px;
 }
 
 #background {
-	-light-black: rgb(74, 75, 78);
-	-dark-highlight: rgb(87, 89, 92);
-	-dark-black: rgb(39, 40, 40);
-	-darkest-black: rgb(5, 5, 5);
-	-mid-gray: rgb(216, 222, 227);
+	-light-black: rgb(74.0, 75.0, 78.0);
+	-dark-highlight: rgb(87.0, 89.0, 92.0);
+	-dark-black: rgb(39.0, 40.0, 40.0);
+	-darkest-black: rgb(5.0, 5.0, 5.0);
+	-mid-gray: rgb(216.0, 222.0, 227.0);
 	-fx-background-color: -mid-gray;
 }
 
@@ -62,67 +87,213 @@
 
 .button-bar {
 	-fx-float: left;
-	-fx-base: rgb(39, 40, 40);
-	-fx-font-size: 12pt;
-	-fx-background-color: linear-gradient(to bottom, derive(-fx-base, -30%),
-		derive(-fx-base, -60%)), linear-gradient(to bottom, rgb(74, 75, 78) 2%,
-		rgb(39, 40, 40) 98%);
-	-fx-background-insets: 0, 0 0 1 0;
-	-fx-padding: .45em 0.206667em .45em 0.206667em;
-	-fx-effect: dropshadow(two-pass-box, black, 5, .2, 0, 0);
+	-fx-base: rgb(39.0, 40.0, 40.0);
+	-fx-font-size: 12.0pt;
+	-fx-background-color: linear-gradient(to bottom, derive(-fx-base, -30.0%),
+		derive(-fx-base, -60.0%)),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 0.0 0.0 1.0 0.0;
+	-fx-padding: 0.45em 0.206667em 0.45em 0.206667em;
+	-fx-effect: dropshadow(two-pass-box, black, 5.0, 0.2, 0.0, 0.0);
 }
 
 .segmented-button-bar .button {
-	-fx-background-color: rgb(5, 5, 5), rgb(87, 89, 92),
-		linear-gradient(to bottom, rgb(74, 75, 78) 2%, rgb(39, 40, 40) 98%);
-	-fx-background-insets: 0, 1 1 1 0, 2 1 1 1;
-	-fx-background-radius: 0;
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
 	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
 }
 
 .segmented-button-bar .menu-button {
-	-fx-background-color: rgb(5, 5, 5), rgb(87, 89, 92),
-		linear-gradient(to bottom, rgb(74, 75, 78) 2%, rgb(39, 40, 40) 98%);
-	-fx-background-insets: 0, 1 1 1 0, 2 1 1 1;
-	-fx-background-radius: 0;
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
 	-fx-padding: 0.05em 0.4em 0.2em 0.4em;
-	-fx-min-width:125px;
+	-fx-min-width: 125.0px;
 }
-.text-field{
-	-fx-min-height: 40px;
+
+.text-field {
+	-fx-min-height: 40.0px;
 }
-.choice-box {
-	-fx-background-color: rgb(5, 5, 5), rgb(87, 89, 92),
-		linear-gradient(to bottom, rgb(74, 75, 78) 2%, rgb(39, 40, 40) 98%);
-	-fx-background-insets: 0, 1 1 1 0, 2 1 1 1;
-	-fx-background-radius: 0;
-	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
-	-fx-border-radius: 4px;
-	-fx-font-weight: 700;
-	-fx-line-height: 1.25;
-	-fx-min-width: 100px;
-	-fx-min-height: 40px;
-}
+
 /* .segmented-button-bar #choice-box-menu-item *.menu-item-radio { */
 /* -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z"; */
 /* -fx */
 /* } */
 .segmented-button-bar .button.first {
-	-fx-background-insets: 0, 1, 2 1 1 1;
-	-fx-background-radius: 3 0 0 3, 2 0 0 2, 2 0 0 2;
+	-fx-background-insets: 0.0, 1.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 3.0 0.0 0.0 3.0, 2.0 0.0 0.0 2.0, 2.0 0.0 0.0 2.0;
 }
 
 .segmented-button-bar .button.last {
-	-fx-background-insets: 0, 1 1 1 0, 2 1 1 1;
-	-fx-background-radius: 0 3 3 0, 0 2 2 0, 0 2 2 0;
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0 3.0 3.0 0.0, 0.0 2.0 2.0 0.0, 0.0 2.0 2.0 0.0;
 }
 
-.segmented-button-bar .button:pressed, .segmented-button-bar .menu-button:pressed, .button:pressed
-	{
-	-fx-background-color: rgb(5, 5, 5), rgb(55, 57, 58),
-		linear-gradient(to top, rgb(74, 75, 78) 2%, rgb(39, 40, 40) 98%);
+.segmented-button-bar .button:pressed, .segmented-button-bar .menu-button:pressed,
+	.button:pressed {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(55.0, 57.0, 58.0),
+		linear-gradient(to top, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
 }
 
 .button-bar .spacer {
-	-fx-padding: 0 0.417em 0 0;
+	-fx-padding: 0.0 0.417em 0.0 0.0;
+}#bbTopmenu {
+	-fx-width: 100.0%;
+}
+
+.choice-box {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
+	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
+	-fx-border-radius: 4.0px;
+	-fx-font-weight: 700.0;
+	-fx-line-height: 1.25;
+	-fx-min-width: 100.0px;
+	-fx-min-height: 40.0px;
+}
+
+.choice-box .label {
+	-fx-text-fill: white;
+}
+
+.choice-box .context-menu {
+	-fx-background-color: rgb(87.0, 89.0, 92.0);
+}
+
+.choice-box .menu-item {
+	-fx-background-color: rgb(216.0, 222.0, 227.0);
+}
+
+.choice-box .menu-item .label {
+	-fx-text-fill: rgb(87.0, 89.0, 92.0);
+}
+.choice-box .menu-item:focused {
+	-fx-background-color: rgb(87.0, 89.0, 92.0);
+}
+
+.choice-box .menu-item:focused .label {
+	-fx-text-fill: rgb(216.0, 222.0, 227.0);
+}
+#choice-box-popup-menu {
+	-fx-background-radius: 6.0, 5.0, 4.0;
+}
+
+.button, .menu-button {
+	-fx-border-radius: 4.0px;
+	-fx-font-weight: 700.0;
+	-fx-line-height: 1.25;
+	-fx-background-color: #337ab7;
+	-fx-text-fill: white;
+	-fx-min-width: 100.0px;
+	-fx-min-height: 40.0px;
+}
+
+.button:active, .button:focus, .button:hover, .menu-button:active,
+	.menu-button:focus, .menu-button:hover {
+	-fx-text-fill: white;
+	-fx-background-color: rgb(74.0, 75.0, 78.0);
+	-fx-border-color: white;
+}
+
+/* .button-bar .button:active, .button-bar  .button:focus, .button-bar  .button:hover, */
+/* 	.button-bar .menu-button:active, .button-bar  .menu-button:focus, */
+/* 	.button-bar  .menu-button:hover { */
+/* 	-fx-text-fill: white; */
+/* 	-fx-background-color: rgb(74, 75, 78); */
+/* 	-fx-border-color: white; */
+/* } */
+.hbox .button:active, .hbox  .button:focus, .hbox  .button:hover, .hboxr .menu-button:active,
+	.hbox  .menu-button:focus, .hbox  .menu-button:hover {
+	-fx-text-fill: red;
+	-fx-background-color: rgb(74.0, 75.0, 78.0);
+	-fx-border-color: white;
+}
+
+.table-view .button {
+	-fx-min-width: 45.0px;
+	-fx-min-height: 25.0px;
+}
+
+#background {
+	-light-black: rgb(74.0, 75.0, 78.0);
+	-dark-highlight: rgb(87.0, 89.0, 92.0);
+	-dark-black: rgb(39.0, 40.0, 40.0);
+	-darkest-black: rgb(5.0, 5.0, 5.0);
+	-mid-gray: rgb(216.0, 222.0, 227.0);
+	-fx-background-color: -mid-gray;
+}
+
+.button-bar .label {
+	-fx-float: left;
+}
+
+.button-bar {
+	-fx-float: left;
+	-fx-base: rgb(39.0, 40.0, 40.0);
+	-fx-font-size: 12.0pt;
+	-fx-background-color: linear-gradient(to bottom, derive(-fx-base, -30.0%),
+		derive(-fx-base, -60.0%)),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 0.0 0.0 1.0 0.0;
+	-fx-padding: 0.45em 0.206667em 0.45em 0.206667em;
+	-fx-effect: dropshadow(two-pass-box, black, 5.0, 0.2, 0.0, 0.0);
+}
+
+.segmented-button-bar .button {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
+	-fx-padding: 0.4em 0.2em 0.4em 0.2em;
+}
+
+.segmented-button-bar .menu-button {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
+		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0;
+	-fx-padding: 0.05em 0.4em 0.2em 0.4em;
+	-fx-min-width: 125.0px;
+}
+
+.text-field {
+	-fx-min-height: 40.0px;
+}
+
+/* .segmented-button-bar #choice-box-menu-item *.menu-item-radio { */
+/* -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z"; */
+/* -fx */
+/* } */
+.segmented-button-bar .button.first {
+	-fx-background-insets: 0.0, 1.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 3.0 0.0 0.0 3.0, 2.0 0.0 0.0 2.0, 2.0 0.0 0.0 2.0;
+}
+
+.segmented-button-bar .button.last {
+	-fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
+	-fx-background-radius: 0.0 3.0 3.0 0.0, 0.0 2.0 2.0 0.0, 0.0 2.0 2.0 0.0;
+}
+
+.segmented-button-bar .button:pressed, .segmented-button-bar .menu-button:pressed,
+	.button:pressed {
+	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(55.0, 57.0, 58.0),
+		linear-gradient(to top, rgb(74.0, 75.0, 78.0) 2.0%,
+		rgb(39.0, 40.0, 40.0) 98.0%);
+}
+
+.button-bar .spacer {
+	-fx-padding: 0.0 0.417em 0.0 0.0;
 }
