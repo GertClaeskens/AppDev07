@@ -263,7 +263,15 @@ p,h1,h2,h3,article,a {
 .table {
     margin-top:25px;
 }
-
+.detail-row {
+    margin-top:10px;
+}
+.big-font{
+    font-size:25px;
+}
+.form-buttons {
+    margin-left:15px;
+}
 @media(min-width:768px) {
 
     #wrapper {
