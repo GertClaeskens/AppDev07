@@ -113,7 +113,7 @@
                                     $naam = $thema["Naam"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                 } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                    echo "<h1 class='header' >" . " Nieuwe vraag " . "</h1> ";
+                                    echo "<h1 class='header' >" . " Nieuw thema " . "</h1> ";
                                 }
 //
                                 if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
@@ -121,20 +121,22 @@
                                     $thema->setNaam($naam);
 
                                     if (isset($_POST["nieuw"])) {
+                                        $thema->setId(0);
                                         if (FinahDAO::SchrijfWeg("Thema", $thema)) {
                                             //Todo eventueel een exception toevoegen hier
-                                            echo "De vraag werd succesvol opgeslagen";
+                                            echo "Het thema werd succesvol opgeslagen";
                                         }
                                     }
                                     if (isset($_POST["update"])) {
                                         $id = $_POST["update"];
                                         $thema->setId($id);
                                         if (FinahDAO::PasAan("Thema", $id, $thema)) {
-                                            $thema = FinahDAO::HaalOp("Thema", $id);
-                                            $naam = $thema["Naam"];
-                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                            echo "De vraag werd succesvol opgeslagen";
+
                                         }
+                                        $thema = FinahDAO::HaalOp("Thema", $id);
+                                        $naam = $thema["Naam"];
+                                        echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                        echo "Het thema werd succesvol opgeslagen";
                                     }
                                 }
                             }
@@ -144,12 +146,12 @@
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Naam"> Thema naam: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="Naam" class="form-control" id="Naam" >
-                                        <?php
+                                    <input type="text" name="Naam" class="form-control" id="Naam" value="<?php
                                             if(isset($_POST["bewerk"]) || isset($_POST["update"])){
                                                 echo $naam;
                                             }
-                                        ?>
+                                        ?>"
+                                    />
                                 </div>
                             </div>
                             <div class="form-group">
