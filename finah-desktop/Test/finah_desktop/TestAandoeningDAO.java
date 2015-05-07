@@ -6,6 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import finah_desktop_fx.dao.AandoeningDAO;
+import finah_desktop_fx.model.Aandoening;
+import finah_desktop_fx.model.Pathologie;
+
 public class TestAandoeningDAO {
 	private ArrayList<Aandoening> testAandoeningen;
 	private ArrayList<Aandoening> controleAandoeningen;

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import finah_desktop_fx.dao.VraagDAO;
+import finah_desktop_fx.model.Vraag;
 public class TestVraagDAO {
 	private ArrayList<Vraag> testVragen;
 	private ArrayList<Vraag> controleVragen;

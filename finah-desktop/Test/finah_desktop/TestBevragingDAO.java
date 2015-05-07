@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import finah_desktop_fx.dao.BevragingDAO;
+import finah_desktop_fx.model.Bevraging;
+
 public class TestBevragingDAO {
 	private ArrayList<Bevraging> testBevragingen;
 	private ArrayList<Bevraging> controleBevragingen;

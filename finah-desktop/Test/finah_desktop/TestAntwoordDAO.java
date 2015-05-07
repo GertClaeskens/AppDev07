@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import finah_desktop_fx.dao.AntwoordDAO;
+import finah_desktop_fx.model.Antwoord;
+
 public class TestAntwoordDAO {
 	private ArrayList<Antwoord> testAntwoorden;
 	private ArrayList<Antwoord> controleAntwoorden;

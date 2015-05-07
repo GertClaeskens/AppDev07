@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import finah_desktop_fx.dao.LeeftijdsCategorieDAO;
+import finah_desktop_fx.model.LeeftijdsCategorie;
 public class TestLeeftijdsCategorieDAO {
 	private ArrayList<LeeftijdsCategorie> testLeeftijdsCategorieen;
 	private ArrayList<LeeftijdsCategorie> controleLeeftijdsCategorieen;

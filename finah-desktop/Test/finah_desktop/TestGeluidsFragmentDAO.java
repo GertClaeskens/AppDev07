@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import finah_desktop_fx.dao.GeluidsFragmentDAO;
+import finah_desktop_fx.model.GeluidsFragment;
+
 public class TestGeluidsFragmentDAO {
 	private ArrayList<GeluidsFragment> testGeluidsFragmenten;
 	private ArrayList<GeluidsFragment> controleGeluidsFragmenten;	

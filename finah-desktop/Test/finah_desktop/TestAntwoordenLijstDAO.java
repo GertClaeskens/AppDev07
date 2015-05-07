@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import finah_desktop_fx.dao.AntwoordenLijstDAO;
+import finah_desktop_fx.model.AntwoordenLijst;
+
 public class TestAntwoordenLijstDAO {
 	private ArrayList<AntwoordenLijst> testAntwoordenLijsten;
 	private ArrayList<AntwoordenLijst> controleAntwoordenLijsten;

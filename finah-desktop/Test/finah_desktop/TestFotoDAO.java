@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import finah_desktop_fx.dao.FotoDAO;
+import finah_desktop_fx.model.Foto;
 public class TestFotoDAO {
 	private ArrayList<Foto> testFotos;
 	private ArrayList<Foto> controleFotos;

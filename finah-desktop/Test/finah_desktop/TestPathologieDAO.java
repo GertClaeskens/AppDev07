@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import finah_desktop_fx.dao.PathologieDAO;
+import finah_desktop_fx.model.Pathologie;
 public class TestPathologieDAO {
 	private ArrayList<Pathologie> testPathologieen;
 	private ArrayList<Pathologie> controlePathologieen;
