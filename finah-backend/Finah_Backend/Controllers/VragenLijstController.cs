@@ -7,11 +7,14 @@ namespace Finah_Backend.Controllers
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Http.Cors;
     using System.Web.Http.Description;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "post,get,delete,put")]
     public class VragenLijstController : ApiController
     {
         //TODO code opschonen
@@ -74,7 +77,7 @@ namespace Finah_Backend.Controllers
         // PUT: api/VragenLijsts/5
         [Route("VragenLijst/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVragenLijst(int id, [FromBody] VragenLijst vragenLijst)
+        public async Task<IHttpActionResult> PutVragenLijst([FromBody] int id, [FromBody] VragenLijst vragenLijst)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +93,7 @@ namespace Finah_Backend.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -108,23 +111,35 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/VragenLijsts
+        //[Route("VragenLijst")]
         [ResponseType(typeof(VragenLijst))]
-        public IHttpActionResult PostVragenLijst([FromBody] VragenLijst vragenLijst)
+        public async Task<IHttpActionResult> PostVragenLijst([FromBody] VragenLijst vragenLijst)
         {
+            var vrgLijst = new VragenLijst
+                               {
+                                   Omschrijving = vragenLijst.Omschrijving,
+                                   Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id)
+                               };
+            foreach (var v in vragenLijst.Vragen)
+            {
+                vrgLijst.Vragen.Add(db.Vragen.Find(v.Id));
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.VragenLijsten.Add(vragenLijst);
-            db.SaveChanges();
+            db.VragenLijsten.Add(vrgLijst);
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = vragenLijst.Id }, vragenLijst);
         }
 
         // DELETE: api/VragenLijsts/5
-        [ResponseType(typeof(VragenLijst))]
-        public IHttpActionResult DeleteVragenLijst(int id)
+        //[ResponseType(typeof(VragenLijst))]
+        public IHttpActionResult Delete(int id)
         {
             var vragenLijst = db.VragenLijsten.Find(id);
             if (vragenLijst == null)

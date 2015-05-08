@@ -89,7 +89,7 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Courses
         [ResponseType(typeof(Vraag))]
-        public IHttpActionResult PostCourse([FromBody] Vraag vraag)
+        public IHttpActionResult PostVraag([FromBody] Vraag vraag)
         {
             if (!ModelState.IsValid)
             {
@@ -104,6 +104,7 @@ namespace Finah_Backend.Controllers
 
         // DELETE: api/Courses/5
         [ResponseType(typeof(Vraag))]
+        [HttpDelete]
         public IHttpActionResult DeleteCourse(int id)
         {
             var vraag = db.Vragen.Find(id);

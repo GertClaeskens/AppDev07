@@ -3,6 +3,8 @@ using System.Web.Http;
 
 namespace Finah_Backend
 {
+    using System.Web.Http.Cors;
+
     using Newtonsoft.Json;
     using System.Net.Http.Headers;
 
@@ -11,11 +13,14 @@ namespace Finah_Backend
         public static void Register(HttpConfiguration config)
         {
             //Om problemen met XMLHttpRequest in Javascript te voorkomen
-            config.EnableCors();
+            var cors = new EnableCorsAttribute("http://localhost:63342", "*", "GET,POST,DELETE,PUT");
+            config.EnableCors(cors);
+
             // Web API configuration and servicesz
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
             config.MapHttpAttributeRoutes();

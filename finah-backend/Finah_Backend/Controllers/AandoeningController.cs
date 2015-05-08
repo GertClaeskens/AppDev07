@@ -36,17 +36,17 @@ namespace Finah_Backend.Controllers
         }
 
 
-        [Route("Aandoening/{id}/Pathologie")] 
+        [Route("Aandoening/{id}/Pathologie")]
         public IEnumerable<Pathologie> GetPathologieen(int id)
         {
             return db.Aandoeningen.Find(id).Patologieen;
         }
 
-        [Route("Aandoening/{id}/VragenLijst")] 
+        [Route("Aandoening/{id}/VragenLijst")]
         public VragenLijst GetVragenLijst(int id)
         {
             //Er is een vragenlijst per aandoening.
-            
+
             var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).First();
             return v;
         }
