@@ -360,7 +360,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <div class="panel panel-primary">
             <div class="panel-heading ">
                 <h1 class="panel-title"><span
-                        class="big-font"> Details: <?php echo $informatie ?> </span></h1>
+                        class="big-font"> Details: <?php echo "Bevraging " . $id ?> </span></h1>
             </div>
             <div class="panel-body">
                 <div class="row">
