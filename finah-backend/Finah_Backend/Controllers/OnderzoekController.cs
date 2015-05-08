@@ -26,7 +26,6 @@ namespace Finah_Backend.Controllers
 
         [Route("Onderzoek/{id}")]
 
-        [Route("Onderzoek/Bevraging/{id}")]
         public IHttpActionResult GetOnderzoek(int id)
         {
             var onderzoek = db.Onderzoeken.Find(id);
@@ -35,9 +34,10 @@ namespace Finah_Backend.Controllers
                 return this.NotFound();
             }
 
-            return this.Ok();
+            return this.Ok(onderzoek);
         }
         // GET: api/Onderzoek/5
+        [Route("Onderzoek/Bevraging/{id}")]
         [ResponseType(typeof(Onderzoek))]
         public IHttpActionResult GetOnderzoekDoorBevragingId(string id)
         {
