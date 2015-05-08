@@ -153,7 +153,7 @@
                                             echo "Het thema werd succesvol opgeslagen";
                                         }
                                     }
-                            }
+
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -196,15 +196,13 @@
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $vraag= FinahDAO::HaalOp("Vragen", $id);
-        $vraagStelling = $vraag["VraagStelling"];
-        $thema=$vraag["Thema"]["Naam"];
-
+        $thema= FinahDAO::HaalOp("Thema", $id);
+        $naam = $thema["Naam"];
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
                 <h1 class="panel-title"><span
-                        class="big-font"> Details: <?php echo "Vraag " . $id ?> </span></h1>
+                        class="big-font"> Details: <?php echo "Thema " . $id ?> </span></h1>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -217,18 +215,10 @@
                 </div>
                 <div class="row detail-row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                        <label>Vraagstelling: </label>
+                        <label>Thema naam: </label>
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">
-                        <?php echo $vraagStelling ?>
-                    </div>
-                </div>
-                <div class="row detail-row">
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                        <label>Thema: </label>
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
-                        <?php echo $thema ?>
+                        <?php echo $naam ?>
                     </div>
                 </div>
                 <div class="row detail-row">
@@ -246,7 +236,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder vraag?','delete_lft',<?php echo $id ?>,'Vraag',this)">
+                                    onclick="Confirm.render('Verwijder thema?','delete_lft',<?php echo $id ?>,'Thema',this)">
                                 Verwijderen
                             </button>
                         </form>

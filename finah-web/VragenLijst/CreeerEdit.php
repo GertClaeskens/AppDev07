@@ -280,9 +280,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <?php
                         $i=0;
                         foreach($aandoeningLijst as $item){
-                           $i++;
                             echo $item[$i];
-
+                            $i++;
                         }
 //                        foreach($aandoeningLijst as $item) {
 //
