@@ -2,7 +2,7 @@
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Vraag.php";
     require "../PHP/Models/Aandoening.php";
-    if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])) {
+    if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
         header('Location: Overzicht.php');
         exit;
     }
@@ -118,74 +118,80 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
                             $vraag = new Vraag();
-                            $vraagStelling="";
-                            $thema="";
+                            $vraagStelling = "";
+                            $thema = "";
                             if (isset($_POST)) {
-                                if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
 
-                                    if (isset($_POST["bewerk"])) {
-                                            $id = $_POST["bewerk"];
-                                            $vraag = FinahDAO::HaalOp("Vraag",$id);
-                                            $vraagStelling = $vraag["VraagStelling"];
-                                            $thema = $vraag["Thema"];
-                                            echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
-                                        } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
-                                            echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
-                                        }
-        //
-                                        if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                            $vraagStelling = $_POST["VraagStelling"];
-                                            $thema = $_POST["Thema"];
-                                            $vraag->setVraagstelling($vraagStelling);
-                                            $vraag->setThema($thema);
-                                            if (isset($_POST["nieuw"])) {
-                                                if (FinahDAO::SchrijfWeg("Vragen", $vraag)) {
-                                                    //Todo eventueel een exception toevoegen hier
-                                                    echo "De vraag werd succesvol opgeslagen";
-                                                }
-                                            }
-                                            if (isset($_POST["update"])) {
-                                                $id = $_POST["update"];
-                                                $vraag->setId($id);
-                                                if (FinahDAO::PasAan("Vragen", $id, $vraag)) {
-                                                    $vraag = FinahDAO::HaalOp("Vragen", $id);
-                                                    $vraagStelling = $vraag["VraagStelling"];
-                                                    $thema = $vraag["Thema"];
-                                                    echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
-                                                    echo "De vraag werd succesvol opgeslagen";
-                                                }
-                                            }
-                                        }
+                            if (isset($_POST["bewerk"])) {
+                                $id = $_POST["bewerk"];
+                                $vraag = FinahDAO::HaalOp("Vraag", $id);
+                                $vraagStelling = $vraag["VraagStelling"];
+                                $thema = $vraag["Thema"];
+                                echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
+                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                echo "<h1 class='header' >" . " Nieuwe vraag " . "</h1> ";
+                            }
+                            //
+                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                $vraagStelling = $_POST["VraagStelling"];
+                                $thema = $_POST["Thema"];
+                                $vraag->setVraagstelling($vraagStelling);
+                                $vraag->setThema($thema);
+                                if (isset($_POST["nieuw"])) {
+                                    $vraag->setId(0);
+                                    if (FinahDAO::SchrijfWeg("Vragen", $vraag)) {
+                                        //Todo eventueel een exception toevoegen hier
+                                        echo "De vraag werd succesvol opgeslagen";
+                                    }
+                                }
+                                if (isset($_POST["update"])) {
+                                    $id = $_POST["update"];
+                                    $vraag->setId($id);
+                                    if (FinahDAO::PasAan("Vragen", $id, $vraag)) {
+                                        $vraag = FinahDAO::HaalOp("Vragen", $id);
+                                        $vraagStelling = $vraag["VraagStelling"];
+                                        $thema = $vraag["Thema"];
+                                        echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
+                                        echo "De vraag werd succesvol opgeslagen";
+                                    }
+                                }
+                            }
 
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-<!--TODO Foto aan een vraag kunnen toekennen evt. ook meteen aan een vragenlijst toevoegen-->
+                            <!--TODO Foto aan een vraag kunnen toekennen evt. ook meteen aan een vragenlijst toevoegen-->
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
+                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling">
+                                    Vraagstelling: </label>
+
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" >
-                                        <?php
-                                            if(isset($_POST["bewerk"]) || isset($_POST["update"])){
-                                                echo $vraagStelling;
-                                            }
-                                        ?>
+                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling">
+                                    <?php
+                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                            echo $vraagStelling;
+                                        }
+                                    ?>
                                 </div>
                             </div>
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Thema"> Thema: </label>
+                                <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Thema">
+                                    Thema: </label>
+
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="Thema" class="form-control" id="Thema" >
+                                    <input type="text" name="Thema" class="form-control" id="Thema">
                                     <?php
-                                    if(isset($_POST["bewerk"]) || isset($_POST["update"])){
-                                        echo $thema;
-                                    }
+                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                            echo $thema;
+                                        }
                                     ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                    <button type="button" onclick="location.href='Overzicht.php'"
+                                            class="btn btn-primary">
                                         Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
@@ -195,10 +201,12 @@
                                                 echo "'nieuw'";
                                             } elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])){
+                                            } elseif (isset($_POST["update"])) {
                                                 echo "'update'";
                                             }
-                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                                if (!isset($_POST["creeer"])){
+                                            ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
                                     </button>
                                 </div>
                             </div>
@@ -209,11 +217,12 @@
         </div>
     </div>
     <?php
-    } elseif (isset($_POST["details"])) {
+        //Op details pagina wordt de tabel niet getoond
+        } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $vraag= FinahDAO::HaalOp("Vragen", $id);
+        $vraag = FinahDAO::HaalOp("Vragen", $id);
         $vraagStelling = $vraag["VraagStelling"];
-        $thema=$vraag["Thema"]["Naam"];
+        $thema = $vraag["Thema"]["Naam"];
 
         ?>
         <div class="panel panel-primary">
@@ -249,7 +258,8 @@
                 <div class="row button-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <form class="form-horizontal form-buttons" role="form" method="POST"
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <button type="button" onclick="location.href='Overzicht.php'"
                                     class="btn btn-primary">
                                 Terug
@@ -271,31 +281,31 @@
         </div>
     <?php
     }
-    }
+        }
     ?>
-        <script>
-            $().ready(function () {
-                $("#aandoeningForm").validate({
-                    rules: {
-                        vraagstelling: "required"
-                    },
-                    messages: {
-                        vraagstelling: "Veld is verplicht."
-                    }
-                });
-            })
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-                if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                    $("#side-toggle").removeClass("glyphicon-option-vertical");
-                    $("#side-toggle").addClass("glyphicon-option-horizontal");
-                } else {
-                    $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                    $("#side-toggle").addClass("glyphicon-option-vertical");
+    <script>
+        $().ready(function () {
+            $("#aandoeningForm").validate({
+                rules: {
+                    vraagstelling: "required"
+                },
+                messages: {
+                    vraagstelling: "Veld is verplicht."
                 }
             });
-        </script>
+        })
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                $("#side-toggle").removeClass("glyphicon-option-vertical");
+                $("#side-toggle").addClass("glyphicon-option-horizontal");
+            } else {
+                $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                $("#side-toggle").addClass("glyphicon-option-vertical");
+            }
+        });
+    </script>
     </body>
     </html>
 <?php
