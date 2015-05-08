@@ -163,13 +163,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
                                             $onderzoek = FinahDAO::HaalOp("Onderzoek",$id);
+                                            $informatie = $onderzoek["Informatie"];
 
-                                            $informatie = $onderzoek["informatie"];
-                                            $aandoening = $onderzoek["aandoening"];
-                                            $pathologie = $onderzoek["Pathologie"];
-                                            $leeftijdcatPat = $onderzoek["leeftijdcategoriePat"];
-                                            $leeftijdcatMan = $onderzoek["leeftijdcategorieMan"];
-                                            $relatie = $onderzoek["relatie"];
+                                            $leeftijdcatLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                            $relatie = $onderzoek["Relatie"]["Naam"];
+                                            print_r($relatie);
                                             echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
@@ -261,8 +259,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event)">
                                         <option value="null">Maak een keuze</option>
                                         <?php
-                                        $aandoening = FinahDAO::HaalOp("Aandoening");
-                                        foreach ($aandoening as $item) {
+                                        $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
+                                        foreach ($aandoeningLijst as $item) {
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                         }
                                         ?>
@@ -297,8 +295,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     <select class="form-control" id="LeeftijdcategorieMan" name="leeftijdcategorieMan">
                                         <option value="null">Maak een keuze</option>
                                         <?php
-                                            $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
-                                            foreach ($leeftijdscategoriePat as $item) {
+                                            $leeftijdscategorieMan = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                            foreach ($leeftijdscategorieMan as $item) {
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
                                             }
                                         ?>
@@ -347,15 +345,17 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        echo $id;
         $onderzoek = FinahDAO::HaalOp("Onderzoek",$id);
-        print_r($onderzoek);
         $informatie = $onderzoek["Informatie"];
-        $aandoening = $onderzoek["aandoening"];
-        $pathologie = $onderzoek["Pathologie"];
-        $leeftijdcatPat = $onderzoek["leeftijdcategoriePat"];
-        $leeftijdcatMan = $onderzoek["leeftijdcategorieMan"];
-        $relatie = $onderzoek["relatie"];
+        $aandoeningLijst= $onderzoek["Aandoening"];
+        $pathologieLijst = $onderzoek["Pathologie"];
+        $antwPat = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Pat"]["Id"]);
+        $antwMan = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Man"]["Id"]);
+        $leeftijdcatPatVan = $antwPat["LeeftijdsCategorie"]["Van"];
+        $leeftijdcatPatTot = $antwPat["LeeftijdsCategorie"]["Tot"];
+        $leeftijdcatManVan = $antwMan["LeeftijdsCategorie"]["Van"];
+        $leeftijdcatManTot = $antwMan["LeeftijdsCategorie"]["Tot"];
+        $relatie = $onderzoek["Relatie"]["Naam"];
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
@@ -385,16 +385,34 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        echo $aandoening ?>
+                        $i = 0;
+                        if (count($aandoeningLijst) == 3) {
+                            echo $aandoeningLijst["Omschrijving"];
+                        } else {
+                            foreach ($aandoeningLijst as $item) {
+                                $i++;
+                                echo $item[$i]["Omschrijving"];
+                            }
+                        }
+                    ?>
                     </div>
                 </div>
                 <div class="row detail-row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                        <label>Pathologie):</label>
+                        <label>Pathologie:</label>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        echo $pathologie ?>
+                        $i = 0;
+                        if (count($pathologieLijst) == 3) {
+                            echo $pathologieLijst["Omschrijving"];
+                        } else {
+                            foreach ($pathologieLijst as $item) {
+                                $i++;
+                                echo $item[$i]["Omschrijving"];
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="row detail-row">
@@ -403,7 +421,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        echo $leeftijdscategorieMan ?>
+                        echo "Van " . $leeftijdcatManVan . " tot " . $leeftijdcatManTot;
+                        ?>
                     </div>
                 </div>
                 <div class="row detail-row">
@@ -412,7 +431,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        echo $leeftijdscategoriePat ?>
+                        echo "Van " . $leeftijdcatPatVan . " tot " . $leeftijdcatPatTot;
+                        ?>
                     </div>
                 </div>
                 <div class="row detail-row">
@@ -421,7 +441,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        echo $relatie ?>
+                            echo $relatie;
+                        ?>
                     </div>
                 </div>
                 <div class="row detail-row">
