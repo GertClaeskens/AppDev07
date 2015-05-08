@@ -29,6 +29,11 @@
             return $this->Id;
         }
 
+        public function setId($Id)
+        {
+            $this->Id = $Id;
+        }
+
         public function getVraagstelling()
         {
             return $this->Vraagstelling;
