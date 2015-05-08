@@ -24,21 +24,47 @@ namespace Finah_Backend.Controllers
             return db.Onderzoeken.Include(o => o.Relatie);
         }
 
+        [Route("Onderzoek/{id}")]
         // GET: api/Onderzoek/5
         [ResponseType(typeof(Onderzoek))]
         public IHttpActionResult GetOnderzoek(string id)
         {
             //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
-            var aandoening =
-                (from o in db.Onderzoeken.Include(o => o.Relatie)
-                 where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
-                 select o);
-            if (aandoening == null)
+            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
+                             where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+                             select o).ToList();
+            var antwoorden = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
+            for (var i = 0; i < antwoorden.Count; i++)
+            {
+                onderzoek[i].Datum = antwoorden[i].Datum;
+            }
+            if (onderzoek == null)
             {
                 return NotFound();
             }
 
-            return Ok(aandoening);
+            return Ok(onderzoek);
+        }
+        [Route("Onderzoek/RecenteBevraging")]
+        // GET: api/Onderzoek/5
+        [ResponseType(typeof(Onderzoek))]
+        public IHttpActionResult GetRecenteOnderzoek(string id)
+        {
+            //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
+            var onderzoek =
+                (from o in db.Onderzoeken.Include(o => o.Relatie)
+                 where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
+                 select o).First();
+            var bevraging = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
+            onderzoek.Datum = bevraging[0].Datum;
+
+
+            if (onderzoek == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(onderzoek);
         }
 
         // GET: api/Onderzoek/{id}
