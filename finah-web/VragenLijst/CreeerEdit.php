@@ -313,7 +313,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="row detail-row">
+                <div class="row button-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
                         <form class="form-horizontal form-buttons" role="form" method="POST"

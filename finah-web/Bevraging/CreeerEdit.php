@@ -415,7 +415,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         ?>
                     </div>
                 </div>
-                <div class="row detail-row">
+                <div class="row detail-row ">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <label>Leeftijdscategorie mantelzorger:</label>
                     </div>
@@ -445,7 +445,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         ?>
                     </div>
                 </div>
-                <div class="row detail-row">
+                <div class="row button-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
                         <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

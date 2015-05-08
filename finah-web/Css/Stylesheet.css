@@ -266,6 +266,9 @@ p,h1,h2,h3,article,a {
 .detail-row {
     margin-top:10px;
 }
+.button-row{
+    margin-top:20px;
+}
 .big-font{
     font-size:25px;
 }
