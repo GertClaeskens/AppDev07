@@ -2,10 +2,10 @@
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/VragenLijst.php";
     require "../PHP/Models/Aandoening.php";
-if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])) {
-    header('Location: Overzicht.php');
-    exit;
-}
+    if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
+        header('Location: Overzicht.php');
+        exit;
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -118,51 +118,51 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
                             $vragenlijst = new VragenLijst();
-                            $id=null;
+                            $id = null;
                             if (isset($_POST)) {
-                                if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
 
-                                    if (isset($_POST["bewerk"])) {
-                                        $id = $_POST["bewerk"];
+                            if (isset($_POST["bewerk"])) {
+                                $id = $_POST["bewerk"];
+                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                                $vragenlijstTitel = $vragenlijst["Titel"];
+                                echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
+                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                echo "<h1 class='header' >" . " Nieuwe vragenlijst " . "</h1> ";
+                            }
+                            //
+                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                $vragenlijstTitel = $_POST["titel"];
+                                //$vragenlijst->setTitel($vragenlijstTitel);
+                                $vragenlijst->setOmschrijving($vragenlijstTitel);
+                                if (isset($_POST["aandoening"])) {
+                                    $aandoening = $_POST["aandoening"];
+                                    $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
+
+                                }
+                                if (isset($_POST["vragen"])) {
+                                    $vragenArray = $_POST["vragen"];
+                                    for ($a = 0; $a < count($vragenArray); $a++) {
+                                        $vragenlijst->setVragen(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
+                                    };
+                                }
+                                if (isset($_POST["nieuw"])) {
+                                    //                                        print_r($vragenlijst);
+                                    //$id = $_POST["Id"];
+                                    FinahDAO::SchrijfWeg("Vragenlijst", $vragenlijst);
+                                    echo "De vragenlijst werd succesvol opgeslagen";
+                                }
+                                if (isset($_POST["update"])) {
+                                    $id = $_POST["update"];
+                                    $vragenlijst->setId($id);
+                                    if (FinahDAO::PasAan("VragenLijst", $id, $vragenlijst)) {
                                         $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                         $vragenlijstTitel = $vragenlijst["Titel"];
                                         echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
-                                    } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                        echo "<h1 class='header' >" . " Nieuwe vragenlijst " . "</h1> ";
+                                        echo "De vragenlijst werd succesvol opgeslagen";
                                     }
-    //
-                                    if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                        $vragenlijstTitel = $_POST["titel"];
-                                        //$vragenlijst->setTitel($vragenlijstTitel);
-                                        $vragenlijst->setOmschrijving($vragenlijstTitel);
-                                        if (isset($_POST["aandoening"])) {
-                                            $aandoening = $_POST["aandoening"];
-                                            $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
-
-                                        }
-                                        if (isset($_POST["vragen"])) {
-                                            $vragenArray = $_POST["vragen"];
-                                            for ($a = 0; $a < count($vragenArray); $a++) {
-                                                $vragenlijst->setVragen(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
-                                            };
-                                        }
-                                        if (isset($_POST["nieuw"])){
-    //                                        print_r($vragenlijst);
-                                            //$id = $_POST["Id"];
-                                            FinahDAO::SchrijfWeg("Vragenlijst",$vragenlijst);
-                                            echo "De vragenlijst werd succesvol opgeslagen";
-                                        }
-                                        if (isset($_POST["update"])) {
-                                            $id = $_POST["update"];
-                                            $vragenlijst->setId($id);
-                                            if (FinahDAO::PasAan("VragenLijst", $id, $vragenlijst)) {
-                                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
-                                                $vragenlijstTitel = $vragenlijst["Titel"];
-                                                echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
-                                                echo "De vragenlijst werd succesvol opgeslagen";
-                                            }
-                                        }
-                                    }
+                                }
+                            }
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -226,10 +226,12 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 echo "'nieuw'";
                                             } elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])){
+                                            } elseif (isset($_POST["update"])) {
                                                 echo "'update'";
                                             }
-                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                                if (!isset($_POST["creeer"])){
+                                            ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
                                     </button>
                                 </div>
                             </div>
@@ -240,11 +242,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         </div>
     </div>
     <?php
-    } elseif (isset($_POST["details"])) {
+        } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $vragenLijst= FinahDAO::HaalOp("VragenLijst", $id);
+        $vragenLijst = FinahDAO::HaalOp("VragenLijst", $id);
 //        $titel = $vragenLijst["Titel"];
-        $aandoeningLijst= $vragenLijst["Aandoe"];
+        $aandoeningLijst = $vragenLijst["Aandoe"];
         $aantal = count($vragenLijst["Vragen"]);
         $vragen = $vragenLijst["Vragen"];
 
@@ -264,28 +266,32 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <?php echo $id ?>
                     </div>
                 </div>
-<!--                <div class="row detail-row">-->
-<!--                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">-->
-<!--                        <label>Titel :</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">-->
-<!--                        --><?php //echo $titel ?>
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="row detail-row">-->
+                <!--                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">-->
+                <!--                        <label>Titel :</label>-->
+                <!--                    </div>-->
+                <!--                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">-->
+                <!--                        --><?php //echo $titel ?>
+                <!--                    </div>-->
+                <!--                </div>-->
                 <div class="row detail-row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <label>Aandoening</label>
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
                         <?php
-                        $i=0;
-                        foreach($aandoeningLijst as $item){
-                            echo $item[$i];
-                            $i++;
-                        }
-//                        foreach($aandoeningLijst as $item) {
-//
-//                        }
+                            $i = 0;
+                            if (count($aandoeningLijst) == 3) {
+                                echo $aandoeningLijst["Omschrijving"];
+                            } else {
+                                foreach ($aandoeningLijst as $item) {
+                                    $i++;
+                                    echo $item[$i]["Omschrijving"];
+                                }
+                            }
+                            //                        foreach($aandoeningLijst as $item) {
+                            //
+                            //                        }
                         ?>
                     </div>
                 </div>
@@ -302,17 +308,18 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <label>Vragen: </label>
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
-                              <?php
-                        foreach($vragen as $item) {
-                            echo $item["Id"]. ". " . $item["VraagStelling"] ."<br/>";
-                        }
+                        <?php
+                            foreach ($vragen as $item) {
+                                echo $item["Id"] . ". " . $item["VraagStelling"] . "<br/>";
+                            }
                         ?>
                     </div>
                 </div>
                 <div class="row detail-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <form class="form-horizontal form-buttons" role="form" method="POST"
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <button type="button" onclick="location.href='Overzicht.php'"
                                     class="btn btn-primary">
                                 Terug
@@ -334,7 +341,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         </div>
     <?php
     }
-    }
+        }
     ?>
     <script>
         $().ready(function () {
