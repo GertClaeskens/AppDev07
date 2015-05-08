@@ -74,7 +74,7 @@
         public static function Verwijder($type, $id)
         {
             $url = self::URL . $type . "/" .$id;
-            echo $id;
+            //echo $id;
             //$curl = curl_init($url . "/Contacts/{$recordId}");
             //$data_json = json_encode($data);
             $ch = curl_init();
