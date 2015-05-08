@@ -3,6 +3,7 @@
 namespace Finah_Backend.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Onderzoek
     {
@@ -26,6 +27,9 @@ namespace Finah_Backend.Models
         public virtual Bevraging Bevraging_Man { get; set; }
         public virtual Aandoening Aandoening { get; set; }
         public virtual Pathologie Pathologie { get; set; }
+
+        [NotMapped]
+        public DateTime Datum { get; set; }
 
         #endregion Public members
     }
