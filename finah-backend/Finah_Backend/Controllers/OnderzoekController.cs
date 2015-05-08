@@ -25,23 +25,37 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Onderzoek/{id}")]
+
+        [Route("Onderzoek/Bevraging/{id}")]
+        public IHttpActionResult GetOnderzoek(int id)
+        {
+            var onderzoek = db.Onderzoeken.Find(id);
+            if (onderzoek == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok();
+        }
         // GET: api/Onderzoek/5
         [ResponseType(typeof(Onderzoek))]
-        public IHttpActionResult GetOnderzoek(string id)
+        public IHttpActionResult GetOnderzoekDoorBevragingId(string id)
         {
             //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
             var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
                              where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                              select o).ToList();
             var antwoorden = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
-            for (var i = 0; i < antwoorden.Count; i++)
-            {
-                onderzoek[i].Datum = antwoorden[i].Datum;
-            }
             if (onderzoek == null)
             {
                 return NotFound();
             }
+
+            for (var i = 0; i < antwoorden.Count; i++)
+            {
+                onderzoek[i].Datum = antwoorden[i].Datum;
+            }
+
 
             return Ok(onderzoek);
         }

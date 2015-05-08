@@ -46,6 +46,7 @@ namespace Finah_Backend.Controllers
         public VragenLijst GetVragenLijst(int id)
         {
             //Er is een vragenlijst per aandoening.
+            
             var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).First();
             return v;
         }
