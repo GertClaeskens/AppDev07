@@ -153,8 +153,8 @@ require_once "../PHP/Models/Onderzoek.php";
                                                     class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                 <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                             </button>
-                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
-                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Bevraging_Pat"]["Id"] ?>'
+                                                    class='btn btn-primary' value="<?php echo $item["Bevraging_Pat"]["Id"] ?>">
                                                 <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                             </button>
                                             <?php $verw = $item["Id"]; ?>

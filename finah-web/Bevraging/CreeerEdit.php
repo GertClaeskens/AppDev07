@@ -163,6 +163,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
                                             $onderzoek = FinahDAO::HaalOp("Onderzoek",$id);
+
                                             $informatie = $onderzoek["informatie"];
                                             $aandoening = $onderzoek["aandoening"];
                                             $pathologie = $onderzoek["Pathologie"];

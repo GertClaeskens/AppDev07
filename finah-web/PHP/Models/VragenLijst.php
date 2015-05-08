@@ -17,7 +17,7 @@
         public function __construct($id = null, $Vragen = null, $Aandoe = null, $Omschrijving=null)//$Titel = null)
         {
             $this->Id = $id;
-            //$this->Titel = $Titel;
+//            $this->Titel = $Titel;
             $this->Omschrijving = $Omschrijving;
             $this->Vragen = $Vragen;
             $this->Aandoe = $Aandoe;
