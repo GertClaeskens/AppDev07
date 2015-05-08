@@ -162,12 +162,10 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                         if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
-                                            $onderzoek = FinahDAO::HaalOp("Onderzoek",$id);
+                                            $onderzk = FinahDAO::HaalOp("Onderzoek",$id);
+                                            $onderzoek = $onderzk[0];
                                             $informatie = $onderzoek["Informatie"];
-
                                             $leeftijdcatLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
-                                            $relatie = $onderzoek["Relatie"]["Naam"];
-                                            print_r($relatie);
                                             echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
@@ -239,8 +237,23 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                         Finah::send_simple_message($to, $subject, $msg);
                                                     }
                                                 }
+                                            } else {
+                                                if (isset($_POST["update"])) {
+                                                    $id = $_POST["update"];
+
+                                                    $onderzoek->setId($id);
+                                                    if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek)) {
+
+                                                    }
+                                                    $onderzk = FinahDAO::HaalOp("Onderzoek", $id);
+                                                    $onderzoek = $onderzk[0];
+                                                    $informatie = $onderzoek["Informatie"];
+                                                    echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
+                                                    echo "De pathologie werd succesvol opgeslagen";
+                                                }
                                             }
                                         }
+
 
                         ?>
                         <form id="myForm" class="form-horizontal" role="form" method="POST"
@@ -317,6 +330,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-3 col-sm-10">
                                     <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
