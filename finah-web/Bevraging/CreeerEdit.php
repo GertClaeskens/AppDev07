@@ -345,7 +345,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $onderzoek = FinahDAO::HaalOp("Onderzoek",$id);
+        $onderzk = FinahDAO::HaalOp("Onderzoek",$id);
+        $onderzoek = $onderzk[0];
         $informatie = $onderzoek["Informatie"];
         $aandoeningLijst= $onderzoek["Aandoening"];
         $pathologieLijst = $onderzoek["Pathologie"];
