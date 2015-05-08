@@ -289,9 +289,7 @@
                                     echo $item[$i]["Omschrijving"];
                                 }
                             }
-                            //                        foreach($aandoeningLijst as $item) {
-                            //
-                            //                        }
+
                         ?>
                     </div>
                 </div>
