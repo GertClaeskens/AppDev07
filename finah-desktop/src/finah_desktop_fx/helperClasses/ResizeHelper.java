@@ -64,11 +64,15 @@ public class ResizeHelper {
 			double mouseEventX = mouseEvent.getSceneX(), mouseEventY = mouseEvent
 					.getSceneY(), sceneWidth = scene.getWidth(), sceneHeight = scene
 					.getHeight();
-
+			if (MouseEvent.DRAG_DETECTED.equals(mouseEventType)){
+				System.out.println("Yup yup");
+				byNode.startFullDrag();
+			}else
 			if (MouseEvent.MOUSE_MOVED.equals(mouseEventType) == true) {
 				// if (mouseEventX > sceneWidth - border) {
 				// cursorEvent = Cursor.SW_RESIZE;
 				// } else
+				System.out.println("Moved");
 				if (mouseEventX > sceneWidth - border
 						&& mouseEventY > sceneHeight - border) {
 					cursorEvent = Cursor.SE_RESIZE;
@@ -80,14 +84,7 @@ public class ResizeHelper {
 					cursorEvent = Cursor.DEFAULT;
 				}
 				scene.setCursor(cursorEvent);
-			} else if (MouseEvent.MOUSE_PRESSED.equals(mouseEventType) == true) {
-				System.out.println("pressed");
-				startX = stage.getWidth() - mouseEventX;
-				startY = stage.getHeight() - mouseEventY;
-				dragDelta.x = stage.getX() - mouseEventX;
-				dragDelta.y = stage.getY() - mouseEventY;
-				scene.setCursor(Cursor.MOVE);
-			} else if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType) == true) {
+			}  else if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType) == true) {
 				if (Cursor.DEFAULT.equals(cursorEvent) == false) {
 
 					if (Cursor.W_RESIZE.equals(cursorEvent) == false
@@ -107,7 +104,6 @@ public class ResizeHelper {
 							}
 						}
 					}
-
 					if (Cursor.N_RESIZE.equals(cursorEvent) == false
 							&& Cursor.S_RESIZE.equals(cursorEvent) == false) {
 						System.out.println("dragged 2");
@@ -124,62 +120,31 @@ public class ResizeHelper {
 						}
 					}
 				} else {
-					System.out.println(startX);
-					System.out.println(startY);
-					System.out.println(dragDelta.x);
-					System.out.println(dragDelta.y);
-					stage.setX(startX + dragDelta.x);
-					stage.setY(startY + dragDelta.y);
-//					stage.setX(mouseEvent.getScreenX() + dragDelta.x);
-//					stage.setY(mouseEvent.getScreenY() + dragDelta.y);
+//					System.out.println(startX);
+//					System.out.println(startY);
+//					System.out.println(dragDelta.x);
+//					System.out.println(dragDelta.y);
+//					System.out.println("Dragged da shit" + startX + "," + startY + " : " + mouseEvent.getSceneX() +","+ mouseEvent.getSceneY() );
+					stage.setX(mouseEventX - dragDelta.x);
+					stage.setY(mouseEventY - dragDelta.y);
+					// stage.setX(mouseEvent.getScreenX() + dragDelta.x);
+					// stage.setY(mouseEvent.getScreenY() + dragDelta.y);
+					//dragDelta.x = mouseEventX - stage.getX();
+					//dragDelta.y = mouseEventY - stage.getY();
 				}
 
-			}
+			}else if (MouseEvent.MOUSE_PRESSED.equals(mouseEventType) == true) {
+					System.out.println("pressed");
+					startX = stage.getWidth() - mouseEventX;
+					startY = stage.getHeight() - mouseEventY;
+					dragDelta.x = mouseEventX - stage.getX();
+					dragDelta.y = mouseEventY - stage.getY();
+					scene.setCursor(Cursor.MOVE);
+				}
 		}
 
 	}
 
-	public static void makeDraggable(final Stage stage, final Node byNode) {
-		final Delta dragDelta = new Delta();
-		byNode.setOnMousePressed(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				// record a delta distance for the drag and drop operation.
-				dragDelta.x = stage.getX() - mouseEvent.getScreenX();
-				dragDelta.y = stage.getY() - mouseEvent.getScreenY();
-				byNode.setCursor(Cursor.MOVE);
-			}
-		});
-		byNode.setOnMouseReleased(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				byNode.setCursor(Cursor.HAND);
-			}
-		});
-		byNode.setOnMouseDragged(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				stage.setX(mouseEvent.getScreenX() + dragDelta.x);
-				stage.setY(mouseEvent.getScreenY() + dragDelta.y);
-			}
-		});
-		byNode.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				if (!mouseEvent.isPrimaryButtonDown()) {
-					byNode.setCursor(Cursor.HAND);
-				}
-			}
-		});
-		byNode.setOnMouseExited(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				if (!mouseEvent.isPrimaryButtonDown()) {
-					byNode.setCursor(Cursor.DEFAULT);
-				}
-			}
-		});
-	}
 
 	/** records relative x and y co-ordinates. */
 	private static class Delta {

@@ -28,8 +28,11 @@ namespace Finah_Backend.Controllers
 
         public IHttpActionResult GetOnderzoek(int id)
         {
-            var onderzoek = db.Onderzoeken.Find(id);
-            if (onderzoek == null)
+            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
+                             where (o.Id == id)
+                             select o); 
+
+            if (onderzoek == null) 
             {
                 return this.NotFound();
             }

@@ -280,16 +280,7 @@
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
                         <?php
-                            $i = 0;
-                            if (count($aandoeningLijst) == 3) {
-                                echo $aandoeningLijst["Omschrijving"];
-                            } else {
-                                foreach ($aandoeningLijst as $item) {
-                                    $i++;
-                                    echo $item[$i]["Omschrijving"];
-                                }
-                            }
-
+                            echo $aandoeningLijst["Omschrijving"];
                         ?>
                     </div>
                 </div>
