@@ -1,6 +1,10 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Aandoening.php";
+    if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
+        header('Location: Overzicht.php');
+        exit;
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -115,17 +119,15 @@
                                     $naam = "";
                                     $aandoening = new Aandoening();
                                     if (isset($_POST)) {
-                                        if(isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                                        if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                             if (isset($_POST["bewerk"])) {
                                                 $id = $_POST["bewerk"];
-
                                                 $aandoening = FinahDAO::HaalOp("Aandoening", $id);
                                                 $naam = $aandoening["Omschrijving"];
                                                 echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                                                 echo "<h1 class='header' >" . " Nieuwe aandoening " . "</h1> ";
                                             }
-        //
                                             if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                                 $omschrijving = $_POST["omschrijving"];
                                                 $aandoening->setOmschrijving($omschrijving);
@@ -143,7 +145,6 @@
                                                 }
                                                 if (isset($_POST["update"])) {
                                                     $id = $_POST["update"];
-
                                                     $aandoening->setId($id);
                                                     if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
                                                         $aandoening = FinahDAO::HaalOp("Aandoening", $id);
@@ -153,40 +154,45 @@
                                                     }
                                                 }
                                             }
-                                    ?>
 
-
+                            ?>
                             <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                                   action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                                 <div class="form-group top-form">
-                                    <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="omschrijving">
+                                    <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
+                                           for="omschrijving">
                                         Omschrijving: </label>
+
                                     <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                        <textarea autofocus="true" rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"><?php
-                                                if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                    echo $naam;
-                                              } ?></textarea>
+                                        <textarea autofocus="true" rows="5" type="text" class="form-control"
+                                                  id="omschrijving" name="omschrijving"><?php
+                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                                echo $naam;
+                                            } ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
                                         Ken toe aan een pathologie:
                                     </label>
+
                                     <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                                         <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                             <?php
-                                                $patologieen = FinahDAO::HaalOp("Pathologie");
-                                                foreach ($patologieen as $item) {
-                                                    echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                                            $patologieen = FinahDAO::HaalOp("Pathologie");
+                                            foreach ($patologieen as $item) {
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                             }
                                             ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                        <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                    <div
+                                        class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                        <button type="button" onclick="location.href='Overzicht.php'"
+                                                class="btn btn-primary">
                                             Terug
                                         </button>
                                         <button class="btn btn-primary" type="submit"
@@ -196,10 +202,12 @@
                                                     echo "'nieuw'";
                                                 } elseif (isset($_POST["nieuw"])) {
                                                     echo "'nieuw'";
-                                                } elseif (isset($_POST["update"])){
+                                                } elseif (isset($_POST["update"])) {
                                                     echo "'update'";
                                                 }
-                                                if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                                if (!isset($_POST["creeer"])){
+                                                ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
                                         </button>
                                     </div>
                                 </div>
@@ -209,81 +217,74 @@
                 </div>
             </div>
         </div>
-        <?php
-            }elseif(isset($_POST["details"])){
-            $id = $_POST["details"];
-            $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-            $naam = $aandoening["Omschrijving"];
-            ?>
-
-            <div class="panel panel-primary" >
-                <div class="panel-heading ">
-                    <h1 class="panel-title"><span class="big-font"> Details: <?php echo $naam ?> </span>  </h1>
+    <?php
+    } elseif (isset($_POST["details"])) {
+        $id = $_POST["details"];
+        $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+        $naam = $aandoening["Omschrijving"];
+        ?>
+        <div class="panel panel-primary">
+            <div class="panel-heading ">
+                <h1 class="panel-title"><span
+                        class="big-font"> Details: <?php echo $naam ?> </span></h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>ID:</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <?php echo $id ?>
+                    </div>
                 </div>
-                <div class="panel-body">
-
-
-                    <div class="row" >
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>ID:</label>
-                        </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <?php echo $id ?>
-                        </div>
-
-
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Omschrijving:</label>
                     </div>
-                    <div class="row detail-row" >
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>Omschrijving:</label>
-                        </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 text-nowrap">
-                            <?php echo $naam ?>
-                        </div>
-
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 text-nowrap">
+                        <?php echo $naam ?>
                     </div>
-                    <div class="row detail-row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>Pathologie(ën):</label>
-                        </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <?php
-                            $patologieen = FinahDAO::HaalOp("Pathologie");
-                            foreach ($patologieen as $item) {
-                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                            }?>
-                        </div>
+                </div>
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Pathologie(ën):</label>
                     </div>
-
-                    <div class="row detail-row">
-                        <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                             <form class="form-horizontal form-buttons role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                 <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
-                                     Terug
-                                 </button>
-                                <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                        class='btn btn-primary' value="<?php echo $id ?>">
-                                        Bewerken
-                                </button>
-                                <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                        name='verwijderBtn' value="<?php echo $id ?>"
-                                        class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
-                                        Verwijderen
-                                </button>
-                            </form>
-                        </div>
-
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <?php
+                        $patologieen = FinahDAO::HaalOp("Pathologie");
+                        foreach ($patologieen as $item) {
+                            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                        } ?>
                     </div>
-
+                </div>
+                <div class="row detail-row">
+                    <div
+                        class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <button type="button" onclick="location.href='Overzicht.php'"
+                                class="btn btn-primary">
+                            Terug
+                        </button>
+                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                class='btn btn-primary' value="<?php echo $id ?>">
+                            Bewerken
+                        </button>
+                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                name='verwijderBtn' value="<?php echo $id ?>"
+                                class='delBtn btn btn-primary'
+                                onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
+                            Verwijderen
+                        </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-
-        <?php
-        }
+        </div>
+    <?php
         } else {
 
         }
+    }
         ?>
         <script>
             $().ready(function () {

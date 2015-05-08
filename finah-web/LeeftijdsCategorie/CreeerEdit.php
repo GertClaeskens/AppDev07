@@ -1,6 +1,10 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/LeeftijdsCategorie.php";
+if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
+    header('Location: Overzicht.php');
+    exit;
+}
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -14,12 +18,23 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
+        <script src="../js/finah.js"></script>
+
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
         <![endif]-->
     </head>
     <body>
+    <div id="dialogoverlay"></div>
+    <div id="dialogbox">
+        <div>
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+        </div>
+    </div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header pull-left">
 
@@ -107,46 +122,45 @@
 
                             $LeeftijdsCat = new LeeftijdsCategorie();
                             if (isset($_POST)) {
-                                if (isset($_POST["bewerk"])) {
-                                    $id = $_POST["bewerk"];
+                                if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                                    if (isset($_POST["bewerk"])) {
+                                        $id = $_POST["bewerk"];
 
-                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
-                                    $van = $LeeftijdsCat["Van"];
-                                    $tot = $LeeftijdsCat["Tot"];
-                                    echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                    echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
-                                }
-//
-                                if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                    $van = $_POST["van"];
-                                    $tot = $_POST["tot"];
-                                    $LeeftijdsCat->setVan($van);
-                                    $LeeftijdsCat->setTot($tot);
-
-                                    if (isset($_POST["nieuw"])) {
-                                        if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
-                                            //Todo eventueel een exception toevoegen hier
-                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
-                                        }
-                                    }
-                                    if (isset($_POST["update"])) {
-                                        $id = $_POST["update"];
-
-                                        $LeeftijdsCat->setId($id);
-                                        if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
-
-                                        }
                                         $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
                                         $van = $LeeftijdsCat["Van"];
                                         $tot = $LeeftijdsCat["Tot"];
                                         echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                        echo "De leeftijdscategorie werd succesvol opgeslagen";
-
+                                    } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                        echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
                                     }
-                                }
-                            }
+    //
+                                    if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                        $van = $_POST["van"];
+                                        $tot = $_POST["tot"];
+                                        $LeeftijdsCat->setVan($van);
+                                        $LeeftijdsCat->setTot($tot);
 
+                                        if (isset($_POST["nieuw"])) {
+                                            if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
+                                                //Todo eventueel een exception toevoegen hier
+                                                echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                            }
+                                        }
+                                        if (isset($_POST["update"])) {
+                                            $id = $_POST["update"];
+
+                                            $LeeftijdsCat->setId($id);
+                                            if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
+
+                                            }
+                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                            $van = $LeeftijdsCat["Van"];
+                                            $tot = $LeeftijdsCat["Tot"];
+                                            echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
+
+                                        }
+                                    }
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -196,7 +210,71 @@
             </div>
         </div>
     </div>
+    <?php
+    } elseif (isset($_POST["details"])) {
+        $id = $_POST["details"];
+        $leeftijdsCat= FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+        $van = $leeftijdsCat["Van"];
+        $tot = $leeftijdsCat["Tot"];
 
+        ?>
+        <div class="panel panel-primary">
+            <div class="panel-heading ">
+                <h1 class="panel-title"><span
+                        class="big-font"> Details: <?php echo "Leeftijdscategorie " . $id ?> </span></h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>ID:</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <?php echo $id ?>
+                    </div>
+                </div>
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Van:</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 text-nowrap">
+                        <?php echo $van ?>
+                    </div>
+                </div>
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Tot :</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <?php echo $tot ?>
+                    </div>
+                </div>
+                <div class="row detail-row">
+                    <div
+                        class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <button type="button" onclick="location.href='Overzicht.php'"
+                                class="btn btn-primary">
+                            Terug
+                        </button>
+                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                class='btn btn-primary' value="<?php echo $id ?>">
+                            Bewerken
+                        </button>
+                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                name='verwijderBtn' value="<?php echo $id ?>"
+                                class='delBtn btn btn-primary'
+                                onclick="Confirm.render('Verwijder Leeftijdscategorie?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
+                            Verwijderen
+                        </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+    }
+    ?>
                     <script>
                         $().ready(function () {
                             $("#aandoeningForm").validate({
