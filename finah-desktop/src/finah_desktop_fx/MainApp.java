@@ -6,6 +6,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import finah_desktop_fx.helperClasses.ResizeHelper;
 import finah_desktop_fx.view.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -48,11 +49,14 @@ public class MainApp extends Application {
             RootController controller = loader.getController();
             controller.setMainApp(this);
             scene = new Scene(rootLayout);
+            
             primaryStage.setMinWidth(750);
             primaryStage.setMinHeight(500);
             this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
             //scene.getStylesheets().add("finah_desktop_fx.css/finah.css");
             primaryStage.setScene(scene);
+            ResizeHelper.addResizeListener(primaryStage,rootLayout);
+            //ResizeHelper.makeDraggable(primaryStage, rootLayout);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
