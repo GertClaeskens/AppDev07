@@ -149,6 +149,7 @@
                                 if (isset($_POST["nieuw"])) {
                                     //                                        print_r($vragenlijst);
                                     //$id = $_POST["Id"];
+                                    $vragenlijst->setId(0);
                                     FinahDAO::SchrijfWeg("Vragenlijst", $vragenlijst);
                                     echo "De vragenlijst werd succesvol opgeslagen";
                                 }
