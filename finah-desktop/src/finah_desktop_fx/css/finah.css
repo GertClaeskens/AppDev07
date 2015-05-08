@@ -2,6 +2,14 @@
 	-fx-width: 100.0%;
 }
 
+.minimizebutton .button {
+	   -fx-background-image: url('@../../../resources/images/minimize.png');
+   -fx-background-repeat: stretch;   
+   -fx-background-position: center center;
+	-fx-min-width: 25px;
+	-fx-min-height: 25px;
+}
+
 .choice-box {
 	-fx-background-color: rgb(5.0, 5.0, 5.0), rgb(87.0, 89.0, 92.0),
 		linear-gradient(to bottom, rgb(74.0, 75.0, 78.0) 2.0%,
@@ -84,7 +92,15 @@
 .button-bar .label {
 	-fx-float: left;
 }
-.button-bar {
+.ui-buttons{
+	-fx-min-height: 25.0px;
+}
+.ui-buttons .button{
+	-fx-min-width: 25.0px;
+	-fx-min-height: 25.0px;
+	-fx-background-color: rgba(255, 255, 255, 0.5);
+}
+.segmented-button-bar {
 	-fx-float: left;
 	-fx-base: rgb(39.0, 40.0, 40.0);
 	-fx-font-size: 12.0pt;

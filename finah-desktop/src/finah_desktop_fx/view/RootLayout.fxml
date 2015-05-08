@@ -13,80 +13,112 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="1.7976931348623157E308" minHeight="650.0" minWidth="500" prefHeight="650.0" prefWidth="1178.0" stylesheets="@../css/finah.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
+<BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="1.7976931348623157E308" minHeight="650.0" minWidth="500" prefHeight="650.0" prefWidth="1239.0" stylesheets="@../css/finah.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
 	<top>
-		<ButtonBar fx:id="bbTopMenu" buttonMinWidth="75.0" maxWidth="1.7976931348623157E308" minWidth="500" nodeOrientation="LEFT_TO_RIGHT" prefHeight="86.0" prefWidth="1181.0" styleClass="segmented-button-bar">
-			<!-- <HBox fx:id="test" maxWidth="1.7976931348623157E308" minWidth="-Infinity" 
-				nodeOrientation="LEFT_TO_RIGHT" prefHeight="86.0" prefWidth="1181.0" styleClass="segmented-button-bar"> -->
-			<buttons>
-				<HBox alignment="CENTER_LEFT" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="70.0" prefWidth="1106.0">
-					<Label alignment="CENTER_LEFT" minWidth="125.0" nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" style="float: right;" text="Finah">
-						<font>
-							<Font size="48.0" />
-						</font>
-					</Label>
-					<Separator maxHeight="50.0" minHeight="50.0" orientation="VERTICAL" prefHeight="50.0">
-						<HBox.margin>
-							<Insets left="10.0" right="20.0" />
-						</HBox.margin>
-						<effect>
-							<Lighting bumpInput="$null">
-								<light>
-									<Light.Distant />
-								</light>
-							</Lighting>
-						</effect>
-					</Separator>
-					<!-- <Line endX="25.0" rotate="90.0" startX="-25.0" /> -->
-					<!-- </HBox><HBox alignment="CENTER"> -->
-					<Button fx:id="btnAccount" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Account" onAction="#toonAccount"/>
-					<Button fx:id="btnNieuweBevraging" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#nieuweBevraging" text="Bevraging" />
-					<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" minWidth="125.0" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
-						<items>
-							<MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#toon" text="Vragen" />
-							<MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" onAction="#toon" text="Vragenlijsten" />
-							<MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#toon" text="Aandoeningen" />
-							<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toon" text="Pathologieen" />
-							<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toon" text="LeeftijdsCategorieen" />
-							<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toon" text="Relaties" />
-							<MenuItem fx:id="MnuBeheerThemas" mnemonicParsing="false" onAction="#toon" text="Thema's" />
-							<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
-						</items>
-					</MenuButton>
-					<Button fx:id="btnResultaten" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
-				</HBox>
-				<HBox alignment="CENTER_RIGHT" prefHeight="70.0">
-					<MenuButton fx:id="mnuAccount" alignment="CENTER" contentDisplay="LEFT" graphicTextGap="10.0" layoutX="92.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" text="Gert Claeskens">
-						<graphic>
-							<ImageView fx:id="ivAvatar" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
-								<image>
-									<Image url="@../../../resources/images/blank-avatar.png" />
-								</image>
-							</ImageView>
-						</graphic>
-						<items>
-							<MenuItem mnemonicParsing="false" text="Mijn Account" />
-							<MenuItem mnemonicParsing="false" onAction="#uitLoggen" text="Uitloggen" />
-						</items>
-						<styleClass>
-							<String fx:value="toolbar-button" />
-							<String fx:value="img-circle" />
-						</styleClass>
-					</MenuButton>
-					<padding>
-						<Insets right="25.0" />
-					</padding>
-				</HBox>
-			</buttons>
-			<!-- <BorderPane.margin> -->
-			<!-- <Insets right="100.0" /> -->
-			<!-- </BorderPane.margin> -->
-			<!-- <padding> -->
-			<!-- <Insets top="15.0" /> -->
-			<!-- <Insets right="15.0" /> -->
-			<!-- </padding> -->
-		</ButtonBar>
-		<!-- </HBox> -->
+	<HBox maxWidth="2500.0" styleClass="segmented-button-bar" BorderPane.alignment="TOP_LEFT">
+		<VBox>
+			<HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefWidth="2500.0" styleClass="ui-buttons">
+				<Button fx:id="btnMinimize" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" depthTest="ENABLE" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#verkleinen" prefHeight="25.0" prefWidth="25.0" styleClass="minimizebutton">
+					<graphic>
+						<ImageView fx:id="ivMinimize" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../resources/images/minimize.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btnMaximize" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#vergroten" prefHeight="25.0" prefWidth="25.0" styleClass="minimizebutton">
+					<graphic>
+						<ImageView fx:id="ivMaximize" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../resources/images/maximize.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="btnClose" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#afSluiten" prefHeight="25.0" prefWidth="25.0" styleClass="minimizebutton">
+					<graphic>
+						<ImageView fx:id="ivClose" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../resources/images/close.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+			</HBox>
+
+			<ButtonBar fx:id="bbTopMenu" buttonMinWidth="75.0" maxHeight="70.0" maxWidth="1.7976931348623157E308" minWidth="500" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="2500">
+<!-- 			 styleClass="segmented-button-bar"> -->
+				<!-- <HBox fx:id="test" maxWidth="1.7976931348623157E308" minWidth="-Infinity" 
+					nodeOrientation="LEFT_TO_RIGHT" prefHeight="86.0" prefWidth="1181.0" styleClass="segmented-button-bar"> -->
+				<buttons>
+					<HBox alignment="CENTER_LEFT" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="70.0" prefWidth="1106.0">
+						<Label minWidth="125.0" nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" style="float: right;" text="Finah">
+							<font>
+								<Font size="48.0" />
+							</font>
+						</Label>
+						<Separator maxHeight="50.0" minHeight="50.0" orientation="VERTICAL" prefHeight="50.0">
+							<HBox.margin>
+								<Insets left="10.0" right="20.0" />
+							</HBox.margin>
+							<effect>
+								<Lighting bumpInput="$null">
+									<light>
+										<Light.Distant />
+									</light>
+								</Lighting>
+							</effect>
+						</Separator>
+						<!-- <Line endX="25.0" rotate="90.0" startX="-25.0" /> -->
+						<!-- </HBox><HBox alignment="CENTER"> -->
+						<Button fx:id="btnAccount" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#toonAccount" text="Account" />
+						<Button fx:id="btnNieuweBevraging" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#nieuweBevraging" text="Bevraging" />
+						<MenuButton fx:id="MnuBeheer" maxHeight="39.0" minHeight="-Infinity" minWidth="125.0" mnemonicParsing="false" prefHeight="39.0" text="Beheer">
+							<items>
+								<MenuItem fx:id="MnuBeheerVragen" mnemonicParsing="false" onAction="#toon" text="Vragen" />
+								<MenuItem fx:id="MnuBeheerVragenLijsten" mnemonicParsing="false" onAction="#toon" text="Vragenlijsten" />
+								<MenuItem fx:id="MnuBeheerAandoeningen" mnemonicParsing="false" onAction="#toon" text="Aandoeningen" />
+								<MenuItem fx:id="MnuBeheerPathologieen" mnemonicParsing="false" onAction="#toon" text="Pathologieen" />
+								<MenuItem fx:id="MnuBeheerLftCat" mnemonicParsing="true" onAction="#toon" text="LeeftijdsCategorieen" />
+								<MenuItem fx:id="MnuBeheerRelaties" mnemonicParsing="false" onAction="#toon" text="Relaties" />
+								<MenuItem fx:id="MnuBeheerThemas" mnemonicParsing="false" onAction="#toon" text="Thema's" />
+								<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
+							</items>
+						</MenuButton>
+						<Button fx:id="btnResultaten" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
+					</HBox>
+					<HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="70.0">
+						<MenuButton fx:id="mnuAccount" alignment="CENTER" contentDisplay="LEFT" graphicTextGap="10.0" layoutX="92.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" text="Gert Claeskens">
+							<graphic>
+								<ImageView fx:id="ivAvatar" fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" preserveRatio="true">
+									<image>
+										<Image url="@../../../resources/images/blank-avatar.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<items>
+								<MenuItem mnemonicParsing="false" text="Mijn Account" />
+								<MenuItem mnemonicParsing="false" text="Uitloggen" />
+							</items>
+							<styleClass>
+								<String fx:value="toolbar-button" />
+								<String fx:value="img-circle" />
+							</styleClass>
+						</MenuButton>
+						<padding>
+							<Insets right="25.0" />
+						</padding>
+					</HBox>
+
+				</buttons>
+               <VBox.margin>
+                  <Insets top="-5.0" />
+               </VBox.margin>
+
+			</ButtonBar>
+		</VBox>
+		</HBox>
 	</top>
 	<center>
 		<BorderPane fx:id="contentArea" />

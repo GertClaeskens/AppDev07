@@ -4,28 +4,34 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.Utils;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import finah_desktop_fx.MainApp;
 
 public class RootController implements Initializable {
 
+	private Rectangle2D backupWindowBounds; 
+	
 	private MainApp mainApp;
 	@FXML
 	private BorderPane rootLayout;
@@ -107,7 +113,36 @@ public class RootController implements Initializable {
 	}
 
 	@FXML
-	public void uitLoggen(ActionEvent actionEvent) {
+	public void verkleinen(ActionEvent actionEvent) {
+		mainApp.getPrimaryStage().setIconified(true);
+	}
+
+	@FXML
+	public void vergroten(ActionEvent actionEvent) {
+		Stage stage = mainApp.getPrimaryStage(); 
+        final double stageY = Utils.isMac() ? stage.getY() - 22 : stage.getY(); // TODO Workaround for RT-13980
+        final Screen screen = Screen.getScreensForRectangle(stage.getX(), stageY, 1, 1).get(0);      // line 42
+        Rectangle2D bounds = screen.getVisualBounds();
+        if (bounds.getMinX() == stage.getX() && bounds.getMinY() == stageY &&
+                bounds.getWidth() == stage.getWidth() && bounds.getHeight() == stage.getHeight()) {
+            if (backupWindowBounds != null) {
+                stage.setX(backupWindowBounds.getMinX());
+                stage.setY(backupWindowBounds.getMinY());
+                stage.setWidth(backupWindowBounds.getWidth());
+                stage.setHeight(backupWindowBounds.getHeight());
+            }
+        } else {
+            backupWindowBounds = new Rectangle2D(stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());
+            final double newStageY = Utils.isMac() ? screen.getVisualBounds().getMinY() + 22 : screen.getVisualBounds().getMinY(); // TODO Workaround for RT-13980
+            stage.setX(screen.getVisualBounds().getMinX());
+            stage.setY(newStageY);
+            stage.setWidth(screen.getVisualBounds().getWidth());
+            stage.setHeight(screen.getVisualBounds().getHeight());
+        }
+	}
+
+	@FXML
+	public void afSluiten(ActionEvent actionEvent) {
 		Platform.exit();
 	}
 

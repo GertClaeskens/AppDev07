@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.NieuweBevragingController">
    <children>
-      <GridPane layoutX="326.0" layoutY="48.0" prefHeight="311.0" prefWidth="474.0" styleClass="segmented-button-bar">
+      <GridPane layoutX="326.0" layoutY="48.0" prefHeight="311.0" prefWidth="474.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="214.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="260.0" />
@@ -29,13 +29,13 @@
             <Label text="Leeftijdscategorie patiënt" GridPane.rowIndex="4" />
             <Label text="Leeftijdscategorie mantelzorger" GridPane.rowIndex="5" />
             <TextField fx:id="txtOpmerking" prefHeight="31.0" prefWidth="318.0" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="cboAandoening" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="cboVragenLijst" prefHeight="31.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="cboPathologie" prefHeight="31.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="cboLftdMan" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ChoiceBox fx:id="cboRelatie" prefHeight="31.0" prefWidth="273.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="cboAandoening" prefHeight="31.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="cboVragenLijst" prefHeight="31.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="cboPathologie" prefHeight="31.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="cboLftdMan" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="cboRelatie" prefHeight="31.0" prefWidth="273.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
             <Label text="Relatie" GridPane.rowIndex="6" />
-            <ChoiceBox fx:id="cboLftdPat" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="cboLftdPat" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button fx:id="btnVersturen" layoutX="487.0" layoutY="399.0" mnemonicParsing="false" text="Bevraging versturen" />
