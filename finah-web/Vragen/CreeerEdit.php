@@ -138,6 +138,7 @@
                                             $vraag->setVraagstelling($vraagStelling);
                                             $vraag->setThema($thema);
                                             if (isset($_POST["nieuw"])) {
+                                                $vraag->setId(0);
                                                 if (FinahDAO::SchrijfWeg("Vragen", $vraag)) {
                                                     //Todo eventueel een exception toevoegen hier
                                                     echo "De vraag werd succesvol opgeslagen";
@@ -159,7 +160,7 @@
                         ?>
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-<!--TODO Foto aan een vraag kunnen toekennen evt. ook meteen aan een vragenlijst toevoegen-->
+<                           !--TODO Foto aan een vraag kunnen toekennen evt. ook meteen aan een vragenlijst toevoegen-->
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
