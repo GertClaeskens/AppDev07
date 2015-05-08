@@ -122,7 +122,6 @@
                             $thema="";
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
-
                                     if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
                                             $vraag = FinahDAO::HaalOp("Vraag",$id);
@@ -175,17 +174,22 @@
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Thema"> Thema: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="Thema" class="form-control" id="Thema" >
-                                    <?php
-                                    if(isset($_POST["bewerk"]) || isset($_POST["update"])){
-                                        echo $thema;
-                                    }
-                                    ?>
+                                    <select class="form-control" id="Thema" name="thema">
+                                        <?php
+                                        $themaLijst = FinahDAO::HaalOp("Thema");
+                                        echo "  <option >" . " Maak een keuze". " </option>";
+                                        foreach ($themaLijst as $item) {
+                                            echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
+                                        }
+                                        ?>
+                                        </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                <div
+                                    class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                    <button type="button" onclick="location.href='Overzicht.php'"
+                                            class="btn btn-primary">
                                         Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
@@ -195,10 +199,12 @@
                                                 echo "'nieuw'";
                                             } elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])){
+                                            } elseif (isset($_POST["update"])) {
                                                 echo "'update'";
                                             }
-                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                            if (!isset($_POST["creeer"])){
+                                            ?> value="<?php echo $id;
+                                            } ?>"> Opslaan
                                     </button>
                                 </div>
                             </div>

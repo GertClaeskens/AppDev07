@@ -147,11 +147,12 @@
                                                     $id = $_POST["update"];
                                                     $aandoening->setId($id);
                                                     if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
-                                                        $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                                        $naam = $aandoening["Omschrijving"];
-                                                        echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                                        echo "De aandoening werd succesvol opgeslagen";
+
                                                     }
+                                                    $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+                                                    $naam = $aandoening["Omschrijving"];
+                                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                                    echo "De aandoening werd succesvol opgeslagen";
                                                 }
                                             }
 
