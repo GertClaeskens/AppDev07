@@ -14,7 +14,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
-    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "post,get,delete,put")]
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class VragenLijstController : ApiController
     {
         //TODO code opschonen
@@ -137,8 +137,9 @@ namespace Finah_Backend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = vragenLijst.Id }, vragenLijst);
         }
 
-        // DELETE: api/VragenLijsts/5
-        //[ResponseType(typeof(VragenLijst))]
+        [HttpDelete]
+        [Route("Vragenlijst/{id}")]
+        [ResponseType(typeof(VragenLijst))]
         public IHttpActionResult Delete(int id)
         {
             var vragenLijst = db.VragenLijsten.Find(id);
