@@ -5,6 +5,7 @@ namespace Finah_Backend.Controllers
 {
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -75,9 +76,10 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/VragenLijsts/5
+        [HttpPut]
         [Route("VragenLijst/{id}")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutVragenLijst([FromBody] int id, [FromBody] VragenLijst vragenLijst)
+        public IHttpActionResult PutVragenLijst(int id, [FromBody] VragenLijst vragenLijst)
         {
             if (!ModelState.IsValid)
             {
@@ -90,10 +92,11 @@ namespace Finah_Backend.Controllers
             }
 
             db.Entry(vragenLijst).State = EntityState.Modified;
-
+            //db.VragenLijsten.AddOrUpdate(vragenLijst);
+            db.SaveChanges();
             try
             {
-                await db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {

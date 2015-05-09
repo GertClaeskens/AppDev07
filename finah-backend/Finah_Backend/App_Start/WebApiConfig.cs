@@ -13,7 +13,7 @@ namespace Finah_Backend
         public static void Register(HttpConfiguration config)
         {
             //Om problemen met XMLHttpRequest in Javascript te voorkomen
-            var cors = new EnableCorsAttribute("http://localhost:63342", "*", "GET,POST,DELETE,PUT");
+            var cors = new EnableCorsAttribute("*", "*", "GET,POST,DELETE,PUT");
             config.EnableCors(cors);
 
             // Web API configuration and servicesz
