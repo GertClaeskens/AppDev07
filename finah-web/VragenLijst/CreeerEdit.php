@@ -117,54 +117,67 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
+
+                            if (isset($_POST)) {
                             $vragenlijst = new VragenLijst();
                             $id = null;
-                            if (isset($_POST)) {
-
                             if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
 
-                            if (isset($_POST["bewerk"])) {
-                                $id = $_POST["bewerk"];
+                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                $id = isset($_POST["bewerk"]) ? $_POST["bewerk"] : $_POST["update"];
                                 $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
-                                //$vragenlijstTitel = $vragenlijst["Titel"];
+                                $vragenlijstTitel = $vragenlijst["Omschrijving"];
                                 echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                                 echo "<h1 class='header' >" . " Nieuwe vragenlijst " . "</h1> ";
                             }
-                            //
-                            if (isset($_POST["nieuw"]) || isset($_POST["update"])|| isset($_POST["bewerk"])) {
+                            //Update en nieuw komen na het invullen van de gegevens
+                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {//|| isset($_POST["bewerk"])) {
                                 $vragenlijstTitel = $_POST["Titel"];
-                                //$vragenlijst->setTitel($vragenlijstTitel);
-                                $vragenlijst->setOmschrijving($vragenlijstTitel);
-                                if (isset($_POST["Aandoe"])) {
-                                    $aandoening = $_POST["Aandoe"];
-                                    $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
 
-                                }
-                                if (isset($_POST["Vragen"])) {
-
-                                    $vragenArray = $_POST["Vragen"];
-                                    for ($a = 0; $a < count($vragenArray); $a++) {
-                                        $vragenlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
-                                    };
-                                }
+                                //Nieuw item creeeren : Id op 0 zetten anders fouten op backend met modelstate
                                 if (isset($_POST["nieuw"])) {
-                                    //                                        print_r($vragenlijst);
-                                    //$id = $_POST["Id"];
                                     $vragenlijst->setId(0);
+                                    $vragenlijst->setOmschrijving($vragenlijstTitel);
+                                    if (isset($_POST["Aandoe"])) {
+                                        $aandoening = $_POST["Aandoe"];
+                                        $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
 
+                                    }
+                                    if (isset($_POST["Vragen"])) {
+
+                                        $vragenArray = $_POST["Vragen"];
+                                        for ($a = 0; $a < count($vragenArray); $a++) {
+                                            $vragenlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
+                                        };
+                                    }
+                                    //Schrijf de nieuwe vragenlijst weg
                                     FinahDAO::SchrijfWeg("Vragenlijst", $vragenlijst);
                                     echo "De vragenlijst werd succesvol opgeslagen";
                                 }
                                 if (isset($_POST["update"])) {
-                                    $id = $_POST["update"];
-                                    $vragenlijst->setId($id);
-                                    if (FinahDAO::PasAan("VragenLijst", $id, $vragenlijst)) {
-                                        $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
-                                        $vragenlijstTitel = $vragenlijst["Omschrijving"];
-                                        echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
-                                        echo "De vragenlijst werd succesvol opgeslagen";
+                                    $vrlijst = new VragenLijst();
+                                    //$id = $_POST["update"];
+                                    $vrlijst->setId($id);
+                                    $vrlijst->setOmschrijving($vragenlijstTitel);
+                                    if (isset($_POST["Aandoe"])) {
+                                        $aandoening = $_POST["Aandoe"];
+                                        $vrlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
+
                                     }
+                                    if (isset($_POST["Vragen"])) {
+                                        $vragenArray = $_POST["Vragen"];
+                                        for ($a = 0; $a < count($vragenArray); $a++) {
+                                            $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
+                                        };
+                                    }
+                                    FinahDAO::PasAan("VragenLijst", $id, $vrlijst);
+                                    //if (FinahDAO::PasAan("VragenLijst", $id, $vrlijst)) {
+                                    /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                                    $vragenlijstTitel = $vragenlijst["Omschrijving"];
+                                    echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";*/
+                                    echo "De vragenlijst werd succesvol opgeslagen";
+                                    //}
                                 }
                             }
                         ?>

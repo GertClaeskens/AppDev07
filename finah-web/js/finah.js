@@ -82,11 +82,11 @@ function CustomConfirm() {
         document.getElementById('dialogoverlay').style.display = "none";
     };
     this.yes = function (op, id, type, r) {
-        //if (op == "delete_lft") {
+        if (op == "delete_lft") {
             if (deletePost(id, type)) {
                 deleteRow(r);
             }
-        //}
+        }
         document.getElementById('dialogbox').style.display = "none";
         document.getElementById('dialogoverlay').style.display = "none";
     }
