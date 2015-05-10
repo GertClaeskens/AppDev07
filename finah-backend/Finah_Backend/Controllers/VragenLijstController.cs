@@ -90,10 +90,21 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest();
             }
+            //vragenLijst.Aandoe = db.Aandoeningen.Find(vragenLijst.Aandoe.Id);
+            var vrgLijst = new VragenLijst
+            {
+                Id = vragenLijst.Id,
+                Omschrijving = vragenLijst.Omschrijving,
+                Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id)
+            };
 
-            db.Entry(vragenLijst).State = EntityState.Modified;
+            foreach (var v in vragenLijst.Vragen)
+            {
+                vrgLijst.Vragen.Add(db.Vragen.Find(v.Id));
+            }
+            db.Entry(vrgLijst).State = EntityState.Modified;
             //db.VragenLijsten.AddOrUpdate(vragenLijst);
-            db.SaveChanges();
+            //db.SaveChanges();
             try
             {
                 db.SaveChanges();
