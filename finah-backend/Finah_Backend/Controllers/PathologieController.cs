@@ -69,7 +69,12 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
-            var p = new Pathologie { Id = pathologie.Id, Omschrijving = pathologie.Omschrijving };
+            var p = new Pathologie
+                        {
+                            Id = pathologie.Id,
+                            Omschrijving = pathologie.Omschrijving,
+                            Aandoeningen = new List<Aandoening>()
+                        };
             if (pathologie.Aandoeningen != null && pathologie.Aandoeningen.Count != 0)
             {
                 foreach (var a in pathologie.Aandoeningen)
