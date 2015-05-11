@@ -30,9 +30,9 @@ namespace Finah_Backend.Controllers
         {
             var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
                              where (o.Id == id)
-                             select o); 
+                             select o);
 
-            if (onderzoek == null) 
+            if (onderzoek == null)
             {
                 return this.NotFound();
             }
@@ -120,8 +120,9 @@ namespace Finah_Backend.Controllers
             return vragen;
         }
         // PUT: api/Onderzoek/5
+        [HttpPut]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutOnderzoek(int id, Onderzoek onderzoek)
+        public IHttpActionResult Put(int id, Onderzoek onderzoek)
         {
             if (!ModelState.IsValid)
             {
@@ -155,8 +156,9 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Onderzoek
+        [HttpPost]
         [ResponseType(typeof(Onderzoek))]
-        public void PostOnderzoek([FromBody] Onderzoek onderzoek)
+        public void Post([FromBody] Onderzoek onderzoek)
         {
             //if (!ModelState.IsValid)
             //{
@@ -175,8 +177,9 @@ namespace Finah_Backend.Controllers
         }
 
         // DELETE: api/Onderzoek/5
+        [HttpDelete]
         [ResponseType(typeof(Onderzoek))]
-        public IHttpActionResult DeleteOnderzoek(int id)
+        public IHttpActionResult Delete(int id)
         {
             var onderzoek = db.Onderzoeken.Find(id);
             if (onderzoek == null)

@@ -10,12 +10,14 @@ using Finah_Backend.Models;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Http.Cors;
 
+    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
 
     public class VragenController : ApiController
     {
         //TODO code opschonen
-        private List<Vraag> vragen = new List<Vraag>();
+        //private List<Vraag> vragen = new List<Vraag>();
 
         private readonly FinahDBContext db;
 
@@ -29,7 +31,7 @@ namespace Finah_Backend.Controllers
         public VragenController(List<Vraag> vragen)
         {
             db = new FinahDBContext();
-            this.vragen = vragen;
+            //this.vragen = vragen;
         }
 
         [ResponseType(typeof(Vraag))]
@@ -54,6 +56,7 @@ namespace Finah_Backend.Controllers
 
         // PUT: api/Vragen/5
         [HttpPut]
+        [Route("Vragen/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, [FromBody] Vraag vraag)
         {
@@ -102,32 +105,58 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Courses
-        [HttpDelete]
+        [HttpPost]
         [ResponseType(typeof(Vraag))]
-        public IHttpActionResult PostVraag([FromBody] Vraag vraag)
+        public IHttpActionResult Post([FromBody] Vraag vraag)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var vr = new Vraag
+                         {
+                             VraagStelling = vraag.VraagStelling,
+                             Afbeelding = vraag.Afbeelding,
+                             Geluid = vraag.Geluid,
+                             Thema = this.db.Themas.Find(vraag.Thema.Id)
+                         };
 
-            db.Vragen.Add(vraag);
+            //bovenstaande moeten naar db refereren
+            if (vraag.VragenLijst != null)
+            {
+                foreach (var vl in vraag.VragenLijst)
+                {
+                    vr.VragenLijst.Add(db.VragenLijsten.Find(vl.Id));
+
+                }
+            }
+
+
+            db.Vragen.Add(vr);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = vraag.Id }, vraag);
+            return CreatedAtRoute("DefaultApi", new { id = vr.Id }, vr);
         }
 
         // DELETE: api/Courses/5
+        [Route("Vragen/{id}")]
         [ResponseType(typeof(Vraag))]
         [HttpDelete]
-        public IHttpActionResult DeleteCourse(int id)
+        public IHttpActionResult Delete(int id)
         {
             var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
                 return NotFound();
             }
-
+            if (vraag.VragenLijst != null)
+            {
+                foreach (var vl in vraag.VragenLijst)
+                {
+                    vl.Vragen.Remove(vraag);
+                }
+                vraag.VragenLijst = null;
+            }
             db.Vragen.Remove(vraag);
             db.SaveChanges();
 
