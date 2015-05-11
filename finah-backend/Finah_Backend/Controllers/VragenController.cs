@@ -65,8 +65,21 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest();
             }
+            var vr = new Vraag
+                         {
+                             Id = vraag.Id,
+                             VraagStelling = vraag.VraagStelling,
+                             Thema = this.db.Themas.Find(vraag.Thema.Id),
+                             Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
+                             Geluid = this.db.Geluidsfragmenten.Find(vraag.Geluid.Id)
+                         };
+            foreach (var vl in vraag.VragenLijst)
+            {
+                vr.VragenLijst.Add(db.VragenLijsten.Find(vl.Id));
+            }
 
-            db.Entry(vraag).State = EntityState.Modified;
+
+            //db.Entry(vraag).State = EntityState.Modified;
 
             try
             {
@@ -88,6 +101,7 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Courses
+        [HttpDelete]
         [ResponseType(typeof(Vraag))]
         public IHttpActionResult PostVraag([FromBody] Vraag vraag)
         {

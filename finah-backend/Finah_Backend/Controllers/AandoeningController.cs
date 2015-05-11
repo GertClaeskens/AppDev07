@@ -203,6 +203,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAandoening(int id, Aandoening aandoening)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -213,7 +214,15 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
-            db.Entry(aandoening).State = EntityState.Modified;
+
+            Aandoening a = new Aandoening();
+            a.Id = aandoening.Id;
+            a.Omschrijving = aandoening.Omschrijving;
+            foreach (Pathologie p in aandoening.Patologieen)
+            {
+                a.Patologieen.Add(db.Pathologieen.Find(p.Id));
+            }
+            //db.Entry(aandoening).State = EntityState.Modified;
 
             try
             {
@@ -270,6 +279,7 @@ namespace Finah_Backend.Controllers
         }
 
         // DELETE: api/Aandoenings/5
+        [HttpDelete]
         [ResponseType(typeof(Aandoening))]
         public IHttpActionResult Delete(int id)
         {

@@ -109,6 +109,7 @@ namespace Finah_Backend.Controllers
         }
 
         // DELETE: api/Pathologies/5
+        [HttpDelete]
         [Route("Pathologie/{id}")]
         [ResponseType(typeof(Pathologie))]
         public IHttpActionResult Delete(int id)
