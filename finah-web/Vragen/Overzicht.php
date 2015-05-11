@@ -12,7 +12,7 @@ require "../PHP/Models/Vraag.php";
     <script src="../js/finah.js"></script>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -155,7 +155,7 @@ require "../PHP/Models/Vraag.php";
                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                         class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Verwijder vraag?','delete_lft',<?php echo $verw ?>,'Vraag',this)">
+                                        onclick="Confirm.render('Verwijder vraag?','delete_lft',<?php echo $verw ?>,'Vragen',this)">
                                     <!--  TODO item id doorgeven aan modal ?? -->
                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                 </button>

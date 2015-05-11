@@ -15,9 +15,9 @@
         <title>FINAH - Vragen</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
 
@@ -124,7 +124,7 @@
                                 if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                     if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
-                                            $vraag = FinahDAO::HaalOp("Vraag",$id);
+                                            $vraag = FinahDAO::HaalOp("Vragen",$id);
                                             $vraagStelling = $vraag["VraagStelling"];
                                             $thema = $vraag["Thema"];
                                             echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
@@ -134,7 +134,8 @@
         //
                                         if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                             $vraagStelling = $_POST["VraagStelling"];
-                                            $thema = $_POST["thema"];
+                                            $thma = $_POST["thema"];
+                                            $thema = FinahDAO::HaalOp("Thema", $thma);
                                             $vraag->setVraagstelling($vraagStelling);
                                             $vraag->setThema($thema);
                                             if (isset($_POST["nieuw"])) {
@@ -169,6 +170,7 @@
                                                 echo $vraagStelling;
                                             }
                                         ?>
+                                    </input>
                                 </div>
                             </div>
                             <div class="form-group top-form">
