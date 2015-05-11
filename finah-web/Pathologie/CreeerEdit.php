@@ -134,8 +134,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                         $omschrijving = $_POST["omschrijving"];
                                         $pathologie->setOmschrijving($omschrijving);
-                                        if (isset($_POST["aandoening"])) {
-                                            $aandoeningenlijst = $_POST["aandoening"];
+                                        if (isset($_POST["aandoeningen"])) {
+                                            $aandoeningenlijst = $_POST["aandoeningen"];
                                             for ($a = 0; $a < count($aandoeningenlijst); $a++) {
                                                 $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
                                             };
