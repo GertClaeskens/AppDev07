@@ -87,7 +87,9 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 	 * @param y
 	 *            the y position of the top left corner of the dialog.
 	 */
-	private void showAddVraagDialog(final TableView<Vraag> table, double y) {
+	
+	//TODO nog zorgen dat onderstaande code voor meerdere models kan gebruikt worden
+	private void showAddVraagDialog(final TableView<T> table, double y) {
 		// initialize the dialog.
 		final Stage dialog = new Stage();
 		dialog.setTitle("New Person");
@@ -124,8 +126,7 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 			public void handle(ActionEvent actionEvent) {
 				int nextIndex = table.getSelectionModel().getSelectedIndex() + 1;
 				table.getItems().add(nextIndex,
-						new Vraag(txtVraagStelling.getText()));// ,
-																// lastNameField.getText()));
+						(T) new Vraag(txtVraagStelling.getText()));
 				table.getSelectionModel().select(nextIndex);
 				dialog.close();
 			}

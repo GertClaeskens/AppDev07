@@ -8,15 +8,20 @@ import finah_desktop_fx.dao.LeeftijdsCategorieDAO;
 import finah_desktop_fx.dao.RelatieDAO;
 import finah_desktop_fx.model.LeeftijdsCategorie;
 import finah_desktop_fx.model.Relatie;
+import finah_desktop_fx.model.Thema;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class RelatieOverzichtController implements Initializable{
 	@FXML
@@ -29,6 +34,8 @@ public class RelatieOverzichtController implements Initializable{
 	private TableColumn<Relatie,Integer> colId;
 	@FXML
 	private TableColumn<Relatie,String> colNaam;
+	@FXML
+	private TableColumn<Relatie,Boolean> colActie;
 	private MainApp mainApp;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -38,7 +45,26 @@ public class RelatieOverzichtController implements Initializable{
         tblRelatie.setItems(tblList);
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colNaam.setCellValueFactory(new PropertyValueFactory<>("Naam"));
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
+		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Relatie, Boolean>, ObservableValue<Boolean>>() {
+					@Override
+					public ObservableValue<Boolean> call(
+							TableColumn.CellDataFeatures<Relatie, Boolean> features) {
+						return new SimpleBooleanProperty(
+								features.getValue() != null);
+					}
+				});
 
+		// create a cell value factory with an add button for each row in the
+		// table.
+		colActie.setCellFactory(new Callback<TableColumn<Relatie, Boolean>, TableCell<Relatie, Boolean>>() {
+					@Override
+					public TableCell<Relatie, Boolean> call(
+							TableColumn<Relatie, Boolean> relBooleanTableColumn) {
+						return new AddButtonsCell(tblRelatie,"Edit","Delete","Details");
+					}
+				});
 	}
     
 	public void setMainApp(MainApp mainApp) {

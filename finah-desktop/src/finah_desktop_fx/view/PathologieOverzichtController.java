@@ -9,17 +9,22 @@ import finah_desktop_fx.dao.AandoeningDAO;
 import finah_desktop_fx.dao.PathologieDAO;
 import finah_desktop_fx.model.Aandoening;
 import finah_desktop_fx.model.Pathologie;
+import finah_desktop_fx.model.VragenLijst;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class PathologieOverzichtController implements Initializable {
 	@FXML
@@ -34,6 +39,8 @@ public class PathologieOverzichtController implements Initializable {
 	private TableColumn<Pathologie, Integer> colId;
 	@FXML
 	private TableColumn<Pathologie, String> colPathologie;
+	@FXML
+	private TableColumn<Pathologie, Boolean> colActie;
 	private MainApp mainApp;
 
 	@Override
@@ -48,6 +55,26 @@ public class PathologieOverzichtController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colPathologie.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
 
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
+		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pathologie, Boolean>, ObservableValue<Boolean>>() {
+					@Override
+					public ObservableValue<Boolean> call(
+							TableColumn.CellDataFeatures<Pathologie, Boolean> features) {
+						return new SimpleBooleanProperty(
+								features.getValue() != null);
+					}
+				});
+
+		// create a cell value factory with an add button for each row in the
+		// table.
+		colActie.setCellFactory(new Callback<TableColumn<Pathologie, Boolean>, TableCell<Pathologie, Boolean>>() {
+					@Override
+					public TableCell<Pathologie, Boolean> call(
+							TableColumn<Pathologie, Boolean> pathoBooleanTableColumn) {
+						return new AddButtonsCell(tblPathologie,"Edit","Delete","Details");
+					}
+				});	
 	}
     
 	public void setMainApp(MainApp mainApp) {

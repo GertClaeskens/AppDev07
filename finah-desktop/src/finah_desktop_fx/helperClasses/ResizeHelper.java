@@ -72,7 +72,7 @@ public class ResizeHelper {
 				// if (mouseEventX > sceneWidth - border) {
 				// cursorEvent = Cursor.SW_RESIZE;
 				// } else
-				System.out.println("Moved");
+				//System.out.println("Moved");
 				if (mouseEventX > sceneWidth - border
 						&& mouseEventY > sceneHeight - border) {
 					cursorEvent = Cursor.SE_RESIZE;
@@ -89,24 +89,24 @@ public class ResizeHelper {
 
 					if (Cursor.W_RESIZE.equals(cursorEvent) == false
 							&& Cursor.E_RESIZE.equals(cursorEvent) == false) {
-						System.out.println("dragged 1");
+						//System.out.println("dragged 1");
 						double minHeight = stage.getMinHeight() > (border * 2) ? stage
 								.getMinHeight() : (border * 2);
 						if (Cursor.NW_RESIZE.equals(cursorEvent) == true
 								|| Cursor.S_RESIZE.equals(cursorEvent) == true
 								|| Cursor.NE_RESIZE.equals(cursorEvent) == true) {
-							System.out.println("dragged 1a");
+							//System.out.println("dragged 1a");
 							if (stage.getHeight() > minHeight
 									|| mouseEventY > minHeight
 									|| mouseEventY + startY - stage.getHeight() > 0) {
-								System.out.println("dragged 1b");
+								//System.out.println("dragged 1b");
 								stage.setHeight(mouseEventY + startY);
 							}
 						}
 					}
 					if (Cursor.N_RESIZE.equals(cursorEvent) == false
 							&& Cursor.S_RESIZE.equals(cursorEvent) == false) {
-						System.out.println("dragged 2");
+						//System.out.println("dragged 2");
 						double minWidth = stage.getMinWidth() > (border * 2) ? stage
 								.getMinWidth() : (border * 2);
 						if (Cursor.NW_RESIZE.equals(cursorEvent) == true
@@ -134,7 +134,7 @@ public class ResizeHelper {
 				}
 
 			}else if (MouseEvent.MOUSE_PRESSED.equals(mouseEventType) == true) {
-					System.out.println("pressed");
+					//System.out.println("pressed");
 					startX = stage.getWidth() - mouseEventX;
 					startY = stage.getHeight() - mouseEventY;
 					dragDelta.x = mouseEventX - stage.getX();

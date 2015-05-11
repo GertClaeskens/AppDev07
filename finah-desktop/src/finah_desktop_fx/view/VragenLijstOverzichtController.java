@@ -8,17 +8,22 @@ import finah_desktop_fx.dao.AandoeningDAO;
 import finah_desktop_fx.dao.VraagDAO;
 import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Aandoening;
+import finah_desktop_fx.model.LeeftijdsCategorie;
 import finah_desktop_fx.model.Vraag;
 import finah_desktop_fx.model.VragenLijst;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class VragenLijstOverzichtController implements Initializable {
 	@FXML
@@ -37,6 +42,8 @@ public class VragenLijstOverzichtController implements Initializable {
 	private TableColumn<VragenLijst,String> colAandoening;
 	@FXML
 	private TableColumn<VragenLijst,Integer> colAantal;
+	@FXML
+	private TableColumn<VragenLijst,Boolean> colActie;
 	private MainApp mainApp;
 
 	@Override
@@ -51,6 +58,26 @@ public class VragenLijstOverzichtController implements Initializable {
         colAandoening.setCellValueFactory(new PropertyValueFactory<>("Aandoe"));
         colAantal.setCellValueFactory(new PropertyValueFactory<>("AantalVragen"));
 
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
+		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<VragenLijst, Boolean>, ObservableValue<Boolean>>() {
+					@Override
+					public ObservableValue<Boolean> call(
+							TableColumn.CellDataFeatures<VragenLijst, Boolean> features) {
+						return new SimpleBooleanProperty(
+								features.getValue() != null);
+					}
+				});
+
+		// create a cell value factory with an add button for each row in the
+		// table.
+		colActie.setCellFactory(new Callback<TableColumn<VragenLijst, Boolean>, TableCell<VragenLijst, Boolean>>() {
+					@Override
+					public TableCell<VragenLijst, Boolean> call(
+							TableColumn<VragenLijst, Boolean> vrgLijstBooleanTableColumn) {
+						return new AddButtonsCell(tblVragenlijst,"Edit","Delete","Details");
+					}
+				});	
 	}
     
 	public void setMainApp(MainApp mainApp) {

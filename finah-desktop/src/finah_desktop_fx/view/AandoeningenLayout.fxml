@@ -44,6 +44,7 @@
         			<columns>
           				<TableColumn fx:id="colId" prefWidth="417.0" text="Id" />
           				<TableColumn fx:id="colAandoening" minWidth="0.0" prefWidth="479.0" text="Aandoening" />
+          				<TableColumn fx:id="colActie" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="Acties" />
         			</columns>
       			</TableView>
       		</VBox>
