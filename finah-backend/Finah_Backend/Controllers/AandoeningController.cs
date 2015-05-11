@@ -205,6 +205,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, Aandoening aandoening)
         {
+            db = new FinahDBContext();
 
             if (!ModelState.IsValid)
             {
@@ -216,20 +217,35 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
-
-            Aandoening a = new Aandoening();
-            a.Id = aandoening.Id;
+            var a = db.Aandoeningen.Find(id);
             a.Omschrijving = aandoening.Omschrijving;
-            a.Patologieen = new List<Pathologie>();
-            if (aandoening.Patologieen.Count != 0 && aandoening.Patologieen != null)
+            //
+            //Verwijder de verwijzing naar deze aandoening uit de pathologieen in de lijst.
+            if (a.Patologieen.Count != 0 && a.Patologieen != null)
             {
-                foreach (Pathologie p in aandoening.Patologieen)
+                //Sla de pathologieen eerst op in een lijst -> anders problemen dat de verzamling veranderd is tijdens de foreach
+                var patLijst = a.Patologieen.ToList();
+                foreach (var pa in patLijst.Select(p => this.db.Pathologieen.Find(p.Id)))
                 {
-                    a.Patologieen.Add(db.Pathologieen.Find(p.Id));
-
+                    pa.Aandoeningen.Remove(this.db.Aandoeningen.Find(id));
+                    this.db.Entry(pa).State = EntityState.Modified;
                 }
             }
-            //db.Entry(aandoening).State = EntityState.Modified;
+            //Maak de lijst leeg
+            a.Patologieen = new List<Pathologie>();
+            db.SaveChanges();
+
+            if (aandoening.Patologieen.Count != 0 && aandoening.Patologieen != null)
+            {
+                foreach (var p in aandoening.Patologieen)
+                {
+                    a.Patologieen.Add(db.Pathologieen.Find(p.Id));
+                    var pa = db.Pathologieen.Find(p.Id);
+                    pa.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+                    db.Entry(pa).State = EntityState.Modified;
+                }
+            }
+            db.Entry(a).State = EntityState.Modified;
 
             try
             {

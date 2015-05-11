@@ -68,21 +68,35 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest();
             }
+            var p = db.Pathologieen.Find(id);
+            p.Omschrijving = pathologie.Omschrijving;
+            //Verwijder de verwijzing naar deze aandoening uit de pathologieen in de lijst.
+            if (p.Aandoeningen.Count != 0 && p.Aandoeningen != null)
+            {
+                //Sla de pathologieen eerst op in een lijst -> anders problemen dat de verzamling veranderd is tijdens de foreach
+                var adLijst = p.Aandoeningen.ToList();
+                foreach (var ad in adLijst.Select(a => this.db.Aandoeningen.Find(a.Id)))
+                {
+                    ad.Patologieen.Remove(this.db.Pathologieen.Find(id));
+                    this.db.Entry(ad).State = EntityState.Modified;
+                }
+            }
+            //Maak de lijst leeg
+            p.Aandoeningen = new List<Aandoening>();
+            db.SaveChanges();
 
-            var p = new Pathologie
-                        {
-                            Id = pathologie.Id,
-                            Omschrijving = pathologie.Omschrijving,
-                            Aandoeningen = new List<Aandoening>()
-                        };
+
             if (pathologie.Aandoeningen != null && pathologie.Aandoeningen.Count != 0)
             {
                 foreach (var a in pathologie.Aandoeningen)
                 {
                     p.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+                    var ad = db.Aandoeningen.Find(a.Id);
+                    ad.Patologieen.Add(db.Pathologieen.Find(p.Id));
+                    db.Entry(ad).State = EntityState.Modified;
                 }
             }
-            //db.Entry(pathologie).State = EntityState.Modified;
+            db.Entry(p).State = EntityState.Modified;
 
             try
             {
