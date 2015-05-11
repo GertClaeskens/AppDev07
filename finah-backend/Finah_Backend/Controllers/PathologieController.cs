@@ -56,7 +56,7 @@ namespace Finah_Backend.Controllers
         [HttpPut]
         [Route("Pathologie/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPathologie(int id, [FromBody] Pathologie pathologie)
+        public IHttpActionResult Put(int id, [FromBody] Pathologie pathologie)
         {
             //TODO nakijken of dit nog werkt als er aandoeningen zijn aan toegevoegd
             if (!ModelState.IsValid)
@@ -70,9 +70,12 @@ namespace Finah_Backend.Controllers
             }
 
             var p = new Pathologie { Id = pathologie.Id, Omschrijving = pathologie.Omschrijving };
-            foreach (var a in pathologie.Aandoeningen)
+            if (pathologie.Aandoeningen != null && pathologie.Aandoeningen.Count != 0)
             {
-                p.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+                foreach (var a in pathologie.Aandoeningen)
+                {
+                    p.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+                }
             }
             //db.Entry(pathologie).State = EntityState.Modified;
 
@@ -96,21 +99,37 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Pathologies
+        [HttpPost]
         [ResponseType(typeof(Pathologie))]
-        public void PostPathologie([FromBody] Pathologie pathologie)
+        public void Post([FromBody] Pathologie pathologie)
         {
             //if (!ModelState.IsValid)
             //{
             //    return BadRequest(ModelState);
             //}
             var pat = new Pathologie { Omschrijving = pathologie.Omschrijving, Aandoeningen = new List<Aandoening>() };
-            foreach (var aand in pathologie.Aandoeningen)
+            if (pathologie.Aandoeningen != null && pathologie.Aandoeningen.Count != 0)
             {
-                pat.Aandoeningen.Add(db.Aandoeningen.Find(aand.Id));
-                db.Aandoeningen.Find(aand.Id).Patologieen.Add(db.Pathologieen.Find(pat.Id));
+                foreach (var aand in pathologie.Aandoeningen)
+                {
+                    pat.Aandoeningen.Add(db.Aandoeningen.Find(aand.Id));
+
+                }
             }
             db.Pathologieen.Add(pat);
             db.SaveChanges();
+
+            if (pat.Aandoeningen == null || pat.Aandoeningen.Count != 0)
+            {
+                return;
+            }
+            foreach (var ad in pat.Aandoeningen.Select(ad => this.db.Aandoeningen.Find(ad.Id)))
+            {
+                ad.Patologieen.Add(db.Pathologieen.Find(pat.Id));
+                this.db.SaveChanges();
+            }
+
+
 
             //return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
         }

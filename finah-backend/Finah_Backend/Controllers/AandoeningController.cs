@@ -200,8 +200,10 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Aandoenings/5
+        [HttpPut]
+        [Route("Aandoening/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAandoening(int id, Aandoening aandoening)
+        public IHttpActionResult Put(int id, Aandoening aandoening)
         {
 
             if (!ModelState.IsValid)
@@ -218,9 +220,14 @@ namespace Finah_Backend.Controllers
             Aandoening a = new Aandoening();
             a.Id = aandoening.Id;
             a.Omschrijving = aandoening.Omschrijving;
-            foreach (Pathologie p in aandoening.Patologieen)
+            a.Patologieen = new List<Pathologie>();
+            if (aandoening.Patologieen.Count != 0 && aandoening.Patologieen != null)
             {
-                a.Patologieen.Add(db.Pathologieen.Find(p.Id));
+                foreach (Pathologie p in aandoening.Patologieen)
+                {
+                    a.Patologieen.Add(db.Pathologieen.Find(p.Id));
+
+                }
             }
             //db.Entry(aandoening).State = EntityState.Modified;
 
@@ -244,8 +251,8 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Aandoenings
+        [HttpPost]
         [ResponseType(typeof(Aandoening))]
-        [Route("Aandoening/")]
         //public IHttpActionResult PostAandoening(Aandoening aandoening)
         //public async Task<IHttpActionResult> PostAandoening([FromBody] Aandoening aandoening)
         public void Post([FromBody] Aandoening aandoening)
@@ -257,22 +264,26 @@ namespace Finah_Backend.Controllers
             //}
 
             var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = new List<Pathologie>() };
-            foreach (var pathologie in aandoening.Patologieen)
+            if (aandoening.Patologieen.Count != 0)
             {
-                aand.Patologieen.Add(db.Pathologieen.Single(p => p.Id == pathologie.Id));
-            }
+                foreach (var pathologie in aandoening.Patologieen)
+                {
+                    aand.Patologieen.Add(db.Pathologieen.Single(p => p.Id == pathologie.Id));
 
-            //var patlijst = aandoening.Patologieen.Select(p => this.db.Pathologieen.Find(p.Id)).ToList();
-            //aand.Patologieen = patlijst;
-            //    var patologieen =
-            //        aandoening.Patologieen.Select(
-            //            p => new Pathologie { Id = p.Id, Omschrijving = p.Omschrijving })
-            //        .ToList()
-            //};
-            //, Patologieen = aandoening.Patologieen };
+                }
+            }
 
             db.Aandoeningen.Add(aand);
             db.SaveChanges();
+            if (aandoening.Patologieen.Count == 0)
+            {
+                return;
+            }
+            foreach (var pat in aandoening.Patologieen.Select(pathologie => this.db.Pathologieen.Find(pathologie.Id)))
+            {
+                pat.Aandoeningen.Add(this.db.Aandoeningen.Find(aandoening.Id));
+                this.db.SaveChanges();
+            }
 
             //return Ok(aand);
             //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
@@ -280,6 +291,7 @@ namespace Finah_Backend.Controllers
 
         // DELETE: api/Aandoenings/5
         [HttpDelete]
+        [Route("Aandoening/{id}")]
         [ResponseType(typeof(Aandoening))]
         public IHttpActionResult Delete(int id)
         {

@@ -96,7 +96,8 @@ namespace Finah_Backend.Controllers
             {
                 Id = vragenLijst.Id,
                 Omschrijving = vragenLijst.Omschrijving,
-                Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id)
+                Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id),
+                Vragen = new List<Vraag>()
             };
 
             foreach (var v in vragenLijst.Vragen)
