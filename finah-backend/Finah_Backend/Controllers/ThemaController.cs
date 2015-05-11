@@ -40,7 +40,7 @@ namespace Finah_Backend.Controllers
         // PUT: api/Thema/5
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult PutThema(int id, Thema thema)
+        public IHttpActionResult Put(int id, Thema thema)
         {
             if (!ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Finah_Backend.Controllers
         // DELETE: api/Thema/5
         [HttpDelete]
         [ResponseType(typeof(Thema))]
-        public IHttpActionResult DeleteThema(int id)
+        public IHttpActionResult Delete(int id)
         {
             var thema = db.Themas.Find(id);
             if (thema == null)

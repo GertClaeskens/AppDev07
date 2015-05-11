@@ -53,8 +53,9 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Vragen/5
+        [HttpPut]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCourse(int id, [FromBody] Vraag vraag)
+        public IHttpActionResult Put(int id, [FromBody] Vraag vraag)
         {
             if (!ModelState.IsValid)
             {
