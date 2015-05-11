@@ -3,6 +3,7 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Migrations;
@@ -100,13 +101,21 @@ namespace Finah_Backend.Controllers
 
             foreach (var v in vragenLijst.Vragen)
             {
-                vrgLijst.Vragen.Add(db.Vragen.Find(v.Id));
+                var vr = db.Vragen.Find(v.Id);
+                vr.Thema = db.Themas.Find(v.Thema.Id);
+                vr.VragenLijst.Add(db.VragenLijsten.Find(vrgLijst.Id));
+                vrgLijst.Vragen.Add(vr);
+                //db.Entry(vr).State = EntityState.Modified;
             }
-            db.Entry(vrgLijst).State = EntityState.Modified;
-            //db.VragenLijsten.AddOrUpdate(vragenLijst);
-            //db.SaveChanges();
+            //db.Entry(vragenLijst.Aandoe).State = EntityState.Added;
+            //db.Entry(vragenLijst.Vragen).State = EntityState.Added;
+
             try
             {
+                //db.VragenLijsten.Attach(vrgLijst);
+                //db.Entry(vrgLijst.Aandoe).State = EntityState.Modified;
+                //db.Entry(vrgLijst.Vragen).State = EntityState.Modified;
+                //db.Entry(vrgLijst).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
