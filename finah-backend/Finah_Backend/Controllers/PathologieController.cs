@@ -53,6 +53,7 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Pathologies/5
+        [HttpPut]
         [Route("Pathologie/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPathologie(int id, [FromBody] Pathologie pathologie)
@@ -68,7 +69,12 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
-            db.Entry(pathologie).State = EntityState.Modified;
+            var p = new Pathologie { Id = pathologie.Id, Omschrijving = pathologie.Omschrijving };
+            foreach (var a in pathologie.Aandoeningen)
+            {
+                pathologie.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+            }
+            //db.Entry(pathologie).State = EntityState.Modified;
 
             try
             {
