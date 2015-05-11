@@ -72,7 +72,7 @@ namespace Finah_Backend.Controllers
             var p = new Pathologie { Id = pathologie.Id, Omschrijving = pathologie.Omschrijving };
             foreach (var a in pathologie.Aandoeningen)
             {
-                pathologie.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
+                p.Aandoeningen.Add(db.Aandoeningen.Find(a.Id));
             }
             //db.Entry(pathologie).State = EntityState.Modified;
 
@@ -107,6 +107,7 @@ namespace Finah_Backend.Controllers
             foreach (var aand in pathologie.Aandoeningen)
             {
                 pat.Aandoeningen.Add(db.Aandoeningen.Find(aand.Id));
+                db.Aandoeningen.Find(aand.Id).Patologieen.Add(db.Pathologieen.Find(pat.Id));
             }
             db.Pathologieen.Add(pat);
             db.SaveChanges();
