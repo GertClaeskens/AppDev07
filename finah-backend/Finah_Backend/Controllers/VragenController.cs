@@ -77,11 +77,13 @@ namespace Finah_Backend.Controllers
                              Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
                              Geluid = this.db.Geluidsfragmenten.Find(vraag.Geluid.Id)
                          };
-            foreach (var vl in vraag.VragenLijst)
+            if (vraag.VragenLijst != null)
             {
-                vr.VragenLijst.Add(db.VragenLijsten.Find(vl.Id));
+                foreach (var vl in vraag.VragenLijst)
+                {
+                    vr.VragenLijst.Add(db.VragenLijsten.Find(vl.Id));
+                }
             }
-
 
             //db.Entry(vraag).State = EntityState.Modified;
 
