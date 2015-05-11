@@ -181,7 +181,7 @@ public class RootController implements Initializable {
 				break;
 			case "Vragenlijsten":
 				loader.setLocation(MainApp.class
-						.getResource("view/VragenlijstOverzicht.fxml"));
+						.getResource("view/VragenLijstOverzicht.fxml"));
 				break;
 			case "Relaties":
 				loader.setLocation(MainApp.class
