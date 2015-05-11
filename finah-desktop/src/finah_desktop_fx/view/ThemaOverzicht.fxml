@@ -8,25 +8,49 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.ThemaOverzichtController">
    <children>
-      <Label layoutX="105.0" layoutY="44.0" text="Thema toevoegen">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="105.0" layoutY="162.0" text="Overzicht themas">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtThema" layoutX="105.0" layoutY="75.0" prefHeight="31.0" prefWidth="608.0" />
-      <Button fx:id="btnToevoegen" layoutX="907.0" layoutY="75.0" mnemonicParsing="false" text="Toevoegen" />
-      <TableView fx:id="tblThema" layoutX="105.0" layoutY="194.0" prefHeight="231.0" prefWidth="865.0">
-        <columns>
-          <TableColumn fx:id="colId" prefWidth="417.0" text="Id" />
-
-          <TableColumn fx:id="colNaam" editable="false" minWidth="0.0" prefWidth="450.0" text="Naam" />
-
-        </columns>
-      </TableView>
+      <VBox layoutX="25.0" layoutY="14.0" prefHeight="472.0" prefWidth="1085.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="770.0" minWidth="10.0" prefWidth="579.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="770.0" minWidth="10.0" prefWidth="202.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="532.0" minWidth="10.0" prefWidth="323.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txtThema" prefHeight="31.0" prefWidth="736.0" GridPane.rowIndex="1" />
+                  <Button fx:id="btnToevoegen" mnemonicParsing="false" text="Toevoegen" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Thema toevoegen">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <VBox layoutX="25.0" layoutY="212.0" prefHeight="274.0" prefWidth="1075.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="151.0" text="Overzicht thema's">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblThema" prefHeight="258.0" prefWidth="1085.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="417.0" text="Id" />
+      
+                                              <TableColumn fx:id="colNaam" editable="false" minWidth="0.0" prefWidth="450.0" text="Naam" />
+      
+                                            </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

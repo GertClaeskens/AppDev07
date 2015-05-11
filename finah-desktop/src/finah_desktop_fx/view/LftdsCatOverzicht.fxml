@@ -8,35 +8,62 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.LftdsCatOverzichtController">
 	<children>
-		<Label layoutX="105.0" layoutY="44.0" text="Leeftijdscategorie toevoegen">
-			<font>
-				<Font name="System Bold" size="16.0" />
-			</font>
-		</Label>
-		<Label layoutX="105.0" layoutY="169.0" text="Overzicht leeftijdscategorieen">
-			<font>
-				<Font name="System Bold" size="16.0" />
-			</font>
-		</Label>
-		<TextField fx:id="txtVan" layoutX="205.0" layoutY="72.0" prefHeight="31.0" prefWidth="119.0" />
-		<Button fx:id="btnToevoegen" layoutX="907.0" layoutY="75.0" mnemonicParsing="false" text="Toevoegen" />
-		<TableView fx:id="tblLftdsCat" layoutX="105.0" layoutY="194.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="231.0" prefWidth="750.0">
-			<columns>
-				<TableColumn fx:id="colId" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Id" />
-				<TableColumn fx:id="colVan" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Van" />
-				<TableColumn fx:id="colTot" maxWidth="250.0" minWidth="100.0" prefWidth="250.0" text="Tot" />
-			</columns>
-		</TableView>
-		<TextField fx:id="txtTot" layoutX="518.0" layoutY="72.0" prefHeight="31.0" prefWidth="119.0" />
-		<Label layoutX="105.0" layoutY="75.0" text="Van">
-			<font>
-				<Font name="System Bold" size="16.0" />
-			</font>
-		</Label>
-		<Label layoutX="429.0" layoutY="75.0" text="Tot">
-			<font>
-				<Font name="System Bold" size="16.0" />
-			</font>
-		</Label>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="231.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="161.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="118.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="167.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="10.0" prefWidth="118.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="284.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+            		<Label prefHeight="25.0" prefWidth="233.0" text="Leeftijdscategorie toevoegen">
+            			<font>
+            				<Font name="System Bold" size="16.0" />
+            			</font>
+            		</Label>
+            		<Label text="Van" GridPane.rowIndex="1">
+            			<font>
+            				<Font name="System Bold" size="16.0" />
+            			</font>
+            		</Label>
+            		<Label text="Tot" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            			<font>
+            				<Font name="System Bold" size="16.0" />
+            			</font>
+            		</Label>
+            		<TextField fx:id="txtVan" prefHeight="31.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            		<TextField fx:id="txtTot" prefHeight="31.0" prefWidth="119.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            		<Button fx:id="btnToevoegen" mnemonicParsing="false" text="Toevoegen" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="180.0">
+         <children>
+      		<Label text="Overzicht leeftijdscategorieen">
+      			<font>
+      				<Font name="System Bold" size="16.0" />
+      			</font>
+      		</Label>
+      		<TableView fx:id="tblLftdsCat">
+      			<columns>
+      				<TableColumn fx:id="colId" maxWidth="398.0" minWidth="100.0" prefWidth="398.0" text="Id" />
+      				<TableColumn fx:id="colVan" maxWidth="399.0" minWidth="100.0" prefWidth="399.0" text="Van" />
+      				<TableColumn fx:id="colTot" maxWidth="331.0" minWidth="100.0" prefWidth="164.0" text="Tot" />
+      			</columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+      		</TableView>
+         </children>
+      </VBox>
 	</children>
 </AnchorPane>
