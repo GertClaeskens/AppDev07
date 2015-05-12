@@ -241,6 +241,8 @@
         $id = $_POST["details"];
         $aandoening = FinahDAO::HaalOp("Aandoening", $id);
         $naam = $aandoening["Omschrijving"];
+        $pathologieLijst = $aandoening["Patologieen"];
+
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
@@ -270,10 +272,12 @@
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                            $patologieen = FinahDAO::HaalOp("Pathologie");
-                            foreach ($patologieen as $item) {
-                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                            } ?>
+                        $i=1;
+                            foreach ($pathologieLijst as $item) {
+
+                                echo $i . ". " . $item["Omschrijving"] . "<br/>";
+                                $i++;
+                            }?>
                     </div>
                 </div>
                 <div class="row button-row">
