@@ -195,9 +195,11 @@
                                                             $selected = " selected='selected' ";
                                                             break;
                                                         }
+
                                                     }
-                                                } else {
                                                     echo "<option value='" . $item["Id"] . "'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
+                                                } else {
+                                                    echo "<option value='" . $item["Id"] .  "'>" . $item["Omschrijving"] . "</option>\r\n";
                                                 }
                                             }
                                         ?>
