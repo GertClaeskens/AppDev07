@@ -2,10 +2,10 @@
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Pathologie.php";
     require "../PHP/Models/Aandoening.php";
-if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])) {
-    header('Location: Overzicht.php');
-    exit;
-}
+    if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
+        header('Location: Overzicht.php');
+        exit;
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -15,9 +15,9 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <title>FINAH - Pathologie</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
 
@@ -120,47 +120,46 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             $naam = "";
                             $pathologie = new Pathologie();
                             if (isset($_POST)) {
-                                if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
-                                    if (isset($_POST["bewerk"])) {
-                                        $id = $_POST["bewerk"];
+                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                            if (isset($_POST["bewerk"])) {
+                                $id = $_POST["bewerk"];
 
-                                        $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                        $naam = $pathologie["Omschrijving"];
-                                        echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                    } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                        echo "<h1 class='header' >" . " Nieuwe pathologie " . "</h1> ";
+                                $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                $naam = $pathologie["Omschrijving"];
+                                echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                echo "<h1 class='header' >" . " Nieuwe pathologie " . "</h1> ";
+                            }
+                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                $omschrijving = $_POST["omschrijving"];
+                                $pathologie->setOmschrijving($omschrijving);
+                                if (isset($_POST["aandoeningen"])) {
+                                    $aandoeningenlijst = $_POST["aandoeningen"];
+                                    for ($a = 0; $a < count($aandoeningenlijst); $a++) {
+                                        $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
+                                    };
+                                }
+                                if (isset($_POST["nieuw"])) {
+                                    if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
+                                        //Todo eventueel een exception toevoegen hier
+                                        echo "De pathologie werd succesvol opgeslagen";
                                     }
-    //
-                                    if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                        $omschrijving = $_POST["omschrijving"];
-                                        $pathologie->setOmschrijving($omschrijving);
-                                        if (isset($_POST["aandoeningen"])) {
-                                            $aandoeningenlijst = $_POST["aandoeningen"];
-                                            for ($a = 0; $a < count($aandoeningenlijst); $a++) {
-                                                $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
-                                            };
-                                        }
-                                        if (isset($_POST["nieuw"])) {
-                                            if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
-                                                //Todo eventueel een exception toevoegen hier
-                                                echo "De pathologie werd succesvol opgeslagen";
-                                            }
-                                        }
-                                        if (isset($_POST["update"])) {
-                                            $id = $_POST["update"];
+                                }
+                                if (isset($_POST["update"])) {
+                                    $id = $_POST["update"];
 
-                                            $pathologie->setId($id);
-                                            if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
+                                    $pathologie->setId($id);
+                                    if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
 
-                                            }
-                                            $pathologie = FinahDAO::HaalOp("Pathologie", $id);
-                                            $naam = $pathologie["Omschrijving"];
-                                            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                            echo "De pathologie werd succesvol opgeslagen";
-                                        }
                                     }
+                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                    $naam = $pathologie["Omschrijving"];
+                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                    echo "De pathologie werd succesvol opgeslagen";
+                                }
+                            }
 
-                                        ?>
+                        ?>
 
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -168,31 +167,38 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="omschrijving">
                                     Omschrijving: </label>
+
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                    <textarea autofocus="true" rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving"><?php
+                                    <textarea autofocus="true" rows="5" type="text" class="form-control"
+                                              id="omschrijving" name="omschrijving"><?php
                                             if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                                 echo $naam;
-                                          } ?></textarea>                 <!--  Geen spatie tussen textarea tags anders begint cursor niet op eerste positie-->
+                                            } ?></textarea>
+                                    <!--  Geen spatie tussen textarea tags anders begint cursor niet op eerste positie-->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="aandoening">
                                     Ken toe aan een aandoening:
                                 </label>
+
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                                     <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                         <?php
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
                                             foreach ($aandoeningen as $item) {
                                                 $selected = "";
-                                                foreach ($pathologie["Aandoeningen"] as $ad) {
-                                                    if ($item["Id"] == $ad["Id"]) {
+                                                if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                                    foreach ($pathologie["Aandoeningen"] as $ad) {
+                                                        if ($item["Id"] == $ad["Id"]) {
 
-                                                        $selected = " selected='selected' ";
-                                                        break;
+                                                            $selected = " selected='selected' ";
+                                                            break;
+                                                        }
                                                     }
+                                                } else {
+                                                    echo "<option value='" . $item["Id"] . "'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
                                                 }
-                                                echo "<option value='" . $item["Id"]."'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
                                             }
                                         ?>
                                     </select>
@@ -200,7 +206,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
+                                    <button type="button" onclick="location.href='Overzicht.php'"
+                                            class="btn btn-primary">
                                         Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
@@ -210,10 +217,12 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 echo "'nieuw'";
                                             } elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])){
+                                            } elseif (isset($_POST["update"])) {
                                                 echo "'update'";
                                             }
-                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
+                                                if (!isset($_POST["creeer"])){
+                                            ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
                                     </button>
                                 </div>
                             </div>
@@ -225,97 +234,98 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     </div>
     <?php
         } elseif (isset($_POST["details"])) {
-            $id = $_POST["details"];
-            $pathologie= FinahDAO::HaalOp("Pathologie", $id);
-            $omschrijving = $pathologie["Omschrijving"];
-            $aandoeningLijst= $pathologie["Aandoeningen"];
+        $id = $_POST["details"];
+        $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+        $omschrijving = $pathologie["Omschrijving"];
+        $aandoeningLijst = $pathologie["Aandoeningen"];
 
-            ?>
-            <div class="panel panel-primary">
-                <div class="panel-heading ">
-                    <h1 class="panel-title"><span
-                            class="big-font"> Details: <?php echo "Pathologie " . $id ?> </span></h1>
+        ?>
+        <div class="panel panel-primary">
+            <div class="panel-heading ">
+                <h1 class="panel-title"><span
+                        class="big-font"> Details: <?php echo "Pathologie " . $id ?> </span></h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>ID:</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <?php echo $id ?>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>ID:</label>
-                        </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <?php echo $id ?>
-                        </div>
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Omschrijving:</label>
                     </div>
-                    <div class="row detail-row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>Omschrijving:</label>
-                        </div>
-                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">
-                            <?php echo $omschrijving ?>
-                        </div>
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">
+                        <?php echo $omschrijving ?>
                     </div>
-                    <div class="row detail-row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-                            <label>Aandoening</label>
-                        </div>
-                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
-                            <?php
-                            foreach($aandoeningLijst as $item) {
-                                echo $item["Id"].". " . $item["Omschrijving"]. "<br/>";
+                </div>
+                <div class="row detail-row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                        <label>Aandoening</label>
+                    </div>
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10">
+                        <?php
+                            foreach ($aandoeningLijst as $item) {
+                                echo $item["Id"] . ". " . $item["Omschrijving"] . "<br/>";
                             }
-                            ?>
-                        </div>
+                        ?>
                     </div>
-                    <div class="row button-row">
-                        <div
-                            class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                            <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                <button type="button" onclick="location.href='Overzicht.php'"
-                                        class="btn btn-primary">
-                                    Terug
-                                </button>
-                                <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                        class='btn btn-primary' value="<?php echo $id ?>">
-                                    Bewerken
-                                </button>
-                                <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                        name='verwijderBtn' value="<?php echo $id ?>"
-                                        class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Verwijder pathologie?','delete_lft',<?php echo $id ?>,'Pathologie',this)">
-                                    Verwijderen
-                                </button>
-                            </form>
-                        </div>
+                </div>
+                <div class="row button-row">
+                    <div
+                        class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+                        <form class="form-horizontal form-buttons" role="form" method="POST"
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                            <button type="button" onclick="location.href='Overzicht.php'"
+                                    class="btn btn-primary">
+                                Terug
+                            </button>
+                            <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                    class='btn btn-primary' value="<?php echo $id ?>">
+                                Bewerken
+                            </button>
+                            <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                    name='verwijderBtn' value="<?php echo $id ?>"
+                                    class='delBtn btn btn-primary'
+                                    onclick="Confirm.render('Verwijder pathologie?','delete_lft',<?php echo $id ?>,'Pathologie',this)">
+                                Verwijderen
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-        <?php
-        }
+        </div>
+    <?php
     }
+        }
     ?>
-     <script>
-         $().ready(function () {
-             $("#aandoeningForm").validate({
-                 rules: {
-                     omschrijving: "required"
-                 },
-                 messages: {
-                     omschrijving: "Veld is verplicht."
-                 }
-             });
-         })
-         $("#menu-toggle").click(function (e) {
-             e.preventDefault();
-             $("#wrapper").toggleClass("toggled");
-             if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                 $("#side-toggle").removeClass("glyphicon-option-vertical");
-                 $("#side-toggle").addClass("glyphicon-option-horizontal");
-             } else {
-                 $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                 $("#side-toggle").addClass("glyphicon-option-vertical");
-             }
-         });
-     </script>
+    <script>
+        $().ready(function () {
+            $("#aandoeningForm").validate({
+                rules: {
+                    omschrijving: "required"
+                },
+                messages: {
+                    omschrijving: "Veld is verplicht."
+                }
+            });
+        })
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                $("#side-toggle").removeClass("glyphicon-option-vertical");
+                $("#side-toggle").addClass("glyphicon-option-horizontal");
+            } else {
+                $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                $("#side-toggle").addClass("glyphicon-option-vertical");
+            }
+        });
+    </script>
     </body>
     </html>
 <?php
-    ?>
+?>

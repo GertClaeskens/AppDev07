@@ -14,7 +14,8 @@
         <title>FINAH - Aandoening</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
-        <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
@@ -25,7 +26,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+<body>
     <div id="dialogoverlay"></div>
     <div id="dialogbox">
         <div>
@@ -64,173 +65,176 @@
             </ul>
         </div>
     </nav>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <br/>
-                <br/>
-                <li class="sidebar-brand">
-                    <h4>
-                        MENU
-                    </h4>
-                </li>
-                <li>
-                    <a href="../index.php"> Home </a>
-                </li>
-                <li>
-                    <a href="../Bevraging/Overzicht.php"> Bevraging</a>
-                </li>
-                <br/>
-                <li class="sidebar-brand">
-                    <h4>
-                        BEHEER
-                    </h4>
-                </li>
-                <li>
-                    <a href="../Aandoening/Overzicht.php"> Aandoening </a>
-                </li>
-                <li>
-                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
-                </li>
-                <li>
-                    <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
-                </li>
-                <li>
-                    <a href="../Vragen/Overzicht.php"> Vragen</a>
-                </li>
-                <li>
-                    <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
-                </li>
-                <li>
-                    <a href="../Thema/Overzicht.php"> Thema's</a>
-                </li>
-            </ul>
-        </div>
-        <div id="page-content-wrapper">
-            <div class="breadcrumb">
-                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
-                    class="breadcrumb-font"> &nbsp/ Home / Aandoening  </span>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <?php
-                            $naam = "";
-                            $aandoening = new Aandoening();
-                            if (isset($_POST)) {
-                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
-                            if (isset($_POST["bewerk"])) {
-                                $id = $_POST["bewerk"];
-                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                $naam = $aandoening["Omschrijving"];
-                                echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                echo "<h1 class='header' >" . " Nieuwe aandoening " . "</h1> ";
-                            }
-                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                $omschrijving = $_POST["omschrijving"];
-                                $aandoening->setOmschrijving($omschrijving);
-                                if (isset($_POST["pathologie"])) {
-                                    $pathologielijst = $_POST["pathologie"];
-                                    for ($a = 0; $a < count($pathologielijst); $a++) {
-                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
-                                    };
-                                }
-                                if (isset($_POST["nieuw"])) {
-                                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
-                                        //Todo eventueel een exception toevoegen hier
-                                        echo "De aandoening werd succesvol opgeslagen";
-                                    }
-                                }
-                                if (isset($_POST["update"])) {
-                                    $id = $_POST["update"];
-                                    $aandoening->setId($id);
-                                    if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <br/>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    MENU
+                </h4>
+            </li>
+            <li>
+                <a href="../index.php"> Home </a>
+            </li>
+            <li>
+                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
+            </li>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    BEHEER
+                </h4>
+            </li>
+            <li>
+                <a href="../Aandoening/Overzicht.php"> Aandoening </a>
+            </li>
+            <li>
+                <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+            </li>
+            <li>
+                <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+            </li>
+            <li>
+                <a href="../Vragen/Overzicht.php"> Vragen</a>
+            </li>
+            <li>
+                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+            </li>
+            <li>
+                <a href="../Thema/Overzicht.php"> Thema's</a>
+            </li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+    <div class="breadcrumb">
+        <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
+            class="breadcrumb-font"> &nbsp/ Home / Aandoening  </span>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+<?php
+    $naam = "";
+    $aandoening = new Aandoening();
+    if (isset($_POST)) {
+    if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+        if (isset($_POST["bewerk"])) {
+            $id = $_POST["bewerk"];
+            $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+            $naam = $aandoening["Omschrijving"];
+            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+        } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+            echo "<h1 class='header' >" . " Nieuwe aandoening " . "</h1> ";
+        }
+        if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+            $omschrijving = $_POST["omschrijving"];
+            $aandoening->setOmschrijving($omschrijving);
+            if (isset($_POST["pathologie"])) {
+                $pathologielijst = $_POST["pathologie"];
+                for ($a = 0; $a < count($pathologielijst); $a++) {
+                    $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
+                };
+            }
+            if (isset($_POST["nieuw"])) {
+                if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
+                    //Todo eventueel een exception toevoegen hier
+                    echo "De aandoening werd succesvol opgeslagen";
+                }
+            }
+            if (isset($_POST["update"])) {
+                $id = $_POST["update"];
+                $aandoening->setId($id);
+                if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
 
-                                    }
-                                    $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                    $naam = $aandoening["Omschrijving"];
-                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                    echo "De aandoening werd succesvol opgeslagen";
-                                }
-                            }
+                }
+                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+                $naam = $aandoening["Omschrijving"];
+                echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                echo "De aandoening werd succesvol opgeslagen";
+            }
+        }
 
-                        ?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
-                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        ?>
+    <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-                            <div class="form-group top-form">
-                                <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
-                                       for="omschrijving">
-                                    Omschrijving: </label>
+        <div class="form-group top-form">
+            <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
+                   for="omschrijving">
+                Omschrijving: </label>
 
-                                <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
+            <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
                                         <textarea autofocus="true" rows="5" type="text" class="form-control"
                                                   id="omschrijving" name="omschrijving"><?php
                                                 if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                                     echo $naam;
                                                 } ?></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
-                                    Ken toe aan een pathologie:
-                                </label>
-
-                                <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
-                                    <select multiple class="form-control" id="Pathologie" name="pathologie[]">
-                                        <?php
-                                            $patologieen = FinahDAO::HaalOp("Pathologie");
-                                            foreach ($patologieen as $item) {
-                                                $selected = "";
-                                                foreach ($aandoening["Patologieen"] as $pat) {
-                                                    if ($item["Id"] == $pat["Id"]) {
-
-                                                        $selected = " selected='selected' ";
-                                                        break;
-                                                    }
-                                                }
-                                                echo "<option value='" . $item["Id"]."'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
-                                            }
-                                        ?>
-                                        <?php
-
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div
-                                    class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'"
-                                            class="btn btn-primary">
-                                        Terug
-                                    </button>
-                                    <button class="btn btn-primary" type="submit"
-                                            name=<?php if (isset($_POST["bewerk"])) {
-                                                echo "'update'";
-                                            } elseif (isset($_POST["creeer"])) {
-                                                echo "'nieuw'";
-                                            } elseif (isset($_POST["nieuw"])) {
-                                                echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])) {
-                                                echo "'update'";
-                                            }
-                                                if (!isset($_POST["creeer"])){
-                                            ?> value="<?php echo $id;
-                                                } ?>"> Opslaan
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
+            Ken toe aan een pathologie:
+        </label>
+
+    <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
+    <select multiple class="form-control" id="Pathologie" name="pathologie[]">
+        <?php
+        $patologieen = FinahDAO::HaalOp("Pathologie");
+
+    foreach ($patologieen as $item) {
+        $selected = "";
+        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+            foreach ($aandoening["Patologieen"] as $pat) {
+                if ($item["Id"] == $pat["Id"]) {
+
+                    $selected = " selected='selected' ";
+                    break;
+                }
+            }
+        } else {
+            echo "<option value='" . $item["Id"] . "'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
+        }}
+        ?>
+        <?php
+
+        ?>
+        </select>
+        </div>
+        </div>
+        <div class="form-group">
+            <div
+                class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                <button type="button" onclick="location.href='Overzicht.php'"
+                        class="btn btn-primary">
+                    Terug
+                </button>
+                <button class="btn btn-primary" type="submit"
+                        name=<?php if (isset($_POST["bewerk"])) {
+                            echo "'update'";
+                        } elseif (isset($_POST["creeer"])) {
+                            echo "'nieuw'";
+                        } elseif (isset($_POST["nieuw"])) {
+                            echo "'nieuw'";
+                        } elseif (isset($_POST["update"])) {
+                            echo "'update'";
+                        }
+                            if (!isset($_POST["creeer"])){
+                        ?> value="<?php echo $id;
+                            } ?>"> Opslaan
+                </button>
+            </div>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
     <?php
-        } elseif (isset($_POST["details"])) {
+    } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
         $aandoening = FinahDAO::HaalOp("Aandoening", $id);
         $naam = $aandoening["Omschrijving"];
@@ -294,35 +298,35 @@
             </div>
         </div>
     <?php
-    } else {
+        } else {
 
     }
         }
     ?>
-    <script>
-        $().ready(function () {
-            $("#aandoeningForm").validate({
-                rules: {
-                    omschrijving: "required"
-                },
-                messages: {
-                    omschrijving: "Veld is verplicht."
+        <script>
+            $().ready(function () {
+                $("#aandoeningForm").validate({
+                    rules: {
+                        omschrijving: "required"
+                    },
+                    messages: {
+                        omschrijving: "Veld is verplicht."
+                    }
+                });
+            })
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+                if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                    $("#side-toggle").removeClass("glyphicon-option-vertical");
+                    $("#side-toggle").addClass("glyphicon-option-horizontal");
+                } else {
+                    $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                    $("#side-toggle").addClass("glyphicon-option-vertical");
                 }
             });
-        })
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                $("#side-toggle").removeClass("glyphicon-option-vertical");
-                $("#side-toggle").addClass("glyphicon-option-horizontal");
-            } else {
-                $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                $("#side-toggle").addClass("glyphicon-option-vertical");
-            }
-        });
-    </script>
-    </body>
-    </html>
-<?php
-?>
+        </script>
+        </body>
+        </html>
+        <?php
+        ?>
