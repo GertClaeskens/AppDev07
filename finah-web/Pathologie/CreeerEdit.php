@@ -176,7 +176,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Aandoening">
+                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="aandoening">
                                     Ken toe aan een aandoening:
                                 </label>
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
@@ -184,7 +184,15 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         <?php
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
                                             foreach ($aandoeningen as $item) {
-                                                echo "<option value='" . $item["Id"]  . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                                                $selected = "";
+                                                foreach ($pathologie["Aandoeningen"] as $ad) {
+                                                    if ($item["Id"] == $ad["Id"]) {
+
+                                                        $selected = " selected='selected' ";
+                                                        break;
+                                                    }
+                                                }
+                                                echo "<option value='" . $item["Id"]."'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
                                             }
                                         ?>
                                     </select>

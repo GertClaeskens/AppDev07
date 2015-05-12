@@ -1,7 +1,7 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/Aandoening.php";
-    if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
+    if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
         header('Location: Overzicht.php');
         exit;
     }
@@ -14,9 +14,9 @@
         <title>FINAH - Aandoening</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
 
@@ -34,192 +34,203 @@
             <div id="dialogboxfoot"></div>
         </div>
     </div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header pull-left">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header pull-left">
 
-                <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
-                    <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
-                </a>
-                <a class="navbar-brand header" href="#"> Finah</a>
+            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
+                <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
+            </a>
+            <a class="navbar-brand header" href="#"> Finah</a>
+        </div>
+        <div class="dropdown navbar-header pull-right nav-right">
+            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
+            <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="0" href="#">
+                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
+                    </a>
+                </li>
+                <li role="presentation" class="divider">
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">
+                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <br/>
+                <br/>
+                <li class="sidebar-brand">
+                    <h4>
+                        MENU
+                    </h4>
+                </li>
+                <li>
+                    <a href="../index.php"> Home </a>
+                </li>
+                <li>
+                    <a href="../Bevraging/Overzicht.php"> Bevraging</a>
+                </li>
+                <br/>
+                <li class="sidebar-brand">
+                    <h4>
+                        BEHEER
+                    </h4>
+                </li>
+                <li>
+                    <a href="../Aandoening/Overzicht.php"> Aandoening </a>
+                </li>
+                <li>
+                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+                </li>
+                <li>
+                    <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+                </li>
+                <li>
+                    <a href="../Vragen/Overzicht.php"> Vragen</a>
+                </li>
+                <li>
+                    <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+                </li>
+                <li>
+                    <a href="../Thema/Overzicht.php"> Thema's</a>
+                </li>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="breadcrumb">
+                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
+                    class="breadcrumb-font"> &nbsp/ Home / Aandoening  </span>
             </div>
-            <div class="dropdown navbar-header pull-right nav-right">
-                <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
-                <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="0" href="#">
-                            <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
-                        </a>
-                    </li>
-                    <li role="presentation" class="divider">
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">
-                            <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <br/>
-                    <br/>
-                    <li class="sidebar-brand">
-                        <h4>
-                            MENU
-                        </h4>
-                    </li>
-                    <li>
-                        <a href="../index.php"> Home </a>
-                    </li>
-                    <li>
-                        <a href="../Bevraging/Overzicht.php"> Bevraging</a>
-                    </li>
-                    <br/>
-                    <li class="sidebar-brand">
-                        <h4>
-                            BEHEER
-                        </h4>
-                    </li>
-                    <li>
-                        <a href="../Aandoening/Overzicht.php"> Aandoening </a>
-                    </li>
-                    <li>
-                        <a href="../Pathologie/Overzicht.php"> Pathologie</a>
-                    </li>
-                    <li>
-                        <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
-                    </li>
-                    <li>
-                        <a href="../Vragen/Overzicht.php"> Vragen</a>
-                    </li>
-                    <li>
-                        <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
-                    </li>
-                    <li>
-                        <a href="../Thema/Overzicht.php"> Thema's</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="page-content-wrapper">
-                <div class="breadcrumb">
-                    <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span
-                        class="breadcrumb-font"> &nbsp/ Home / Aandoening  </span>
-                </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <?php
-                                    $naam = "";
-                                    $aandoening = new Aandoening();
-                                    if (isset($_POST)) {
-                                        if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
-                                            if (isset($_POST["bewerk"])) {
-                                                $id = $_POST["bewerk"];
-                                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                                $naam = $aandoening["Omschrijving"];
-                                                echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                                echo "<h1 class='header' >" . " Nieuwe aandoening " . "</h1> ";
-                                            }
-                                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                                $omschrijving = $_POST["omschrijving"];
-                                                $aandoening->setOmschrijving($omschrijving);
-                                                if (isset($_POST["pathologie"])) {
-                                                    $pathologielijst = $_POST["pathologie"];
-                                                    for ($a = 0; $a < count($pathologielijst); $a++) {
-                                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
-                                                    };
-                                                }
-                                                if (isset($_POST["nieuw"])) {
-                                                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
-                                                        //Todo eventueel een exception toevoegen hier
-                                                        echo "De aandoening werd succesvol opgeslagen";
-                                                    }
-                                                }
-                                                if (isset($_POST["update"])) {
-                                                    $id = $_POST["update"];
-                                                    $aandoening->setId($id);
-                                                    if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <?php
+                            $naam = "";
+                            $aandoening = new Aandoening();
+                            if (isset($_POST)) {
+                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                            if (isset($_POST["bewerk"])) {
+                                $id = $_POST["bewerk"];
+                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+                                $naam = $aandoening["Omschrijving"];
+                                echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                echo "<h1 class='header' >" . " Nieuwe aandoening " . "</h1> ";
+                            }
+                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                $omschrijving = $_POST["omschrijving"];
+                                $aandoening->setOmschrijving($omschrijving);
+                                if (isset($_POST["pathologie"])) {
+                                    $pathologielijst = $_POST["pathologie"];
+                                    for ($a = 0; $a < count($pathologielijst); $a++) {
+                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
+                                    };
+                                }
+                                if (isset($_POST["nieuw"])) {
+                                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
+                                        //Todo eventueel een exception toevoegen hier
+                                        echo "De aandoening werd succesvol opgeslagen";
+                                    }
+                                }
+                                if (isset($_POST["update"])) {
+                                    $id = $_POST["update"];
+                                    $aandoening->setId($id);
+                                    if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
 
-                                                    }
-                                                    $aandoening = FinahDAO::HaalOp("Aandoening", $id);
-                                                    $naam = $aandoening["Omschrijving"];
-                                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
-                                                    echo "De aandoening werd succesvol opgeslagen";
-                                                }
-                                            }
+                                    }
+                                    $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+                                    $naam = $aandoening["Omschrijving"];
+                                    echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+                                    echo "De aandoening werd succesvol opgeslagen";
+                                }
+                            }
 
-                            ?>
-                            <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        ?>
+                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-                                <div class="form-group top-form">
-                                    <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
-                                           for="omschrijving">
-                                        Omschrijving: </label>
+                            <div class="form-group top-form">
+                                <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
+                                       for="omschrijving">
+                                    Omschrijving: </label>
 
-                                    <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
                                         <textarea autofocus="true" rows="5" type="text" class="form-control"
                                                   id="omschrijving" name="omschrijving"><?php
-                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                echo $naam;
-                                            } ?></textarea>
-                                    </div>
+                                                if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                                    echo $naam;
+                                                } ?></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
-                                        Ken toe aan een pathologie:
-                                    </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
+                                    Ken toe aan een pathologie:
+                                </label>
 
-                                    <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
-                                        <select multiple class="form-control" id="Pathologie" name="pathologie[]">
-                                            <?php
+                                <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
+                                    <select multiple class="form-control" id="Pathologie" name="pathologie[]">
+                                        <?php
                                             $patologieen = FinahDAO::HaalOp("Pathologie");
                                             foreach ($patologieen as $item) {
-                                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div
-                                        class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                        <button type="button" onclick="location.href='Overzicht.php'"
-                                                class="btn btn-primary">
-                                            Terug
-                                        </button>
-                                        <button class="btn btn-primary" type="submit"
-                                                name=<?php if (isset($_POST["bewerk"])) {
-                                                    echo "'update'";
-                                                } elseif (isset($_POST["creeer"])) {
-                                                    echo "'nieuw'";
-                                                } elseif (isset($_POST["nieuw"])) {
-                                                    echo "'nieuw'";
-                                                } elseif (isset($_POST["update"])) {
-                                                    echo "'update'";
+                                                $selected = "";
+                                                foreach ($aandoening["Patologieen"] as $pat) {
+                                                    if ($item["Id"] == $pat["Id"]) {
+
+                                                        $selected = " selected='selected' ";
+                                                        break;
+                                                    }
                                                 }
-                                                if (!isset($_POST["creeer"])){
-                                                ?> value="<?php echo $id;
-                                                } ?>"> Opslaan
-                                        </button>
-                                    </div>
+                                                echo "<option value='" . $item["Id"]."'" . $selected . ">" . $item["Omschrijving"] . "</option>\r\n";
+                                            }
+                                        ?>
+                                        <?php
+
+                                        ?>
+                                    </select>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <div
+                                    class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 col-sm-10">
+                                    <button type="button" onclick="location.href='Overzicht.php'"
+                                            class="btn btn-primary">
+                                        Terug
+                                    </button>
+                                    <button class="btn btn-primary" type="submit"
+                                            name=<?php if (isset($_POST["bewerk"])) {
+                                                echo "'update'";
+                                            } elseif (isset($_POST["creeer"])) {
+                                                echo "'nieuw'";
+                                            } elseif (isset($_POST["nieuw"])) {
+                                                echo "'nieuw'";
+                                            } elseif (isset($_POST["update"])) {
+                                                echo "'update'";
+                                            }
+                                                if (!isset($_POST["creeer"])){
+                                            ?> value="<?php echo $id;
+                                                } ?>"> Opslaan
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <?php
-    } elseif (isset($_POST["details"])) {
+        } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
         $aandoening = FinahDAO::HaalOp("Aandoening", $id);
         $naam = $aandoening["Omschrijving"];
@@ -227,7 +238,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading ">
                 <h1 class="panel-title"><span
-                        class="big-font"> Details: <?php echo "Aandoening ". $id ?> </span></h1>
+                        class="big-font"> Details: <?php echo "Aandoening " . $id ?> </span></h1>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -252,64 +263,65 @@
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <?php
-                        $patologieen = FinahDAO::HaalOp("Pathologie");
-                        foreach ($patologieen as $item) {
-                            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                        } ?>
+                            $patologieen = FinahDAO::HaalOp("Pathologie");
+                            foreach ($patologieen as $item) {
+                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+                            } ?>
                     </div>
                 </div>
                 <div class="row button-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <button type="button" onclick="location.href='Overzicht.php'"
-                                class="btn btn-primary">
-                            Terug
-                        </button>
-                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                class='btn btn-primary' value="<?php echo $id ?>">
-                            Bewerken
-                        </button>
-                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                name='verwijderBtn' value="<?php echo $id ?>"
-                                class='delBtn btn btn-primary'
-                                onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
-                            Verwijderen
-                        </button>
+                        <form class="form-horizontal form-buttons" role="form" method="POST"
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                            <button type="button" onclick="location.href='Overzicht.php'"
+                                    class="btn btn-primary">
+                                Terug
+                            </button>
+                            <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                    class='btn btn-primary' value="<?php echo $id ?>">
+                                Bewerken
+                            </button>
+                            <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                    name='verwijderBtn' value="<?php echo $id ?>"
+                                    class='delBtn btn btn-primary'
+                                    onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
+                                Verwijderen
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     <?php
-        } else {
+    } else {
 
-        }
     }
-        ?>
-        <script>
-            $().ready(function () {
-                 $("#aandoeningForm").validate({
-                     rules: {
-                         omschrijving: "required"
-                     },
-                     messages: {
-                         omschrijving: "Veld is verplicht."
-                     }
-                 });
-             })
-             $("#menu-toggle").click(function (e) {
-                 e.preventDefault();
-                 $("#wrapper").toggleClass("toggled");
-                 if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                     $("#side-toggle").removeClass("glyphicon-option-vertical");
-                     $("#side-toggle").addClass("glyphicon-option-horizontal");
-                 } else {
-                     $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                     $("#side-toggle").addClass("glyphicon-option-vertical");
-                 }
-             });
-          </script>
+        }
+    ?>
+    <script>
+        $().ready(function () {
+            $("#aandoeningForm").validate({
+                rules: {
+                    omschrijving: "required"
+                },
+                messages: {
+                    omschrijving: "Veld is verplicht."
+                }
+            });
+        })
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                $("#side-toggle").removeClass("glyphicon-option-vertical");
+                $("#side-toggle").addClass("glyphicon-option-horizontal");
+            } else {
+                $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                $("#side-toggle").addClass("glyphicon-option-vertical");
+            }
+        });
+    </script>
     </body>
     </html>
 <?php

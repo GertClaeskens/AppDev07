@@ -12,7 +12,7 @@ require_once "../PHP/Models/Pathologie.php";
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <script src="../js/finah.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -131,11 +131,17 @@ require_once "../PHP/Models/Pathologie.php";
                                 for ($a = 0; $a < count($aandoeningLijst); $a++) {
                                     $item = $aandoeningLijst[$a];
                                     $aantal = count($item["Patologieen"]);
+                                ?>
+                                    <tr>
+                                    <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Omschrijving"] ?> </td>
+                                    <td class='col-sm-5 col-md-5 col-lg-5'>
+                            <?php
                                     for ($b = 0; $b < $aantal; $b++) {
                                         ?>
-                                        <tr>
-                                            <td class='col-sm-5 col-md-5 col-lg-5'> <?php echo $item["Omschrijving"] ?> </td>
-                                           <td class='col-sm-5 col-md-5 col-lg-5'><?php echo $item["Patologieen"][$b]["Omschrijving"] ?></td>
+
+                                           <?php echo $item["Patologieen"][$b]["Omschrijving"] ?><br />
+                                        <?php }?>
+                                        </td>
                                            <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                                  <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
                                                         class='btn btn-primary' value="<?php echo $item["Id"] ?>">
@@ -154,7 +160,7 @@ require_once "../PHP/Models/Pathologie.php";
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
                                         </tr>
-                                    <?php }}?>
+                                    <?php }?>
                             </tbody>
                         </table>
                     </form>
