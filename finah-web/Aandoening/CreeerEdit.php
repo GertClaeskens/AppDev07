@@ -275,7 +275,7 @@
                         $i=1;
                             foreach ($pathologieLijst as $item) {
 
-                                echo $i . ". " . $item["Omschrijving"] . "<br/>";
+                                echo $item["Id"] . ". " . $item["Omschrijving"] . "<br/>";
                                 $i++;
                             }?>
                     </div>
