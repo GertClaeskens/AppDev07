@@ -59,6 +59,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Put(int id, [FromBody] Pathologie pathologie)
         {
             //TODO nakijken of dit nog werkt als er aandoeningen zijn aan toegevoegd
+            //TODO nog niet waterdicht -> Transactie?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

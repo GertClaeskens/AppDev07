@@ -206,7 +206,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Put(int id, Aandoening aandoening)
         {
             db = new FinahDBContext();
-
+            //TODO nog niet waterdicht -> Transactie?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
