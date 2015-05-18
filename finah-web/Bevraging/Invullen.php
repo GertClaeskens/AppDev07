@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="div-group row" id="vraagDiv">
                     <!--TODO thema toevoegen aan database?  -->
-                    <p id="thema">Leren en toepassen van kennis.</p>
+                    <p id="thema"><?= $vraag["Thema"]?> </p>
 
                     <p id="vraag">Vraag <?php echo ($volgende) . ": " . $vraag["VraagStelling"] ?></p>
                     <img class="thumbnail" src="../Vragen/test.PNG" alt="...">

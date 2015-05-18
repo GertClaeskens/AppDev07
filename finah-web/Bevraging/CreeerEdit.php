@@ -42,7 +42,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var pat = '';
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
-                    var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
+                    var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {
@@ -71,7 +71,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var pat = '';
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
-                    var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
+                    var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {

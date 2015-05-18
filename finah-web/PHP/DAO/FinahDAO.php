@@ -9,7 +9,8 @@
     class FinahDAO
     {
 
-        const URL = "http://localhost:1695/";
+        //const URL = "http://localhost:1695/";
+        const URL = "http://finahbackend1920.azurewebsites.net/";
         public static function HaalOp($type, $id = null)
         {
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
