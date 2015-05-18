@@ -86,7 +86,7 @@ namespace Finah_Backend.Controllers
                 }
             }
 
-            //db.Entry(vraag).State = EntityState.Modified;
+            //db.Entry(vr).State = EntityState.Modified;
 
             try
             {

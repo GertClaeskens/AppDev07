@@ -43,11 +43,11 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Aandoening/{id}/VragenLijst")]
-        public VragenLijst GetVragenLijst(int id)
+        public IEnumerable<VragenLijst> GetVragenLijst(int id)
         {
             //Er is een vragenlijst per aandoening.
 
-            var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).First();
+            var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr);
             return v;
         }
 
@@ -206,7 +206,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Put(int id, Aandoening aandoening)
         {
             db = new FinahDBContext();
-            //TODO nog niet waterdicht -> Transactie?
+            //TODO nog niet waterdicht? -> Transactie?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

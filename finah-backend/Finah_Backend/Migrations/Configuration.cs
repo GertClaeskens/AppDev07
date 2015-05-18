@@ -260,9 +260,37 @@ namespace Finah_Backend.Migrations
             };
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vragenLijst);
             context.SaveChanges();
-
+            var vrLijst = new VragenLijst
+                                  {
+                                      Omschrijving =
+                                          "Korte vragenlijst Niet-aangeboren Hersenaandoening",
+                                      Aandoe = context.Aandoeningen.Find(1),
+                                      Vragen =
+                                          new List<Vraag>
+                                              {
+                                                  new Vraag
+                                                      {
+                                                          VraagStelling =
+                                                              "Iets nieuws leren (zoals het leren omgaan met bijv. een nieuwe GSM, vaatwasmachine of afstandsbediening; leren ikv een hobby)",
+                                                          Thema = context.Themas.Find(1)
+                                                      },
+                                                  new Vraag
+                                                      {
+                                                          VraagStelling =
+                                                              "Zich kunnen concentreren zonder te worden afgeleid (zoals het volgen van een gesprek in een drukke omgeving, of het volgen van een Tv-programma)",
+                                                          Thema = context.Themas.Find(1)
+                                                      },
+                                                  new Vraag
+                                                      {
+                                                          VraagStelling =
+                                                              "Denken (zoals fantaseren, een mening vormen, met ideeën spelen, of nadenken)",
+                                                          Thema = context.Themas.Find(1)
+                                                      }
+                                              }
+                                  };
             #endregion Vragen + VragenLijst toevoegen
-
+            context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vrLijst);
+            context.SaveChanges();
             #region Relaties toevoegen
 
             var relaties = new List<Relatie>
