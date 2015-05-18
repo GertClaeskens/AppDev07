@@ -15,7 +15,7 @@ namespace Finah_Backend.Controllers
     public class AanvraagController : ApiController
     {
         //TODO Code opschonen als alles bolt
-        private readonly FinahDBContext db = new FinahDBContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Aanvraag
         [Route("Aanvraag/Overzicht")]

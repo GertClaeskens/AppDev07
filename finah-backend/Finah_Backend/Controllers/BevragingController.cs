@@ -19,18 +19,18 @@ namespace Finah_Backend.Controllers
         //TODO code opschonen
 
         private List<Bevraging> bevragingen = new List<Bevraging>();
-        private FinahDBContext db;
+        private ApplicationDbContext db;
 
         public BevragingController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public BevragingController(List<Bevraging> bevragingen)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.bevragingen = bevragingen;
         }
 

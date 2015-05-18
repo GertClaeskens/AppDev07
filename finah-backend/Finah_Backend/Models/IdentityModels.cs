@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 namespace Finah_Backend.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -22,7 +25,7 @@ namespace Finah_Backend.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Finah_Backend", throwIfV1Schema: false)
         {
         }
 
@@ -30,5 +33,59 @@ namespace Finah_Backend.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Aandoening> Aandoeningen { get; set; }
+
+        public DbSet<Aanvraag> Aanvragen { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<Bevraging> Bevragingen { get; set; }
+
+        public DbSet<EID> EIDs { get; set; }
+
+        public DbSet<Foto> Fotos { get; set; }
+
+        public DbSet<GeluidsFragment> Geluidsfragmenten { get; set; }
+
+        public DbSet<LeeftijdsCategorie> LeeftijdsCategorieen { get; set; }
+
+        public DbSet<Pathologie> Pathologieen { get; set; }
+
+        public DbSet<Postcode> Postcodes { get; set; }
+
+        public DbSet<Status> Statussen { get; set; }
+
+        public DbSet<Vraag> Vragen { get; set; }
+
+        public DbSet<VragenLijst> VragenLijsten { get; set; }
+
+        public DbSet<Antwoord> Antwoorden { get; set; }
+
+        public DbSet<AntwoordenLijst> AntwoordenLijsten { get; set; }
+
+        public DbSet<Relatie> Relaties { get; set; }
+        public DbSet<Onderzoek> Onderzoeken { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<AntwoordenLijst>().HasKey(e => new { e.Id, e.Datum });
+            //modelBuilder.Entity<AntwoordenLijst>().HasRequired(e => e.Id).WithRequiredPrincipal();
+            modelBuilder.Entity<AntwoordenLijst>()
+                        .Property(e => e.Id)
+                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<AntwoordenLijst>()
+            //            .HasRequired(e => e.Bevraging)
+            //            .WithRequiredDependent(r => r.Antwoorden);
+            //modelBuilder.Entity<Bevraging>()
+            //.HasRequired(e => e.Antwoorden)
+            //.WithRequiredDependent(r => r.Bevraging);
+
+        }
+
+        public DbSet<Thema> Themas { get; set; }
     }
 }

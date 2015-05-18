@@ -22,18 +22,18 @@ namespace Finah_Backend.Controllers
         // GET: api/LeeftijdsCategorie
         private List<LeeftijdsCategorie> leeftijdsCategorieen = new List<LeeftijdsCategorie>();
 
-        private FinahDBContext db;
+        private ApplicationDbContext db;
 
         public LeeftijdsCategorieController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public LeeftijdsCategorieController(List<LeeftijdsCategorie> leeftijdsCategorieen)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.leeftijdsCategorieen = leeftijdsCategorieen;
         }
 

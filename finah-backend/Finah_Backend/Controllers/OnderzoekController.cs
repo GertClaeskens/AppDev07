@@ -15,7 +15,7 @@ namespace Finah_Backend.Controllers
 {
     public class OnderzoekController : ApiController
     {
-        private FinahDBContext db = new FinahDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Onderzoek
         [Route("Onderzoek/Overzicht")]

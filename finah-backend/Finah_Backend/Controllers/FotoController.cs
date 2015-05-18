@@ -15,19 +15,19 @@ namespace Finah_Backend.Controllers
     public class FotoController : ApiController
     {
         //TODO code opschonen
-        private FinahDBContext db;
+        private ApplicationDbContext db;
         private List<Foto> fotos = new List<Foto>();
 
         public FotoController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public FotoController(List<Foto> fotos)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.fotos = fotos;
         }
 

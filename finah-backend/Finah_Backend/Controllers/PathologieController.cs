@@ -16,18 +16,18 @@ namespace Finah_Backend.Controllers
         // GET: api/Pathologie
         private List<Pathologie> pathologieen = new List<Pathologie>();
 
-        private FinahDBContext db;
+        private ApplicationDbContext db;
 
         public PathologieController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public PathologieController(List<Pathologie> pathologieen)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.pathologieen = pathologieen;
         }
 
@@ -35,7 +35,8 @@ namespace Finah_Backend.Controllers
         public IQueryable<Pathologie> GetOverzicht()
         //public IEnumerable<Pathologie> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return db.Pathologieen;
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Pathologieen.Include(p => p.Aandoeningen);
         }
 
         [ResponseType(typeof(Pathologie))]

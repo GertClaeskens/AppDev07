@@ -22,18 +22,18 @@ namespace Finah_Backend.Controllers
         //TODO code opschonen
         private List<VragenLijst> vragenlijsten = new List<VragenLijst>();
 
-        private FinahDBContext db;
+        private ApplicationDbContext db;
 
         public VragenLijstController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public VragenLijstController(List<VragenLijst> vragenlijst)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.vragenlijsten = vragenlijst;
         }
 
@@ -44,7 +44,8 @@ namespace Finah_Backend.Controllers
         public IEnumerable<VragenLijst> GetOverzicht()
         //public IQueryable<VragenLijst> GetOverzicht()
         {
-            return db.VragenLijsten;
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.VragenLijsten.Include(vl => vl.Vragen).Include(vl => vl.Aandoe);
 
         }
         [Route("VragenLijst/{id}")]

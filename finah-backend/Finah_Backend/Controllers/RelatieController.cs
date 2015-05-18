@@ -11,7 +11,7 @@ namespace Finah_Backend.Controllers
 {
     public class RelatieController : ApiController
     {
-        private FinahDBContext db = new FinahDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Relatie
         [Route("Relatie/Overzicht")]

@@ -8,7 +8,7 @@ namespace Finah_Backend.Migrations
     using System.Runtime.InteropServices;
     using Excel = Microsoft.Office.Interop.Excel;
 
-    public sealed class Configuration : DbMigrationsConfiguration<FinahDBContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Models.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -16,7 +16,7 @@ namespace Finah_Backend.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(FinahDBContext context)
+        protected override void Seed(Models.ApplicationDbContext context)
         {
             #region Thema's
 
@@ -261,12 +261,12 @@ namespace Finah_Backend.Migrations
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vragenLijst);
             context.SaveChanges();
             var vrLijst = new VragenLijst
-                                  {
-                                      Omschrijving =
-                                          "Korte vragenlijst Niet-aangeboren Hersenaandoening",
-                                      Aandoe = context.Aandoeningen.Find(1),
-                                      Vragen =
-                                          new List<Vraag>
+            {
+                Omschrijving =
+                    "Korte vragenlijst Niet-aangeboren Hersenaandoening",
+                Aandoe = context.Aandoeningen.Find(1),
+                Vragen =
+                    new List<Vraag>
                                               {
                                                   new Vraag
                                                       {
@@ -287,7 +287,7 @@ namespace Finah_Backend.Migrations
                                                           Thema = context.Themas.Find(1)
                                                       }
                                               }
-                                  };
+            };
             #endregion Vragen + VragenLijst toevoegen
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vrLijst);
             context.SaveChanges();
@@ -356,10 +356,10 @@ namespace Finah_Backend.Migrations
                     continue;
                 }
                 var pc = new Postcode
-                             {
-                                 Postnr = (int)range1.Value,
-                                 Gemeente = (string)range2.Value
-                             };
+                {
+                    Postnr = (int)range1.Value,
+                    Gemeente = (string)range2.Value
+                };
                 postcodelijst.Add(pc);
             }
 
@@ -384,7 +384,7 @@ namespace Finah_Backend.Migrations
                 Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 obj = null;
             }
