@@ -19,9 +19,9 @@
                 $url .= "Overzicht";
             } else $url .= $id;
             // request list of contacts from Web API + deserialize data from JSON
-            //var_dump($url);
+            var_dump($url);
             $result = json_decode(file_get_contents($url), true);
-            //var_dump($result);
+            var_dump($result);
             return $result;
         }
 

@@ -18,19 +18,20 @@
 </head>
 <body>
 <?php
+    var_dump($_GET);
     if (isset($_GET["id"])) {
 //    TODO kijken of er al vragen zijn ingevuld
         $aantalingevuld = 0;
         $volgende = 1;
-        $bevraging = new Bevraging();
-        $bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
+        //$bevraging = new Bevraging();
+        //$bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
         $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $_GET["id"]);
         $antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
         if (array_search("0", $antwoorden)) {
             $aantalingevuld = array_search(0, $antwoorden);
         }
         $aantalingevuld = 0;
-        $patient = ($bevraging["IsPatient"] == true) ? true : false;
+        $patient = ($antwoordenLijst["Bevraging"]["IsPatient"] == true) ? true : false;
         if ($patient) {
             echo "<h2>Enquete Patient</h2>";
         } else {
@@ -38,7 +39,7 @@
         }
         ?>
         <!--    TODO als er al vragen zijn ingevuld moet er op de button staan hervatten vragenlijst-->
-        <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form name="myForm" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 
             Korte inleiding over de enquete<br/><br/>
 

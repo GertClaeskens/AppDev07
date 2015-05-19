@@ -224,14 +224,16 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
                                                 $antwoorden_pat = new AntwoordenLijst();
-                                                $antwoorden_pat->setId($bevraging_pat->getId());
+                                                $antwoorden_pat->setId(0);
+                                                $antwoorden_pat->setBevragingId($bevraging_pat->getId());
                                                 $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
                                                 $datum = new DateTime("Now");
                                                 $dat = $datum->format('d/m/Y G:i:s');
                                                 $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
                                                 $antwoorden_pat->setDatum($dateTime);
                                                 $antwoorden_man = new AntwoordenLijst();
-                                                $antwoorden_man->setId($bevraging_man->getId());
+                                                $antwoorden_man->setId(0);
+                                                $antwoorden_man->setBevragingId($bevraging_man->getId());
                                                 $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
                                                 $antwoorden_man->setDatum($dateTime);
                                                 $onderzoek->setBevragingPat($bevraging_pat);
@@ -248,8 +250,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $antwoorden_man->setAntwoorden($leeg_vragen);
                                                 if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                                     //Todo eventueel een exception toevoegen hier
-                                                    $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getId()));
-                                                    $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getId()));
+                                                    $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
+                                                    $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getBevragingId()));
                                                     if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                                                         //Todo eventueel een exception toevoegen hier
                                                         //header("Location: Overzicht.php");
@@ -289,7 +291,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
 
 
                         ?>
-                        <form id="bevragingForm" class="form-horizontal" role="form" method="POST"
+                        <form id="bevragingForm" class="form-horizontal" role="form" method="POST" name="myForm"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Informatie"> Informatie: </label>
