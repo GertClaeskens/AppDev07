@@ -109,7 +109,7 @@ if (isset($_POST)) {
             }
         }
     ?>
-            <form id="aandoeningForm" class="form-horizontal " role="form" method="POST"
+            <form id="pathologieForm" class="form-horizontal " role="form" method="POST"
                   action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <?php
                         if (isset($_POST["bewerk"])) {
@@ -120,7 +120,7 @@ if (isset($_POST)) {
                     <div class="form-group top-form">
                         <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="Omschrijving"> Omschrijving: </label>
                         <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                            <textarea rows="5" type="text" class="form-control" id="omschrijving" name="omschrijving" > <?php echo $aandoening["Omschrijving"]; ?></textarea>
+                            <textarea rows="5" type="text" class="form-control" id="Omschrijving" name="omschrijving" > <?php echo $aandoening["Omschrijving"]; ?></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -167,10 +167,11 @@ if (isset($_POST)) {
                     omschrijving: "required"
                 },
                 messages: {
-                    omschrijving: "Veld is verplicht."
+                    omschrijving:  "Veld is verplicht."
                 }
+
             });
-        })
+        });
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");

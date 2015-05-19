@@ -289,7 +289,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
 
 
                         ?>
-                        <form id="myForm" class="form-horizontal" role="form" method="POST"
+                        <form id="bevragingForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Informatie"> Informatie: </label>
@@ -303,7 +303,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening"> Kies de aandoening: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event);OnChange2(event);">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                         <?php
                                         $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
                                         foreach ($aandoeningLijst as $item) {
@@ -317,7 +317,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Pathologie"> Kies de pathologie: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="Pathologie" name="Pathologie">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                     </select>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Vragenlijst"> Kies de vragenlijst: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="Vragenlijst" name="Vragenlijst">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                     </select>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="LeeftijdcategoriePat"> Kies de leeftijdscategorie (patient): </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="LeeftijdcategoriePat" name="leeftijdcategoriePat">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                         <?php
                                         $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
                                         foreach ($leeftijdscategoriePat as $item) {
@@ -349,7 +349,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="LeeftijdscategorieMan"> Kies de leeftijdscategorie (mantelzorger): </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="LeeftijdcategorieMan" name="leeftijdcategorieMan">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                         <?php
                                             $leeftijdscategorieMan = FinahDAO::HaalOp("LeeftijdsCategorie");
                                             foreach ($leeftijdscategorieMan as $item) {
@@ -363,7 +363,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Relatie"> Kies de relatie tussen patient en mantelzorger: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select class="form-control" id="Relatie" name="relatie">
-                                        <option value="null">Maak een keuze</option>
+                                        <option value="">Maak een keuze</option>
                                         <?php
                                             $relatie = FinahDAO::HaalOp("Relatie");
                                             foreach ($relatie as $item) {
@@ -532,15 +532,27 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         ?>
         <script>
             $().ready(function () {
-                 $("#aandoeningForm").validate({
+                 $("#bevragingForm").validate({
                      rules: {
-                         omschrijving: "required"
+                         informatie: "required",
+                         aandoening: "required",
+                         Pathologie: "required",
+                         Vragenlijst: "required",
+                         leeftijdcategoriePat: "required",
+                         leeftijdcategorieMan: "required",
+                         relatie: "required"
                      },
                      messages: {
-                         omschrijving: "Veld is verplicht."
+                         informatie: "Gelieve dit veld in te vullen!",
+                         aandoening: "Gelieve een keuze te maken!",
+                         Pathologie: "Gelieve een keuze te maken!",
+                         Vragenlijst: "Gelieve een keuze te maken!",
+                         leeftijdcategoriePat: "Gelieve een keuze te maken!",
+                         leeftijdcategorieMan: "Gelieve een keuze te maken!",
+                         relatie: "Gelieve een keuze te maken!"
                      }
                  });
-             })
+             });
              $("#menu-toggle").click(function (e) {
                  e.preventDefault();
                  $("#wrapper").toggleClass("toggled");

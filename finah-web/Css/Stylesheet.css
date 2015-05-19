@@ -7,6 +7,9 @@
     url('../fonts/glyphicons-halflings-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
     url('../fonts/glyphicons-halflings-regular.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
+.error {
+    color:#E0110B;
+}
 
 #dialogoverlay{
     display: none;

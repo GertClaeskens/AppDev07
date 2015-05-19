@@ -156,7 +156,7 @@
                                     }
 
                         ?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                        <form id="themaForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Naam"> Thema naam: </label>
@@ -249,29 +249,29 @@
     }
     }
     ?>
-                    <script>
-                        $().ready(function () {
-                            $("#aandoeningForm").validate({
-                                rules: {
-                                    Naam: "required"
-                                },
-                                messages: {
-                                    Naam: "Veld is verplicht."
-                                }
-                            });
-                        })
-                        $("#menu-toggle").click(function (e) {
-                            e.preventDefault();
-                            $("#wrapper").toggleClass("toggled");
-                            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                                $("#side-toggle").removeClass("glyphicon-option-vertical");
-                                $("#side-toggle").addClass("glyphicon-option-horizontal");
-                            } else {
-                                $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                                $("#side-toggle").addClass("glyphicon-option-vertical");
-                            }
-                        });
-                    </script>
+        <script>
+            $().ready(function () {
+                $("#themaForm").validate({
+                    rules: {
+                        Naam: "required"
+                    },
+                    messages: {
+                        Naam: "Gelieve dit veld in te vullen!"
+                    }
+                });
+            });
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+                if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                    $("#side-toggle").removeClass("glyphicon-option-vertical");
+                    $("#side-toggle").addClass("glyphicon-option-horizontal");
+                } else {
+                    $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                    $("#side-toggle").addClass("glyphicon-option-vertical");
+                }
+            });
+        </script>
     </body>
     </html>
 <?php

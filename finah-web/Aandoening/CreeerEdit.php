@@ -164,12 +164,12 @@
 
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2"
-                                       for="omschrijving">
+                                       for="Omschrijving">
                                     Omschrijving: </label>
 
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
                                         <textarea autofocus="true" rows="5" type="text" class="form-control"
-                                                  id="omschrijving" name="omschrijving"><?php
+                                                  id="Omschrijving" name="omschrijving"><?php
                                                 if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                                     echo $naam;
                                                 } ?></textarea>
@@ -318,10 +318,10 @@
                     omschrijving: "required"
                 },
                 messages: {
-                    omschrijving: "Veld is verplicht."
+                    omschrijving: "Dit veld is verplicht!"
                 }
             });
-        })
+        });
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");

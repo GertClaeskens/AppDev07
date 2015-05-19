@@ -163,7 +163,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         }
                                     }
                         ?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                        <form id="leeftijdcatForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van"> Van: </label>
@@ -178,7 +178,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot"> Tot:  </label>
-                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 text-nowrap">
                                     <input type="text" name="tot" class="form-control" id="Tot" value=
                                         <?php
                                         if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
@@ -276,29 +276,48 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     }
     }
     ?>
-                    <script>
-                        $().ready(function () {
-                            $("#aandoeningForm").validate({
-                                rules: {
-                                    Van: "required"
-                                },
-                                messages: {
-                                    Tot: "Veld is verplicht."
-                                }
-                            });
-                        })
-                        $("#menu-toggle").click(function (e) {
-                            e.preventDefault();
-                            $("#wrapper").toggleClass("toggled");
-                            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                                $("#side-toggle").removeClass("glyphicon-option-vertical");
-                                $("#side-toggle").addClass("glyphicon-option-horizontal");
-                            } else {
-                                $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                                $("#side-toggle").addClass("glyphicon-option-vertical");
-                            }
-                        });
-                    </script>
+     <script>
+         $().ready(
+             function () {
+             $("#leeftijdcatForm").validate({
+                 rules: {
+                     van: {
+                         required: true,
+                         number: true,
+                         min:0
+                     },
+                     tot: {
+                         required: true,
+                         number: true,
+                         min:0
+                     }
+                 },
+                 messages: {
+                     van:{
+                         required: "Gelieve dit veld in te vullen",
+                         number: "Gelieve een postieve numerieke waarde in te geven",
+                         min: "Gelieve een positieve waarde in te geven"
+                     },
+                     tot: {
+                         required: "Gelieve dit veld in te vullen",
+                         number: "Gelieve een postieve numerieke waarde in te geven",
+                         min: "Gelieve een positieve waarde in te geven"
+                     }
+                 }
+             });
+         });
+         $("#menu-toggle").click(function (e) {
+             e.preventDefault();
+             $("#wrapper").toggleClass("toggled");
+             if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                 $("#side-toggle").removeClass("glyphicon-option-vertical");
+                 $("#side-toggle").addClass("glyphicon-option-horizontal");
+             } else {
+                 $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                 $("#side-toggle").addClass("glyphicon-option-vertical");
+             }
+         });
+     </script>
     </body>
     </html>
 <?php

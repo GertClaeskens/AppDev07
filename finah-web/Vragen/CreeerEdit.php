@@ -158,9 +158,8 @@
                                                 }
                                             }
                                         }
-
                         ?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                        <form id="vragenForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
@@ -178,7 +177,7 @@
                                     <select class="form-control" id="Thema" name="thema">
                                         <?php
                                         $themaLijst = FinahDAO::HaalOp("Thema");
-                                        echo "  <option >" . " Maak een keuze". " </option>";
+                                        echo "  <option value=''>" . " Maak een keuze". " </option>";
                                         foreach ($themaLijst as $item) {
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
                                         }
@@ -281,15 +280,17 @@
     ?>
         <script>
             $().ready(function () {
-                $("#aandoeningForm").validate({
+                $("#vragenForm").validate({
                     rules: {
-                        vraagstelling: "required"
+                        Vraagstelling: "required",
+                        thema: "required"
                     },
                     messages: {
-                        vraagstelling: "Veld is verplicht."
+                        Vraagstelling: "Gelieve dit veld in te vullen!",
+                        thema: "Gelieve een keuze te maken!"
                     }
                 });
-            })
+            });
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");

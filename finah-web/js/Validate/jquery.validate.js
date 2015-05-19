@@ -933,6 +933,7 @@ $.extend( $.validator, {
 		creditcard: { creditcard: true }
 	},
 
+
 	addClassRules: function( className, rules ) {
 		if ( className.constructor === String ) {
 			this.classRuleSettings[ className ] = rules;

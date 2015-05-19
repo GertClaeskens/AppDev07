@@ -182,7 +182,7 @@
                                 }
                             }
                         ?>
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
+                        <form id="vragenlijstForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Titel">
@@ -204,6 +204,7 @@
 
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
                                     <select name="Aandoe" class="form-control" id="Aandoening">
+                                        <option value="">Maak een keuze</option>
                                         <?php
 
                                             $aandoeningen = FinahDAO::HaalOp("Aandoening");
@@ -352,15 +353,17 @@
     ?>
     <script>
         $().ready(function () {
-            $("#aandoeningForm").validate({
+            $("#vragenlijstForm").validate({
                 rules: {
-                    vraagstelling: "required"
+                    Titel: "required",
+                    Aandoe: "required"
                 },
                 messages: {
-                    vraagstelling: "Veld is verplicht."
+                    Titel: "Gelieve dit veld in te vullen!",
+                    Aandoe: "Gelieve een keuze te maken!"
                 }
             });
-        })
+        });
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
