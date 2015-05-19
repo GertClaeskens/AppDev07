@@ -130,6 +130,9 @@ require "../PHP/Models/VragenLijst.php";
                                     Aandoening
                                 </th>
                                 <th>
+                                    Omschrijving
+                                </th>
+                                <th>
                                     Aantal vragen
                                 </th>
                                 <th>Actie</th>
@@ -142,6 +145,7 @@ require "../PHP/Models/VragenLijst.php";
                                     echo "<tr>"?>
                                        <td class='col-sm-1 col-md-1 col-lg-1 text-center'><?php echo $item["Id"]?></td>
                                        <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Aandoe"]["Omschrijving"]?></td>
+                                       <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Omschrijving"]?></td>
                                        <td class='col-sm-3 col-md-3 col-lg-3 text-center'><?php echo count($item["Vragen"])?></td>
                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                             <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
