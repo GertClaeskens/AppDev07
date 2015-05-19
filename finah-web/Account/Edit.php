@@ -47,7 +47,7 @@ require "../PHP/DAO/FinahDAO.php";
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
                 <li role="presentation">
-                    <a role="menuitem" tabindex="0" href="#">
+                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">
                         <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
                     </a>
                 </li>
@@ -115,21 +115,9 @@ require "../PHP/DAO/FinahDAO.php";
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-
                         <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
-                              action="" for="Titel">
-                                    Vragenlijst titel: </label>
+                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-                                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                    <input type="text" placeholder="Voer een titel in " name="Titel"
-                                           class="form-control" id="Titel" value=
-                                        <?php
-                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                            echo $vragenlijstTitel;
-                                        } ?>>
-
-                                </div>
-                            </div>
                         </form>
 
                     </div>
@@ -137,19 +125,7 @@ require "../PHP/DAO/FinahDAO.php";
             </div>
         </div>
     </div>
-
-
     <script>
-        $().ready(function () {
-            $("#aandoeningForm").validate({
-                rules: {
-                    vraagstelling: "required"
-                },
-                messages: {
-                    vraagstelling: "Veld is verplicht."
-                }
-            });
-        })
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
