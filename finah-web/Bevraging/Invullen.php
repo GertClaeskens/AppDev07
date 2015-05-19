@@ -40,7 +40,7 @@
         <!--    TODO als er al vragen zijn ingevuld moet er op de button staan hervatten vragenlijst-->
         <form name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-            Korte inleiding over de enquete</br></br>
+            Korte inleiding over de enquete<br/><br/>
 
             <input type="hidden" name="id" id="id" value="<?php echo $_GET["id"] ?>">
             <!--TODO datum ophalen kijken van de oudste niet volledig ingevulde antwoordenlijst wat de datum is, ofwel dit op de backend toepassen-->
@@ -53,7 +53,7 @@
             <?php } else { ?>
                 <input type="submit" name="volgende" value="Start Vragenlijst" class="btn btn-primary antwoordButton">
             <?php } ?>
-            </div> <!-- einde pagina1 -->
+            <!-- </div> --><!-- einde pagina1 -->
         </form>
     <?php } elseif (isset($_POST["volgende"])) {
 
