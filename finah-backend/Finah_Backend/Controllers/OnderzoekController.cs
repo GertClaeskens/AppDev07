@@ -21,7 +21,8 @@ namespace Finah_Backend.Controllers
         [Route("Onderzoek/Overzicht")]
         public IQueryable<Onderzoek> GetOnderzoeken()
         {
-            return db.Onderzoeken.Include(o => o.Relatie);
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie);
         }
 
         [Route("Onderzoek/{id}")]
@@ -129,7 +130,7 @@ namespace Finah_Backend.Controllers
                 (from o in
                      db.Onderzoeken.Include(o => o.Vragen.Vragen)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
-                 select o.Vragen);
+                 select o.Vragen.Vragen);
             return vragen;
         }
         // PUT: api/Onderzoek/5

@@ -15,6 +15,7 @@
 
         public string VraagStelling { get; set; }
 
+        //public int ThemaId { get; set; }
         public virtual Thema Thema { get; set; }
         public virtual Foto Afbeelding { get; set; }
 

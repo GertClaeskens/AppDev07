@@ -8,15 +8,16 @@ namespace Finah_Backend.Migrations
     using System.Runtime.InteropServices;
     using Excel = Microsoft.Office.Interop.Excel;
 
-    public sealed class Configuration : DbMigrationsConfiguration<Models.ApplicationDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
+            
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             #region Thema's
 
