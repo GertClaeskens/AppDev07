@@ -15,11 +15,14 @@
 
         public string VraagStelling { get; set; }
 
-        //public int ThemaId { get; set; }
+
+        [ForeignKey("Thema")]
+        public int ThemaId { get; set; }
         public virtual Thema Thema { get; set; }
+        //[ForeignKey("Afbeelding")]
+        //public int AfbeeldingId { get; set; }
         public virtual Foto Afbeelding { get; set; }
 
-        public virtual GeluidsFragment Geluid { get; set; }
         public virtual ICollection<VragenLijst> VragenLijst { get; set; }
 
         #endregion Public members
