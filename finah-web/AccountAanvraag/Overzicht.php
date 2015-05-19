@@ -35,7 +35,7 @@ require "../PHP/DAO/FinahDAO.php";
         <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
             <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
         </a>
-        <a class="navbar-brand header" href="#"> Finah</a>
+        <a class="navbar-brand header" href="../index.php"> Finah</a>
     </div>
     <div class="dropdown navbar-header pull-right nav-right">
         <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
