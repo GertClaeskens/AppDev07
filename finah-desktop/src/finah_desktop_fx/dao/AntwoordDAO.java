@@ -20,7 +20,7 @@ public abstract class AntwoordDAO {
 
 		BufferedReader rd = null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Antwoord/"
+			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Antwoord/"
 					+ id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -39,7 +39,7 @@ public abstract class AntwoordDAO {
 		}.getType();
 		//ArrayList<Antwoord> antwoorden = null;
 		try {
-			return SharedDAO.HaalGegevens("http://localhost:1695/Antwoord/Overzicht",
+			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Antwoord/Overzicht",
 					collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

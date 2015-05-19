@@ -23,7 +23,7 @@ public class AanvraagDAO {
 
 		try {
 			return SharedDAO.HaalGegevens(
-					"http://localhost:1695/Aanvraag/Overzicht", collectionType);
+					"http://finahbackend1920.azurewebsites.net/Aanvraag/Overzicht", collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class AanvraagDAO {
 
 		BufferedReader rd = null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Aanvraag/" + id);
+			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aanvraag/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

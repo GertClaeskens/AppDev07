@@ -19,7 +19,7 @@ public class BevragingDAO {
 		}.getType();
 		try {
 			return SharedDAO
-					.HaalGegevens("http://localhost:1695/Bevraging/Overzicht",collectionType);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Bevraging/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class BevragingDAO {
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Bevraging/" + id);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Bevraging/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

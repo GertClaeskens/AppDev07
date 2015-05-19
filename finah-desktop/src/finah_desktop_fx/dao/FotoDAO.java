@@ -20,7 +20,7 @@ public class FotoDAO {
 		Type collectionType = new TypeToken<Collection<Foto>>() {
 		}.getType();
 		try {
-			return SharedDAO.HaalGegevens("http://localhost:1695/Foto/Overzicht",collectionType);
+			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Foto/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class FotoDAO {
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Foto/" +id);
+			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Foto/" +id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
