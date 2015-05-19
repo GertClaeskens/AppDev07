@@ -2,6 +2,8 @@
 
 namespace Finah_Backend.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class VragenLijst
     {
 
@@ -13,6 +15,8 @@ namespace Finah_Backend.Models
         public int Id { get; set; }
         public string Omschrijving { get; set; }
 
+        [ForeignKey("Vragen")]
+        public int VragenId { get; set; }
         public virtual ICollection<Vraag> Vragen { get; set; }
 
         public virtual Aandoening Aandoe { get; set; }

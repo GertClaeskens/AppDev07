@@ -28,9 +28,12 @@ namespace Finah_Backend.Controllers
 
         public IHttpActionResult GetOnderzoek(int id)
         {
-            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
+            db.Configuration.LazyLoadingEnabled = false;
+            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                              where (o.Id == id)
-                             select o);
+                             select o).Include(o => o.Vragen.Vragen);
+
+
 
             if (onderzoek == null)
             {
@@ -45,7 +48,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult GetOnderzoekDoorBevragingId(string id)
         {
             //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
-            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Relatie)
+            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                              where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                              select o).ToList();
             var antwoorden = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
@@ -69,7 +72,7 @@ namespace Finah_Backend.Controllers
         {
             //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
             var onderzoek =
-                (from o in db.Onderzoeken.Include(o => o.Relatie)
+                (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o).First();
             var bevraging = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
@@ -90,7 +93,15 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult GetAandoening(string id)
         {
             var aandoening =
-                (from o in db.Onderzoeken
+                (from o in
+                     db.Onderzoeken.Include(o => o.Bevraging_Man)
+                     .Include(o => o.Pathologie)
+                     .Include(o => o.Bevraging_Pat)
+                     .Include(o => o.AangemaaktDoor)
+                     .Include(o => o.Relatie)
+                     .Include(o => o.Vragen)
+                     .Include(o => o.Aandoening)
+                     .Include(o => o.Pathologie)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o.Aandoening);
             if (aandoening == null)
@@ -113,10 +124,12 @@ namespace Finah_Backend.Controllers
         [Route("Onderzoek/{id}/Vragen/")]
         public IQueryable<ICollection<Vraag>> GetVraag(string id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             var vragen =
-                (from o in db.Onderzoeken
+                (from o in
+                     db.Onderzoeken.Include(o => o.Vragen.Vragen)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
-                 select o.Vragen.Vragen);
+                 select o.Vragen);
             return vragen;
         }
         // PUT: api/Onderzoek/5
