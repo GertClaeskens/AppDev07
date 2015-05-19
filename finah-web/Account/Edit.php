@@ -34,7 +34,7 @@ require "../PHP/DAO/FinahDAO.php";
 <!--                    empty(woonpl);-->
 <!--                    var gem = '';-->
 <!--                    var xhr = new JSONHttpRequest();-->
-<!--                    var url = "http://finahbackend1920.azurewebsites.net/Account/" + val + "/Gemeente";-->
+<!--                    var url = "http://finahbackend1920.azurewebsites.net/Postcode/" + val + "/Gemeente";-->
 <!--                    xhr.open("GET", url, true);-->
 <!---->
 <!--                    xhr.onreadystatechange = function () {-->

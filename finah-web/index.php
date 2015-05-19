@@ -22,22 +22,21 @@
         <![endif]-->
     </head>
     <body>
-    <nav  class="navbar navbar-default navbar-fixed-top">
-        <div  class="navbar-header pull-left">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header pull-left">
 
-            <a href="#menu-toggle"  id="menu-toggle" class="btn-toggle">
+            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
                 <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
             </a>
-            <a  class="navbar-brand header"  href="#"> Finah</a>
+            <a class="navbar-brand header" href="#"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <span class="img-circle"><img src="Images/blank-avatar.png"/></span>
             <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
                 <li role="presentation">
-                    <a role="menuitem" tabindex="0" href="#">
+                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">
                         <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
                     </a>
                 </li>
