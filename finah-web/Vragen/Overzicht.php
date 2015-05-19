@@ -81,6 +81,9 @@ require "../PHP/Models/Vraag.php";
                 </h4>
             </li>
             <li>
+                <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
+            </li>
+            <li>
                 <a href="../Aandoening/Overzicht.php"> Aandoening </a>
             </li>
             <li>
