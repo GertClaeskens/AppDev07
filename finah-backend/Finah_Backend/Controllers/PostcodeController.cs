@@ -13,7 +13,7 @@ namespace Finah_Backend.Controllers
         /// Wordt gebruikt om de database te testen.
         ///
 
-        private readonly FinahDBContext _db = new FinahDBContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         //Geen Api/ meer nodig
         [Route("Postcode/{id}")]

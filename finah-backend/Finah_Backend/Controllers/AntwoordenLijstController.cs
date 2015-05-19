@@ -16,7 +16,7 @@ namespace Finah_Backend.Controllers
     public class AntwoordenLijstController : ApiController
     {
         //TODO Code opschonen als alles bolt
-        private FinahDBContext db = new FinahDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         [Route("AntwoordenLijst/Overzicht")]
         // GET: api/AntwoordenLijst

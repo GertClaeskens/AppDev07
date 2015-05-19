@@ -12,25 +12,25 @@ namespace Finah_Backend.Controllers
 {
     using System.Web.Http.Cors;
 
-    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
 
     public class VragenController : ApiController
     {
         //TODO code opschonen
         //private List<Vraag> vragen = new List<Vraag>();
 
-        private readonly FinahDBContext db;
+        private readonly ApplicationDbContext db;
 
         public VragenController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public VragenController(List<Vraag> vragen)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             //this.vragen = vragen;
         }
 
@@ -51,7 +51,8 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Vraag> GetOverzicht()
         public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return db.Vragen;
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema).Include(p => p.Geluid).Include(p => p.VragenLijst);
         }
 
         // PUT: api/Vragen/5
@@ -86,7 +87,7 @@ namespace Finah_Backend.Controllers
                 }
             }
 
-            //db.Entry(vraag).State = EntityState.Modified;
+            //db.Entry(vr).State = EntityState.Modified;
 
             try
             {

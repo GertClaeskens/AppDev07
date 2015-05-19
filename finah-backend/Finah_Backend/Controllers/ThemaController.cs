@@ -15,7 +15,7 @@ namespace Finah_Backend.Controllers
 {
     public class ThemaController : ApiController
     {
-        private FinahDBContext db = new FinahDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Thema
         [Route("Thema/Overzicht")]

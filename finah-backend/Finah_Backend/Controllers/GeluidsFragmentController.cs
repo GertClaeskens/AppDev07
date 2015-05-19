@@ -15,19 +15,19 @@ namespace Finah_Backend.Controllers
     public class GeluidsFragmentController : ApiController
     {
         //TODO code opschonen
-        private FinahDBContext db;
+        private ApplicationDbContext db;
         private List<GeluidsFragment> geluidsFragmenten = new List<GeluidsFragment>();
 
         public GeluidsFragmentController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public GeluidsFragmentController(List<GeluidsFragment> geluidsFragmenten)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.geluidsFragmenten = geluidsFragmenten;
         }
         [Route("GeluidsFragment/Overzicht")] //Geen Api/ meer nodig

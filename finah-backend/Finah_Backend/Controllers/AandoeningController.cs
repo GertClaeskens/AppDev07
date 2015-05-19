@@ -15,23 +15,23 @@ namespace Finah_Backend.Controllers
     using System.Web.Http.Description;
 
     //TODO aanpassen naar azure website
-    [EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AandoeningController : ApiController
     {
         //TODO code opschonen als alles bolt
-        private FinahDBContext db;
+        private ApplicationDbContext db;
         private List<Aandoening> aandoeningen = new List<Aandoening>();
 
         public AandoeningController()
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
         }
 
         //Constructor met als argument een List van Bevragingen, hierdoor kunnen we testdata aan
         //de Controller meegeven om zo unittesten voor de controller te schrijven.
         public AandoeningController(List<Aandoening> aandoeningen)
         {
-            db = new FinahDBContext();
+            db = new ApplicationDbContext();
             this.aandoeningen = aandoeningen;
         }
 
@@ -43,14 +43,15 @@ namespace Finah_Backend.Controllers
         }
 
         [Route("Aandoening/{id}/VragenLijst")]
-        public VragenLijst GetVragenLijst(int id)
+        public IEnumerable<VragenLijst> GetVragenLijst(int id)
         {
             //Er is een vragenlijst per aandoening.
-
-            var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).First();
+            db.Configuration.LazyLoadingEnabled = false;
+            var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).Include(vr => vr.Aandoe).Include(vr => vr.Vragen).Include(vr => vr.Vragen);
+            
             return v;
         }
-
+        [HttpGet]
         [ResponseType(typeof(Aandoening))]
         [Route("Aandoening/{id}")]
         public IHttpActionResult Get(int id)
@@ -90,113 +91,8 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Aandoening> GetAandoeningen()
         public IEnumerable<Aandoening> GetOverzicht()
         {
-            return db.Aandoeningen;
-
-            //
-            //return vragen;
-            //aandoeningen = db.Aandoeningen.ToList();
-
-            #region Hardcoded objecten - Commented
-
-            //var ad1 = new Aandoening
-            //{
-            //    Id = 1,
-            //    Omschrijving = "Aandoening 1",
-
-            //    Patologieen =
-            //        new List<Pathologie>
-            //                                        {
-            //                                            new Pathologie
-            //                                                {
-            //                                                    Id = 1,
-            //                                                    Omschrijving =
-            //                                                        "Omschrijving"
-            //                                                }
-            //                                        }
-            //};
-            //var ad2 = new Aandoening
-            //                            {
-            //                                Id = 2,
-            //                                Omschrijving = "Aandoening 2",
-
-            //                                Patologieen =
-            //                                    new List<Pathologie>
-            //                                        {
-            //                                            new Pathologie
-            //                                                {
-            //                                                    Id = 2,
-            //                                                    Omschrijving =
-            //                                                        "Omschrijving"
-            //                                                },
-            //                                            new Pathologie
-            //                                                {
-            //                                                    Id = 3,
-            //                                                    Omschrijving =
-            //                                                        "Omschrijving"
-            //                                                }
-            //                                        }
-            //                            };
-            //var ad3 = new Aandoening
-            //{
-            //    Id = 3,
-            //    Omschrijving = "Aandoening 3",
-            //    Patologieen =
-            //        new List<Pathologie>
-            //                                            {
-            //                                                new Pathologie
-            //                                                    {
-            //                                                        Id = 2,
-            //                                                        Omschrijving =
-            //                                                            "OmschrijvingP2"
-            //                                                    }
-            //                                            }
-            //};
-            //var ad4 = new Aandoening
-            //{
-            //    Id = 4,
-            //    Omschrijving = "Aandoening 4",
-
-            //    Patologieen =
-            //        new List<Pathologie>
-            //                                        {
-            //                                            new Pathologie
-            //                                                {
-            //                                                    Id = 1,
-            //                                                    Omschrijving =
-            //                                                        "OmschrijvingP1"
-            //                                                }
-            //                                        }
-            //};
-            //var ad5 = new Aandoening
-            //{
-            //    Id = 5,
-            //    Omschrijving = "Aandoening 5",
-            //    Patologieen =
-            //        new List<Pathologie>
-            //                                        {
-            //                                            new Pathologie
-            //                                                {
-            //                                                    Id = 1,
-            //                                                    Omschrijving =
-            //                                                        "OmschrijvingP1"
-            //                                                },new Pathologie
-            //                                                {
-            //                                                    Id = 2,
-            //                                                    Omschrijving =
-            //                                                        "OmschrijvingP2"
-            //                                                },new Pathologie
-            //                                                {
-            //                                                    Id = 3,
-            //                                                    Omschrijving =
-            //                                                        "OmschrijvingP3"
-            //                                                }
-            //                                        }
-            //};
-            //var overzichtAandoeningen = new List<Aandoening> { ad1, ad2, ad3, ad4, ad5 };
-
-            //return overzichtAandoeningen;
-
-            #endregion Hardcoded objecten - Commented
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Aandoeningen.Include(a => a.Patologieen);
         }
 
         // PUT: api/Aandoenings/5
@@ -205,8 +101,8 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, Aandoening aandoening)
         {
-            db = new FinahDBContext();
-            //TODO nog niet waterdicht -> Transactie?
+            db = new ApplicationDbContext();
+            //TODO nog niet waterdicht? -> Transactie?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
