@@ -21,6 +21,39 @@ require "../PHP/DAO/FinahDAO.php";
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        todo script nakijken en aanpassen adhv postcode / woonplaats in backend
+<!--        <script type="text/javascript">-->
+<!--            var data = '';-->
+<!---->
+<!--            function OnChange(e) {-->
+<!--                var woonpl = document.forms["myForm"]["Woonplaats"];-->
+<!--                var val = e.target.value;-->
+<!---->
+<!--                if (val != 'null') {-->
+<!--                    empty(woonpl);-->
+<!--                    var gem = '';-->
+<!--                    var xhr = new JSONHttpRequest();-->
+<!--                    //TODO link aanpassen naar Azure-->
+<!--                    var url = "http://finahbackend1920.azurewebsites.net/Account/" + val + "/Gemeente";-->
+<!--                    xhr.open("GET", url, true);-->
+<!---->
+<!--                    xhr.onreadystatechange = function () {-->
+<!--                        if (xhr.readyState === 4 && xhr.status === 200) {-->
+<!--                            gem = JSON.parse(xhr.responseText);-->
+<!--                            for (var i = 0; i < pat.length; i++) {-->
+<!--                                var option = document.createElement('option');-->
+<!--                                option.value = gem[i].Id;-->
+<!--                                option.textContent = gem[i].Naam;-->
+<!--                                option.innerText = gem[i].Naam;-->
+<!--                                woonpl.appendChild(option);-->
+<!--                            }-->
+<!--                        }-->
+<!--                    };-->
+<!--                    xhr.send(null);-->
+<!--                }-->
+<!--            }-->
+<!--            </script>-->
     </head>
     <body>
     <div id="dialogoverlay"></div>
@@ -180,7 +213,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="postcode" id="Postcode" class="form-control" value="8750">
+                                                <input type="text" name="postcode" id="Postcode" class="form-control" value="3680" onchange="OnChange(event)">
                                             </div>
                                         </div>
 <!--                                        todo met javascript adhv postcode de mogelijke woonplaatsen weergeven in een combobox (== bevraging create ) -->
@@ -191,7 +224,12 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="woonplaats" id="Woonplaats" class="form-control" value="Herk-de-Stad">
+                                                <select class="form-control" id="Woonplaats" name="woonplaats">
+                                                    <option value="null">Neeroeteren</option>
+                                                    <option value="null">Maaseik</option>
+                                                    <option value="null">Opoeteren</option>
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row detail-row">
