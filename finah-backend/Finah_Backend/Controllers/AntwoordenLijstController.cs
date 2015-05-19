@@ -13,6 +13,9 @@ using Finah_Backend.Models;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Http.Cors;
+
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
     public class AntwoordenLijstController : ApiController
     {
         //TODO Code opschonen als alles bolt

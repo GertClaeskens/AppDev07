@@ -3,6 +3,8 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Http.Cors;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
     using System.Data.Entity;
@@ -11,6 +13,8 @@ namespace Finah_Backend.Controllers
     using System.Net;
     using System.Web.Http.Description;
 
+
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
     public class PathologieController : ApiController
     {
         // GET: api/Pathologie

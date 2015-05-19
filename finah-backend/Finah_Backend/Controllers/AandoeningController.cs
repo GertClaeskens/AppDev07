@@ -15,7 +15,7 @@ namespace Finah_Backend.Controllers
     using System.Web.Http.Description;
 
     //TODO aanpassen naar azure website
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
     public class AandoeningController : ApiController
     {
         //TODO code opschonen als alles bolt
@@ -48,7 +48,7 @@ namespace Finah_Backend.Controllers
             //Er is een vragenlijst per aandoening.
             db.Configuration.LazyLoadingEnabled = false;
             var v = (from vr in db.VragenLijsten where vr.Aandoe.Id == id select vr).Include(vr => vr.Aandoe).Include(vr => vr.Vragen).Include(vr => vr.Vragen);
-            
+
             return v;
         }
         [HttpGet]

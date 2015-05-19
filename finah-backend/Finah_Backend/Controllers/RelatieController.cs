@@ -9,6 +9,9 @@ using System.Web.Http.Description;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Http.Cors;
+
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
     public class RelatieController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
