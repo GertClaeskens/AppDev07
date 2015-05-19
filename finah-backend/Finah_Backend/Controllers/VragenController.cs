@@ -12,7 +12,7 @@ namespace Finah_Backend.Controllers
 {
     using System.Web.Http.Cors;
 
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
 
     public class VragenController : ApiController
     {

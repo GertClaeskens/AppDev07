@@ -4,6 +4,8 @@ using System.Web.Http;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Http.Cors;
+
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
     using System.Data.Entity;
@@ -13,6 +15,7 @@ namespace Finah_Backend.Controllers
     using System.Web.Http.Description;
 
     //[Authorize]
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
     public class BevragingController : ApiController
     {
         //private const string sourceUrl = "http://finahbackend1920.azurewebsites.net/Bevraging/";
@@ -99,8 +102,8 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
-            
-            
+
+
             db.Entry(bevraging).State = EntityState.Modified;
 
             try

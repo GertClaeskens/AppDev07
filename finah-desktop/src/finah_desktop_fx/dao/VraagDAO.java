@@ -18,7 +18,7 @@ public class VraagDAO {
 		Type collectionType = new TypeToken<Collection<Vraag>>() {}.getType();
 		try {
 			return SharedDAO.HaalGegevens(
-					"http://localhost:1695/Vragen/Overzicht", collectionType);
+					"http://finahbackend1920.azurewebsites.net/Vragen/Overzicht", collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class VraagDAO {
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd = null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Vragen/" + id);
+			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Vragen/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

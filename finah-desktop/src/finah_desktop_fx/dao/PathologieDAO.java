@@ -19,7 +19,7 @@ public class PathologieDAO {
 		}.getType();
 		try {
 			return SharedDAO
-					.HaalGegevens("http://localhost:1695/Pathologie/Overzicht",collectionType);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Pathologie/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class PathologieDAO {
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Pathologie/" + id);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Pathologie/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
