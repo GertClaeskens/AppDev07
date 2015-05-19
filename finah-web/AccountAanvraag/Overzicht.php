@@ -84,7 +84,7 @@ require "../PHP/DAO/FinahDAO.php";
                 <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
             </li>
             <li>
-                <a href="Overzicht.php"> Aandoening </a>
+                <a href="../Aandoening/Overzicht.php"> Aandoening </a>
             </li>
             <li>
                 <a href="../Pathologie/Overzicht.php"> Pathologie</a>
