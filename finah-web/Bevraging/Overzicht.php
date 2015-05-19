@@ -125,12 +125,14 @@ require_once "../PHP/Models/Onderzoek.php";
                                 <th>
                                     Hulpverlener
                                 </th>
-
                                 <th>
                                     Informatie
                                 </th>
                                 <th>
                                     Relatie
+                                </th>
+                                <th>
+                                    Bevragingen
                                 </th>
                                 <th>
                                     Rapport&nbsp;?
@@ -149,7 +151,8 @@ require_once "../PHP/Models/Onderzoek.php";
 
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
                                         <td class='col-xs-3 col-sm-4 col-md-3 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>
-                                        <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" ?></td>
+                                        <td class=' '><?php echo $item["Bevraging_Pat"]["Id"] . '<br/>' . $item["Bevraging_Man"]["Id"] ?></td>
+                                        <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" . '<br/>' .  "Nee"?></td>
 
                                         <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                             <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
