@@ -20,7 +20,7 @@ public class AccountDAO {
 		}.getType();
 		try {
 			return SharedDAO
-					.HaalGegevens("http://localhost:1695/Account/Overzicht",collectionType);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Account/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,7 +36,7 @@ public class AccountDAO {
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/Account/" + id);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Account/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

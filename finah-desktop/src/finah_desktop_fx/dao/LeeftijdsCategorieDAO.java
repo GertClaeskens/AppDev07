@@ -19,7 +19,7 @@ public class LeeftijdsCategorieDAO {
 		}.getType();
 		try {
 			return SharedDAO.HaalGegevens(
-					"http://localhost:1695/LeeftijdsCategorie/Overzicht",
+					"http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/Overzicht",
 					collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -36,7 +36,7 @@ public class LeeftijdsCategorieDAO {
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/LeeftijdsCategorie/"
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/"
 							+ id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

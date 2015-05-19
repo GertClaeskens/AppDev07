@@ -19,7 +19,7 @@ public class VragenLijstDAO {
 		}.getType();
 		try {
 			return SharedDAO
-					.HaalGegevens("http://localhost:1695/VragenLijst/Overzicht",collectionType);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/VragenLijst/Overzicht",collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,7 +36,7 @@ public class VragenLijstDAO {
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/VragenLijst/" + id);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/VragenLijst/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -19,7 +19,7 @@ public class GeluidsFragmentDAO {
 		}.getType();
 		try {
 			return SharedDAO.HaalGegevens(
-					"http://localhost:1695/GeluidsFragment/Overzicht",
+					"http://finahbackend1920.azurewebsites.net/GeluidsFragment/Overzicht",
 					collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -37,7 +37,7 @@ public class GeluidsFragmentDAO {
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO
-					.HaalGegevens("http://localhost:1695/GeluidsFragment/" + id);
+					.HaalGegevens("http://finahbackend1920.azurewebsites.net/GeluidsFragment/" + id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

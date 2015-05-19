@@ -21,7 +21,7 @@ public abstract class AandoeningDAO {
 
 		BufferedReader rd = null;
 		try {
-			rd = SharedDAO.HaalGegevens("http://localhost:1695/Aandoening/"
+			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aandoening/"
 					+ id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,7 +40,7 @@ public abstract class AandoeningDAO {
 		}.getType();
 		//ArrayList<Aandoening> aandoeningen = null;
 		try {
-			return SharedDAO.HaalGegevens("http://localhost:1695/Aandoening/Overzicht",
+			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht",
 					collectionType);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
