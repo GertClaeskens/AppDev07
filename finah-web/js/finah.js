@@ -50,7 +50,7 @@ function deletePost(id, type) {
     //var db_id = id.replace("post_", "");
     // Run Ajax request here to delete post from database
     $.ajax({
-        url: 'http://finahbackend1920.azurewebsites.net/Aandoening/' + type + '/' + id,
+        url: 'http://finahbackend1920.azurewebsites.net/' + type + '/' + id,
         type: 'DELETE',
         contentType: 'application/json',
         success: function () {
