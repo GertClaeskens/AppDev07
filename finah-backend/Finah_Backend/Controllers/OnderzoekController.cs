@@ -52,7 +52,7 @@ namespace Finah_Backend.Controllers
             var onderzoek = (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                              where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                              select o).ToList();
-            var antwoorden = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
+            var antwoorden = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
             if (onderzoek == null)
             {
                 return NotFound();
@@ -76,7 +76,7 @@ namespace Finah_Backend.Controllers
                 (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o).First();
-            var bevraging = db.AntwoordenLijsten.Where(a => a.Id == id).OrderBy(a => a.Datum).ToList();
+            var bevraging = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
             onderzoek.Datum = bevraging[0].Datum;
 
 
@@ -148,6 +148,13 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
+            //Onderzoek o = db.Onderzoeken.Find(onderzoek.Id);
+            //o.Vragen = db.VragenLijsten.Find(onderzoek.Vragen.Id);
+            //o.Informatie = onderzoek.Informatie;
+            //o.Relatie = db.Relaties.Find(onderzoek.Relatie.Id);
+            //o.Pathologie = db.Pathologieen.Find(onderzoek.Pathologie.Id);
+            //o.Aandoening = db.Aandoeningen.Find(onderzoek.Aandoening.Id);
+            //o.
             db.Entry(onderzoek).State = EntityState.Modified;
 
             try
@@ -172,22 +179,23 @@ namespace Finah_Backend.Controllers
         // POST: api/Onderzoek
         [HttpPost]
         [ResponseType(typeof(Onderzoek))]
-        public void Post([FromBody] Onderzoek onderzoek)
+        public IHttpActionResult Post([FromBody] Onderzoek onderzoek)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             onderzoek.Pathologie = db.Pathologieen.Find(onderzoek.Pathologie.Id);
             onderzoek.Relatie = db.Relaties.Find(onderzoek.Relatie.Id);
             onderzoek.Aandoening = db.Aandoeningen.Find(onderzoek.Aandoening.Id);
             onderzoek.Vragen = db.VragenLijsten.Find(onderzoek.Vragen.Id);
+
             //onderzoek.AangemaaktDoor = db.Accounts.Find(onderzoek.AangemaaktDoor.Id);
             db.Onderzoeken.Add(onderzoek);
             db.SaveChanges();
 
-            //return CreatedAtRoute("DefaultApi", new { id = onderzoek.Id }, onderzoek);
+            return CreatedAtRoute("DefaultApi", new { id = onderzoek.Id }, onderzoek);
         }
 
         // DELETE: api/Onderzoek/5

@@ -12,14 +12,16 @@
     class AntwoordenLijst implements JsonSerializable
     {
         public $Id;
+        public $BevragingId;
         public $Datum;
         public $LeeftijdsCategorie;
         public $Antwoorden;
         public $Bevraging;
 
-        function __construct($Id=null, $Antwoorden=null, $LeeftijdsCategorie=null, $Bevraging=null)
+        function __construct($Id=null, $BevragingId=null,$Antwoorden=null, $LeeftijdsCategorie=null, $Bevraging=null)
         {
             $this->Id = $Id;
+            $this->BevragingId = $BevragingId;
             $this->Datum = new DateTime('now');
             $this->Antwoorden = $Antwoorden;
             $this->LeeftijdsCategorie = $LeeftijdsCategorie;
@@ -28,6 +30,7 @@
         public function jsonSerialize() {
             return [
                 'Id' => $this->getId(),
+                'BevragingId' => $this->getBevragingId(),
                 'Datum' => $this->Datum->format(DateTime::ISO8601),
                 'Antwoorden' => Finah::arrayToCsv($this->getAntwoorden()),
                 'LeeftijdsCategorie' => $this->getLeeftijdsCategorie(),
@@ -83,4 +86,15 @@
         {
             $this->Bevraging = $Bevraging;
         }
+
+        public function getBevragingId()
+        {
+            return $this->BevragingId;
+        }
+
+        public function setBevragingId($BevragingId)
+        {
+            $this->BevragingId = $BevragingId;
+        }
+
     }
