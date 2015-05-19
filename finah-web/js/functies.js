@@ -54,7 +54,7 @@ function loadData(id) {
     xhr = new XMLHttpRequest();
     xhr.overrideMimeType("application/json");
     alert(id);
-    url = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
+    url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + id + "/Pathologie";
 
     xhr.open("GET", url, true);
 
