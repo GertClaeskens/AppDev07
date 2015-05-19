@@ -158,17 +158,7 @@ require_once "../PHP/Models/Onderzoek.php";
                                                     class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                 <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                             </button>
-                                            <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"]?>'
-                                                    class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                                <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                            </button>
-                                            <?php $verw = $item["Id"]; ?>
-                                            <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
-                                                    name='verwijderBtn' value="<?php echo $item["Id"] ?>"
-                                                    class='delBtn btn btn-primary'
-                                                    onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $verw ?>,'Onderzoek',this)">
-                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                            </button>
+                                        </td>
                                     </tr>
                                 <?php }?>
                             </tbody>
