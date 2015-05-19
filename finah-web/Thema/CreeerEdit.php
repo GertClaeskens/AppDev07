@@ -51,7 +51,7 @@
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
                 <li role="presentation">
-                    <a role="menuitem" tabindex="0" href="#">
+                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">
                         <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
                     </a>
                 </li>

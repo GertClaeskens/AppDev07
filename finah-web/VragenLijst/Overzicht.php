@@ -44,7 +44,7 @@ require "../PHP/Models/VragenLijst.php";
         </a>
         <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
             <li role="presentation">
-                <a role="menuitem" tabindex="0" href="#">
+                <a role="menuitem" tabindex="0" href="../Account/Edit.php">
                     <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
                 </a>
             </li>
@@ -130,10 +130,10 @@ require "../PHP/Models/VragenLijst.php";
                                     Id
                                 </th>
                                 <th>
-                                    Aandoening
+                                    Omschrijving
                                 </th>
                                 <th>
-                                    Omschrijving
+                                    Aandoening
                                 </th>
                                 <th>
                                     Aantal vragen
@@ -147,8 +147,8 @@ require "../PHP/Models/VragenLijst.php";
                                 foreach ($vragenLijst as $item) {
                                     echo "<tr>"?>
                                        <td class='col-sm-1 col-md-1 col-lg-1 text-center'><?php echo $item["Id"]?></td>
+                                        <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Omschrijving"]?></td>
                                        <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Aandoe"]["Omschrijving"]?></td>
-                                       <td class='col-sm-6 col-md-6 col-lg-6'> <?php echo $item["Omschrijving"]?></td>
                                        <td class='col-sm-3 col-md-3 col-lg-3 text-center'><?php echo count($item["Vragen"])?></td>
                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
                                             <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
