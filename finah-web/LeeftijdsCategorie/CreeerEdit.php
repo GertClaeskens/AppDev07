@@ -41,11 +41,9 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
             <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
                 <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
             </a>
-            <a class="navbar-brand header" href="#"> Finah</a>
+            <a class="navbar-brand header" href="../index.php"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
-            <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
             <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>

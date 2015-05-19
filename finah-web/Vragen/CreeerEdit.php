@@ -15,7 +15,7 @@
         <title>FINAH - Vragen</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
         <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
@@ -41,11 +41,9 @@
             <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
                 <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
             </a>
-            <a class="navbar-brand header" href="#"> Finah</a>
+            <a class="navbar-brand header" href="../index.php"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
-            <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
             <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>
@@ -167,13 +165,11 @@
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" >
-                                        <?php
-                                            if(isset($_POST["bewerk"]) || isset($_POST["update"])){
-                                                echo $vraagStelling;
-                                            }
-                                        ?>
-                                    </input>
+                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" value="<?php
+                                    if(isset($_POST["bewerk"]) || isset($_POST["update"])){
+                                        echo $vraagStelling;
+                                    }
+                                    ?>">
                                 </div>
                             </div>
                             <div class="form-group top-form">
@@ -258,8 +254,7 @@
                     </div>
                 </div>
                 <div class="row button-row">
-                    <div
-                        class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+                    <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
                         <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <button type="button" onclick="location.href='Overzicht.php'"
                                     class="btn btn-primary">
