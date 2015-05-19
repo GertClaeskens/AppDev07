@@ -151,7 +151,7 @@ require "../PHP/DAO/FinahDAO.php";
                             <div class="panel panel-primary account-panel">
                                 <div class="panel-heading"><span style="color:white;" class="glyphicon glyphicon-user"></span> &nbsp; Algemeen</div>
                                 <div class="panel-body">
-                                    <form class="form form-horizontal" role="form" method="POST"
+                                    <form id="accountForm" class="form form-horizontal" role="form" method="POST"
                                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                         <div class="row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
@@ -160,7 +160,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled value="Hulpverlener">
+                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled >
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -170,7 +170,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="voornaam" id="Voornaam" class="form-control" value="Gert">
+                                                <input type="text" name="voornaam" id="Voornaam" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -180,7 +180,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="naam" id="Naam" class="form-control" value="Claeskens">
+                                                <input type="text" name="naam" id="Naam" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -190,7 +190,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="straat" id="Straat" class="form-control" value="teststraat">
+                                                <input type="text" name="straat" id="Straat" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -200,7 +200,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="huisnr" id="Huisnr" class="form-control" value="55">
+                                                <input type="text" name="huisnr" id="Huisnr" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -210,7 +210,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="postcode" id="Postcode" class="form-control" value="3680" onchange="OnChange(event)">
+                                                <input type="text" name="postcode" id="Postcode" class="form-control" onchange="OnChange(event)">
                                             </div>
                                         </div>
 <!--                                        todo met javascript adhv postcode de mogelijke woonplaatsen weergeven in een combobox (== bevraging create ) -->
@@ -221,10 +221,10 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <select class="form-control" id="Woonplaats" name="woonplaats">
-                                                    <option value="null">Neeroeteren</option>
-                                                    <option value="null">Maaseik</option>
-                                                    <option value="null">Opoeteren</option>
+                                                <select name="woonplaats" class="form-control" id="Woonplaats" >
+                                                    <option value="">Neeroeteren</option>
+                                                    <option value="">Maaseik</option>
+                                                    <option value="">Opoeteren</option>
 
                                                 </select>
                                             </div>
@@ -236,7 +236,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="telefoon" id="Telefoon" class="form-control" value="001-callme-xxx">
+                                                <input type="text" name="telefoon" id="Telefoon" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -246,7 +246,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="email" id="Email" class="form-control" value="gert.claeskens@gmail.com">
+                                                <input type="text" name="email" id="Email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -262,7 +262,7 @@ require "../PHP/DAO/FinahDAO.php";
                             <div class="panel panel-primary account-panel" >
                                 <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Wachtwoord wijzigen</div>
                                 <div class="panel-body">
-                                    <form id="aandoeningForm" class="form form-horizontal" role="form" method="POST"
+                                    <form id="wachtwoordForm" class="form form-horizontal" role="form" method="POST"
                                         action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                         <div class="row ">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
@@ -283,7 +283,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="password" name="nieuwWachtwoord" id="NieuwWachtWoord" class="form-control">
+                                                <input type="password" name="wachtwoord" id="NieuwWachtWoord" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -294,7 +294,7 @@ require "../PHP/DAO/FinahDAO.php";
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
 
-                                            <input type="password" name="confWachtwoord" id="ConfWachtWoord" class="form-control">
+                                            <input type="password" name="confwachtwoord" id="ConfWachtWoord" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -315,6 +315,104 @@ require "../PHP/DAO/FinahDAO.php";
         </div>
     </div>
     <script>
+        $().ready(function () {
+            $.validator.addMethod(
+                "regex",
+                function(value, element, regexp) {
+                    var check = false;
+                    return this.optional(element) || regexp.test(value);
+                },
+                "Gelieve een legitiem telefoonnummer in te geven."
+            );
+            $("#accountForm").validate({
+                rules: {
+                    voornaam: "required",
+                    naam: "required",
+                    huisnr: {
+                        required:true,
+                        number:true,
+                        min:1
+                    },
+                    straat: "required",
+                    email:{
+                        required:true,
+                        email:true
+                    },
+                    telefoon: {
+                        required: true,
+                        minlength:9
+                    },
+                    postcode:{
+                        required:true,
+                        number:true,
+                        min:1000,
+                        max:9999
+                    },
+                    woonplaats:"required"
+                },
+                messages: {
+                    voornaam:"Gelieve dit veld in te vullen!",
+                    naam: "Gelieve dit veld in te vullen!",
+                    huisnr: {
+                        required:"Gelieve dit veld in te vullen",
+                        number: "Gelieve een numerieke waarde in te vullen",
+                        min: "Gelieve een positieve waarde in te vullen"
+                    },
+                    straat: "Gelieve dit veld in te vullen!",
+                    email: {
+                        required: "Gelieve dit veld in te vullen!",
+                        email: "Gelieve een legitiem email adres in te vullen (Voorbeeld: test@test.com"
+                    },
+                    telefoon: {
+                        required:"Gelieve dit veld in te vullen!",
+                        min:"Gelieve een correct telefoon nummer in te voeren"
+                    },
+                    postcode: {
+                        required:"Gelieve dit veld in te vullen!",
+                        number:"Gelieve een numerieke waarde in te vullen",
+                        min: "Een postcode heeft 4 cijfers",
+                        max: "Een postcode heeft max 4 cijfers"
+                    },
+                    woonplaats:"Gelieve een keuze te maken!"
+                }
+            });
+            $("#wachtwoordForm").validate({
+                rules: {
+                    oudWachtwoord: {
+                        required: true,
+                        minlength: 8,
+                        regex: /^(?=.*[A-Z])(?=.*\d).*$/
+                    },
+                    wachtwoord: {
+                        required: true,
+                        minlength: 8,
+                        regex: /^(?=.*[A-Z])(?=.*\d).*$/
+                    },
+                    confwachtwoord: {
+                        required: true,
+                        minlength: 8,
+                        regex: /^(?=.*[A-Z])(?=.*\d).*$/
+                    }
+                },
+                messages: {
+                    oudWachtwoord: {
+                        required: "Gelieve dit veld in te vullen",
+                        minlenght: "Gelieve minimum 8 tekens in te geven",
+                        regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                    },
+                    wachtwoord: {
+                        required: "Gelieve dit veld in te vullen",
+                        minlenght: "Gelieve minimum 8 tekens in te geven",
+                        regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                    },
+                    confwachtwoord: {
+                        required: "Gelieve dit veld in te vullen",
+                        minlenght: "Gelieve minimum 8 tekens in te geven",
+                        regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                    }
+                }
+            });
+        });
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
