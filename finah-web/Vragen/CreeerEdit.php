@@ -165,13 +165,11 @@
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
-                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" >
-                                        <?php
-                                            if(isset($_POST["bewerk"]) || isset($_POST["update"])){
-                                                echo $vraagStelling;
-                                            }
-                                        ?>
-                                    </input>
+                                    <input type="text" name="VraagStelling" class="form-control" id="Vraagstelling" value="<?php
+                                    if(isset($_POST["bewerk"]) || isset($_POST["update"])){
+                                        echo $vraagStelling;
+                                    }
+                                    ?>">
                                 </div>
                             </div>
                             <div class="form-group top-form">
