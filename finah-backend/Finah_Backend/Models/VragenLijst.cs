@@ -17,6 +17,8 @@ namespace Finah_Backend.Models
 
         public virtual ICollection<Vraag> Vragen { get; set; }
 
+        [ForeignKey("Aandoe")]
+        public int AandoeId { get; set; }
         public virtual Aandoening Aandoe { get; set; }
 
         //public virtual Pathologie Patholo { get; set; }

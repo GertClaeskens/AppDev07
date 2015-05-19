@@ -13,7 +13,7 @@ namespace Finah_Backend.Migrations
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            //this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationDataLossAllowed = true;
 
         }
 
