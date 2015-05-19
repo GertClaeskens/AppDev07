@@ -22,7 +22,7 @@ require "../PHP/DAO/FinahDAO.php";
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        todo script nakijken en aanpassen adhv postcode / woonplaats in backend
+<!--        todo script nakijken en aanpassen adhv postcode / woonplaats in backend-->
 <!--        <script type="text/javascript">-->
 <!--            var data = '';-->
 <!---->
@@ -34,7 +34,6 @@ require "../PHP/DAO/FinahDAO.php";
 <!--                    empty(woonpl);-->
 <!--                    var gem = '';-->
 <!--                    var xhr = new JSONHttpRequest();-->
-<!--                    //TODO link aanpassen naar Azure-->
 <!--                    var url = "http://finahbackend1920.azurewebsites.net/Account/" + val + "/Gemeente";-->
 <!--                    xhr.open("GET", url, true);-->
 <!---->
