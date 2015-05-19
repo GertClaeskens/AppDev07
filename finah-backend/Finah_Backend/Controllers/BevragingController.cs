@@ -71,7 +71,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Get(String id)
         {
 
-            var bevraging = db.Bevragingen.FirstOrDefault((b) => b.Id == id);
+            var bevraging = db.Bevragingen.Find(id);
 
             if (bevraging == null)
             {

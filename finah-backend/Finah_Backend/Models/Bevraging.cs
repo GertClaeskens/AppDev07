@@ -12,7 +12,7 @@ namespace Finah_Backend.Models
 
         //unieke genereren id 
         [Key]
-        public virtual String Id { get; set; }
+        public String Id { get; set; }
 
         #region verborgen velden
         //public DateTime Aangevraagd { get; set; }

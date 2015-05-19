@@ -23,9 +23,18 @@ namespace Finah_Backend.Models
 
         public virtual Account AangemaaktDoor { get; set; }
 
+        [ForeignKey("Bevraging_Pat")]
+        public string Bevraging_PatId { get; set; }
         public virtual Bevraging Bevraging_Pat { get; set; }
+        [ForeignKey("Bevraging_Man")]
+        public string Bevraging_ManId { get; set; }
         public virtual Bevraging Bevraging_Man { get; set; }
+
+        [ForeignKey("Aandoening")]
+        public int AandoeningId { get; set; }
         public virtual Aandoening Aandoening { get; set; }
+        [ForeignKey("Pathologie")]
+        public int PathologieId { get; set; }
         public virtual Pathologie Pathologie { get; set; }
 
         [NotMapped]
