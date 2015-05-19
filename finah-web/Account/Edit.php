@@ -116,11 +116,7 @@ require "../PHP/DAO/FinahDAO.php";
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <h1>Account informatie</h1>
-<!--                        -->
-<!--                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"-->
-<!--                              action="--><?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?><!--">-->
-<!---->
-<!--                        </form>-->
+<!--                        todo gegevens van account inladen-->
                         <div class="panel-group">
                             <div class="panel panel-primary account-panel">
                                 <div class="panel-heading"><span style="color:white;" class="glyphicon glyphicon-user"></span> &nbsp; Algemeen</div>
@@ -187,6 +183,7 @@ require "../PHP/DAO/FinahDAO.php";
                                                 <input type="text" name="postcode" id="Postcode" class="form-control" value="8750">
                                             </div>
                                         </div>
+<!--                                        todo met javascript adhv postcode de mogelijke woonplaatsen weergeven in een combobox (== bevraging create ) -->
                                         <div class="row detail-row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                                 <label for="Woonplaats"  class="control-label">
@@ -196,9 +193,7 @@ require "../PHP/DAO/FinahDAO.php";
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                                 <input type="text" name="woonplaats" id="Woonplaats" class="form-control" value="Herk-de-Stad">
                                             </div>
-
                                         </div>
-
                                         <div class="row detail-row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                                 <label for="Telefoon"  class="control-label">
@@ -221,7 +216,7 @@ require "../PHP/DAO/FinahDAO.php";
                                         </div>
                                         <div class="row detail-row">
                                             <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-4 col-lg-offset-2" >
-                                                <button type="submit" name="wijzigen" class="btn btn-primary form-buttons">
+                                                <button type="submit" name="wijzigInfo" class="btn btn-primary form-buttons">
                                                     Opslaan
                                                 </button>
                                             </div>
@@ -269,7 +264,7 @@ require "../PHP/DAO/FinahDAO.php";
                                         </div>
                                         <div class="row detail-row">
                                             <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-4 col-lg-offset-2" >
-                                                <button type="submit" name="wijzigen" class="btn btn-primary form-buttons">
+                                                <button type="submit" name="wijzigWw" class="btn btn-primary form-buttons">
                                                     Opslaan
                                                 </button>
                                             </div>
