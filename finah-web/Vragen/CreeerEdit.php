@@ -258,8 +258,7 @@
                     </div>
                 </div>
                 <div class="row button-row">
-                    <div
-                        class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+                    <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
                         <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <button type="button" onclick="location.href='Overzicht.php'"
                                     class="btn btn-primary">

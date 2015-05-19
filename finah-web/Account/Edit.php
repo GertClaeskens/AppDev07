@@ -115,11 +115,170 @@ require "../PHP/DAO/FinahDAO.php";
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"
-                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <h1>Account informatie</h1>
+<!--                        -->
+<!--                        <form id="aandoeningForm" class="form-horizontal" role="form" method="POST"-->
+<!--                              action="--><?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?><!--">-->
+<!---->
+<!--                        </form>-->
+                        <div class="panel-group">
+                            <div class="panel panel-primary account-panel">
+                                <div class="panel-heading"><span style="color:white;" class="glyphicon glyphicon-user"></span> &nbsp; Algemeen</div>
+                                <div class="panel-body">
+                                    <form class="form form-horizontal" role="form" method="POST"
+                                          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Rol"  class="control-label">
+                                                    Rol:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled value="Hulpverlener">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Voornaam"  class="control-label">
+                                                    Voornaam:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="voornaam" id="Voornaam" class="form-control" value="Gert">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Naam"  class="control-label">
+                                                    Naam:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="naam" id="Naam" class="form-control" value="Claeskens">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Straat"  class="control-label">
+                                                    Straat:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="straat" id="Straat" class="form-control" value="teststraat">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Huisnr"  class="control-label">
+                                                    Huisnummer:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
+                                                <input type="text" name="huisnr" id="Huisnr" class="form-control" value="55">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Postcode"  class="control-label">
+                                                    Postcode:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
+                                                <input type="text" name="postcode" id="Postcode" class="form-control" value="8750">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Woonplaats"  class="control-label">
+                                                    Woonplaats:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="woonplaats" id="Woonplaats" class="form-control" value="Herk-de-Stad">
+                                            </div>
 
-                        </form>
+                                        </div>
 
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Telefoon"  class="control-label">
+                                                    Telefoon:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="telefoon" id="Telefoon" class="form-control" value="001-callme-xxx">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Email"  class="control-label">
+                                                    E-mail:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="text" name="email" id="Email" class="form-control" value="gert.claeskens@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-4 col-lg-offset-2" >
+                                                <button type="submit" name="wijzigen" class="btn btn-primary form-buttons">
+                                                    Opslaan
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="panel panel-primary account-panel" >
+                                <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Wachtwoord wijzigen</div>
+                                <div class="panel-body">
+                                    <form id="aandoeningForm" class="form form-horizontal" role="form" method="POST"
+                                        action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                        <div class="row ">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="OudWachtWoord"  class="control-label">
+                                                    Oud wachtwoord:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+
+                                            <input type="password" name="oudWachtwoord" id="OudWachtWoord" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+
+                                            <label for="NieuwWachtWoord"  class="control-label">
+                                                    Nieuw wachtwoord:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                                                <input type="password" name="nieuwWachtwoord" id="NieuwWachtWoord" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="ConfWachtWoord"  class="control-label">
+                                                    Herhaal Wachtwoord:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+
+                                            <input type="password" name="confWachtwoord" id="ConfWachtWoord" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-offset-5 col-sm-offset-5 col-md-offset-4 col-lg-offset-2" >
+                                                <button type="submit" name="wijzigen" class="btn btn-primary form-buttons">
+                                                    Opslaan
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
