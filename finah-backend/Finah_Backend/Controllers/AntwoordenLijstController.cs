@@ -34,7 +34,7 @@ namespace Finah_Backend.Controllers
         //public IHttpActionResult GetAntwoordenLijst(string id,DateTime datum)
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id).Include(c => c.LeeftijdsCategorie).First();//var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id && c.Datum == datum).Include(c => c.LeeftijdsCategorie).First();
+            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.BevragingId == id).Include(c => c.LeeftijdsCategorie).First();//var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id && c.Datum == datum).Include(c => c.LeeftijdsCategorie).First();
 
             if (antwoordenLijst == null)
             {
@@ -49,7 +49,7 @@ namespace Finah_Backend.Controllers
         [Route("AntwoordenLijst/{id}")]
         [ResponseType(typeof(void))]
         //public IHttpActionResult PutAntwoordenLijst(string id, DateTime datum, AntwoordenLijst antwoordenLijst)
-        public IHttpActionResult PutAntwoordenLijst(string id, AntwoordenLijst antwoordenLijst)
+        public IHttpActionResult PutAntwoordenLijst(int id, AntwoordenLijst antwoordenLijst)
         {
             if (!ModelState.IsValid)
             {
@@ -141,7 +141,7 @@ namespace Finah_Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AntwoordenLijstExists(string id)
+        private bool AntwoordenLijstExists(int id)
         {
             return db.AntwoordenLijsten.Count(e => e.Id == id) > 0;
         }

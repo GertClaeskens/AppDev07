@@ -88,6 +88,7 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBevraging(string id, Bevraging bevraging)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -98,6 +99,8 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
 
+            
+            
             db.Entry(bevraging).State = EntityState.Modified;
 
             try
