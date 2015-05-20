@@ -88,6 +88,8 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Bevragings/5
+        [HttpPut]
+        [Route("Bevraging/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBevraging(string id, Bevraging bevraging)
         {
@@ -126,6 +128,8 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Bevragings
+        [HttpPost]
+        [Route("Bevraging")]
         [ResponseType(typeof(Bevraging))]
         public IHttpActionResult PostBevraging([FromBody] Bevraging bevraging)
         {
