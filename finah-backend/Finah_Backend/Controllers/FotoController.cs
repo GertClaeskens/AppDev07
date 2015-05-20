@@ -12,6 +12,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
+    [Authorize]
     public class FotoController : ApiController
     {
         //TODO code opschonen

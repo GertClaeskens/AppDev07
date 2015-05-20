@@ -15,6 +15,7 @@ namespace Finah_Backend.Controllers
 
 
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
+    [Authorize(Roles = "Admin, Onderzoeker")]
     public class PathologieController : ApiController
     {
         // GET: api/Pathologie
