@@ -18,9 +18,10 @@
             $data["username"] = $username;
             $data["password"] = $password;
             $data["grant_type"] ="password";
+            $gegevens = 'username='.$username.'&password='.$password.'&grant_type=password';
             //$data = $username.":".$password;
             //var_dump($data);
-            $gegevens = json_encode($data);
+            //$gegevens = json_encode($data);
             //Initiate cURL.
             $ch = curl_init($url);
 
