@@ -11,9 +11,11 @@
 ?>
 <html>
 <head>
+    <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Css/StylesheetVragenInvullen.css"/>
     <script type="text/javascript" src="../js/VraagInvullen.js"></script>
+    <script type="text/javascript" src="../js/Validate/jquery.validate.js"></script>
     <title>FINAH - Bevraging</title>
 </head>
 <body>
@@ -105,7 +107,7 @@
 
         if ($aantalingevuld <= count($vragen[0])) {
             ?>
-            <form class="bs-example bs-example-form" role="form" method="POST"
+            <form id="enqueteForm" class="bs-example bs-example-form" role="form" method="POST"
                   action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="container">
                     <div class="div-group row" id="vraagDiv">
@@ -195,12 +197,14 @@
                         <div id="divNext" class="col-md-2">
                             <!--                        --><?php //if ($aantalingevuld > count($vragen[0])) {
                             ?>
-                            <button type="submit" name="volgende" class="btn btn-primary nextButton">Volgende</button>
+                            <button type="submit" name="volgende" id="Volgende" class="btn btn-primary nextButton">Volgende</button>
                             <!--                        --><?php //}
                             ?>
                         </div>
                     </div>
+                    <div class="col-sm-12 text-nowrap error text-center" id="A1">
 
+                    </div>
                     <div class="row progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $gedaan; ?>"
                              style="width:<?php echo $gedaan; ?>%" aria-valuemin="0"
@@ -214,5 +218,22 @@
 //        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
 
     } else var_dump($_GET) . "<br />" . var_dump($_POST); ?>
+<script>
+    $('#Volgende').on('click', function(){
+        $('#A1').hide();
+        var a1 = $('input[name=hinder]:checked').val();
+
+        if(a1 == undefined){
+            $('#A1').html('<span> <i class="glyphicon glyphicon-warning-sign"> </i> &nbsp;Gelieve een antwoord te geven op de vraag </span>').show();
+            return false;
+        } else if(a1>=3){
+            var a2 = $('input[name=hulp]:checked').val();
+            if (a2== undefined){
+                $('#A1').html('<span> <i class="glyphicon glyphicon-warning-sign"> </i> &nbsp;Gelieve op ja of nee te drukken </span>').show();
+                return false;
+            }
+        }
+    });
+</script>
 </body>
 </html>
