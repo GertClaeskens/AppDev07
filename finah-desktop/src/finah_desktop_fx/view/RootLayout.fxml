@@ -98,8 +98,8 @@
 								</ImageView>
 							</graphic>
 							<items>
-								<MenuItem mnemonicParsing="false" text="Mijn Account" />
-								<MenuItem mnemonicParsing="false" text="Uitloggen" />
+								<MenuItem fx:id="MijnAccount" mnemonicParsing="false" onAction="#toonAcc" text="Mijn Account" />
+								<MenuItem fx:id="Uitloggen" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
 							</items>
 							<styleClass>
 								<String fx:value="toolbar-button" />

@@ -9,20 +9,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.LoginController">
    <children>
-      <Label layoutX="91.0" layoutY="14.0" text="Finah Login" AnchorPane.topAnchor="5.0">
+      <Label layoutX="91.0" layoutY="14.0" text="Finah Login" AnchorPane.topAnchor="50.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="53.0" layoutY="95.0" text="Gebruikersnaam" />
-      <Label layoutX="53.0" layoutY="162.0" text="Wachtwoord" />
-      <TextField fx:id="user" text="Username" layoutX="53.0" layoutY="116.0" prefHeight="31.0" prefWidth="301.0" />
-      <PasswordField fx:id="password" text="Password" layoutX="53.0" layoutY="185.0" prefHeight="31.0" prefWidth="301.0" />
-      <Line endX="150.0" layoutX="200.0" layoutY="70.0" startX="-150.0" AnchorPane.topAnchor="69.5" />
-      <Button fx:id="loginButton" layoutX="161.0" layoutY="243.0" mnemonicParsing="false" onAction="#toonMainApp" text="Inloggen" />
-      <Hyperlink fx:id="newAccountLink" layoutX="48.0" layoutY="297.0" text="Nieuw account aanmaken" />
-      <Hyperlink fx:id="wachtwoordVergetenLink" layoutX="48.0" layoutY="334.0" text="Wachtwoord vergeten?" />
+      <Label layoutX="56.0" layoutY="127.0" text="Gebruikersnaam" AnchorPane.topAnchor="127.0" />
+      <Label layoutX="56.0" layoutY="197.0" text="Wachtwoord" AnchorPane.topAnchor="197.0" />
+      <TextField fx:id="user" layoutX="50.0" layoutY="155.0" prefHeight="31.0" prefWidth="301.0" text="Username" AnchorPane.topAnchor="155.0" />
+      <PasswordField fx:id="password" layoutX="50.0" layoutY="225.0" prefHeight="31.0" prefWidth="301.0" text="Password" AnchorPane.topAnchor="225.0" />
+      <Line endX="150.0" layoutX="200.0" layoutY="70.0" startX="-150.0" AnchorPane.topAnchor="114.5" />
+      <Button fx:id="loginButton" layoutX="161.0" layoutY="267.0" mnemonicParsing="false" onAction="#toonMainApp" text="Inloggen" />
+      <Hyperlink fx:id="newAccountLink" layoutX="51.0" layoutY="358.0" text="Nieuw account aanmaken" />
+      <Hyperlink fx:id="wachtwoordVergetenLink" layoutX="50.0" layoutY="387.0" text="Wachtwoord vergeten?" />
+      <Button fx:id="exitButton" layoutX="161.0" layoutY="311.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="31.0" prefWidth="79.0" text="Exit" />
    </children>
 </AnchorPane>
