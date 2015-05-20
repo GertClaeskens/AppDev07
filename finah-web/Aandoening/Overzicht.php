@@ -136,7 +136,7 @@ session_start();
                             </thead>
                             <tbody>
                             <?php
-                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null,$_SESSION["token"]);
+                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null);
                                 for ($a = 0; $a < count($aandoeningLijst); $a++) {
                                     $item = $aandoeningLijst[$a];
                                     $aantal = count($item["Patologieen"]);

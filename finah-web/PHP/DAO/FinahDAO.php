@@ -44,7 +44,7 @@
         }
 
 
-        public static function HaalOp($type, $id = null,$token)
+        public static function HaalOp($type, $id = null)
         {
 
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
@@ -53,8 +53,8 @@
                 $url .= "Overzicht";
             } else $url .= $id;
             //$token = $_SESSION["access_token"];
-            $url =$url. '?access_token='.$token;
-
+            //$url =$url. '?access_token='.$token;
+            $token = "ntuZLcD-xeLpw0O3hW7UQv5fdmRp9nQNixYRTJuOxA-cTjiKS4HE64TXGrAU-RojsJ_0E7oaUhAgSXKpVrgb2H9PuTyPBxYWQVKJaCfG8ivR57C0Hyb26IgcVUpE4n8ZICwUNw82Z7GhOkHHFVUgdPBXaaMEuXLlRnWY_1xexThHIDbYpbQpVvmBCyjNuIkRbsTSr0htF47HbeG7Sy_WIRIbszG3MLNpWo87lw6m5kmkIHZ7Xy4jBMn6gGLQ_21edbS7vXy9aMY4t9uk4mvfwFZ_YBVx9DJXCf8iVTIjqufuwzowdm73eahCo0_bx4029pzShxKDaLpNQN2ZrKdpNtJQM4uhdPSB9fg37854M263lUYrjY2Q6UViTf8jn6uxACpiyNpPuOf_K131-WxAh2QTSf6wttpGBByua_G1PnwA32Hk72AMgBhjuuXloJGKIm10gCq3UQWWOWcJARnoMlxMM6ux5FhEeD5991eJ7qKL6wWs086SAXSc-rizr3VhuFSlLMCeqr7lDBWVovd1Pg";
 
 // set up the curl resource
 
