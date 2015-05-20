@@ -12,6 +12,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
+    [Authorize]
     public class GeluidsFragmentController : ApiController
     {
         //TODO code opschonen
@@ -30,6 +31,7 @@ namespace Finah_Backend.Controllers
             db = new ApplicationDbContext();
             this.geluidsFragmenten = geluidsFragmenten;
         }
+
         [Route("GeluidsFragment/Overzicht")] //Geen Api/ meer nodig
         public IEnumerable<GeluidsFragment> GetOverzicht()// return -> naderhand veranderen in Bevraging
         //public IQueryable<GeluidsFragment> GetOverzicht()

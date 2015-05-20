@@ -34,6 +34,18 @@ namespace Finah_Backend.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "Rol")]
+        public string Rol { get; set; }
+
+        [Required]
+        [Display(Name = "Voornaam")]
+        public string Voornaam { get; set; }
+
+        [Required]
+        [Display(Name = "Naam")]
+        public string Naam { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -47,6 +59,31 @@ namespace Finah_Backend.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Geheime Vraag")]
+        public string GeheimeVraag { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Geheime vraag antwoord")]
+        public string GeheimeAntwoord { get; set; }
+
+        [Required]
+        [Display(Name = "Straat")]
+        public string Straat { get; set; }
+
+        [Required]
+        [Display(Name = "Huisnr")]
+        public int Huisnr { get; set; }
+
+        //[Required]
+        //[Display(Name = "Postcode")]
+        //public string Postcode { get; set; }
+
+        [Required]
+        [Display(Name = "Telefoon")]
+        public string Telefoon { get; set; }
     }
 
     public class RegisterExternalBindingModel

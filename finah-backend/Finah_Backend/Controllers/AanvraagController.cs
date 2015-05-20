@@ -12,6 +12,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
+    [Authorize(Roles="Admin, Onderzoeker")]
     public class AanvraagController : ApiController
     {
         //TODO Code opschonen als alles bolt

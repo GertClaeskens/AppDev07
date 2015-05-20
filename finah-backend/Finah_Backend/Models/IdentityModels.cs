@@ -13,6 +13,14 @@ namespace Finah_Backend.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string Naam { get; set; }
+        public string VoorNaam { get; set; }
+        public string RijksRegisterNr { get; set; }
+        public string Adres { get; set; }
+        public virtual Postcode Postcd { get; set; }
+        public string GeheimeVraag { get; set; }
+        public string GeheimAntwoord { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

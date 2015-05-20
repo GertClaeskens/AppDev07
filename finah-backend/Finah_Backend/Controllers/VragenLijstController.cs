@@ -17,6 +17,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.Models;
 
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
+    [Authorize(Roles = "Admin, Onderzoeker")]
     public class VragenLijstController : ApiController
     {
         //TODO code opschonen

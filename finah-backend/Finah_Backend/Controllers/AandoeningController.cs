@@ -16,6 +16,7 @@ namespace Finah_Backend.Controllers
 
     //TODO aanpassen naar azure website
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
+    [Authorize(Roles = "Admin, Onderzoeker")]
     public class AandoeningController : ApiController
     {
         //TODO code opschonen als alles bolt
