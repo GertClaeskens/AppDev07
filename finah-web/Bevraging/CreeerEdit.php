@@ -520,16 +520,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                 class="btn btn-primary">
                             Terug
                         </button>
-                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                class='btn btn-primary' value="<?php echo $id ?>">
-                            Bewerken
-                        </button>
-                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                name='verwijderBtn' value="<?php echo $id ?>"
-                                class='delBtn btn btn-primary'
-                                onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $id ?>,'Bevraging',this)">
-                            Verwijderen
-                        </button>
                         </form>
                     </div>
                 </div>
