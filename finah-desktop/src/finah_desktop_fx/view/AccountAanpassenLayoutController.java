@@ -46,4 +46,10 @@ public class AccountAanpassenLayoutController implements Initializable {
 	
 	}
 	
+	public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+        // Add observable list data to the table
+        //personTable.setItems(mainApp.getPersonData());
+    }
+	
 }

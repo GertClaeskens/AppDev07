@@ -52,5 +52,4 @@ public abstract class AandoeningDAO {
 	public static void PasAandoeningAan(Aandoening aandoening){
 		
 	}
-
 }
