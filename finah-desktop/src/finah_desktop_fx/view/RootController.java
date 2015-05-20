@@ -147,6 +147,28 @@ public class RootController implements Initializable {
 	}
 
 	@FXML
+	public void toonAcc(ActionEvent actionEvent) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+
+			loader.setLocation(MainApp.class
+					.getResource("view/AccountLayout.fxml"));
+			AnchorPane accountLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(accountLayout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void logUit(ActionEvent actionEvent) {
+		Stage stage = mainApp.getPrimaryStage(); 
+		stage.setWidth(400);
+		stage.setHeight(450);
+		mainApp.showLogin();
+	}
+	
+	@FXML
 	public void toonAccount(ActionEvent actionEvent) {
 		Button gekliktItem = (Button) actionEvent.getSource();
 		String sender = gekliktItem.getText();

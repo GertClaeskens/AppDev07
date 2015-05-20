@@ -26,6 +26,12 @@ public class LoginController {
 	    	  JOptionPane.showMessageDialog(null, "Wrong username or password.", "Login Failure", JOptionPane.ERROR_MESSAGE);
 	      }
 	  }
+	  
+	  @FXML
+	  public void exitApp(ActionEvent actionEvent) {
+		  mainApp.close();
+	  }
+	  
 //	  public void toonMainApp(final MainApp mainApp) {
 //	    loginButton.setOnAction(new EventHandler<ActionEvent>() {
 //	      @Override public void handle(ActionEvent event) {

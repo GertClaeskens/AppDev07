@@ -7,6 +7,7 @@ import finah_desktop_fx.view.AccountAanpassenLayoutController;
 import finah_desktop_fx.view.LoginController;
 import finah_desktop_fx.view.RootController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,7 +19,6 @@ import javafx.stage.StageStyle;
 public class MainApp extends Application {
 	
 	private Stage primaryStage;
-	private Stage secundaryStage;
     private AnchorPane loginLayout;
     private BorderPane rootLayout;
     private Scene scene;
@@ -28,17 +28,19 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("FinahDesktopApp");
 
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         showLogin();
         
     }
     
+    //Uitloggen geeft nog een te groot scherm!!!
     public void showLogin() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/Login.fxml"));
             loginLayout = (AnchorPane) loader.load();
-            
+	               
             // Show the scene containing the root layout.
             LoginController controller = loader.getController();
             controller.setMainApp(this);
@@ -55,6 +57,10 @@ public class MainApp extends Application {
     	initRootLayout();
 	    showAccountLayout();
 	}
+    
+    public void close(){
+    	Platform.exit();
+    }
 	
 	public void initRootLayout() {
 		try {
@@ -63,15 +69,14 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
 	            
 	        rootLayout = (BorderPane) loader.load();
-	        //secundaryStage.initStyle(StageStyle.TRANSPARENT);
 	        //primaryStage.initStyle(StageStyle.UNDECORATED);
 	        // Show the scene containing the root layout.
 	        RootController controller = loader.getController();
 	        controller.setMainApp(this);
 	        scene = new Scene(rootLayout);
 	            
-	        primaryStage.setMinWidth(750);
-	        primaryStage.setMinHeight(500);
+	        primaryStage.setWidth(1125);
+	        primaryStage.setHeight(600);
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
 	        //scene.getStylesheets().add("finah_desktop_fx.css/finah.css");
 	        primaryStage.setScene(scene);
