@@ -11,6 +11,38 @@
 
         //const URL = "http://localhost:1695/";
         const URL = "http://finahbackend1920.azurewebsites.net/";
+
+        public static function GetToken($username,$password){
+            $url = self::URL .  "/token";
+
+            $data["username"] = $username;
+            $data["password"] = $password;
+            $data["grant_type"] ="password";
+            //$data = $username.":".$password;
+            //var_dump($data);
+            $gegevens = json_encode($data);
+            //Initiate cURL.
+            $ch = curl_init($url);
+
+            //Tell cURL that we want to send a POST request.
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            //Attach our encoded JSON string to the POST fields.
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
+
+            //Geen output naar het scherm
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+
+            //Set the content type to application/json
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-url encoded']);
+
+            //Execute the request
+            $result = curl_exec($ch);
+            //var_dump($result);
+            return $result;
+        }
+
+
         public static function HaalOp($type, $id = null)
         {
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
