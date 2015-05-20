@@ -5,6 +5,7 @@ import java.io.IOException;
 import finah_desktop_fx.helperClasses.ResizeHelper;
 import finah_desktop_fx.view.AccountAanpassenLayoutController;
 import finah_desktop_fx.view.LoginController;
+import finah_desktop_fx.view.NieuwAccountController;
 import finah_desktop_fx.view.RootController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -19,7 +20,7 @@ import javafx.stage.StageStyle;
 public class MainApp extends Application {
 	
 	private Stage primaryStage;
-    private AnchorPane loginLayout;
+    private AnchorPane loginLayout, nieuwAccountLayout;
     private BorderPane rootLayout;
     private Scene scene;
 
@@ -33,7 +34,7 @@ public class MainApp extends Application {
         
     }
     
-    //Uitloggen geeft nog een te groot scherm!!!
+    
     public void showLogin() {
         try {
             // Load root layout from fxml file.
@@ -105,6 +106,44 @@ public class MainApp extends Application {
 			 e.printStackTrace();
 		 }
 	}
+	 
+	 //geeft nul-pointer exception, vind niet waarom..
+	 public void showNieuwAccount() {
+	        try {
+	            // Load root layout from fxml file.
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(MainApp.class.getResource("view/NieuwAccountLayout.fxml"));
+	            nieuwAccountLayout = (AnchorPane) loader.load();
+		               
+	            // Show the scene containing the root layout.
+	            LoginController controller = loader.getController();
+	            controller.setMainApp(this);
+	            Scene scene = new Scene(nieuwAccountLayout);
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	 
+	 //Geeft nul-pointer exception, vind niet waarom..
+	 public void showWwVergeten() {
+	        try {
+	            // Load root layout from fxml file.
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(MainApp.class.getResource("view/WachtwoordVergetenLayout.fxml"));
+	            nieuwAccountLayout = (AnchorPane) loader.load();
+		               
+	            // Show the scene containing the root layout.
+	            LoginController controller = loader.getController();
+	            controller.setMainApp(this);
+	            Scene scene = new Scene(nieuwAccountLayout);
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	 
     public Stage getPrimaryStage() {
         return primaryStage;

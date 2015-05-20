@@ -22,8 +22,8 @@
       <PasswordField fx:id="password" layoutX="50.0" layoutY="225.0" prefHeight="31.0" prefWidth="301.0" text="Password" AnchorPane.topAnchor="225.0" />
       <Line endX="150.0" layoutX="200.0" layoutY="70.0" startX="-150.0" AnchorPane.topAnchor="114.5" />
       <Button fx:id="loginButton" layoutX="161.0" layoutY="267.0" mnemonicParsing="false" onAction="#toonMainApp" text="Inloggen" />
-      <Hyperlink fx:id="newAccountLink" layoutX="51.0" layoutY="358.0" text="Nieuw account aanmaken" />
-      <Hyperlink fx:id="wachtwoordVergetenLink" layoutX="50.0" layoutY="387.0" text="Wachtwoord vergeten?" />
+      <Hyperlink fx:id="nieuwAccountLink" layoutX="51.0" layoutY="358.0" onAction="#nieuwAccount" text="Nieuw account aanmaken" />
+      <Hyperlink fx:id="wachtwoordVergetenLink" layoutX="50.0" layoutY="387.0" onAction="#wwVergeten" text="Wachtwoord vergeten?" />
       <Button fx:id="exitButton" layoutX="161.0" layoutY="311.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="31.0" prefWidth="79.0" text="Exit" />
    </children>
 </AnchorPane>
