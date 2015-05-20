@@ -211,7 +211,7 @@
                 </div>
             </form>
         <?php }
-        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
+//        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
 
     } else var_dump($_GET) . "<br />" . var_dump($_POST); ?>
 </body>
