@@ -49,7 +49,7 @@
 
             //Execute the request
             $result = curl_exec($ch);
-
+            //var_dump($result);
             return $result;
         }
 

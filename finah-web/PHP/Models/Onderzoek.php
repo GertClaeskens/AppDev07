@@ -16,6 +16,7 @@ class Onderzoek {
     public $Bevraging_Man;
     public $Aandoening;
     public $Pathologie;
+    public $Datum;
 
     function __construct($Id= null, $Informatie= null, $Relatie= null, $Vragen= null, $AangemaaktDoor= null, $Bevraging_Pat= null, $Bevraging_Man= null, $Aandoening= null, $Pathologie= null)
     {
@@ -28,8 +29,27 @@ class Onderzoek {
         $this->Bevraging_Man = $Bevraging_Man;
         $this->Aandoening = $Aandoening;
         $this->Pathologie = $Pathologie;
+        $this->Datum = new DateTime('now');
     }
-
+    public function jsonSerialize() {
+        return [
+            'Id' => $this->getId(),
+            'Aandoening' => $this->Aandoening,
+            'AandoeningId' => $this->Aandoening["Id"],
+            'Bevraging_Pat' => $this->Bevraging_Pat,
+            'Bevraging_Man' => $this->Bevraging_Man,
+            'Bevraging_PatId' => $this->Bevraging_Pat["Id"],
+            'Bevraging_ManId' => $this->Bevraging_Man["Id"],
+            'Datum' => $this->Datum->format(DateTime::ISO8601),
+            'Pathologie' => $this->Pathologie,
+            'PathologieId' => $this->Pathologie["Id"],
+            'Antwoorden' => Finah::arrayToCsv($this->getAntwoorden()),
+            'Vragen' => $this->getVragen(),
+            'Relatie' => $this->getRelatie(),
+            'VragenId' => $this->Vragen["Id"],
+            'RelatieId' => $this->Relatie["Id"]
+        ];
+    }
     public function getId()
     {
         return $this->Id;
@@ -118,6 +138,16 @@ class Onderzoek {
     public function setPathologie($Pathologie)
     {
         $this->Pathologie = $Pathologie;
+    }
+
+    public function getDatum()
+    {
+        return $this->Datum;
+    }
+
+    public function setDatum($Datum)
+    {
+        $this->Datum = $Datum;
     }
 
 

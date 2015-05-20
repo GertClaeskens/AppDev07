@@ -18,7 +18,11 @@ namespace Finah_Backend.Models
 
         //Ook eventueel enum van maken
         //Relatie eventueel ook ergens anders zetten.
-        public Relatie Relatie { get; set; }
+        [ForeignKey("Relatie")]
+        public int RelatieId { get; set; }
+        public virtual Relatie Relatie { get; set; }
+        [ForeignKey("Vragen")]
+        public int VragenId { get; set; }
         public virtual VragenLijst Vragen { get; set; }
 
         public virtual Account AangemaaktDoor { get; set; }
@@ -37,7 +41,7 @@ namespace Finah_Backend.Models
         public int PathologieId { get; set; }
         public virtual Pathologie Pathologie { get; set; }
 
-        [NotMapped]
+
         public DateTime Datum { get; set; }
 
         #endregion Public members
