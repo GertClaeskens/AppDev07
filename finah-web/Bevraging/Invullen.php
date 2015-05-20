@@ -135,7 +135,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <div class="btn-group row" id="keuze">
                     <div id="keuze-content">
                         <p class="eVraag">Wilt u dat we hieraan werken?</p>

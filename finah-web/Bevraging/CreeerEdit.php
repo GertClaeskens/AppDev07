@@ -201,7 +201,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
                                         }
-                                        if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                        if (isset($_POST["nieuw"])) {
                                             $informatie = $_POST["informatie"];
                                             $aandoening = $_POST["aandoening"];
                                             $pathologie = $_POST["Pathologie"];
@@ -270,20 +270,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                         Finah::send_simple_message($to, $subject, $msg);
                                                     }
                                                 }
-                                            } else {
-                                                if (isset($_POST["update"])) {
-                                                    $id = $_POST["update"];
-
-                                                    $onderzoek->setId($id);
-                                                    if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek)) {
-
-                                                    }
-                                                    $onderzk = FinahDAO::HaalOp("Onderzoek", $id);
-                                                    $onderzoek = $onderzk[0];
-                                                    $informatie = $onderzoek["Informatie"];
-                                                    echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
-                                                    echo "De pathologie werd succesvol opgeslagen";
-                                                }
                                             }
                                         }
 
@@ -294,9 +280,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Informatie"> Informatie: </label>
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                    <textarea rows="5" type="text" class="form-control" id="Informatie" name="informatie" ><?php if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                echo $informatie;
-                                          } ?></textarea>
+                                    <textarea rows="5" type="text" class="form-control" id="Informatie" name="informatie" ></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -510,16 +494,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <button type="button" onclick="location.href='Overzicht.php'"
                                 class="btn btn-primary">
                             Terug
-                        </button>
-                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                class='btn btn-primary' value="<?php echo $id ?>">
-                            Bewerken
-                        </button>
-                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                name='verwijderBtn' value="<?php echo $id ?>"
-                                class='delBtn btn btn-primary'
-                                onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $id ?>,'Bevraging',this)">
-                            Verwijderen
                         </button>
                         </form>
                     </div>
