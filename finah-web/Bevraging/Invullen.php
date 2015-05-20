@@ -18,19 +18,20 @@
 </head>
 <body>
 <?php
-    var_dump($_GET);
+
     if (isset($_GET["id"])) {
+//    if (!isset($_POST)) {
 //    TODO kijken of er al vragen zijn ingevuld
         $aantalingevuld = 0;
         $volgende = 1;
         //$bevraging = new Bevraging();
         //$bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
-        $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $_GET["id"]);
-        $antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
-        if (array_search("0", $antwoorden)) {
-            $aantalingevuld = array_search(0, $antwoorden);
-        }
-        $aantalingevuld = 0;
+        $antwoordenLijst = FinahDAO::HaalOp("Antwoordenlijst", "4824d9bf5f08420099ec167341235f87");
+        //$antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
+//        if (array_search("0", $antwoorden)) {
+//            $aantalingevuld = array_search(0, $antwoorden);
+//        }
+        //$aantalingevuld = 0;
         $patient = ($antwoordenLijst["Bevraging"]["IsPatient"] == true) ? true : false;
         if ($patient) {
             echo "<h2>Enquete Patient</h2>";
@@ -87,7 +88,7 @@
             <div class="container">
                 <div class="div-group row" id="vraagDiv">
                     <!--TODO thema toevoegen aan database?  -->
-                    <p id="thema"><?= $vraag["Thema"]?> </p>
+                    <p id="thema"><?= $vraag["Thema"]["Naam"] ?> </p>
 
                     <p id="vraag">Vraag <?php echo ($volgende) . ": " . $vraag["VraagStelling"] ?></p>
                     <img class="thumbnail" src="../Vragen/test.PNG" alt="...">
@@ -184,6 +185,6 @@
                 </div>
             </div>
         </form>
-    <?php } ?>
+    <?php } else var_dump($_GET) . "<br />" . var_dump($_POST); ?>
 </body>
 </html>
