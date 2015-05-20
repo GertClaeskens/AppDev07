@@ -25,12 +25,12 @@
         $aantalingevuld = 0;
         $volgende = 1;
         //$bevraging = new Bevraging();
-        //$bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
-        $antwoordenLijst = FinahDAO::HaalOp("Antwoordenlijst", "4824d9bf5f08420099ec167341235f87");
-        //$antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
-//        if (array_search("0", $antwoorden)) {
-//            $aantalingevuld = array_search(0, $antwoorden);
-//        }
+        $bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
+        //$antwoordenLijst = FinahDAO::HaalOp("Antwoordenlijst", "4824d9bf5f08420099ec167341235f87");
+        $antwoorden = Finah::csvToArray($bevraging["Antwoorden"]);
+        if (array_search("0", $antwoorden)) {
+            $aantalingevuld = array_search(0, $antwoorden);
+        }
         //$aantalingevuld = 0;
         $patient = ($antwoordenLijst["Bevraging"]["IsPatient"] == true) ? true : false;
         if ($patient) {
@@ -66,17 +66,19 @@
         $patient = $_POST["patient"];
         $gedaan = (int)($volgende * 100 / count($vragen[0]));
         if ($volgende > 0) {
-            $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $id);
+            $bevr = FinahDAO::HaalOp("Bevraging", $id);
+//            $antwoordenlijst = FinahDAO::HaalOp("Antwoordenlijst", $id);
+            $antwoordenlijst = $bevr["Antwoorden"];
             if (isset($_POST["hulp"])) {
                 $antwoord = $_POST["hinder"] + $_POST["hulp"];
             } else {
                 $antwoord = $_POST["hinder"];
             }
             //$antwoordenlijst = new AntwoordenLijst();
-            $antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
-            $antwoorden[$volgende] = $antwoord;
-            $antwoordenlijst["Antwoorden"] = Finah::arrayToCsv($antwoorden);
-            FinahDAO::PasAan("antwoordenlijst", $id, $antwoordenlijst);
+            //$antwoorden = Finah::csvToArray($antwoordenlijst["Antwoorden"]);
+            //$antwoorden[$volgende] = $antwoord;
+            //$antwoordenlijst["Antwoorden"] = Finah::arrayToCsv($antwoorden);
+            //FinahDAO::PasAan("antwoordenlijst", $id, $antwoordenlijst);
         }
         $volgende += 1;
         //FinahDAO::PasAan("antwoordlijst",$_POST["id"])

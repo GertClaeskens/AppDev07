@@ -43,6 +43,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {
@@ -72,6 +73,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {
@@ -223,19 +225,28 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
-                                                $antwoorden_pat = new AntwoordenLijst();
-                                                $antwoorden_pat->setId(0);
-                                                $antwoorden_pat->setBevragingId($bevraging_pat->getId());
-                                                $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+                                                //$antwoorden_pat = new AntwoordenLijst();
+                                                //$antwoorden_pat->setId(0);
+                                                //$antwoorden_pat->setBevragingId($bevraging_pat->getId());
+                                                //$bevraging_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+                                                $bevraging_pat->setLeeftijdsCategorieId($leeftijdcatPat);
                                                 $datum = new DateTime("Now");
                                                 $dat = $datum->format('d/m/Y G:i:s');
                                                 $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
-                                                $antwoorden_pat->setDatum($dateTime);
-                                                $antwoorden_man = new AntwoordenLijst();
-                                                $antwoorden_man->setId(0);
-                                                $antwoorden_man->setBevragingId($bevraging_man->getId());
-                                                $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
-                                                $antwoorden_man->setDatum($dateTime);
+                                                //$bevraging_pat->setDatum($dateTime);
+                                                //$antwoorden_man = new AntwoordenLijst();
+                                                //$antwoorden_man->setId(0);
+                                                //$antwoorden_man->setBevragingId($bevraging_man->getId());
+                                                //$antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
+                                                $bevraging_man->setLeeftijdsCategorieId($leeftijdcatPat);
+                                                //$bevraging_man->setDatum($dateTime);
+                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl);
+                                                $onderzoek->setVragen($vragen);
+                                                $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
+                                                $bevraging_pat->setAntwoorden(implode(',', $leeg_vragen));
+                                                $bevraging_man->setAntwoorden(implode(',', $leeg_vragen));
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_pat);
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_man);
                                                 $onderzoek->setBevragingPat($bevraging_pat);
                                                 $onderzoek->setBevragingMan($bevraging_man);
                                                 $onderzoek->setInformatie($informatie);
@@ -243,14 +254,10 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 //TODO vragenlijst ophalen
                                                 /*$vrLijst = $aandoening . "/Vragenlijst";
                                                 $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);*/
-                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl);
-                                                $onderzoek->setVragen($vragen);
-                                                $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
-                                                $antwoorden_pat->setAntwoorden($leeg_vragen);
-                                                $antwoorden_man->setAntwoorden($leeg_vragen);
+
                                                 if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                                     //Todo eventueel een exception toevoegen hier
-                                                    $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
+                                    /*                $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
                                                     $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getBevragingId()));
                                                     if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                                                         //Todo eventueel een exception toevoegen hier
@@ -261,7 +268,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                                                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                                                                                     $headers .= 'From: gert.claeskens@student.pxl.be' . "\r\n" .
                                                                                         'Reply-To: gert.claeskens@student.pxl.be' . "\r\n" .
-                                                                                        'X-Mailer: PHP/' . phpversion();*/
+                                                                                        'X-Mailer: PHP/' . phpversion();
                                                         $subject = "Bevraging aangemaakt op ";
                                                         $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
                                                         $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
@@ -270,7 +277,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                         $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
                                                         $msg = wordwrap($msg, 70, "\r\n");
                                                         Finah::send_simple_message($to, $subject, $msg);
-                                                    }
+                                                    }*/
                                                 }
                                             } else {
                                                 if (isset($_POST["update"])) {
@@ -284,7 +291,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                     $onderzoek = $onderzk[0];
                                                     $informatie = $onderzoek["Informatie"];
                                                     echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
-                                                    echo "De pathologie werd succesvol opgeslagen";
+                                                    echo "Het onderzoek werd succesvol opgeslagen";
                                                 }
                                             }
                                         }
@@ -409,8 +416,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         $informatie = $onderzoek["Informatie"];
         $aandoeningLijst= $onderzoek["Aandoening"];
         $pathologieLijst = $onderzoek["Pathologie"];
-        $antwPat = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Pat"]["Id"]);
-        $antwMan = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Man"]["Id"]);
+        $antwPat = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Pat"]["Id"]);
+        $antwMan = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Man"]["Id"]);
         $leeftijdcatPatVan = $antwPat["LeeftijdsCategorie"]["Van"];
         $leeftijdcatPatTot = $antwPat["LeeftijdsCategorie"]["Tot"];
         $leeftijdcatManVan = $antwMan["LeeftijdsCategorie"]["Van"];

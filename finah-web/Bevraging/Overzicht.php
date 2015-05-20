@@ -143,9 +143,9 @@ require_once "../PHP/Models/Onderzoek.php";
                             <?php
                                 $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
                                 foreach ($onderzoekLijst as $item) {
-                                      $antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
+                                      //$antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
                                             ?>
-                                    <tr> <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $antw["Datum"]  ?> </td>
+                                    <tr> <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $item["Datum"]  ?> </td>
                                         <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo "Rafael Sarrechia" ?></td>
 
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
