@@ -52,7 +52,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema).Include(p => p.VragenLijst);
+            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema);//.Include(p => p.VragenLijst);
         }
 
         // PUT: api/Vragen/5

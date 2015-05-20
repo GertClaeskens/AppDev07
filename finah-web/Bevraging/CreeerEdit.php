@@ -43,6 +43,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {
@@ -72,6 +73,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
                     xhr.open("GET", url, true);
 
                     xhr.onreadystatechange = function () {
@@ -201,7 +203,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
                                         }
-                                        if (isset($_POST["nieuw"])) {
+                                        if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                             $informatie = $_POST["informatie"];
                                             $aandoening = $_POST["aandoening"];
                                             $pathologie = $_POST["Pathologie"];
@@ -223,17 +225,28 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
-                                                $antwoorden_pat = new AntwoordenLijst();
-                                                $antwoorden_pat->setId($bevraging_pat->getId());
-                                                $antwoorden_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+                                                //$antwoorden_pat = new AntwoordenLijst();
+                                                //$antwoorden_pat->setId(0);
+                                                //$antwoorden_pat->setBevragingId($bevraging_pat->getId());
+                                                //$bevraging_pat->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatPat));
+                                                $bevraging_pat->setLeeftijdsCategorieId($leeftijdcatPat);
                                                 $datum = new DateTime("Now");
                                                 $dat = $datum->format('d/m/Y G:i:s');
                                                 $dateTime = DateTime::createFromFormat('d/m/Y G:i:s', $dat);
-                                                $antwoorden_pat->setDatum($dateTime);
-                                                $antwoorden_man = new AntwoordenLijst();
-                                                $antwoorden_man->setId($bevraging_man->getId());
-                                                $antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
-                                                $antwoorden_man->setDatum($dateTime);
+                                                //$bevraging_pat->setDatum($dateTime);
+                                                //$antwoorden_man = new AntwoordenLijst();
+                                                //$antwoorden_man->setId(0);
+                                                //$antwoorden_man->setBevragingId($bevraging_man->getId());
+                                                //$antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
+                                                $bevraging_man->setLeeftijdsCategorieId($leeftijdcatPat);
+                                                //$bevraging_man->setDatum($dateTime);
+                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl);
+                                                $onderzoek->setVragen($vragen);
+                                                $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
+                                                $bevraging_pat->setAntwoorden(implode(',', $leeg_vragen));
+                                                $bevraging_man->setAntwoorden(implode(',', $leeg_vragen));
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_pat);
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_man);
                                                 $onderzoek->setBevragingPat($bevraging_pat);
                                                 $onderzoek->setBevragingMan($bevraging_man);
                                                 $onderzoek->setInformatie($informatie);
@@ -241,15 +254,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 //TODO vragenlijst ophalen
                                                 /*$vrLijst = $aandoening . "/Vragenlijst";
                                                 $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);*/
-                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl);
-                                                $onderzoek->setVragen($vragen);
-                                                $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
-                                                $antwoorden_pat->setAntwoorden($leeg_vragen);
-                                                $antwoorden_man->setAntwoorden($leeg_vragen);
+
                                                 if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                                     //Todo eventueel een exception toevoegen hier
-                                                    $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getId()));
-                                                    $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getId()));
+                                    /*                $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
+                                                    $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getBevragingId()));
                                                     if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
                                                         //Todo eventueel een exception toevoegen hier
                                                         //header("Location: Overzicht.php");
@@ -259,7 +268,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                                                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                                                                                     $headers .= 'From: gert.claeskens@student.pxl.be' . "\r\n" .
                                                                                         'Reply-To: gert.claeskens@student.pxl.be' . "\r\n" .
-                                                                                        'X-Mailer: PHP/' . phpversion();*/
+                                                                                        'X-Mailer: PHP/' . phpversion();
                                                         $subject = "Bevraging aangemaakt op ";
                                                         $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
                                                         $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
@@ -268,19 +277,35 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                         $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
                                                         $msg = wordwrap($msg, 70, "\r\n");
                                                         Finah::send_simple_message($to, $subject, $msg);
+                                                    }*/
+                                                }
+                                            } else {
+                                                if (isset($_POST["update"])) {
+                                                    $id = $_POST["update"];
+
+                                                    $onderzoek->setId($id);
+                                                    if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek)) {
+
                                                     }
+                                                    $onderzk = FinahDAO::HaalOp("Onderzoek", $id);
+                                                    $onderzoek = $onderzk[0];
+                                                    $informatie = $onderzoek["Informatie"];
+                                                    echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
+                                                    echo "Het onderzoek werd succesvol opgeslagen";
                                                 }
                                             }
                                         }
 
 
                         ?>
-                        <form id="bevragingForm" class="form-horizontal" role="form" method="POST"
+                        <form id="bevragingForm" class="form-horizontal" role="form" method="POST" name="myForm"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Informatie"> Informatie: </label>
                                 <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
-                                    <textarea rows="5" type="text" class="form-control" id="Informatie" name="informatie" ></textarea>
+                                    <textarea rows="5" type="text" class="form-control" id="Informatie" name="informatie" ><?php if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                                echo $informatie;
+                                          } ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -391,8 +416,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         $informatie = $onderzoek["Informatie"];
         $aandoeningLijst= $onderzoek["Aandoening"];
         $pathologieLijst = $onderzoek["Pathologie"];
-        $antwPat = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Pat"]["Id"]);
-        $antwMan = FinahDAO::HaalOp("AntwoordenLijst",$onderzoek["Bevraging_Man"]["Id"]);
+        $antwPat = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Pat"]["Id"]);
+        $antwMan = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Man"]["Id"]);
         $leeftijdcatPatVan = $antwPat["LeeftijdsCategorie"]["Van"];
         $leeftijdcatPatTot = $antwPat["LeeftijdsCategorie"]["Tot"];
         $leeftijdcatManVan = $antwMan["LeeftijdsCategorie"]["Van"];
@@ -494,6 +519,16 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <button type="button" onclick="location.href='Overzicht.php'"
                                 class="btn btn-primary">
                             Terug
+                        </button>
+                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                class='btn btn-primary' value="<?php echo $id ?>">
+                            Bewerken
+                        </button>
+                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                name='verwijderBtn' value="<?php echo $id ?>"
+                                class='delBtn btn btn-primary'
+                                onclick="Confirm.render('Verwijder bevraging?','delete_lft',<?php echo $id ?>,'Bevraging',this)">
+                            Verwijderen
                         </button>
                         </form>
                     </div>

@@ -51,6 +51,7 @@ function deletePost(id, type) {
     // Run Ajax request here to delete post from database
     $.ajax({
         url: 'http://finahbackend1920.azurewebsites.net/' + type + '/' + id,
+        //url: 'http://localhost:1695/' + type + '/' + id,
         type: 'DELETE',
         contentType: 'application/json',
         success: function () {

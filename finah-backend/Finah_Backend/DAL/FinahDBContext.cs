@@ -63,11 +63,11 @@
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<AntwoordenLijst>().HasKey(e => new { e.Id, e.Datum });
+            //modelBuilder.Entity<AntwoordenLijst>().HasKey(e => new { e.Id, e.Datum });
             //modelBuilder.Entity<AntwoordenLijst>().HasRequired(e => e.Id).WithRequiredPrincipal();
-            modelBuilder.Entity<AntwoordenLijst>()
-                        .Property(e => e.Id)
-                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<AntwoordenLijst>()
+           //             .Property(e => e.Id)
+            //            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             //modelBuilder.Entity<AntwoordenLijst>()
             //            .HasRequired(e => e.Bevraging)
             //            .WithRequiredDependent(r => r.Antwoorden);

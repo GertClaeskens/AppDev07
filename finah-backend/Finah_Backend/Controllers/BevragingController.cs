@@ -71,7 +71,7 @@ namespace Finah_Backend.Controllers
         public IHttpActionResult Get(String id)
         {
 
-            var bevraging = db.Bevragingen.FirstOrDefault((b) => b.Id == id);
+            var bevraging = db.Bevragingen.Find(id);
 
             if (bevraging == null)
             {
@@ -84,10 +84,12 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return db.Bevragingen;
+            return db.Bevragingen.Include(b => b.LeeftijdsCategorie);
         }
 
         // PUT: api/Bevragings/5
+        [HttpPut]
+        [Route("Bevraging/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBevraging(string id, Bevraging bevraging)
         {
@@ -126,6 +128,8 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Bevragings
+        [HttpPost]
+        [Route("Bevraging")]
         [ResponseType(typeof(Bevraging))]
         public IHttpActionResult PostBevraging([FromBody] Bevraging bevraging)
         {

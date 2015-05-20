@@ -12,7 +12,7 @@ namespace Finah_Backend.Models
 
         //unieke genereren id 
         [Key]
-        public virtual String Id { get; set; }
+        public String Id { get; set; }
 
         #region verborgen velden
         //public DateTime Aangevraagd { get; set; }
@@ -34,10 +34,14 @@ namespace Finah_Backend.Models
         #endregion
         //[ForeignKey("Antwoorden")]
         //public int AntwoordenId { get; set; }
-        public virtual ICollection<AntwoordenLijst> Antwoorden { get; set; }
+        //public virtual ICollection<AntwoordenLijst> Antwoorden { get; set; }
         //Nodig om de juiste benamingen te tonen tijdens het invullen van de vragenlijst
         public bool IsPatient { get; set; }
+        public string Antwoorden { get; set; }
 
+        [ForeignKey("LeeftijdsCategorie")]
+        public int LeeftijdsCategorieId { get; set; }
+        public virtual LeeftijdsCategorie LeeftijdsCategorie { get; set; }
         #endregion Public members
     }
 }
