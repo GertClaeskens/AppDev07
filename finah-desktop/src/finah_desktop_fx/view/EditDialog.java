@@ -1,5 +1,6 @@
 package finah_desktop_fx.view;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,9 +22,25 @@ import javafx.stage.StageStyle;
 
 import javax.swing.JComboBox;
 
+import finah_desktop_fx.dao.AandoeningDAO;
+import finah_desktop_fx.dao.PathologieDAO;
+import finah_desktop_fx.dao.ThemaDAO;
 import finah_desktop_fx.model.Vraag;
 
 public class EditDialog<T> {
+	
+	/**
+	 * shows a dialog which displays a UI for adding a person to a table.
+	 * 
+	 * @param parent
+	 *            a parent stage to which this dialog will be modal and placed
+	 *            next to.
+	 * @param table
+	 *            the table to which a person is to be added.
+	 * @param y
+	 *            the y position of the top left corner of the dialog.
+	 */
+	
 	
 	void showDialog(final TableView<T> table, double y) {
 		// initialize the dialog.
@@ -32,7 +49,7 @@ public class EditDialog<T> {
 		// dialog.initOwner(parent);
 		dialog.initModality(Modality.WINDOW_MODAL);
 		dialog.initStyle(StageStyle.UTILITY);
-		dialog.setX(1000);
+		dialog.setX(800);
 		dialog.setY(y);
 
 		// create a grid for the data entry.
@@ -42,32 +59,37 @@ public class EditDialog<T> {
 		final TextField inhoudField = new TextField();
 		// GridPane.setHgrow(txtVraagStelling, Priority.ALWAYS);
 		// GridPane.setHgrow(lastNameField, Priority.ALWAYS);
-
+		
 		switch(table.getId()){
 		case "tblVragen":{
 			grid.addRow(0, new Label("Vraag:"), inhoudField);
-			final ComboBox aandoeningCombo = new ComboBox();
+			final ComboBox aandoeningCombo = new ComboBox(FXCollections
+					.observableList(AandoeningDAO.GetAandoeningen()));
 			grid.addRow(1, new Label("Aandoening:"), aandoeningCombo);
 			GridPane.setHgrow(aandoeningCombo, Priority.ALWAYS);
-			final ComboBox themaCombo = new ComboBox();
+			final ComboBox themaCombo = new ComboBox(FXCollections
+					.observableList(ThemaDAO.GetThemas()));
 			grid.addRow(2, new Label("Thema:"), themaCombo);
 			break;
 			}
 		case "tblVragenlijst":{
 			grid.addRow(0, new Label("Naam vragenlijst:"), inhoudField);
-			final ComboBox aandoeningCombo = new ComboBox();
+			final ComboBox aandoeningCombo = new ComboBox(FXCollections
+					.observableList(AandoeningDAO.GetAandoeningen()));
 			grid.addRow(1, new Label("Aandoening:"), aandoeningCombo);
 			break;
 			}
 		case "tblAandoening":{
 			grid.addRow(0, new Label("Aandoening:"), inhoudField);
-			final ComboBox pathologieCombo = new ComboBox();
+			final ComboBox pathologieCombo = new ComboBox(FXCollections
+					.observableList(PathologieDAO.GetPathologieen()));
 			grid.addRow(1, new Label("Pathologie:"), pathologieCombo);
 			break;
 			}
 		case "tblPathologie":{
 			grid.addRow(0, new Label("Pathologie:"), inhoudField);
-			final ComboBox aandoeningCombo = new ComboBox();
+			final ComboBox aandoeningCombo = new ComboBox(FXCollections
+					.observableList(AandoeningDAO.GetAandoeningen()));
 			grid.addRow(1, new Label("Aandoening:"), aandoeningCombo);
 			break;
 			}
