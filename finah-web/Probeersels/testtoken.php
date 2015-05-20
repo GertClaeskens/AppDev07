@@ -7,8 +7,11 @@
  */
 
 include_once "../PHP/DAO/FinahDAO.php";
-
+session_start();
     $username = "TestProfileAdmin";
     $password="S3cur3P@ssw0rd";
 
-    FinahDAO::GetToken($username,$password);
+    $inlog = FinahDAO::GetToken($username,$password);
+    $_SESSION["token"] = $inlog["access_token"];
+    print_r($inlog);
+    var_dump($inlog);

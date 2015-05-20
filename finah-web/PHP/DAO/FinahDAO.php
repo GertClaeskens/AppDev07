@@ -35,8 +35,8 @@
             curl_setopt($ch, CURLOPT_VERBOSE, 0);
 
             //Set the content type to application/json
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-url encoded']);
-
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-url encoded']);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
             //Execute the request
             $result = curl_exec($ch);
             //var_dump($result);
@@ -44,10 +44,41 @@
         }
 
 
-        public static function HaalOp($type, $id = null)
+        public static function HaalOp($type, $id = null,$token)
         {
+
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
             $url = self::URL . $type . "/";
+            if ($id == null) {
+                $url .= "Overzicht";
+            } else $url .= $id;
+            //$token = $_SESSION["access_token"];
+            $url =$url. '?access_token='.$token;
+
+
+// set up the curl resource
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
+// execute the request
+
+            $output = curl_exec($ch);
+
+// output the profile information - includes the header
+
+            $result = json_decode($output,true);
+
+// close curl resource to free up system resources
+
+            curl_close($ch);
+            return $result;
+
+            //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
+/*            $url = self::URL . $type . "/";
             if ($id == null) {
                 $url .= "Overzicht";
             } else $url .= $id;
@@ -55,7 +86,7 @@
             //var_dump($url);
             $result = json_decode(file_get_contents($url), true);
             //var_dump($result);
-            return $result;
+            return $result;*/
         }
 
         public static function SchrijfWeg($type, $data)
@@ -78,7 +109,7 @@
             curl_setopt($ch, CURLOPT_VERBOSE, 0);
 
             //Set the content type to application/json
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
 
             //Execute the request
             $result = curl_exec($ch);
