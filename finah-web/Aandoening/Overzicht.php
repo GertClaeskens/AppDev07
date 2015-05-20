@@ -2,6 +2,13 @@
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Aandoening.php";
 require_once "../PHP/Models/Pathologie.php";
+
+session_start();
+    $username = "TestProfileAdmin";
+    $password="S3cur3P@ssw0rd";
+
+    $inlog = FinahDAO::GetToken($username,$password);
+    $_SESSION["token"] = $inlog["access_token"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,7 +136,7 @@ require_once "../PHP/Models/Pathologie.php";
                             </thead>
                             <tbody>
                             <?php
-                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
+                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null,$_SESSION["token"]);
                                 for ($a = 0; $a < count($aandoeningLijst); $a++) {
                                     $item = $aandoeningLijst[$a];
                                     $aantal = count($item["Patologieen"]);
