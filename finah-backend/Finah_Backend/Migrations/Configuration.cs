@@ -2,6 +2,8 @@ namespace Finah_Backend.Migrations
 {
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
@@ -14,7 +16,6 @@ namespace Finah_Backend.Migrations
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
-
         }
 
         protected override void Seed(ApplicationDbContext context)
@@ -376,6 +377,51 @@ namespace Finah_Backend.Migrations
             context.SaveChanges();
 
             #endregion Postcodes Toevoegen
+
+            #region Roles Aanmaken
+            AddUsersAndRoles(context);
+            #endregion
+        }
+
+        private bool AddUsersAndRoles(Finah_Backend.Models.ApplicationDbContext context)
+        {
+            IdentityResult ir;
+            //Roles
+            var rm = new RoleManager<IdentityRole>
+                (new RoleStore<IdentityRole>(context));
+            ir = rm.Create(new IdentityRole("Admin")); //Just in Case
+            ir = rm.Create(new IdentityRole("Onderzoeker"));
+            ir = rm.Create(new IdentityRole("Hulpverlener"));
+            //Users
+            var um = new UserManager<ApplicationUser>(
+                new UserStore<ApplicationUser>(context));
+            //Admin
+            var testUserAdmin = new ApplicationUser()
+            {
+                UserName = "TestProfileAdmin",
+            };
+            ir = um.Create(testUserAdmin, "S3cur3P@ssw0rd");
+            //Onderzoeker
+            var testUserOnderzoeker = new ApplicationUser()
+            {
+                UserName = "TestProfileOnderzoeker",
+            };
+            ir = um.Create(testUserOnderzoeker, "S3cur3P@ssw0rd");
+            //Hulpverlener
+            var testUserHulpverlener = new ApplicationUser()
+            {
+                UserName = "TestProfileHulpverlener",
+            };
+            ir = um.Create(testUserHulpverlener, "S3cur3P@ssw0rd");
+
+            if (ir.Succeeded == false)
+                return ir.Succeeded;
+            //Add users to Role
+            ir = um.AddToRole(testUserAdmin.Id, "Admin");
+            ir = um.AddToRole(testUserOnderzoeker.Id, "Onderzoeker");
+            ir = um.AddToRole(testUserHulpverlener.Id, "Hulpverlener");
+
+            return ir.Succeeded;
         }
 
         private static void releaseObject(object obj)
