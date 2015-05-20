@@ -70,8 +70,8 @@
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                 <select class="form-control" id="Rol" name="rol">
                                    <option value="">Maak een keuze</option>
-                                    <option value="">Onderzoeker</option>
-                                    <option value="">Hulpverlener</option>
+                                    <option value="1">Onderzoeker</option>
+                                    <option value="2">Hulpverlener</option>
                                 </select>
                             </div>
                         </div>
@@ -238,15 +238,16 @@
                     required: true,
                     minlength:9
                 },
-                wachtwoord:{
+                wachtwoord: {
                     required: true,
-                    minlength:8,
-                    regex:/^(?=.*[A-Z])(?=.*\d).*$/
+                    minlength: 8,
+                    regex: /^(?=.*[A-Z])(?=.*\d).*$/
                 },
-                confwachtwoord:{
-                    required:true,
-                    minlength:8,
-                    regex:/^(?=.*[A-Z])(?=.*\d).*$/
+                confwachtwoord: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#Wachtwoord",
+                    regex: /^(?=.*[A-Z])(?=.*\d).*$/
                 },
                 postcode:{
                     required:true,
@@ -275,10 +276,11 @@
                     minlenght:"Gelieve minimum 8 tekens in te geven",
                     regex:"Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
                 },
-                confwachtwoord:{
-                    required:"Gelieve dit veld in te vullen",
-                    minlenght:"Gelieve minimum 8 tekens in te geven",
-                    regex:"Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                confwachtwoord: {
+                    required: "Gelieve dit veld in te vullen",
+                    minlenght: "Gelieve minimum 8 tekens in te geven",
+                    equalTo: "De twee wachtwoord zijn niet identiek",
+                    regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
                 },
                 telefoon: {
                     required:"Gelieve dit veld in te vullen!",

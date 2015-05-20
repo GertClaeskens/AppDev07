@@ -391,6 +391,7 @@ require "../PHP/DAO/FinahDAO.php";
                     confwachtwoord: {
                         required: true,
                         minlength: 8,
+                        equalTo: "#NieuwWachtWoord",
                         regex: /^(?=.*[A-Z])(?=.*\d).*$/
                     }
                 },
@@ -408,6 +409,7 @@ require "../PHP/DAO/FinahDAO.php";
                     confwachtwoord: {
                         required: "Gelieve dit veld in te vullen",
                         minlenght: "Gelieve minimum 8 tekens in te geven",
+                        equalTo: "De twee wachtwoord zijn niet identiek",
                         regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
                     }
                 }
