@@ -1,11 +1,16 @@
 package finah_desktop_fx.view;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import finah_desktop_fx.MainApp;
 import javafx.event.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class LoginController {
 	
@@ -32,16 +37,21 @@ public class LoginController {
 		  mainApp.close();
 	  }
 	  
-//	  public void toonMainApp(final MainApp mainApp) {
-//	    loginButton.setOnAction(new EventHandler<ActionEvent>() {
-//	      @Override public void handle(ActionEvent event) {
-//	        String test = authorize();
-//	        if (test != null) {
-//	          mainApp.authenticated();
-//	        }
-//	      }
-//	    });
-//	  }
+	  //Werkt nog niet volledig (zie MainApp -> nulpointer exception)
+	  public void nieuwAccount(ActionEvent actionEvent){
+		    Stage stage = mainApp.getPrimaryStage(); 
+			stage.setWidth(400);
+			stage.setHeight(550);
+			mainApp.showNieuwAccount();
+	    }
+	    
+	  //Werkt nog niet volledig (zie MainApp -> nulpointer exception)
+	  public void wwVergeten(ActionEvent actionEvent){
+		  	Stage stage = mainApp.getPrimaryStage(); 
+			stage.setWidth(400);
+			stage.setHeight(375);
+			mainApp.showWwVergeten();
+	    }
 	  
 	  private String authorize() {
 	    return 
