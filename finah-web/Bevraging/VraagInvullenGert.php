@@ -5,6 +5,9 @@
      * Date: 1/04/2015
      * Time: 10:20
      */
+
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Finah.php";
 ?>
 <html>
 <head>
@@ -24,6 +27,14 @@
 </head>
 <body>
 <?php
+    if (isset($_GET)){
+        $bevraging = FinahDAO::HaalOp("Bevraging", $_GET["id"]);
+        print_r($bevraging);
+        $arr=explode(",",$bevraging["Antwoorden"]);
+        var_dump($arr);
+        //$antwoorden = Finah::csvToArray($bevraging["Antwoorden"]);
+        //print_r($antwoorden);
+    }
 if (isset($_POST["volgende"])){
     print_r($_POST);
 }else{
