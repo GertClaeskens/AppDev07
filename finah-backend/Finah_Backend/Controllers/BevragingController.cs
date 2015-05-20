@@ -84,7 +84,7 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Bevraging> GetOverzicht()
         public IEnumerable<Bevraging> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
-            return db.Bevragingen;
+            return db.Bevragingen.Include(b => b.LeeftijdsCategorie);
         }
 
         // PUT: api/Bevragings/5

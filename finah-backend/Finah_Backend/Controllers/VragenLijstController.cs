@@ -16,7 +16,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
-    [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
     public class VragenLijstController : ApiController
     {
         //TODO code opschonen

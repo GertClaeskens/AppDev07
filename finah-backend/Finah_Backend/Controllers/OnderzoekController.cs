@@ -55,16 +55,16 @@ namespace Finah_Backend.Controllers
             var onderzoek = (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                              where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                              select o).ToList();
-            var antwoorden = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
+            //var antwoorden = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
             if (onderzoek == null)
             {
                 return NotFound();
             }
 
-            for (var i = 0; i < antwoorden.Count; i++)
-            {
-                onderzoek[i].Datum = antwoorden[i].Datum;
-            }
+            //for (var i = 0; i < antwoorden.Count; i++)
+            //{
+            //    onderzoek[i].Datum = antwoorden[i].Datum;
+            //}
 
 
             return Ok(onderzoek);
@@ -79,8 +79,8 @@ namespace Finah_Backend.Controllers
                 (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
                  select o).First();
-            var bevraging = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
-            onderzoek.Datum = bevraging[0].Datum;
+            //var bevraging = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
+            // onderzoek.Datum = bevraging[0].Datum;
 
 
             if (onderzoek == null)
@@ -188,15 +188,24 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Onderzoek))]
         public IHttpActionResult Post([FromBody] Onderzoek onderzoek)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            onderzoek.Datum = DateTime.Now;
 
             onderzoek.Pathologie = db.Pathologieen.Find(onderzoek.Pathologie.Id);
             onderzoek.Relatie = db.Relaties.Find(onderzoek.Relatie.Id);
             onderzoek.Aandoening = db.Aandoeningen.Find(onderzoek.Aandoening.Id);
             onderzoek.Vragen = db.VragenLijsten.Find(onderzoek.Vragen.Id);
+            onderzoek.PathologieId = onderzoek.Pathologie.Id;
+            onderzoek.RelatieId = onderzoek.Relatie.Id;
+            onderzoek.AandoeningId = onderzoek.Aandoening.Id;
+            onderzoek.VragenId = onderzoek.Vragen.Id;
+            onderzoek.Bevraging_Man = db.Bevragingen.Find(onderzoek.Bevraging_Man.Id);
+            onderzoek.Bevraging_ManId = onderzoek.Bevraging_Man.Id;
+            onderzoek.Bevraging_Pat = db.Bevragingen.Find(onderzoek.Bevraging_Pat.Id);
+            onderzoek.Bevraging_PatId = onderzoek.Bevraging_Pat.Id;
 
             //onderzoek.AangemaaktDoor = db.Accounts.Find(onderzoek.AangemaaktDoor.Id);
             db.Onderzoeken.Add(onderzoek);
