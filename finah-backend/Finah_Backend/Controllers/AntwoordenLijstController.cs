@@ -37,7 +37,7 @@ namespace Finah_Backend.Controllers
         //public IHttpActionResult GetAntwoordenLijst(string id,DateTime datum)
         public IHttpActionResult GetAntwoordenLijst(string id)
         {
-            var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.BevragingId == id).Include(c => c.LeeftijdsCategorie).First();//var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id && c.Datum == datum).Include(c => c.LeeftijdsCategorie).First();
+            var antwoordenLijst = db.AntwoordenLijsten.First(c => c.Bevraging.Id == id);//var antwoordenLijst = db.AntwoordenLijsten.Where(c => c.Id == id && c.Datum == datum).Include(c => c.LeeftijdsCategorie).First();
 
             if (antwoordenLijst == null)
             {

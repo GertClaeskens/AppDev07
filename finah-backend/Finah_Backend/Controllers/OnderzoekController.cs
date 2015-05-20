@@ -126,14 +126,18 @@ namespace Finah_Backend.Controllers
         //}
 
         [Route("Onderzoek/{id}/Vragen/")]
-        public IQueryable<ICollection<Vraag>> GetVraag(string id)
+        public IEnumerable<ICollection<Vraag>> GetVraag(string id)
         {
             db.Configuration.LazyLoadingEnabled = false;
             var vragen =
                 (from o in
                      db.Onderzoeken.Include(o => o.Vragen.Vragen)
                  where (o.Bevraging_Man.Id.Equals(id) || o.Bevraging_Pat.Id.Equals(id))
-                 select o.Vragen.Vragen);
+                 select o.Vragen.Vragen).ToList();
+            foreach (Vraag v in vragen[0])
+            {
+                v.Thema = db.Themas.Find(v.ThemaId);
+            }
             return vragen;
         }
         // PUT: api/Onderzoek/5
