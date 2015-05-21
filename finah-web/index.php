@@ -34,6 +34,7 @@
               if (isset($resarr["access_token"])) {
                       session_start();
                       $_SESSION["token"] = $aanmelden["access_token"];
+                  $_SESSION["username"] = $aanmelden["userName"];
                       header("Location: Aandoening/Overzicht.php");
                   } else echo "aanmelden mislukt";
 

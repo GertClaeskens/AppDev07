@@ -59,10 +59,6 @@ function deletePost(id, type,tk,r) {
         contentType: 'application/json',
         success: function () {
             document.getElementById('mededeling').innerHTML = "<p class='gelukt'>De "+ type + " werd succesvol verwijderd.</p>";
-            var id = r.name;
-            var i = id.replace("verwijder", "");
-            console.log(i);
-            document.getElementById("overzicht").deleteRow(i);
             return true;
             // Do something with the result
         },
@@ -97,7 +93,7 @@ function CustomConfirm() {
     this.yes = function (op, id, type, r,tk) {
         if (op == "delete_lft") {
             if (deletePost(id, type,tk,r)) {
-                deleteRow(r);
+                //deleteRow(r);
             }
         }
         document.getElementById('dialogbox').style.display = "none";

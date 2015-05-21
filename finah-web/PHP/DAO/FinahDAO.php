@@ -83,7 +83,6 @@
         public static function SchrijfWeg($type, $data,$token=null)
         {
             if ($token != null) {
-                //TODO verder uitwerken
                 $url = self::URL . $type . "/";
                 //var_dump($data);
                 $gegevens = json_encode($data);
@@ -110,7 +109,6 @@
                 //var_dump($result);
                 return $result;
             }else{
-                //TODO verder uitwerken
                 $url = self::URL . $type . "/";
                 //var_dump($data);
                 $gegevens = json_encode($data);

@@ -84,30 +84,39 @@
                 class="breadcrumb-font">Registratie </span>
         </div>
         <?php
-            if (isset($_Post["registreren"])){
-                $usernm = $_POST["Username"];
-                $voornaam = $_POST["Voornaam"];
-                $naam = $_POST["Naam"];
-                $email = $_Post["Email"];
-                $wachtwoord = $_POST["Wachtwoord"];
-                $confww = $_POST["confWachtwoord"];
-                $adres = $_POST["Adres"];
-                $pcId = $_Post["Woonplaats"];
-                $telefoon = $_POST["Telefoon"];
-                $captcha = $_POST["Captcha"];
+
+            if (isset($_POST["registreren"])){
+                var_dump($_POST);
+                $typeacc=$_POST["rol"];
+                $usernm = $_POST["username"];
+                $voornaam = $_POST["voornaam"];
+                $naam = $_POST["naam"];
+                $email = $_POST["email"];
+                $wachtwoord = $_POST["wachtwoord"];
+                $confww = $_POST["confwachtwoord"];
+                $adres = $_POST["adres"];
+                $pcId = $_POST["woonplaats"];
+                $telefoon = $_POST["telefoon"];
+                $captcha = $_POST["captcha"];
 
                 $av = new Aanvraag();
+                $av->setId(0);
                 $av->setLogin($usernm);
-                $av->getNaam($naam);
+                $av->setNaam($naam);
                 $av->setVoornaam($voornaam);
                 $av->setAdres($adres);
                 $av->setEmail($email);
                 $av->setPostc(FinahDAO::HaalOp("Postcode",$pcId));
+                $av->setPasswd($wachtwoord);
+                $av->setTelnr($telefoon);
+                $av->setTypeAcc($typeacc);
+                var_dump($av);
+                var_dump(FinahDAO::SchrijfWeg("Aanvraag",$av));
                 //TODO controle op ww en captcha
                 if ($wachtwoord == $confww){
                     if ($captcha == 2 || $captcha == "2"){
-                        $av->setPasswd($wachtwoord);
-                        FinahDAO::SchrijfWeg("Aanvraag",$av);
+                        //$av->setPasswd($wachtwoord);
+                        //FinahDAO::SchrijfWeg("Aanvraag",$av);
                     }else {
                         echo "Captcha niet goed.";
                     }
@@ -115,7 +124,7 @@
                     echo "wachtwoorden komen niet overeen.";
                 }
 
-            }
+            }else{
 
         ?>
         <div class="container-fluid">
@@ -135,8 +144,8 @@
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                 <select class="form-control" id="Rol" name="rol">
                                     <option value="">Maak een keuze</option>
-                                    <option value="1">Onderzoeker</option>
-                                    <option value="2">Hulpverlener</option>
+                                    <option value="Onderzoeker">Onderzoeker</option>
+                                    <option value="Hulpverlener">Hulpverlener</option>
                                 </select>
                             </div>
                         </div>
@@ -267,7 +276,7 @@
                                         onclick="location.href='../index.php'">
                                     Terug
                                 </button>
-                                <button type="submit" name="registreren" class="btn btn-primary form-buttons">
+                                <button type="submit" name="registreren" value="registreren" class="btn btn-primary form-buttons">
                                     Registreren
                                 </button>
                             </div>
@@ -276,6 +285,7 @@
                 </div>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>
 <script>
@@ -323,8 +333,8 @@
                     number: true,
                     min: 1000,
                     max: 9999
-                },
-                woonplaats: "required"
+                }
+                ,woonplaats: "required"
             },
             messages: {
                 rol: "Gelieve een keuze te maken!",
@@ -360,8 +370,8 @@
                     number: "Gelieve een numerieke waarde in te vullen",
                     min: "Een postcode heeft 4 cijfers",
                     max: "Een postcode heeft max 4 cijfers"
-                },
-                woonplaats: "Gelieve een keuze te maken!"
+                }
+                ,woonplaats: "Gelieve een keuze te maken!"
             }
         });
     });

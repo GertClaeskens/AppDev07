@@ -12,12 +12,12 @@
         public $Naam;
         public $Voornaam;
         public $Adres;
-        public $Postc;
+        public $Postcd;
         public $Telnr;
         public $Login;
         public $Passwd;
         public $Email;
-        public $TypeAccount;
+        public $TypeAcc;
 
         function __construct($Id = null, $Naam = null, $Voornaam = null, $Adres = null, $Postc=null,$Telnr = null, $Login = null, $Passwd = null, $Email = null, $TypeAccount = null)
         {
@@ -30,7 +30,7 @@
             $this->Login = $Login;
             $this->Passwd = $Passwd;
             $this->Email = $Email;
-            $this->TypeAccount = $TypeAccount;
+            $this->TypeAcc = $TypeAccount;
         }
 
 

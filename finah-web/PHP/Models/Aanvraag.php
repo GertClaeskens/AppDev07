@@ -12,9 +12,9 @@
     {
         private $Status;
 
-        function __construct($Id = null, $Naam = null, $Voornaam = null, $Adres = null, $Postc=null, $Telnr = null, $Login = null, $Passwd = null, $Email = null, $GeheimeVraag = null, $GeheimAntwoord = null, $TypeAccount = null, $Status = null)
+        function __construct($Id = null, $Naam = null, $Voornaam = null, $Adres = null, $Postc=null, $Telnr = null, $Login = null, $Passwd = null, $Email = null, $GeheimeVraag = null, $GeheimAntwoord = null, $TypeAcc = null, $Status = null)
         {
-            parent::__construct($Id, $Naam, $Voornaam, $Adres, $Postc, $Telnr, $Login, $Passwd, $Email, $TypeAccount);
+            parent::__construct($Id, $Naam, $Voornaam, $Adres, $Postc, $Telnr, $Login, $Passwd, $Email, $TypeAcc);
             $this->Status = $Status;
         }
 
@@ -98,24 +98,24 @@
             $this->Email = $Email;
         }
 
-        public function getTypeAccount()
+        public function getTypeAcc()
         {
-            return $this->TypeAccount;
+            return $this->TypeAcc;
         }
 
-        public function setTypeAccount($TypeAccount)
+        public function setTypeAcc($TypeAccount)
         {
-            $this->TypeAccount = $TypeAccount;
+            $this->TypeAcc = $TypeAccount;
         }
 
-        public function getPostc()
+        public function getPostcd()
         {
-            return $this->Postc;
+            return $this->Postcd;
         }
 
-        public function setPostc($Postc)
+        public function setPostc($Postcd)
         {
-            $this->Postc = $Postc;
+            $this->Postcd = $Postcd;
         }
 
 
