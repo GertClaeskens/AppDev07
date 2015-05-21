@@ -115,7 +115,7 @@ session_start();
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe aandoening aan
                         </button>
-
+                        <div id="mededeling"></div>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -158,7 +158,7 @@ session_start();
                                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                         class='delBtn btn btn-primary'
-                                                        onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
+                                                        onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $verw ?>,'Aandoening',this,'<?php echo $_SESSION["token"]?>')">
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
                                         </tr>

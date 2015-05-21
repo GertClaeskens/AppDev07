@@ -117,6 +117,9 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div id="mededeling">
+
+                        </div>
                         <?php
                             $LeeftijdsCat = new LeeftijdsCategorie();
                             if (isset($_POST)) {

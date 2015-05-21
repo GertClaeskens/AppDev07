@@ -61,6 +61,16 @@ p,h1,h2,h3,article,a {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#mededeling{
+    border:none;
+    padding-top:20px;
+}
+.mislukt{
+    color : red;
+}
+.gelukt{
+    color : green;
+}
 #menu-toggle{
     text-decoration:none;
     border:0;

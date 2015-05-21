@@ -44,8 +44,7 @@ public class LftdsCatOverzichtController implements Initializable{
 	private MainApp mainApp;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	//public void initialize(){
-        // Initialize the person table with the two columns.
+	    // Initialize the person table with the two columns.
 		ObservableList<LeeftijdsCategorie> tblList = FXCollections.observableList(LeeftijdsCategorieDAO.GetLeeftijdsCategorieen());
         tblLftdsCat.setItems(tblList);
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));

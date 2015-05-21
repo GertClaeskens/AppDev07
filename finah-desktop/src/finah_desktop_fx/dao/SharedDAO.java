@@ -11,6 +11,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HttpContext;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,6 +23,7 @@ public class SharedDAO {
 
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
+		request.setHeader("Authorization", "Bearer ZfmgrSW85TXRy9V_xQ7t7NIRiydl0iITdYCcbCTfLwFuWYbphfEy7oCgBOTSvmRLYBR0ZQ9IzW2Ot7Ayln3UXpez1ZDEX8v5N1Y3uF_HXddnvr-5xPTa0W1B9_dDfqHIqwI8UJruM-ZkrssERWFuAPypztcPsj3vsB0DOtz63u1npCqWGt5mJj6HBoYf8WL9wt70ndzXvde6qDZ54yTQRs1tEWC0ZzteAZjhrVp1KHOyDhzXB70mjbMWJWIYLGiDghp9iTINV4LtI-CuH7Gd1t504Z7TPF1wRrDuNznMcKLurcoMktPxpAsVzWNy1prlfhumpMFRu8zTww0lqVjjXOJvXNIhDORnPd1ITwRPS-WG8sJrsFDeU_W7nhFcycLSM4EtkOpAaRcidhqXUL_WlEsgu_9Sq8-bNNPVSxto0KCo0Eb04JXppLCp-eR2rbYc-mV_RIcIqRKNU4zWO3k4voxH6UCoiigtTDY24NpD6mpiII59ZvwEsNaCsYplZY8EyWry26ZfL8uk3-buoOgoMg");
 		HttpResponse response = client.execute(request);
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response
 				.getEntity().getContent()));
@@ -33,7 +35,8 @@ public class SharedDAO {
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
-		HttpResponse response = client.execute(request);
+		request.setHeader("Authorization", "Bearer ZfmgrSW85TXRy9V_xQ7t7NIRiydl0iITdYCcbCTfLwFuWYbphfEy7oCgBOTSvmRLYBR0ZQ9IzW2Ot7Ayln3UXpez1ZDEX8v5N1Y3uF_HXddnvr-5xPTa0W1B9_dDfqHIqwI8UJruM-ZkrssERWFuAPypztcPsj3vsB0DOtz63u1npCqWGt5mJj6HBoYf8WL9wt70ndzXvde6qDZ54yTQRs1tEWC0ZzteAZjhrVp1KHOyDhzXB70mjbMWJWIYLGiDghp9iTINV4LtI-CuH7Gd1t504Z7TPF1wRrDuNznMcKLurcoMktPxpAsVzWNy1prlfhumpMFRu8zTww0lqVjjXOJvXNIhDORnPd1ITwRPS-WG8sJrsFDeU_W7nhFcycLSM4EtkOpAaRcidhqXUL_WlEsgu_9Sq8-bNNPVSxto0KCo0Eb04JXppLCp-eR2rbYc-mV_RIcIqRKNU4zWO3k4voxH6UCoiigtTDY24NpD6mpiII59ZvwEsNaCsYplZY8EyWry26ZfL8uk3-buoOgoMg");
+		HttpResponse response = client.execute(request);		
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response
 				.getEntity().getContent()));
 

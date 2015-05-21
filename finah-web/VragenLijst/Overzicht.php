@@ -112,6 +112,9 @@ require "../PHP/Models/VragenLijst.php";
                                 <button class="btn btn-primary createbtn " type="submit" name="creeer">
                                     Maak een nieuwe vragenlijst aan
                                 </button>
+                                <div id="mededeling">
+
+                                </div>
                                 <?php
                                 if (isset($_POST["delete"])) {
                                     $id = $_POST["delete"];

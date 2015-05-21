@@ -42,8 +42,7 @@ public class AandoeningController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	//public void initialize(){
-        // Initialize the person table with the two columns.
+	    // Initialize the person table with the two columns.
         ArrayList<Aandoening> aandoeningen = AandoeningDAO.GetAandoeningen();
         ArrayList<Pathologie> pathologieen = PathologieDAO.GetPathologieen();
         for (int i=0;i<aandoeningen.size();i++){
@@ -82,10 +81,5 @@ public class AandoeningController implements Initializable{
     
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        // Add observable list data to the table
-        //personTable.setItems(mainApp.getPersonData());
     }
-
-
-
 }

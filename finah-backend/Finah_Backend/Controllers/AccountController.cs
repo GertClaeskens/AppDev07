@@ -332,16 +332,16 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() {
+            var user = new ApplicationUser()
+            {
                 Naam = model.Naam,
                 VoorNaam = model.Voornaam,
-                GeheimeVraag = model.GeheimeVraag,
-                GeheimAntwoord = model.GeheimeAntwoord,
-                Adres = model.Straat + ' ' + model.Huisnr,
+                Adres = model.Adres,
                 PhoneNumber = model.Telefoon,
                 Email = model.Email,
-                UserName = model.Email
-            };        
+                UserName = model.Login
+
+            };
 
             var result = await UserManager.CreateAsync(user, model.Password);
             result = UserManager.AddToRole(user.Id, model.Rol);

@@ -64,7 +64,6 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 				}
 			});
 		}
-
 	}
 
 	/** places an add button in the row only if the row is not empty. */

@@ -2,7 +2,7 @@
 require "../PHP/DAO/FinahDAO.php";
 //require_once "../PHP/Models/Aanvragen";
 //todo Model toevoegen aan php & backend
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,7 @@ require "../PHP/DAO/FinahDAO.php";
     <![endif]-->
 </head>
 <body>
+
 <div id="dialogoverlay"></div>
 <div id="dialogbox">
     <div>
@@ -38,7 +39,7 @@ require "../PHP/DAO/FinahDAO.php";
         <a class="navbar-brand header" href="../index.php"> Finah</a>
     </div>
     <div class="dropdown navbar-header pull-right nav-right">
-        <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+        <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"];?>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -111,8 +112,15 @@ require "../PHP/DAO/FinahDAO.php";
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Openstaande aanvragen</h1>
+                    <?php
+                        if (isset($_POST["goedkeuren"])){
+                            var_dump($_POST);
+                        }
+                        $aanvraag = FinahDAO::HaalOp("Aanvraag",$_POST['Id']);
+                    ?>
                     <form  class="form-horizontal" role="form" method="POST"
                            action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <div id="mededeling"></div>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -123,58 +131,43 @@ require "../PHP/DAO/FinahDAO.php";
                                     Naam
                                 </th>
                                 <th>
-                                    Datum
+                                    Rol
                                 </th>
                                 <th>Actie</th>
                             </tr>
                             </thead>
                             <tbody>
 
+                            <?php
+                                    $aanvragen = FinahDAO::HaalOp("Aanvraag",null);
+                                    foreach($aanvragen as $item){
+
+                            ?>
                         <!--Todo juiste velden toevoegen-->
                                 <tr>
                                     <td class="col-sm-5 col-md-5 col-lg-5 text-center">
-                                        Gert
+                                        <?php echo $item["VoorNaam"]; ?>
                                     </td>
                                     <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                        Claeskens
+                                        <?php echo $item["Naam"]; ?>
                                     </td>
                                     <td class="col-sm-2 col-md-2 col-lg-2 text-center" >
-                                        18/05/2015
+                                        <?php echo $item["TypeAcc"]; ?>
                                     </td>
+                                    <input type="hidden" id="Id" name="Id" value="<?php echo $item['Id'];?>">
                                     <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='goedkeuren' id=''
+                                        <button type='submit' name='goedkeuren' id='goedkeuren'
                                                 class='btn btn-success' value="Goedkeuren">
                                             <span class='glyphicon glyphicon-ok'></span>&nbsp;
 
                                         </button>
-                                        <button type='submit' name='weigeren' id=''
-                                                class='btn btn-danger'>
+                                        <button type='button' name='weigeren' id='weigeren' onclick="Confirm.render('Deze aanvraag verwijderen?','delete_lft',<?php echo $item["Id"] ?>,'Aanvraag',this,'<?php echo $_SESSION["token"]?>')" class='btn btn-danger'>
                                             <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                         </button>
                                     </td>
                                 </tr>
-                        <tr>
-                            <td class="col-sm-5 col-md-5 col-lg-5 text-center">
-                                Rafael
-                            </td>
-                            <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                Sarrechia
-                            </td>
-                            <td class="col-sm-2 col-md-2 col-lg-2 text-center" >
-                                18/05/2015
-                            </td>
-                            <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                <button type='submit' name='goedkeuren' id=''
-                                        class='btn btn-success' value="Goedkeuren">
-                                    <span class='glyphicon glyphicon-ok'></span>&nbsp;
+                            <?php } ?>
 
-                                </button>
-                                <button type='submit' name='weigeren' id=''
-                                        class='btn btn-danger'>
-                                    <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                </button>
-                            </td>
-                        </tr>
                             </tbody>
                         </table>
                     </form>

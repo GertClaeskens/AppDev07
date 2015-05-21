@@ -116,6 +116,9 @@ require "../PHP/Models/Vraag.php";
                             <button class="btn btn-primary createbtn " type="submit" name="creeer">
                                 Maak een nieuwe vraag aan
                             </button>
+                            <div id="mededeling">
+
+                            </div>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

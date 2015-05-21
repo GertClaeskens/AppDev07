@@ -399,18 +399,21 @@ namespace Finah_Backend.Migrations
             var testUserAdmin = new ApplicationUser()
             {
                 UserName = "TestProfileAdmin",
+                Postcd = context.Postcodes.Find(1)
             };
             ir = um.Create(testUserAdmin, "S3cur3P@ssw0rd");
             //Onderzoeker
             var testUserOnderzoeker = new ApplicationUser()
             {
                 UserName = "TestProfileOnderzoeker",
+                Postcd = context.Postcodes.Find(1)
             };
             ir = um.Create(testUserOnderzoeker, "S3cur3P@ssw0rd");
             //Hulpverlener
             var testUserHulpverlener = new ApplicationUser()
             {
                 UserName = "TestProfileHulpverlener",
+                Postcd = context.Postcodes.Find(1)
             };
             ir = um.Create(testUserHulpverlener, "S3cur3P@ssw0rd");
 

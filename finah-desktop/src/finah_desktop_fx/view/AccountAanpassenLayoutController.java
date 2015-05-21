@@ -42,14 +42,11 @@ public class AccountAanpassenLayoutController implements Initializable {
 
 	@FXML
 	public void haalOp(ActionEvent actionEvent) {
-
 	
 	}
 	
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        // Add observable list data to the table
-        //personTable.setItems(mainApp.getPersonData());
     }
 	
 }
