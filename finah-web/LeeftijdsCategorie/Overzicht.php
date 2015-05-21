@@ -18,42 +18,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
- <!--   <script> // poging tot id doorgeven aan modal. Lukt wanneer id manueel is ingegeven maar niet met item[id]
 
-        $('#deleteModal').on('show.bs.modal', function (e) {
-            alert("test");
-            var $modal = $(this),
-                ed = e.relatedTarget.id;
-            alert(ed);
-            $("#deleteBtn").attr("value", ed);
-            $("#modalForm").submit();
-
-        });
-
-        $(function () {
-            $('button[name = "verwijderBtn"]').click(function (e) {
-                e.preventDefault();
-                alert('test');
-                //eid = $(this).attr('value'); // This will give the ID of the button clicked.
-                var eid = $(this).data('waarde');
-                $('#cn').html(eid);
-                $("#deleteBtn").attr("value", eid);
-                $("#modalForm").submit();
-            });
-
-            /*
-             $("#verwijderBtn").click(function () {
-             alert("hlp");
-             e.preventDefault();
-             var eid = $(this).data('waarde');
-             $('#cn').html(eid);
-             $("#deleteBtn").attr("value", eid);
-             $('#waarden').html('<input type="hidden" name="eid" value="' + eid + '" />');
-             $("#modalForm").submit();
-             });
-             }*/
-        }
-    </script>-->
 </head>
 <body>
 <div id="dialogoverlay"></div>
@@ -91,10 +56,8 @@
             </li>
         </ul>
     </div>
-</nav>>
 </nav>
 <div id="wrapper">
-    <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <br/>
@@ -157,12 +120,10 @@
                 ?>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
-
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe leeftijdscategorie aan
                         </button>
-
                         <table class="table table-bordered table-striped" id="overzicht">
                             <thead>
                             <tr>
@@ -180,27 +141,27 @@
                                 foreach ($leeftijdCategorieLijst as $item) {
                                     $teller=0;
                                 echo "<tr>"?>
-                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Van"] ?></td>
-                            <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
-                            <td class='action-column col-sm-1 col-md-2 col-lg-2'>
-                                <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
-                                        class='btn btn-primary' value='<?php echo $item["Id"] ?>'>
-                                    <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
-                                </button>
-                                <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
-                                        class='btn btn-primary' value="<?php echo $item["Id"] ?>">
-                                    <span class='glyphicon glyphicon-pencil'></span>&nbsp;
-                                </button>
-                                <?php $verw = $item["Id"]; ?>
-                                <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
-                                        name='verwijder<?php echo $teller;?>' value="<?php echo $item["Id"] ?>"
-                                        class='delBtn btn btn-primary'
-                                        onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie',this)">
-                                    <!--  TODO item id doorgeven aan modal ?? -->
-                                    <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                </button>
-                                <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
-                            </td>
+                                    <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Van"] ?></td>
+                                    <td class='col-sm-5 col-md-5 col-lg-5 text-center'><?php echo $item["Tot"] ?></td>
+                                    <td class='action-column col-sm-1 col-md-2 col-lg-2'>
+                                        <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                                class='btn btn-primary' value='<?php echo $item["Id"] ?>'>
+                                            <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
+                                        </button>
+                                        <button type='submit' name='bewerk' id='<?php echo "Bw". $item["Id"] ?>'
+                                                class='btn btn-primary' value="<?php echo $item["Id"] ?>">
+                                            <span class='glyphicon glyphicon-pencil'></span>&nbsp;
+                                        </button>
+                                        <?php $verw = $item["Id"]; ?>
+                                        <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
+                                                name='verwijder<?php echo $teller;?>' value="<?php echo $item["Id"] ?>"
+                                                class='delBtn btn btn-primary'
+                                                onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie',this)">
+                                            <!--  TODO item id doorgeven aan modal ?? -->
+                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                        </button>
+                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
+                                    </td>
                             </tr>
                             <?php $teller+=1;}?>
                             </tbody>
@@ -211,26 +172,6 @@
         </div>
     </div>
 </div>
-<!--<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"-->
-<!--     aria-hidden="true">-->
-<!--    <div class="modal-dialog modal-md">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h4 class="modal-title" id="myModalLabel">Verwijder bevestiging</h4>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                <p>Weet u zeker dat u deze leeftijdscategorie (<span id='cn'></span>) wilt verwijderen?</p>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <form id="modalForm" action="#" method="post">-->
-<!--                    <div id="waarden"></div>-->
-<!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>-->
-<!--                    <button type="submit" name="delete" id="deleteBtn" class="btn btn-primary">Toepassen</button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <script>
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
@@ -244,7 +185,6 @@
         }
     });
 </script>
-
 </body>
 </html>
 
