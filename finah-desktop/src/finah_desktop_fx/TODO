@@ -4,9 +4,14 @@ Wat er nog moet gebeuren/niet vergeten mag worden!
 
 
 * AccountsOverzichtDAO.java moet afgemaakt worden (juiste links etc)
+
 * ResultatenDAO.java moet afgemaakt worden (juiste links etc)
-* WachtwoordVergeten link werkt nog niet (krijg null-pointer exception, maar vind niet waarom)
-* NieuwAccountAanmaken link werkt ook nog niet (zelfde probleem)
+
 * Resultaten.java (model) aanmaken
+
 * AccountsOverzicht.java (model) aanmaken
+
+* Stuur Wachtwoord button maken
+
+* Account Aanmaken button maken
 

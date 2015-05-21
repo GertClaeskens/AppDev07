@@ -10,6 +10,7 @@ import finah_desktop_fx.view.RootController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -20,7 +21,7 @@ import javafx.stage.StageStyle;
 public class MainApp extends Application {
 	
 	private Stage primaryStage;
-    private AnchorPane loginLayout, nieuwAccountLayout;
+    private AnchorPane loginLayout, nieuwAccountLayout, wachtwoordVergetenLayout;
     private BorderPane rootLayout;
     private Scene scene;
 
@@ -106,44 +107,7 @@ public class MainApp extends Application {
 		 }
 	}
 	 
-	 //geeft nul-pointer exception, vind niet waarom..
-	 public void showNieuwAccount() {
-	        try {
-	            // Load root layout from fxml file.
-	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(MainApp.class.getResource("view/NieuwAccountLayout.fxml"));
-	            nieuwAccountLayout = (AnchorPane) loader.load();
-		               
-	            // Show the scene containing the root layout.
-	            LoginController controller = loader.getController();
-	            controller.setMainApp(this);
-	            Scene scene = new Scene(nieuwAccountLayout);
-	            primaryStage.setScene(scene);
-	            primaryStage.show();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	 
-	 //Geeft nul-pointer exception, vind niet waarom..
-	 public void showWwVergeten() {
-	        try {
-	            // Load root layout from fxml file.
-	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(MainApp.class.getResource("view/WachtwoordVergetenLayout.fxml"));
-	            nieuwAccountLayout = (AnchorPane) loader.load();
-		               
-	            // Show the scene containing the root layout.
-	            LoginController controller = loader.getController();
-	            controller.setMainApp(this);
-	            Scene scene = new Scene(nieuwAccountLayout);
-	            primaryStage.setScene(scene);
-	            primaryStage.show();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	 
+	
     public Stage getPrimaryStage() {
         return primaryStage;
     }

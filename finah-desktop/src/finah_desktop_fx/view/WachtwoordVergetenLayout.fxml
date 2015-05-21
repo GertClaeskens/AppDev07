@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="375.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
+<AnchorPane fx:id="wwVergetenLayout" prefHeight="375.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.WwVergetenController">
    <children>
       <Label layoutX="149.0" layoutY="6.0" text="Finah" AnchorPane.topAnchor="5.0">
          <font>
@@ -33,7 +32,7 @@
             <TextField prefHeight="39.0" prefWidth="224.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button layoutX="130.0" layoutY="238.0" mnemonicParsing="false" text="Stuur wachtwoord" />
-      <Button layoutX="130.0" layoutY="285.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" text="Annuleren" />
+      <Button fx:id="stuurWachtwoordBtn" layoutX="130.0" layoutY="238.0" mnemonicParsing="false" onAction="#stuurWachtwoord" text="Stuur wachtwoord" />
+      <Button fx:id="annulerenBtn" layoutX="130.0" layoutY="285.0" mnemonicParsing="false" onAction="#annuleren" prefHeight="31.0" prefWidth="141.0" text="Annuleren" />
    </children>
 </AnchorPane>

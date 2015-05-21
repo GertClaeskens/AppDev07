@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="550.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
+<AnchorPane fx:id="nieuwAccountLayout" prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.NieuwAccountController">
    <children>
       <Label layoutX="143.0" layoutY="14.0" text="Finah " AnchorPane.topAnchor="5.0">
          <font>
@@ -49,7 +48,7 @@
             <TextField GridPane.rowIndex="11" />
          </children>
       </GridPane>
-      <Button layoutX="127.0" layoutY="443.0" mnemonicParsing="false" text="Account aanmaken" />
-      <Button layoutX="127.0" layoutY="486.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="147.0" text="Annuleren" />
+      <Button fx:id="accountAanmakenBtn" layoutX="127.0" layoutY="443.0" mnemonicParsing="false" onAction="#accountAanmaken" text="Account aanmaken" />
+      <Button fx:id="annulerenBtn" layoutX="127.0" layoutY="486.0" mnemonicParsing="false" onAction="#annuleren" prefHeight="31.0" prefWidth="147.0" text="Annuleren" />
    </children>
 </AnchorPane>
