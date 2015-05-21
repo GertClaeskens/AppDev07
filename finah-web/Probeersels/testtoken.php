@@ -17,6 +17,7 @@ session_start();
         print_r($inlog);
         var_dump($inlog);*/
     const URL = "http://finahbackend1920.azurewebsites.net/";
+//    const URL = "http://localhost:1695/";
 
     $url = URL . "/token";
 

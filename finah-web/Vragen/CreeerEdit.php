@@ -174,10 +174,21 @@
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
                                     <select class="form-control" id="Thema" name="thema">
                                         <?php
+
                                             $themaLijst = FinahDAO::HaalOp("Thema", null, $_SESSION["token"]);
-                                        echo "  <option value=''>" . " Maak een keuze". " </option>";
                                         foreach ($themaLijst as $item) {
-                                            echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
+                                            $selected="";
+                                            if (isset($_POST["bewerk"]) || isset ($_POST["update"])) {
+                                                foreach($vraag["Thema"] as $th)  {
+                                                    if($item["Id"] == $th["Id"]) {
+                                                        $selected="selected='selected'";
+                                                        break;
+                                                    }
+                                                }
+                                                echo "<option value='" . $item["Id"] . "'". $selected .">" . $item["Naam"] . "</option>\r\n";
+                                            }else {
+                                                echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
+                                            }
                                         }
                                         ?>
                                         </select>

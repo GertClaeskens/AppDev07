@@ -8,7 +8,7 @@
     class FinahDAO
     {
 
-        //const URL = "http://localhost:1695/";
+//        const URL = "http://localhost:1695/";
         const URL = "http://finahbackend1920.azurewebsites.net/";
 
         public static function GetToken($username,$password){
