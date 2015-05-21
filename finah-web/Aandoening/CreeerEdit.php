@@ -117,6 +117,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
+                        <br />
+                        <div id="mededeling">
+
+                        </div>
                         <?php
                             $naam = "";
                             $aandoening = new Aandoening();
@@ -296,8 +300,8 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
-                                Verwijderen
+
+                                Verwijderenonclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $id ?>,'Aandoening',this,<?php echo $_SESSION["token"]?>)">
                             </button>
                         </form>
                     </div>

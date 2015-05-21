@@ -114,6 +114,9 @@ require_once "../PHP/Models/Pathologie.php";
                             <button class="btn btn-primary createbtn " type="submit" name="creeer">
                                 Maak een nieuwe pathologie aan
                             </button>
+                            <div id="mededeling">
+
+                            </div>
                             <?php
                             if (isset($_POST["delete"])) {
                                 $id = $_POST["delete"];

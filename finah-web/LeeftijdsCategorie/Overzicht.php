@@ -114,7 +114,7 @@
                         echo $_POST['eid'];
                         print_r($_POST);
                         $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", null, $id, $_SESSION["token"]);
-                        if (FinahDAO::Verwijder("LeeftijdsCategorie", $id)) {
+                        if (FinahDAO::Verwijder("LeeftijdsCategorie", $id,$_SESSION["token"])) {
                         }
                     }
                 ?>
@@ -124,6 +124,9 @@
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe leeftijdscategorie aan
                         </button>
+                        <div id="mededeling">
+
+                        </div>
                         <table class="table table-bordered table-striped" id="overzicht">
                             <thead>
                             <tr>

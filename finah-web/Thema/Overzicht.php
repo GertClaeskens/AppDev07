@@ -118,6 +118,9 @@ require "../PHP/Models/Thema.php";
                                 <button class="btn btn-primary createbtn " type="submit" name="creeer">
                                     Maak een nieuw thema aan
                                 </button>
+                                <div id="mededeling">
+
+                                </div>
                                 <?php
                                 ?>
                                 <table class="table table-bordered table-striped">
