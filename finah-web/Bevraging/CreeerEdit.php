@@ -8,6 +8,7 @@ require "../PHP/Finah.php";
 if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
     header('Location: Overzicht.php');
     exit;
+    session_start();
 }
 ?>
     <!DOCTYPE html>
@@ -30,7 +31,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <![endif]-->
         <script type="text/javascript">
             var data = '';
-            function OnChange(e) {
+            function OnChange(e,token) {
                 var patho = document.forms["myForm"]["Pathologie"];
                 var val = e.target.value;
                 if (val != 'null') {
@@ -56,7 +57,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     xhr.send(null);
                 }
             }
-            function OnChange2(e) {
+            function OnChange2(e,token) {
                 var vrl = document.forms["myForm"]["Vragenlijst"];
                 var val = e.target.value;
 
@@ -185,10 +186,10 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                         if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
-                                            $onderzk = FinahDAO::HaalOp("Onderzoek",$id);
+                                            $onderzk = FinahDAO::HaalOp("Onderzoek",$id,$_SESSION["token"]);
                                             $onderzoek = $onderzk[0];
                                             $informatie = $onderzoek["Informatie"];
-                                            $leeftijdcatLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                            $leeftijdcatLijst = FinahDAO::HaalOp("LeeftijdsCategorie",$_SESSION["token"]);
                                             echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe bevraging " .  "</h1> ";
@@ -204,15 +205,15 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                             if (isset($_POST["nieuw"])) {
                                                 //TODO id laten genereren op Backend
                                                 $onderzoek->setId(0);
-                                                $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening));
+                                                $onderzoek->setAandoening(FinahDAO::HaalOp("Aandoening", $aandoening,$_SESSION["token"]));
                                                 //TODO wanneer we met accounts werken verder uitwerken
                                                 $onderzoek->setAangemaaktDoor(null);
-                                                $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie", $pathologie));
+                                                $onderzoek->setPathologie(FinahDAO::HaalOp("Pathologie", $pathologie,$_SESSION["token"]));
                                                 $bevraging_pat = new Bevraging();
                                                 $bevraging_pat->setIsPatient(true);
                                                 $bevraging_man = new Bevraging();
                                                 $bevraging_man->setIsPatient(false);
-                                                $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
+                                                $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds",$_SESSION["token"]);
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
                                                 //$antwoorden_pat = new AntwoordenLijst();
@@ -240,7 +241,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $onderzoek->setBevragingPat($bevraging_pat);
                                                 $onderzoek->setBevragingMan($bevraging_man);
                                                 $onderzoek->setInformatie($informatie);
-                                                $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie", $relatie));
+                                                $onderzoek->setRelatie(FinahDAO::HaalOp("Relatie", $relatie,$_SESSION["token"]));
                                                 //TODO vragenlijst ophalen
                                                 /*$vrLijst = $aandoening . "/Vragenlijst";
                                                 $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);*/
@@ -277,7 +278,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                     if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek)) {
 
                                                     }
-                                                    $onderzk = FinahDAO::HaalOp("Onderzoek", $id);
+                                                    $onderzk = FinahDAO::HaalOp("Onderzoek", $id,$_SESSION["token"]);
                                                     $onderzoek = $onderzk[0];
                                                     $informatie = $onderzoek["Informatie"];
                                                     echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
@@ -301,10 +302,10 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening"> Kies de aandoening: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                    <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event);OnChange2(event);">
+                                    <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event,<?php echo $_SESSION["token"];?>);OnChange2(event,<?php echo$_SESSION["token"];?>">
                                         <option value="">Maak een keuze</option>
                                         <?php
-                                        $aandoeningLijst = FinahDAO::HaalOp("Aandoening");
+                                        $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null,$_SESSION["token"]);
                                         foreach ($aandoeningLijst as $item) {
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                         }
@@ -335,7 +336,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     <select class="form-control" id="LeeftijdcategoriePat" name="leeftijdcategoriePat">
                                         <option value="">Maak een keuze</option>
                                         <?php
-                                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                        $leeftijdscategoriePat = FinahDAO::HaalOp("LeeftijdsCategorie",null,$_SESSION["token"]);
                                         foreach ($leeftijdscategoriePat as $item) {
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
                                         }
@@ -349,7 +350,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     <select class="form-control" id="LeeftijdcategorieMan" name="leeftijdcategorieMan">
                                         <option value="">Maak een keuze</option>
                                         <?php
-                                            $leeftijdscategorieMan = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                            $leeftijdscategorieMan = FinahDAO::HaalOp("LeeftijdsCategorie",null,$_SESSION["token"]);
                                             foreach ($leeftijdscategorieMan as $item) {
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["Van"] . " tot " . $item["Tot"] . "</option>\r\n";
                                             }
@@ -363,7 +364,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     <select class="form-control" id="Relatie" name="relatie">
                                         <option value="">Maak een keuze</option>
                                         <?php
-                                            $relatie = FinahDAO::HaalOp("Relatie");
+                                            $relatie = FinahDAO::HaalOp("Relatie",null,$_SESSION["token"]);
                                             foreach ($relatie as $item) {
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
                                             }
@@ -399,13 +400,13 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $onderzk = FinahDAO::HaalOp("Onderzoek",$id);
+        $onderzk = FinahDAO::HaalOp("Onderzoek",$id,$_SESSION["token"]);
         $onderzoek = $onderzk[0];
         $informatie = $onderzoek["Informatie"];
         $aandoeningLijst= $onderzoek["Aandoening"];
         $pathologieLijst = $onderzoek["Pathologie"];
-        $antwPat = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Pat"]["Id"]);
-        $antwMan = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Man"]["Id"]);
+        $antwPat = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Pat"]["Id"],$_SESSION["token"]);
+        $antwMan = FinahDAO::HaalOp("Bevraging",$onderzoek["Bevraging_Man"]["Id"],$_SESSION["token"]);
         $leeftijdcatPatVan = $antwPat["LeeftijdsCategorie"]["Van"];
         $leeftijdcatPatTot = $antwPat["LeeftijdsCategorie"]["Tot"];
         $leeftijdcatManVan = $antwMan["LeeftijdsCategorie"]["Van"];

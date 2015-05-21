@@ -1,6 +1,7 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
 require "../PHP/Models/Vraag.php";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +130,7 @@ require "../PHP/Models/Vraag.php";
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $vragenLijst = FinahDAO::HaalOp("Vragen");
+                                    $vragenLijst = FinahDAO::HaalOp("Vragen",null,$_SESSION["token"]);
                                     foreach ($vragenLijst as $item) {
                                         echo "<tr>"?>
                                             <td class='col-sm-10 col-md-5  col-lg-9'><?php echo $item["VraagStelling"] ?></td>

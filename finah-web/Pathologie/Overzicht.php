@@ -1,6 +1,8 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Pathologie.php";
+
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +117,7 @@ require_once "../PHP/Models/Pathologie.php";
                             <?php
                             if (isset($_POST["delete"])) {
                                 $id = $_POST["delete"];
-                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id,$_SESSION["token"]);
                                     if (FinahDAO::Verwijder("Pathologie", $id, $pathologie)) {
                                          echo " De pathologie werd succesvol verwijderd "; }
                             }
@@ -131,7 +133,7 @@ require_once "../PHP/Models/Pathologie.php";
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $pathologieLijst = FinahDAO::HaalOp("Pathologie");
+                                    $pathologieLijst = FinahDAO::HaalOp("Pathologie",null,$_SESSION["token"]);
                                     foreach ($pathologieLijst as $item) {
                                 echo "<tr>"?>
                                 <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["Omschrijving"] ?></td>
