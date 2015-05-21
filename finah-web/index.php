@@ -22,34 +22,34 @@
         <![endif]-->
     </head>
     <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header pull-left">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header pull-left">
 
-            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
-                <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
-            </a>
-            <a class="navbar-brand header" href="index.php"> Finah</a>
-        </div>
-<!--        <div class="dropdown navbar-header pull-right nav-right">-->
-<!--            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia-->
-<!--                <span class="caret"></span>-->
-<!--            </a>-->
-<!--            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">-->
-<!--                <li role="presentation">-->
-<!--                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">-->
-<!--                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li role="presentation" class="divider">-->
-<!--                </li>-->
-<!--                <li role="presentation">-->
-<!--                    <a role="menuitem" tabindex="-1" href="#">-->
-<!--                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-    </nav>
+                <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
+                    <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
+                </a>
+                <a class="navbar-brand header" href="index.php"> Finah</a>
+            </div>
+    <!--        <div class="dropdown navbar-header pull-right nav-right">-->
+    <!--            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia-->
+    <!--                <span class="caret"></span>-->
+    <!--            </a>-->
+    <!--            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">-->
+    <!--                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation" class="divider">-->
+    <!--                </li>-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="-1" href="#">-->
+    <!--                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+        </nav>
         <div id="wrapper">
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
@@ -116,8 +116,7 @@
 <!--                                <br />-->
 <!--                                <br />-->
 <!--                            </p>-->
-                                                        <h1 style="margin-bottom:50px;">Login</h1>
-
+                            <h1 style="margin-bottom:50px;">Login</h1>
                             <form class="form form-horizontal" role="form" method="POST"
                                   action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <div class="row">
@@ -171,6 +170,6 @@
                 }
             });
         </script>
-        </body>
-    </html>
+    </body>
+</html>
 
