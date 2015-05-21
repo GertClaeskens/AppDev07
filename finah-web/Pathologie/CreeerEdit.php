@@ -135,7 +135,7 @@
                                     if (isset($_POST["aandoeningen"])) {
                                         $aandoeningenlijst = $_POST["aandoeningen"];
                                         for ($a = 0; $a < count($aandoeningenlijst); $a++) {
-                                            $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a]));
+                                            $pathologie->voegAandoeningAanPathologieToe(FinahDAO::HaalOp("Aandoening", $aandoeningenlijst[$a],$_SESSION["token"]));
                                         };
                                     }
                                     if (isset($_POST["nieuw"])) {
