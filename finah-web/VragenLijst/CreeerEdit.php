@@ -264,7 +264,7 @@
         } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
         $vragenLijst = FinahDAO::HaalOp("VragenLijst", $id);
-//        $titel = $vragenLijst["Titel"];
+        $omschrij = $vragenLijst["Omschrijving"];
         $aandoeningLijst = $vragenLijst["Aandoe"];
         $aantal = count($vragenLijst["Vragen"]);
         $vragen = $vragenLijst["Vragen"];
@@ -285,14 +285,14 @@
                         <?php echo $id ?>
                     </div>
                 </div>
-                <!--                <div class="row detail-row">-->
-                <!--                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">-->
-                <!--                        <label>Titel :</label>-->
-                <!--                    </div>-->
-                <!--                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">-->
-                <!--                        --><?php //echo $titel ?>
-                <!--                    </div>-->
-                <!--                </div>-->
+                                <div class="row detail-row">
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                                        <label>Omschrijving :</label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 ">
+                                        <?php echo $omschrij ?>
+                                    </div>
+                                </div>
                 <div class="row detail-row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <label>Aandoening</label>
