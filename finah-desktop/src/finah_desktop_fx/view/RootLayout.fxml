@@ -13,7 +13,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="1.7976931348623157E308" minHeight="650.0" minWidth="500" prefHeight="650.0" prefWidth="1239.0" stylesheets="@../css/finah.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
+<BorderPane fx:id="rootLayout" maxHeight="1024.0" maxWidth="1.7976931348623157E308" minHeight="650.0" minWidth="500" prefHeight="650.0" prefWidth="1200.0" stylesheets="@../css/finah.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.RootController">
 	<top>
 	<HBox maxWidth="2500.0" styleClass="segmented-button-bar" BorderPane.alignment="TOP_LEFT">
 		<VBox>
@@ -86,7 +86,7 @@
 								<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
 							</items>
 						</MenuButton>
-						<Button fx:id="btnResultaten" focusTraversable="false" onAction="#toonResultaten" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
+						<Button fx:id="btnResultaten" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onAction="#toonResultaten" text="Resultaten" />
 					</HBox>
 					<HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="70.0">
 						<MenuButton fx:id="mnuAccount" alignment="CENTER" contentDisplay="LEFT" graphicTextGap="10.0" layoutX="92.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" text="Gert Claeskens">
@@ -123,7 +123,4 @@
 	<center>
 		<BorderPane fx:id="contentArea" />
 	</center>
-	<bottom>
-		<Label text="Finah Application - © AppDev Groep 7" BorderPane.alignment="CENTER" />
-	</bottom>
 </BorderPane>
