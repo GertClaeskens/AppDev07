@@ -69,7 +69,7 @@
             $output = curl_exec($ch);
             $pos = strpos($output, '[');
             $rest = substr($output, $pos);
-            var_dump($rest);
+            //var_dump($rest);
 // output the profile information - includes the header
 
             $result = json_decode($rest,true);
@@ -77,7 +77,7 @@
 // close curl resource to free up system resources
 
             curl_close($ch);
-            var_dump($result);
+            //var_dump($result);
             return $result;
 
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
