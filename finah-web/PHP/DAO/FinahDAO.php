@@ -59,7 +59,7 @@
 // set up the curl resource
 
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, 1);
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_HEADER, 1);
@@ -67,14 +67,17 @@
 // execute the request
 
             $output = curl_exec($ch);
-
+            $pos = strpos($output, '[');
+            $rest = substr($output, $pos);
+            var_dump($rest);
 // output the profile information - includes the header
 
-            $result = json_decode($output,true);
+            $result = json_decode($rest,true);
 
 // close curl resource to free up system resources
 
             curl_close($ch);
+            var_dump($result);
             return $result;
 
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
