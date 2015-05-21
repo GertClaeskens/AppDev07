@@ -86,7 +86,7 @@
 								<MenuItem fx:id="MnuBeheerAccounts" mnemonicParsing="false" onAction="#toon" text="Accounts" />
 							</items>
 						</MenuButton>
-						<Button fx:id="btnResultaten" focusTraversable="false" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
+						<Button fx:id="btnResultaten" focusTraversable="false" onAction="#toonResultaten" minWidth="100.0" mnemonicParsing="false" text="Resultaten" />
 					</HBox>
 					<HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="70.0">
 						<MenuButton fx:id="mnuAccount" alignment="CENTER" contentDisplay="LEFT" graphicTextGap="10.0" layoutX="92.0" layoutY="73.0" mnemonicParsing="false" prefHeight="40.0" text="Gert Claeskens">
