@@ -237,7 +237,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder thema?','delete_lft',<?php echo $id ?>,'Thema',this)">
+                                    onclick="Confirm.render('Dit thema verwijderen?','delete_lft',<?php echo $id ?>,'Thema',this)">
                                 Verwijderen
                             </button>
                         </form>

@@ -264,7 +264,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                 name='verwijderBtn' value="<?php echo $id ?>"
                                 class='delBtn btn btn-primary'
-                                onclick="Confirm.render('Verwijder Leeftijdscategorie?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
+                                onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
                             Verwijderen
                         </button>
                         </form>

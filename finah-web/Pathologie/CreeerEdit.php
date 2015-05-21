@@ -293,7 +293,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder pathologie?','delete_lft',<?php echo $id ?>,'Pathologie',this)">
+                                    onclick="Confirm.render('Deze pathologie verwijderen?','delete_lft',<?php echo $id ?>,'Pathologie',this)">
                                 Verwijderen
                             </button>
                         </form>

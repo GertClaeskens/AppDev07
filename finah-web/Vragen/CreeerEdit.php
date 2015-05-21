@@ -266,7 +266,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder vraag?','delete_lft',<?php echo $id ?>,'Vraag',this)">
+                                    onclick="Confirm.render('Deze vraag verwijderen?','delete_lft',<?php echo $id ?>,'Vraag',this)">
                                 Verwijderen
                             </button>
                         </form>

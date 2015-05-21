@@ -162,7 +162,7 @@ require "../PHP/Models/VragenLijst.php";
                                             <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                     name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                     class='delBtn btn btn-primary'
-                                                    onclick="Confirm.render('Verwijder vragenlijst <?php echo $verw; ?>?','delete_lft',<?php echo $verw; ?>,'VragenLijst',this)">
+                                                    onclick="Confirm.render('Deze vragenlijst verwijderen <?php echo $verw; ?>?','delete_lft',<?php echo $verw; ?>,'VragenLijst',this)">
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
                                          </td>
