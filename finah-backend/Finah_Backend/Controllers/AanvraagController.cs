@@ -11,12 +11,14 @@ namespace Finah_Backend.Controllers
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Web.Http.Cors;
     using System.Web.Http.Description;
 
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
-    [Authorize(Roles="Admin, Onderzoeker")]
+    [Authorize(Roles = "Admin, Onderzoeker")]
+    [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
     public class AanvraagController : ApiController
     {
         //TODO Code opschonen als alles bolt
@@ -28,11 +30,10 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Aanvraag> GetOverzicht()// return -> naderhand veranderen in bovenstaande
         {
             return db.Aanvragen;
-            //var aanvragen = new List<Aanvraag>{ new Aanvraag { Id = 1 }, new Aanvraag { Id = 2 },new Aanvraag { Id = 3 },new Aanvraag { Id = 4 },new Aanvraag { Id = 5 }};
-            //return aanvragen;
         }
 
         // GET: api/Aanvraag/5
+        [HttpGet]
         [Route("Aanvraag/{id}")]
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult Get(int id)
@@ -52,6 +53,8 @@ namespace Finah_Backend.Controllers
         }
 
         // PUT: api/Aanvraags/5
+        [HttpPut]
+        [Route("Aanvraag/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAanvraag(int id, Aanvraag aanvraag)
         {
@@ -87,6 +90,7 @@ namespace Finah_Backend.Controllers
         }
 
         // POST: api/Aanvraags
+        [HttpPost]
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult PostAanvraag(Aanvraag aanvraag)
         {
@@ -95,13 +99,17 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            aanvraag.Postcd = db.Postcodes.Find(aanvraag.Postcd.Id);
             db.Aanvragen.Add(aanvraag);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = aanvraag.Id }, aanvraag);
         }
 
+
         // DELETE: api/Aanvraags/5
+        [HttpDelete]
+        [Route("Aanvraag/{id}")]
         [ResponseType(typeof(Aanvraag))]
         public IHttpActionResult DeleteAanvraag(int id)
         {

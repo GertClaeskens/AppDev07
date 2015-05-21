@@ -14,12 +14,22 @@ namespace Finah_Backend.Models
     public class ApplicationUser : IdentityUser
     {
         public string Naam { get; set; }
+
         public string VoorNaam { get; set; }
-        public string RijksRegisterNr { get; set; }
+
         public string Adres { get; set; }
+
+        public string Telnr { get; set; }
+
+        public string Login { get; set; }
+
+        public string Passwd { get; set; }
+
+        public string TypeAcc { get; set; }
+
+        [ForeignKey("Postcd")]
+        public int PostcdId { get; set; }
         public virtual Postcode Postcd { get; set; }
-        public string GeheimeVraag { get; set; }
-        public string GeheimAntwoord { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {

@@ -11,7 +11,7 @@ namespace Finah_Backend.Controllers
 
 
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net", headers: "*", methods: "*")]
-    [Authorize]
+    //[Authorize]
     public class PostcodeController : ApiController
     {
         ///

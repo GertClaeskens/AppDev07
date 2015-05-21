@@ -38,6 +38,10 @@ namespace Finah_Backend.Models
         public string Rol { get; set; }
 
         [Required]
+        [Display(Name = "Login")]
+        public string Login { get; set; }
+
+        [Required]
         [Display(Name = "Voornaam")]
         public string Voornaam { get; set; }
 
@@ -60,22 +64,10 @@ namespace Finah_Backend.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name = "Geheime Vraag")]
-        public string GeheimeVraag { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Geheime vraag antwoord")]
-        public string GeheimeAntwoord { get; set; }
-
-        [Required]
-        [Display(Name = "Straat")]
-        public string Straat { get; set; }
-
-        [Required]
-        [Display(Name = "Huisnr")]
-        public int Huisnr { get; set; }
+        [Display(Name = "Adres")]
+        public string Adres { get; set; }
 
         //[Required]
         //[Display(Name = "Postcode")]
