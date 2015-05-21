@@ -2,7 +2,6 @@
     require_once "../PHP/DAO/FinahDAO.php";
     require_once "../PHP/Models/LeeftijdsCategorie.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,10 +156,8 @@
                                                 name='verwijder<?php echo $teller;?>' value="<?php echo $item["Id"] ?>"
                                                 class='delBtn btn btn-primary'
                                                 onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $verw ?>,'LeeftijdsCategorie',this)">
-                                            <!--  TODO item id doorgeven aan modal ?? -->
                                             <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                         </button>
-                                        <!-- TODO DeleteButton alert window voor bevestiging (JavaScript modal bootstrap hebben we gezien bij .net) -->
                                     </td>
                             </tr>
                             <?php $teller+=1;}?>
