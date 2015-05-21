@@ -177,10 +177,10 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
-                                    Ken toe aan een pathologie:
+                                    Pathologie:
                                 </label>
 
-                                <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
                                     <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                         <?php
                                             $patologieen = FinahDAO::HaalOp("Pathologie");
