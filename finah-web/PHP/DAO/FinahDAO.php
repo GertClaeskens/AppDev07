@@ -44,12 +44,6 @@
                 if ($id == null) {
                     $url .= "Overzicht";
                 } else $url .= $id;
-                //$token = $_SESSION["access_token"];
-                //$url =$url. '?access_token='.$token;
-                //$token = "ntuZLcD-xeLpw0O3hW7UQv5fdmRp9nQNixYRTJuOxA-cTjiKS4HE64TXGrAU-RojsJ_0E7oaUhAgSXKpVrgb2H9PuTyPBxYWQVKJaCfG8ivR57C0Hyb26IgcVUpE4n8ZICwUNw82Z7GhOkHHFVUgdPBXaaMEuXLlRnWY_1xexThHIDbYpbQpVvmBCyjNuIkRbsTSr0htF47HbeG7Sy_WIRIbszG3MLNpWo87lw6m5kmkIHZ7Xy4jBMn6gGLQ_21edbS7vXy9aMY4t9uk4mvfwFZ_YBVx9DJXCf8iVTIjqufuwzowdm73eahCo0_bx4029pzShxKDaLpNQN2ZrKdpNtJQM4uhdPSB9fg37854M263lUYrjY2Q6UViTf8jn6uxACpiyNpPuOf_K131-WxAh2QTSf6wttpGBByua_G1PnwA32Hk72AMgBhjuuXloJGKIm10gCq3UQWWOWcJARnoMlxMM6ux5FhEeD5991eJ7qKL6wWs086SAXSc-rizr3VhuFSlLMCeqr7lDBWVovd1Pg";
-
-// set up the curl resource
-
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_VERBOSE, 1);
                 curl_setopt($ch, CURLOPT_URL, $url);
@@ -67,8 +61,7 @@
                     $rest = substr($output, $pos);
                     $result = json_decode($rest, true);
                 }
-// close curl resource to free up system resources
-
+                // close curl resource to free up system resources
                 curl_close($ch);
                 //var_dump($result);
                 return $result;
@@ -87,35 +80,61 @@
 
         }
 
-        public static function SchrijfWeg($type, $data,$token)
+        public static function SchrijfWeg($type, $data,$token=null)
         {
-            //TODO verder uitwerken
-            //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
-            $url = self::URL . $type . "/";
-            //var_dump($data);
-            $gegevens = json_encode($data);
-            //Initiate cURL.
-            $ch = curl_init();
+            if ($token != null) {
+                //TODO verder uitwerken
+                $url = self::URL . $type . "/";
+                //var_dump($data);
+                $gegevens = json_encode($data);
+                //Initiate cURL.
+                $ch = curl_init();
 
-            //Tell cURL that we want to send a POST request.
-            curl_setopt($ch, CURLOPT_POST, 1);
+                //Tell cURL that we want to send a POST request.
+                curl_setopt($ch, CURLOPT_POST, 1);
 
-            //Attach our encoded JSON string to the POST fields.
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
+                //Attach our encoded JSON string to the POST fields.
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
 
-            //Geen output naar het scherm
-            curl_setopt($ch, CURLOPT_VERBOSE, 0);
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HEADER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
-            //Set the content type to application/json
-            //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
+                //Geen output naar het scherm
+                curl_setopt($ch, CURLOPT_VERBOSE, 0);
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
+                //Set the content type to application/json
+                //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
 
-            //Execute the request
-            $result = curl_exec($ch);
-            //var_dump($result);
-            return $result;
+                //Execute the request
+                $result = curl_exec($ch);
+                //var_dump($result);
+                return $result;
+            }else{
+                //TODO verder uitwerken
+                $url = self::URL . $type . "/";
+                //var_dump($data);
+                $gegevens = json_encode($data);
+                //Initiate cURL.
+                $ch = curl_init();
+
+                //Tell cURL that we want to send a POST request.
+                curl_setopt($ch, CURLOPT_POST, 1);
+
+                //Attach our encoded JSON string to the POST fields.
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
+
+                //Geen output naar het scherm
+                curl_setopt($ch, CURLOPT_VERBOSE, 0);
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+
+                //Execute the request
+                $result = curl_exec($ch);
+                //var_dump($result);
+                return $result;
+            }
         }
 
         public static function PasAan($type, $id,$data,$token)

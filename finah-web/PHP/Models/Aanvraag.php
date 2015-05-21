@@ -12,10 +12,110 @@
     {
         private $Status;
 
-        function __construct($Id = null, $Naam = null, $Voornaam = null, $RijksRegisterNr = null, $Adres = null, $Telnr = null, $Gsm = null, $Login = null, $Passwd = null, $Email = null, $GeheimeVraag = null, $GeheimAntwoord = null, $TypeAccount = null, $Status = null)
+        function __construct($Id = null, $Naam = null, $Voornaam = null, $Adres = null, $Postc=null, $Telnr = null, $Login = null, $Passwd = null, $Email = null, $GeheimeVraag = null, $GeheimAntwoord = null, $TypeAccount = null, $Status = null)
         {
-            parent::__construct($Id, $Naam, $Voornaam, $RijksRegisterNr, $Adres, $Telnr, $Gsm, $Login, $Passwd, $Email, $GeheimeVraag, $GeheimAntwoord, $TypeAccount);
+            parent::__construct($Id, $Naam, $Voornaam, $Adres, $Postc, $Telnr, $Login, $Passwd, $Email, $TypeAccount);
             $this->Status = $Status;
+        }
+
+        public function getId()
+        {
+            return $this->Id;
+        }
+
+        public function setId($Id)
+        {
+            $this->Id = $Id;
+        }
+
+        public function getNaam()
+        {
+            return $this->Naam;
+        }
+
+        public function setNaam($Naam)
+        {
+            $this->Naam = $Naam;
+        }
+
+        public function getVoornaam()
+        {
+            return $this->Voornaam;
+        }
+
+        public function setVoornaam($Voornaam)
+        {
+            $this->Voornaam = $Voornaam;
+        }
+
+        public function getAdres()
+        {
+            return $this->Adres;
+        }
+
+        public function setAdres($Adres)
+        {
+            $this->Adres = $Adres;
+        }
+
+        public function getTelnr()
+        {
+            return $this->Telnr;
+        }
+
+        public function setTelnr($Telnr)
+        {
+            $this->Telnr = $Telnr;
+        }
+
+        public function getLogin()
+        {
+            return $this->Login;
+        }
+
+        public function setLogin($Login)
+        {
+            $this->Login = $Login;
+        }
+
+        public function getPasswd()
+        {
+            return $this->Passwd;
+        }
+
+        public function setPasswd($Passwd)
+        {
+            $this->Passwd = $Passwd;
+        }
+
+        public function getEmail()
+        {
+            return $this->Email;
+        }
+
+        public function setEmail($Email)
+        {
+            $this->Email = $Email;
+        }
+
+        public function getTypeAccount()
+        {
+            return $this->TypeAccount;
+        }
+
+        public function setTypeAccount($TypeAccount)
+        {
+            $this->TypeAccount = $TypeAccount;
+        }
+
+        public function getPostc()
+        {
+            return $this->Postc;
+        }
+
+        public function setPostc($Postc)
+        {
+            $this->Postc = $Postc;
         }
 
 
