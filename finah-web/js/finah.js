@@ -76,7 +76,7 @@ function CustomConfirm() {
         dialogbox.style.display = "block";
         document.getElementById('dialogboxhead').innerHTML = "Confirm that action";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\',\'' + r + '\')">Yes' + id + '</button> <button onclick="Confirm.no()">No</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\',\'' + r + '\')">Yes'+'</button> <button onclick="Confirm.no()">No</button>';
     };
     this.no = function () {
         document.getElementById('dialogbox').style.display = "none";
