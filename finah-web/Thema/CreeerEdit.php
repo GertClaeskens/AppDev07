@@ -135,7 +135,7 @@
 
                                             if (isset($_POST["nieuw"])) {
                                                 $thema->setId(0);
-                                                if (FinahDAO::SchrijfWeg("Thema", $thema)) {
+                                                if (FinahDAO::SchrijfWeg("Thema", $thema,$_SESSION["token"])) {
                                                     //Todo eventueel een exception toevoegen hier
                                                     echo "Het thema werd succesvol opgeslagen";
                                                 }
@@ -143,7 +143,7 @@
                                             if (isset($_POST["update"])) {
                                                 $id = $_POST["update"];
                                                 $thema->setId($id);
-                                                if (FinahDAO::PasAan("Thema", $id, $thema)) {
+                                                if (FinahDAO::PasAan("Thema", $id, $thema,$_SESSION["token"])) {
 
                                                 }
                                                 $thema = FinahDAO::HaalOp("Thema", $id,$_SESSION["token"]);

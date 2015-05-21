@@ -137,7 +137,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                         $LeeftijdsCat->setVan($van);
                                         $LeeftijdsCat->setTot($tot);
                                         if (isset($_POST["nieuw"])) {
-                                            if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
+                                            if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat,$_SESSION["token"])) {
                                                 //Todo eventueel een exception toevoegen hier
                                                 echo "De leeftijdscategorie werd succesvol opgeslagen";
                                             }
@@ -146,7 +146,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                             $id = $_POST["update"];
 
                                             $LeeftijdsCat->setId($id);
-                                            if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
+                                            if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat,$_SESSION["token"])) {
 
                                             }
                                             $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);

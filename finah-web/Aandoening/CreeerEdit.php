@@ -140,7 +140,7 @@
                                     };
                                 }
                                 if (isset($_POST["nieuw"])) {
-                                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening)) {
+                                    if (FinahDAO::SchrijfWeg("Aandoening", $aandoening,$_SESSION["token"])) {
                                         //Todo eventueel een exception toevoegen hier
                                         echo "De aandoening werd succesvol opgeslagen";
                                     }
@@ -148,7 +148,7 @@
                                 if (isset($_POST["update"])) {
                                     $id = $_POST["update"];
                                     $aandoening->setId($id);
-                                    if (FinahDAO::PasAan("Aandoening", $id, $aandoening)) {
+                                    if (FinahDAO::PasAan("Aandoening", $id, $aandoening,$_SESSION["token"])) {
 
                                     }
                                     $aandoening = FinahDAO::HaalOp("Aandoening", $id,$_SESSION["token"]);

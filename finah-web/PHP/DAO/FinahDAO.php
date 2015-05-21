@@ -87,7 +87,7 @@
 
         }
 
-        public static function SchrijfWeg($type, $data)
+        public static function SchrijfWeg($type, $data,$token)
         {
             //TODO verder uitwerken
             //TODO misschien backend method overloaden met array van int om meerdere resultaten tegelijk binnen te halen
@@ -95,7 +95,7 @@
             //var_dump($data);
             $gegevens = json_encode($data);
             //Initiate cURL.
-            $ch = curl_init($url);
+            $ch = curl_init();
 
             //Tell cURL that we want to send a POST request.
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -105,7 +105,10 @@
 
             //Geen output naar het scherm
             curl_setopt($ch, CURLOPT_VERBOSE, 0);
-
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
             //Set the content type to application/json
             //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
 
@@ -115,7 +118,7 @@
             return $result;
         }
 
-        public static function PasAan($type, $id,$data)
+        public static function PasAan($type, $id,$data,$token)
         {
             $url = self::URL . $type . "/" .$id;
             //$curl = curl_init($url . "/Contacts/{$recordId}");
@@ -123,9 +126,11 @@
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Content-Length: ' . strlen($data_json)]);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Content-Length: ' . strlen($data_json), 'Authorization: Bearer ' . $token]);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
             //Geen output naar het scherm
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+
             curl_setopt($ch, CURLOPT_VERBOSE, 0);
             curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -134,7 +139,7 @@
             return $response;
         }
 
-        public static function Verwijder($type, $id)
+        public static function Verwijder($type, $id,$token)
         {
             $url = self::URL . $type . "/" .$id;
             //echo $id;
@@ -142,11 +147,14 @@
             //$data_json = json_encode($data);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
             //Geen output naar het scherm
             curl_setopt($ch, CURLOPT_VERBOSE, 0);
             //curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
             $response  = curl_exec($ch);
             curl_close($ch);
             print_r($response);

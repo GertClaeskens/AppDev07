@@ -152,7 +152,7 @@
                                             };
                                         }
                                         //Schrijf de nieuwe vragenlijst weg
-                                        FinahDAO::SchrijfWeg("Vragenlijst", $vragenlijst);
+                                        FinahDAO::SchrijfWeg("Vragenlijst", $vragenlijst,$_SESSION["token"]);
                                         echo "De vragenlijst werd succesvol opgeslagen";
                                     }
                                     if (isset($_POST["update"])) {
@@ -171,7 +171,7 @@
                                                 $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a],$_SESSION["token"]));
                                             };
                                         }
-                                        FinahDAO::PasAan("VragenLijst", $id, $vrlijst);
+                                        FinahDAO::PasAan("VragenLijst", $id, $vrlijst,$_SESSION["token"]);
                                         //if (FinahDAO::PasAan("VragenLijst", $id, $vrlijst)) {
                                         /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                         $vragenlijstTitel = $vragenlijst["Omschrijving"];

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+$.ajax({
+type: "GET",
+url: 'http://localhost:port/api/values',
+success: function (_d) { alert(JSON.stringify(_d));}
+}).fail(function (_d) { alert(JSON.stringify(_d)); });
+
+</body>
+</html>

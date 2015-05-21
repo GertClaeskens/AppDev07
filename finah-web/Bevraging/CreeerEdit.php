@@ -236,8 +236,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
                                                 $bevraging_pat->setAntwoorden(implode(',', $leeg_vragen));
                                                 $bevraging_man->setAntwoorden(implode(',', $leeg_vragen));
-                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_pat);
-                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_man);
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_pat,$_SESSION["token"]);
+                                                FinahDAO::SchrijfWeg("Bevraging",$bevraging_man,$_SESSION["token"]);
                                                 $onderzoek->setBevragingPat($bevraging_pat);
                                                 $onderzoek->setBevragingMan($bevraging_man);
                                                 $onderzoek->setInformatie($informatie);
@@ -246,7 +246,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 /*$vrLijst = $aandoening . "/Vragenlijst";
                                                 $vragen = FinahDAO::HaalOp("Aandoening", $vrLijst);*/
 
-                                                if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
+                                                if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek,$_SESSION["token"])) {
                                                     //Todo eventueel een exception toevoegen hier
                                     /*                $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
                                                     $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getBevragingId()));
@@ -275,7 +275,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                     $id = $_POST["update"];
 
                                                     $onderzoek->setId($id);
-                                                    if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek)) {
+                                                    if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek,$_SESSION["token"])) {
 
                                                     }
                                                     $onderzk = FinahDAO::HaalOp("Onderzoek", $id,$_SESSION["token"]);

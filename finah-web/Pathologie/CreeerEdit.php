@@ -139,7 +139,7 @@
                                         };
                                     }
                                     if (isset($_POST["nieuw"])) {
-                                        if (FinahDAO::SchrijfWeg("Pathologie", $pathologie)) {
+                                        if (FinahDAO::SchrijfWeg("Pathologie", $pathologie,$_SESSION["token"])) {
                                             //Todo eventueel een exception toevoegen hier
                                             echo "De pathologie werd succesvol opgeslagen";
                                         }
@@ -148,7 +148,7 @@
                                         $id = $_POST["update"];
 
                                         $pathologie->setId($id);
-                                        if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
+                                        if (FinahDAO::PasAan("Pathologie", $id, $pathologie,$_SESSION["token"])) {
 
                                         }
                                         $pathologie = FinahDAO::HaalOp("Pathologie", $id,$_SESSION["token"]);
