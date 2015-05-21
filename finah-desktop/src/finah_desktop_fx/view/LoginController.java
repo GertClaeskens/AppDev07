@@ -8,6 +8,8 @@ import finah_desktop_fx.MainApp;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -36,22 +38,34 @@ public class LoginController {
 	  public void exitApp(ActionEvent actionEvent) {
 		  mainApp.close();
 	  }
+	 
 	  
-	  //Werkt nog niet volledig (zie MainApp -> nulpointer exception)
 	  public void nieuwAccount(ActionEvent actionEvent){
-		    Stage stage = mainApp.getPrimaryStage(); 
-			stage.setWidth(400);
-			stage.setHeight(550);
-			mainApp.showNieuwAccount();
-	    }
-	    
-	  //Werkt nog niet volledig (zie MainApp -> nulpointer exception)
+		  try {
+		        FXMLLoader loader = new FXMLLoader();
+		        loader.setLocation(MainApp.class.getResource("view/NieuwAccountLayout.fxml"));
+		                AnchorPane nieuwAccLayout = (AnchorPane) loader.load();
+		                Stage stage = new Stage();
+		                stage.setScene(new Scene(nieuwAccLayout));  
+		                stage.show();
+		        } catch(Exception e) {
+		           e.printStackTrace();
+		          }
+		}
+	  
+	  
 	  public void wwVergeten(ActionEvent actionEvent){
-		  	Stage stage = mainApp.getPrimaryStage(); 
-			stage.setWidth(400);
-			stage.setHeight(375);
-			mainApp.showWwVergeten();
-	    }
+		  try {
+		        FXMLLoader loader = new FXMLLoader();
+		        loader.setLocation(MainApp.class.getResource("view/WachtwoordVergetenLayout.fxml"));
+		                AnchorPane wwVergetenLayout = (AnchorPane) loader.load();
+		                Stage stage = new Stage();
+		                stage.setScene(new Scene(wwVergetenLayout));  
+		                stage.show();
+		        } catch(Exception e) {
+		           e.printStackTrace();
+		          }
+		}
 	  
 	  private String authorize() {
 	    return 

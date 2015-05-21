@@ -1,24 +1,24 @@
 package finah_desktop_fx.view;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import finah_desktop_fx.MainApp;
 
-public class NieuwAccountController {
+public class WwVergetenController {
 	
 	@FXML
-	private Button accountAanmakenBtn;
+	private Button stuurWachtwoordBtn;
 	@FXML
 	private Button annulerenBtn;
 	
-	public NieuwAccountController(){
+	public WwVergetenController(){
 		
 	}
 	
 	@FXML
-	public void accountAanmaken(ActionEvent actionEvent) {
+	public void stuurWachtwoord(ActionEvent actionEvent) {
 		//MOET NOG GEMAAKT WORDEN
 	}
 	
