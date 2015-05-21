@@ -22,12 +22,12 @@ require_once "../PHP/Models/Pathologie.php";
     <![endif]-->
 </head>
 <body>
-<div id="dialogoverlay"></div>
-<div id="dialogbox">
+<div  id="dialogoverlay"></div>
+<div  id="dialogbox">
     <div>
-        <div id="dialogboxhead"></div>
+        <div  id="dialogboxhead"></div>
         <div id="dialogboxbody"></div>
-        <div id="dialogboxfoot"></div>
+        <div  id="dialogboxfoot"></div>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -160,7 +160,7 @@ require_once "../PHP/Models/Pathologie.php";
                                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                         class='delBtn btn btn-primary'
-                                                        onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
+                                                        onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
                                         </tr>

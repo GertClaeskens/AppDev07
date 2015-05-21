@@ -17,7 +17,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    background: #FFF;
+    background: #222;
     width: 100%;
     z-index: 1001;
 }
@@ -25,34 +25,34 @@
 #dialogbox{
     display: none;
     position: fixed;
-    background: #000;
+    background: #30363E;
     border-radius:7px;
     width:550px;
     z-index: 1001;
 }
 
 #dialogbox > div{
-    background:#FFF;
+
     margin:8px;
 }
 
 #dialogbox > div > #dialogboxhead{
-    background: #666;
-    font-size:19px
+    font-size:25px;
     padding:10px;
-    color:#CCC;
+    color: #999999;
+    border-bottom:1px solid #FFF;
 }
 
 #dialogbox > div > #dialogboxbody{
-    background: #333;
+    border:none;
     padding:20px;
     color:#FFF;
 }
 
 #dialogbox > div > #dialogboxfoot{
-    background: #666;
     padding:10px;
     text-align:right;
+    border-top:1px solid #FFF;
 }
 
 p,h1,h2,h3,article,a {
