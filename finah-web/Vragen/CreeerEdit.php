@@ -7,8 +7,8 @@
         exit;
     }
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -20,7 +20,6 @@
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
-
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -64,7 +63,6 @@
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>
@@ -132,7 +130,6 @@
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
                                         }
-        //
                                         if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                             $vraagStelling = $_POST["VraagStelling"];
                                             $thma = $_POST["thema"];
@@ -220,7 +217,6 @@
         $vraag= FinahDAO::HaalOp("Vragen", $id);
         $vraagStelling = $vraag["VraagStelling"];
         $thema=$vraag["Thema"]["Naam"];
-
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
@@ -304,6 +300,4 @@
             });
         </script>
     </body>
-    </html>
-<?php
-?>
+</html>

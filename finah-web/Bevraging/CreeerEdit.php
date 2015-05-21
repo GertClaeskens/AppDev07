@@ -24,19 +24,15 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/jsonhttprequest.js"></script>
         <script src="../js/finah.js"></script>
-
-
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript">
             var data = '';
-
             function OnChange(e) {
                 var patho = document.forms["myForm"]["Pathologie"];
                 var val = e.target.value;
-
                 if (val != 'null') {
                     empty(patho);
                     var pat = '';
@@ -45,7 +41,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
                     //var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
-
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             pat = JSON.parse(xhr.responseText);
@@ -59,10 +54,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         }
                     };
                     xhr.send(null);
-
                 }
             }
-
             function OnChange2(e) {
                 var vrl = document.forms["myForm"]["Vragenlijst"];
                 var val = e.target.value;
@@ -89,14 +82,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         }
                     };
                     xhr.send(null);
-
                 }
             }
-
             function empty(select) {
                 select.innerHTML = '';
             }
-
         </script>
     </head>
     <body>
@@ -339,7 +329,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     </select>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="LeeftijdcategoriePat"> Kies de leeftijdscategorie (patient): </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
@@ -382,7 +371,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     </select>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <div class=" col-xs-offset-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-3 col-sm-10">
                                     <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">

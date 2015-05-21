@@ -64,7 +64,6 @@
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>
@@ -184,7 +183,6 @@
                                     <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                         <?php
                                             $patologieen = FinahDAO::HaalOp("Pathologie");
-                                            //Pathologieen tonen van de aandoeningen
                                             foreach ($patologieen as $item) {
                                                 $selected = "";
                                                 if (isset($_POST["bewerk"]) || isset($_POST["update"])) {

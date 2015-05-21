@@ -2,8 +2,6 @@
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Aandoening.php";
 require_once "../PHP/Models/Pathologie.php";
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,7 +107,6 @@ require_once "../PHP/Models/Pathologie.php";
         </div>
         <div  class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
                     <form action="CreeerEdit.php" method="post">
@@ -155,7 +152,6 @@ require_once "../PHP/Models/Pathologie.php";
                                                         class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                         <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                                 </button>
-
                                                 <?php $verw = $item["Id"]; ?>
                                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
