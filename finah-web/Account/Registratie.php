@@ -137,12 +137,12 @@
                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <div class="row">
                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
-                                <label for="Rol" class="control-label">
+                                <label for="rol" class="control-label">
                                     Rol:
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                <select class="form-control" id="Rol" name="rol">
+                                <select class="form-control" id="rol" name="rol">
                                     <option value="">Maak een keuze</option>
                                     <option value="Onderzoeker">Onderzoeker</option>
                                     <option value="Hulpverlener">Hulpverlener</option>

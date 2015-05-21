@@ -1,17 +1,17 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-//require_once "../PHP/Models/Aanvragen";
-//todo Model toevoegen aan php & backend
-session_start();
+    require "../PHP/DAO/FinahDAO.php";
+    //require_once "../PHP/Models/Aanvragen";
+    //todo Model toevoegen aan php & backend
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>FINAH - Aanvragen</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
-    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
     <script src="../js/finah.js"></script>
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -39,7 +39,8 @@ session_start();
         <a class="navbar-brand header" href="../index.php"> Finah</a>
     </div>
     <div class="dropdown navbar-header pull-right nav-right">
-        <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"];?>
+        <a class="btn dropdown-toggle pull-left" type="button" id="menu1"
+           data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -68,7 +69,7 @@ session_start();
                     MENU
                 </h4>
             </li>
-            <li >
+            <li>
                 <a href="../index.php"> Home </a>
             </li>
             <li>
@@ -103,23 +104,38 @@ session_start();
             </li>
         </ul>
     </div>
-    <div  id="page-content-wrapper">
+    <div id="page-content-wrapper">
         <div class="breadcrumb">
             <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Aanvragen </span>
         </div>
-        <div  class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Openstaande aanvragen</h1>
                     <?php
-                        if (isset($_POST["goedkeuren"])){
+                        if (isset($_POST["goedkeuren"])) {
                             var_dump($_POST);
+
+                            $aanvraag = FinahDAO::HaalOp("Aanvraag", $_POST['Id']);
+                            $aanvraag["Postcd"] = FinahDAO::HaalOp("Postcode", $aanvraag["PostcdId"]);
+                            $account=[];
+                            $account["Rol"] = $aanvraag["TypeAcc"];
+                            $account["Voornaam"] = $aanvraag["VoorNaam"];
+                            $account["Naam"] = $aanvraag["Naam"];
+                            $account["Email"] = "gert.claeskens@telenet.be";
+                            $account["Password"] = $aanvraag["Passwd"];
+                            $account["ConfirmPassword"] = $aanvraag["Passwd"];
+                            $account["Adres"] = $aanvraag["Adres"] . " " . $aanvraag["Postcd"]["Postnr"]. " ". $aanvraag["Postcd"]["Gemeente"];
+                            $account["Telefoon"] = $aanvraag["Telnr"];
+                            $account["Login"] = $aanvraag["Login"];
+                            $account["Id"] = null;
+                            var_dump(FinahDAO::SchrijfWeg("api/Account/Register", $account, $_SESSION["token"]));
+                            var_dump($account);
                         }
-                        $aanvraag = FinahDAO::HaalOp("Aanvraag",$_POST['Id']);
                     ?>
-                    <form  class="form-horizontal" role="form" method="POST"
-                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <form class="form-horizontal" role="form" method="POST"
+                          action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <div id="mededeling"></div>
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -139,34 +155,36 @@ session_start();
                             <tbody>
 
                             <?php
-                                    $aanvragen = FinahDAO::HaalOp("Aanvraag",null);
-                                    foreach($aanvragen as $item){
+                                $aanvragen = FinahDAO::HaalOp("Aanvraag", null);
+                                foreach ($aanvragen as $item) {
 
-                            ?>
-                        <!--Todo juiste velden toevoegen-->
-                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-lg-5 text-center">
-                                        <?php echo $item["VoorNaam"]; ?>
-                                    </td>
-                                    <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                        <?php echo $item["Naam"]; ?>
-                                    </td>
-                                    <td class="col-sm-2 col-md-2 col-lg-2 text-center" >
-                                        <?php echo $item["TypeAcc"]; ?>
-                                    </td>
-                                    <input type="hidden" id="Id" name="Id" value="<?php echo $item['Id'];?>">
-                                    <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                        <button type='submit' name='goedkeuren' id='goedkeuren'
-                                                class='btn btn-success' value="Goedkeuren">
-                                            <span class='glyphicon glyphicon-ok'></span>&nbsp;
+                                    ?>
+                                    <!--Todo juiste velden toevoegen-->
+                                    <tr>
+                                        <td class="col-sm-5 col-md-5 col-lg-5 text-center">
+                                            <?php echo $item["VoorNaam"]; ?>
+                                        </td>
+                                        <td class="col-sm-3 col-md-3 col-lg-3 text-center">
+                                            <?php echo $item["Naam"]; ?>
+                                        </td>
+                                        <td class="col-sm-2 col-md-2 col-lg-2 text-center">
+                                            <?php echo $item["TypeAcc"]; ?>
+                                        </td>
+                                        <input type="hidden" id="Id" name="Id" value="<?php echo $item['Id'];?>">
+                                        <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                            <button type='submit' name='goedkeuren' id='goedkeuren'
+                                                    class='btn btn-success' value="Goedkeuren">
+                                                <span class='glyphicon glyphicon-ok'></span>&nbsp;
 
-                                        </button>
-                                        <button type='button' name='weigeren' id='weigeren' onclick="Confirm.render('Deze aanvraag verwijderen?','delete_lft',<?php echo $item["Id"] ?>,'Aanvraag',this,'<?php echo $_SESSION["token"]?>')" class='btn btn-danger'>
-                                            <span class='glyphicon glyphicon-remove'></span>&nbsp;
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php } ?>
+                                            </button>
+                                            <button type='button' name='weigeren' id='weigeren'
+                                                    onclick="Confirm.render('Deze aanvraag verwijderen?','delete_lft',<?php echo $item["Id"] ?>,'Aanvraag',this,'<?php echo $_SESSION["token"]?>')"
+                                                    class='btn btn-danger'>
+                                                <span class='glyphicon glyphicon-remove'></span>&nbsp;
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
 
                             </tbody>
                         </table>
@@ -174,40 +192,40 @@ session_start();
                     <h1 id="second-header">Overzicht</h1>
 
                     <table class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>
-                                    Voornaam
-                                </th>
-                                <th>
-                                    Naam
-                                </th>
-                                <th>
-                                    Datum
-                                </th>
-                                <th>Actie</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!--Todo juiste velden toevoegen-->
-                            <tr>
-                                <td class="col-sm-5 col-md-5 col-lg-5 text-center">
-                                    Brian
-                                </td>
-                                <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                    Thys
-                                </td>
-                                <td class="col-sm-2 col-md-2 col-lg-2 text-center" >
-                                    18/04/2015
-                                </td>
-                                <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                    <button type='submit' name='profiel' id=''
-                                            class='btn btn-primary' value="Profiel"> Profiel
-                                    </button>
-<!--                                    todo linken naar profiel pagina -->
-                            </tr>
-                            </tbody>
-                        </table>
+                        <thead>
+                        <tr>
+                            <th>
+                                Voornaam
+                            </th>
+                            <th>
+                                Naam
+                            </th>
+                            <th>
+                                Datum
+                            </th>
+                            <th>Actie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--Todo juiste velden toevoegen-->
+                        <tr>
+                            <td class="col-sm-5 col-md-5 col-lg-5 text-center">
+                                Brian
+                            </td>
+                            <td class="col-sm-3 col-md-3 col-lg-3 text-center">
+                                Thys
+                            </td>
+                            <td class="col-sm-2 col-md-2 col-lg-2 text-center">
+                                18/04/2015
+                            </td>
+                            <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                <button type='submit' name='profiel' id=''
+                                        class='btn btn-primary' value="Profiel"> Profiel
+                                </button>
+                                <!--                                    todo linken naar profiel pagina -->
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -215,7 +233,7 @@ session_start();
 </div>
 
 <script>
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
