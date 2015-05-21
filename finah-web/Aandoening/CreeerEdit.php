@@ -5,7 +5,6 @@
         header('Location: Overzicht.php');
         exit;
     }
-    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -65,7 +64,6 @@
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>
@@ -125,7 +123,7 @@
                             if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                             if (isset($_POST["bewerk"])) {
                                 $id = $_POST["bewerk"];
-                                $aandoening = FinahDAO::HaalOp("Aandoening", $id, $_SESSION["token"]);
+                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
                                 $naam = $aandoening["Omschrijving"];
                                 echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
@@ -137,7 +135,7 @@
                                 if (isset($_POST["pathologie"])) {
                                     $pathologielijst = $_POST["pathologie"];
                                     for ($a = 0; $a < count($pathologielijst); $a++) {
-                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a], $_SESSION["token"]));
+                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
                                     };
                                 }
                                 if (isset($_POST["nieuw"])) {
@@ -178,14 +176,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-2 col-lg-2" for="Pathologie">
-                                    Ken toe aan een pathologie:
+                                    Pathologie:
                                 </label>
 
-                                <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
                                     <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                         <?php
-                                            $patologieen = FinahDAO::HaalOp("Pathologie", null, $_SESSION["token"]);
-                                            //Pathologieen tonen van de aandoeningen
+                                            $patologieen = FinahDAO::HaalOp("Pathologie");
                                             foreach ($patologieen as $item) {
                                                 $selected = "";
                                                 if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
@@ -298,7 +295,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
+                                    onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $id ?>,'Aandoening',this)">
                                 Verwijderen
                             </button>
                         </form>

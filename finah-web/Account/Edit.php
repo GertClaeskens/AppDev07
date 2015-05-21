@@ -1,7 +1,5 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
-
-
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -16,7 +14,6 @@ require "../PHP/DAO/FinahDAO.php";
         <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
-
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -92,7 +89,6 @@ require "../PHP/DAO/FinahDAO.php";
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>

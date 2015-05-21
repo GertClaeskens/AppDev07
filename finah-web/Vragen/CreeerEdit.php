@@ -8,8 +8,8 @@
     }
     session_start();
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -21,7 +21,6 @@
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
-
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -65,7 +64,6 @@
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>
@@ -133,7 +131,6 @@
                                         } elseif(isset($_POST["creeer"]) || isset($_POST["nieuw"])){
                                             echo "<h1 class='header' >" . " Nieuwe vraag " .  "</h1> ";
                                         }
-        //
                                         if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                             $vraagStelling = $_POST["VraagStelling"];
                                             $thma = $_POST["thema"];
@@ -221,7 +218,6 @@
         $vraag = FinahDAO::HaalOp("Vragen", $id, $_SESSION["token"]);
         $vraagStelling = $vraag["VraagStelling"];
         $thema=$vraag["Thema"]["Naam"];
-
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
@@ -267,7 +263,7 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Verwijder vraag?','delete_lft',<?php echo $id ?>,'Vraag',this)">
+                                    onclick="Confirm.render('Deze vraag verwijderen?','delete_lft',<?php echo $id ?>,'Vraag',this)">
                                 Verwijderen
                             </button>
                         </form>
@@ -305,6 +301,4 @@
             });
         </script>
     </body>
-    </html>
-<?php
-?>
+</html>

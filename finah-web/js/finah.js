@@ -38,7 +38,7 @@ function CustomAlert() {
         dialogbox.style.display = "block";
         document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button class="btn btn-primary" onclick="Alert.ok()">OK</button>';
     };
     this.ok = function () {
         document.getElementById('dialogbox').style.display = "none";
@@ -74,9 +74,9 @@ function CustomConfirm() {
         dialogbox.style.left = (winW / 2) - (550 * .5) + "px";
         dialogbox.style.top = "100px";
         dialogbox.style.display = "block";
-        document.getElementById('dialogboxhead').innerHTML = "Confirm that action";
+        document.getElementById('dialogboxhead').innerHTML = "Bevestig dit verzoek";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\',\'' + r + '\')">Yes' + id + '</button> <button onclick="Confirm.no()">No</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button class="btn btn-primary" onclick="Confirm.yes(\'' + op + '\',\'' + id + '\',\'' + type + '\',\'' + r + '\')">Yes'+'</button> <button class="btn btn-primary" onclick="Confirm.no()">No</button>';
     };
     this.no = function () {
         document.getElementById('dialogbox').style.display = "none";

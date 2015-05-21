@@ -2,8 +2,6 @@
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Aandoening.php";
 require_once "../PHP/Models/Pathologie.php";
-
-    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +20,12 @@ require_once "../PHP/Models/Pathologie.php";
     <![endif]-->
 </head>
 <body>
-<div id="dialogoverlay"></div>
-<div id="dialogbox">
+<div  id="dialogoverlay"></div>
+<div  id="dialogbox">
     <div>
-        <div id="dialogboxhead"></div>
+        <div  id="dialogboxhead"></div>
         <div id="dialogboxbody"></div>
-        <div id="dialogboxfoot"></div>
+        <div  id="dialogboxfoot"></div>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -109,7 +107,6 @@ require_once "../PHP/Models/Pathologie.php";
         </div>
         <div  class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
                     <form action="CreeerEdit.php" method="post">
@@ -131,7 +128,7 @@ require_once "../PHP/Models/Pathologie.php";
                             </thead>
                             <tbody>
                             <?php
-                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening", null, $_SESSION["token"]);
+                                $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null);
                                 for ($a = 0; $a < count($aandoeningLijst); $a++) {
                                     $item = $aandoeningLijst[$a];
                                     $aantal = count($item["Patologieen"]);
@@ -155,12 +152,11 @@ require_once "../PHP/Models/Pathologie.php";
                                                         class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                         <span class='glyphicon glyphicon-pencil'></span>&nbsp;
                                                 </button>
-
                                                 <?php $verw = $item["Id"]; ?>
                                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                         class='delBtn btn btn-primary'
-                                                        onclick="Confirm.render('Verwijder aandoening?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
+                                                        onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $verw ?>,'Aandoening',this)">
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
                                         </tr>

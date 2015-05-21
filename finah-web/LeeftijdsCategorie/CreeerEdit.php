@@ -20,7 +20,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="../js/Validate/jquery.validate.js"></script>
         <script src="../js/finah.js"></script>
-
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -38,7 +37,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     </div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header pull-left">
-
             <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
                 <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
             </a>
@@ -65,7 +63,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         </div>
     </nav>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br/>
@@ -121,7 +118,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <?php
-
                             $LeeftijdsCat = new LeeftijdsCategorie();
                             if (isset($_POST)) {
                                 if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
@@ -135,13 +131,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
                                         echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
                                     }
-    //
                                     if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                         $van = $_POST["van"];
                                         $tot = $_POST["tot"];
                                         $LeeftijdsCat->setVan($van);
                                         $LeeftijdsCat->setTot($tot);
-
                                         if (isset($_POST["nieuw"])) {
                                             if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat)) {
                                                 //Todo eventueel een exception toevoegen hier
@@ -160,7 +154,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                             $tot = $LeeftijdsCat["Tot"];
                                             echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
                                             echo "De leeftijdscategorie werd succesvol opgeslagen";
-
                                         }
                                     }
                         ?>
@@ -174,7 +167,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                         echo $van;
                                     } ?>>
-
                                 </div>
                             </div>
                             <div class="form-group">
@@ -218,7 +210,6 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         $leeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
         $van = $leeftijdsCat["Van"];
         $tot = $leeftijdsCat["Tot"];
-
         ?>
         <div class="panel panel-primary">
             <div class="panel-heading ">
@@ -265,7 +256,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                         <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                 name='verwijderBtn' value="<?php echo $id ?>"
                                 class='delBtn btn btn-primary'
-                                onclick="Confirm.render('Verwijder Leeftijdscategorie?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
+                                onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
                             Verwijderen
                         </button>
                         </form>

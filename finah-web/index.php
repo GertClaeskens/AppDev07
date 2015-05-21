@@ -5,8 +5,6 @@
  * Date: 6/04/2015
  * Time: 15:24
  */
-
-    include_once 'php/DAO/finahDAo.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,52 +22,34 @@
         <![endif]-->
     </head>
     <body>
-    <?php
-        if (isset($_POST["login"])) {
-            $aanmelden = FinahDAO::GetToken($_POST["user"], $_POST["wachtwoord"]);
-            $resarr = (array)$aanmelden;
-            var_dump($resarr);
-            if (isset($resarr["access_token"])) {
-                session_start();
-                $_SESSION["token"] = $aanmelden["access_token"];
-                header("Location: Aandoening/Overzicht.php");
-            } else echo "aanmelden mislukt";
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header pull-left">
 
-        }
-
-
-    ?>
-
-
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header pull-left">
-
-            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
-                <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
-            </a>
-            <a class="navbar-brand header" href="index.php"> Finah</a>
-        </div>
-<!--        <div class="dropdown navbar-header pull-right nav-right">-->
-<!--            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia-->
-<!--                <span class="caret"></span>-->
-<!--            </a>-->
-<!--            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">-->
-<!--                <li role="presentation">-->
-<!--                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">-->
-<!--                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li role="presentation" class="divider">-->
-<!--                </li>-->
-<!--                <li role="presentation">-->
-<!--                    <a role="menuitem" tabindex="-1" href="#">-->
-<!--                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-    </nav>
+                <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
+                    <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
+                </a>
+                <a class="navbar-brand header" href="index.php"> Finah</a>
+            </div>
+    <!--        <div class="dropdown navbar-header pull-right nav-right">-->
+    <!--            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia-->
+    <!--                <span class="caret"></span>-->
+    <!--            </a>-->
+    <!--            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">-->
+    <!--                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation" class="divider">-->
+    <!--                </li>-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="-1" href="#">-->
+    <!--                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+        </nav>
         <div id="wrapper">
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
@@ -136,19 +116,17 @@
 <!--                                <br />-->
 <!--                                <br />-->
 <!--                            </p>-->
-                                                        <h1 style="margin-bottom:50px;">Login</h1>
-
+                            <h1 style="margin-bottom:50px;">Login</h1>
                             <form class="form form-horizontal" role="form" method="POST"
                                   action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <div class="row">
                                     <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                         <label for="Email"  class="control-label">
-                                            Username:
+                                            E-mail:
                                         </label>
                                     </div>
                                     <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                        <input type="text" name="user" id="user" class="form-control"
-                                               value="rafael_sarrechia@hotmail.com">
+                                        <input type="text" name="email" id="Email"  class="form-control" value="rafael_sarrechia@hotmail.com">
                                     </div>
                                 </div>
                                 <div class="row detail-row">
@@ -158,8 +136,7 @@
                                         </label>
                                     </div>
                                     <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                        <input type="password" name="wachtwoord" id="wachtwoord" class="form-control"
-                                               value="W@chtwoordPxl">
+                                        <input type="password" name="wachtwoord" id="Wachtwoord" class="form-control" value="W@chtwoordPxl">
                                     </div>
                                 </div>
                                 <div class="row detail-row">
@@ -193,6 +170,6 @@
                 }
             });
         </script>
-        </body>
-    </html>
+    </body>
+</html>
 

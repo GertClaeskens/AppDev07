@@ -11,13 +11,11 @@
         public $Id;
         public $Vragen;
         public $Aandoe;
-        //public $Titel;
         public $Omschrijving;
 
-        public function __construct($id = null, $Vragen = null, $Aandoe = null, $Omschrijving=null)//,$Titel = null)
+        public function __construct($id = null, $Vragen = null, $Aandoe = null, $Omschrijving=null)
         {
             $this->Id = $id;
-            //$this->Titel = $Titel;
             $this->Omschrijving = $Omschrijving;
             $this->Vragen = $Vragen==null?[]:$Vragen;
             $this->Aandoe = $Aandoe;
@@ -64,14 +62,6 @@
         {
             $this->Omschrijving = $Omschrijving;
         }
-/*         public function setTitel($Titel)
-        {
-            $this->Titel = $Titel;
-        }
-        public function getTitel()
-        {
-            return $this->Titel;
-        }*/
         public function voegVragenToe($vraag)
         {
             array_push($this->Vragen, $vraag);

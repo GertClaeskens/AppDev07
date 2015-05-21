@@ -60,7 +60,6 @@ require_once "../PHP/Models/Onderzoek.php";
     </div>
 </nav>
 <div id="wrapper">
-    <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <br/>
