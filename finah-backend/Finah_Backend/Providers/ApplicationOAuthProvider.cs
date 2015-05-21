@@ -60,6 +60,7 @@ namespace Finah_Backend.Providers
             }
 
             return Task.FromResult<object>(null);
+            
         }
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
