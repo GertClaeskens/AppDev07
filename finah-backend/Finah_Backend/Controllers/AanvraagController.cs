@@ -17,7 +17,7 @@ namespace Finah_Backend.Controllers
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
 
-    [Authorize(Roles = "Admin, Onderzoeker")]
+    //[Authorize(Roles = "Admin, Onderzoeker")]
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
     public class AanvraagController : ApiController
     {
@@ -29,6 +29,7 @@ namespace Finah_Backend.Controllers
         //public IQueryable<Aanvraag> GetOverzicht()
         public IEnumerable<Aanvraag> GetOverzicht()// return -> naderhand veranderen in bovenstaande
         {
+            db.Configuration.LazyLoadingEnabled = false;
             return db.Aanvragen;
         }
 
@@ -43,7 +44,8 @@ namespace Finah_Backend.Controllers
             //{
             //    aanvraag = new Aanvraag { Id = 1 };
             //}
-            var aanvraag = db.Aanvragen.Find(id);
+            db.Configuration.LazyLoadingEnabled = false;
+            var aanvraag = db.Aanvragen.Include(p => p.Postcd).Where(a => a.Id == id);
             if (aanvraag == null)
             {
                 return NotFound();
@@ -92,7 +94,7 @@ namespace Finah_Backend.Controllers
         // POST: api/Aanvraags
         [HttpPost]
         [ResponseType(typeof(Aanvraag))]
-        public IHttpActionResult PostAanvraag(Aanvraag aanvraag)
+        public IHttpActionResult Post([FromBody] Aanvraag aanvraag)
         {
             if (!ModelState.IsValid)
             {
