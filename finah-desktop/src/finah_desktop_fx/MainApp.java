@@ -34,7 +34,6 @@ public class MainApp extends Application {
         
     }
     
-    
     public void showLogin() {
         try {
             // Load root layout from fxml file.

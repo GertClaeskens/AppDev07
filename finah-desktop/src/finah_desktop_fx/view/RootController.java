@@ -185,6 +185,24 @@ public class RootController implements Initializable {
 
 		rootLayout.setCenter(accountLayout);
 	}
+	
+	@FXML
+	public void toonResultaten(ActionEvent actionEvent) {
+		Button gekliktItem = (Button) actionEvent.getSource();
+		String sender = gekliktItem.getText();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class
+				.getResource("view/ResultatenLayout.fxml"));
+		AnchorPane accountLayout = null;
+		try {
+			accountLayout = (AnchorPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		rootLayout.setCenter(accountLayout);
+	}
 
 	@FXML
 	public void toon(ActionEvent actionEvent) {
@@ -223,7 +241,7 @@ public class RootController implements Initializable {
 				break;
 			case "Accounts":
 				loader.setLocation(MainApp.class
-						.getResource("view/AccountsLayout.fxml"));
+						.getResource("view/AccountsOverzichtLayout.fxml"));
 				break;
 
 			default:
@@ -241,5 +259,4 @@ public class RootController implements Initializable {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
-
 }
