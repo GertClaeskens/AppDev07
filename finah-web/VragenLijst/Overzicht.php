@@ -1,6 +1,8 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
 require "../PHP/Models/VragenLijst.php";
+
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -117,7 +119,7 @@ require "../PHP/Models/VragenLijst.php";
                         <?php
                         if (isset($_POST["delete"])) {
                             $id = $_POST["delete"];
-                            $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                            $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id, $_SESSION["token"]);
                             if (FinahDAO::Verwijder("VragenLijst", $id, $vragenlijst)) {
                                 echo " De vragenlijst werd succesvol verwijderd "; }
                         }
@@ -142,7 +144,7 @@ require "../PHP/Models/VragenLijst.php";
                             </thead>
                             <tbody>
                                 <?php
-                                $vragenLijst = FinahDAO::HaalOp("VragenLijst");
+                                    $vragenLijst = FinahDAO::HaalOp("VragenLijst", null, $_SESSION["token"]);
                                 foreach ($vragenLijst as $item) {
                                     echo "<tr>"?>
                                        <td class='col-sm-1 col-md-1 col-lg-1 text-center'><?php echo $item["Id"]?></td>

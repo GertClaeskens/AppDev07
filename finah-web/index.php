@@ -5,6 +5,8 @@
  * Date: 6/04/2015
  * Time: 15:24
  */
+
+    include_once 'php/DAO/finahDAo.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +24,24 @@
         <![endif]-->
     </head>
     <body>
+    <?php
+        if (isset($_POST["login"])) {
+            $aanmelden = FinahDAO::GetToken($_POST["user"], $_POST["wachtwoord"]);
+            $resarr = (array)$aanmelden;
+            var_dump($resarr);
+            if (isset($resarr["access_token"])) {
+                session_start();
+                $_SESSION["token"] = $aanmelden["access_token"];
+                header("Location: Aandoening/Overzicht.php");
+            } else echo "aanmelden mislukt";
+
+        }
+
+
+    ?>
+
+
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header pull-left">
 
@@ -123,11 +143,12 @@
                                 <div class="row">
                                     <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                         <label for="Email"  class="control-label">
-                                            E-mail:
+                                            Username:
                                         </label>
                                     </div>
                                     <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                        <input type="text" name="email" id="Email"  class="form-control" value="rafael_sarrechia@hotmail.com">
+                                        <input type="text" name="user" id="user" class="form-control"
+                                               value="rafael_sarrechia@hotmail.com">
                                     </div>
                                 </div>
                                 <div class="row detail-row">
@@ -137,7 +158,8 @@
                                         </label>
                                     </div>
                                     <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                        <input type="password" name="wachtwoord" id="Wachtwoord" class="form-control" value="W@chtwoordPxl">
+                                        <input type="password" name="wachtwoord" id="wachtwoord" class="form-control"
+                                               value="W@chtwoordPxl">
                                     </div>
                                 </div>
                                 <div class="row detail-row">

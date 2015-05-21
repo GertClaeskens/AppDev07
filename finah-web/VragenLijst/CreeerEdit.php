@@ -6,6 +6,7 @@
         header('Location: Overzicht.php');
         exit;
     }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -126,7 +127,7 @@
 
                             if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
                                 $id = isset($_POST["bewerk"]) ? $_POST["bewerk"] : $_POST["update"];
-                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                                $vragenlijst = FinahDAO::HaalOp("VragenLijst", $id, $_SESSION["token"]);
                                 $vragenlijstTitel = $vragenlijst["Omschrijving"];
                                 echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";
                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
@@ -142,14 +143,14 @@
                                     $vragenlijst->setOmschrijving($vragenlijstTitel);
                                     if (isset($_POST["Aandoe"])) {
                                         $aandoening = $_POST["Aandoe"];
-                                        $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
+                                        $vragenlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening, $_SESSION["token"]));
 
                                     }
                                     if (isset($_POST["Vragen"])) {
 
                                         $vragenArray = $_POST["Vragen"];
                                         for ($a = 0; $a < count($vragenArray); $a++) {
-                                            $vragenlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
+                                            $vragenlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a], $_SESSION["token"]));
                                         };
                                     }
                                     //Schrijf de nieuwe vragenlijst weg
@@ -163,18 +164,18 @@
                                     $vrlijst->setOmschrijving($vragenlijstTitel);
                                     if (isset($_POST["Aandoe"])) {
                                         $aandoening = $_POST["Aandoe"];
-                                        $vrlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening));
+                                        $vrlijst->setAandoe(FinahDAO::HaalOp("Aandoening", $aandoening, $_SESSION["token"]));
 
                                     }
                                     if (isset($_POST["Vragen"])) {
                                         $vragenArray = $_POST["Vragen"];
                                         for ($a = 0; $a < count($vragenArray); $a++) {
-                                            $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a]));
+                                            $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a], $_SESSION["token"]));
                                         };
                                     }
                                     FinahDAO::PasAan("VragenLijst", $id, $vrlijst);
                                     //if (FinahDAO::PasAan("VragenLijst", $id, $vrlijst)) {
-                                    /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
+                                    /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id,$_SESSION["token"]);
                                     $vragenlijstTitel = $vragenlijst["Omschrijving"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $vragenlijstTitel . "  </h1 >";*/
                                     echo "De vragenlijst werd succesvol opgeslagen";
@@ -207,7 +208,7 @@
                                         <option value="">Maak een keuze</option>
                                         <?php
 
-                                            $aandoeningen = FinahDAO::HaalOp("Aandoening");
+                                            $aandoeningen = FinahDAO::HaalOp("Aandoening", null, $_SESSION["token"]);
                                             foreach ($aandoeningen as $item) {
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
                                             }
@@ -224,7 +225,7 @@
                                     <select id="vragenAdd" name="Vragen[]" size="20" multiple>
                                         <?php
                                             /*TODO De vragen in deze select box zoals de pathologie lijst (code hieronder)Eventueel enkel de vragen die van toepassing zijn bij de bovenstaand geselecteerde aandoening?? */
-                                            $vragenLijst = FinahDAO::HaalOp("Vragen");
+                                            $vragenLijst = FinahDAO::HaalOp("Vragen", null, $_SESSION["token"]);
                                             foreach ($vragenLijst as $item) {
                                                 echo "<option value='" . $item["Id"] . "'>" . $item["VraagStelling"] . "</option>\r\n";
                                             }
@@ -263,7 +264,7 @@
     <?php
         } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $vragenLijst = FinahDAO::HaalOp("VragenLijst", $id);
+        $vragenLijst = FinahDAO::HaalOp("VragenLijst", $id, $_SESSION["token"]);
 //        $titel = $vragenLijst["Titel"];
         $aandoeningLijst = $vragenLijst["Aandoe"];
         $aantal = count($vragenLijst["Vragen"]);

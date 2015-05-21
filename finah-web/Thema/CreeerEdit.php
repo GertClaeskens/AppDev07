@@ -6,6 +6,7 @@
         header('Location: Overzicht.php');
         exit;
     }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -124,7 +125,7 @@
                                 if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                         if (isset($_POST["bewerk"])) {
                                         $id = $_POST["bewerk"];
-                                        $thema = FinahDAO::HaalOp("Thema", $id);
+                                            $thema = FinahDAO::HaalOp("Thema", $id, $_SESSION["token"]);
                                         $naam = $thema["Naam"];
                                         echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                     } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
@@ -148,7 +149,7 @@
                                             if (FinahDAO::PasAan("Thema", $id, $thema)) {
 
                                             }
-                                            $thema = FinahDAO::HaalOp("Thema", $id);
+                                            $thema = FinahDAO::HaalOp("Thema", $id, $_SESSION["token"]);
                                             $naam = $thema["Naam"];
                                             echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                             echo "Het thema werd succesvol opgeslagen";
@@ -197,7 +198,7 @@
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $thema= FinahDAO::HaalOp("Thema", $id);
+        $thema = FinahDAO::HaalOp("Thema", $id, $_SESSION["token"]);
         $naam = $thema["Naam"];
         ?>
         <div class="panel panel-primary">

@@ -5,6 +5,7 @@
         header('Location: Overzicht.php');
         exit;
     }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -124,7 +125,7 @@
                             if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                             if (isset($_POST["bewerk"])) {
                                 $id = $_POST["bewerk"];
-                                $aandoening = FinahDAO::HaalOp("Aandoening", $id);
+                                $aandoening = FinahDAO::HaalOp("Aandoening", $id, $_SESSION["token"]);
                                 $naam = $aandoening["Omschrijving"];
                                 echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
@@ -136,7 +137,7 @@
                                 if (isset($_POST["pathologie"])) {
                                     $pathologielijst = $_POST["pathologie"];
                                     for ($a = 0; $a < count($pathologielijst); $a++) {
-                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a]));
+                                        $aandoening->voegPathologieAanLijstToe(FinahDAO::HaalOp("Pathologie", $pathologielijst[$a], $_SESSION["token"]));
                                     };
                                 }
                                 if (isset($_POST["nieuw"])) {
@@ -183,7 +184,7 @@
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                                     <select multiple class="form-control" id="Pathologie" name="pathologie[]">
                                         <?php
-                                            $patologieen = FinahDAO::HaalOp("Pathologie");
+                                            $patologieen = FinahDAO::HaalOp("Pathologie", null, $_SESSION["token"]);
                                             //Pathologieen tonen van de aandoeningen
                                             foreach ($patologieen as $item) {
                                                 $selected = "";

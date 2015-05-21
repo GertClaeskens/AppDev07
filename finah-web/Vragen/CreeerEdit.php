@@ -6,6 +6,7 @@
         header('Location: Overzicht.php');
         exit;
     }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -125,7 +126,7 @@
                                 if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
                                     if (isset($_POST["bewerk"])) {
                                             $id = $_POST["bewerk"];
-                                            $vraag = FinahDAO::HaalOp("Vragen",$id);
+                                        $vraag = FinahDAO::HaalOp("Vragen", $id, $_SESSION["token"]);
                                             $vraagStelling = $vraag["VraagStelling"];
                                             $thema = $vraag["Thema"];
                                             echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
@@ -136,7 +137,7 @@
                                         if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
                                             $vraagStelling = $_POST["VraagStelling"];
                                             $thma = $_POST["thema"];
-                                            $thema = FinahDAO::HaalOp("Thema", $thma);
+                                            $thema = FinahDAO::HaalOp("Thema", $thma, $_SESSION["token"]);
                                             $vraag->setVraagstelling($vraagStelling);
                                             $vraag->setThema($thema);
                                             if (isset($_POST["nieuw"])) {
@@ -150,7 +151,7 @@
                                                 $id = $_POST["update"];
                                                 $vraag->setId($id);
                                                 if (FinahDAO::PasAan("Vragen", $id, $vraag)) {
-                                                    $vraag = FinahDAO::HaalOp("Vragen", $id);
+                                                    $vraag = FinahDAO::HaalOp("Vragen", $id, $_SESSION["token"]);
                                                     $vraagStelling = $vraag["VraagStelling"];
                                                     $thema = $vraag["Thema"];
                                                     echo "<h1 class='header'>" . " Bewerken : " . $vraagStelling . "  </h1 >";
@@ -176,7 +177,7 @@
                                 <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">
                                     <select class="form-control" id="Thema" name="thema">
                                         <?php
-                                        $themaLijst = FinahDAO::HaalOp("Thema");
+                                            $themaLijst = FinahDAO::HaalOp("Thema", null, $_SESSION["token"]);
                                         echo "  <option value=''>" . " Maak een keuze". " </option>";
                                         foreach ($themaLijst as $item) {
                                             echo "<option value='" . $item["Id"] . "'>" . $item["Naam"] . "</option>\r\n";
@@ -217,7 +218,7 @@
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $vraag= FinahDAO::HaalOp("Vragen", $id);
+        $vraag = FinahDAO::HaalOp("Vragen", $id, $_SESSION["token"]);
         $vraagStelling = $vraag["VraagStelling"];
         $thema=$vraag["Thema"]["Naam"];
 

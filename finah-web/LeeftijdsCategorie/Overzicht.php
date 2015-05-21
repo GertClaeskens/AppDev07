@@ -1,6 +1,8 @@
 <?php
     require_once "../PHP/DAO/FinahDAO.php";
     require_once "../PHP/Models/LeeftijdsCategorie.php";
+
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -150,7 +152,7 @@
                         $id = $_POST["delete"];
                         echo $_POST['eid'];
                         print_r($_POST);
-                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", null, $id, $_SESSION["token"]);
                         if (FinahDAO::Verwijder("LeeftijdsCategorie", $id)) {
                         }
                     }
@@ -176,7 +178,7 @@
                             </thead>
                             <tbody>
                             <?php
-                                $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie");
+                                $leeftijdCategorieLijst = FinahDAO::HaalOp("LeeftijdsCategorie", null, $_SESSION["token"]);
                                 foreach ($leeftijdCategorieLijst as $item) {
                                     $teller=0;
                                 echo "<tr>"?>

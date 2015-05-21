@@ -2,6 +2,7 @@
 require "../PHP/DAO/FinahDAO.php";
 require "../PHP/Models/Vraag.php";
 require "../PHP/Models/Thema.php";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +132,7 @@ require "../PHP/Models/Thema.php";
                             </thead>
                             <tbody>
                             <?php
-                                $themaLijst = FinahDAO::HaalOp("Thema");
+                                $themaLijst = FinahDAO::HaalOp("Thema", null, $_SESSION["token"]);
                                 foreach ($themaLijst as $item) {
                                     echo "<tr>"?>
                             <td class='col-sm-10 col-md-5  col-lg-10'><?php echo $item["Naam"] ?></td>

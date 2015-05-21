@@ -1,5 +1,4 @@
 <?php
-
     /**
      * Created by PhpStorm.
      * User: Gert
@@ -13,7 +12,7 @@
         const URL = "http://finahbackend1920.azurewebsites.net/";
 
         public static function GetToken($username,$password){
-            $url = self::URL .  "/token";
+            $url = self::URL . "token";
 
             $data["username"] = $username;
             $data["password"] = $password;
@@ -23,73 +22,69 @@
             //var_dump($data);
             //$gegevens = json_encode($data);
             //Initiate cURL.
-            $ch = curl_init($url);
+            $options = array(
+                'http' => array(
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/x-www-form-url encoded',
+                    'content' => $gegevens,
+                ),
+            );
+            $context = stream_context_create($options);
+            $result = json_decode(@file_get_contents($url, false, $context), true);
 
-            //Tell cURL that we want to send a POST request.
-            curl_setopt($ch, CURLOPT_POST, 1);
-
-            //Attach our encoded JSON string to the POST fields.
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $gegevens);
-
-            //Geen output naar het scherm
-            curl_setopt($ch, CURLOPT_VERBOSE, 0);
-
-            //Set the content type to application/json
-            //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-url encoded']);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-            //Execute the request
-            $result = curl_exec($ch);
-            //var_dump($result);
             return $result;
         }
 
 
-        public static function HaalOp($type, $id = null)
+        public static function HaalOp($type, $id = null, $token = null)
         {
-
-            //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
-            $url = self::URL . $type . "/";
-            if ($id == null) {
-                $url .= "Overzicht";
-            } else $url .= $id;
-            //$token = $_SESSION["access_token"];
-            //$url =$url. '?access_token='.$token;
-            $token = "ntuZLcD-xeLpw0O3hW7UQv5fdmRp9nQNixYRTJuOxA-cTjiKS4HE64TXGrAU-RojsJ_0E7oaUhAgSXKpVrgb2H9PuTyPBxYWQVKJaCfG8ivR57C0Hyb26IgcVUpE4n8ZICwUNw82Z7GhOkHHFVUgdPBXaaMEuXLlRnWY_1xexThHIDbYpbQpVvmBCyjNuIkRbsTSr0htF47HbeG7Sy_WIRIbszG3MLNpWo87lw6m5kmkIHZ7Xy4jBMn6gGLQ_21edbS7vXy9aMY4t9uk4mvfwFZ_YBVx9DJXCf8iVTIjqufuwzowdm73eahCo0_bx4029pzShxKDaLpNQN2ZrKdpNtJQM4uhdPSB9fg37854M263lUYrjY2Q6UViTf8jn6uxACpiyNpPuOf_K131-WxAh2QTSf6wttpGBByua_G1PnwA32Hk72AMgBhjuuXloJGKIm10gCq3UQWWOWcJARnoMlxMM6ux5FhEeD5991eJ7qKL6wWs086SAXSc-rizr3VhuFSlLMCeqr7lDBWVovd1Pg";
+            if ($token != null) {
+                //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
+                $url = self::URL . $type . "/";
+                if ($id == null) {
+                    $url .= "Overzicht";
+                } else $url .= $id;
+                //$token = $_SESSION["access_token"];
+                //$url =$url. '?access_token='.$token;
+                //$token = "ntuZLcD-xeLpw0O3hW7UQv5fdmRp9nQNixYRTJuOxA-cTjiKS4HE64TXGrAU-RojsJ_0E7oaUhAgSXKpVrgb2H9PuTyPBxYWQVKJaCfG8ivR57C0Hyb26IgcVUpE4n8ZICwUNw82Z7GhOkHHFVUgdPBXaaMEuXLlRnWY_1xexThHIDbYpbQpVvmBCyjNuIkRbsTSr0htF47HbeG7Sy_WIRIbszG3MLNpWo87lw6m5kmkIHZ7Xy4jBMn6gGLQ_21edbS7vXy9aMY4t9uk4mvfwFZ_YBVx9DJXCf8iVTIjqufuwzowdm73eahCo0_bx4029pzShxKDaLpNQN2ZrKdpNtJQM4uhdPSB9fg37854M263lUYrjY2Q6UViTf8jn6uxACpiyNpPuOf_K131-WxAh2QTSf6wttpGBByua_G1PnwA32Hk72AMgBhjuuXloJGKIm10gCq3UQWWOWcJARnoMlxMM6ux5FhEeD5991eJ7qKL6wWs086SAXSc-rizr3VhuFSlLMCeqr7lDBWVovd1Pg";
 
 // set up the curl resource
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_VERBOSE, 1);
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HEADER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json','Authorization: Bearer '.$token]);
-// execute the request
-
-            $output = curl_exec($ch);
-            $pos = strpos($output, '[');
-            $rest = substr($output, $pos);
-            //var_dump($rest);
-// output the profile information - includes the header
-
-            $result = json_decode($rest,true);
-
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_VERBOSE, 1);
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
+                // execute the request
+                $output = curl_exec($ch);
+                if ($id == null) {
+                    $pos = strpos($output, '[');
+                    $rest = substr($output, $pos);
+                    $result = json_decode($rest, true);
+                } else {
+                    $pos = strpos($output, '{');
+                    $rest = substr($output, $pos);
+                    $result = json_decode($rest, true);
+                }
 // close curl resource to free up system resources
 
-            curl_close($ch);
-            //var_dump($result);
-            return $result;
-
+                curl_close($ch);
+                //var_dump($result);
+                return $result;
+            } else {
+                $url = self::URL . $type . "/";
+                if ($id == null) {
+                    $url .= "Overzicht";
+                } else $url .= $id;
+                // request list of contacts from Web API + deserialize data from JSON
+                //var_dump($url);
+                $result = json_decode(file_get_contents($url), true);
+                //var_dump($result);
+                return $result;
+            }
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
-/*            $url = self::URL . $type . "/";
-            if ($id == null) {
-                $url .= "Overzicht";
-            } else $url .= $id;
-            // request list of contacts from Web API + deserialize data from JSON
-            //var_dump($url);
-            $result = json_decode(file_get_contents($url), true);
-            //var_dump($result);
-            return $result;*/
+
         }
 
         public static function SchrijfWeg($type, $data)

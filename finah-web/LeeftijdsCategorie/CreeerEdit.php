@@ -5,6 +5,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     header('Location: Overzicht.php');
     exit;
 }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -127,7 +128,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                     if (isset($_POST["bewerk"])) {
                                         $id = $_POST["bewerk"];
 
-                                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
                                         $van = $LeeftijdsCat["Van"];
                                         $tot = $LeeftijdsCat["Tot"];
                                         echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
@@ -154,7 +155,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                             if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat)) {
 
                                             }
-                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
                                             $van = $LeeftijdsCat["Van"];
                                             $tot = $LeeftijdsCat["Tot"];
                                             echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
@@ -214,7 +215,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
     <?php
     } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $leeftijdsCat= FinahDAO::HaalOp("LeeftijdsCategorie", $id);
+        $leeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
         $van = $leeftijdsCat["Van"];
         $tot = $leeftijdsCat["Tot"];
 

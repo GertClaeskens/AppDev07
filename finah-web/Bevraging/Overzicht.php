@@ -2,6 +2,8 @@
 require "../PHP/DAO/FinahDAO.php";
 require_once "../PHP/Models/Bevraging.php";
 require_once "../PHP/Models/Onderzoek.php";
+
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +143,7 @@ require_once "../PHP/Models/Onderzoek.php";
                             </thead>
                             <tbody>
                             <?php
-                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek");
+                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek", null, $_SESSION["token"]);
                                 foreach ($onderzoekLijst as $item) {
                                       //$antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
                                             ?>

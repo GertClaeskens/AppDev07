@@ -6,6 +6,7 @@
         header('Location: Overzicht.php');
         exit;
     }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -125,7 +126,7 @@
                             if (isset($_POST["bewerk"])) {
                                 $id = $_POST["bewerk"];
 
-                                $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                $pathologie = FinahDAO::HaalOp("Pathologie", $id, $_SESSION["token"]);
                                 $naam = $pathologie["Omschrijving"];
                                 echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                             } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
@@ -153,7 +154,7 @@
                                     if (FinahDAO::PasAan("Pathologie", $id, $pathologie)) {
 
                                     }
-                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+                                    $pathologie = FinahDAO::HaalOp("Pathologie", $id, $_SESSION["token"]);
                                     $naam = $pathologie["Omschrijving"];
                                     echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
                                     echo "De pathologie werd succesvol opgeslagen";
@@ -186,7 +187,7 @@
                                 <div class="col-xs-7 col-sm-7 col-md-4 col-lg-3">
                                     <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                         <?php
-                                            $aandoeningen = FinahDAO::HaalOp("Aandoening");
+                                            $aandoeningen = FinahDAO::HaalOp("Aandoening", null, $_SESSION["token"]);
                                             foreach ($aandoeningen as $item) {
                                                 $selected = "";
                                                 if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
@@ -238,7 +239,7 @@
     <?php
         } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $pathologie = FinahDAO::HaalOp("Pathologie", $id);
+        $pathologie = FinahDAO::HaalOp("Pathologie", $id, $_SESSION["token"]);
         $omschrijving = $pathologie["Omschrijving"];
         $aandoeningLijst = $pathologie["Aandoeningen"];
 
