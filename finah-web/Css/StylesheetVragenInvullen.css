@@ -20,18 +20,22 @@
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:bold;
     font-size: 1.8em;
+    padding-left:20px;
+
 }
 
 #vraag{
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:bold;
     font-size:1.4em;
+    padding-left:20px;
 }
 
 .eVraag{
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:bold;
     font-size:1.2em;
+    padding-left:20px;
 }
 
 .antwoordButton{
@@ -39,11 +43,11 @@
     height:12%;
 }
 
-.antwoordButton:active{
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
-}
+/*.antwoordButton:active  {*/
+    /*color: #fff;*/
+    /*background-color: #286090;*/
+    /*border-color: #204d74;*/
+/*}*/
 
 .prevButton{
     width:100%;

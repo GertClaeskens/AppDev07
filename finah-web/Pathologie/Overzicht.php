@@ -153,7 +153,7 @@ require_once "../PHP/Models/Pathologie.php";
                                     <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                             name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                             class='delBtn btn btn-primary'
-                                            onclick="Confirm.render('Deze pathologie verwijderen?','delete_lft',<?php echo $verw ?>,'Pathologie',this)">
+                                            onclick="Confirm.render('Deze pathologie verwijderen?','delete_lft',<?php echo $verw ?>,'Pathologie',this,'<?php echo $_SESSION["token"]?>')">
                                         <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                     </button>
                                 </td>
