@@ -40,8 +40,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var pat = '';
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
-                    //var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
-                    var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
+                    var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
                     xhr.setRequestHeader('Authorization','Bearer '+tk);
                     xhr.onreadystatechange = function () {
@@ -68,8 +68,8 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var pat = '';
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
-                    //var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
-                    var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
+                    var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
+                    //var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
                     xhr.open("GET", url, true);
                     xhr.setRequestHeader('Authorization','Bearer '+tk);
                     xhr.onreadystatechange = function () {
@@ -215,7 +215,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $bevraging_pat->setIsPatient(true);
                                                 $bevraging_man = new Bevraging();
                                                 $bevraging_man->setIsPatient(false);
-                                                $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds",$_SESSION["token"]);
+                                                $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
                                                 $bevraging_pat->setLeeftijdsCategorieId($leeftijdcatPat);
