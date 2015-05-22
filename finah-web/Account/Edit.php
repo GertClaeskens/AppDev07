@@ -1,6 +1,5 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
-session_start()
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -70,7 +69,7 @@ session_start()
             <a class="navbar-brand header" href="../index.php"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -82,7 +81,9 @@ session_start()
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="../logout.php">                         <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen                     </a>
+                    <a role="menuitem" tabindex="-1" href="#">
+                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
+                    </a>
                 </li>
             </ul>
         </div>
@@ -148,7 +149,6 @@ session_start()
                                 <div class="panel-body">
                                     <form id="accountForm" class="form form-horizontal" role="form" method="POST"
                                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                        <?php $account = FinahDAO::HaalOp("api/Account", "UserInfo", $_SESSION["token"]);?>
                                         <div class="row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                                 <label for="Rol"  class="control-label">
@@ -156,8 +156,7 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled
-                                                    value="<?= $account["Rol"] ?>">
+                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled >
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -167,8 +166,7 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="voornaam" id="Voornaam" class="form-control"
-                                                       value="<?= $account["Voornaam"] ?>">
+                                                <input type="text" name="voornaam" id="Voornaam" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -178,19 +176,27 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="naam" id="Naam" class="form-control"
-                                                       value="<?= $account["Naam"] ?>">
+                                                <input type="text" name="naam" id="Naam" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="row detail-row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
-                                                <label for="Adres"  class="control-label">
-                                                    Adres:
+                                                <label for="Straat"  class="control-label">
+                                                    Straat:
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="Adres" id="Adres" class="form-control"
-                                                       value="<?= $account["Adres"] ?>">
+                                                <input type="text" name="straat" id="Straat" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row detail-row">
+                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
+                                                <label for="Huisnr"  class="control-label">
+                                                    Huisnummer:
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
+                                                <input type="text" name="huisnr" id="Huisnr" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -200,8 +206,7 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="postcode" id="Postcode" class="form-control" onchange="OnChange(event)"
-                                                       value="<?= $account["Postcode"] ?>">
+                                                <input type="text" name="postcode" id="Postcode" class="form-control" onchange="OnChange(event)">
                                             </div>
                                         </div>
 <!--                                        todo met javascript adhv postcode de mogelijke woonplaatsen weergeven in een combobox (== bevraging create ) -->
@@ -213,10 +218,10 @@ session_start()
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                                 <select name="woonplaats" class="form-control" id="Woonplaats" >
-                                                    <option value="1"><?= $account["Woonplaats"] ?></option>
                                                     <option value="">Neeroeteren</option>
                                                     <option value="">Maaseik</option>
                                                     <option value="">Opoeteren</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -227,8 +232,7 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="telefoon" id="Telefoon" class="form-control"
-                                                       value="<?= $account["Telefoon"] ?>">
+                                                <input type="text" name="telefoon" id="Telefoon" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -238,8 +242,7 @@ session_start()
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="email" id="Email" class="form-control"
-                                                       value="<?= $account["Email"] ?>">
+                                                <input type="text" name="email" id="Email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -307,10 +310,6 @@ session_start()
             </div>
         </div>
     </div>
-    <?php if(isset($_POST["wijzigInfo"])){
-        finahDao::PasAan("api/Account","ChangeUserInfo", $_POST, $_SESSION["token"]);
-    }
-    ?>
     <script>
         $().ready(function () {
             $.validator.addMethod(

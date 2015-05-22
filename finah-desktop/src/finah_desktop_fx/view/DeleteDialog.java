@@ -20,7 +20,7 @@ public class DeleteDialog<T> {
 		int dialogButton = JOptionPane.YES_NO_OPTION;
 		int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want delete this item?","Delete item",dialogButton);
 		if(dialogResult == JOptionPane.YES_OPTION){
-			/*int index = table.getFocusModel().getFocusedIndex();
+			int index = table.getFocusModel().getFocusedIndex();
 			switch(table.getId()){
 			case "tblVragen":{
 				
@@ -50,7 +50,7 @@ public class DeleteDialog<T> {
 				
 				break;
 				}
-			}*/
+			}
 		}
 		else{
 			//venster sluit gewoon af

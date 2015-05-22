@@ -212,6 +212,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
     <Compile Include="Controllers\AntwoordenLijstController.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Controllers\FotoController.cs" />
+    <Compile Include="Controllers\GeluidsFragmentController.cs" />
+>>>>>>> c6a8f8ef3b93a1cfeb078f3902043d046bf9ddf0
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
     <Compile Include="Controllers\OnderzoekController.cs" />
@@ -238,6 +243,9 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bevraging.cs" />
+    <Compile Include="Models\EID.cs" />
+    <Compile Include="Models\Foto.cs" />
+    <Compile Include="Models\GeluidsFragment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LeeftijdsCategorie.cs" />
     <Compile Include="Models\Postcode.cs" />

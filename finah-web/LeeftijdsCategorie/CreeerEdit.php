@@ -1,10 +1,10 @@
 <?php
     require "../PHP/DAO/FinahDAO.php";
     require "../PHP/Models/LeeftijdsCategorie.php";
-    if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
-        header('Location: Overzicht.php');
-        exit;
-    }
+if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
+    header('Location: Overzicht.php');
+    exit;
+}
     session_start();
 ?>
     <!DOCTYPE html>
@@ -43,8 +43,7 @@
             <a class="navbar-brand header" href="../index.php"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <a class="btn dropdown-toggle pull-left" type="button" id="menu1"
-               data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -56,8 +55,9 @@
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="../logout.php"> <span
-                            class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen </a>
+                    <a role="menuitem" tabindex="-1" href="#">
+                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
+                    </a>
                 </li>
             </ul>
         </div>
@@ -79,7 +79,6 @@
                     <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                 </li>
                 <br/>
-<?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                 <li class="sidebar-brand">
                     <h4>
                         BEHEER
@@ -106,7 +105,6 @@
                 <li>
                     <a href="../Thema/Overzicht.php"> Thema's</a>
                 </li>
-    <?php }?>
             </ul>
         </div>
         <div id="page-content-wrapper">
@@ -125,73 +123,68 @@
                         <?php
                             $LeeftijdsCat = new LeeftijdsCategorie();
                             if (isset($_POST)) {
-                            if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
-                            if (isset($_POST["bewerk"])) {
-                                $id = $_POST["bewerk"];
+                                if (isset($_POST["bewerk"]) || isset($_POST["update"]) || isset($_POST["creeer"]) || isset ($_POST["nieuw"])) {
+                                    if (isset($_POST["bewerk"])) {
+                                        $id = $_POST["bewerk"];
 
-                                $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
-                                $van = $LeeftijdsCat["Van"];
-                                $tot = $LeeftijdsCat["Tot"];
-                                echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                            } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
-                                echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
-                            }
-                            if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
-                                $van = $_POST["van"];
-                                $tot = $_POST["tot"];
-                                $LeeftijdsCat->setVan($van);
-                                $LeeftijdsCat->setTot($tot);
-                                if (isset($_POST["nieuw"])) {
-                                    if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat, $_SESSION["token"])) {
-                                        //Todo eventueel een exception toevoegen hier
-                                        echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                        $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
+                                        $van = $LeeftijdsCat["Van"];
+                                        $tot = $LeeftijdsCat["Tot"];
+                                        echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                    } elseif (isset($_POST["creeer"]) || isset($_POST["nieuw"])) {
+                                        echo "<h1 class='header' >" . " Nieuwe leeftijdscategorie " . "</h1> ";
                                     }
-                                }
-                                if (isset($_POST["update"])) {
-                                    $id = $_POST["update"];
+                                    if (isset($_POST["nieuw"]) || isset($_POST["update"])) {
+                                        $van = $_POST["van"];
+                                        $tot = $_POST["tot"];
+                                        $LeeftijdsCat->setVan($van);
+                                        $LeeftijdsCat->setTot($tot);
+                                        if (isset($_POST["nieuw"])) {
+                                            if (FinahDAO::SchrijfWeg("LeeftijdsCategorie", $LeeftijdsCat,$_SESSION["token"])) {
+                                                //Todo eventueel een exception toevoegen hier
+                                                echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                            }
+                                        }
+                                        if (isset($_POST["update"])) {
+                                            $id = $_POST["update"];
 
-                                    $LeeftijdsCat->setId($id);
-                                    if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat, $_SESSION["token"])) {
+                                            $LeeftijdsCat->setId($id);
+                                            if (FinahDAO::PasAan("LeeftijdsCategorie", $id, $LeeftijdsCat,$_SESSION["token"])) {
 
+                                            }
+                                            $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
+                                            $van = $LeeftijdsCat["Van"];
+                                            $tot = $LeeftijdsCat["Tot"];
+                                            echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
+                                            echo "De leeftijdscategorie werd succesvol opgeslagen";
+                                        }
                                     }
-                                    $LeeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
-                                    $van = $LeeftijdsCat["Van"];
-                                    $tot = $LeeftijdsCat["Tot"];
-                                    echo "<h1 class='header'>" . " Bewerken : Van " . $van . " Tot " . $tot . "</h1 >";
-                                    echo "De leeftijdscategorie werd succesvol opgeslagen";
-                                }
-                            }
                         ?>
                         <form id="leeftijdcatForm" class="form-horizontal" role="form" method="POST"
                               action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                             <div class="form-group top-form">
-                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van">
-                                    Van: </label>
-
+                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Van"> Van: </label>
                                 <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
                                     <input type="text" name="van" class="form-control" id="Van" value=
-                                        <?php
-                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                echo $van;
-                                            } ?>>
+                                    <?php
+                                    if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                        echo $van;
+                                    } ?>>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot">
-                                    Tot: </label>
-
+                                <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="Tot"> Tot:  </label>
                                 <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 text-nowrap">
                                     <input type="text" name="tot" class="form-control" id="Tot" value=
                                         <?php
-                                            if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
-                                                echo $tot;
-                                            } ?>>
+                                        if (isset($_POST["bewerk"]) || isset($_POST["update"])) {
+                                            echo $tot;
+                                        } ?> >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class=" col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-10">
-                                    <button type="button" onclick="location.href='Overzicht.php'"
-                                            class="btn btn-primary">
+                                    <button type="button" onclick="location.href='Overzicht.php'" class="btn btn-primary">
                                         Terug
                                     </button>
                                     <button class="btn btn-primary" type="submit"
@@ -201,12 +194,10 @@
                                                 echo "'nieuw'";
                                             } elseif (isset($_POST["nieuw"])) {
                                                 echo "'nieuw'";
-                                            } elseif (isset($_POST["update"])) {
+                                            } elseif (isset($_POST["update"])){
                                                 echo "'update'";
                                             }
-                                                if (!isset($_POST["creeer"])){
-                                            ?> value="<?php echo $id;
-                                                } ?>"> Opslaan
+                                            if (!isset($_POST["creeer"])){?> value="<?php echo $id ;}?>"> Opslaan
                                     </button>
                                 </div>
                             </div>
@@ -217,7 +208,7 @@
         </div>
     </div>
     <?php
-        } elseif (isset($_POST["details"])) {
+    } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
         $leeftijdsCat = FinahDAO::HaalOp("LeeftijdsCategorie", $id, $_SESSION["token"]);
         $van = $leeftijdsCat["Van"];
@@ -256,22 +247,21 @@
                 <div class="row button-row">
                     <div
                         class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
-                        <form class="form-horizontal form-buttons" role="form" method="POST"
-                              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                            <button type="button" onclick="location.href='Overzicht.php'"
-                                    class="btn btn-primary">
-                                Terug
-                            </button>
-                            <button type='submit' name='bewerk' id='<?php echo $id ?>'
-                                    class='btn btn-primary' value="<?php echo $id ?>">
-                                Bewerken
-                            </button>
-                            <button type='button' title='Verwijderen' id='<?php echo $id ?>'
-                                    name='verwijderBtn' value="<?php echo $id ?>"
-                                    class='delBtn btn btn-primary'
-                                    onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
-                                Verwijderen
-                            </button>
+                        <form class="form-horizontal form-buttons" role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <button type="button" onclick="location.href='Overzicht.php'"
+                                class="btn btn-primary">
+                            Terug
+                        </button>
+                        <button type='submit' name='bewerk' id='<?php echo $id ?>'
+                                class='btn btn-primary' value="<?php echo $id ?>">
+                            Bewerken
+                        </button>
+                        <button type='button' title='Verwijderen' id='<?php echo $id ?>'
+                                name='verwijderBtn' value="<?php echo $id ?>"
+                                class='delBtn btn btn-primary'
+                                onclick="Confirm.render('Deze leeftijdscategorie verwijderen?','delete_lft',<?php echo $id ?>,'LeeftijdsCategorie',this)">
+                            Verwijderen
+                        </button>
                         </form>
                     </div>
                 </div>
@@ -279,50 +269,50 @@
         </div>
     <?php
     }
-        }
+    }
     ?>
-    <script>
-        $().ready(
-            function () {
-                $("#leeftijdcatForm").validate({
-                    rules: {
-                        van: {
-                            required: true,
-                            number: true,
-                            min: 0
-                        },
-                        tot: {
-                            required: true,
-                            number: true,
-                            min: 0
-                        }
-                    },
-                    messages: {
-                        van: {
-                            required: "Gelieve dit veld in te vullen",
-                            number: "Gelieve een postieve numerieke waarde in te geven",
-                            min: "Gelieve een positieve waarde in te geven"
-                        },
-                        tot: {
-                            required: "Gelieve dit veld in te vullen",
-                            number: "Gelieve een postieve numerieke waarde in te geven",
-                            min: "Gelieve een positieve waarde in te geven"
-                        }
-                    }
-                });
-            });
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-            if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
-                $("#side-toggle").removeClass("glyphicon-option-vertical");
-                $("#side-toggle").addClass("glyphicon-option-horizontal");
-            } else {
-                $("#side-toggle").removeClass("glyphicon-option-horizontal");
-                $("#side-toggle").addClass("glyphicon-option-vertical");
-            }
-        });
-    </script>
+     <script>
+         $().ready(
+             function () {
+             $("#leeftijdcatForm").validate({
+                 rules: {
+                     van: {
+                         required: true,
+                         number: true,
+                         min:0
+                     },
+                     tot: {
+                         required: true,
+                         number: true,
+                         min:0
+                     }
+                 },
+                 messages: {
+                     van:{
+                         required: "Gelieve dit veld in te vullen",
+                         number: "Gelieve een postieve numerieke waarde in te geven",
+                         min: "Gelieve een positieve waarde in te geven"
+                     },
+                     tot: {
+                         required: "Gelieve dit veld in te vullen",
+                         number: "Gelieve een postieve numerieke waarde in te geven",
+                         min: "Gelieve een positieve waarde in te geven"
+                     }
+                 }
+             });
+         });
+         $("#menu-toggle").click(function (e) {
+             e.preventDefault();
+             $("#wrapper").toggleClass("toggled");
+             if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
+                 $("#side-toggle").removeClass("glyphicon-option-vertical");
+                 $("#side-toggle").addClass("glyphicon-option-horizontal");
+             } else {
+                 $("#side-toggle").removeClass("glyphicon-option-horizontal");
+                 $("#side-toggle").addClass("glyphicon-option-vertical");
+             }
+         });
+     </script>
     </body>
     </html>
 <?php

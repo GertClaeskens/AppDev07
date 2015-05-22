@@ -25,7 +25,6 @@ namespace Finah_Backend.Controllers
     using System.Web.Security;
 
     using Finah_Backend.Models;
-    using Finah_Backend.DAL;
 
     [Authorize]
     [RoutePrefix("api/Account")]
@@ -63,6 +62,8 @@ namespace Finah_Backend.Controllers
         [Route("Rol/{username}")]
         public string GetRol(string username)
         {
+
+            
             Console.WriteLine(User.Identity.Name);
             if (User.IsInRole("Admin")) return "Admin";
             if (User.IsInRole("Onderzoeker")) return "Onderzoeker";
@@ -84,49 +85,13 @@ namespace Finah_Backend.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             var externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-            var userInfo = UserManager.FindById(User.Identity.GetUserId());
 
             return new UserInfoViewModel
             {
-                Rol = GetRol(User.Identity.GetUserName()),
-                Voornaam = userInfo.VoorNaam,
-                Naam = userInfo.Naam,
-                Adres = userInfo.Adres,
-                Postcode = userInfo.Postcd.Postnr,
-                Woonplaats = userInfo.Postcd.Gemeente,
-                Telefoon = userInfo.PhoneNumber,
-                Email = userInfo.Email
-                //HasRegistered = externalLogin == null,
-                //LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                Email = User.Identity.GetUserName(),
+                HasRegistered = externalLogin == null,
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
-        }
-
-        // POST api/Account/ChangePassword
-        [Route("ChangeUserInfo")]
-        public async Task<IHttpActionResult> ChangeUserInfo(ChangeUserInfoBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            ApplicationUser userModel = UserManager.FindById(User.Identity.GetUserId());
-
-            userModel.VoorNaam = model.Voornaam;
-            userModel.Naam = model.Naam;
-            userModel.Adres = model.Adres;
-            userModel.PostcdId = model.Postcode;
-            userModel.Telnr = model.Telefoon;
-            userModel.Email = model.Email;
-
-            var result = await UserManager.UpdateAsync(userModel);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
         }
 
         // POST api/Account/Logout
@@ -171,7 +136,7 @@ namespace Finah_Backend.Controllers
             return new ManageInfoViewModel
             {
                 LocalLoginProvider = LocalLoginProvider,
-                Email = user.Email,
+                Email = user.UserName,
                 Logins = logins,
                 ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };

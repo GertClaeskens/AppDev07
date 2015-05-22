@@ -33,6 +33,11 @@
 
         public DbSet<Bevraging> Bevragingen { get; set; }
 
+        public DbSet<EID> EIDs { get; set; }
+
+        public DbSet<Foto> Fotos { get; set; }
+
+        public DbSet<GeluidsFragment> Geluidsfragmenten { get; set; }
 
         public DbSet<LeeftijdsCategorie> LeeftijdsCategorieen { get; set; }
 
