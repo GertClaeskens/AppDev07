@@ -55,8 +55,9 @@ function loadData(id) {
     xhr.overrideMimeType("application/json");
     alert(id);
     url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + id + "/Pathologie";
+    //url = "http://localhost:1695/Aandoening/" + id + "/Pathologie";
 
-    xhr.open("GET", url, true);
+        xhr.open("GET", url, true);
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {

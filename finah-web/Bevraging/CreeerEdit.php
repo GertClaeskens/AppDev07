@@ -507,6 +507,22 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                 </div>
             </div>
         </div>
+        <?php
+            $bevraging = FinahDAO::HaalOp("Bevraging", $id);
+            $antwoordenLijst = $bevraging["Antwoorden"];
+            $antwoorden = explode(",", $bevraging["Antwoorden"]);
+            for ($i=0;$i<=count($antwoorden);$i++){
+                if ($antwoorden[$i]<=5) {
+                    $ruwedata .= $i." a:" .$antwoorden[$i];
+                }
+                if ($antwoorden[$i]>5){
+                  $ruwedata .=  $i . " b, :ja";
+                } else if ($antwoorden[$i] >2 ) {
+                   $ruwedata .= $i . " b, :nee";
+                }
+            }
+        echo $ruwedata;
+        ?>
     <?php
         }
     }

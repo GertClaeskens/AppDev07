@@ -8,9 +8,8 @@
     class FinahDAO
     {
 
-        const URL = "http://localhost:1695/";
-
-        //const URL = "http://finahbackend1920.azurewebsites.net/";
+//        const URL = "http://localhost:1695/";
+        const URL = "http://finahbackend1920.azurewebsites.net/";
 
         public static function GetToken($username,$password){
             $url = self::URL . "token";
@@ -113,9 +112,7 @@
                 //Execute the request
                 $result = curl_exec($ch);
                 //var_dump($result);
-                $info = curl_getinfo($ch);
-                curl_close($ch);
-                return $info['http_code'];
+                return $result;
             }else{
                 $url = self::URL . $type . "/";
                 //var_dump($data);
@@ -132,7 +129,7 @@
                 //Geen output naar het scherm
                 curl_setopt($ch, CURLOPT_VERBOSE, 0);
                 curl_setopt($ch, CURLOPT_URL, $url);
-                //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HEADER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
@@ -141,9 +138,7 @@
                 $info = curl_getinfo($ch);
                 curl_close($ch);
                 //var_dump($result);
-                var_dump($info['http_code']);
-                echo $info['http_code'];
-                return $info['http_code'];
+                return $result;
             }
         }
 
