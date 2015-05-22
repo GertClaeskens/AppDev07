@@ -274,7 +274,7 @@
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
                         <label>Pathologie(ën):</label>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-3">
                         <?php
                         $i=1;
                             foreach ($pathologieLijst as $item) {
