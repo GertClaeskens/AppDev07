@@ -131,7 +131,7 @@
                             $account["Login"] = $aanvraag["Login"];
                             $account["Postcode"] = $aanvraag["Postcd"]["Id"];
                             //$account["Id"] = null;
-                            var_dump(FinahDAO::SchrijfWeg("api/Account/Register", $account));
+                            echo FinahDAO::SchrijfWeg("api/Account/Register", $account);
                             var_dump($account);
                         }
                     ?>

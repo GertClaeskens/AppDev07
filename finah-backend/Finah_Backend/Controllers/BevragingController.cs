@@ -137,7 +137,7 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            bevraging.LeeftijdsCategorie = db.LeeftijdsCategorieen.Find(bevraging.LeeftijdsCategorieId);
             db.Bevragingen.Add(bevraging);
 
             try

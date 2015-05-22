@@ -8,8 +8,9 @@
     class FinahDAO
     {
 
-        //const URL = "http://localhost:1695/";
-        const URL = "http://finahbackend1920.azurewebsites.net/";
+        const URL = "http://localhost:1695/";
+
+        //const URL = "http://finahbackend1920.azurewebsites.net/";
 
         public static function GetToken($username,$password){
             $url = self::URL . "token";
@@ -25,7 +26,7 @@
             $options = array(
                 'http' => array(
                     'method' => 'POST',
-                    'header' => 'Content-Type: application/x-www-form-url encoded',
+                    'header' => 'Content-Type: application/x-www-form-urlencoded',
                     'content' => $gegevens,
                 ),
             );
@@ -52,6 +53,7 @@
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
                 // execute the request
                 $output = curl_exec($ch);
+                var_dump($output);
                 if ($id == null) {
                     $pos = strpos($output, '[');
                     $rest = substr($output, $pos);
@@ -62,18 +64,22 @@
                     $result = json_decode($rest, true);
                 }
                 // close curl resource to free up system resources
-                curl_close($ch);
+
                 //var_dump($result);
+                $info = curl_getinfo($ch);
+                curl_close($ch);
                 return $result;
             } else {
                 $url = self::URL . $type . "/";
                 if ($id == null) {
                     $url .= "Overzicht";
                 } else $url .= $id;
+
                 // request list of contacts from Web API + deserialize data from JSON
-                //var_dump($url);
+                var_dump($url);
                 $result = json_decode(file_get_contents($url), true);
-                //var_dump($result);
+
+                var_dump($result);
                 return $result;
             }
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
@@ -98,7 +104,7 @@
                 //Geen output naar het scherm
                 curl_setopt($ch, CURLOPT_VERBOSE, 0);
                 curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HEADER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
                 //Set the content type to application/json
@@ -107,7 +113,9 @@
                 //Execute the request
                 $result = curl_exec($ch);
                 //var_dump($result);
-                return $result;
+                $info = curl_getinfo($ch);
+                curl_close($ch);
+                return $info['http_code'];
             }else{
                 $url = self::URL . $type . "/";
                 //var_dump($data);
@@ -124,14 +132,18 @@
                 //Geen output naar het scherm
                 curl_setopt($ch, CURLOPT_VERBOSE, 0);
                 curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HEADER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
                 //Execute the request
                 $result = curl_exec($ch);
+                $info = curl_getinfo($ch);
+                curl_close($ch);
                 //var_dump($result);
-                return $result;
+                var_dump($info['http_code']);
+                echo $info['http_code'];
+                return $info['http_code'];
             }
         }
 
