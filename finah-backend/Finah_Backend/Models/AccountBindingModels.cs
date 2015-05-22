@@ -64,15 +64,11 @@ namespace Finah_Backend.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-
-
         [Display(Name = "Adres")]
         public string Adres { get; set; }
 
-
         [Display(Name = "Postcode")]
         public int Postcode { get; set; }
-
 
         [Display(Name = "Telefoon")]
         public string Telefoon { get; set; }

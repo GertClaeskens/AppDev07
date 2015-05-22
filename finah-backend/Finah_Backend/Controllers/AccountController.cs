@@ -61,8 +61,6 @@ namespace Finah_Backend.Controllers
         [Route("Rol/{username}")]
         public string GetRol(string username)
         {
-
-            
             Console.WriteLine(User.Identity.Name);
             if (User.IsInRole("Admin")) return "Admin";
             if (User.IsInRole("Onderzoeker")) return "Onderzoeker";
@@ -78,12 +76,19 @@ namespace Finah_Backend.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             var externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            var userInfo = UserManager.FindById(User.Identity.GetUserId());
 
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                Rol = GetRol(User.Identity.GetUserName()),
+                Voornaam = userInfo.VoorNaam,
+                Naam = userInfo.Naam,
+                Adres = userInfo.Adres,
+                Postcode = userInfo.Postcd.Postnr,
+                Woonplaats = userInfo.Postcd.Gemeente,
+                Email = userInfo.Email
+                //HasRegistered = externalLogin == null,
+                //LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
 

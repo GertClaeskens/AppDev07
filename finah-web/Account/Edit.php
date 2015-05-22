@@ -1,5 +1,6 @@
 <?php
 require "../PHP/DAO/FinahDAO.php";
+session_start()
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -149,6 +150,7 @@ require "../PHP/DAO/FinahDAO.php";
                                 <div class="panel-body">
                                     <form id="accountForm" class="form form-horizontal" role="form" method="POST"
                                           action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                        <?php $account = FinahDAO::HaalOp("api/Account", "UserInfo", $_SESSION["token"]);?>
                                         <div class="row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
                                                 <label for="Rol"  class="control-label">
@@ -156,7 +158,8 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled >
+                                                <input type="text" name="rol" id="Rol"  class="form-control" disabled
+                                                    value="<?= $account["Rol"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -166,7 +169,8 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="voornaam" id="Voornaam" class="form-control">
+                                                <input type="text" name="voornaam" id="Voornaam" class="form-control"
+                                                       value="<?= $account["Voornaam"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -176,27 +180,19 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="naam" id="Naam" class="form-control" >
+                                                <input type="text" name="naam" id="Naam" class="form-control"
+                                                       value="<?= $account["Naam"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
                                             <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
-                                                <label for="Straat"  class="control-label">
-                                                    Straat:
+                                                <label for="Adres"  class="control-label">
+                                                    Adres:
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="straat" id="Straat" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row detail-row">
-                                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-2">
-                                                <label for="Huisnr"  class="control-label">
-                                                    Huisnummer:
-                                                </label>
-                                            </div>
-                                            <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="huisnr" id="Huisnr" class="form-control">
+                                                <input type="text" name="Adres" id="Adres" class="form-control"
+                                                       value="<?= $account["Adres"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -206,7 +202,8 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                                                <input type="text" name="postcode" id="Postcode" class="form-control" onchange="OnChange(event)">
+                                                <input type="text" name="postcode" id="Postcode" class="form-control" onchange="OnChange(event)"
+                                                       value="<?= $account["Postcode"] ?>">
                                             </div>
                                         </div>
 <!--                                        todo met javascript adhv postcode de mogelijke woonplaatsen weergeven in een combobox (== bevraging create ) -->
@@ -218,10 +215,10 @@ require "../PHP/DAO/FinahDAO.php";
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                                 <select name="woonplaats" class="form-control" id="Woonplaats" >
+                                                    <option value=""><?= $account["Woonplaats"] ?></option>
                                                     <option value="">Neeroeteren</option>
                                                     <option value="">Maaseik</option>
                                                     <option value="">Opoeteren</option>
-
                                                 </select>
                                             </div>
                                         </div>
@@ -232,7 +229,8 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="telefoon" id="Telefoon" class="form-control">
+                                                <input type="text" name="telefoon" id="Telefoon" class="form-control"
+                                                       value="<?= $account["Telefoon"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
@@ -242,7 +240,8 @@ require "../PHP/DAO/FinahDAO.php";
                                                 </label>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                                <input type="text" name="email" id="Email" class="form-control">
+                                                <input type="text" name="email" id="Email" class="form-control"
+                                                       value="<?= $account["Email"] ?>">
                                             </div>
                                         </div>
                                         <div class="row detail-row">
