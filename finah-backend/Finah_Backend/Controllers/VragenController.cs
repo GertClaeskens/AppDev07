@@ -38,7 +38,6 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
-            db.Configuration.LazyLoadingEnabled = false;
             var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
@@ -50,10 +49,10 @@ namespace Finah_Backend.Controllers
 
         [Route("Vragen/Overzicht")] //Geen Api/ meer nodig
         //public IQueryable<Vraag> GetOverzicht()
-        public IEnumerable<Vraag> GetOverzicht()
+        public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Vragen.Include(p => p.Thema);//.Include(p => p.VragenLijst);
+            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema);//.Include(p => p.VragenLijst);
         }
 
         // PUT: api/Vragen/5
@@ -76,7 +75,7 @@ namespace Finah_Backend.Controllers
                              Id = vraag.Id,
                              VraagStelling = vraag.VraagStelling,
                              Thema = this.db.Themas.Find(vraag.Thema.Id),
-                             Afbeelding = vraag.Afbeelding,
+                             Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
                              VragenLijst = new List<VragenLijst>()
                          };
             if (vraag.VragenLijst != null)

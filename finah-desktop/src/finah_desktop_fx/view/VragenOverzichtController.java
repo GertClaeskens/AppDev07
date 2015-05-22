@@ -73,7 +73,8 @@ public class VragenOverzichtController implements Initializable {
 		colThema.setCellValueFactory(new PropertyValueFactory<>(
 				"Thema"));
 				
-		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
 		colActie
 				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Vraag, Boolean>, ObservableValue<Boolean>>() {
 					@Override
@@ -84,7 +85,8 @@ public class VragenOverzichtController implements Initializable {
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the table.
+		// create a cell value factory with an add button for each row in the
+		// table.
 		colActie
 				.setCellFactory(new Callback<TableColumn<Vraag, Boolean>, TableCell<Vraag, Boolean>>() {
 					@Override
@@ -106,6 +108,7 @@ public class VragenOverzichtController implements Initializable {
 	        		  vraag.setAandoening(cboAandoening.getValue());
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Vragen/", vraag);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

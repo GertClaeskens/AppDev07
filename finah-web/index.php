@@ -39,7 +39,7 @@
             $endpos = strpos($resarr["roles"], ']')-3;
             $rest = substr($resarr["roles"], $startpos,$endpos);
             $_SESSION["rol"] = $rest;
-            header("Location: Bevraging/Overzicht.php");
+            header("Location: Aandoening/Overzicht.php");
         } else echo "aanmelden mislukt";
 
     }
@@ -52,25 +52,25 @@
         </a>
         <a class="navbar-brand header" href="index.php"> Finah</a>
     </div>
-<!--            <div class="dropdown navbar-header pull-right nav-right">
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php /*echo $_SESSION["username"]; */?>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="0" href="../Account/Edit.php">
-                            <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account
-                        </a>
-                    </li>
-                    <li role="presentation" class="divider">
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">
-                            <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                        </a>
-                    </li>
-                </ul>
-            </div>-->
+    <!--        <div class="dropdown navbar-header pull-right nav-right">-->
+    <!--            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia-->
+    <!--                <span class="caret"></span>-->
+    <!--            </a>-->
+    <!--            <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="0" href="../Account/Edit.php">-->
+    <!--                        <span class="glyphicon glyphicon-user"></span> &nbsp Mijn account-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation" class="divider">-->
+    <!--                </li>-->
+    <!--                <li role="presentation">-->
+    <!--                    <a role="menuitem" tabindex="-1" href="#">-->
+    <!--                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
 </nav>
 <div id="wrapper">
     <!-- Sidebar -->
@@ -149,7 +149,8 @@
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                <input type="text" name="user" id="user" class="form-control">
+                                <input type="text" name="user" id="user" class="form-control"
+                                       value="rafael_sarrechia@hotmail.com">
                             </div>
                         </div>
                         <div class="row detail-row">
@@ -159,7 +160,8 @@
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                <input type="password" name="wachtwoord" id="wachtwoord" class="form-control">
+                                <input type="password" name="wachtwoord" id="wachtwoord" class="form-control"
+                                       value="W@chtwoordPxl">
                             </div>
                         </div>
                         <div class="row detail-row">

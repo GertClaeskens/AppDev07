@@ -64,6 +64,8 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, [FromBody] Pathologie pathologie)
         {
+            //TODO nakijken of dit nog werkt als er aandoeningen zijn aan toegevoegd
+            //TODO nog niet waterdicht -> Transactie?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -124,14 +126,13 @@ namespace Finah_Backend.Controllers
 
         // POST: api/Pathologies
         [HttpPost]
-        [AllowAnonymous]
         [ResponseType(typeof(Pathologie))]
-        public IHttpActionResult Post([FromBody] Pathologie pathologie)
+        public void Post([FromBody] Pathologie pathologie)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             var pat = new Pathologie { Omschrijving = pathologie.Omschrijving, Aandoeningen = new List<Aandoening>() };
             if (pathologie.Aandoeningen != null && pathologie.Aandoeningen.Count != 0)
             {
@@ -146,7 +147,7 @@ namespace Finah_Backend.Controllers
 
             if (pat.Aandoeningen == null || pat.Aandoeningen.Count != 0)
             {
-                return this.Ok();
+                return;
             }
             foreach (var ad in pat.Aandoeningen.Select(ad => this.db.Aandoeningen.Find(ad.Id)))
             {
@@ -155,8 +156,8 @@ namespace Finah_Backend.Controllers
             }
 
 
-            //return this.Ok();
-            return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
+
+            //return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
         }
 
         // DELETE: api/Pathologies/5

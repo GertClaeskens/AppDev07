@@ -44,6 +44,7 @@ public class ThemaOverzichtController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// public void initialize(){
 		// Initialize the person table with the two columns.
 		ObservableList<Thema> tblList = FXCollections.observableList(ThemaDAO
 				.GetThemas());
@@ -51,7 +52,8 @@ public class ThemaOverzichtController implements Initializable {
 		colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		colNaam.setCellValueFactory(new PropertyValueFactory<>("Naam"));
 
-		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
 		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Thema, Boolean>, ObservableValue<Boolean>>() {
 					@Override
 					public ObservableValue<Boolean> call(
@@ -61,7 +63,8 @@ public class ThemaOverzichtController implements Initializable {
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the table.
+		// create a cell value factory with an add button for each row in the
+		// table.
 		colActie.setCellFactory(new Callback<TableColumn<Thema, Boolean>, TableCell<Thema, Boolean>>() {
 					@Override
 					public TableCell<Thema, Boolean> call(
@@ -80,6 +83,7 @@ public class ThemaOverzichtController implements Initializable {
 	        		  thema.setId(ThemaDAO.GetThemas().size()+1);
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Thema/", thema);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

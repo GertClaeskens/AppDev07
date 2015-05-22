@@ -52,6 +52,7 @@ public class PathologieOverzichtController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	//public void initialize(){
         // Initialize the person table with the two columns.
 		ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
 		ObservableList<Pathologie> tblList = FXCollections.observableList(PathologieDAO.GetPathologieen());
@@ -61,7 +62,8 @@ public class PathologieOverzichtController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colPathologie.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
 
-		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
 		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pathologie, Boolean>, ObservableValue<Boolean>>() {
 					@Override
 					public ObservableValue<Boolean> call(
@@ -71,7 +73,8 @@ public class PathologieOverzichtController implements Initializable {
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the table.
+		// create a cell value factory with an add button for each row in the
+		// table.
 		colActie.setCellFactory(new Callback<TableColumn<Pathologie, Boolean>, TableCell<Pathologie, Boolean>>() {
 					@Override
 					public TableCell<Pathologie, Boolean> call(
@@ -91,6 +94,7 @@ public class PathologieOverzichtController implements Initializable {
 	        		  pathologie.voegAandoeningToe(cboAandoening.getValue());
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Pathologie/", pathologie);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

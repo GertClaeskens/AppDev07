@@ -1,6 +1,5 @@
 package finah_desktop_fx.view;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,7 +7,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,16 +15,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AccountDAO;
 import finah_desktop_fx.dao.RelatieDAO;
-import finah_desktop_fx.dao.SharedDAO;
-import finah_desktop_fx.dao.ThemaDAO;
 import finah_desktop_fx.model.Account;
 import finah_desktop_fx.model.Relatie;
-import finah_desktop_fx.model.Thema;
 
 public class AccountOverzichtController implements Initializable{
 	@FXML
@@ -46,11 +40,13 @@ public class AccountOverzichtController implements Initializable{
 	private MainApp mainApp;
 
 	public void initialize(URL location, ResourceBundle resources) {
+		//public void initialize(){
 	        // Initialize the person table with the two columns.
 			ObservableList<Account> tblList = FXCollections.observableList(AccountDAO.GetAccounts());
 			tblBestaandeAcc.setItems(tblList);
 	        colGebruikers.setCellValueFactory(new PropertyValueFactory<>("Naam"));
-			// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+			// define a simple boolean cell value for the action column so that the
+			// column will only be shown for non-empty rows.
 			colActies.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, Boolean>, ObservableValue<Boolean>>() {
 						@Override
 						public ObservableValue<Boolean> call(
@@ -68,7 +64,7 @@ public class AccountOverzichtController implements Initializable{
 							return new AddButtonsCell(tblBestaandeAcc,"Edit","Delete","Details");
 						}
 					});
-			}
+		}
 	    
 		public void setMainApp(MainApp mainApp) {
 	        this.mainApp = mainApp;
