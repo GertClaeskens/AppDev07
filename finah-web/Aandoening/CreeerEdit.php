@@ -300,8 +300,8 @@
                             <button type='button' title='Verwijderen' id='<?php echo $id ?>'
                                     name='verwijderBtn' value="<?php echo $id ?>"
                                     class='delBtn btn btn-primary'
-
-                                Verwijderenonclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $id ?>,'Aandoening',this,<?php echo $_SESSION["token"]?>)">
+                                onclick="Confirm.render('Deze aandoening verwijderen?','delete_lft',<?php echo $id ?>,'Aandoening',this,<?php echo $_SESSION["token"]?>)">
+                                Verwijderen
                             </button>
                         </form>
                     </div>
