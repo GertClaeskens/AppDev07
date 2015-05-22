@@ -57,7 +57,8 @@ public class LftdsCatOverzichtController implements Initializable{
         colVan.setCellValueFactory(new PropertyValueFactory<>("Van"));
         colTot.setCellValueFactory(new PropertyValueFactory<>("Tot"));
 
-		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
 		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<LeeftijdsCategorie, Boolean>, ObservableValue<Boolean>>() {
 					@Override
 					public ObservableValue<Boolean> call(
@@ -67,7 +68,8 @@ public class LftdsCatOverzichtController implements Initializable{
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the table.
+		// create a cell value factory with an add button for each row in the
+		// table.
 		colActie.setCellFactory(new Callback<TableColumn<LeeftijdsCategorie, Boolean>, TableCell<LeeftijdsCategorie, Boolean>>() {
 					@Override
 					public TableCell<LeeftijdsCategorie, Boolean> call(
@@ -87,6 +89,7 @@ public class LftdsCatOverzichtController implements Initializable{
 	        		  lftdsCat.setId(LeeftijdsCategorieDAO.GetLeeftijdsCategorieen().size()+1);
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/", lftdsCat);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

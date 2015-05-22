@@ -15,6 +15,8 @@ import finah_desktop_fx.model.Aandoening;
 public abstract class AandoeningDAO {
 
 	public static Aandoening GetAandoening(int id) {
+		// Exception Handling nog nakijken
+
 		Gson gson = new GsonBuilder().serializeNulls().create();
 
 		BufferedReader rd = null;
@@ -22,6 +24,7 @@ public abstract class AandoeningDAO {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aandoening/"
 					+ id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -31,13 +34,16 @@ public abstract class AandoeningDAO {
 	}
 
 	public static ArrayList<Aandoening> GetAandoeningen() {
+		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Aandoening>>() {
 		}.getType();
+		//ArrayList<Aandoening> aandoeningen = null;
 		try {
 			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aandoening/Overzicht",
 					collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

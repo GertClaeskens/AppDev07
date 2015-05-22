@@ -29,12 +29,25 @@ import finah_desktop_fx.model.Vraag;
 
 public class EditDialog<T> {
 	
-
+	/**
+	 * shows a dialog which displays a UI for adding a person to a table.
+	 * 
+	 * @param parent
+	 *            a parent stage to which this dialog will be modal and placed
+	 *            next to.
+	 * @param table
+	 *            the table to which a person is to be added.
+	 * @param y
+	 *            the y position of the top left corner of the dialog.
+	 */
+	
+	
 	void showDialog(final TableView<T> table, double y, int id) {
 		// initialize the dialog.
 		final Stage dialog = new Stage();
+		// dialog.initOwner(parent);
 		dialog.initModality(Modality.WINDOW_MODAL);
-		dialog.initStyle(StageStyle.DECORATED);
+		dialog.initStyle(StageStyle.UTILITY);
 		dialog.setX(800);
 		dialog.setY(y);
 
@@ -43,9 +56,12 @@ public class EditDialog<T> {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		final TextField inhoudField = new TextField();
+		// GridPane.setHgrow(txtVraagStelling, Priority.ALWAYS);
+		// GridPane.setHgrow(lastNameField, Priority.ALWAYS);
 		int index = table.getFocusModel().getFocusedIndex();
 		switch(table.getId()){
 		case "tblVragen":{
+			dialog.setTitle("Vraag aanpassen "+ id);
 			grid.addRow(0, new Label("Vraag:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
@@ -58,6 +74,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblVragenlijst":{
+			dialog.setTitle("Vragenlijst aanpassen "+ id);
 			grid.addRow(0, new Label("Naam vragenlijst:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
@@ -65,6 +82,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblAandoening":{
+			dialog.setTitle("Aandoening aanpassen "+ id);
 			grid.addRow(0, new Label("Aandoening:"), inhoudField);
 			final ComboBox pathologieCombo = new ComboBox(FXCollections
 					.observableList(PathologieDAO.GetPathologieen()));
@@ -72,6 +90,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblPathologie":{
+			dialog.setTitle("Pathologie aanpassen "+ id);
 			grid.addRow(0, new Label("Pathologie:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
@@ -79,22 +98,28 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblLftdsCat":{
+			dialog.setTitle("Leeftijdscategorie aanpassen "+ id);
 			grid.addRow(0, new Label("Van:"), inhoudField);
 			final TextField totField = new TextField();
 			grid.addRow(1, new Label("Tot:"), totField);
 			break;
 			}
 		case "tblRelatie":{
+			dialog.setTitle("Relatie aanpassen "+ id);
 			grid.addRow(0, new Label("Relatie:"), inhoudField);
 			break;
 			}
 		case "tblThema":{
+			dialog.setTitle("Thema aanpassen "+ id);
 			grid.addRow(0, new Label("Thema"), inhoudField);
 			break;
 			}
 		}
 		
-			
+		
+		
+		
+		
 		// create action buttons for the dialog.
 		Button ok = new Button("OK");
 		ok.setDefaultButton(true);
@@ -103,7 +128,7 @@ public class EditDialog<T> {
 
 		// only enable the ok button when there has been some text entered.
 		ok.disableProperty()
-				.bind(inhoudField.textProperty().isEqualTo(""));
+				.bind(inhoudField.textProperty().isEqualTo(""));// .or(lastNameField.textProperty().isEqualTo("")));
 
 		// add action handlers for the dialog buttons.
 		ok.setOnAction(new EventHandler<ActionEvent>() {
@@ -128,7 +153,7 @@ public class EditDialog<T> {
 				.alignment(Pos.CENTER_RIGHT).build();
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(grid, buttons);
-		layout.setPadding(new Insets(20));
+		layout.setPadding(new Insets(5));
 		layout.autosize();
 		dialog.setScene(new Scene(layout));
 		dialog.show();

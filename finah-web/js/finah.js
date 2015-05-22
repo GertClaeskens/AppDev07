@@ -59,7 +59,6 @@ function deletePost(id, type,tk,r) {
         contentType: 'application/json',
         success: function () {
             document.getElementById('mededeling').innerHTML = "<p class='gelukt'>De "+ type + " werd succesvol verwijderd.</p>";
-            window.location = url + type + '/overzicht.php';
             return true;
             // Do something with the result
         },

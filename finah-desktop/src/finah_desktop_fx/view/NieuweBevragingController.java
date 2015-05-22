@@ -48,6 +48,10 @@ private MainApp mainApp;
 	public void initialize(URL location, ResourceBundle resources) {
         ArrayList<Aandoening> aandoeningen = AandoeningDAO.GetAandoeningen();
         ArrayList<Pathologie> pathologieen = new ArrayList<>();
+
+//        	for (int j=0;j<aandoeningen.get(0).getBijhorende_pathologie().size();j++){
+//        		pathologieen.add(aandoeningen.get(0).getBijhorende_pathologie().get(j));
+//        	}
         
 		ObservableList<Aandoening> aandoeningenLijst = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
 		ObservableList<VragenLijst> vragenLijst = FXCollections.observableList(VragenLijstDAO.GetVragenLijsten());
@@ -55,8 +59,11 @@ private MainApp mainApp;
 		ObservableList<Relatie> relatieLijst = FXCollections.observableList(RelatieDAO.GetRelaties());
 		ObservableList<LeeftijdsCategorie> leeftijdscategorieLijst = FXCollections.observableList(LeeftijdsCategorieDAO.GetLeeftijdsCategorieen());
         
+        //cboPathologie.setItems(pathologieenLijst);
+        //cboPathologie.setValue(pathologieenLijst.get(0));
         cboAandoening.setItems(aandoeningenLijst);
         cboVragenLijst.setItems(vragenLijst);
+        //cboAandoening.setValue(aandoeningenLijst.get(0));
         cboLftdMan.setItems(leeftijdscategorieLijst);
         cboLftdMan.setValue(leeftijdscategorieLijst.get(0));
         cboLftdPat.setItems(leeftijdscategorieLijst);
@@ -74,6 +81,7 @@ private MainApp mainApp;
         cboAandoening.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>(){
         	public void changed(ObservableValue ov,Number value, Number new_value){
         		pathologieen.clear();
+        		//System.out.println(cboAandoening.getItems().get((int)new_value));
         		Aandoening geselecteerd = cboAandoening.getItems().get((int)new_value);
             	for (int j=0;j<geselecteerd.getBijhorende_pathologie().size();j++){
             		Pathologie pathologie = geselecteerd.getBijhorende_pathologie().get(j); 
@@ -81,12 +89,16 @@ private MainApp mainApp;
             	}
             	cboPathologie.getItems().setAll(pathologieen);
                 cboPathologie.setValue(pathologieen.get(0));
-             }
+                //geselecteerd.
+
+        	}
         });
 	}
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
+        // Add observable list data to the table
+        //personTable.setItems(mainApp.getPersonData());
     }
 	
 }

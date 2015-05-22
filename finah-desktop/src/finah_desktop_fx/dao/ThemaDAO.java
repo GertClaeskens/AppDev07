@@ -14,6 +14,7 @@ import finah_desktop_fx.model.Thema;
 
 public class ThemaDAO {
 	public static ArrayList<Thema> GetThemas(){
+		// TODO Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Thema>>() {
 		}.getType();
@@ -21,12 +22,14 @@ public class ThemaDAO {
 			return SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Thema/Overzicht",collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static Thema GetThema(int id){
+		// TODO Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
@@ -34,6 +37,7 @@ public class ThemaDAO {
 			rd = SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Thema/" + id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -3,7 +3,7 @@ package finah_desktop_fx;
 import java.io.IOException;
 
 //import finah_desktop_fx.helperClasses.ResizeHelper;
-import finah_desktop_fx.helperClasses.ResizeHelper;
+import finah_desktop_fx.helperClasses.ResizeTest;
 import finah_desktop_fx.view.AccountAanpassenLayoutController;
 import finah_desktop_fx.view.LoginController;
 import finah_desktop_fx.view.NieuwAccountController;
@@ -48,8 +48,8 @@ public class MainApp extends Application {
             controller.setMainApp(this);
             Scene scene = new Scene(loginLayout);
             primaryStage.setScene(scene);
-            primaryStage.setX(825);
-            primaryStage.setY(300);
+            primaryStage.setX(825); //hardcoded nog
+            primaryStage.setY(300); //hardcoded nog
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +84,8 @@ public class MainApp extends Application {
 	        primaryStage.setY(300);
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
 	        primaryStage.setScene(scene);
-	        ResizeHelper.makeDraggable(primaryStage, rootLayout);
+	        ResizeTest.makeDraggable(primaryStage, rootLayout);
+	        //ResizeHelper.addResizeListener(primaryStage,rootLayout);
 	        primaryStage.show();
 	    } catch (IOException e) {
 	        e.printStackTrace();
@@ -108,6 +109,7 @@ public class MainApp extends Application {
 			 e.printStackTrace();
 		 }
 	}
+	 
 	
     public Stage getPrimaryStage() {
         return primaryStage;

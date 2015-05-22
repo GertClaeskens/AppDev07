@@ -62,7 +62,8 @@ public class AandoeningController implements Initializable{
         cboPathologie.setValue(cboList.get(0));
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         colAandoening.setCellValueFactory(new PropertyValueFactory<>("Omschrijving"));
-		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the
+		// column will only be shown for non-empty rows.
 		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Aandoening, Boolean>, ObservableValue<Boolean>>() {
 					@Override
 					public ObservableValue<Boolean> call(
@@ -72,7 +73,8 @@ public class AandoeningController implements Initializable{
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the table.
+		// create a cell value factory with an add button for each row in the
+		// table.
 		colActie.setCellFactory(new Callback<TableColumn<Aandoening, Boolean>, TableCell<Aandoening, Boolean>>() {
 					@Override
 					public TableCell<Aandoening, Boolean> call(
@@ -92,6 +94,7 @@ public class AandoeningController implements Initializable{
 	        		  aandoening.voegPathologieToe(cboPathologie.getValue());
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Aandoening/", aandoening);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

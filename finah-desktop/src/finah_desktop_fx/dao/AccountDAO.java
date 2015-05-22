@@ -14,6 +14,7 @@ import finah_desktop_fx.model.Account;
 
 public class AccountDAO {
 	public static ArrayList<Account> GetAccounts(){
+		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Account>>() {
 		}.getType();
@@ -21,18 +22,23 @@ public class AccountDAO {
 			return SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Account/Overzicht",collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static Account GetAccount(int id){
+		// Exception Handling nog nakijken
+		// Nog opzoeken hoe in dit geval de accounts kunnen worden
+		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Account/" + id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

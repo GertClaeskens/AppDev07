@@ -20,39 +20,40 @@ public class DeleteDialog<T> {
 		int dialogButton = JOptionPane.YES_NO_OPTION;
 		int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want delete this item?","Delete item",dialogButton);
 		if(dialogResult == JOptionPane.YES_OPTION){
-			/*int index = table.getFocusModel().getFocusedIndex();
+			int index = table.getFocusModel().getFocusedIndex();
 			switch(table.getId()){
 			case "tblVragen":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblVragenlijst":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblAandoening":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblPathologie":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblLftdsCat":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblRelatie":{
-				DeleteMethod invoegen
+				
 				break;
 				}
 			case "tblThema":{
-				DeleteMethod invoegen
+				
 				break;
 				}
-			}*/
+			}
 		}
 		else{
+			//venster sluit gewoon af
 		}
 	}
 }

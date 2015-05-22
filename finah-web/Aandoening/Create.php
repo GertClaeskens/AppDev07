@@ -32,7 +32,7 @@
         <div class="dropdown navbar-header pull-right nav-right">
             <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
             <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
-            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -44,7 +44,9 @@
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="../logout.php">                         <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen                     </a>
+                    <a role="menuitem" tabindex="-1" href="#">
+                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
+                    </a>
                 </li>
             </ul>
         </div>

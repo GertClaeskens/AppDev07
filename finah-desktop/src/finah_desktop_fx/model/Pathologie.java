@@ -27,7 +27,8 @@ public class Pathologie extends SuperklasseAandoeningPathologie {
 
 	public Pathologie(String naam) {
 		super(naam);
-		}
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return Omschrijving;

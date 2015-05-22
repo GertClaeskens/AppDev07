@@ -16,6 +16,8 @@ import finah_desktop_fx.model.Aanvraag;
 
 public class AanvraagDAO {
 	public static ArrayList<Aanvraag> GetAanvragen() {
+		// Exception Handling nog nakijken
+
 		Type collectionType = new TypeToken<Collection<Aanvraag>>() {
 		}.getType();
 
@@ -23,6 +25,7 @@ public class AanvraagDAO {
 			return SharedDAO.HaalGegevens(
 					"http://finahbackend1920.azurewebsites.net/Aanvraag/Overzicht", collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -30,12 +33,16 @@ public class AanvraagDAO {
 	}
 
 	public static Aanvraag GetAanvraag(int id) {
+		// Exception Handling nog nakijken
+		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
+		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Aanvraag/" + id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (rd != null) {

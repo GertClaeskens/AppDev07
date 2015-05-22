@@ -7,6 +7,8 @@ public class Bevraging {
 	public Date Aangevraagd;
 	public LeeftijdsCategorie LeeftijdsCat;
 	public String Informatie;
+
+	// Ook eventueel enum van maken
 	public String Relatie;
 	public Account AangemaaktDoor;
 	public VragenLijst Vragen;

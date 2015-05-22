@@ -37,7 +37,7 @@ require "../PHP/Models/VragenLijst.php";
                 <a class="navbar-brand header" href="../index.php"> Finah</a>
             </div>
             <div class="dropdown navbar-header pull-right nav-right">
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -49,7 +49,7 @@ require "../PHP/Models/VragenLijst.php";
                     <li role="presentation" class="divider">
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="../logout.php">
+                        <a role="menuitem" tabindex="-1" href="#">
                             <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
                         </a>
                     </li>
@@ -73,7 +73,6 @@ require "../PHP/Models/VragenLijst.php";
                         <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                     </li>
                     <br/>
-                    <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                     <li class="sidebar-brand">
                         <h4>
                             BEHEER
@@ -100,7 +99,6 @@ require "../PHP/Models/VragenLijst.php";
                     <li>
                         <a href="../Thema/Overzicht.php"> Thema's</a>
                     </li>
-                    <?php } ?>
                 </ul>
             </div>
             <div  id="page-content-wrapper">
@@ -165,7 +163,7 @@ require "../PHP/Models/VragenLijst.php";
                                                     <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                             name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                             class='delBtn btn btn-primary'
-                                                            onclick="Confirm.render('Deze vragenlijst verwijderen?','delete_lft',<?php echo $verw; ?>,'VragenLijst',this,'<?php echo $_SESSION["token"]?>')">
+                                                            onclick="Confirm.render('Deze vragenlijst verwijderen?','delete_lft',<?php echo $verw; ?>,'VragenLijst',this)">
                                                         <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                     </button>
                                                  </td>

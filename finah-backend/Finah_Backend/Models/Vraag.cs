@@ -21,7 +21,7 @@
         public virtual Thema Thema { get; set; }
         //[ForeignKey("Afbeelding")]
         //public int AfbeeldingId { get; set; }
-        public string Afbeelding { get; set; }
+        public virtual Foto Afbeelding { get; set; }
 
         public virtual ICollection<VragenLijst> VragenLijst { get; set; }
 
