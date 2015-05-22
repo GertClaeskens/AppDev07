@@ -84,7 +84,6 @@
                 class="breadcrumb-font">Registratie </span>
         </div>
         <?php
-
             if (isset($_POST["registreren"])){
                 var_dump($_POST);
                 $typeacc=$_POST["rol"];
@@ -195,7 +194,7 @@
                                     Wachtwoord:
                                 </label>
                             </div>
-                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3 ">
                                 <input type="password" name="wachtwoord" id="Wachtwoord" class="form-control">
                             </div>
                         </div>
@@ -205,7 +204,7 @@
                                     Herhaal wachtwoord:
                                 </label>
                             </div>
-                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
+                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3 text-nowrap">
                                 <input type="password" name="confwachtwoord" id="confWachtwoord" class="form-control">
                             </div>
                         </div>
@@ -319,14 +318,18 @@
                 },
                 wachtwoord: {
                     required: true,
-                    minlength: 8,
-                    regex: /^(?=.*[A-Z])(?=.*\d).*$/
+                    minlength: 6,
+                    regex: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
+
+
+
                 },
                 confwachtwoord: {
                     required: true,
-                    minlength: 8,
+                    minlength: 6,
                     equalTo: "#Wachtwoord",
-                    regex: /^(?=.*[A-Z])(?=.*\d).*$/
+                    regex: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
+
                 },
                 postcode: {
                     required: true,
@@ -352,14 +355,14 @@
                 },
                 wachtwoord: {
                     required: "Gelieve dit veld in te vullen",
-                    minlenght: "Gelieve minimum 8 tekens in te geven",
-                    regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                    minlenght: "Gelieve minimum 6 tekens in te geven",
+                    regex: "Gelieve minstens 6 tekens in te voeren waarvan minstens 1 cijfer, 1 uppercase, 1 lowercase en minstens 1 teken (@#$%)"
                 },
                 confwachtwoord: {
                     required: "Gelieve dit veld in te vullen",
-                    minlenght: "Gelieve minimum 8 tekens in te geven",
+                    minlenght: "Gelieve minimum 6 tekens in te geven",
                     equalTo: "De twee wachtwoord zijn niet identiek",
-                    regex: "Gelieve minstens 1 cijfer en 1 hoofdletter in te geven"
+                    regex: "Gelieve minstens 6 tekens in te voeren waarvan minstens 1 cijfer, 1 uppercase, 1 lowercase en minstens 1 teken (@#$%)"
                 },
                 telefoon: {
                     required: "Gelieve dit veld in te vullen!",
