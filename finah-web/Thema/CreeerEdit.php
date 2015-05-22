@@ -44,7 +44,7 @@
                 <a class="navbar-brand header" href="#"> Finah</a>
             </div>
             <div class="dropdown navbar-header pull-right nav-right">
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
