@@ -116,7 +116,8 @@
                     <h1>Rapport</h1>
                     <?php
                         if (isset($_GET)) {
-                            $rapportid = "4cb31482bfe143f0a90e408e86d8432c";
+                            //$rapportid = "4cb31482bfe143f0a90e408e86d8432c";
+                            $rapportid = $_GET["id"];
                             $onderzoek = FinahDAO::HaalOp("Onderzoek/Rapport", $rapportid);
                             $idMan = "2a0aa4c1264f401081e6db09d9a092f6";
                             $idPat = "6fe059997e0643af91688084e2648c55";
