@@ -8,8 +8,8 @@
     class FinahDAO
     {
 
-//        const URL = "http://localhost:1695/";
-        const URL = "http://finahbackend1920.azurewebsites.net/";
+        const URL = "http://localhost:1695/";
+        //const URL = "http://finahbackend1920.azurewebsites.net/";
 
         public static function GetToken($username,$password){
             $url = self::URL . "token";
@@ -64,7 +64,7 @@
                 }
                 // close curl resource to free up system resources
 
-                //var_dump($result);
+                //var_dump($output);
                 $info = curl_getinfo($ch);
                 curl_close($ch);
                 return $result;
@@ -79,6 +79,37 @@
                 $result = json_decode(file_get_contents($url), true);
 
                 //var_dump($result);
+                return $result;
+            }
+            //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
+
+        }
+
+        public static function HaalUsersOp($type, $id = null, $token = null)
+        {
+            if ($token != null) {
+                //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
+                $url = self::URL . $type . "/";
+                if ($id == null) {
+                    $url .= "Overzicht";
+                } else $url .= $id;
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_VERBOSE, 1);
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
+                // execute the request
+                $output = curl_exec($ch);
+                //var_dump($output);
+                $pos = strpos($output, '[');
+                $rest = substr($output, $pos);
+                $result = json_decode($rest, true);
+                // close curl resource to free up system resources
+
+                //var_dump($output);
+                $info = curl_getinfo($ch);
+                curl_close($ch);
                 return $result;
             }
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
