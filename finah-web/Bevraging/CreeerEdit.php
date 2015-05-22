@@ -146,6 +146,7 @@
                     <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                 </li>
                 <br/>
+<?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                 <li class="sidebar-brand">
                     <h4>
                         BEHEER
@@ -172,6 +173,7 @@
                 <li>
                     <a href="../Thema/Overzicht.php"> Thema's</a>
                 </li>
+    <?php }?>
             </ul>
         </div>
         <div id="page-content-wrapper">
