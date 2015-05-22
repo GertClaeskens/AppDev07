@@ -57,9 +57,7 @@
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">
-                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                    </a>
+                    <a role="menuitem" tabindex="-1" href="../logout.php">                         <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen                     </a>
                 </li>
             </ul>
         </div>

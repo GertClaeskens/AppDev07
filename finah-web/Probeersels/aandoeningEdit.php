@@ -1,6 +1,6 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/Aandoening.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Aandoening.php";
 ?>
 
     <!DOCTYPE html>
@@ -32,7 +32,8 @@ require "../PHP/Models/Aandoening.php";
         <div class="dropdown navbar-header pull-right nav-right">
             <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
             <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
-            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1"
+               data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -44,9 +45,8 @@ require "../PHP/Models/Aandoening.php";
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">
-                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                    </a>
+                    <a role="menuitem" tabindex="-1" href="../logout.php"> <span
+                            class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen </a>
                 </li>
             </ul>
         </div>
@@ -98,25 +98,25 @@ require "../PHP/Models/Aandoening.php";
     <div class="container-fluid">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-    <?php
-if (isset($_POST)) {
-    $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
-    $naam = $pathologie["Omschrijving"];
-            if (isset($_POST["bewerk"])) {
-                echo "<h1 class='header'>". " Bewerken : " . $naam . "  </h1 >";
-            } elseif (isset($_POST["details"])) {
-                echo "<h1 class='header' >". " Details : " . $naam . " </h2 >";
-            }
+<?php
+    if (isset($_POST)) {
+        $pathologie = FinahDAO::HaalOp("Pathologie", $_POST["Id"]);
+        $naam = $pathologie["Omschrijving"];
+        if (isset($_POST["bewerk"])) {
+            echo "<h1 class='header'>" . " Bewerken : " . $naam . "  </h1 >";
+        } elseif (isset($_POST["details"])) {
+            echo "<h1 class='header' >" . " Details : " . $naam . " </h2 >";
         }
-    ?>
-            <form id="pathologieForm" class="form-horizontal " role="form" method="POST"
-                  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <?php
-                        if (isset($_POST["bewerk"])) {
-                            //ToDo code voor wijzigingen weg te schrijven.
+    }
+?>
+<form id="pathologieForm" class="form-horizontal " role="form" method="POST"
+      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<?php
+    if (isset($_POST["bewerk"])) {
+        //ToDo code voor wijzigingen weg te schrijven.
 
-            } else {
-                ?>
+    } else {
+        ?>
                     <div class="form-group top-form">
                         <label class="control-label col-xs-4  col-sm-4 col-md-2 col-lg-2" for="Omschrijving"> Omschrijving: </label>
                         <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-4">
@@ -128,13 +128,13 @@ if (isset($_POST)) {
                         <div class="col-xs-6 col-sm-5 col-md-5 col-lg-3">
                             <select multiple class="form-control" id="aandoening" name="aandoeningen[]">
                                 <?php
-                            $aandoeningen = FinahDAO::HaalOp("Aandoening");
-                            foreach ($aandoeningen as $item) {
+        $aandoeningen = FinahDAO::HaalOp("Aandoening");
+        foreach ($aandoeningen as $item) {
 
-                                echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
-                            }
+            echo "<option value='" . $item["Id"] . "'>" . $item["Omschrijving"] . "</option>\r\n";
+        }
 
-                                ?>
+        ?>
                         </select>
                         </div>
                     </div>
