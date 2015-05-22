@@ -38,8 +38,16 @@ session_start();
     );
     $context = stream_context_create($options);
     $result = json_decode(@file_get_contents($url, false, $context), true);
+    var_dump($result);
     $resarr = (array)$result;
-    var_dump($resarr);
+
+    echo $resarr["roles"];
+    $startpos = strpos($resarr["roles"], '"')+1;
+    $endpos = strpos($resarr["roles"], ']')-3;
+    $rest = substr($resarr["roles"], $startpos,$endpos);
+    echo "<br/>ROL <br/>";
+    echo $rest;
+    //$result = json_decode($rest, true);
     echo "TEst<br/>";
     if (isset($resarr["access_token"])) {
         echo $resarr["access_token"];

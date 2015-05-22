@@ -52,7 +52,7 @@
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Authorization: Bearer ' . $token]);
                 // execute the request
                 $output = curl_exec($ch);
-                var_dump($output);
+                //var_dump($output);
                 if ($id == null) {
                     $pos = strpos($output, '[');
                     $rest = substr($output, $pos);
@@ -75,10 +75,10 @@
                 } else $url .= $id;
 
                 // request list of contacts from Web API + deserialize data from JSON
-                var_dump($url);
+                //var_dump($url);
                 $result = json_decode(file_get_contents($url), true);
 
-                var_dump($result);
+                //var_dump($result);
                 return $result;
             }
             //TODO Werken met try catch zodat er een mededeling wordt meegegeven wanneer de database niet bereikbaar is
