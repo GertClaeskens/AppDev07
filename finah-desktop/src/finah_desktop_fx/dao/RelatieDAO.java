@@ -13,7 +13,6 @@ import com.google.gson.reflect.TypeToken;
 import finah_desktop_fx.model.Relatie;
 public class RelatieDAO {
 	public static ArrayList<Relatie> GetRelaties(){
-		// TODO Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Relatie>>() {
 		}.getType();
@@ -21,14 +20,12 @@ public class RelatieDAO {
 			return SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Relatie/Overzicht",collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static Relatie GetRelatie(int id){
-		// TODO Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
@@ -36,7 +33,6 @@ public class RelatieDAO {
 			rd = SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Relatie/" + id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

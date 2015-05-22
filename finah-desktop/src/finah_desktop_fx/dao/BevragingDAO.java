@@ -13,7 +13,6 @@ import finah_desktop_fx.model.Bevraging;
 
 public class BevragingDAO {
 	public static ArrayList<Bevraging> GetBevragingen() {
-		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Bevraging>>() {
 		}.getType();
@@ -21,23 +20,18 @@ public class BevragingDAO {
 			return SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Bevraging/Overzicht",collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static Bevraging GetBevraging(String id) {
-		// Exception Handling nog nakijken
-		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
-		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/Bevraging/" + id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (rd != null) {

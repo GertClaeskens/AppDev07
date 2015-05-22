@@ -15,7 +15,6 @@ import finah_desktop_fx.dao.SharedDAO;
 public abstract class ResultatenDAO {
 	
 	public static ArrayList<Resultaat> GetResultaten() {
-		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Resultaat>>() {
 		}.getType();
@@ -24,7 +23,6 @@ public abstract class ResultatenDAO {
 			return SharedDAO.HaalGegevens(
 					"http://finahbackend1920.azurewebsites.net/Resultaten/Overzicht", collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -32,14 +30,12 @@ public abstract class ResultatenDAO {
 	}
 
 	public static Resultaat GetResultaat(int id) {
-		// Exception Handling nog nakijken
 		Gson gson = new GsonBuilder().serializeNulls().create();
 
 		BufferedReader rd = null;
 		try {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Resultaten/" + id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (rd != null) {

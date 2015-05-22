@@ -15,28 +15,23 @@ import finah_desktop_fx.model.Foto;
 
 public class FotoDAO {
 	public static ArrayList<Foto> GetFotos(){
-		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Foto>>() {
 		}.getType();
 		try {
 			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Foto/Overzicht",collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return null;
 	}
 	public static Foto GetFoto(int id) {
-		// Exception Handling nog nakijken
-		//Nog opzoeken hoe in dit geval de pathologieen kunnen worden uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Foto/" +id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
