@@ -86,6 +86,7 @@ namespace Finah_Backend.Controllers
                 Adres = userInfo.Adres,
                 Postcode = userInfo.Postcd.Postnr,
                 Woonplaats = userInfo.Postcd.Gemeente,
+                Telefoon = userInfo.PhoneNumber,
                 Email = userInfo.Email
                 //HasRegistered = externalLogin == null,
                 //LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
