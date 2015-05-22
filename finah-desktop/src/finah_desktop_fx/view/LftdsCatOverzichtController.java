@@ -86,7 +86,7 @@ public class LftdsCatOverzichtController implements Initializable{
 	        		  LeeftijdsCategorie lftdsCat = new LeeftijdsCategorie();
 	        		  lftdsCat.setVan(Integer.parseInt(txtVan.getText()));
 	        		  lftdsCat.setTot(Integer.parseInt(txtTot.getText()));
-	        		  lftdsCat.setId(VragenLijstDAO.GetVragenLijsten().size()+1);
+	        		  lftdsCat.setId(LeeftijdsCategorieDAO.GetLeeftijdsCategorieen().size()+1);
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/", lftdsCat);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

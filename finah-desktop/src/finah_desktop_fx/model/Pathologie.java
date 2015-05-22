@@ -9,7 +9,7 @@ public class Pathologie extends SuperklasseAandoeningPathologie {
 	public List<Aandoening> getBijhorende_aandoening() {
 		return Aandoeningen;
 	}
-	public void voegPathologieToe(Aandoening aand){
+	public void voegAandoeningToe(Aandoening aand){
 		Aandoeningen.add(aand);
 		
 	}
