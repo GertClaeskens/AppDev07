@@ -52,7 +52,7 @@ namespace Finah_Backend.Controllers
         public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
         {
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema);//.Include(p => p.VragenLijst);
+            return db.Vragen.Include(p => p.Thema);//.Include(p => p.VragenLijst);
         }
 
         // PUT: api/Vragen/5
@@ -75,7 +75,7 @@ namespace Finah_Backend.Controllers
                              Id = vraag.Id,
                              VraagStelling = vraag.VraagStelling,
                              Thema = this.db.Themas.Find(vraag.Thema.Id),
-                             //Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
+                             Afbeelding = vraag.Afbeelding,
                              VragenLijst = new List<VragenLijst>()
                          };
             if (vraag.VragenLijst != null)
