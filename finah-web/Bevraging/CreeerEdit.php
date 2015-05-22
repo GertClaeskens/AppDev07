@@ -8,8 +8,9 @@ require "../PHP/Finah.php";
 if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])&&!isset($_POST["bewerk"])&&!isset($_POST["details"])){
     header('Location: Overzicht.php');
     exit;
-    session_start();
+
 }
+    session_start();
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -31,7 +32,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
         <![endif]-->
         <script type="text/javascript">
             var data = '';
-            function OnChange(e,token) {
+            function OnChange(e,tk) {
                 var patho = document.forms["myForm"]["Pathologie"];
                 var val = e.target.value;
                 if (val != 'null') {
@@ -40,8 +41,11 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Pathologie";
+
+
                     //var url = "http://localhost:1695/Aandoening/" + val + "/Pathologie";
                     xhr.open("GET", url, true);
+                    xhr.setRequestHeader('Authorization','Bearer '+tk);
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             pat = JSON.parse(xhr.responseText);
@@ -57,7 +61,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     xhr.send(null);
                 }
             }
-            function OnChange2(e,token) {
+            function OnChange2(e,tk) {
                 var vrl = document.forms["myForm"]["Vragenlijst"];
                 var val = e.target.value;
 
@@ -67,9 +71,10 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                     var xhr = new JSONHttpRequest();
                     //TODO link aanpassen naar Azure
                     var url = "http://finahbackend1920.azurewebsites.net/Aandoening/" + val + "/Vragenlijst";
+
                     //var url = "http://localhost:1695/Aandoening/" + val + "/Vragenlijst";
                     xhr.open("GET", url, true);
-
+                    xhr.setRequestHeader('Authorization','Bearer '+tk);
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             pat = JSON.parse(xhr.responseText);
@@ -302,7 +307,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                             <div class="form-group">
                                 <label class="control-label col-xs-4 col-sm-4 col-md-3 col-lg-3" for="Aandoening"> Kies de aandoening: </label>
                                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
-                                    <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event,<?php echo $_SESSION["token"];?>);OnChange2(event,<?php echo$_SESSION["token"];?>">
+                                    <select class="form-control" id="Aandoening" name="aandoening" onchange="OnChange(event,'<?php echo $_SESSION['token'];?>');OnChange2(event,'<?php echo $_SESSION['token'];?>')">
                                         <option value="">Maak een keuze</option>
                                         <?php
                                         $aandoeningLijst = FinahDAO::HaalOp("Aandoening",null,$_SESSION["token"]);
