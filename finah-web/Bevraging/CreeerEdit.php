@@ -236,7 +236,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 //$antwoorden_man->setLeeftijdsCategorie(FinahDAO::HaalOp("Leeftijdscategorie", $leeftijdcatMan));
                                                 $bevraging_man->setLeeftijdsCategorieId($leeftijdcatPat);
                                                 //$bevraging_man->setDatum($dateTime);
-                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl);
+                                                $vragen = FinahDAO::HaalOp("VragenLijst", $vrl,$_SESSION["token"]);
                                                 $onderzoek->setVragen($vragen);
                                                 $leeg_vragen = array_fill(0, count($vragen["Vragen"]), 0);
                                                 $bevraging_pat->setAntwoorden(implode(',', $leeg_vragen));
