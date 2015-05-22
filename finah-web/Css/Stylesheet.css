@@ -295,6 +295,9 @@ p,h1,h2,h3,article,a {
     margin-top:30px;
     margin-bottom:30px;
 }
+.trueColumn{
+    background-color:#337ab7;
+}
 @media(min-width:768px) {
 
     #wrapper {

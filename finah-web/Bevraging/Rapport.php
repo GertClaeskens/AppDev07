@@ -180,20 +180,20 @@
 
                             }
                             ?>
-                            <table class="table table-bordered table-striped">
-                                <tr>
+                            <table class="table">
+                                <tr style="background-color:#337ab7">
                                     <th>Vraag</th>
                                     <th colspan="2">Hinder voor Patient</th>
                                     <th colspan="2">Hinder voor Mantelzorger</th>
                                     <th>Hulpvraag</th>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>Patient</td>
-                                    <td>Mantelzorger</td>
-                                    <td>Patient</td>
-                                    <td>Mantelzorger</td>
-                                    <td>Gesteld door</td>
+                                    <th></th>
+                                    <th>Patient</th>
+                                    <th>Mantelzorger</th>
+                                    <th>Patient</th>
+                                    <th>Mantelzorger</th>
+                                    <th>Gesteld door</th>
                                 </tr
                                 <?php
                                     $i = 0;
@@ -212,41 +212,41 @@
                                                     echo "<td></td><td></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td>X</td><td></td>";
+                                                    echo "<td class='trueColumn'>X</td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td>X</td>";
+                                                    echo "<td></td><td class='trueColumn'>X</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>X</td><td>X</td>";
+                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hinderMan"]) {
                                                 case 0:
-                                                    echo "<td></td><td></td>";
+                                                    echo "<td ></td><td ></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td>X</td><td></td>";
+                                                    echo "<td class='trueColumn'>X</td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td>X</td>";
+                                                    echo "<td></td><td class='trueColumn'>X</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>X</td><td>X</td>";
+                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hulp"]) {
                                                 case 1:
-                                                    echo "<td>Patient</td>";
+                                                    echo "<td class='text-center'>Patient</td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td>Mantelzorger</td>";
+                                                    echo "<td class='text-center'>Mantelzorger</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>Beiden</td>";
+                                                    echo "<td class='text-center'>Beiden</td>";
                                                     break;
                                             }
                                             echo "</tr>";
