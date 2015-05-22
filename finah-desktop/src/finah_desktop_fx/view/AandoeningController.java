@@ -90,8 +90,8 @@ public class AandoeningController implements Initializable{
 	        	  try {
 	        		  Aandoening aandoening = new Aandoening();
 	        		  aandoening.setOmschrijving(txtAandoening.getText());
-	        		  aandoening.setId(PathologieDAO.GetPathologieen().size()+1);
-	        		  aandoening.setBijhorende_pathologie((List<Pathologie>) cboPathologie.getValue());
+	        		  aandoening.setId(AandoeningDAO.GetAandoeningen().size()+1);
+	        		  aandoening.voegPathologieToe(cboPathologie.getValue());
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Aandoening/", aandoening);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

@@ -46,6 +46,24 @@ namespace Finah_Backend.Controllers
 
             return this.Ok(onderzoek);
         }
+
+        // GET: api/Onderzoek/5
+        [Route("Onderzoek/Rapport/{id}")]
+        [ResponseType(typeof(Onderzoek))]
+        public IHttpActionResult GetOnderzoekDoorRapportId(string id)
+        {
+            //var onderzoek = db.Onderzoeken.Where(c => c.Id == id).Include(c => c.Bevraging_Man).Include(c => c.Bevraging_Pat).Include(c => c.Vragen).Include(c => c.Relatie);
+            var onderzoek = (from o in db.Onderzoeken.Include(o => o.Bevraging_Man).Include(o => o.Pathologie).Include(o => o.Bevraging_Pat).Include(o => o.AangemaaktDoor).Include(o => o.Relatie).Include(o => o.Vragen).Include(o => o.Aandoening).Include(o => o.Pathologie)
+                             where (o.Rapport.Equals(id))
+                             select o).ToList();
+            //var antwoorden = db.AntwoordenLijsten.Where(a => a.BevragingId == id).OrderBy(a => a.Datum).ToList();
+            if (onderzoek == null)
+            {
+                return NotFound();
+            }
+            return Ok(onderzoek);
+        }
+
         // GET: api/Onderzoek/5
         [Route("Onderzoek/Bevraging/{id}")]
         [ResponseType(typeof(Onderzoek))]
@@ -60,13 +78,6 @@ namespace Finah_Backend.Controllers
             {
                 return NotFound();
             }
-
-            //for (var i = 0; i < antwoorden.Count; i++)
-            //{
-            //    onderzoek[i].Datum = antwoorden[i].Datum;
-            //}
-
-
             return Ok(onderzoek);
         }
         [Route("Onderzoek/RecenteBevraging")]

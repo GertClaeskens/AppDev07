@@ -115,23 +115,6 @@ public class VragenOverzichtController implements Initializable {
 		});
 	}
 
-	@FXML
-	private void handleDeletePerson() {
-		int selectedIndex = tblVragen.getSelectionModel().getSelectedIndex();
-		if (selectedIndex >= 0) {
-			tblVragen.getItems().remove(selectedIndex);
-		} else {
-			// Nothing selected.
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.initOwner(mainApp.getPrimaryStage());
-			alert.setTitle("Niets geselecteerd");
-			alert.setHeaderText("U heeft geen vraag geselecteerd");
-			alert.setContentText("Gelieve een vraag te selecteren");
-
-			alert.showAndWait();
-		}
-	}
-
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}

@@ -91,7 +91,7 @@ public class PathologieOverzichtController implements Initializable {
 	        		  Pathologie pathologie = new Pathologie();
 	        		  pathologie.setOmschrijving(txtPathologie.getText());
 	        		  pathologie.setId(PathologieDAO.GetPathologieen().size()+1);
-	        		  pathologie.setBijhorende_pathologie((List<Aandoening>) cboAandoening.getValue());
+	        		  pathologie.voegAandoeningToe(cboAandoening.getValue());
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Pathologie/", pathologie);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
