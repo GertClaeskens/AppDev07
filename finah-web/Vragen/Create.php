@@ -1,14 +1,14 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require "../PHP/Models/Vraag.php"?>
+    require "../PHP/DAO/FinahDAO.php";
+    require "../PHP/Models/Vraag.php" ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>FINAH - Vragen</title>
         <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
-        <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <!--[if lt IE 9]>
@@ -17,17 +17,19 @@ require "../PHP/Models/Vraag.php"?>
         <![endif]-->
     </head>
 <body>
-    <nav  class="navbar navbar-default navbar-fixed-top">
-        <div  class="navbar-header pull-left">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header pull-left">
 
-            <a href="#menu-toggle"  id="menu-toggle" class="btn-toggle">
+            <a href="#menu-toggle" id="menu-toggle" class="btn-toggle">
                 <span id="side-toggle" class="glyphicon glyphicon-option-horizontal"></span>
             </a>
-            <a  class="navbar-brand header"  href="#"> Finah</a>
+            <a class="navbar-brand header" href="#"> Finah</a>
         </div>
         <div class="dropdown navbar-header pull-right nav-right">
-            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>  <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
-            <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+            <span class="img-circle"><img src="../Images/blank-avatar.png"/></span>
+            <!--TODO  PHP if'ke maken voor als er een avatar/profiel foto beschikbaar is in database of niet ( dan blank-avatar gebruiken) -->
+            <a class="btn dropdown-toggle pull-left" type="button" id="menu1"
+               data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -39,75 +41,74 @@ require "../PHP/Models/Vraag.php"?>
                 <li role="presentation" class="divider">
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">
-                        <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                    </a>
+                    <a role="menuitem" tabindex="-1" href="../logout.php"> <span
+                            class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen </a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <br/>
-                <br/>
-                <li class="sidebar-brand">
-                    <h4>
-                        MENU
-                    </h4>
-                </li>
-                <li >
-                    <a href="../index.php"> Home </a>
-                </li>
-                <li>
-                    <a href="../Bevraging/Overzicht.php"> Bevraging</a>
-                </li>
-                <br/>
-                <li class="sidebar-brand">
-                    <h4>
-                        BEHEER
-                    </h4>
-                </li>
-                <li>
-                    <a href="../Aandoening/Overzicht.php"> Aandoening </a>
-                </li>
-                <li>
-                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
-                </li>
-                <li>
-                    <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
-                </li>
-                <li>
-                    <a href="Overzicht.php"> Vragen</a>
-                </li>
-                <li>
-                    <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
-                </li>
-            </ul>
-        </div>
-        <div  id="page-content-wrapper">
-            <div class="breadcrumb">
-                <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Vragen  </span>
-            </div>
-            <div  class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <h1 class="header">Nieuwe vraag </h1>
-                            <form class="form-horizontal " role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                <?php
-                                    if (isset($_POST["creeer"])) {
-                                        $vraagstelling = $_POST["vraagstelling"];
-                                        $vraag = new Vraag();
-                                        $vraag->Id = 0;
-                                        $vraag->setVraagstelling($vraagstelling);  //TODO nakijken ??  moet dit niet $vraagstelling zijn ?
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <br/>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    MENU
+                </h4>
+            </li>
+            <li>
+                <a href="../index.php"> Home </a>
+            </li>
+            <li>
+                <a href="../Bevraging/Overzicht.php"> Bevraging</a>
+            </li>
+            <br/>
+            <li class="sidebar-brand">
+                <h4>
+                    BEHEER
+                </h4>
+            </li>
+            <li>
+                <a href="../Aandoening/Overzicht.php"> Aandoening </a>
+            </li>
+            <li>
+                <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+            </li>
+            <li>
+                <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+            </li>
+            <li>
+                <a href="Overzicht.php"> Vragen</a>
+            </li>
+            <li>
+                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+            </li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+    <div class="breadcrumb">
+        <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Vragen  </span>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+    <h1 class="header">Nieuwe vraag </h1>
+<form class="form-horizontal " role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<?php
+    if (isset($_POST["creeer"])) {
+        $vraagstelling = $_POST["vraagstelling"];
+        $vraag = new Vraag();
+        $vraag->Id = 0;
+        $vraag->setVraagstelling($vraagstelling);  //TODO nakijken ??  moet dit niet $vraagstelling zijn ?
 
-                                        if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
-                                            //Todo eventueel een exception toevoegen hier
-                                            echo "De vraag werd succesvol opgeslagen";
-                                        }
-                                    }else {
-                                ?>
+        if (FinahDAO::SchrijfWeg("Vraag", $vraag)) {
+            //Todo eventueel een exception toevoegen hier
+            echo "De vraag werd succesvol opgeslagen";
+        }
+    } else {
+        ?>
                                         <div class="form-group top-form">
                                             <label class="control-label col-xs-3 col-sm-3 col-md-2 col-lg-2" for="Vraagstelling"> Vraagstelling: </label>
                                             <div class="col-xs-9 col-sm-9 col-md-8 col-lg-7">

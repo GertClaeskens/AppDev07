@@ -89,7 +89,6 @@
             } else {
                 $antwoord = 0;
             }
-            echo "<br />" . $antwoord . "<br />";
             $antwoorden[$aantalingevuld - 1] = $antwoord;
 
             $bevraging["Antwoorden"] = implode(',', $antwoorden);
@@ -113,9 +112,10 @@
                     <div class="div-group row" id="vraagDiv">
                         <!--TODO thema toevoegen aan database?  -->
                         <p id="thema"><?= $vraag["Thema"]["Naam"] ?> </p>
-
                         <p id="vraag">Vraag <?php echo ($aantalingevuld) . ": " . $vraag["VraagStelling"] ?></p>
+
                         <img class="thumbnail" src="../Vragen/test.PNG" alt="...">
+
                     </div>
 
                     <div class="btn-group row" role="group" id="ervaring">

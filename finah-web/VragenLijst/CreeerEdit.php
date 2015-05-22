@@ -44,7 +44,7 @@
                 <a class="navbar-brand header" href="../index.php"> Finah</a>
             </div>
             <div class="dropdown navbar-header pull-right nav-right">
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -80,6 +80,7 @@
                         <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                     </li>
                     <br/>
+                    <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                     <li class="sidebar-brand">
                         <h4>
                             BEHEER
@@ -106,6 +107,7 @@
                     <li>
                         <a href="../Thema/Overzicht.php"> Thema's</a>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
             <div id="page-content-wrapper">
@@ -174,7 +176,7 @@
                                                 $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a],$_SESSION["token"]));
                                             };
                                         }
-                                        FinahDAO::PasAan("VragenLijst", $id, $vrlijst,$_SESSION["token"]);
+                                        var_dump(FinahDAO::PasAan("VragenLijst", $id, $vrlijst,$_SESSION["token"]));
                                         //if (FinahDAO::PasAan("VragenLijst", $id, $vrlijst)) {
                                         /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                         $vragenlijstTitel = $vragenlijst["Omschrijving"];

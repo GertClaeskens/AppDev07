@@ -8,4 +8,4 @@
 session_start();
     include_once '../Php/DAO/FinahDAO.php';
 
-    var_dump(FinahDAO::HaalOp("api/Account/Rol",$username,$_SESSION["token"]));
+    var_dump(FinahDAO::HaalOp("Thema",null,$_SESSION["token"]));

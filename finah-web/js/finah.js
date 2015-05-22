@@ -50,8 +50,8 @@ function deletePost(id, type,tk,r) {
     //var db_id = id.replace("post_", "");
     // Run Ajax request here to delete post from database
     $.ajax({
-        //url: 'http://finahbackend1920.azurewebsites.net/' + type + '/' + id,
-        url: 'http://localhost:1695/' + type + '/' + id,
+        url: 'http://finahbackend1920.azurewebsites.net/' + type + '/' + id,
+        //url: 'http://localhost:1695/' + type + '/' + id,
         type: 'DELETE',
         beforeSend: function (req) {
             req.setRequestHeader('Authorization','Bearer ' + tk);
@@ -59,6 +59,7 @@ function deletePost(id, type,tk,r) {
         contentType: 'application/json',
         success: function () {
             document.getElementById('mededeling').innerHTML = "<p class='gelukt'>De "+ type + " werd succesvol verwijderd.</p>";
+            window.location = url + type + '/overzicht.php';
             return true;
             // Do something with the result
         },

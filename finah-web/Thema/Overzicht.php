@@ -40,7 +40,7 @@ require "../PHP/Models/Thema.php";
                 <a class="navbar-brand header" href="../index.php"> Finah</a>
             </div>
             <div class="dropdown navbar-header pull-right nav-right">
-                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown">Rafaël.Sarrechia
+                <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -76,6 +76,7 @@ require "../PHP/Models/Thema.php";
                         <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                     </li>
                     <br/>
+                    <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                     <li class="sidebar-brand">
                         <h4>
                             BEHEER
@@ -102,6 +103,7 @@ require "../PHP/Models/Thema.php";
                     <li>
                         <a href="../Thema/Overzicht.php"> Thema's</a>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
             <div  id="page-content-wrapper">
@@ -152,7 +154,7 @@ require "../PHP/Models/Thema.php";
                                             <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                     name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                     class='delBtn btn btn-primary'
-                                                    onclick="Confirm.render('Dit thema verwijderen?','delete_lft',<?php echo $verw ?>,'Thema',this)">
+                                                    onclick="Confirm.render('Dit thema verwijderen?','delete_lft',<?php echo $verw ?>,'Thema',this,'<?php echo $_SESSION["token"]?>')">
                                                 <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                             </button>
                                         </td>

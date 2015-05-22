@@ -116,12 +116,16 @@
                     <h1>Rapport</h1>
                     <?php
                         if (isset($_GET)) {
-                            $rapportid = "4cb31482bfe143f0a90e408e86d8432c";
+                            //$rapportid = "4cb31482bfe143f0a90e408e86d8432c";
+                            $rapportid = $_GET["id"];
+
                             $onderzoek = FinahDAO::HaalOp("Onderzoek/Rapport", $rapportid);
-                            $idMan = "2a0aa4c1264f401081e6db09d9a092f6";
-                            $idPat = "6fe059997e0643af91688084e2648c55";
-                            $bevrPat = FinahDAO::HaalOp("Bevraging", $idPat, $_SESSION["token"]);
-                            $bevrMan = FinahDAO::HaalOp("Bevraging", $idMan, $_SESSION["token"]);
+                            $idMan = $onderzoek[0]["Bevraging_Man"]["Id"];
+                            $idPat = $onderzoek[0]["Bevraging_Pat"]["Id"];
+                            //$idMan = "2a0aa4c1264f401081e6db09d9a092f6";
+                            //$idPat = "6fe059997e0643af91688084e2648c55";
+                            $bevrPat = FinahDAO::HaalOp("Bevraging", $idPat);
+                            $bevrMan = FinahDAO::HaalOp("Bevraging", $idMan);
                             $reeks1 = $bevrPat["Antwoorden"];
                             $reeks2 = $bevrMan["Antwoorden"];
                             $arr1 = explode(",", $reeks1);
@@ -176,20 +180,20 @@
 
                             }
                             ?>
-                            <table border="1">
-                                <tr>
-                                    <td>Vraag</td>
-                                    <td colspan="2">Hinder voor Patient</td>
-                                    <td colspan="2">Hinder voor Mantelzorger</td>
-                                    <td>Hulpvraag</td>
+                            <table class="table">
+                                <tr style="background-color:#337ab7">
+                                    <th>Vraag</th>
+                                    <th colspan="2">Hinder voor Patient</th>
+                                    <th colspan="2">Hinder voor Mantelzorger</th>
+                                    <th>Hulpvraag</th>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>Patient</td>
-                                    <td>Mantelzorger</td>
-                                    <td>Patient</td>
-                                    <td>Mantelzorger</td>
-                                    <td>Gesteld door</td>
+                                    <th></th>
+                                    <th>Patient</th>
+                                    <th>Mantelzorger</th>
+                                    <th>Patient</th>
+                                    <th>Mantelzorger</th>
+                                    <th>Gesteld door</th>
                                 </tr
                                 <?php
                                     $i = 0;
@@ -208,41 +212,41 @@
                                                     echo "<td></td><td></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td>X</td><td></td>";
+                                                    echo "<td class='trueColumn'>X</td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td>X</td>";
+                                                    echo "<td></td><td class='trueColumn'>X</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>X</td><td>X</td>";
+                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hinderMan"]) {
                                                 case 0:
-                                                    echo "<td></td><td></td>";
+                                                    echo "<td ></td><td ></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td>X</td><td></td>";
+                                                    echo "<td class='trueColumn'>X</td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td>X</td>";
+                                                    echo "<td></td><td class='trueColumn'>X</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>X</td><td>X</td>";
+                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hulp"]) {
                                                 case 1:
-                                                    echo "<td>Patient</td>";
+                                                    echo "<td class='text-center'>Patient</td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td>Mantelzorger</td>";
+                                                    echo "<td class='text-center'>Mantelzorger</td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td>Beiden</td>";
+                                                    echo "<td class='text-center'>Beiden</td>";
                                                     break;
                                             }
                                             echo "</tr>";
