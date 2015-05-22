@@ -12,8 +12,7 @@
 <html>
 <head>
     <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
-<!--    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../Css/StylesheetVragenInvullen.css"/>
     <script type="text/javascript" src="../js/VraagInvullen.js"></script>
     <script type="text/javascript" src="../js/Validate/jquery.validate.js"></script>
@@ -90,7 +89,6 @@
             } else {
                 $antwoord = 0;
             }
-            echo "<br />" . $antwoord . "<br />";
             $antwoorden[$aantalingevuld - 1] = $antwoord;
 
             $bevraging["Antwoorden"] = implode(',', $antwoorden);
@@ -114,11 +112,10 @@
                     <div class="div-group row" id="vraagDiv">
                         <!--TODO thema toevoegen aan database?  -->
                         <p id="thema"><?= $vraag["Thema"]["Naam"] ?> </p>
-                        <?php var_dump($vraag); ?>
                         <p id="vraag">Vraag <?php echo ($aantalingevuld) . ": " . $vraag["VraagStelling"] ?></p>
-                        <?php if ($vraag["Afbeelding"] != '' || $vraag["Afbeelding"] != null) { ?>
-                            <img class="thumbnail" src="../Images/<?php echo $vraag['Afbeelding']; ?>" alt="...">
-                        <?php } ?>
+
+                        <img class="thumbnail" src="../Vragen/test.PNG" alt="...">
+
                     </div>
 
                     <div class="btn-group row" role="group" id="ervaring">
@@ -218,7 +215,7 @@
                 </div>
             </form>
         <?php }
-        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
+//        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
 
     } else var_dump($_GET) . "<br />" . var_dump($_POST); ?>
 <script>

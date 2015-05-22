@@ -5,6 +5,7 @@
     require "../PHP/Models/AntwoordenLijst.php";
 
     require "../PHP/Finah.php";
+    set_include_path(get_include_path() . PATH_SEPARATOR . '../google-api-php-client/src');
     if (!isset($_POST["nieuw"]) && !isset($_POST["creeer"]) && !isset($_POST["update"]) && !isset($_POST["bewerk"]) && !isset($_POST["details"])) {
         header('Location: Overzicht.php');
         exit;
