@@ -1,5 +1,6 @@
 package finah_desktop_fx.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,6 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,11 +17,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import finah_desktop_fx.MainApp;
+import finah_desktop_fx.dao.SharedDAO;
 import finah_desktop_fx.dao.ThemaDAO;
+import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Pathologie;
 import finah_desktop_fx.model.Thema;
+import finah_desktop_fx.model.VragenLijst;
 
 public class ThemaOverzichtController implements Initializable {
 	@FXML
@@ -65,7 +71,23 @@ public class ThemaOverzichtController implements Initializable {
 							TableColumn<Thema, Boolean> pathoBooleanTableColumn) {
 						return new AddButtonsCell(tblThema,"Edit","Delete","Details");
 					}
-				});	
+				});
+		
+		btnToevoegen.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			 
+	          public void handle(MouseEvent arg0) {
+	             
+	        	  try {
+	        		  Thema thema = new Thema();
+	        		  thema.setNaam(txtThema.getText());
+	        		  thema.setId(ThemaDAO.GetThemas().size()+1);
+	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/Thema/", thema);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	          }
+		});
 	}
 
 	public void setMainApp(MainApp mainApp) {

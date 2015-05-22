@@ -1,10 +1,12 @@
 package finah_desktop_fx.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AandoeningDAO;
+import finah_desktop_fx.dao.SharedDAO;
 import finah_desktop_fx.dao.VraagDAO;
 import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Aandoening;
@@ -15,6 +17,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 public class VragenLijstOverzichtController implements Initializable {
@@ -77,7 +81,22 @@ public class VragenLijstOverzichtController implements Initializable {
 							TableColumn<VragenLijst, Boolean> vrgLijstBooleanTableColumn) {
 						return new AddButtonsCell(tblVragenlijst,"Edit","Delete","Details");
 					}
-				});	
+				});
+		btnToevoegen.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			 
+	          public void handle(MouseEvent arg0) {
+	             
+	        	  try {
+	        		  VragenLijst vragenLijst = new VragenLijst();
+	        		  vragenLijst.setOmschrijving(txtVragenLijst.getText());
+	        		  vragenLijst.setId(VragenLijstDAO.GetVragenLijsten().size()+1);
+	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/VragenLijst/", vragenLijst);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	          }
+		});
 	}
     
 	public void setMainApp(MainApp mainApp) {

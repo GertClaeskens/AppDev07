@@ -1,19 +1,24 @@
 package finah_desktop_fx.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AandoeningDAO;
 import finah_desktop_fx.dao.LeeftijdsCategorieDAO;
+import finah_desktop_fx.dao.SharedDAO;
 import finah_desktop_fx.dao.VraagDAO;
+import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Aandoening;
 import finah_desktop_fx.model.LeeftijdsCategorie;
 import finah_desktop_fx.model.Vraag;
+import finah_desktop_fx.model.VragenLijst;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 public class LftdsCatOverzichtController implements Initializable{
@@ -70,7 +76,24 @@ public class LftdsCatOverzichtController implements Initializable{
 							TableColumn<LeeftijdsCategorie, Boolean> lftdCatBooleanTableColumn) {
 						return new AddButtonsCell(tblLftdsCat,"Edit","Delete","Details");
 					}
-				});	
+				});
+		
+		btnToevoegen.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			 
+	          public void handle(MouseEvent arg0) {
+	             
+	        	  try {
+	        		  LeeftijdsCategorie lftdsCat = new LeeftijdsCategorie();
+	        		  lftdsCat.setVan(Integer.parseInt(txtVan.getText()));
+	        		  lftdsCat.setTot(Integer.parseInt(txtTot.getText()));
+	        		  lftdsCat.setId(VragenLijstDAO.GetVragenLijsten().size()+1);
+	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/", lftdsCat);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	          }
+		});
 	}
     
 	public void setMainApp(MainApp mainApp) {
