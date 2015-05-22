@@ -118,11 +118,14 @@
                         if (isset($_GET)) {
                             //$rapportid = "4cb31482bfe143f0a90e408e86d8432c";
                             $rapportid = $_GET["id"];
+
                             $onderzoek = FinahDAO::HaalOp("Onderzoek/Rapport", $rapportid);
-                            $idMan = "2a0aa4c1264f401081e6db09d9a092f6";
-                            $idPat = "6fe059997e0643af91688084e2648c55";
-                            $bevrPat = FinahDAO::HaalOp("Bevraging", $idPat, $_SESSION["token"]);
-                            $bevrMan = FinahDAO::HaalOp("Bevraging", $idMan, $_SESSION["token"]);
+                            $idMan = $onderzoek[0]["Bevraging_Man"]["Id"];
+                            $idPat = $onderzoek[0]["Bevraging_Pat"]["Id"];
+                            //$idMan = "2a0aa4c1264f401081e6db09d9a092f6";
+                            //$idPat = "6fe059997e0643af91688084e2648c55";
+                            $bevrPat = FinahDAO::HaalOp("Bevraging", $idPat);
+                            $bevrMan = FinahDAO::HaalOp("Bevraging", $idMan);
                             $reeks1 = $bevrPat["Antwoorden"];
                             $reeks2 = $bevrMan["Antwoorden"];
                             $arr1 = explode(",", $reeks1);

@@ -165,6 +165,7 @@
 
         public static function Verwijder($type, $id,$token)
         {
+
             $url = self::URL . $type . "/" .$id;
             //echo $id;
             //$curl = curl_init($url . "/Contacts/{$recordId}");
