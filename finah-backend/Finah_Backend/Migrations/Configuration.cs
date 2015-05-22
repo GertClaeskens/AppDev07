@@ -324,9 +324,10 @@ namespace Finah_Backend.Migrations
                                                       }
                                               }
             };
-            #endregion Vragen + VragenLijst toevoegen
+
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vrLijst);
             context.SaveChanges();
+            #endregion Vragen + VragenLijst toevoegen
             #region Relaties toevoegen
 
             var relaties = new List<Relatie>

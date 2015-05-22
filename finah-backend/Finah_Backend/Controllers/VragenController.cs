@@ -38,6 +38,7 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
@@ -49,7 +50,7 @@ namespace Finah_Backend.Controllers
 
         [Route("Vragen/Overzicht")] //Geen Api/ meer nodig
         //public IQueryable<Vraag> GetOverzicht()
-        public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<Vraag> GetOverzicht()
         {
             db.Configuration.LazyLoadingEnabled = false;
             return db.Vragen.Include(p => p.Thema);//.Include(p => p.VragenLijst);
