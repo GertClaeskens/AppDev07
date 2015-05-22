@@ -174,7 +174,7 @@
                                                 $vrlijst->voegVragenToe(FinahDAO::HaalOp("Vragen", $vragenArray[$a],$_SESSION["token"]));
                                             };
                                         }
-                                        FinahDAO::PasAan("VragenLijst", $id, $vrlijst,$_SESSION["token"]);
+                                        var_dump(FinahDAO::PasAan("VragenLijst", $id, $vrlijst,$_SESSION["token"]));
                                         //if (FinahDAO::PasAan("VragenLijst", $id, $vrlijst)) {
                                         /*$vragenlijst = FinahDAO::HaalOp("VragenLijst", $id);
                                         $vragenlijstTitel = $vragenlijst["Omschrijving"];

@@ -49,7 +49,7 @@ require "../PHP/Models/VragenLijst.php";
                     <li role="presentation" class="divider">
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">
+                        <a role="menuitem" tabindex="-1" href="../logout.php">
                             <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
                         </a>
                     </li>

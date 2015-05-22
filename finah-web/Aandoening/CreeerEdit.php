@@ -142,6 +142,7 @@
                                     };
                                 }
                                 if (isset($_POST["nieuw"])) {
+                                    $aandoening->setId(0);
                                     if (FinahDAO::SchrijfWeg("Aandoening", $aandoening,$_SESSION["token"])) {
                                         //Todo eventueel een exception toevoegen hier
                                         echo "De aandoening werd succesvol opgeslagen";

@@ -93,7 +93,7 @@
                 <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
             </li>
             <li>
-                <a href="../Pathologie/Overzicht.php"> Vragen</a>
+                <a href="../Vragen/Overzicht.php"> Vragen</a>
             </li>
             <li>
                 <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>

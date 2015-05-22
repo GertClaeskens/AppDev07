@@ -142,6 +142,7 @@
                                         };
                                     }
                                     if (isset($_POST["nieuw"])) {
+                                        $pathologie->setId(0);
                                         if (FinahDAO::SchrijfWeg("Pathologie", $pathologie,$_SESSION["token"])) {
                                             //Todo eventueel een exception toevoegen hier
                                             echo "De pathologie werd succesvol opgeslagen";
