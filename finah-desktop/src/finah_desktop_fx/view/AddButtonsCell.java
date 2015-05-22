@@ -68,7 +68,8 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 						deleteDialog.showDialog();
 					}
 					else if(btn.getText().equals("Details")){
-						//details nog toevoegen
+						DetailsDialog detailsDialog = new DetailsDialog();
+						detailsDialog.showDialog(table, buttonY.get(), table.getSelectionModel().getSelectedIndex()+1);
 					}
 				}
 			});

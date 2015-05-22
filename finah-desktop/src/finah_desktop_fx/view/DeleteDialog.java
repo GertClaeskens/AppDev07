@@ -2,11 +2,6 @@ package finah_desktop_fx.view;
 
 import javax.swing.JOptionPane;
 
-import javafx.scene.control.TableView;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 public class DeleteDialog<T> {
 
 	void showDialog() {
