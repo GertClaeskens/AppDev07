@@ -39,7 +39,7 @@
             $endpos = strpos($resarr["roles"], ']')-3;
             $rest = substr($resarr["roles"], $startpos,$endpos);
             $_SESSION["rol"] = $rest;
-            header("Location: Aandoening/Overzicht.php");
+            header("Location: Bevraging/Overzicht.php");
         } else echo "aanmelden mislukt";
 
     }

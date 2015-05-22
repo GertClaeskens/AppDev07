@@ -1,7 +1,7 @@
 <?php
-require "../PHP/DAO/FinahDAO.php";
-require_once "../PHP/Models/Bevraging.php";
-require_once "../PHP/Models/Onderzoek.php";
+    require "../PHP/DAO/FinahDAO.php";
+    require_once "../PHP/Models/Bevraging.php";
+    require_once "../PHP/Models/Onderzoek.php";
 
     session_start();
 ?>
@@ -9,11 +9,11 @@ require_once "../PHP/Models/Onderzoek.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>FINAH - Bevraging</title>
     <link rel="stylesheet" type="text/css" href="../Css/Stylesheet.css"/>
-    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css"/>
     <script src="../js/finah.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -40,7 +40,8 @@ require_once "../PHP/Models/Onderzoek.php";
         <a class="navbar-brand header" href="../index.php"> Finah</a>
     </div>
     <div class="dropdown navbar-header pull-right nav-right">
-        <a class="btn dropdown-toggle pull-left" type="button" id="menu1" data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
+        <a class="btn dropdown-toggle pull-left" type="button" id="menu1"
+           data-toggle="dropdown"><?php echo $_SESSION["username"]; ?>
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu " role="menu" aria-labelledby="menu1">
@@ -52,7 +53,8 @@ require_once "../PHP/Models/Onderzoek.php";
             <li role="presentation" class="divider">
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="../logout.php">                     <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen                 </a>
+                <a role="menuitem" tabindex="-1" href="../logout.php"> <span class="glyphicon glyphicon-log-out"></span>
+                    &nbsp Uitloggen </a>
             </li>
         </ul>
     </div>
@@ -67,51 +69,52 @@ require_once "../PHP/Models/Onderzoek.php";
                     MENU
                 </h4>
             </li>
-            <li >
+            <li>
                 <a href="../index.php"> Home </a>
             </li>
             <li>
                 <a href="Overzicht.php"> Bevraging</a>
             </li>
             <br/>
-            <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
-            <li class="sidebar-brand">
-                <h4>
-                    BEHEER
-                </h4>
-            </li>
-            <li>
-                <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
-            </li>
-            <li>
-                <a href="../Aandoening/Overzicht.php"> Aandoening </a>
-            </li>
-            <li>
-                <a href="../Pathologie/Overzicht.php"> Pathologie</a>
-            </li>
-            <li>
-                <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
-            </li>
-            <li>
-                <a href="../Vragen/Overzicht.php"> Vragen</a>
-            </li>
-            <li>
-                <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
-            </li>
-            <li>
-                <a href="../Thema/Overzicht.php"> Thema's</a>
-            </li>
-            <?php }?>
+            <?php if (isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener") { ?>
+                <li class="sidebar-brand">
+                    <h4>
+                        BEHEER
+                    </h4>
+                </li>
+                <li>
+                    <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
+                </li>
+                <li>
+                    <a href="../Aandoening/Overzicht.php"> Aandoening </a>
+                </li>
+                <li>
+                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+                </li>
+                <li>
+                    <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+                </li>
+                <li>
+                    <a href="../Vragen/Overzicht.php"> Vragen</a>
+                </li>
+                <li>
+                    <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+                </li>
+                <li>
+                    <a href="../Thema/Overzicht.php"> Thema's</a>
+                </li>
+            <?php } ?>
         </ul>
     </div>
-    <div  id="page-content-wrapper">
+    <div id="page-content-wrapper">
         <div class="breadcrumb">
             <a href="../index.php"><span class="glyphicon glyphicon-home"> </a></span> <span class="breadcrumb-font"> &nbsp/ Home / Bevraging </span>
         </div>
-        <div  class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h1>Overzicht</h1>
+
                     <form action="CreeerEdit.php" method="post">
                         <button class="btn btn-primary createbtn " type="submit" name="creeer">
                             Maak een nieuwe bevraging aan
@@ -142,26 +145,31 @@ require_once "../PHP/Models/Onderzoek.php";
                             </thead>
                             <tbody>
                             <?php
-                                $onderzoekLijst = FinahDAO::HaalOp("Onderzoek", null, $_SESSION["token"]);
+                                if ($_SESSION["rol"] == "Hulpverlener") {
+                                    $onderzoekLijst = FinahDAO::HaalOp("Onderzoek", null, $_SESSION["token"]);
+                                } else {
+                                    $onderzoekLijst = FinahDAO::HaalOp("Onderzoek", null, $_SESSION["token"]);
+                                }
                                 foreach ($onderzoekLijst as $item) {
-                                      //$antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
-                                            ?>
-                                    <tr> <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $item["Datum"]  ?> </td>
+                                    //$antw = FinahDAO::HaalOp("Antwoordenlijst",$item["Bevraging_Pat"]["Id"]);
+                                    ?>
+                                    <tr>
+                                        <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $item["Datum"] ?> </td>
                                         <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo "Rafael Sarrechia" ?></td>
 
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
                                         <td class='col-xs-3 col-sm-4 col-md-3 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>
                                         <td class=' '><?php echo $item["Bevraging_Pat"]["Id"] . '<br/>' . $item["Bevraging_Man"]["Id"] ?></td>
-                                        <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" . '<br/>' .  "Nee"?></td>
+                                        <td class='col-xs-3 col-sm-2  col-md-1 col-lg-1 text-center'><?php echo "Nee" . '<br/>' . "Nee" ?></td>
 
                                         <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                            <button type='submit' name='details' id='<?php echo "Dt".$item["Id"] ?>'
+                                            <button type='submit' name='details' id='<?php echo "Dt" . $item["Id"] ?>'
                                                     class='btn btn-primary' value="<?php echo $item["Id"] ?>">
                                                 <span class='glyphicon glyphicon-list-alt'></span>&nbsp;
                                             </button>
                                         </td>
                                     </tr>
-                                <?php }?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </form>
@@ -171,7 +179,7 @@ require_once "../PHP/Models/Onderzoek.php";
     </div>
 </div>
 <script>
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         if ($("#side-toggle").hasClass("glyphicon-option-vertical")) {
