@@ -1,5 +1,6 @@
 package finah_desktop_fx.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,6 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,12 +17,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import finah_desktop_fx.MainApp;
 import finah_desktop_fx.dao.AccountDAO;
 import finah_desktop_fx.dao.RelatieDAO;
+import finah_desktop_fx.dao.SharedDAO;
+import finah_desktop_fx.dao.ThemaDAO;
 import finah_desktop_fx.model.Account;
 import finah_desktop_fx.model.Relatie;
+import finah_desktop_fx.model.Thema;
 
 public class AccountOverzichtController implements Initializable{
 	@FXML
@@ -64,7 +70,7 @@ public class AccountOverzichtController implements Initializable{
 							return new AddButtonsCell(tblBestaandeAcc,"Edit","Delete","Details");
 						}
 					});
-		}
+			}
 	    
 		public void setMainApp(MainApp mainApp) {
 	        this.mainApp = mainApp;

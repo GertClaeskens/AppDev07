@@ -30,8 +30,7 @@ public class AccountDAO {
 
 	public static Account GetAccount(int id){
 		// Exception Handling nog nakijken
-		// Nog opzoeken hoe in dit geval de accounts kunnen worden
-		// uitgelezen
+		// Nog opzoeken hoe in dit geval de accounts kunnen worden uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {

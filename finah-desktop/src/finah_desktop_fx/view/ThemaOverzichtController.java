@@ -63,8 +63,7 @@ public class ThemaOverzichtController implements Initializable {
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the
-		// table.
+		// create a cell value factory with an add button for each row in the table.
 		colActie.setCellFactory(new Callback<TableColumn<Thema, Boolean>, TableCell<Thema, Boolean>>() {
 					@Override
 					public TableCell<Thema, Boolean> call(
