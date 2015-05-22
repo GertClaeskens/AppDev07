@@ -415,7 +415,7 @@
     <?php
         } elseif (isset($_POST["details"])) {
         $id = $_POST["details"];
-        $onderzk = FinahDAO::HaalOp("Onderzoek", $id, $_SESSION["token"]);
+        $onderzk = FinahDAO::HaalOp("Onderzoek", $id);
         $onderzoek = $onderzk[0];
         $informatie = $onderzoek["Informatie"];
         $aandoeningLijst = $onderzoek["Aandoening"];

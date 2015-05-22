@@ -13,7 +13,6 @@ import com.google.gson.reflect.TypeToken;
 import finah_desktop_fx.model.VragenLijst;
 public class VragenLijstDAO {
 	public static ArrayList<VragenLijst> GetVragenLijsten(){
-		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<VragenLijst>>() {
 		}.getType();
@@ -21,7 +20,6 @@ public class VragenLijstDAO {
 			return SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/VragenLijst/Overzicht",collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -29,16 +27,12 @@ public class VragenLijstDAO {
 	}
 
 	public static VragenLijst GetVragenLijst(int id){
-		// Exception Handling nog nakijken
-		// Nog opzoeken hoe in dit geval de vragenlijstenlijsten kunnen worden
-		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd=null;
 		try {
 			rd = SharedDAO
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/VragenLijst/" + id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

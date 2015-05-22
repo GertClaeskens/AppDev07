@@ -52,9 +52,7 @@ public class VragenLijstOverzichtController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	//public void initialize(){
         // Initialize the person table with the two columns.
-		//ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
 		ObservableList<VragenLijst> tblList = FXCollections.observableList(VragenLijstDAO.GetVragenLijsten());
         tblVragenlijst.setItems(tblList);
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -62,8 +60,7 @@ public class VragenLijstOverzichtController implements Initializable {
         colAandoening.setCellValueFactory(new PropertyValueFactory<>("Aandoe"));
         colAantal.setCellValueFactory(new PropertyValueFactory<>("AantalVragen"));
 
-		// define a simple boolean cell value for the action column so that the
-		// column will only be shown for non-empty rows.
+		// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
 		colActie.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<VragenLijst, Boolean>, ObservableValue<Boolean>>() {
 					@Override
 					public ObservableValue<Boolean> call(
@@ -73,8 +70,7 @@ public class VragenLijstOverzichtController implements Initializable {
 					}
 				});
 
-		// create a cell value factory with an add button for each row in the
-		// table.
+		// create a cell value factory with an add button for each row in the table.
 		colActie.setCellFactory(new Callback<TableColumn<VragenLijst, Boolean>, TableCell<VragenLijst, Boolean>>() {
 					@Override
 					public TableCell<VragenLijst, Boolean> call(
@@ -92,7 +88,6 @@ public class VragenLijstOverzichtController implements Initializable {
 	        		  vragenLijst.setId(VragenLijstDAO.GetVragenLijsten().size()+1);
 	        		  SharedDAO.PostObject("http://finahbackend1920.azurewebsites.net/VragenLijst/", vragenLijst);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	          }

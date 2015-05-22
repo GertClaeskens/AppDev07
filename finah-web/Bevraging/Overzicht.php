@@ -155,7 +155,7 @@
                                     ?>
                                     <tr>
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-2 '> <?php echo $item["Datum"] ?> </td>
-                                        <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo "Rafael Sarrechia" ?></td>
+                                        <td class='col-xs-3 col-sm-3 col-md-3 col-lg-3'><?php echo $_SESSION["Username"] ?></td>
 
                                         <td class='col-xs-3 col-sm-4 col-md-4 col-lg-4'><?php echo $item["Informatie"] ?></td>
                                         <td class='col-xs-3 col-sm-4 col-md-3 col-lg-2'><?php echo $item["Relatie"]["Naam"] ?></td>

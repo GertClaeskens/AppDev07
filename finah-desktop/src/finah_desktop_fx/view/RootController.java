@@ -75,7 +75,6 @@ public class RootController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// private void initialize() {
 
 		rootLayout.setAlignment(bbTopMenu, Pos.CENTER_LEFT);
 		Rectangle clip = new Rectangle(ivAvatar.getFitWidth(),
@@ -94,7 +93,6 @@ public class RootController implements Initializable {
 
 		// store the rounded image in the imageView.
 		ivAvatar.setImage(image);
-		// bbTopMenu.autosize();
 
 	}
 
@@ -120,8 +118,8 @@ public class RootController implements Initializable {
 	@FXML
 	public void vergroten(ActionEvent actionEvent) {
 		Stage stage = mainApp.getPrimaryStage(); 
-        final double stageY = Utils.isMac() ? stage.getY() - 22 : stage.getY(); // TODO Workaround for RT-13980
-        final Screen screen = Screen.getScreensForRectangle(stage.getX(), stageY, 1, 1).get(0);      // line 42
+        final double stageY = Utils.isMac() ? stage.getY() - 22 : stage.getY();
+        final Screen screen = Screen.getScreensForRectangle(stage.getX(), stageY, 1, 1).get(0); 
         Rectangle2D bounds = screen.getVisualBounds();
         if (bounds.getMinX() == stage.getX() && bounds.getMinY() == stageY &&
                 bounds.getWidth() == stage.getWidth() && bounds.getHeight() == stage.getHeight()) {
@@ -133,7 +131,7 @@ public class RootController implements Initializable {
             }
         } else {
             backupWindowBounds = new Rectangle2D(stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight());
-            final double newStageY = Utils.isMac() ? screen.getVisualBounds().getMinY() + 22 : screen.getVisualBounds().getMinY(); // TODO Workaround for RT-13980
+            final double newStageY = Utils.isMac() ? screen.getVisualBounds().getMinY() + 22 : screen.getVisualBounds().getMinY(); 
             stage.setX(screen.getVisualBounds().getMinX());
             stage.setY(newStageY);
             stage.setWidth(screen.getVisualBounds().getWidth());
@@ -179,7 +177,6 @@ public class RootController implements Initializable {
 		try {
 			accountLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -197,7 +194,6 @@ public class RootController implements Initializable {
 		try {
 			accountLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -247,7 +243,7 @@ public class RootController implements Initializable {
 			default:
 				break;
 			}
-			// loader.setLocation(MainApp.class.getResource("view/VragenOverzicht.fxml"));
+			
 			AnchorPane accountLayout = (AnchorPane) loader.load();
 
 			rootLayout.setCenter(accountLayout);

@@ -23,37 +23,36 @@ public class DeleteDialog<T> {
 			/*int index = table.getFocusModel().getFocusedIndex();
 			switch(table.getId()){
 			case "tblVragen":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblVragenlijst":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblAandoening":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblPathologie":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblLftdsCat":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblRelatie":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			case "tblThema":{
-				
+				DeleteMethod invoegen
 				break;
 				}
 			}*/
 		}
 		else{
-			//venster sluit gewoon af
 		}
 	}
 }

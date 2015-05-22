@@ -63,7 +63,6 @@ public class SharedDAO {
 		try {
             post.setEntity(new StringEntity(objectAsJson));
             HttpResponse response = client.execute(post);
-            System.out.println(EntityUtils.toString(post.getEntity()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,7 +79,6 @@ public class SharedDAO {
 		try {
             ((HttpResponse) delete).setEntity(new StringEntity(objectAsJson));
             HttpResponse response = client.execute(delete);
-            //System.out.println(EntityUtils.toString(delete.deleteEntity()));
         } catch (IOException e) {
             e.printStackTrace();
         }
