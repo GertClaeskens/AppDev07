@@ -40,15 +40,9 @@
 
         public DbSet<Postcode> Postcodes { get; set; }
 
-        public DbSet<Status> Statussen { get; set; }
-
         public DbSet<Vraag> Vragen { get; set; }
 
         public DbSet<VragenLijst> VragenLijsten { get; set; }
-
-        public DbSet<Antwoord> Antwoorden { get; set; }
-
-        public DbSet<AntwoordenLijst> AntwoordenLijsten { get; set; }
 
         public DbSet<Relatie> Relaties { get; set; }
         public DbSet<Onderzoek> Onderzoeken { get; set; }

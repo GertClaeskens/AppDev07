@@ -210,8 +210,6 @@
     <Compile Include="Controllers\AandoeningController.cs" />
     <Compile Include="Controllers\AanvraagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AntwoordController.cs" />
-    <Compile Include="Controllers\AntwoordenLijstController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeeftijdsCategorieController.cs" />
     <Compile Include="Controllers\OnderzoekController.cs" />
@@ -228,8 +226,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aandoening.cs" />
-    <Compile Include="Models\Antwoord.cs" />
-    <Compile Include="Models\AntwoordenLijst.cs" />
     <Compile Include="Models\Enums\TypeAccount.cs" />
     <Compile Include="Models\Onderzoek.cs" />
     <Compile Include="Models\Pathologie.cs" />
@@ -243,7 +239,6 @@
     <Compile Include="Models\Postcode.cs" />
     <Compile Include="Controllers\PostcodeController.cs" />
     <Compile Include="Models\Relatie.cs" />
-    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Thema.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\VragenLijst.cs" />
