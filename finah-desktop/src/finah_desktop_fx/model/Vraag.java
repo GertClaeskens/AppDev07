@@ -74,6 +74,14 @@ public class Vraag {
 	public void setAandoening(Aandoening aandoening) {
 		Aandoening = aandoening;
 	}
+	
+	public String getVraagstelling() {
+		return VraagStelling;
+	}
+
+	public void setVraagstelling(String vraagstelling) {
+		VraagStelling = vraagstelling;
+	}
 
 	@Override
 	public int hashCode() {
