@@ -59,8 +59,17 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 				@Override
 				public void handle(ActionEvent actionEvent) {
 					table.getSelectionModel().select(getTableRow().getIndex());
-					EditDialog editDialog = new EditDialog();
-					editDialog.showDialog(table, buttonY.get(), table.getSelectionModel().getSelectedIndex());
+					if(btn.getText().equals("Edit")){
+						EditDialog editDialog = new EditDialog();
+						editDialog.showDialog(table, buttonY.get(), table.getSelectionModel().getSelectedIndex()+1);
+					}
+					else if(btn.getText().equals("Delete")){
+						DeleteDialog deleteDialog = new DeleteDialog();
+						deleteDialog.showDialog();
+					}
+					else if(btn.getText().equals("Details")){
+						//details nog toevoegen
+					}
 				}
 			});
 		}
