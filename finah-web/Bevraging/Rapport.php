@@ -177,12 +177,12 @@
 
                             }
                             ?>
-                            <table border="1">
+                            <table class="table table-bordered table-striped">
                                 <tr>
-                                    <td>Vraag</td>
-                                    <td colspan="2">Hinder voor Patient</td>
-                                    <td colspan="2">Hinder voor Mantelzorger</td>
-                                    <td>Hulpvraag</td>
+                                    <th>Vraag</th>
+                                    <th colspan="2">Hinder voor Patient</th>
+                                    <th colspan="2">Hinder voor Mantelzorger</th>
+                                    <th>Hulpvraag</th>
                                 </tr>
                                 <tr>
                                     <td></td>
