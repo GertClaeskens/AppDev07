@@ -49,16 +49,13 @@
 				</Label>
 			</VBox>
 			<VBox>
-				<TableView fx:id="tblVragen" layoutX="103.0" layoutY="194.0" maxHeight="1000.0" maxWidth="2000" minHeight="200.0" prefHeight="800.0" prefWidth="1001.0" tableMenuButtonVisible="true">
+				<TableView fx:id="tblVragen" layoutX="103.0" layoutY="194.0">
 					<columns>
 						<TableColumn fx:id="colId" maxWidth="100.0" minWidth="40.0" prefWidth="40.0" text="Id" />
-						<TableColumn fx:id="colOmschrijving" minWidth="0.0" prefWidth="360.0" text="Vraagstelling" />
-						<TableColumn fx:id="colThema" minWidth="0.0" prefWidth="611.0" text="Thema" />
-						<TableColumn fx:id="colActie" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="Acties" />
+						<TableColumn fx:id="colOmschrijving" minWidth="0.0" prefWidth="507.0" text="Vraagstelling" />
+						<TableColumn fx:id="colThema" minWidth="0.0" prefWidth="249.0" text="Thema" />
+						<TableColumn fx:id="colActie" editable="false" maxWidth="350.0" minWidth="200.0" prefWidth="313.0" resizable="false" sortable="false" text="Acties" />
 					</columns>
-					<columnResizePolicy>
-						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-					</columnResizePolicy>
 				</TableView>
 			</VBox>
 		</VBox>

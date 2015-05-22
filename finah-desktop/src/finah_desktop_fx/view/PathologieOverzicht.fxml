@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finah_desktop_fx.view.PathologieOverzichtController">
    <children>
-   		<VBox AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" prefWidth="1125.0">
+   		<VBox prefWidth="1125.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
       		<GridPane>
       			<columnConstraints>
 					<ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="500.0" prefWidth="500.0" />
@@ -24,9 +24,9 @@
             			<Font name="System Bold" size="16.0" />
          			</font>
       			</Label>
-      			<TextField fx:id="txtPathologie" maxWidth="500.0" minWidth="500.0" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-      			<ChoiceBox fx:id="cboAandoening" maxWidth="150.0" minWidth="150.0" prefHeight="31.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      			<Button fx:id="btnToevoegen" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" text="Toevoegen" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+      			<TextField fx:id="txtPathologie" maxWidth="500.0" minWidth="500.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      			<ChoiceBox fx:id="cboAandoening" maxWidth="150.0" minWidth="150.0" prefHeight="31.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      			<Button fx:id="btnToevoegen" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" text="Toevoegen" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       		</GridPane>
       	</VBox>
       	<VBox alignment="BOTTOM_CENTER" layoutY="230.0" prefHeight="231.0" prefWidth="1125.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="275.0">
@@ -40,9 +40,9 @@
       		<VBox>	
       			<TableView fx:id="tblPathologie" layoutX="97.0" layoutY="194.0" prefHeight="231.0" prefWidth="897.0">
         			<columns>
-          				<TableColumn fx:id="colId" prefWidth="417.0" text="Id" />
-          				<TableColumn fx:id="colPathologie" minWidth="0.0" prefWidth="479.0" text="Pathologie" />
-          				<TableColumn fx:id="colActie" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="Acties" />
+          				<TableColumn fx:id="colId" prefWidth="46.0" text="Id" />
+          				<TableColumn fx:id="colPathologie" minWidth="0.0" prefWidth="696.0" text="Pathologie" />
+          				<TableColumn fx:id="colActie" editable="false" maxWidth="354.0" minWidth="200.0" prefWidth="354.0" resizable="false" sortable="false" text="Acties" />
         			</columns>
       			</TableView>
       		</VBox>

@@ -50,7 +50,7 @@ public class VragenLijstOverzichtController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	//public void initialize(){
         // Initialize the person table with the two columns.
-		ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
+		//ObservableList<Aandoening> cboList = FXCollections.observableList(AandoeningDAO.GetAandoeningen());
 		ObservableList<VragenLijst> tblList = FXCollections.observableList(VragenLijstDAO.GetVragenLijsten());
         tblVragenlijst.setItems(tblList);
         colId.setCellValueFactory(new PropertyValueFactory<>("Id"));

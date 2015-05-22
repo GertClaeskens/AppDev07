@@ -36,7 +36,9 @@ public class RelatieOverzichtController implements Initializable{
 	private TableColumn<Relatie,String> colNaam;
 	@FXML
 	private TableColumn<Relatie,Boolean> colActie;
+	
 	private MainApp mainApp;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	//public void initialize(){
