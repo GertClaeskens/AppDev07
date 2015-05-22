@@ -75,11 +75,8 @@ namespace Finah_Backend.Controllers
                              Id = vraag.Id,
                              VraagStelling = vraag.VraagStelling,
                              Thema = this.db.Themas.Find(vraag.Thema.Id),
-<<<<<<< HEAD
                              //Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
-=======
                              Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
->>>>>>> c6a8f8ef3b93a1cfeb078f3902043d046bf9ddf0
                              VragenLijst = new List<VragenLijst>()
                          };
             if (vraag.VragenLijst != null)
