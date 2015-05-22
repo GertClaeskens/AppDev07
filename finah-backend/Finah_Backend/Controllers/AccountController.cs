@@ -21,6 +21,8 @@ using System.Web.Http.ModelBinding;
 
 namespace Finah_Backend.Controllers
 {
+    using System.Web.Security;
+
     using Finah_Backend.Models;
 
     [Authorize]
@@ -54,6 +56,21 @@ namespace Finah_Backend.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+
+        [AllowAnonymous]
+        [Route("Rol/{username}")]
+        public string GetRol(string username)
+        {
+
+            
+            Console.WriteLine(User.Identity.Name);
+            if (User.IsInRole("Admin")) return "Admin";
+            if (User.IsInRole("Onderzoeker")) return "Onderzoeker";
+            if (User.IsInRole("Hulpverlener")) return "Hulpverlener";
+            return ("Geen rol");
+
+        }
+
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -321,6 +338,7 @@ namespace Finah_Backend.Controllers
 
             return logins;
         }
+
 
         // POST api/Account/Register
         [AllowAnonymous]

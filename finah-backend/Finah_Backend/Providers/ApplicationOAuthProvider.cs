@@ -46,12 +46,22 @@ namespace Finah_Backend.Providers
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName);
+            List<Claim> roles = oAuthIdentity.Claims.Where(c => c.Type == ClaimTypes.Role).ToList();
+            AuthenticationProperties properties = CreateProperties(user.UserName, Newtonsoft.Json.JsonConvert.SerializeObject(roles.Select(x => x.Value)));
+            //AuthenticationProperties properties = CreateProperties(user.UserName);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
         }
-
+        public static AuthenticationProperties CreateProperties(string userName, string Roles)
+        {
+            IDictionary<string, string> data = new Dictionary<string, string>
+        {
+            { "userName", userName },
+            {"roles",Roles}
+        };
+            return new AuthenticationProperties(data);
+        }
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
@@ -60,7 +70,7 @@ namespace Finah_Backend.Providers
             }
 
             return Task.FromResult<object>(null);
-            
+
         }
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
