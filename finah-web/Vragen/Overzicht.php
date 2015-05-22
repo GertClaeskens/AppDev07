@@ -151,7 +151,7 @@ require "../PHP/Models/Vraag.php";
                                                 <button type='button' title='Verwijderen' id='<?php echo "Del". $item["Id"] ?>'
                                                         name='verwijderBtn' value="<?php echo $item["Id"] ?>"
                                                         class='delBtn btn btn-primary'
-                                                        onclick="Confirm.render('Deze vraag verwijderen?','delete_lft',<?php echo $verw ?>,'Vragen',this)">
+                                                        onclick="Confirm.render('Deze vraag verwijderen?','delete_lft',<?php echo $verw ?>,'Vragen',this,'<?php echo $_SESSION["token"]?>')">
                                                     <span class='glyphicon glyphicon-remove'></span>&nbsp;
                                                 </button>
                                             </td>
