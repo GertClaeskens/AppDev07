@@ -150,7 +150,7 @@
                             if (isset($_POST["update"])) {
                                 $id = $_POST["update"];
                                 $vraag->setId($id);
-                                if (var_dump(FinahDAO::PasAan("Vragen", $id, $vraag, $_SESSION["token"]))) {
+                                if (FinahDAO::PasAan("Vragen", $id, $vraag, $_SESSION["token"])) {
                                     $vraag = FinahDAO::HaalOp("Vragen", $id, $_SESSION["token"]);
                                     $vraagStelling = $vraag["VraagStelling"];
                                     $thema = $vraag["Thema"];
@@ -183,7 +183,7 @@
                                 <select class="form-control" id="Thema" name="thema">
                                     <?php
 
-                                        $themaLijst = FinahDAO::HaalOp("Thema", null);//, $_SESSION["token"]);
+                                        $themaLijst = FinahDAO::HaalOp("Thema", null, $_SESSION["token"]);
                                         foreach ($themaLijst as $item) {
                                             $selected = "";
                                             if (isset($_POST["bewerk"]) || isset ($_POST["update"])) {
