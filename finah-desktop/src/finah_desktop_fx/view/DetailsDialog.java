@@ -16,8 +16,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import finah_desktop_fx.dao.AandoeningDAO;
+import finah_desktop_fx.dao.LeeftijdsCategorieDAO;
 import finah_desktop_fx.dao.PathologieDAO;
+import finah_desktop_fx.dao.RelatieDAO;
 import finah_desktop_fx.dao.ThemaDAO;
+import finah_desktop_fx.dao.VraagDAO;
+import finah_desktop_fx.dao.VragenLijstDAO;
 import finah_desktop_fx.model.Vraag;
 
 public class DetailsDialog<T> {
@@ -27,7 +31,7 @@ public class DetailsDialog<T> {
 		final Stage dialog = new Stage();
 		// dialog.initOwner(parent);
 		dialog.initModality(Modality.WINDOW_MODAL);
-		dialog.initStyle(StageStyle.UTILITY);
+		dialog.initStyle(StageStyle.DECORATED);
 		dialog.setX(800);
 		dialog.setY(y);
 
@@ -41,45 +45,43 @@ public class DetailsDialog<T> {
 		int index = table.getFocusModel().getFocusedIndex();
 		switch(table.getId()){
 		case "tblVragen":{
-			dialog.setTitle("Details van vraag "+ id);
-			grid.addRow(0, new Label("Vraag:"), new Label("Vraag uit DB ophalen"));
-			grid.addRow(1, new Label("Aandoening:"), new Label("Eventueel bijhorende aandoening uit DB ophalen"));
-			grid.addRow(2, new Label("Thema:"), new Label("Thema uit DB ophalen"));
+			//dialog.setTitle("Details van vraag "+ id);
+			grid.addRow(0, new Label("Vraag:"),  new Label(VraagDAO.GetVraag(id).getVraagstelling()));
+			grid.addRow(1, new Label("Thema:"), new Label(VraagDAO.GetVraag(id).getThema().toString()));
 			break;
 			}
 		case "tblVragenlijst":{
-			dialog.setTitle("Details van vragenlijst " + id);
-			grid.addRow(0, new Label("Naam vragenlijst:"), new Label("Naam vd vragenlijst uit DB ophalen"));
-			grid.addRow(1, new Label("Aandoening:"), new Label("Aandoening uit DB ophalen"));
-			grid.addRow(2, new Label("Aantal vragen in de lijst:"), new Label("Aantal vragen vd lijst uit DB ophalen"));
+			//dialog.setTitle("Details van vragenlijst " + id);
+			grid.addRow(0, new Label("Naam vragenlijst:"), new Label(VragenLijstDAO.GetVragenLijst(id).getOmschrijving()));
+			grid.addRow(1, new Label("Aandoening:"), new Label(VragenLijstDAO.GetVragenLijst(id).getAandoe().getOmschrijving()));
+			grid.addRow(2, new Label("Aantal vragen in de lijst:"), new Label(Integer.toString(VragenLijstDAO.GetVragenLijst(id).getAantalVragen())));
 			break;
 			}
 		case "tblAandoening":{
-			dialog.setTitle("Details van aandoening: "+ id);
-			grid.addRow(0, new Label("Aandoening:"), new Label("Naam vd aandoening uit DB ophalen"));
-			grid.addRow(1, new Label("Pathologie:"), new Label("eventueel naam vd bijhorende pathologie uit DB ophalen"));
+			//dialog.setTitle("Details van aandoening: "+ id);
+			grid.addRow(0, new Label("Aandoening:"), new Label(AandoeningDAO.GetAandoening(id).getOmschrijving()));
+			grid.addRow(1, new Label("Pathologie:"), new Label(AandoeningDAO.GetAandoening(id).getBijhorende_pathologie().get(id).getOmschrijving()));
 			break;
 			}
 		case "tblPathologie":{
-			dialog.setTitle("Details van pathologie "+ id);
-			grid.addRow(0, new Label("Pathologie:"), new Label("Naam vd pathologie uit DB ophalen"));
-			grid.addRow(1, new Label("Aandoening:"), new Label("eventueel naam vd bijhorende aandoening uit DB ophalen"));
+			//dialog.setTitle("Details van pathologie "+ id);
+			grid.addRow(0, new Label("Pathologie:"), new Label(PathologieDAO.GetPathologie(id).getOmschrijving()));
 			break;
 			}
 		case "tblLftdsCat":{
-			dialog.setTitle("Details van leeftijdscategorie "+ id);
-			grid.addRow(0, new Label("Van:"), new Label("start lftdscat uit DB ophalen"));
-			grid.addRow(1, new Label("Tot:"), new Label("einde lftdscat uit DB ophalen"));
+			//dialog.setTitle("Details van leeftijdscategorie "+ id);
+			grid.addRow(0, new Label("Van:"), new Label(Integer.toString(LeeftijdsCategorieDAO.GetLeeftijdsCategorie(id).getVan())));
+			grid.addRow(1, new Label("Tot:"), new Label(Integer.toString(LeeftijdsCategorieDAO.GetLeeftijdsCategorie(id).getTot())));
 			break;
 			}
 		case "tblRelatie":{
-			dialog.setTitle("Details van relatie "+ id);
-			grid.addRow(0, new Label("Relatie:"), new Label("relatie uit DB ophalen"));
+			//dialog.setTitle("Details van relatie "+ id);
+			grid.addRow(0, new Label("Relatie:"), new Label(RelatieDAO.GetRelatie(id).getNaam()));
 			break;
 			}
 		case "tblThema":{
-			dialog.setTitle("Thema aanpassen "+ id);
-			grid.addRow(0, new Label("Thema"), new Label("Thema uit DB ophalen"));
+			//dialog.setTitle("Thema aanpassen "+ id);
+			grid.addRow(0, new Label("Thema"), new Label(ThemaDAO.GetThema(id).getNaam()));
 			break;
 			}
 		}
@@ -101,7 +103,8 @@ public class DetailsDialog<T> {
 				.alignment(Pos.CENTER_RIGHT).build();
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(grid, buttons);
-		layout.setPadding(new Insets(5));
+		layout.setPadding(new Insets(20));
+		
 		layout.autosize();
 		dialog.setScene(new Scene(layout));
 		dialog.show();
