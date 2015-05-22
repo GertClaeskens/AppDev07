@@ -204,7 +204,7 @@
                                     Herhaal wachtwoord:
                                 </label>
                             </div>
-                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3 text-nowrap">
+                            <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                 <input type="password" name="confwachtwoord" id="confWachtwoord" class="form-control">
                             </div>
                         </div>

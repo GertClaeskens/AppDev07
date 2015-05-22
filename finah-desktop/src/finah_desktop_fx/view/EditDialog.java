@@ -42,10 +42,9 @@ public class EditDialog<T> {
 	 */
 	
 	
-	void showDialog(final TableView<T> table, double y) {
+	void showDialog(final TableView<T> table, double y, int id) {
 		// initialize the dialog.
 		final Stage dialog = new Stage();
-		dialog.setTitle(table.getId());
 		// dialog.initOwner(parent);
 		dialog.initModality(Modality.WINDOW_MODAL);
 		dialog.initStyle(StageStyle.UTILITY);
@@ -59,12 +58,14 @@ public class EditDialog<T> {
 		final TextField inhoudField = new TextField();
 		// GridPane.setHgrow(txtVraagStelling, Priority.ALWAYS);
 		// GridPane.setHgrow(lastNameField, Priority.ALWAYS);
-		
+		int index = table.getFocusModel().getFocusedIndex();
 		switch(table.getId()){
 		case "tblVragen":{
+			dialog.setTitle("Vraag aanpassen "+ id);
 			grid.addRow(0, new Label("Vraag:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
+			aandoeningCombo.getSelectionModel().select(index);;
 			grid.addRow(1, new Label("Aandoening:"), aandoeningCombo);
 			GridPane.setHgrow(aandoeningCombo, Priority.ALWAYS);
 			final ComboBox themaCombo = new ComboBox(FXCollections
@@ -73,6 +74,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblVragenlijst":{
+			dialog.setTitle("Vragenlijst aanpassen "+ id);
 			grid.addRow(0, new Label("Naam vragenlijst:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
@@ -80,6 +82,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblAandoening":{
+			dialog.setTitle("Aandoening aanpassen "+ id);
 			grid.addRow(0, new Label("Aandoening:"), inhoudField);
 			final ComboBox pathologieCombo = new ComboBox(FXCollections
 					.observableList(PathologieDAO.GetPathologieen()));
@@ -87,6 +90,7 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblPathologie":{
+			dialog.setTitle("Pathologie aanpassen "+ id);
 			grid.addRow(0, new Label("Pathologie:"), inhoudField);
 			final ComboBox aandoeningCombo = new ComboBox(FXCollections
 					.observableList(AandoeningDAO.GetAandoeningen()));
@@ -94,16 +98,19 @@ public class EditDialog<T> {
 			break;
 			}
 		case "tblLftdsCat":{
+			dialog.setTitle("Leeftijdscategorie aanpassen "+ id);
 			grid.addRow(0, new Label("Van:"), inhoudField);
 			final TextField totField = new TextField();
 			grid.addRow(1, new Label("Tot:"), totField);
 			break;
 			}
 		case "tblRelatie":{
+			dialog.setTitle("Relatie aanpassen "+ id);
 			grid.addRow(0, new Label("Relatie:"), inhoudField);
 			break;
 			}
 		case "tblThema":{
+			dialog.setTitle("Thema aanpassen "+ id);
 			grid.addRow(0, new Label("Thema"), inhoudField);
 			break;
 			}

@@ -79,7 +79,7 @@ public class MainApp extends Application {
 	        scene = new Scene(rootLayout);
 	            
 	        primaryStage.setWidth(1200);
-	        primaryStage.setHeight(600);
+	        primaryStage.setHeight(700);
 	        primaryStage.setX(500);
 	        primaryStage.setY(300);
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
