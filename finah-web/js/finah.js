@@ -63,6 +63,7 @@ function deletePost(id, type,tk,r) {
             // Do something with the result
         },
         error: function (){
+
             document.getElementById('mededeling').innerHTML = "<p class='mislukt'>De " + type + " kon niet verwijderd worden. Deze " + type + " is nog gelinkt aan andere objecten";
             return false;
         }

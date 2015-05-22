@@ -140,7 +140,7 @@
                                        onclick="showDiv(); toggleActive('antw13')">
                                     <input type="radio" id="a3" name="hinder" value="3"> Probleem
                                     -
-                                    hinderlijk voor mij<?php echo $patient ? "mij" : "patient"; ?></input></label>
+                                    hinderlijk voor <?php echo $patient ? "mij" : "patient"; ?></input></label>
                             </li>
                             <li class="col-lg-2 col-md-2 col-sm-2">
                                 <label for="a4" class="btn btn-primary antwoordButton" id="antw14"
