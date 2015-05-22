@@ -17,8 +17,9 @@ class Onderzoek {
     public $Aandoening;
     public $Pathologie;
     public $Datum;
+    public $Rapport;
 
-    function __construct($Id= null, $Informatie= null, $Relatie= null, $Vragen= null, $AangemaaktDoor= null, $Bevraging_Pat= null, $Bevraging_Man= null, $Aandoening= null, $Pathologie= null)
+    function __construct($Id= null, $Informatie= null, $Relatie= null, $Vragen= null, $AangemaaktDoor= null, $Bevraging_Pat= null, $Bevraging_Man= null, $Aandoening= null, $Pathologie= null,$Rapport=null)
     {
         $this->Id = $Id;
         $this->Informatie = $Informatie;
@@ -30,6 +31,7 @@ class Onderzoek {
         $this->Aandoening = $Aandoening;
         $this->Pathologie = $Pathologie;
         $this->Datum = new DateTime('now');
+        $this->Rapport = $Rapport;
     }
     public function jsonSerialize() {
         return [
@@ -148,6 +150,16 @@ class Onderzoek {
     public function setDatum($Datum)
     {
         $this->Datum = $Datum;
+    }
+
+    public function getRapport()
+    {
+        return $this->Rapport;
+    }
+
+    public function setRapport($Rapport)
+    {
+        $this->Rapport = $Rapport;
     }
 
 

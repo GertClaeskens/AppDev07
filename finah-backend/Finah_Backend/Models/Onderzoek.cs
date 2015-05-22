@@ -44,6 +44,8 @@ namespace Finah_Backend.Models
 
         public DateTime Datum { get; set; }
 
+        public string Rapport { get; set; }
+
         #endregion Public members
     }
 }

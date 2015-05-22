@@ -218,6 +218,7 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                 $ids = FinahDAO::HaalOp("Bevraging", "UniekeIds");
                                                 $bevraging_pat->setId($ids[0]);
                                                 $bevraging_man->setId($ids[1]);
+                                                $onderzoek->setRapport($ids[2]);
                                                 $bevraging_pat->setLeeftijdsCategorieId($leeftijdcatPat);
                                                 $datum = new DateTime("Now");
                                                 $dat = $datum->format('d/m/Y G:i:s');
@@ -255,9 +256,9 @@ if (!isset($_POST[ "nieuw"])&&!isset($_POST["creeer"])&&!isset($_POST["update"])
                                                                                         'X-Mailer: PHP/' . phpversion();
                                                         $subject = "Bevraging aangemaakt op ";
                                                         $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
-                                                        $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
-                                                        $msg .= "<a href=\"http:\\\\www.finah.be\\?" . $bevraging_pat->getId() . "\">De vragenlijst voor de patient kan u hier vinden</a>\r\n";
-                                                        //$msg .= "<a href=\"http:\\\\www.google.be\">Achteraf kan u de ze link gebruiken om het rapport op te vragen</a>\r\n";
+                                                        $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
+                                                        $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_pat->getId() . "\">De vragenlijst voor de patient kan u hier vinden</a>\r\n";
+                                                        //$msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/rapport.php?id=" . $onderzoek->getRapport() . ">Achteraf kan u de ze link gebruiken om het rapport op te vragen</a>\r\n";
                                                         $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
                                                         $msg = wordwrap($msg, 70, "\r\n");
                                                         Finah::send_simple_message($to, $subject, $msg);

@@ -48,7 +48,7 @@ namespace Finah_Backend.Controllers
             //vragen ophalen en antwoorden linken aan persoon
             //Test genereren Unique ID (Source = http://stackoverflow.com/questions/11313205/generate-a-unique-id)
             var linken = new List<string>();
-            for (var i = 0; i < 2; i++)
+            for (var i = 0; i < 3; i++)
             {
                 var link = string.Format("{0:N}", Guid.NewGuid());
                 linken.Add(link);
