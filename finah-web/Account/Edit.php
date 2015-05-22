@@ -213,7 +213,7 @@ session_start()
                                             </div>
                                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
                                                 <select name="woonplaats" class="form-control" id="Woonplaats" >
-                                                    <option value=""><?= $account["Woonplaats"] ?></option>
+                                                    <option value="1"><?= $account["Woonplaats"] ?></option>
                                                     <option value="">Neeroeteren</option>
                                                     <option value="">Maaseik</option>
                                                     <option value="">Opoeteren</option>
@@ -307,6 +307,10 @@ session_start()
             </div>
         </div>
     </div>
+    <?php if(isset($_POST["wijzigInfo"])){
+        finahDao::PasAan("api/Account","ChangeUserInfo", $_POST, $_SESSION["token"]);
+    }
+    ?>
     <script>
         $().ready(function () {
             $.validator.addMethod(
