@@ -3,13 +3,11 @@
 Wat er nog moet gebeuren/niet vergeten mag worden!
 
 
-* AccountsOverzichtDAO.java moet afgemaakt worden (juiste links etc)
+* Account Overzicht werkt nog niet!
 
 * ResultatenDAO.java moet afgemaakt worden (juiste links etc)
 
 * Resultaten.java (model) aanmaken
-
-* AccountsOverzicht.java (model) aanmaken
 
 * Stuur Wachtwoord button maken
 

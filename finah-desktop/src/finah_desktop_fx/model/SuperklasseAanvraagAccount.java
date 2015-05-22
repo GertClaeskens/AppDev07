@@ -139,7 +139,6 @@ public abstract class SuperklasseAanvraagAccount {
 	}
 
 
-
 	/**
 	 * @param email the email to set
 	 */
@@ -210,7 +209,6 @@ public abstract class SuperklasseAanvraagAccount {
 		result = prime * result + ((Email == null) ? 0 : Email.hashCode());
 		return result;
 	}
-
 
 
 	/* (non-Javadoc)
@@ -291,9 +289,4 @@ public abstract class SuperklasseAanvraagAccount {
 			return false;
 		return true;
 	}
-
-
-
-
-
 }
