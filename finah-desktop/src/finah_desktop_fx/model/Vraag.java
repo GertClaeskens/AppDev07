@@ -6,6 +6,7 @@ public class Vraag {
 	private Thema Thema;
 	private Foto Afbeelding;
 	private GeluidsFragment Geluid;
+	private Aandoening Aandoening;
 
 	public Vraag() {
 
@@ -16,13 +17,14 @@ public class Vraag {
 	}
 
 	public Vraag(int id, String vraagstelling, Thema thema,Foto afbeelding,
-			GeluidsFragment geluid) {
+			GeluidsFragment geluid, Aandoening aandoening) {
 		super();
 		Id = id;
 		VraagStelling = vraagstelling;
 		Thema = thema;
 		Afbeelding = afbeelding;
 		Geluid = geluid;
+		Aandoening = aandoening;
 	}
 
 	public int getId() {
@@ -31,14 +33,6 @@ public class Vraag {
 
 	public void setId(int id) {
 		Id = id;
-	}
-
-	public String getVraagstelling() {
-		return VraagStelling;
-	}
-
-	public void setVraagstelling(String vraagstelling) {
-		VraagStelling = vraagstelling;
 	}
 
 	public Foto getAfbeelding() {
@@ -71,6 +65,14 @@ public class Vraag {
 
 	public void setThema(Thema thema) {
 		Thema = thema;
+	}
+	
+	public Aandoening getAandoening() {
+		return Aandoening;
+	}
+
+	public void setAandoening(Aandoening aandoening) {
+		Aandoening = aandoening;
 	}
 
 	@Override
