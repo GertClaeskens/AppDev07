@@ -65,7 +65,7 @@ public class AddButtonsCell<T> extends TableCell<T, Boolean> {
 					}
 					else if(btn.getText().equals("Delete")){
 						DeleteDialog deleteDialog = new DeleteDialog();
-						deleteDialog.showDialog();
+						deleteDialog.showDialog(table, buttonY.get());
 					}
 					else if(btn.getText().equals("Details")){
 						DetailsDialog detailsDialog = new DetailsDialog();

@@ -12,6 +12,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -63,6 +64,23 @@ public class SharedDAO {
             post.setEntity(new StringEntity(objectAsJson));
             HttpResponse response = client.execute(post);
             System.out.println(EntityUtils.toString(post.getEntity()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	//WERKT NOG NIET
+	public static void DeleteObject(String url, Object object)
+			throws ClientProtocolException, IOException {
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		String objectAsJson = gson.toJson(object);
+		HttpClient client = new DefaultHttpClient();
+		HttpDelete delete = new HttpDelete(url);
+		delete.setHeader("Authorization", "Bearer ZfmgrSW85TXRy9V_xQ7t7NIRiydl0iITdYCcbCTfLwFuWYbphfEy7oCgBOTSvmRLYBR0ZQ9IzW2Ot7Ayln3UXpez1ZDEX8v5N1Y3uF_HXddnvr-5xPTa0W1B9_dDfqHIqwI8UJruM-ZkrssERWFuAPypztcPsj3vsB0DOtz63u1npCqWGt5mJj6HBoYf8WL9wt70ndzXvde6qDZ54yTQRs1tEWC0ZzteAZjhrVp1KHOyDhzXB70mjbMWJWIYLGiDghp9iTINV4LtI-CuH7Gd1t504Z7TPF1wRrDuNznMcKLurcoMktPxpAsVzWNy1prlfhumpMFRu8zTww0lqVjjXOJvXNIhDORnPd1ITwRPS-WG8sJrsFDeU_W7nhFcycLSM4EtkOpAaRcidhqXUL_WlEsgu_9Sq8-bNNPVSxto0KCo0Eb04JXppLCp-eR2rbYc-mV_RIcIqRKNU4zWO3k4voxH6UCoiigtTDY24NpD6mpiII59ZvwEsNaCsYplZY8EyWry26ZfL8uk3-buoOgoMg");
+		try {
+            ((HttpResponse) delete).setEntity(new StringEntity(objectAsJson));
+            HttpResponse response = client.execute(delete);
+            //System.out.println(EntityUtils.toString(delete.deleteEntity()));
         } catch (IOException e) {
             e.printStackTrace();
         }
