@@ -85,7 +85,6 @@ public class MainApp extends Application {
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/finah.png"));
 	        primaryStage.setScene(scene);
 	        ResizeTest.makeDraggable(primaryStage, rootLayout);
-	        //ResizeHelper.addResizeListener(primaryStage,rootLayout);
 	        primaryStage.show();
 	    } catch (IOException e) {
 	        e.printStackTrace();
