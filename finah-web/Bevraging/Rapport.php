@@ -181,7 +181,7 @@
                             }
                             ?>
                             <table class="table">
-                                <tr style="background-color:#337ab7">
+                                <tr style="background-color:#337ab7; color:white;">
                                     <th>Vraag</th>
                                     <th colspan="2">Hinder voor Patient</th>
                                     <th colspan="2">Hinder voor Mantelzorger</th>
@@ -212,14 +212,14 @@
                                                     echo "<td></td><td></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td class='trueColumn'>X</td><td></td>";
+                                                    echo "<td class='trueColumn'></td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td class='trueColumn'>X</td>";
+                                                    echo "<td></td><td class='trueColumn'></td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
+                                                    echo "<td class='trueColumn'></td><td class='trueColumn'></td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hinderMan"]) {
@@ -227,14 +227,14 @@
                                                     echo "<td ></td><td ></td>";
                                                     break;
                                                 case 1:
-                                                    echo "<td class='trueColumn'>X</td><td></td>";
+                                                    echo "<td class='trueColumn'></td><td></td>";
                                                     break;
                                                 case 2:
-                                                    echo "<td></td><td class='trueColumn'>X</td>";
+                                                    echo "<td></td><td class='trueColumn'></td>";
                                                     break;
 
                                                 case 3:
-                                                    echo "<td class='trueColumn'>X</td><td class='trueColumn'>X</td>";
+                                                    echo "<td class='trueColumn'></td><td class='trueColumn'></td>";
                                                     break;
                                             }
                                             switch ($rapport[$key][$i]["hulp"]) {
