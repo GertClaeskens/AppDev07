@@ -5,7 +5,6 @@ public class Vraag {
 	private String VraagStelling;
 	private Thema Thema;
 	private Foto Afbeelding;
-	private GeluidsFragment Geluid;
 	private Aandoening Aandoening;
 
 	public Vraag() {
@@ -16,14 +15,12 @@ public class Vraag {
 		VraagStelling = vraagStelling;
 	}
 
-	public Vraag(int id, String vraagstelling, Thema thema,Foto afbeelding,
-			GeluidsFragment geluid, Aandoening aandoening) {
+	public Vraag(int id, String vraagstelling, Thema thema,Foto afbeelding, Aandoening aandoening) {
 		super();
 		Id = id;
 		VraagStelling = vraagstelling;
 		Thema = thema;
 		Afbeelding = afbeelding;
-		Geluid = geluid;
 		Aandoening = aandoening;
 	}
 
@@ -41,14 +38,6 @@ public class Vraag {
 
 	public void setAfbeelding(Foto afbeelding) {
 		Afbeelding = afbeelding;
-	}
-
-	public GeluidsFragment getGeluid() {
-		return Geluid;
-	}
-
-	public void setGeluid(GeluidsFragment geluid) {
-		Geluid = geluid;
 	}
 
 	public String getVraagStelling() {
@@ -89,7 +78,6 @@ public class Vraag {
 		int result = 1;
 		result = prime * result
 				+ ((Afbeelding == null) ? 0 : Afbeelding.hashCode());
-		result = prime * result + ((Geluid == null) ? 0 : Geluid.hashCode());
 		result = prime * result + Id;
 		result = prime * result + ((Thema == null) ? 0 : Thema.hashCode());
 		result = prime * result
@@ -111,11 +99,6 @@ public class Vraag {
 				return false;
 		} else if (!Afbeelding.equals(other.Afbeelding))
 			return false;
-		if (Geluid == null) {
-			if (other.Geluid != null)
-				return false;
-		} else if (!Geluid.equals(other.Geluid))
-			return false;
 		if (Id != other.Id)
 			return false;
 		if (Thema == null) {
@@ -134,7 +117,7 @@ public class Vraag {
 	@Override
 	public String toString() {
 		return "Vraag [Id=" + Id + ", VraagStelling=" + VraagStelling
-				+ ", Afbeelding=" + Afbeelding + ", Geluid=" + Geluid + "]";
+				+ ", Afbeelding=" + Afbeelding + "]";
 	}
 
 	// @Override
