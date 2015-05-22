@@ -207,25 +207,22 @@
                         </thead>
                         <tbody>
                         <!--Todo juiste velden toevoegen-->
-                        <?php $accounts = FinahDAO::HaalUsersOp("api/Account","Users", $_SESSION["token"]);
-                        foreach($accounts as $a): ?>
-                            <tr>
-                                <td class="col-sm-4 col-md-4 col-lg-4 text-center">
-                                    <?= $a["VoorNaam"]; ?>
-                                </td>
-                                <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                    <?= $a["Naam"]; ?>
-                                </td>
-                                <td class="col-sm-3 col-md-3 col-lg-3 text-center">
-                                    <?= $a["Email"]; ?>
-                                </td>
-                                <td class='action-column col-sm-2 col-md-2 col-lg-2'>
-                                    <button type='submit' name='profiel' id=''
-                                            class='btn btn-primary' value="Profiel"> Profiel
-                                    </button>
-                                    <!--                                    todo linken naar profiel pagina -->
-                            </tr>
-                        <?php endforeach ?>
+                        <tr>
+                            <td class="col-sm-5 col-md-5 col-lg-5 text-center">
+                                Brian
+                            </td>
+                            <td class="col-sm-3 col-md-3 col-lg-3 text-center">
+                                Thys
+                            </td>
+                            <td class="col-sm-2 col-md-2 col-lg-2 text-center">
+                                18/04/2015
+                            </td>
+                            <td class='action-column col-sm-2 col-md-2 col-lg-2'>
+                                <button type='submit' name='profiel' id=''
+                                        class='btn btn-primary' value="Profiel"> Profiel
+                                </button>
+                                <!--                                    todo linken naar profiel pagina -->
+                        </tr>
                         </tbody>
                     </table>
                 </div>
