@@ -339,11 +339,13 @@ namespace Finah_Backend.Controllers
                 Adres = model.Adres,
                 PhoneNumber = model.Telefoon,
                 Email = model.Email,
-                UserName = model.Login
+                UserName = model.Login,
+                PostcdId = model.Postcode
 
             };
 
             var result = await UserManager.CreateAsync(user, model.Password);
+
             result = UserManager.AddToRole(user.Id, model.Rol);
 
             if (!result.Succeeded)

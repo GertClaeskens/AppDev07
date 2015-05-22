@@ -69,9 +69,9 @@ namespace Finah_Backend.Models
         [Display(Name = "Adres")]
         public string Adres { get; set; }
 
-        //[Required]
-        //[Display(Name = "Postcode")]
-        //public string Postcode { get; set; }
+        [Required]
+        [Display(Name = "Postcode")]
+        public int Postcode { get; set; }
 
         [Required]
         [Display(Name = "Telefoon")]
