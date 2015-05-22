@@ -147,34 +147,34 @@
                     <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                 </li>
                 <br/>
-<?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
-                <li class="sidebar-brand">
-                    <h4>
-                        BEHEER
-                    </h4>
-                </li>
-                <li>
-                    <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
-                </li>
-                <li>
-                    <a href="../Aandoening/Overzicht.php"> Aandoening </a>
-                </li>
-                <li>
-                    <a href="../Pathologie/Overzicht.php"> Pathologie</a>
-                </li>
-                <li>
-                    <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
-                </li>
-                <li>
-                    <a href="../Vragen/Overzicht.php"> Vragen</a>
-                </li>
-                <li>
-                    <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
-                </li>
-                <li>
-                    <a href="../Thema/Overzicht.php"> Thema's</a>
-                </li>
-    <?php }?>
+                <?php if (isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener") { ?>
+                    <li class="sidebar-brand">
+                        <h4>
+                            BEHEER
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="../AccountAanvraag/Overzicht.php">Aanvragen</a>
+                    </li>
+                    <li>
+                        <a href="../Aandoening/Overzicht.php"> Aandoening </a>
+                    </li>
+                    <li>
+                        <a href="../Pathologie/Overzicht.php"> Pathologie</a>
+                    </li>
+                    <li>
+                        <a href="../LeeftijdsCategorie/Overzicht.php"> Leeftijdscategorie</a>
+                    </li>
+                    <li>
+                        <a href="../Vragen/Overzicht.php"> Vragen</a>
+                    </li>
+                    <li>
+                        <a href="../VragenLijst/Overzicht.php"> Vragenlijsten</a>
+                    </li>
+                    <li>
+                        <a href="../Thema/Overzicht.php"> Thema's</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
         <div id="page-content-wrapper">
@@ -245,43 +245,27 @@
 
                                     if (FinahDAO::SchrijfWeg("Onderzoek", $onderzoek)) {
                                         //Todo eventueel een exception toevoegen hier
-                                        /*                $antwoorden_man->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_man->getBevragingId()));
-                                                        $antwoorden_pat->setBevraging(FinahDAO::HaalOp("Bevraging", $antwoorden_pat->getBevragingId()));
-                                                        if (FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_pat) && FinahDAO::SchrijfWeg("AntwoordenLijst", $antwoorden_man)) {
-                                                            //Todo eventueel een exception toevoegen hier
-                                                            //header("Location: Overzicht.php");
-                                                            echo "De bevraging werd succesvol opgeslagen";
-                                                            $to = "gert.claeskens@student.pxl.be";
-                                                            /*                            $headers  = 'MIME-Version: 1.0' . "\r\n";
-                                                                                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                                                                                        $headers .= 'From: gert.claeskens@student.pxl.be' . "\r\n" .
-                                                                                            'Reply-To: gert.claeskens@student.pxl.be' . "\r\n" .
-                                                                                            'X-Mailer: PHP/' . phpversion();
-                                                            $subject = "Bevraging aangemaakt op ";
-                                                            $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
-                                                            $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
-                                                            $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_pat->getId() . "\">De vragenlijst voor de patient kan u hier vinden</a>\r\n";
-                                                            //$msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/rapport.php?id=" . $onderzoek->getRapport() . ">Achteraf kan u de ze link gebruiken om het rapport op te vragen</a>\r\n";
-                                                            $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
-                                                            $msg = wordwrap($msg, 70, "\r\n");
-                                                            Finah::send_simple_message($to, $subject, $msg);
-                                                        }*/
-                                    }
-                                } else {
-                                    if (isset($_POST["update"])) {
-                                        $id = $_POST["update"];
 
-                                        $onderzoek->setId($id);
-                                        if (FinahDAO::PasAan("Onderzoek", $id, $onderzoek, $_SESSION["token"])) {
-
-                                        }
-                                        $onderzk = FinahDAO::HaalOp("Onderzoek", $id, $_SESSION["token"]);
-                                        $onderzoek = $onderzk[0];
-                                        $informatie = $onderzoek["Informatie"];
-                                        echo "<h1 class='header'>" . " Bewerken : " . $informatie . "  </h1 >";
-                                        echo "Het onderzoek werd succesvol opgeslagen";
+//                                                            //Todo eventueel een exception toevoegen hier
+//                                                            //header("Location: Overzicht.php");
+                                        echo "De bevraging werd succesvol opgeslagen";
+                                        $to = "gert.claeskens@student.pxl.be";
+                                        $headers = 'MIME-Version: 1.0' . "\r\n";
+                                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                                        $headers .= 'From: gert.claeskens@student.pxl.be' . "\r\n" .
+                                            'Reply-To: gert.claeskens@student.pxl.be' . "\r\n" .
+                                            'X-Mailer: PHP/' . phpversion();
+                                        $subject = "Bevraging aangemaakt op ";
+                                        $msg = "Beste\r\nHartelijk dank voor jouw aanvraag\r\n\r\n";
+                                        $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_man->getId() . "\">De vragenlijst voor de mantelzorger kan u hier vinden</a>\r\n";
+                                        $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/Invullen.php?id=" . $bevraging_pat->getId() . "\">De vragenlijst voor de patient kan u hier vinden</a>\r\n";
+                                        $msg .= "<a href=\'http://finahweb4156.azurewebsites.net/Bevraging/rapport.php?id=" . $onderzoek->getRapport() . ">Achteraf kan u de ze link gebruiken om het rapport op te vragen</a>\r\n";
+                                        $msg .= "\r\n\r\nMet vriendelijke groeten\r\n\r\nFinah Webmaster";
+                                        $msg = wordwrap($msg, 70, "\r\n");
+                                        Finah::send_simple_message($to, $subject, $msg);
                                     }
                                 }
+
                             }
 
 
