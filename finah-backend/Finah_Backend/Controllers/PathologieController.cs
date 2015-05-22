@@ -155,8 +155,8 @@ namespace Finah_Backend.Controllers
             }
 
 
-            return this.Ok();
-            //return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
+            //return this.Ok();
+            return CreatedAtRoute("DefaultApi", new { id = pathologie.Id }, pathologie);
         }
 
         // DELETE: api/Pathologies/5
