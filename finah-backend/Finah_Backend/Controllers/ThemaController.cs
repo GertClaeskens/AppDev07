@@ -29,6 +29,8 @@ namespace Finah_Backend.Controllers
         }
 
         // GET: api/Thema/5
+        [HttpGet]
+        [Route("Thema/{id}")]
         [ResponseType(typeof(Thema))]
         public IHttpActionResult GetThema(int id)
         {

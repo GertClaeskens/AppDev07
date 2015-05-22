@@ -97,32 +97,41 @@ namespace Finah_Backend.Controllers
             {
                 return BadRequest();
             }
-            //vragenLijst.Aandoe = db.Aandoeningen.Find(vragenLijst.Aandoe.Id);
-            var vrgLijst = new VragenLijst
-            {
-                Id = vragenLijst.Id,
-                Omschrijving = vragenLijst.Omschrijving,
-                Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id),
-                Vragen = new List<Vraag>()
-            };
 
-            foreach (var v in vragenLijst.Vragen)
+            var vl = db.VragenLijsten.Find(id);
+            vl.Omschrijving = vragenLijst.Omschrijving;
+            //Verwijder de verwijzing naar deze aandoening uit de pathologieen in de lijst.
+            if (vl.Vragen.Count != 0 && vl.Vragen != null)
             {
-                var vr = db.Vragen.Find(v.Id);
-                vr.Thema = db.Themas.Find(v.Thema.Id);
-                vr.VragenLijst.Add(db.VragenLijsten.Find(vrgLijst.Id));
-                vrgLijst.Vragen.Add(vr);
-                //db.Entry(vr).State = EntityState.Modified;
+                //Sla de pathologieen eerst op in een lijst -> anders problemen dat de verzamling veranderd is tijdens de foreach
+                var vrLijst = vl.Vragen.ToList();
+                foreach (var vr in vrLijst.Select(a => this.db.Vragen.Find(a.Id)))
+                {
+                    vr.VragenLijst.Remove(this.db.VragenLijsten.Find(id));
+                    this.db.Entry(vr).State = EntityState.Modified;
+                }
             }
-            //db.Entry(vragenLijst.Aandoe).State = EntityState.Added;
-            //db.Entry(vragenLijst.Vragen).State = EntityState.Added;
+            //Maak de lijst leeg
+            vl.Vragen = new List<Vraag>();
+            db.SaveChanges();
+
+
+            if (vragenLijst.Vragen != null && vragenLijst.Vragen.Count != 0)
+            {
+                foreach (var a in vragenLijst.Vragen)
+                {
+                    vl.Vragen.Add(db.Vragen.Find(a.Id));
+                    var ad = db.Vragen.Find(a.Id);
+                    ad.VragenLijst.Add(db.VragenLijsten.Find(vl.Id));
+                    db.Entry(ad).State = EntityState.Modified;
+                }
+            }
+            db.Entry(vl).State = EntityState.Modified;
+
+
 
             try
             {
-                //db.VragenLijsten.Attach(vrgLijst);
-                //db.Entry(vrgLijst.Aandoe).State = EntityState.Modified;
-                //db.Entry(vrgLijst.Vragen).State = EntityState.Modified;
-                //db.Entry(vrgLijst).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -138,33 +147,44 @@ namespace Finah_Backend.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+
         }
 
         // POST: api/VragenLijsts
         //[Route("VragenLijst")]
         [ResponseType(typeof(VragenLijst))]
-        public async Task<IHttpActionResult> PostVragenLijst([FromBody] VragenLijst vragenLijst)
+        public IHttpActionResult PostVragenLijst([FromBody] VragenLijst vragenLijst)
         {
-            var vrgLijst = new VragenLijst
-                               {
-                                   Omschrijving = vragenLijst.Omschrijving,
-                                   Aandoe = this.db.Aandoeningen.Find(vragenLijst.Aandoe.Id)
-                               };
-            foreach (var v in vragenLijst.Vragen)
-            {
-                vrgLijst.Vragen.Add(db.Vragen.Find(v.Id));
-            }
-
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.VragenLijsten.Add(vrgLijst);
-            await db.SaveChangesAsync();
+            var vrl = new VragenLijst { Omschrijving = vragenLijst.Omschrijving, Vragen = new List<Vraag>() };
+            if (vragenLijst.Vragen != null && vragenLijst.Vragen.Count != 0)
+            {
+                foreach (var vrag in vragenLijst.Vragen)
+                {
+                    vrl.Vragen.Add(db.Vragen.Find(vrag.Id));
 
-            return CreatedAtRoute("DefaultApi", new { id = vragenLijst.Id }, vragenLijst);
+                }
+            }
+            db.VragenLijsten.Add(vrl);
+            db.SaveChanges();
+
+            if (vrl.Vragen == null || vrl.Vragen.Count != 0)
+            {
+                return this.Ok();
+            }
+            foreach (var vrg in vrl.Vragen.Select(ad => this.db.Vragen.Find(ad.Id)))
+            {
+                vrg.VragenLijst.Add(db.VragenLijsten.Find(vrl.Id));
+                this.db.SaveChanges();
+            }
+
+
+            return this.Ok();
+
         }
 
         [HttpDelete]
