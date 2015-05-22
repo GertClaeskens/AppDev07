@@ -12,7 +12,8 @@
 <html>
 <head>
     <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../Css/StylesheetVragenInvullen.css"/>
     <script type="text/javascript" src="../js/VraagInvullen.js"></script>
     <script type="text/javascript" src="../js/Validate/jquery.validate.js"></script>
@@ -217,7 +218,7 @@
                 </div>
             </form>
         <?php }
-//        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
+        echo "<h1>Bedankt voor uw medewerking. U mag het browservenster afsluiten.</h1>";
 
     } else var_dump($_GET) . "<br />" . var_dump($_POST); ?>
 <script>

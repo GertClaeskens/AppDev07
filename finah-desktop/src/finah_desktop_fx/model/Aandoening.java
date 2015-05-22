@@ -18,9 +18,6 @@ import com.google.gson.JsonSerializer;
 public class Aandoening extends SuperklasseAandoeningPathologie implements
 		JsonSerializer<Aandoening>, JsonDeserializer<Aandoening> {
 
-	// PropertyValueType getName()
-	// void setName(PropertyValueType value)
-	// PropertyType nameProperty()
 	private List<Pathologie> Patologieen;
 
 	public List<Pathologie> getBijhorende_pathologie() {
@@ -55,11 +52,7 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,11 +67,7 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -128,16 +117,4 @@ public class Aandoening extends SuperklasseAandoeningPathologie implements
 
 		return a;
 	}
-
-//	@Override
-//	public String toString() {
-//		return "Aandoening [Patologieen=" + Patologieen + "]";
-//	}
-
-	// public Aandoening(String naam) {
-	// super(naam);
-	// }
-	// public Aandoening(String naam,Pathologie patholog) {
-	// super(naam);
-	// }
 }

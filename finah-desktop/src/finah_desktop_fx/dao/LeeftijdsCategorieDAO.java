@@ -13,7 +13,6 @@ import com.google.gson.reflect.TypeToken;
 import finah_desktop_fx.model.LeeftijdsCategorie;
 public class LeeftijdsCategorieDAO {
 	public static ArrayList<LeeftijdsCategorie> GetLeeftijdsCategorieen() {
-		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<LeeftijdsCategorie>>() {
 		}.getType();
@@ -22,16 +21,12 @@ public class LeeftijdsCategorieDAO {
 					"http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/Overzicht",
 					collectionType);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static LeeftijdsCategorie GetLeeftijdsCategorie(int id) {
-		// Exception Handling nog nakijken
-		// Nog opzoeken hoe in dit geval de pathologieen kunnen worden
-		// uitgelezen
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		BufferedReader rd = null;
 		try {
@@ -39,7 +34,6 @@ public class LeeftijdsCategorieDAO {
 					.HaalGegevens("http://finahbackend1920.azurewebsites.net/LeeftijdsCategorie/"
 							+ id);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		LeeftijdsCategorie leeftijdsCategorie = gson.fromJson(rd,

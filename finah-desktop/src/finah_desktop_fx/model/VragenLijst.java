@@ -106,9 +106,4 @@ public class VragenLijst {
 	public String toString() {
 		return Omschrijving;
 	}
-
-
-
-
-	
 }

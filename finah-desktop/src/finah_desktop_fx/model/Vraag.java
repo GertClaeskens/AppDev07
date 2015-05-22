@@ -136,9 +136,4 @@ public class Vraag {
 		return "Vraag [Id=" + Id + ", VraagStelling=" + VraagStelling
 				+ ", Afbeelding=" + Afbeelding + ", Geluid=" + Geluid + "]";
 	}
-
-	// @Override
-	// public String toString() {
-	// return VraagStelling;
-	// }
 }

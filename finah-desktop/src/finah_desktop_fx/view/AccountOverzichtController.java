@@ -46,13 +46,11 @@ public class AccountOverzichtController implements Initializable{
 	private MainApp mainApp;
 
 	public void initialize(URL location, ResourceBundle resources) {
-		//public void initialize(){
 	        // Initialize the person table with the two columns.
 			ObservableList<Account> tblList = FXCollections.observableList(AccountDAO.GetAccounts());
 			tblBestaandeAcc.setItems(tblList);
 	        colGebruikers.setCellValueFactory(new PropertyValueFactory<>("Naam"));
-			// define a simple boolean cell value for the action column so that the
-			// column will only be shown for non-empty rows.
+			// define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
 			colActies.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Account, Boolean>, ObservableValue<Boolean>>() {
 						@Override
 						public ObservableValue<Boolean> call(
