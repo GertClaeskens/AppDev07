@@ -50,9 +50,7 @@
             <li role="presentation" class="divider">
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">
-                    <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen
-                </a>
+                <a role="menuitem" tabindex="-1" href="../logout.php">                     <span class="glyphicon glyphicon-log-out"></span> &nbsp Uitloggen                 </a>
             </li>
         </ul>
     </div>
@@ -74,6 +72,7 @@
                 <a href="../Bevraging/Overzicht.php"> Bevraging</a>
             </li>
             <br/>
+            <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
             <li class="sidebar-brand">
                 <h4>
                     BEHEER
@@ -100,6 +99,7 @@
             <li>
                 <a href="../Thema/Overzicht.php"> Thema's</a>
             </li>
+            <?php } ?>
         </ul>
     </div>
     <div id="page-content-wrapper">

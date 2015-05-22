@@ -8,6 +8,7 @@
     include_once "../PHP/DAO/FinahDAO.php";
     session_start();
 
+    if (isset($_GET)){
     $rapportid = "4cb31482bfe143f0a90e408e86d8432c";
     $onderzoek = FinahDAO::HaalOp("Onderzoek/Rapport", $rapportid);
     $idMan = "2a0aa4c1264f401081e6db09d9a092f6";
@@ -21,7 +22,7 @@
     $vragen = FinahDAO::HaalOp("Onderzoek", $idPat . "/Vragen");
     $rapport = [];
     $nogene = [];
-$teller=0;
+    $teller = 0;
     for ($i = 0; $i < count($vragen[0]); $i++) {
         $vraag = $vragen[0][$i];
         $vrRap["hinderPat"] = 0;
@@ -35,17 +36,6 @@ $teller=0;
             $vrRap["hinderMan"] = 0;
             $vrRap["hulp"] = 0;
 
-            //Patient
-/*            if ($arr1[$i] == 3) { //hinder voor de patient geen hulp
-                $vrRap["hinderPat"] = 1;
-            }
-            if ($arr1[$i] == 4) { //hinder voor de mantel geen hulp
-                $vrRap["hinderMan"] = 1;
-            }
-            if ($arr1[$i] == 5) { //hinder voor beide geen hulp
-                $vrRap["hinderPat"] = 1;
-                $vrRap["hinderMan"] = 1;
-            }*/
             if ($arr1[$i] == 6) { //hinder voor de patient hulp
                 $vrRap["hinderPat"] = 1;
                 $vrRap["hulp"] = 1;
@@ -59,17 +49,6 @@ $teller=0;
                 $vrRap["hinderMan"] = 1;
                 $vrRap["hulp"] = 1;
             }
-            //Mantelzorger
-/*            if ($arr2[$i] == 3) { //hinder voor de patient geen hulp
-                $vrRap["hinderPat"] += 2;
-            }
-            if ($arr2[$i] == 4) { //hinder voor de mantel geen hulp
-                $vrRap["hinderMan"] += 2;
-            }
-            if ($arr2[$i] == 5) { //hinder voor beide geen hulp
-                $vrRap["hinderPat"] += 2;
-                $vrRap["hinderMan"] += 2;
-            }*/
             if ($arr2[$i] == 6) { //hinder voor de patient hulp
                 $vrRap["hinderPat"] += 2;
                 $vrRap["hulp"] += 2;
@@ -84,8 +63,8 @@ $teller=0;
                 $vrRap["hulp"] += 2;
             }
 
-                    $rapport[$vraag["Thema"]["Naam"]][$teller]= $vrRap;
-                    $teller++;
+            $rapport[$vraag["Thema"]["Naam"]][$teller] = $vrRap;
+            $teller++;
         }
 
     }
@@ -106,7 +85,7 @@ $teller=0;
         <td>Gesteld door</td>
     </tr
     <?php
-        $i=0;
+        $i = 0;
         foreach (array_keys($rapport) as $key) {
             ?>
             <tr>
@@ -168,3 +147,4 @@ $teller=0;
         }
     ?>
 </table>
+<?php } ?>

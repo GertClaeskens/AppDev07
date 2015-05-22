@@ -73,6 +73,7 @@ require "../PHP/Models/VragenLijst.php";
                         <a href="../Bevraging/Overzicht.php"> Bevraging</a>
                     </li>
                     <br/>
+                    <?php if(isset($_SESSION) && $_SESSION["rol"] != "Hulpverlener"){ ?>
                     <li class="sidebar-brand">
                         <h4>
                             BEHEER
@@ -99,6 +100,7 @@ require "../PHP/Models/VragenLijst.php";
                     <li>
                         <a href="../Thema/Overzicht.php"> Thema's</a>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
             <div  id="page-content-wrapper">

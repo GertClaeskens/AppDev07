@@ -39,7 +39,7 @@
             $endpos = strpos($resarr["roles"], ']')-3;
             $rest = substr($resarr["roles"], $startpos,$endpos);
             $_SESSION["rol"] = $rest;
-            header("Location: Aandoening/Overzicht.php");
+            header("Location: Bevraging/Overzicht.php");
         } else echo "aanmelden mislukt";
 
     }
@@ -149,8 +149,7 @@
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                <input type="text" name="user" id="user" class="form-control"
-                                       value="rafael_sarrechia@hotmail.com">
+                                <input type="text" name="user" id="user" class="form-control">
                             </div>
                         </div>
                         <div class="row detail-row">
@@ -160,8 +159,7 @@
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-5 col-lg-3">
-                                <input type="password" name="wachtwoord" id="wachtwoord" class="form-control"
-                                       value="W@chtwoordPxl">
+                                <input type="password" name="wachtwoord" id="wachtwoord" class="form-control">
                             </div>
                         </div>
                         <div class="row detail-row">

@@ -69,8 +69,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\TestAandoeningController.cs" />
     <Compile Include="Controllers\TestBevragingController.cs" />
-    <Compile Include="Controllers\TestFotoController.cs" />
-    <Compile Include="Controllers\TestGeluidsFragmentController.cs" />
     <Compile Include="Controllers\TestVragenController.cs" />
     <Compile Include="Controllers\TestVragenLijstController.cs" />
   </ItemGroup>
