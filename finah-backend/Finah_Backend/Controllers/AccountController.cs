@@ -8,6 +8,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -71,6 +72,12 @@ namespace Finah_Backend.Controllers
 
         }
 
+        [AllowAnonymous]
+        [Route("Users")]
+        public List<ApplicationUser> GetUsersAsync()
+        {
+            return UserManager.Users.ToList<ApplicationUser>();
+        }
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

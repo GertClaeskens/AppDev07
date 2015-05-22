@@ -14,6 +14,7 @@ import finah_desktop_fx.model.Antwoord;
 
 public abstract class AntwoordDAO {
 	public static Antwoord GetAntwoord(int id) {
+		// Exception Handling nog nakijken
 
 		Gson gson = new GsonBuilder().serializeNulls().create();
 
@@ -22,6 +23,7 @@ public abstract class AntwoordDAO {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Antwoord/"
 					+ id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -31,13 +33,16 @@ public abstract class AntwoordDAO {
 	}
 
 	public static ArrayList<Antwoord> GetAntwoorden() {
+		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<Antwoord>>() {
 		}.getType();
+		//ArrayList<Antwoord> antwoorden = null;
 		try {
 			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/Antwoord/Overzicht",
 					collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

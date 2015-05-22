@@ -14,6 +14,8 @@ import finah_desktop_fx.model.AntwoordenLijst;
 
 public abstract class AntwoordenLijstDAO {
 	public static AntwoordenLijst GetAntwoordenLijst(String id) {
+		// Exception Handling nog nakijken
+
 		Gson gson = new GsonBuilder().serializeNulls().create();
 
 		BufferedReader rd = null;
@@ -21,6 +23,7 @@ public abstract class AntwoordenLijstDAO {
 			rd = SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/AntwoordenLijst/"
 					+ id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -30,13 +33,16 @@ public abstract class AntwoordenLijstDAO {
 	}
 
 	public static ArrayList<AntwoordenLijst> GetAntwoordenLijsten() {
+		// Exception Handling nog nakijken
 
 		Type collectionType = new TypeToken<Collection<AntwoordenLijst>>() {
 		}.getType();
+		//ArrayList<AntwoordenLijst> antwoordenLijsten = null;
 		try {
 			return SharedDAO.HaalGegevens("http://finahbackend1920.azurewebsites.net/AntwoordenLijst/Overzicht",
 					collectionType);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
