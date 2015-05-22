@@ -45,7 +45,7 @@ namespace Finah_Backend.Controllers
             //    aanvraag = new Aanvraag { Id = 1 };
             //}
             db.Configuration.LazyLoadingEnabled = false;
-            var aanvraag = db.Aanvragen.Include(p => p.Postcd).Where(a => a.Id == id);
+            var aanvraag = db.Aanvragen.Find(id);
             if (aanvraag == null)
             {
                 return NotFound();
