@@ -129,8 +129,9 @@
                             $account["Adres"] = $aanvraag["Adres"] . " " . $aanvraag["Postcd"]["Postnr"]. " ". $aanvraag["Postcd"]["Gemeente"];
                             $account["Telefoon"] = $aanvraag["Telnr"];
                             $account["Login"] = $aanvraag["Login"];
-                            $account["Id"] = null;
-                            var_dump(FinahDAO::SchrijfWeg("api/Account/Register", $account, $_SESSION["token"]));
+                            $account["Postcode"] = $aanvraag["Postcd"]["Id"];
+                            //$account["Id"] = null;
+                            var_dump(FinahDAO::SchrijfWeg("api/Account/Register", $account));
                             var_dump($account);
                         }
                     ?>
