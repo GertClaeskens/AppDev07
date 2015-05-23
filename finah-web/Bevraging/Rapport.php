@@ -181,20 +181,20 @@
                             }
                             ?>
                             <table class="table table-bordered">
-                                <tr style="background-color:#337ab7; color:white;">
+                                <tr style="background-color:#4a89dc; color:white;">
                                     <th>Vraag</th>
                                     <th colspan="2">Hinder voor Patient</th>
                                     <th colspan="2">Hinder voor Mantelzorger</th>
                                     <th>Hulpvraag</th>
                                 </tr>
                                 <tr>
-                                    <th></th>
+                                    <td></td>
                                     <th>Patient</th>
                                     <th>Mantelzorger</th>
                                     <th>Patient</th>
                                     <th>Mantelzorger</th>
                                     <th>Gesteld door</th>
-                                </tr
+                                </tr>
                                 <?php
                                     $i = 0;
                                     foreach (array_keys($rapport) as $key) {
