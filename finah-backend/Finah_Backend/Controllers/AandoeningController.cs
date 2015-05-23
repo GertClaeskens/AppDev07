@@ -172,13 +172,13 @@ namespace Finah_Backend.Controllers
         [ResponseType(typeof(Aandoening))]
         //public IHttpActionResult PostAandoening(Aandoening aandoening)
         //public async Task<IHttpActionResult> PostAandoening([FromBody] Aandoening aandoening)
-        public void Post([FromBody] Aandoening aandoening)
+        public IHttpActionResult Post([FromBody] Aandoening aandoening)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState));
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState));
+                return BadRequest(ModelState);
+            }
 
             var aand = new Aandoening { Omschrijving = aandoening.Omschrijving, Patologieen = new List<Pathologie>() };
             if (aandoening.Patologieen.Count != 0)
@@ -194,7 +194,7 @@ namespace Finah_Backend.Controllers
             db.SaveChanges();
             if (aandoening.Patologieen.Count == 0)
             {
-                return;
+                return this.Ok();
             }
             foreach (var pat in aandoening.Patologieen.Select(pathologie => this.db.Pathologieen.Find(pathologie.Id)))
             {
@@ -203,7 +203,7 @@ namespace Finah_Backend.Controllers
             }
 
             //return Ok(aand);
-            //return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
+            return CreatedAtRoute("DefaultApi", new { id = aandoening.Id }, aandoening);
         }
 
         // DELETE: api/Aandoenings/5

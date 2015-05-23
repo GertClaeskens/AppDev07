@@ -1,4 +1,4 @@
-namespace Finah_Backend.Migrations
+ï»¿namespace Finah_Backend.Migrations
 {
     using Finah_Backend.DAL;
     using Finah_Backend.Models;
@@ -77,187 +77,221 @@ namespace Finah_Backend.Migrations
                                      {
                                          VraagStelling =
                                              "Iets nieuws leren (zoals het leren omgaan met bijv. een nieuwe GSM, vaatwasmachine of afstandsbediening; leren ikv een hobby)"
-                                             ,Thema =  context.Themas.Find(1)
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag1.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
                                              "Zich kunnen concentreren zonder te worden afgeleid (zoals het volgen van een gesprek in een drukke omgeving, of het volgen van een Tv-programma)"
-                                             ,Thema =  context.Themas.Find(1)
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag2.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Denken (zoals fantaseren, een mening vormen, met ideeën spelen, of nadenken)"
-                                             ,Thema =  context.Themas.Find(1)
+                                             "Denken (zoals fantaseren, een mening vormen, met ideeï¿½n spelen, of nadenken)"
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag3.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
                                              "Lezen (zoals boeken, instructies, kranten, in tekst of in braille)"
-                                             ,Thema =  context.Themas.Find(1)
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag4.PNG"
                                      },
                                  new Vraag
                                      {
-                                         VraagStelling = "Rekenen (zoals gepast betalen bij een winkel)",Thema =  context.Themas.Find(1)
-                                     },
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Oplossen van problemen (zoals een afspraak bij de dokter verzetten, of weten wat je moet doen als er iets stuk gaat in huis)",Thema =  context.Themas.Find(1)
+                                         VraagStelling = "Rekenen (zoals gepast betalen bij een winkel)"
+                                         ,Thema =  context.Themas.Find(1), Afbeelding="Vraag5.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Keuzes maken (zoals kiezen wat je wil eten, welk TV-programma je wil zien)",Thema =  context.Themas.Find(1)
+                                             "Oplossen van problemen (zoals een afspraak bij de dokter verzetten, of weten wat je moet doen als er iets stuk gaat in huis)"
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag6.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Uitvoeren van dagelijkse routinehandelingen (zoals zich wassen, ontbijten)",Thema =  context.Themas.Find(2)
+                                             "Keuzes maken (zoals kiezen wat je wil eten, welk TV-programma je wil zien)"
+                                             ,Thema =  context.Themas.Find(1), Afbeelding="Vraag7.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Ondernemen van een eenvoudige taak op eigen initiatief (zoals een boodschappenlijstje opmaken, de vuilzak buitenzetten, de tafel dekken)",Thema =  context.Themas.Find(2)
+                                             "Uitvoeren van dagelijkse routinehandelingen (zoals zich wassen, ontbijten)"
+                                             ,Thema =  context.Themas.Find(2), Afbeelding="Vraag8.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Ondernemen van complexe taken op eigen initiatief (zoals autorijden, boodschappen doen, uitgebreid koken)",Thema =  context.Themas.Find(2)
+                                             "Ondernemen van een eenvoudige taak op eigen initiatief (zoals een boodschappenlijstje opmaken, de vuilzak buitenzetten, de tafel dekken)"
+                                             ,Thema =  context.Themas.Find(2), Afbeelding="Vraag9.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Omgaan met stressvolle situaties(zoals het autorijden in druk verkeer of het verzorgen van meerdere kinderen)",Thema =  context.Themas.Find(2)
-                                     },
-                                 new Vraag { VraagStelling = "Begrijpen wat iemand vertelt of vraagt" ,Thema =  context.Themas.Find(3)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Begrijpen van non-verbale (niet gesproken) boodschappen (zoals pictogrammen, afbeeldingen, symbolen, lichaamstaal en gezichtsuitdrukkingen)",Thema =  context.Themas.Find(3)
+                                             "Ondernemen van complexe taken op eigen initiatief (zoals autorijden, boodschappen doen, uitgebreid koken)"
+                                             ,Thema =  context.Themas.Find(2), Afbeelding="Vraag10.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Begrijpen van geschreven boodschappen (zoals het lezen van de krant)",Thema =  context.Themas.Find(3)
+                                             "Omgaan met stressvolle situaties(zoals het autorijden in druk verkeer of het verzorgen van meerdere kinderen)"
+                                             ,Thema =  context.Themas.Find(2), Afbeelding="Vraag11.PNG"
                                      },
-                                 new Vraag { VraagStelling = "Spreken" ,Thema =  context.Themas.Find(3)},
+                                 new Vraag { VraagStelling = "Begrijpen wat iemand vertelt of vraagt" 
+                                            ,Thema =  context.Themas.Find(3), Afbeelding="Vraag12.PNG"},
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Zich uiten dmv lichaamstaal, handgebaren en gezichtsuitdrukkingen)",Thema =  context.Themas.Find(3)
-                                     },
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Schrijven van berichten (bijv. een boodschappenlijstje maken, een email schrijven)",Thema =  context.Themas.Find(3)
-                                     },
-                                 new Vraag { VraagStelling = "Het voeren van een gesprek" ,Thema =  context.Themas.Find(3)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Gebruiken van communicatieapparatuur en - technieken (zoals gebruik van telefoon, GSM, computer, hoorapparaat, etc)",Thema =  context.Themas.Find(3)
+                                             "Begrijpen van non-verbale (niet gesproken) boodschappen (zoals pictogrammen, afbeeldingen, symbolen, lichaamstaal en gezichtsuitdrukkingen)"
+                                             ,Thema =  context.Themas.Find(3), Afbeelding="Vraag13.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Zich kunnen bewegen en verplaatsen, met of zonder gebruik van hulpmiddelen zoals rolstoel, wandelstok of rollator (bijv. uit bed komen, wandelen, opstaan uit stoel)",Thema =  context.Themas.Find(4)
+                                             "Begrijpen van geschreven boodschappen (zoals het lezen van de krant)"
+                                             ,Thema =  context.Themas.Find(3), Afbeelding="Vraag14.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Spreken",Thema =  context.Themas.Find(3), Afbeelding="Vraag15.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Zich uiten dmv lichaamstaal, handgebaren en gezichtsuitdrukkingen)"
+                                             ,Thema =  context.Themas.Find(3), Afbeelding="Vraag16.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Gebruiken van hand en arm (grote bewegingen, zoals voorwerpen optillen en meenemen)",Thema =  context.Themas.Find(4)
+                                             "Schrijven van berichten (bijv. een boodschappenlijstje maken, een email schrijven)"
+                                             ,Thema =  context.Themas.Find(3), Afbeelding="Vraag17.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Het voeren van een gesprek" 
+                                     ,Thema =  context.Themas.Find(3), Afbeelding="Vraag18.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Gebruiken van communicatieapparatuur en - technieken (zoals gebruik van telefoon, GSM, computer, hoorapparaat, etc)"
+                                             ,Thema =  context.Themas.Find(3), Afbeelding="Vraag19.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Nauwkeurig gebruiken van handen (kleine bewegingen zoals grijpen en loslaten, schrijven, gebruik van sleutels of GSM, iets snijden met een mes)",Thema =  context.Themas.Find(4)
+                                             "Zich kunnen bewegen en verplaatsen, met of zonder gebruik van hulpmiddelen zoals rolstoel, wandelstok of rollator (bijv. uit bed komen, wandelen, opstaan uit stoel)"
+                                             ,Thema =  context.Themas.Find(4), Afbeelding="Vraag20.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Gebruiken van openbaar vervoer (zoals de bus of de trein nemen)",Thema =  context.Themas.Find(4)
+                                             "Gebruiken van hand en arm (grote bewegingen, zoals voorwerpen optillen en meenemen)"
+                                             ,Thema =  context.Themas.Find(4), Afbeelding="Vraag21.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Besturen van vervoermiddel (zoals de auto of de fiets)",Thema =  context.Themas.Find(4)
-                                     },
-                                 new Vraag { VraagStelling = "Zich wassen" ,Thema =  context.Themas.Find(5)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Verzorgen van lichaamsdelen (bijv. tanden poetsen, nagels knippen, make-up gebruiken)",Thema =  context.Themas.Find(5)
-                                     },
-                                 new Vraag { VraagStelling = "Zelfstandig naar het toilet kunnen gaan" ,Thema =  context.Themas.Find(5)},
-                                 new Vraag { VraagStelling = "Zich aankleden",Thema =  context.Themas.Find(5) },
-                                 new Vraag { VraagStelling = "Eten" ,Thema =  context.Themas.Find(5)},
-                                 new Vraag { VraagStelling = "Drinken" ,Thema =  context.Themas.Find(5)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Letten op de gezondheid (gevarieerd eten, voldoende lichaamsbeweging, gezondheidsrisico’s vermijden)",Thema =  context.Themas.Find(5)
-                                     },
-                                 new Vraag { VraagStelling = "Gaan winkelen" ,Thema =  context.Themas.Find(6)},
-                                 new Vraag { VraagStelling = "Bereiden van maaltijden" ,Thema =  context.Themas.Find(6)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Huishouden doen (onderhoud van huis en tuin, schoonmaken, kleren wassen)",Thema =  context.Themas.Find(6)
+                                             "Nauwkeurig gebruiken van handen (kleine bewegingen zoals grijpen en loslaten, schrijven, gebruik van sleutels of GSM, iets snijden met een mes)"
+                                             ,Thema =  context.Themas.Find(4), Afbeelding="Vraag22.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Op sociaal gepaste wijze contact maken met bekende en onbekende mensen (respectvol, rekening houden met",Thema =  context.Themas.Find(7)
-                                     },
-                                 new Vraag { VraagStelling = "Intieme relaties en seksualiteit" ,Thema =  context.Themas.Find(7)},
-                                 new Vraag { VraagStelling = "Omgaan met familieleden" ,Thema =  context.Themas.Find(7)},
-                                 new Vraag { VraagStelling = "Omgaan met vrienden en kennissen" ,Thema =  context.Themas.Find(7)},
-                                 new Vraag
-                                     {
-                                         VraagStelling =
-                                             "Formele relaties (zoals omgang met collega’s, werkgever, dokters en verzorgenden)",Thema =  context.Themas.Find(7)
+                                             "Gebruiken van openbaar vervoer (zoals de bus of de trein nemen)"
+                                             ,Thema =  context.Themas.Find(4), Afbeelding="Vraag23.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Het volgen van een vorming, training en/of opleiding",Thema =  context.Themas.Find(8)
+                                             "Besturen van vervoermiddel (zoals de auto of de fiets)"
+                                             ,Thema =  context.Themas.Find(4), Afbeelding="Vraag24.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Zich wassen" ,Thema =  context.Themas.Find(5), Afbeelding="Vraag25.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Verzorgen van lichaamsdelen (bijv. tanden poetsen, nagels knippen, make-up gebruiken)"
+                                             ,Thema =  context.Themas.Find(5), Afbeelding="Vraag26.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Zelfstandig naar het toilet kunnen gaan"
+                                     ,Thema =  context.Themas.Find(5), Afbeelding="Vraag27.PNG"},
+                                 new Vraag { VraagStelling = "Zich aankleden",Thema =  context.Themas.Find(5), Afbeelding="Vraag28.PNG" },
+                                 new Vraag { VraagStelling = "Eten" ,Thema =  context.Themas.Find(5), Afbeelding="Vraag29.PNG"},
+                                 new Vraag { VraagStelling = "Drinken" ,Thema =  context.Themas.Find(5), Afbeelding="Vraag30.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Letten op de gezondheid (gevarieerd eten, voldoende lichaamsbeweging, gezondheidsrisicoï¿½s vermijden)"
+                                             ,Thema =  context.Themas.Find(5), Afbeelding="Vraag31.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Gaan winkelen" ,Thema =  context.Themas.Find(6), Afbeelding="Vraag32.PNG"},
+                                 new Vraag { VraagStelling = "Bereiden van maaltijden" ,Thema =  context.Themas.Find(6), Afbeelding="Vraag33.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Huishouden doen (onderhoud van huis en tuin, schoonmaken, kleren wassen)"
+                                             ,Thema =  context.Themas.Find(6), Afbeelding="Vraag34.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Werken of andere zinvolle dagbesteding (zoals vrijwilligerswerk, het huishouden)",Thema =  context.Themas.Find(8)
+                                             "Op sociaal gepaste wijze contact maken met bekende en onbekende mensen (respectvol, rekening houden met"
+                                             ,Thema =  context.Themas.Find(7), Afbeelding="Vraag35.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Intieme relaties en seksualiteit" ,Thema =  context.Themas.Find(7), Afbeelding="Vraag36.PNG"},
+                                 new Vraag { VraagStelling = "Omgaan met familieleden" ,Thema =  context.Themas.Find(7), Afbeelding="Vraag37.PNG"},
+                                 new Vraag { VraagStelling = "Omgaan met vrienden en kennissen" ,Thema =  context.Themas.Find(7), Afbeelding="Vraag38.PNG"},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Formele relaties (zoals omgang met collegaï¿½s, werkgever, dokters en verzorgenden)"
+                                             ,Thema =  context.Themas.Find(7), Afbeelding="Vraag39.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Financiële mogelijkheden voor jezelf en je gezin",Thema =  context.Themas.Find(8)
+                                             "Het volgen van een vorming, training en/of opleiding"
+                                             ,Thema =  context.Themas.Find(8), Afbeelding="Vraag40.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Deelnemen aan het maatschappelijk leven (zoals gaan stemmen, een huwelijk of begrafenis bijwonen, lid zijn van een vereniging",Thema =  context.Themas.Find(9)
+                                             "Werken of andere zinvolle dagbesteding (zoals vrijwilligerswerk, het huishouden)"
+                                             ,Thema =  context.Themas.Find(8), Afbeelding="Vraag41.PNG"
                                      },
                                  new Vraag
                                      {
                                          VraagStelling =
-                                             "Ontspanning en vrije tijd (activiteiten gericht op amusement)",Thema =  context.Themas.Find(9)
+                                             "Financiï¿½le mogelijkheden voor jezelf en je gezin"
+                                             ,Thema =  context.Themas.Find(8), Afbeelding="Vraag42.PNG"
                                      },
-                                 new Vraag { VraagStelling = "Religie en spiritualiteit" ,Thema =  context.Themas.Find(9)},
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Deelnemen aan het maatschappelijk leven (zoals gaan stemmen, een huwelijk of begrafenis bijwonen, lid zijn van een vereniging"
+                                             ,Thema =  context.Themas.Find(9), Afbeelding="Vraag43.PNG"
+                                     },
+                                 new Vraag
+                                     {
+                                         VraagStelling =
+                                             "Ontspanning en vrije tijd (activiteiten gericht op amusement)"
+                                             ,Thema =  context.Themas.Find(9), Afbeelding="Vraag44.PNG"
+                                     },
+                                 new Vraag { VraagStelling = "Religie en spiritualiteit" ,Thema =  context.Themas.Find(9), Afbeelding="Vraag45.PNG"},
                                  new Vraag { VraagStelling = "Somber, neerslachtig, depressief" ,Thema =  context.Themas.Find(10)},
                                  new Vraag { VraagStelling = "Angstgevoelens" ,Thema =  context.Themas.Find(10)},
                                  new Vraag
                                      {
-                                         VraagStelling ="Onrealistische verwachtingen - Sneller emotioneel (bijv. huilen)",Thema =  context.Themas.Find(10)
+                                         VraagStelling ="Onrealistische verwachtingen - Sneller emotioneel (bijv. huilen)"
+                                         ,Thema =  context.Themas.Find(10)
                                      },
-                                 new Vraag { VraagStelling = "Sneller geïrriteerd en prikkelbaar" ,Thema =  context.Themas.Find(10)},
+                                 new Vraag { VraagStelling = "Sneller geï¿½rriteerd en prikkelbaar"
+                                     ,Thema =  context.Themas.Find(10), Afbeelding=""},
                                  new Vraag { VraagStelling = "Onverschilligheid" ,Thema =  context.Themas.Find(10)},
                                  new Vraag
                                      {
-                                         VraagStelling ="Ontremming en problemen met controle van gedag (zoals het maken van ongepaste opmerkingen, overmatig eten,…)",Thema =  context.Themas.Find(10)
+                                         VraagStelling ="Ontremming en problemen met controle van gedag (zoals het maken van ongepaste opmerkingen, overmatig eten,ï¿½)"
+                                         ,Thema =  context.Themas.Find(10)
                                      },
-                                 new Vraag { VraagStelling = "Sneller en vaker moe" ,Thema =  context.Themas.Find(10)}
+                                 new Vraag { VraagStelling = "Sneller en vaker moe"
+                                     ,Thema =  context.Themas.Find(10)}
                              }
             };
             context.VragenLijsten.AddOrUpdate(vl => new { vl.Id }, vragenLijst);
@@ -285,7 +319,7 @@ namespace Finah_Backend.Migrations
                                                   new Vraag
                                                       {
                                                           VraagStelling =
-                                                              "Denken (zoals fantaseren, een mening vormen, met ideeën spelen, of nadenken)",
+                                                              "Denken (zoals fantaseren, een mening vormen, met ideeï¿½n spelen, of nadenken)",
                                                           Thema = context.Themas.Find(1)
                                                       }
                                               }

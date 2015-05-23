@@ -38,6 +38,7 @@ namespace Finah_Backend.Controllers
         [Route("Vragen/{id}")]
         public IHttpActionResult Get(int id)
         {
+            db.Configuration.LazyLoadingEnabled = false;
             var vraag = db.Vragen.Find(id);
             if (vraag == null)
             {
@@ -49,10 +50,10 @@ namespace Finah_Backend.Controllers
 
         [Route("Vragen/Overzicht")] //Geen Api/ meer nodig
         //public IQueryable<Vraag> GetOverzicht()
-        public IEnumerable<Vraag> GetOverzicht()// return -> naderhand veranderen in Bevraging
+        public IEnumerable<Vraag> GetOverzicht()
         {
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Vragen.Include(p => p.Afbeelding).Include(p => p.Thema);//.Include(p => p.VragenLijst);
+            return db.Vragen.Include(p => p.Thema);//.Include(p => p.VragenLijst);
         }
 
         // PUT: api/Vragen/5
@@ -71,14 +72,13 @@ namespace Finah_Backend.Controllers
                 return BadRequest();
             }
             var vr = new Vraag
-                         {
-                             Id = vraag.Id,
-                             VraagStelling = vraag.VraagStelling,
-                             Thema = this.db.Themas.Find(vraag.Thema.Id),
-                             //Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
-                             Afbeelding = this.db.Fotos.Find(vraag.Afbeelding.Id),
-                             VragenLijst = new List<VragenLijst>()
-                         };
+            {
+                Id = vraag.Id,
+                VraagStelling = vraag.VraagStelling,
+                Thema = this.db.Themas.Find(vraag.Thema.Id),
+                Afbeelding = vraag.Afbeelding,
+                VragenLijst = new List<VragenLijst>()
+            };
             if (vraag.VragenLijst != null)
             {
                 foreach (var vl in vraag.VragenLijst)
@@ -118,11 +118,11 @@ namespace Finah_Backend.Controllers
                 return BadRequest(ModelState);
             }
             var vr = new Vraag
-                         {
-                             VraagStelling = vraag.VraagStelling,
-                             Afbeelding = vraag.Afbeelding,
-                             Thema = this.db.Themas.Find(vraag.Thema.Id)
-                         };
+            {
+                VraagStelling = vraag.VraagStelling,
+                Afbeelding = vraag.Afbeelding,
+                Thema = this.db.Themas.Find(vraag.Thema.Id)
+            };
 
             //bovenstaande moeten naar db refereren
             if (vraag.VragenLijst != null)
