@@ -122,28 +122,28 @@
                         <p class="eVraag">Hoe ervaar ik dit onderdeel?</p>
                         <ul class="invullen">
                             <li class="col-lg-2 col-md-2 col-sm-2">
-                                <label for="a1" class="btn btn-primary antwoordButton" id="antw11"
+                                <label for="a1" class="btn btn-antwoord antwoordButton" id="antw11"
                                        onclick="hideDiv(); toggleActive('antw11')">
                                     <input type="radio" id="a1" name="hinder" value="1"> Verloopt
                                     naar
                                     wens</input></label>
                             </li>
                             <li class="col-lg-2 col-md-2 col-sm-2">
-                                <label for="a2" class="btn btn-primary antwoordButton" id="antw12"
+                                <label for="a2" class="btn btn-antwoord antwoordButton" id="antw12"
                                        onclick="hideDiv(); toggleActive('antw12')">
                                     <input type="radio" id="a2" name="hinder" value="2">Probleem
                                     - niet
                                     hinderlijk</input></label>
                             </li>
                             <li class="col-lg-2 col-md-2 col-sm-2">
-                                <label for="a3" class="btn btn-primary antwoordButton" id="antw13"
+                                <label for="a3" class="btn btn-antwoord antwoordButton" id="antw13"
                                        onclick="showDiv(); toggleActive('antw13')">
                                     <input type="radio" id="a3" name="hinder" value="3"> Probleem
                                     -
                                     hinderlijk voor <?php echo $patient ? " mij" : " patient"; ?></input></label>
                             </li>
                             <li class="col-lg-2 col-md-2 col-sm-2">
-                                <label for="a4" class="btn btn-primary antwoordButton" id="antw14"
+                                <label for="a4" class="btn btn-antwoord antwoordButton" id="antw14"
                                        onclick="showDiv(); toggleActive('antw14')">
                                     <input type="radio" id="a4" name="hinder" value="4"> Probleem
                                     -
@@ -151,7 +151,7 @@
                                 </label>
                             </li>
                             <li class="col-lg-2 col-md-2 col-sm-2">
-                                <label for="a5" class="btn btn-primary antwoordButton" id="antw15"
+                                <label for="a5" class="btn btn-antwoord antwoordButton" id="antw15"
                                        onclick="showDiv(); toggleActive('antw15')">
                                     <input type="radio" id="a5" name="hinder" value="5"> Probleem
                                     -
@@ -168,12 +168,12 @@
                             <p class="eVraag">Wilt u dat we hieraan werken?</p>
                             <ul class="invullen">
                                 <li class="col-lg-2 col-md-2 col-sm-2">
-                                    <label for="h1" class="btn btn-primary antwoordButton" data-toggle="tab" id="antw21"
+                                    <label for="h1" class="btn btn-antwoord antwoordButton" data-toggle="tab" id="antw21"
                                            onclick="toggleActiveExtra('antw21')">
                                         <input type="radio" id="h1" name="hulp" value="3"> Ja</input></label>
                                 </li>
                                 <li class="col-lg-2 col-md-2 col-sm-2">
-                                    <label for="h2" class="btn btn-primary antwoordButton" id="antw22"
+                                    <label for="h2" class="btn btn-antwoord antwoordButton" id="antw22"
                                            onclick="toggleActiveExtra('antw22')">
                                         <input type="radio" id="h2" name="hulp" selected=selected value="0">Nee</input>
                                     </label>

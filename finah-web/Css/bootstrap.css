@@ -3115,6 +3115,30 @@ fieldset[disabled] .btn-default.active {
   background-color: #337ab7;
   border-color: #2e6da4;
 }
+.btn-antwoord {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.btn-antwoord:focus,
+.btn-antwoord.focus,
+.btn-antwoord:active,
+.btn-antwoord.active,
+.open > .dropdown-toggle.btn-antwoord {
+    color: #fff;
+    background-color: #143149;
+    border-color: #143149;
+}
+.btn-antwoord:hover,
+.btn-antwoord.hover,
+.open > .dropdown-toggle.btn-antwoord {
+    background-image: none;
+}
+.btn-antwoord .badge {
+    color: #337ab7;
+    background-color: #fff;
+}
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus,
@@ -3125,6 +3149,7 @@ fieldset[disabled] .btn-default.active {
   background-color: #286090;
   border-color: #204d74;
 }
+
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
