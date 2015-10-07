@@ -18,7 +18,7 @@ namespace Finah_Backend.Controllers
     using System.Net;
     using System.Web.Http.Description;
 
-    //TODO aanpassen naar azure website haha
+    //TODO aanpassen naar azure website aanpassing
     [EnableCors(origins: "http://finahweb4156.azurewebsites.net, http://localhost:63342", headers: "*", methods: "*")]
     [Authorize(Roles = "Admin, Onderzoeker")]
     public class AandoeningController : ApiController
